@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AnalysisOverview } from '@/features/analysis/components/AnalysisOverview';
+import { FindingsExplorer } from '@/features/analysis/components/FindingsExplorer';
 import { AnalysisProgress } from '@/features/analysis/components/AnalysisProgress';
 import { useAnalysis } from '@/features/analysis/hooks/useAnalysis';
 import { analysisService } from '@/features/analysis/services/analysis.service';
@@ -122,16 +123,21 @@ export function AnalysisDashboard() {
           queuePosition={progress?.status === 'QUEUED' ? 2 : 0}
         />
       ) : (
-        <AnalysisOverview 
-          analysis={analysis}
-          progress={progress as AnalysisProgressType}
-          onAnalyze={handleAnalyze}
-          onCancel={handleCancel}
-          onDownloadReport={handleDownloadReport}
-          onViewReport={() => toast.info('Navigating to detailed report...')}
-          onViewHistory={() => toast.info('Navigating to history...')}
-          isAnalyzing={isAnalyzing}
-        />
+        <div className="space-y-8">
+          <AnalysisOverview 
+            analysis={analysis}
+            progress={progress as AnalysisProgressType}
+            onAnalyze={handleAnalyze}
+            onCancel={handleCancel}
+            onDownloadReport={handleDownloadReport}
+            onViewReport={() => toast.info('Navigating to detailed report...')}
+            onViewHistory={() => toast.info('Navigating to history...')}
+            isAnalyzing={isAnalyzing}
+          />
+          {analysis && analysis.findings && analysis.findings.length > 0 && (
+            <FindingsExplorer findings={analysis.findings} />
+          )}
+        </div>
       )}
     </motion.div>
   );
