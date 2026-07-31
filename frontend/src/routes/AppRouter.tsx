@@ -3,6 +3,8 @@ import { AppLayout } from '../layouts/AppLayout';
 import { NotFound } from '../pages/NotFound';
 import { LandingPage } from '../pages/LandingPage';
 import { Dashboard } from '../pages/Dashboard';
+import { RepositoriesPage } from '../pages/repositories/RepositoriesPage';
+import { RepositoryDetailsPage } from '../pages/repositories/RepositoryDetailsPage';
 import { Settings } from '../pages/Settings';
 import { Login } from '../pages/auth/Login';
 import { Register } from '../pages/auth/Register';
@@ -49,6 +51,8 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
         children: [
           { path: '/dashboard', element: <Dashboard /> },
+          { path: '/repositories', element: <RepositoriesPage /> },
+          { path: '/repositories/:id', element: <RepositoryDetailsPage /> },
           { path: '/settings', element: <Settings /> },
         ],
       },
