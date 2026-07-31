@@ -4,6 +4,7 @@ import { FindingsExplorer } from '@/features/analysis/components/FindingsExplore
 import { AnalyticsSection } from '@/features/analysis/components/AnalyticsSection';
 import { RecommendationsPanel } from '@/features/analysis/components/RecommendationsPanel';
 import { AnalysisHistory } from '@/features/analysis/components/AnalysisHistory';
+import { ReportPreview } from '@/features/analysis/components/ReportPreview';
 import { AnalysisProgress } from '@/features/analysis/components/AnalysisProgress';
 import { useAnalysis } from '@/features/analysis/hooks/useAnalysis';
 import { analysisService } from '@/features/analysis/services/analysis.service';
@@ -150,6 +151,8 @@ export function AnalysisDashboard() {
           )}
 
           <AnalysisHistory initialHistory={mockHistory} />
+
+          <ReportPreview analysis={analysis!} />
         </div>
       )}
     </motion.div>

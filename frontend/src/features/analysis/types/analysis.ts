@@ -112,6 +112,7 @@ export interface Analysis {
   repositoryId: string;
   status: AnalysisStatus;
   commitHash: string;
+  branch?: string;
   overallScore: number;
   previousScore?: number;
   scores: Score[];
