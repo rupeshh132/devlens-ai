@@ -1,4 +1,4 @@
-import type { Analysis, AnalysisHistoryItem, Progress, Score, Finding, Recommendation } from '../types/analysis';
+﻿import type { Analysis, AnalysisHistoryItem, Progress, Score, Finding, Recommendation } from '../types/analysis';
 
 export const mockScores: Score[] = [
   { category: 'ARCHITECTURE', score: 85, previousScore: 80 },
@@ -111,6 +111,8 @@ export const mockRecommendations: Recommendation[] = [
   }
 ];
 
+
+
 export const mockAnalysis: Analysis = {
   id: 'ana-12345',
   repositoryId: 'repo-1',
@@ -192,3 +194,4 @@ export const mockProgress: Progress = {
   percentage: 65,
   message: 'Scanning for security vulnerabilities...',
 };
+export const mockBaseAnalysis: Analysis = { ...mockAnalysis, overallScore: 68, scores: [ { category: 'ARCHITECTURE', score: 70, previousScore: 70 }, { category: 'CODE_QUALITY', score: 65, previousScore: 65 }, { category: 'SECURITY', score: 62, previousScore: 62 }, { category: 'PERFORMANCE', score: 75, previousScore: 75 } ], findings: mockAnalysis.findings.slice(1) };

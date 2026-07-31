@@ -5,10 +5,11 @@ import { AnalyticsSection } from '@/features/analysis/components/AnalyticsSectio
 import { RecommendationsPanel } from '@/features/analysis/components/RecommendationsPanel';
 import { AnalysisHistory } from '@/features/analysis/components/AnalysisHistory';
 import { ReportPreview } from '@/features/analysis/components/ReportPreview';
+import { CompareAnalyses } from '@/features/analysis/components/CompareAnalyses';
 import { AnalysisProgress } from '@/features/analysis/components/AnalysisProgress';
 import { useAnalysis } from '@/features/analysis/hooks/useAnalysis';
 import { analysisService } from '@/features/analysis/services/analysis.service';
-import { mockHistory } from '@/features/analysis/mock';
+import { mockHistory, mockBaseAnalysis } from '@/features/analysis/mock';
 import type { Progress, Progress as AnalysisProgressType } from '@/features/analysis/types/analysis';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
@@ -153,6 +154,8 @@ export function AnalysisDashboard() {
           <AnalysisHistory initialHistory={mockHistory} />
 
           <ReportPreview analysis={analysis!} />
+          
+          <CompareAnalyses baseAnalysis={mockBaseAnalysis} targetAnalysis={analysis!} history={mockHistory} />
         </div>
       )}
     </motion.div>
