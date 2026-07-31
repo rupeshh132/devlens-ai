@@ -1,7 +1,8 @@
 import { Outlet, Link } from "react-router-dom"
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary"
+import type { ReactNode } from "react"
 
-export function AuthLayout() {
+export function AuthLayout({ children }: { children?: ReactNode }) {
   return (
     <ErrorBoundary>
       <div className="container relative flex h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -37,7 +38,7 @@ export function AuthLayout() {
         </div>
         <div className="lg:p-8 w-full flex items-center justify-center">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-            <Outlet />
+            {children || <Outlet />}
           </div>
         </div>
       </div>
