@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { AnalysisOverview } from '@/features/analysis/components/AnalysisOverview';
+import { AnalysisProgress } from '@/features/analysis/components/AnalysisProgress';
 import { useAnalysis } from '@/features/analysis/hooks/useAnalysis';
 import { analysisService } from '@/features/analysis/services/analysis.service';
-import type { Progress } from '@/features/analysis/types/analysis';
+import type { Progress, Progress as AnalysisProgressType } from '@/features/analysis/types/analysis';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
 
@@ -24,11 +25,14 @@ export function AnalysisDashboard() {
     }, 0);
 
     const phases = [
-      { status: 'FETCHING', percentage: 20, message: 'Cloning repository...', delay: 1500 },
-      { status: 'SCANNING', percentage: 40, message: 'Extracting AST...', delay: 3000 },
-      { status: 'ANALYZING', percentage: 70, message: 'Running AI models...', delay: 4500 },
-      { status: 'REPORT_GENERATION', percentage: 90, message: 'Compiling report...', delay: 6000 },
-      { status: 'COMPLETED', percentage: 100, message: 'Analysis complete!', delay: 7000 },
+      { status: 'CLONING', percentage: 10, message: 'Cloning repository...', delay: 1500 },
+      { status: 'METADATA_EXTRACTION', percentage: 25, message: 'Extracting metadata...', delay: 3000 },
+      { status: 'DEPENDENCY_ANALYSIS', percentage: 40, message: 'Analyzing dependencies...', delay: 4500 },
+      { status: 'STATIC_ANALYSIS', percentage: 55, message: 'Running static analysis...', delay: 6000 },
+      { status: 'AI_PROCESSING', percentage: 70, message: 'Running AI models...', delay: 7500 },
+      { status: 'SCORING', percentage: 85, message: 'Calculating scores...', delay: 9000 },
+      { status: 'REPORT_GENERATION', percentage: 95, message: 'Compiling report...', delay: 10500 },
+      { status: 'COMPLETED', percentage: 100, message: 'Analysis complete!', delay: 12000 },
     ] as const;
 
     const timeouts = phases.map(phase => 
@@ -109,16 +113,26 @@ export function AnalysisDashboard() {
       exit={{ opacity: 0, y: -20 }}
       className="container mx-auto px-4 py-8 max-w-7xl"
     >
-      <AnalysisOverview 
-        analysis={analysis}
-        progress={progress}
-        onAnalyze={handleAnalyze}
-        onCancel={handleCancel}
-        onDownloadReport={handleDownloadReport}
-        onViewReport={() => toast.info('Navigating to detailed report...')}
-        onViewHistory={() => toast.info('Navigating to history...')}
-        isAnalyzing={isAnalyzing}
-      />
+      {isAnalyzing ? (
+        <AnalysisProgress 
+          progress={progress as AnalysisProgressType} 
+          startedAt={new Date().toISOString()} // Mock started at
+          onCancel={handleCancel}
+          onRetry={handleAnalyze}
+          queuePosition={progress?.status === 'QUEUED' ? 2 : 0}
+        />
+      ) : (
+        <AnalysisOverview 
+          analysis={analysis}
+          progress={progress as AnalysisProgressType}
+          onAnalyze={handleAnalyze}
+          onCancel={handleCancel}
+          onDownloadReport={handleDownloadReport}
+          onViewReport={() => toast.info('Navigating to detailed report...')}
+          onViewHistory={() => toast.info('Navigating to history...')}
+          isAnalyzing={isAnalyzing}
+        />
+      )}
     </motion.div>
   );
 }

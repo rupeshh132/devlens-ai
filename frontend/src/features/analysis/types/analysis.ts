@@ -1,12 +1,16 @@
 export type AnalysisStatus =
   | 'IDLE'
   | 'QUEUED'
-  | 'FETCHING'
-  | 'SCANNING'
-  | 'ANALYZING'
+  | 'CLONING'
+  | 'METADATA_EXTRACTION'
+  | 'DEPENDENCY_ANALYSIS'
+  | 'STATIC_ANALYSIS'
+  | 'AI_PROCESSING'
+  | 'SCORING'
   | 'REPORT_GENERATION'
   | 'COMPLETED'
   | 'FAILED'
+  | 'CANCELLED'
   | 'ARCHIVED'
   | 'DELETED';
 

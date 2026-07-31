@@ -96,7 +96,7 @@ export const mockHistory: AnalysisHistoryItem[] = [
 ];
 
 export const mockProgress: Progress = {
-  status: 'ANALYZING',
+  status: 'AI_PROCESSING',
   percentage: 65,
   message: 'Scanning for security vulnerabilities...',
 };
