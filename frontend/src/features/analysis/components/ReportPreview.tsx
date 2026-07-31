@@ -30,7 +30,7 @@ export function ReportPreview({ analysis }: ReportPreviewProps) {
             <span className="w-3 h-3 rounded-full bg-green-500/80"></span>
             <span className="ml-2">{analysis.repositoryId}-analysis-report.pdf</span>
           </div>
-          <button className="text-gray-400 hover:text-white transition-colors">
+          <button aria-label="Maximize report view" className="text-gray-400 hover:text-white transition-colors">
             <Maximize2 className="h-4 w-4" />
           </button>
         </div>

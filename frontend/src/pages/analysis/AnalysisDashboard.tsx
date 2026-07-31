@@ -151,11 +151,13 @@ export function AnalysisDashboard() {
             <RecommendationsPanel recommendations={analysis.recommendations} />
           )}
 
-          <AnalysisHistory initialHistory={mockHistory} />
-
-          <ReportPreview analysis={analysis!} />
-          
-          <CompareAnalyses baseAnalysis={mockBaseAnalysis} targetAnalysis={analysis!} history={mockHistory} />
+          {analysis && (
+            <>
+              <AnalysisHistory initialHistory={mockHistory} />
+              <ReportPreview analysis={analysis} />
+              <CompareAnalyses baseAnalysis={mockBaseAnalysis} targetAnalysis={analysis} history={mockHistory} />
+            </>
+          )}
         </div>
       )}
     </motion.div>
