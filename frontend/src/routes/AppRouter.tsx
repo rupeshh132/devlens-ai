@@ -12,6 +12,7 @@ import { ForgotPassword } from '../pages/auth/ForgotPassword';
 import { ResetPassword } from '../pages/auth/ResetPassword';
 import { VerifyEmail } from '../pages/auth/VerifyEmail';
 import { OAuthCallback } from '../pages/auth/OAuthCallback';
+import { AnalysisDashboard } from '../pages/analysis/AnalysisDashboard';
 import { ProtectedRoute } from '../features/auth/components/ProtectedRoute';
 import { PublicRoute } from '../features/auth/components/PublicRoute';
 
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
           { path: '/dashboard', element: <Dashboard /> },
           { path: '/repositories', element: <RepositoriesPage /> },
           { path: '/repositories/:id', element: <RepositoryDetailsPage /> },
+          { path: '/analysis', element: <AnalysisDashboard /> },
           { path: '/settings', element: <Settings /> },
         ],
       },
