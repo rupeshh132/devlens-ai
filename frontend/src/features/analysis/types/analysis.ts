@@ -91,7 +91,11 @@ export interface AnalysisHistoryItem {
   id: string;
   date: string;
   overallScore: number;
+  previousScore?: number;
   commitHash: string;
+  commitMessage?: string;
+  branch?: string;
+  status: AnalysisStatus;
 }
 
 export interface AnalysisMetrics {

@@ -146,9 +146,45 @@ export const mockAnalysis: Analysis = {
 };
 
 export const mockHistory: AnalysisHistoryItem[] = [
-  { id: 'h-1', date: '2026-07-01T10:00:00Z', overallScore: 65, commitHash: 'abc1234' },
-  { id: 'h-2', date: '2026-07-15T10:00:00Z', overallScore: 70, commitHash: 'def5678' },
-  { id: 'h-3', date: '2026-07-31T12:00:00Z', overallScore: 76, commitHash: 'a1b2c3d' },
+  { 
+    id: 'h-1', 
+    date: '2026-07-01T10:00:00Z', 
+    overallScore: 65, 
+    previousScore: 60,
+    commitHash: 'abc1234',
+    commitMessage: 'Initial migration to TypeScript',
+    branch: 'main',
+    status: 'COMPLETED'
+  },
+  { 
+    id: 'h-2', 
+    date: '2026-07-15T10:00:00Z', 
+    overallScore: 70, 
+    previousScore: 65,
+    commitHash: 'def5678',
+    commitMessage: 'Fix authentication vulnerabilities',
+    branch: 'main',
+    status: 'COMPLETED'
+  },
+  { 
+    id: 'h-failed', 
+    date: '2026-07-28T14:30:00Z', 
+    overallScore: 0, 
+    commitHash: 'deadbeef',
+    commitMessage: 'WIP: Broken build experiment',
+    branch: 'feature/new-auth',
+    status: 'FAILED'
+  },
+  { 
+    id: 'h-3', 
+    date: '2026-07-31T12:00:00Z', 
+    overallScore: 76, 
+    previousScore: 70,
+    commitHash: 'a1b2c3d',
+    commitMessage: 'Merge pull request #42 from feature/optimizations',
+    branch: 'main',
+    status: 'COMPLETED'
+  },
 ];
 
 export const mockProgress: Progress = {

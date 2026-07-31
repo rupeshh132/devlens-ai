@@ -3,6 +3,7 @@ import { AnalysisOverview } from '@/features/analysis/components/AnalysisOvervie
 import { FindingsExplorer } from '@/features/analysis/components/FindingsExplorer';
 import { AnalyticsSection } from '@/features/analysis/components/AnalyticsSection';
 import { RecommendationsPanel } from '@/features/analysis/components/RecommendationsPanel';
+import { AnalysisHistory } from '@/features/analysis/components/AnalysisHistory';
 import { AnalysisProgress } from '@/features/analysis/components/AnalysisProgress';
 import { useAnalysis } from '@/features/analysis/hooks/useAnalysis';
 import { analysisService } from '@/features/analysis/services/analysis.service';
@@ -147,6 +148,8 @@ export function AnalysisDashboard() {
           {analysis && analysis.recommendations && analysis.recommendations.length > 0 && (
             <RecommendationsPanel recommendations={analysis.recommendations} />
           )}
+
+          <AnalysisHistory initialHistory={mockHistory} />
         </div>
       )}
     </motion.div>
