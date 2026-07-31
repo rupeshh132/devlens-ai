@@ -75,6 +75,15 @@ export interface AnalysisHistoryItem {
   commitHash: string;
 }
 
+export interface AnalysisMetrics {
+  linesOfCode: number;
+  files: number;
+  dependencies: number;
+  languages: Record<string, number>;
+  frameworks: string[];
+  technicalDebt: string;
+}
+
 export interface Analysis {
   id: string;
   repositoryId: string;
@@ -85,6 +94,7 @@ export interface Analysis {
   scores: Score[];
   findings: Finding[];
   report?: ReportMetadata;
+  metrics?: AnalysisMetrics;
   startedAt: string;
   completedAt?: string;
 }

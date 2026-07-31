@@ -75,6 +75,18 @@ export const mockAnalysis: Analysis = {
   commitHash: 'a1b2c3d4e5f6',
   overallScore: 76,
   previousScore: 74,
+  metrics: {
+    linesOfCode: 45200,
+    files: 234,
+    dependencies: 42,
+    languages: {
+      TypeScript: 85,
+      CSS: 10,
+      HTML: 5,
+    },
+    frameworks: ['React', 'Spring Boot'],
+    technicalDebt: '2d 4h',
+  },
   scores: mockScores,
   findings: mockFindings,
   report: {

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { AnalysisOverview } from '@/features/analysis/components/AnalysisOverview';
 import { FindingsExplorer } from '@/features/analysis/components/FindingsExplorer';
+import { AnalyticsSection } from '@/features/analysis/components/AnalyticsSection';
 import { AnalysisProgress } from '@/features/analysis/components/AnalysisProgress';
 import { useAnalysis } from '@/features/analysis/hooks/useAnalysis';
 import { analysisService } from '@/features/analysis/services/analysis.service';
+import { mockHistory } from '@/features/analysis/mock';
 import type { Progress, Progress as AnalysisProgressType } from '@/features/analysis/types/analysis';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
@@ -135,7 +137,10 @@ export function AnalysisDashboard() {
             isAnalyzing={isAnalyzing}
           />
           {analysis && analysis.findings && analysis.findings.length > 0 && (
-            <FindingsExplorer findings={analysis.findings} />
+            <>
+              <FindingsExplorer findings={analysis.findings} />
+              <AnalyticsSection analysis={analysis} history={mockHistory} />
+            </>
           )}
         </div>
       )}
