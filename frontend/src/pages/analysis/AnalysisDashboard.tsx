@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AnalysisOverview } from '@/features/analysis/components/AnalysisOverview';
 import { FindingsExplorer } from '@/features/analysis/components/FindingsExplorer';
 import { AnalyticsSection } from '@/features/analysis/components/AnalyticsSection';
+import { RecommendationsPanel } from '@/features/analysis/components/RecommendationsPanel';
 import { AnalysisProgress } from '@/features/analysis/components/AnalysisProgress';
 import { useAnalysis } from '@/features/analysis/hooks/useAnalysis';
 import { analysisService } from '@/features/analysis/services/analysis.service';
@@ -141,6 +142,10 @@ export function AnalysisDashboard() {
               <FindingsExplorer findings={analysis.findings} />
               <AnalyticsSection analysis={analysis} history={mockHistory} />
             </>
+          )}
+
+          {analysis && analysis.recommendations && analysis.recommendations.length > 0 && (
+            <RecommendationsPanel recommendations={analysis.recommendations} />
           )}
         </div>
       )}

@@ -26,11 +26,30 @@ export type AnalysisCategory =
 export type Severity = 'INFO' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 export type Priority = 'NICE_TO_HAVE' | 'SHOULD_FIX' | 'MUST_FIX';
 
+export type RecommendationPriority = 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW';
+export type RecommendationEffort = 'LOW' | 'MEDIUM' | 'HIGH';
+
 export interface Recommendation {
+  id: string;
+  title: string;
+  category: AnalysisCategory;
+  priority: RecommendationPriority;
+  effort: RecommendationEffort;
+  shortSummary: string;
+  problem: string;
+  recommendation: string;
+  whyItMatters: string;
+  implementationSteps: string[];
+  expectedImpact: string;
+  relatedFindings: string[];
+  affectedFiles: string[];
+  codeSnippet?: string;
+}
+
+export interface FindingRecommendation {
   id: string;
   description: string;
   codeSnippet?: string;
-  effort: 'LOW' | 'MEDIUM' | 'HIGH';
 }
 
 export interface Finding {
@@ -44,7 +63,7 @@ export interface Finding {
   lineNumber?: number;
   confidence: number;
   evidence?: string;
-  recommendations: Recommendation[];
+  recommendations: FindingRecommendation[];
 }
 
 export interface Score {
@@ -93,6 +112,7 @@ export interface Analysis {
   previousScore?: number;
   scores: Score[];
   findings: Finding[];
+  recommendations: Recommendation[];
   report?: ReportMetadata;
   metrics?: AnalysisMetrics;
   startedAt: string;

@@ -1,4 +1,4 @@
-import type { Analysis, AnalysisHistoryItem, Progress, Score, Finding } from '../types/analysis';
+import type { Analysis, AnalysisHistoryItem, Progress, Score, Finding, Recommendation } from '../types/analysis';
 
 export const mockScores: Score[] = [
   { category: 'ARCHITECTURE', score: 85, previousScore: 80 },
@@ -27,7 +27,7 @@ export const mockFindings: Finding[] = [
         id: 'r-1',
         description: 'Use parameterized queries.',
         codeSnippet: 'db.query("SELECT * FROM users WHERE email = $1", [req.body.email])',
-        effort: 'LOW',
+        
       },
     ],
   },
@@ -45,7 +45,7 @@ export const mockFindings: Finding[] = [
       {
         id: 'r-2',
         description: 'Use a DataLoader or bulk fetch.',
-        effort: 'MEDIUM',
+        
       },
     ],
   },
@@ -62,10 +62,53 @@ export const mockFindings: Finding[] = [
       {
         id: 'r-3',
         description: 'Add edge case tests for failed payments.',
-        effort: 'HIGH',
+        
       },
     ],
   },
+];
+
+export const mockRecommendations: Recommendation[] = [
+  {
+    id: 'rec-1',
+    title: 'Migrate to Parameterized Queries',
+    category: 'SECURITY',
+    priority: 'CRITICAL',
+    effort: 'MEDIUM',
+    shortSummary: 'Prevent SQL injection attacks by replacing direct string concatenation in queries.',
+    problem: 'The current implementation constructs SQL queries using direct string concatenation from user input (e.g. req.body.email). This makes the application vulnerable to SQL Injection attacks.',
+    recommendation: 'Refactor all database queries to use parameterized queries or an ORM.',
+    whyItMatters: 'SQL injection can lead to unauthorized data access, data loss, or complete system compromise.',
+    implementationSteps: [
+      'Identify all raw SQL queries in src/api/users.ts.',
+      'Replace string concatenation with parameterized syntax ($1, $2, etc.).',
+      'Pass user input as a separate array of parameters to the query execution function.',
+      'Run security tests to ensure no regressions.'
+    ],
+    expectedImpact: 'Eliminates SQL injection vectors in the users service.',
+    relatedFindings: ['f-1'],
+    affectedFiles: ['src/api/users.ts'],
+    codeSnippet: 'db.query("SELECT * FROM users WHERE email = $1", [req.body.email])'
+  },
+  {
+    id: 'rec-2',
+    title: 'Implement DataLoader for Orders',
+    category: 'PERFORMANCE',
+    priority: 'HIGH',
+    effort: 'HIGH',
+    shortSummary: 'Resolve N+1 query issue when fetching orders with related items.',
+    problem: 'Fetching related entities in a loop causes O(N) database queries, significantly slowing down response times for large datasets.',
+    recommendation: 'Use DataLoader to batch and cache database requests.',
+    whyItMatters: 'Reduces database load and improves API response times, providing a better user experience.',
+    implementationSteps: [
+      'Install and configure DataLoader.',
+      'Create a batch loading function for order items.',
+      'Replace loop-based queries with dataloader.load() calls.'
+    ],
+    expectedImpact: 'Reduces database queries per request from N to 1, improving throughput by up to 400%.',
+    relatedFindings: ['f-2'],
+    affectedFiles: ['src/services/orderService.ts']
+  }
 ];
 
 export const mockAnalysis: Analysis = {
@@ -89,6 +132,7 @@ export const mockAnalysis: Analysis = {
   },
   scores: mockScores,
   findings: mockFindings,
+  recommendations: mockRecommendations,
   report: {
     id: 'rep-1',
     analysisId: 'ana-12345',
