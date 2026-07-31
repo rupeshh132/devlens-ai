@@ -1,0 +1,12 @@
+package com.devlens.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DevLensApiApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DevLensApiApplication.class, args);
+    }
+}
