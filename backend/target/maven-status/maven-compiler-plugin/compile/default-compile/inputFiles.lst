@@ -15,4 +15,10 @@ C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\
 C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\exception\ResourceNotFoundException.java
 C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\mapper\UserMapper.java
 C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\repository\UserRepository.java
+C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\security\AuthenticationService.java
+C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\security\CustomUserDetailsService.java
+C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\security\JwtAuthenticationFilter.java
+C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\security\JwtProperties.java
+C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\security\JwtService.java
+C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\security\UserPrincipal.java
 C:\Users\rupesh vishwakarma\OneDrive\Desktop\Devlense AI\devlens-ai\backend\src\main\java\com\devlens\api\service\UserService.java

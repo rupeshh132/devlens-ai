@@ -1,9 +1,12 @@
 com\devlens\api\service\UserService.class
 com\devlens\api\dto\UserResponse.class
 com\devlens\api\entity\UserRole.class
+com\devlens\api\security\JwtProperties.class
+com\devlens\api\security\UserPrincipal.class
 com\devlens\api\config\JpaAuditingConfig.class
 com\devlens\api\dto\CreateUserRequest.class
 com\devlens\api\dto\UserResponse$UserResponseBuilder.class
+com\devlens\api\security\JwtAuthenticationFilter.class
 com\devlens\api\dto\UpdateUserRequest.class
 com\devlens\api\entity\User$UserBuilder.class
 com\devlens\api\entity\UserStatus.class
@@ -12,11 +15,14 @@ com\devlens\api\common\ApiResponse$ApiResponseBuilder.class
 com\devlens\api\repository\UserRepository.class
 com\devlens\api\DevLensApiApplication.class
 com\devlens\api\dto\CreateUserRequest$CreateUserRequestBuilder.class
+com\devlens\api\security\CustomUserDetailsService.class
 com\devlens\api\common\ApiResponse.class
 com\devlens\api\exception\GlobalExceptionHandler.class
+com\devlens\api\security\AuthenticationService.class
 com\devlens\api\dto\UpdateUserRequest$UpdateUserRequestBuilder.class
 com\devlens\api\controller\UserController.class
 com\devlens\api\exception\ResourceNotFoundException.class
+com\devlens\api\security\JwtService.class
 com\devlens\api\entity\User.class
 com\devlens\api\mapper\UserMapperImpl.class
 com\devlens\api\config\OpenApiConfig.class
