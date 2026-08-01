@@ -89,4 +89,19 @@ public class AnalysisJobService {
 
         return job;
     }
+
+    @Transactional
+    public void updateProgress(UUID jobId, int progress) {
+        AnalysisJob job = getJobStatus(jobId);
+        job.setProgress(progress);
+        if (progress >= 100) {
+            job.setStatus(AnalysisJobStatus.COMPLETED);
+            job.setCompletedAt(java.time.Instant.now());
+        } else if (progress > 0 && job.getStatus() == AnalysisJobStatus.QUEUED) {
+            job.setStatus(AnalysisJobStatus.IN_PROGRESS);
+            job.setStartedAt(java.time.Instant.now());
+        }
+        jobRepository.save(job);
+        log.debug("Updated job {} progress to {}%", jobId, progress);
+    }
 }
