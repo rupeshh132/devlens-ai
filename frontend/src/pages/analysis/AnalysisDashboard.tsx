@@ -15,6 +15,7 @@ import { useStartAnalysis } from '@/features/analysis/hooks/useStartAnalysis';
 import { useAnalysisStream } from '@/features/analysis/hooks/useAnalysisStream';
 import { useCancelAnalysis } from '@/features/analysis/hooks/useCancelAnalysis';
 import { useAnalysisHistory } from '@/features/analysis/hooks/useAnalysisHistory';
+import { useExportPdf } from '@/features/analysis/hooks/useExportPdf';
 
 import type { Progress as AnalysisProgressType } from '@/features/analysis/types/analysis';
 import { toast } from 'sonner';
@@ -32,6 +33,7 @@ export function AnalysisDashboard() {
   
   const startMutation = useStartAnalysis();
   const cancelMutation = useCancelAnalysis();
+  const exportPdfMutation = useExportPdf();
 
   useEffect(() => {
     if (isConnectionClosed && progress) {
@@ -68,9 +70,8 @@ export function AnalysisDashboard() {
   const handleDownloadReport = async () => {
     if (!analysis?.id) return;
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      // In a real app, create object URL and trigger download
-      toast.success('Report downloaded');
+      await exportPdfMutation.mutateAsync(analysis.id);
+      toast.success('Report downloaded successfully');
     } catch {
       toast.error('Failed to download report');
     }

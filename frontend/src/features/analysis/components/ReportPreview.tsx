@@ -18,7 +18,7 @@ export function ReportPreview({ analysis }: ReportPreviewProps) {
           <FileText className="h-6 w-6 text-indigo-400" />
           <h2 className="text-2xl font-bold text-white">Report Preview</h2>
         </div>
-        <ExportActions />
+        <ExportActions jobId={analysis.id} />
       </div>
 
       <div className="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden shadow-2xl relative">
