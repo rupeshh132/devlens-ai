@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 
+import com.devlens.api.dto.AnalysisProgressEvent;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -22,6 +24,7 @@ public class AnalysisJobService {
     private final AnalysisJobRepository jobRepository;
     private final RepositoryRepository repositoryRepository;
     private final JobScheduler jobScheduler;
+    private final SseService sseService;
 
     @Transactional
     public AnalysisJob queueJob(UUID repositoryId) {
@@ -62,10 +65,12 @@ public class AnalysisJobService {
         }
 
         job.setStatus(AnalysisJobStatus.CANCELLED);
-        jobRepository.save(job);
+        job = jobRepository.save(job);
         
         jobScheduler.cancelRunningJob(jobId);
         log.info("Cancelled analysis job {}", jobId);
+        
+        broadcastEvent(jobId, job.getStatus(), job.getProgress(), "Job cancelled");
     }
 
     @Transactional
@@ -103,5 +108,18 @@ public class AnalysisJobService {
         }
         jobRepository.save(job);
         log.debug("Updated job {} progress to {}%", jobId, progress);
+        
+        String msg = progress >= 100 ? "Analysis completed" : "Analysis in progress";
+        broadcastEvent(jobId, job.getStatus(), job.getProgress(), msg);
+    }
+    
+    public void broadcastEvent(UUID jobId, AnalysisJobStatus status, int progress, String message) {
+        AnalysisProgressEvent event = AnalysisProgressEvent.builder()
+                .jobId(jobId)
+                .status(status)
+                .progress(progress)
+                .message(message)
+                .build();
+        sseService.broadcast(jobId, "progress", event);
     }
 }

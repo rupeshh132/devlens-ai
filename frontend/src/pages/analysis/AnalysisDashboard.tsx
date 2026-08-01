@@ -12,11 +12,11 @@ import { CompareAnalyses } from '@/features/analysis/components/CompareAnalyses'
 import { AnalysisProgress } from '@/features/analysis/components/AnalysisProgress';
 import { useAnalysis } from '@/features/analysis/hooks/useAnalysis';
 import { useStartAnalysis } from '@/features/analysis/hooks/useStartAnalysis';
-import { useAnalysisStatus } from '@/features/analysis/hooks/useAnalysisStatus';
+import { useAnalysisStream } from '@/features/analysis/hooks/useAnalysisStream';
 import { useCancelAnalysis } from '@/features/analysis/hooks/useCancelAnalysis';
 import { useAnalysisHistory } from '@/features/analysis/hooks/useAnalysisHistory';
 
-import type { Progress, Progress as AnalysisProgressType } from '@/features/analysis/types/analysis';
+import type { Progress as AnalysisProgressType } from '@/features/analysis/types/analysis';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
 
@@ -27,26 +27,22 @@ export function AnalysisDashboard() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const { analysis, isLoading, error } = useAnalysis(jobId || 'ana-12345');
-  const { data: statusData } = useAnalysisStatus(jobId);
+  const { progress, isConnectionClosed } = useAnalysisStream(jobId);
   const { history } = useAnalysisHistory(REPOSITORY_ID);
   
   const startMutation = useStartAnalysis();
   const cancelMutation = useCancelAnalysis();
 
-  const progress: Progress | undefined = statusData ? {
-    status: statusData.status,
-    percentage: statusData.progress || (statusData.status === 'COMPLETED' ? 100 : 50),
-    message: statusData.errorMessage || `Analysis is ${statusData.status}`,
-  } : undefined;
-
   useEffect(() => {
-    if (statusData?.status === 'COMPLETED' || statusData?.status === 'FAILED' || statusData?.status === 'CANCELLED') {
+    if (isConnectionClosed && progress) {
       setIsAnalyzing(false);
-      if (statusData.status === 'COMPLETED') {
+      if (progress.status === 'COMPLETED') {
         toast.success('Analysis completed successfully!');
+      } else if (progress.status === 'FAILED') {
+        toast.error(`Analysis failed: ${progress.message || 'Unknown error'}`);
       }
     }
-  }, [statusData?.status]);
+  }, [isConnectionClosed, progress?.status, progress]);
 
   const handleAnalyze = async () => {
     try {

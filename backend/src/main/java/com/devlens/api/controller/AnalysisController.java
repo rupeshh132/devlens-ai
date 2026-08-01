@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.List;
 import java.util.UUID;
@@ -28,6 +29,7 @@ public class AnalysisController {
     private final AnalysisJobService analysisJobService;
     private final RepositoryService repositoryService;
     private final AnalysisMapper analysisMapper;
+    private final com.devlens.api.service.SseService sseService;
 
     @PostMapping("/analyses/start")
     public ResponseEntity<AnalysisResponse> startAnalysis(
@@ -84,6 +86,15 @@ public class AnalysisController {
         getOwnedJob(userPrincipal.getId(), jobId);
         analysisJobService.cancelJob(jobId);
         return ResponseEntity.ok().build();
+    }
+    
+    @GetMapping("/analyses/{jobId}/progress/stream")
+    public SseEmitter streamProgress(
+            @AuthenticationPrincipal UserPrincipal userPrincipal,
+            @PathVariable UUID jobId) {
+        
+        getOwnedJob(userPrincipal.getId(), jobId);
+        return sseService.createEmitter(jobId);
     }
     
     private AnalysisJob getOwnedJob(UUID userId, UUID jobId) {

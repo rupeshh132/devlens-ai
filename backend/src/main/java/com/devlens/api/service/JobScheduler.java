@@ -16,6 +16,8 @@ import java.time.Instant;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.devlens.api.dto.AnalysisProgressEvent;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -23,6 +25,7 @@ public class JobScheduler {
 
     private final AnalysisJobRepository jobRepository;
     private final AnalysisPipeline analysisPipeline;
+    private final SseService sseService;
     
     // Track running jobs to support cancellation
     private final ConcurrentHashMap<UUID, Thread> runningJobs = new ConcurrentHashMap<>();
@@ -65,12 +68,16 @@ public class JobScheduler {
             jobRepository.save(job);
             log.info("Finished job: {}", jobId);
             
+            broadcastEvent(job, result.isSuccessful() ? "Analysis completed" : "Analysis failed");
+            
         } catch (Exception e) {
             log.error("Job {} failed", jobId, e);
             job.setStatus(AnalysisJobStatus.FAILED);
             job.setErrorMessage(e.getMessage());
             job.setCompletedAt(Instant.now());
             jobRepository.save(job);
+            
+            broadcastEvent(job, "Analysis failed: " + e.getMessage());
         } finally {
             runningJobs.remove(jobId);
         }
@@ -81,6 +88,8 @@ public class JobScheduler {
         job.setStatus(AnalysisJobStatus.CANCELLED);
         job.setCompletedAt(Instant.now());
         jobRepository.save(job);
+        
+        broadcastEvent(job, "Analysis cancelled");
     }
 
     public void cancelRunningJob(UUID jobId) {
@@ -89,5 +98,15 @@ public class JobScheduler {
             log.info("Interrupting running thread for job {}", jobId);
             jobThread.interrupt();
         }
+    }
+    
+    private void broadcastEvent(AnalysisJob job, String message) {
+        AnalysisProgressEvent event = AnalysisProgressEvent.builder()
+                .jobId(job.getId())
+                .status(job.getStatus())
+                .progress(job.getProgress())
+                .message(message)
+                .build();
+        sseService.broadcast(job.getId(), "progress", event);
     }
 }
