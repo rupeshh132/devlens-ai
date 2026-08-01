@@ -3,6 +3,9 @@ package com.devlens.api.service;
 import com.devlens.api.entity.AnalysisJob;
 import com.devlens.api.entity.AnalysisJobStatus;
 import com.devlens.api.repository.AnalysisJobRepository;
+import com.devlens.api.analysis.AnalysisPipeline;
+import com.devlens.api.analysis.AnalysisContext;
+import com.devlens.api.analysis.AnalysisResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
@@ -19,6 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class JobScheduler {
 
     private final AnalysisJobRepository jobRepository;
+    private final AnalysisPipeline analysisPipeline;
     
     // Track running jobs to support cancellation
     private final ConcurrentHashMap<UUID, Thread> runningJobs = new ConcurrentHashMap<>();
@@ -42,30 +46,25 @@ public class JobScheduler {
         runningJobs.put(jobId, Thread.currentThread());
 
         try {
-            // Simulated Job Execution - Foundation
-            for (int i = 1; i <= 10; i++) {
-                if (Thread.currentThread().isInterrupted()) {
-                    handleCancellation(job);
-                    return;
-                }
-                
-                // Simulate work
-                Thread.sleep(1000);
-                
-                // Update progress
-                job.setProgress(i * 10);
-                jobRepository.save(job);
-            }
+            AnalysisContext context = AnalysisContext.builder()
+                    .job(job)
+                    .repository(job.getRepository())
+                    .build();
 
-            job.setStatus(AnalysisJobStatus.COMPLETED);
-            job.setCompletedAt(Instant.now());
-            job.setProgress(100);
+            AnalysisResult result = analysisPipeline.execute(context);
+
+            if (result.isSuccessful()) {
+                job.setStatus(AnalysisJobStatus.COMPLETED);
+                job.setCompletedAt(Instant.now());
+                job.setProgress(100);
+            } else {
+                job.setStatus(AnalysisJobStatus.FAILED);
+                job.setErrorMessage(result.getErrorMessage());
+                job.setCompletedAt(Instant.now());
+            }
             jobRepository.save(job);
-            log.info("Successfully completed job: {}", jobId);
+            log.info("Finished job: {}", jobId);
             
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            handleCancellation(job);
         } catch (Exception e) {
             log.error("Job {} failed", jobId, e);
             job.setStatus(AnalysisJobStatus.FAILED);

@@ -9,11 +9,15 @@ import java.util.List;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class AnalysisPipeline {
 
     private final List<AnalysisStage> stages;
     private final AnalysisJobService jobService;
+
+    public AnalysisPipeline(List<AnalysisStage> stages, @org.springframework.context.annotation.Lazy AnalysisJobService jobService) {
+        this.stages = stages;
+        this.jobService = jobService;
+    }
 
     public AnalysisResult execute(AnalysisContext context) {
         log.info("Starting AnalysisPipeline for Job ID: {}", context.getJob().getId());
