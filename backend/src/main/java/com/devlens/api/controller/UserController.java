@@ -11,7 +11,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import com.devlens.api.security.UserPrincipal;
 
 import java.util.UUID;
 
@@ -32,6 +34,12 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable UUID id) {
         UserResponse response = userService.getUserById(id);
+        return ResponseEntity.ok(ApiResponse.success(response));
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<ApiResponse<UserResponse>> getCurrentUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
+        UserResponse response = userService.getUserById(userPrincipal.getId());
         return ResponseEntity.ok(ApiResponse.success(response));
     }
 

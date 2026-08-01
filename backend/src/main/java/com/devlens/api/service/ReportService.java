@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.access.AccessDeniedException;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
@@ -25,7 +26,7 @@ public class ReportService {
                 .orElseThrow(() -> new RuntimeException("Analysis job not found"));
 
         if (!job.getRepository().getUser().getId().equals(userId)) {
-            throw new RuntimeException("Unauthorized");
+            throw new AccessDeniedException("Unauthorized");
         }
 
         return ReportResponse.builder()
@@ -44,7 +45,7 @@ public class ReportService {
                 .orElseThrow(() -> new RuntimeException("Analysis job not found"));
 
         if (!job.getRepository().getUser().getId().equals(userId)) {
-            throw new RuntimeException("Unauthorized");
+            throw new AccessDeniedException("Unauthorized");
         }
 
         // Generating a dummy PDF for now to fulfill the requirement without a heavy PDF library
