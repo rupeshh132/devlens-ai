@@ -53,8 +53,7 @@ public class DashboardService {
 
     private DashboardSummary.RecentRepository mapRepository(Repository repo) {
         // Find latest analysis job for this repository to check status
-        List<AnalysisJob> jobs = analysisJobRepository.findByRepositoryId(repo.getId());
-        AnalysisJob latestJob = jobs.stream().max((j1, j2) -> j1.getCreatedAt().compareTo(j2.getCreatedAt())).orElse(null);
+        AnalysisJob latestJob = analysisJobRepository.findFirstByRepositoryIdOrderByCreatedAtDesc(repo.getId()).orElse(null);
         
         String status = "Healthy";
         String lastAnalysisStr = "Never";
