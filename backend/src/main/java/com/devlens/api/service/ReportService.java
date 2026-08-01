@@ -49,6 +49,7 @@ public class ReportService {
         }
 
         // Generating a dummy PDF for now to fulfill the requirement without a heavy PDF library
+        String safeRepoName = job.getRepository().getName().replace("(", "\\(").replace(")", "\\)");
         String dummyPdfContent = "%PDF-1.4\n" +
                 "1 0 obj\n" +
                 "<< /Type /Catalog /Pages 2 0 R >>\n" +
@@ -68,7 +69,7 @@ public class ReportService {
                 "BT\n" +
                 "/F1 24 Tf\n" +
                 "100 700 Td\n" +
-                "(DevLens AI Report: " + job.getRepository().getName() + ") Tj\n" +
+                "(DevLens AI Report: " + safeRepoName + ") Tj\n" +
                 "ET\n" +
                 "endstream\n" +
                 "endobj\n" +
