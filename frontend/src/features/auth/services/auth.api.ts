@@ -1,0 +1,31 @@
+import { api } from '../../../lib/api';
+import type { User, LoginCredentials, RegisterCredentials } from '../types';
+
+export interface AuthResponse {
+  accessToken: string;
+  user?: User; // Depending on what backend returns
+}
+
+export const authApi = {
+  login: async (credentials: LoginCredentials): Promise<{ user: User; accessToken: string }> => {
+    const { data } = await api.post('/auth/login', credentials);
+    // Assuming backend ApiResponse wraps the data
+    const payload = data.data || data;
+    return payload;
+  },
+
+  register: async (credentials: RegisterCredentials): Promise<{ user: User; accessToken: string }> => {
+    const { data } = await api.post('/users', credentials);
+    const payload = data.data || data;
+    return payload;
+  },
+
+  logout: async (): Promise<void> => {
+    await api.post('/auth/logout');
+  },
+
+  getCurrentUser: async (): Promise<User> => {
+    const { data } = await api.get('/users/me');
+    return data.data || data;
+  }
+};
