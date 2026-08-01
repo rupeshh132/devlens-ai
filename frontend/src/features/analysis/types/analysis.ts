@@ -120,6 +120,8 @@ export interface Analysis {
   recommendations: Recommendation[];
   report?: ReportMetadata;
   metrics?: AnalysisMetrics;
+  progress?: number;
+  errorMessage?: string;
   startedAt: string;
   completedAt?: string;
 }

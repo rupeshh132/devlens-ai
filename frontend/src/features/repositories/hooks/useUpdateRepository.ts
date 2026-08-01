@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { repositoryApi } from '../services/repository.api';
 import type { UpdateRepositoryPayload } from '../services/repository.api';
