@@ -71,6 +71,13 @@
             <version>${springdoc-openapi.version}</version>
         </dependency>
 
+        <!-- Integrations -->
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>6.8.0.202311291450-r</version>
+        </dependency>
+
         <!-- Utilities -->
         <dependency>
             <groupId>org.springframework.retry</groupId>
