@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 public interface RepositoryRepository extends JpaRepository<Repository, UUID> {
@@ -17,4 +18,8 @@ public interface RepositoryRepository extends JpaRepository<Repository, UUID> {
     Optional<Repository> findByIdAndUserIdAndStatusNot(UUID id, UUID userId, RepositoryStatus status);
 
     boolean existsByUrlAndUserIdAndStatusNot(String url, UUID userId, RepositoryStatus status);
+    
+    long countByUserIdAndStatusNot(UUID userId, RepositoryStatus status);
+    
+    List<Repository> findTop5ByUserIdAndStatusNotOrderByCreatedAtDesc(UUID userId, RepositoryStatus status);
 }

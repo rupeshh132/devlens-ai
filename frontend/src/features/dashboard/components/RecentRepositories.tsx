@@ -1,10 +1,13 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import type { Repository, RepositoryStatus } from '../mock';
-import { mockRepositories } from '../mock';
+import type { RepositoryStatus, Repository } from '../mock'; // Reusing type definitions or redefining them
 
-export function RecentRepositories() {
+interface RecentRepositoriesProps {
+  repositories: Repository[];
+}
+
+export function RecentRepositories({ repositories }: RecentRepositoriesProps) {
   const getStatusBadgeVariant = (status: RepositoryStatus) => {
     switch (status) {
       case 'Healthy':
@@ -46,7 +49,7 @@ export function RecentRepositories() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {mockRepositories.map((repo: Repository) => (
+              {repositories.map((repo: Repository) => (
                 <TableRow key={repo.id}>
                   <TableCell className="font-medium">{repo.name}</TableCell>
                   <TableCell>{repo.language}</TableCell>

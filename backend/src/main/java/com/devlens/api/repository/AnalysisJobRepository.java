@@ -12,4 +12,9 @@ import java.util.UUID;
 public interface AnalysisJobRepository extends JpaRepository<AnalysisJob, UUID> {
     List<AnalysisJob> findByRepositoryId(UUID repositoryId);
     List<AnalysisJob> findByStatus(AnalysisJobStatus status);
+    
+    long countByRepositoryUserIdAndStatusIn(UUID userId, List<AnalysisJobStatus> statuses);
+    long countByRepositoryUserIdAndStatus(UUID userId, AnalysisJobStatus status);
+    
+    List<AnalysisJob> findTop10ByRepositoryUserIdOrderByCreatedAtDesc(UUID userId);
 }
