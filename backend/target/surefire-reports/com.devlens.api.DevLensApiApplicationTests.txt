@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.devlens.api.DevLensApiApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.23 s -- in com.devlens.api.DevLensApiApplicationTests

@@ -43,6 +43,20 @@ public class AuthenticationService {
                 .build();
     }
 
+    public AuthResponse loginWithOAuth(UserPrincipal userPrincipal, String deviceId) {
+        User user = userRepository.findById(userPrincipal.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        String accessToken = jwtService.generateToken(userPrincipal);
+        
+        RefreshToken refreshToken = refreshTokenService.createOrUpdateRefreshToken(user, deviceId);
+
+        return AuthResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken.getToken())
+                .build();
+    }
+
     public AuthResponse refreshToken(String requestRefreshToken, String deviceId) {
         return refreshTokenService.findByToken(requestRefreshToken)
                 .map(refreshTokenService::verifyExpiration)
