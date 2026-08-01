@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { mockRepositoriesData } from '../mock';
+import { useRepositories } from '../hooks/useRepositories';
 import { RepositoryCard } from './RepositoryCard';
 import { SearchBar } from '@/components/ui/search-bar';
 import { Button } from '@/components/ui/button';
@@ -22,11 +22,13 @@ export function RepositoryList() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  const languages = ['All', ...Array.from(new Set(mockRepositoriesData.map(r => r.language)))];
+  const { data: repositories = [], isLoading, isError } = useRepositories();
+
+  const languages = ['All', ...Array.from(new Set(repositories.map(r => r.language)))];
   const statuses = ['All', 'Healthy', 'Warning', 'Critical', 'Analyzing'];
 
   const filteredData = useMemo(() => {
-    let data = mockRepositoriesData;
+    let data = repositories;
     
     if (searchQuery) {
       data = data.filter(r => 
@@ -44,7 +46,7 @@ export function RepositoryList() {
     }
     
     return data;
-  }, [searchQuery, languageFilter, statusFilter]);
+  }, [searchQuery, languageFilter, statusFilter, repositories]);
 
   const totalPages = Math.max(1, Math.ceil(filteredData.length / itemsPerPage));
   const currentData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
@@ -54,6 +56,14 @@ export function RepositoryList() {
       setCurrentPage(page);
     }
   };
+
+  if (isLoading) {
+    return <div className="p-8 text-center text-muted-foreground animate-pulse">Loading repositories...</div>;
+  }
+
+  if (isError) {
+    return <div className="p-8 text-center text-destructive">Failed to load repositories.</div>;
+  }
 
   return (
     <div className="space-y-6">

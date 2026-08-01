@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { mockRepositoriesData, mockCommitsData } from '@/features/repositories/mock';
-import type { RepositoryDetails, CommitInfo } from '@/features/repositories/types';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useRepository } from '@/features/repositories/hooks/useRepository';
+import { useDeleteRepository } from '@/features/repositories/hooks/useDeleteRepository';
+import { useSyncRepository } from '@/features/repositories/hooks/useSyncRepository';
+import type { RepositoryDetails } from '@/features/repositories/types';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -20,43 +23,33 @@ import {
   Globe,
   Lock
 } from 'lucide-react';
+import { RepositoryFormDialog } from '@/features/repositories/components/RepositoryFormDialog';
 
 export function RepositoryDetailsPage() {
   const { id } = useParams<{ id: string }>();
-  const [repository, setRepository] = useState<RepositoryDetails | null>(null);
-  const [commits, setCommits] = useState<CommitInfo[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-
-  useEffect(() => {
-    // Mock API Fetch
-    const fetchRepo = async () => {
-      setIsLoading(true);
-      await new Promise(r => setTimeout(r, 1000));
-      const foundRepo = mockRepositoriesData.find(r => r.id === id);
-      setRepository(foundRepo || null);
-      setCommits(mockCommitsData[id || ''] || []);
-      setIsLoading(false);
-    };
-    
-    fetchRepo();
-  }, [id]);
+  const navigate = useNavigate();
+  
+  const { data: repository, isLoading } = useRepository(id!);
+  const { mutateAsync: deleteRepo, isPending: isDeleting } = useDeleteRepository();
+  const { mutateAsync: syncRepo, isPending: isRefreshing } = useSyncRepository();
+  
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const commits: unknown[] = []; // Not implemented in backend yet
 
   const handleRefresh = async () => {
-    setIsRefreshing(true);
-    await new Promise(r => setTimeout(r, 800));
-    setIsRefreshing(false);
+    if (id) {
+      await syncRepo(id);
+    }
   };
 
   const handleDelete = async () => {
-    setIsDeleting(true);
-    await new Promise(r => setTimeout(r, 1000));
-    // Mock redirect or update UI
-    setIsDeleting(false);
+    if (id && confirm('Are you sure you want to delete this repository?')) {
+      await deleteRepo(id);
+      navigate('/repositories');
+    }
   };
 
-  const getScoreColor = (score: number, status: string) => {
+  const getScoreColor = (score: number, status: RepositoryDetails['status']) => {
     if (status === 'Analyzing') return 'text-muted-foreground';
     if (score >= 90) return 'text-emerald-500';
     if (score >= 70) return 'text-yellow-500';
@@ -127,6 +120,9 @@ export function RepositoryDetailsPage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
+          <Button variant="outline" onClick={() => setIsEditOpen(true)}>
+            Edit
+          </Button>
           <Button variant="outline" onClick={handleRefresh} disabled={isRefreshing}>
             <RefreshCcw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
             Refresh
@@ -135,7 +131,7 @@ export function RepositoryDetailsPage() {
             <Star className={`h-4 w-4 mr-2 ${repository.isFavorite ? 'fill-yellow-500' : ''}`} />
             {repository.isFavorite ? 'Starred' : 'Star'}
           </Button>
-          <Button>
+          <Button onClick={handleRefresh} disabled={isRefreshing}>
             <Activity className="h-4 w-4 mr-2" />
             Analyze Now
           </Button>
@@ -185,7 +181,7 @@ export function RepositoryDetailsPage() {
             <CardContent>
               {commits.length > 0 ? (
                 <div className="space-y-4">
-                  {commits.map(commit => (
+                  {commits.map((commit: any) => (
                     <div key={commit.id} className="flex items-start gap-4">
                       <div className="mt-1 bg-muted p-1.5 rounded-md">
                         <GitCommit className="h-4 w-4 text-muted-foreground" />
@@ -254,6 +250,7 @@ export function RepositoryDetailsPage() {
           </Card>
         </div>
       </div>
+      <RepositoryFormDialog open={isEditOpen} onOpenChange={setIsEditOpen} repository={repository} />
     </div>
   );
 }

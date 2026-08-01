@@ -15,6 +15,8 @@ export interface RepositoryDetails {
   description: string;
   branches: number;
   isFavorite: boolean;
+  url?: string;
+  branch?: string;
 }
 
 export interface CommitInfo {
