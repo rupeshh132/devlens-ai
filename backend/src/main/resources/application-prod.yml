@@ -21,6 +21,10 @@ jwt:
   expiration: 3600000
   refresh-expiration: 604800000
 
+app:
+  oauth2:
+    redirect-uri: ${APP_OAUTH2_REDIRECT_URI:http://localhost:5173/oauth/callback}
+
 logging:
   level:
     root: INFO
