@@ -1,5 +1,6 @@
 
-import { Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
+import { useAuth } from "@/features/auth/hooks/useAuth"
 import {
   SidebarProvider,
   Sidebar,
@@ -15,16 +16,26 @@ import {
 import { Navbar, NavbarBrand, NavbarActions } from "@/components/ui/navbar"
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary"
 import { ContentArea } from "@/components/layout/ContentArea"
-import { Home, Settings, Users } from "lucide-react"
+import { Home, Settings, FolderGit2, LogOut, User } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
-// Dummy navigation data for the layout structure
 const navItems = [
-  { title: "Dashboard", icon: Home, url: "#" },
-  { title: "Users", icon: Users, url: "#" },
-  { title: "Settings", icon: Settings, url: "#" },
+  { title: "Dashboard", icon: Home, url: "/dashboard" },
+  { title: "Repositories", icon: FolderGit2, url: "/repositories" },
+  { title: "Settings", icon: Settings, url: "/settings" },
 ]
 
 export function DashboardLayout() {
+  const { logout } = useAuth()
+  
   return (
     <ErrorBoundary>
       <SidebarProvider>
@@ -38,10 +49,10 @@ export function DashboardLayout() {
                     {navItems.map((item) => (
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton asChild>
-                          <a href={item.url}>
+                          <Link to={item.url}>
                             <item.icon />
                             <span>{item.title}</span>
-                          </a>
+                          </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                     ))}
@@ -60,8 +71,23 @@ export function DashboardLayout() {
                 </NavbarBrand>
               </div>
               <NavbarActions>
-                {/* Theme toggle, user menu, etc. would go here */}
-                <div className="h-8 w-8 rounded-full bg-muted" />
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="rounded-full">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <User className="h-4 w-4" />
+                      </div>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => logout()}>
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Log out</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </NavbarActions>
             </Navbar>
             

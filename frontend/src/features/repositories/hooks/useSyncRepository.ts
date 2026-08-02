@@ -1,13 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation } from '@tanstack/react-query';
 import { repositoryApi } from '../services/repository.api';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 export const useSyncRepository = () => {
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: (id: string) => repositoryApi.syncRepository(id),
-    onSuccess: () => {
-      toast.success('Repository analysis started');
+    onSuccess: (jobId) => {
+      toast.success('Analysis started! Navigating to report...');
+      if (jobId) {
+        navigate(`/analysis/${jobId}`);
+      }
     },
     onError: (error: any) => {
       toast.error(error.response?.data?.message || 'Failed to start repository analysis');

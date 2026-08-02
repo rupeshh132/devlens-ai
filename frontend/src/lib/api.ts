@@ -75,7 +75,7 @@ api.interceptors.response.use(
         processQueue(refreshError);
         localStorage.removeItem('devlens_access_token');
         localStorage.removeItem('devlens_user');
-        window.location.href = '/login';
+        // Let React Router handle the redirect to login via ProtectedRoute
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;

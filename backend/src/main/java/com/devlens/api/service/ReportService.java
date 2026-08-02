@@ -3,6 +3,12 @@ package com.devlens.api.service;
 import com.devlens.api.dto.ReportResponse;
 import com.devlens.api.entity.AnalysisJob;
 import com.devlens.api.repository.AnalysisJobRepository;
+import com.devlens.api.entity.Vulnerability;
+import com.devlens.api.repository.VulnerabilityRepository;
+import com.lowagie.text.Document;
+import com.lowagie.text.Font;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfWriter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
@@ -10,15 +16,17 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.access.AccessDeniedException;
 
 import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
+import java.io.ByteArrayOutputStream;
 import java.time.Instant;
 import java.util.UUID;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ReportService {
 
     private final AnalysisJobRepository analysisJobRepository;
+    private final VulnerabilityRepository vulnerabilityRepository;
 
     @Transactional(readOnly = true)
     public ReportResponse getReport(UUID jobId, UUID userId) {
@@ -48,46 +56,52 @@ public class ReportService {
             throw new AccessDeniedException("Unauthorized");
         }
 
-        // Generating a dummy PDF for now to fulfill the requirement without a heavy PDF library
-        String safeRepoName = job.getRepository().getName().replace("(", "\\(").replace(")", "\\)");
-        String dummyPdfContent = "%PDF-1.4\n" +
-                "1 0 obj\n" +
-                "<< /Type /Catalog /Pages 2 0 R >>\n" +
-                "endobj\n" +
-                "2 0 obj\n" +
-                "<< /Type /Pages /Kids [3 0 R] /Count 1 >>\n" +
-                "endobj\n" +
-                "3 0 obj\n" +
-                "<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 4 0 R >> >> /MediaBox [0 0 612 792] /Contents 5 0 R >>\n" +
-                "endobj\n" +
-                "4 0 obj\n" +
-                "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\n" +
-                "endobj\n" +
-                "5 0 obj\n" +
-                "<< /Length 64 >>\n" +
-                "stream\n" +
-                "BT\n" +
-                "/F1 24 Tf\n" +
-                "100 700 Td\n" +
-                "(DevLens AI Report: " + safeRepoName + ") Tj\n" +
-                "ET\n" +
-                "endstream\n" +
-                "endobj\n" +
-                "xref\n" +
-                "0 6\n" +
-                "0000000000 65535 f \n" +
-                "0000000009 00000 n \n" +
-                "0000000058 00000 n \n" +
-                "0000000115 00000 n \n" +
-                "0000000223 00000 n \n" +
-                "0000000311 00000 n \n" +
-                "trailer\n" +
-                "<< /Size 6 /Root 1 0 R >>\n" +
-                "startxref\n" +
-                "426\n" +
-                "%%EOF";
+        try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
+            Document document = new Document();
+            PdfWriter.getInstance(document, out);
+            document.open();
 
-        byte[] pdfBytes = dummyPdfContent.getBytes(StandardCharsets.UTF_8);
-        return new InputStreamResource(new ByteArrayInputStream(pdfBytes));
+            Font titleFont = new Font(Font.HELVETICA, 24, Font.BOLD);
+            Font headerFont = new Font(Font.HELVETICA, 16, Font.BOLD);
+            Font normalFont = new Font(Font.HELVETICA, 12, Font.NORMAL);
+            Font monoFont = new Font(Font.COURIER, 10, Font.NORMAL);
+
+            document.add(new Paragraph("DevLens AI Code Analysis Report", titleFont));
+            document.add(new Paragraph(" "));
+            
+            document.add(new Paragraph("Repository: " + job.getRepository().getName(), headerFont));
+            document.add(new Paragraph("Score: " + (job.getScore() != null ? job.getScore() : "N/A") + "/100", headerFont));
+            document.add(new Paragraph("Generated At: " + Instant.now().toString(), normalFont));
+            document.add(new Paragraph(" "));
+            
+            document.add(new Paragraph("AI Summary", headerFont));
+            document.add(new Paragraph(job.getSummary() != null ? job.getSummary() : "No summary available.", normalFont));
+            document.add(new Paragraph(" "));
+
+            document.add(new Paragraph("Identified Vulnerabilities & Suggestions", headerFont));
+            document.add(new Paragraph(" "));
+
+            List<Vulnerability> vulnerabilities = vulnerabilityRepository.findByAnalysisJobId(job.getId());
+
+            if (vulnerabilities != null && !vulnerabilities.isEmpty()) {
+                for (Vulnerability vuln : vulnerabilities) {
+                    document.add(new Paragraph("File: " + vuln.getFilePath() + " (Line " + vuln.getLineNumber() + ")", new Font(Font.HELVETICA, 12, Font.BOLD)));
+                    document.add(new Paragraph("Severity: " + vuln.getSeverity(), normalFont));
+                    document.add(new Paragraph("Description: " + vuln.getDescription(), normalFont));
+                    if (vuln.getSuggestedFix() != null && !vuln.getSuggestedFix().isEmpty()) {
+                        document.add(new Paragraph("Suggested Fix:", normalFont));
+                        document.add(new Paragraph(vuln.getSuggestedFix(), monoFont));
+                    }
+                    document.add(new Paragraph(" "));
+                }
+            } else {
+                document.add(new Paragraph("No vulnerabilities detected! Great job.", normalFont));
+            }
+
+            document.close();
+            return new InputStreamResource(new ByteArrayInputStream(out.toByteArray()));
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to generate PDF report", e);
+        }
     }
 }

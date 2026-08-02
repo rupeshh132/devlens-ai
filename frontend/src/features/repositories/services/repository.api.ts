@@ -4,6 +4,7 @@ import type { RepositoryDetails, RepositoryStatus } from '../types';
 
 export interface CreateRepositoryPayload {
   name: string;
+  owner: string;
   url: string;
   branch: string;
   visibility: 'PUBLIC' | 'PRIVATE';
@@ -39,7 +40,7 @@ const mapBackendToFrontend = (data: unknown): RepositoryDetails => {
 export const repositoryApi = {
   getRepositories: async (): Promise<RepositoryDetails[]> => {
     const { data } = await api.get('/repositories');
-    const items = data.data?.content || data.data || [];
+    const items = data.content || data.data?.content || data.data || (Array.isArray(data) ? data : []);
     return items.map(mapBackendToFrontend);
   },
 
@@ -62,8 +63,9 @@ export const repositoryApi = {
     await api.delete(`/repositories/${id}`);
   },
 
-  syncRepository: async (id: string): Promise<void> => {
-    // This could call the analysis start endpoint if that's what "sync" means
-    await api.post('/analyses/start', { repositoryId: id });
+  syncRepository: async (id: string): Promise<string> => {
+    // This calls the analysis start endpoint and returns the jobId
+    const { data } = await api.post('/analyses/start', { repositoryId: id });
+    return data.id || data.data?.id;
   }
 };

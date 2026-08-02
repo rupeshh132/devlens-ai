@@ -1,32 +1,38 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Code2, GitBranch as GithubIcon, UploadCloud, FileText } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export function QuickActions() {
+  const navigate = useNavigate();
   const actions = [
     {
       label: 'Analyze Repository',
       icon: Code2,
       variant: 'primary' as const,
       description: 'Start a new analysis scan',
+      href: '/repositories',
     },
     {
       label: 'Upload Project',
       icon: UploadCloud,
       variant: 'outline' as const,
       description: 'Upload local code archive',
+      href: '/repositories',
     },
     {
       label: 'Connect GitHub',
       icon: GithubIcon,
       variant: 'outline' as const,
       description: 'Sync repositories automatically',
+      href: '/settings',
     },
     {
       label: 'View Reports',
       icon: FileText,
       variant: 'outline' as const,
       description: 'Access past analysis reports',
+      href: '/analysis',
     },
   ];
 
@@ -40,6 +46,7 @@ export function QuickActions() {
           <Button
             key={i}
             variant={action.variant}
+            onClick={() => navigate(action.href)}
             className={`w-full justify-start h-auto py-3 px-4 ${action.variant === 'outline' ? 'border-muted-foreground/20 hover:bg-muted/50' : ''}`}
           >
             <div className="flex items-center gap-3">

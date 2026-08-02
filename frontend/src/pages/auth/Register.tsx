@@ -240,6 +240,7 @@ export function Register() {
               variant="outline"
               className="w-full"
               disabled={isLoading}
+              onClick={() => window.location.href = 'http://localhost:8080/oauth2/authorization/github'}
             >
               <Terminal className="mr-2 h-4 w-4" />
               GitHub

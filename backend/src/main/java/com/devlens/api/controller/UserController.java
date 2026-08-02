@@ -64,4 +64,10 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.ok(ApiResponse.success(null, "User deleted successfully"));
     }
+
+    @DeleteMapping("/me")
+    public ResponseEntity<ApiResponse<Void>> deleteCurrentUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
+        userService.deleteUser(userPrincipal.getId());
+        return ResponseEntity.ok(ApiResponse.success(null, "Account deleted successfully"));
+    }
 }

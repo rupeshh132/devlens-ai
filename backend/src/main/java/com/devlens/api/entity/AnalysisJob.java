@@ -38,6 +38,12 @@ public class AnalysisJob {
     private String errorMessage;
 
     @Column
+    private Double score;
+
+    @Column(columnDefinition = "TEXT")
+    private String summary;
+
+    @Column
     private Instant startedAt;
 
     @Column

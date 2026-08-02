@@ -63,8 +63,21 @@ export function RepositoryFormDialog({ open, onOpenChange, repository }: Reposit
           },
         });
       } else {
+        // Extract owner from GitHub URL
+        let owner = 'unknown';
+        try {
+          const urlObj = new URL(formData.url);
+          const parts = urlObj.pathname.split('/').filter(Boolean);
+          if (parts.length >= 2) {
+            owner = parts[0];
+          }
+        } catch (e) {
+          // Ignore parse errors, let backend validate
+        }
+
         await createMutation.mutateAsync({
           name: formData.name,
+          owner: owner,
           url: formData.url,
           branch: formData.branch,
           visibility: formData.visibility,

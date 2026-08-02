@@ -4,6 +4,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useRepository } from '@/features/repositories/hooks/useRepository';
 import { useDeleteRepository } from '@/features/repositories/hooks/useDeleteRepository';
 import { useSyncRepository } from '@/features/repositories/hooks/useSyncRepository';
+import { useRepositoryAnalyses } from '@/features/repositories/hooks/useRepositoryAnalyses';
 import type { RepositoryDetails } from '@/features/repositories/types';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -32,6 +33,7 @@ export function RepositoryDetailsPage() {
   const { data: repository, isLoading } = useRepository(id!);
   const { mutateAsync: deleteRepo, isPending: isDeleting } = useDeleteRepository();
   const { mutateAsync: syncRepo, isPending: isRefreshing } = useSyncRepository();
+  const { data: analyses } = useRepositoryAnalyses(id!);
   
   const [isEditOpen, setIsEditOpen] = useState(false);
   const commits: unknown[] = []; // Not implemented in backend yet
@@ -131,6 +133,11 @@ export function RepositoryDetailsPage() {
             <Star className={`h-4 w-4 mr-2 ${repository.isFavorite ? 'fill-yellow-500' : ''}`} />
             {repository.isFavorite ? 'Starred' : 'Star'}
           </Button>
+          {analyses && analyses.length > 0 && (
+            <Button variant="secondary" onClick={() => navigate(`/analysis/${analyses[0].id}`)}>
+              View Latest Report
+            </Button>
+          )}
           <Button onClick={handleRefresh} disabled={isRefreshing}>
             <Activity className="h-4 w-4 mr-2" />
             Analyze Now

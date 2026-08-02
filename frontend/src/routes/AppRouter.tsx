@@ -18,6 +18,7 @@ const ResetPassword = lazy(() => import('../pages/auth/ResetPassword').then(modu
 const VerifyEmail = lazy(() => import('../pages/auth/VerifyEmail').then(module => ({ default: module.VerifyEmail })));
 const OAuthCallback = lazy(() => import('../pages/auth/OAuthCallback').then(module => ({ default: module.OAuthCallback })));
 const AnalysisDashboard = lazy(() => import('../pages/analysis/AnalysisDashboard').then(module => ({ default: module.AnalysisDashboard })));
+const AnalysisReportPage = lazy(() => import('../pages/AnalysisReportPage').then(module => ({ default: module.AnalysisReportPage })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<div className="flex h-screen w-full items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>}>
@@ -64,6 +65,7 @@ const router = createBrowserRouter([
           { path: '/repositories', element: <SuspenseWrapper><RepositoriesPage /></SuspenseWrapper> },
           { path: '/repositories/:id', element: <SuspenseWrapper><RepositoryDetailsPage /></SuspenseWrapper> },
           { path: '/analysis', element: <SuspenseWrapper><AnalysisDashboard /></SuspenseWrapper> },
+          { path: '/analysis/:jobId', element: <SuspenseWrapper><AnalysisReportPage /></SuspenseWrapper> },
           { path: '/settings', element: <SuspenseWrapper><Settings /></SuspenseWrapper> },
         ],
       },

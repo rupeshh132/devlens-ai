@@ -13,6 +13,7 @@ export const useCreateRepository = () => {
     mutationFn: (payload: CreateRepositoryPayload) => repositoryApi.createRepository(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['repositories'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard-summary'] });
       toast.success('Repository added successfully');
     },
     onError: (error: any) => {

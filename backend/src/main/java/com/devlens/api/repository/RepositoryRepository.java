@@ -20,6 +20,7 @@ public interface RepositoryRepository extends JpaRepository<Repository, UUID> {
     boolean existsByUrlAndUserIdAndStatusNot(String url, UUID userId, RepositoryStatus status);
     
     long countByUserIdAndStatusNot(UUID userId, RepositoryStatus status);
-    
     List<Repository> findTop5ByUserIdAndStatusNotOrderByCreatedAtDesc(UUID userId, RepositoryStatus status);
+    
+    List<Repository> findByUrl(String url);
 }

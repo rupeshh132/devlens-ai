@@ -49,7 +49,7 @@ function MarketingNavbar() {
           <Link to="/login">
             <Button variant="ghost" size="sm">Log in</Button>
           </Link>
-          <Link to="/signup">
+          <Link to="/register">
             <Button size="sm">Get Started</Button>
           </Link>
         </div>
