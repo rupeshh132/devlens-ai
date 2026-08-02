@@ -71,7 +71,7 @@ export function RepositoryFormDialog({ open, onOpenChange, repository }: Reposit
           if (parts.length >= 2) {
             owner = parts[0];
           }
-        } catch (e) {
+        } catch {
           // Ignore parse errors, let backend validate
         }
 

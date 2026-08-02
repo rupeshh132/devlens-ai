@@ -17,7 +17,7 @@ export function Settings() {
         await api.delete('/users/me');
         toast.success('Account deleted successfully');
         logout();
-      } catch (error) {
+      } catch {
         toast.error('Failed to delete account');
       }
     }

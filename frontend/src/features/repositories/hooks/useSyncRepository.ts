@@ -13,8 +13,9 @@ export const useSyncRepository = () => {
         navigate(`/analysis/${jobId}`);
       }
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data?.message || 'Failed to start repository analysis');
+    onError: (error: Error | unknown) => {
+      const err = error as { response?: { data?: { message?: string } } };
+      toast.error(err.response?.data?.message || 'Failed to start repository analysis');
     },
   });
 };

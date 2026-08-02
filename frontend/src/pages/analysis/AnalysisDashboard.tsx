@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/set-state-in-effect */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+ 
 import { useState, useEffect } from 'react';
 import { AnalysisOverview } from '@/features/analysis/components/AnalysisOverview';
 import { FindingsExplorer } from '@/features/analysis/components/FindingsExplorer';

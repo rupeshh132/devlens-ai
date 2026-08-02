@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/set-state-in-effect */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+ 
+ 
 import { useMutation } from '@tanstack/react-query';
 import { analysisApi } from '../services/analysis.api';
 import { toast } from 'sonner';
