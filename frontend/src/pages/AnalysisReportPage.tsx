@@ -5,7 +5,6 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { AlertTriangle, Info, ShieldAlert, FileText, CheckCircle2, Download } from 'lucide-react';
-import { DashboardLayout } from '../components/layout/DashboardLayout';
 import { api } from '@/lib/api';
 
 export function AnalysisReportPage() {
@@ -14,8 +13,7 @@ export function AnalysisReportPage() {
 
   if (isLoading) {
     return (
-      <DashboardLayout>
-        <div className="p-8 space-y-6">
+      <div className="p-8 space-y-6">
           <Skeleton className="h-12 w-[250px]" />
           <Skeleton className="h-32 w-full" />
           <div className="space-y-4">
@@ -23,17 +21,14 @@ export function AnalysisReportPage() {
             <Skeleton className="h-24 w-full" />
           </div>
         </div>
-      </DashboardLayout>
     );
   }
 
   if (error || !report) {
     return (
-      <DashboardLayout>
-        <div className="p-8 text-center text-red-500">
+      <div className="p-8 text-center text-red-500">
           <p>Failed to load report. It may not exist or you don't have access.</p>
         </div>
-      </DashboardLayout>
     );
   }
 
@@ -82,8 +77,7 @@ export function AnalysisReportPage() {
   };
 
   return (
-    <DashboardLayout>
-      <div className="p-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="p-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <h1 className="text-4xl font-bold tracking-tight text-white flex items-center gap-3">
             <FileText className="w-10 h-10 text-primary" />
@@ -151,6 +145,5 @@ export function AnalysisReportPage() {
           )}
         </div>
       </div>
-    </DashboardLayout>
   );
 }

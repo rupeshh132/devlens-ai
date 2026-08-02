@@ -40,8 +40,8 @@ export function Settings() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <p className="text-sm text-muted-foreground font-medium">Name</p>
-              <p className="text-lg text-foreground">{user?.name || 'GitHub User'}</p>
+              <p className="text-sm text-muted-foreground font-medium">Account</p>
+              <p className="text-lg text-foreground">GitHub User</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground font-medium">Email</p>
