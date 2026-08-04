@@ -1,5 +1,5 @@
-ALTER TABLE analysis_jobs ADD COLUMN score DOUBLE PRECISION;
-ALTER TABLE analysis_jobs ADD COLUMN summary TEXT;
+-- V5__create_vulnerabilities_table.sql
+-- Create vulnerabilities table (score and summary already in analysis_jobs from V4)
 
 CREATE TABLE vulnerabilities (
     id UUID PRIMARY KEY,
