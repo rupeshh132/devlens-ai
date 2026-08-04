@@ -7,6 +7,9 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: false
+  flyway:
+    repair-on-migrate: true
+    out-of-order: false
 
   security:
     oauth2:
