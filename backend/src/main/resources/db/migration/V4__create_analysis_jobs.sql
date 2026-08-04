@@ -1,7 +1,7 @@
 -- V4__create_analysis_jobs.sql
 -- Create analysis_jobs table matching AnalysisJob entity exactly
 
-CREATE TABLE analysis_jobs (
+CREATE TABLE IF NOT EXISTS analysis_jobs (
     id UUID PRIMARY KEY,
     repository_id UUID NOT NULL,
     status VARCHAR(50) NOT NULL,
