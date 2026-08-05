@@ -60,14 +60,14 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Input 
               value={targetRole}
               onChange={(e) => setTargetRole(e.target.value)}
               placeholder="e.g. Backend Developer"
-              className="max-w-md"
+              className="max-w-md w-full"
             />
-            <Button onClick={handleGenerate} disabled={isGenerating || !targetRole.trim()}>
+            <Button onClick={handleGenerate} disabled={isGenerating || !targetRole.trim()} className="w-full sm:w-auto">
               {isGenerating ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : null}
               {initialSession ? 'Regenerate Questions' : 'Start Mock Interview'}
             </Button>
@@ -117,7 +117,7 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
               </div>
             )}
           </CardContent>
-          <CardFooter className="flex justify-between border-t border-border/50 pt-6 bg-card/50">
+          <CardFooter className="flex flex-col sm:flex-row gap-4 justify-between border-t border-border/50 pt-6 bg-card/50">
             <Button 
               variant="outline" 
               onClick={() => {
@@ -125,6 +125,7 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
                 setShowAnswer(false);
               }}
               disabled={currentQuestionIndex === 0}
+              className="w-full sm:w-auto order-2 sm:order-1"
             >
               Previous
             </Button>
@@ -132,7 +133,7 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
             <Button 
               variant={showAnswer ? "secondary" : "default"} 
               onClick={() => setShowAnswer(!showAnswer)}
-              className="min-w-[140px]"
+              className="min-w-[140px] w-full sm:w-auto order-1 sm:order-2"
             >
               {showAnswer ? (
                 <><EyeOff className="h-4 w-4 mr-2" /> Hide Answer</>
@@ -147,6 +148,7 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
                 setShowAnswer(false);
               }}
               disabled={currentQuestionIndex === data.questions.length - 1}
+              className="w-full sm:w-auto order-3"
             >
               Next
             </Button>

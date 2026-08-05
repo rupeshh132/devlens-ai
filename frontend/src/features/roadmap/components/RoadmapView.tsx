@@ -55,14 +55,14 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ initialRoadmap, onRoad
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Input 
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Master React and Node.js"
-              className="max-w-md"
+              className="max-w-md w-full"
             />
-            <Button onClick={handleGenerate} disabled={isGenerating || !title.trim()}>
+            <Button onClick={handleGenerate} disabled={isGenerating || !title.trim()} className="w-full sm:w-auto">
               {isGenerating ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : null}
               {initialRoadmap ? 'Regenerate Roadmap' : 'Generate Roadmap'}
             </Button>

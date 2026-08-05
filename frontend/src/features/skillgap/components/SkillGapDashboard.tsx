@@ -56,14 +56,14 @@ export const SkillGapDashboard: React.FC<SkillGapDashboardProps> = ({ initialAna
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Input 
               value={targetRole}
               onChange={(e) => setTargetRole(e.target.value)}
               placeholder="e.g. Senior Frontend Engineer"
-              className="max-w-md"
+              className="max-w-md w-full"
             />
-            <Button onClick={handleGenerate} disabled={isGenerating || !targetRole.trim()}>
+            <Button onClick={handleGenerate} disabled={isGenerating || !targetRole.trim()} className="w-full sm:w-auto">
               {isGenerating ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : null}
               {initialAnalysis ? 'Regenerate Analysis' : 'Analyze Skill Gap'}
             </Button>
