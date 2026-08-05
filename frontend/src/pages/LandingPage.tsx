@@ -33,25 +33,29 @@ function MarketingNavbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4">
+        {/* Left Side: Logo */}
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-3 h-3 bg-primary" />
-            <span className="font-black tracking-tight hidden sm:inline-block">DevLens AI</span>
+            <div className="w-3 h-3 bg-brand-coral" />
+            <span className="font-black tracking-tight hidden sm:inline-block text-brand-navy">DevLens AI</span>
           </Link>
-          <nav className="hidden md:flex items-center gap-6 ml-6 text-sm font-medium text-muted-foreground">
-            <a href="#features" className="transition-colors hover:text-foreground">Features</a>
-            <a href="#how-it-works" className="transition-colors hover:text-foreground">How it Works</a>
-            <a href="#pricing" className="transition-colors hover:text-foreground">Pricing</a>
-            <a href="#faq" className="transition-colors hover:text-foreground">FAQ</a>
-          </nav>
         </div>
-        <div className="flex items-center gap-2">
-          <Link to="/login">
-            <Button variant="ghost" size="sm">Log in</Button>
-          </Link>
-          <Link to="/register">
-            <Button size="sm">Get Started</Button>
-          </Link>
+        {/* Right Side: Links & Buttons */}
+        <div className="flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
+            <a href="#features" className="transition-colors hover:text-brand-navy">Features</a>
+            <a href="#how-it-works" className="transition-colors hover:text-brand-navy">How it Works</a>
+            <a href="#pricing" className="transition-colors hover:text-brand-navy">Pricing</a>
+            <a href="#faq" className="transition-colors hover:text-brand-navy">FAQ</a>
+          </nav>
+          <div className="flex items-center gap-3">
+            <Link to="/login">
+              <Button variant="ghost" size="sm" className="font-bold text-brand-navy">Log in</Button>
+            </Link>
+            <Link to="/register">
+              <Button size="sm" className="bg-brand-coral hover:bg-brand-coral/90 text-white rounded-full font-bold shadow-md shadow-brand-coral/20">Get Started</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </header>
