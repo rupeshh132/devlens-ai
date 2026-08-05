@@ -16,7 +16,7 @@ import {
 import { Navbar, NavbarBrand, NavbarActions } from "@/components/ui/navbar"
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary"
 import { ContentArea } from "@/components/layout/ContentArea"
-import { Home, Settings, FolderGit2, LogOut, User } from "lucide-react"
+import { Home, Settings, FolderGit2, LogOut, User, FileText, BrainCircuit, Map, Mic } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -30,6 +30,10 @@ import {
 const navItems = [
   { title: "Dashboard", icon: Home, url: "/dashboard" },
   { title: "Repositories", icon: FolderGit2, url: "/repositories" },
+  { title: "Resume Upload", icon: FileText, url: "/resume" },
+  { title: "Skill Gap Analysis", icon: BrainCircuit, url: "/skill-gap" },
+  { title: "Dynamic Roadmap", icon: Map, url: "/roadmap" },
+  { title: "Mock Interview", icon: Mic, url: "/interview" },
   { title: "Settings", icon: Settings, url: "/settings" },
 ]
 

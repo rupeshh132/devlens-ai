@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Code2, GitBranch as GithubIcon, UploadCloud, FileText } from 'lucide-react';
+import { Code2, GitBranch as GithubIcon, UploadCloud, FileText, BrainCircuit, Mic } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export function QuickActions() {
@@ -21,18 +21,18 @@ export function QuickActions() {
       href: '/repositories',
     },
     {
-      label: 'Connect GitHub',
-      icon: GithubIcon,
+      label: 'Skill Gap Analysis',
+      icon: BrainCircuit,
       variant: 'outline' as const,
-      description: 'Sync repositories automatically',
-      href: '/settings',
+      description: 'Identify your weak areas',
+      href: '/skill-gap',
     },
     {
-      label: 'View Reports',
-      icon: FileText,
+      label: 'Mock Interview',
+      icon: Mic,
       variant: 'outline' as const,
-      description: 'Access past analysis reports',
-      href: '/analysis',
+      description: 'Practice with AI',
+      href: '/interview',
     },
   ];
 

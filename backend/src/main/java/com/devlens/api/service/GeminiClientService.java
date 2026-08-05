@@ -202,4 +202,58 @@ public class GeminiClientService {
             throw new RuntimeException("Failed to generate roadmap with AI: " + e.getMessage(), e);
         }
     }
+
+    public String generateInterviewQuestions(String targetRole, String skillsJson) {
+        String prompt = "You are an Expert Technical Interviewer. " +
+                "Generate a list of 5 technical interview questions for a candidate applying for the role: '" + targetRole + "'.\n" +
+                "Use the following skills as context to tailor the questions (make them relevant to these skills if possible):\n" + skillsJson + "\n\n" +
+                "Return ONLY a valid JSON response (no markdown, no backticks, no other text) with the following structure:\n" +
+                "{\n" +
+                "  \"questions\": [\n" +
+                "    {\n" +
+                "      \"question\": \"The interview question text\",\n" +
+                "      \"expectedAnswer\": \"A brief summary of what a good answer should cover\",\n" +
+                "      \"difficulty\": \"Easy | Medium | Hard\"\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}\n";
+
+        Map<String, Object> requestBody = new HashMap<>();
+        Map<String, Object> contentMap = new HashMap<>();
+        Map<String, Object> partsMap = new HashMap<>();
+        
+        partsMap.put("text", prompt);
+        contentMap.put("parts", List.of(partsMap));
+        requestBody.put("contents", List.of(contentMap));
+
+        try {
+            String url = geminiApiUrl + "?key=" + geminiApiKey;
+            
+            String responseStr = restClient.post()
+                    .uri(url)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(requestBody)
+                    .retrieve()
+                    .body(String.class);
+
+            JsonNode rootNode = objectMapper.readTree(responseStr);
+            JsonNode textNode = rootNode.path("candidates").get(0).path("content").path("parts").get(0).path("text");
+            
+            String jsonOutput = textNode.asText().trim();
+            if (jsonOutput.startsWith("```json")) {
+                jsonOutput = jsonOutput.substring(7);
+            }
+            if (jsonOutput.startsWith("```")) {
+                jsonOutput = jsonOutput.substring(3);
+            }
+            if (jsonOutput.endsWith("```")) {
+                jsonOutput = jsonOutput.substring(0, jsonOutput.length() - 3);
+            }
+            
+            return jsonOutput.trim();
+        } catch (Exception e) {
+            log.error("Error communicating with Gemini API for Interview Questions Generation", e);
+            throw new RuntimeException("Failed to generate interview questions with AI: " + e.getMessage(), e);
+        }
+    }
 }

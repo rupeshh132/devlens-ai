@@ -22,6 +22,7 @@ const AnalysisReportPage = lazy(() => import('../pages/AnalysisReportPage').then
 const ResumePage = lazy(() => import('../pages/resume/ResumePage').then(module => ({ default: module.ResumePage })));
 const SkillGapPage = lazy(() => import('../pages/skillgap/SkillGapPage').then(module => ({ default: module.SkillGapPage })));
 const RoadmapPage = lazy(() => import('../pages/roadmap/RoadmapPage').then(module => ({ default: module.RoadmapPage })));
+const InterviewPage = lazy(() => import('../pages/interview/InterviewPage').then(module => ({ default: module.InterviewPage })));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<div className="flex h-screen w-full items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>}>
@@ -72,6 +73,7 @@ const router = createBrowserRouter([
           { path: '/resume', element: <SuspenseWrapper><ResumePage /></SuspenseWrapper> },
           { path: '/skill-gap', element: <SuspenseWrapper><SkillGapPage /></SuspenseWrapper> },
           { path: '/roadmap', element: <SuspenseWrapper><RoadmapPage /></SuspenseWrapper> },
+          { path: '/interview', element: <SuspenseWrapper><InterviewPage /></SuspenseWrapper> },
           { path: '/settings', element: <SuspenseWrapper><Settings /></SuspenseWrapper> },
         ],
       },

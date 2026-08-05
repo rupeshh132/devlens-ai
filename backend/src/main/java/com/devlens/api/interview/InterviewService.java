@@ -1,0 +1,52 @@
+package com.devlens.api.interview;
+
+import com.devlens.api.entity.User;
+import com.devlens.api.skillgap.SkillGapAnalysis;
+import com.devlens.api.skillgap.SkillGapAnalysisRepository;
+import com.devlens.api.service.GeminiClientService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class InterviewService {
+
+    private final InterviewSessionRepository interviewSessionRepository;
+    private final SkillGapAnalysisRepository skillGapAnalysisRepository;
+    private final GeminiClientService geminiClientService;
+
+    @Transactional
+    public InterviewSession generateInterviewSession(User user, InterviewSessionRequest request) {
+        log.info("Generating interview session for user: {} and role: {}", user.getEmail(), request.getTargetRole());
+
+        // Try to fetch latest skill gap analysis for context
+        Optional<SkillGapAnalysis> latestAnalysis = skillGapAnalysisRepository.findFirstByUserOrderByCreatedAtDesc(user);
+        
+        String skillsJson = "{}";
+        if (latestAnalysis.isPresent()) {
+            skillsJson = latestAnalysis.get().getGapReport();
+        }
+
+        // Call Gemini to generate questions
+        String questionsJson = geminiClientService.generateInterviewQuestions(request.getTargetRole(), skillsJson);
+
+        // Save session
+        InterviewSession session = InterviewSession.builder()
+                .user(user)
+                .targetRole(request.getTargetRole())
+                .sessionData(questionsJson)
+                .build();
+
+        return interviewSessionRepository.save(session);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<InterviewSession> getLatestSession(User user) {
+        return interviewSessionRepository.findFirstByUserOrderByCreatedAtDesc(user);
+    }
+}
