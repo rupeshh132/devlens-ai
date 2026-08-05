@@ -3,7 +3,7 @@ import { PageHeader } from '../../components/layout/PageHeader';
 import { ResumeUploader } from '../../features/resume/components/ResumeUploader';
 import { ResumeScoreCard } from '../../features/resume/components/ResumeScoreCard';
 import { getMyLatestResume } from '../../features/resume/api/resumeApi';
-import { Resume } from '../../features/resume/types';
+import type { Resume } from '../../features/resume/types';
 import { Loader2 } from 'lucide-react';
 import { Button } from '../../components/ui/button';
 
@@ -12,21 +12,21 @@ export const ResumePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUploadingNew, setIsUploadingNew] = useState(false);
 
-  useEffect(() => {
-    fetchLatestResume();
-  }, []);
-
   const fetchLatestResume = async () => {
     try {
-      setIsLoading(true);
       const data = await getMyLatestResume();
       setResume(data);
-    } catch (error) {
-      console.log('No existing resume found or failed to fetch');
+    } catch {
+      console.log('No existing resume found');
     } finally {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/set-state-in-effect
+    fetchLatestResume();
+  }, []);
 
   const handleUploadSuccess = (newResume: Resume) => {
     setResume(newResume);

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '../../../components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
 import { generateRoadmap } from '../api/roadmapApi';
-import { Roadmap, RoadmapData, Milestone } from '../types';
+import type { Roadmap, RoadmapData, Milestone } from '../types';
 import { Loader2, Map as MapIcon, CheckCircle, Circle, Clock, ExternalLink } from 'lucide-react';
 
 interface RoadmapViewProps {
@@ -23,8 +23,9 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ initialRoadmap, onRoad
       setError(null);
       const data = await generateRoadmap({ title });
       onRoadmapGenerated(data);
-    } catch (err: any) {
-      setError(err.response?.data?.message || err.message || 'Failed to generate roadmap. Ensure you have run a skill gap analysis first.');
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } }; message?: string };
+      setError(error.response?.data?.message || error.message || 'Failed to generate roadmap. Ensure you have run a skill gap analysis first.');
     } finally {
       setIsGenerating(false);
     }

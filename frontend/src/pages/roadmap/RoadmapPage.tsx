@@ -2,28 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { PageHeader } from '../../components/layout/PageHeader';
 import { RoadmapView } from '../../features/roadmap/components/RoadmapView';
 import { getLatestRoadmap } from '../../features/roadmap/api/roadmapApi';
-import { Roadmap } from '../../features/roadmap/types';
+import type { Roadmap } from '../../features/roadmap/types';
 import { Loader2 } from 'lucide-react';
 
 export const RoadmapPage: React.FC = () => {
   const [roadmap, setRoadmap] = useState<Roadmap | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetchLatestRoadmap();
-  }, []);
-
   const fetchLatestRoadmap = async () => {
     try {
-      setIsLoading(true);
       const data = await getLatestRoadmap();
       setRoadmap(data);
-    } catch (error) {
+    } catch {
       console.log('No existing roadmap found');
     } finally {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/set-state-in-effect
+    fetchLatestRoadmap();
+  }, []);
 
   const handleRoadmapGenerated = (newRoadmap: Roadmap) => {
     setRoadmap(newRoadmap);

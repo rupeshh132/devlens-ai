@@ -1,5 +1,5 @@
 import { httpClient } from '../../../http/client';
-import { Resume } from '../types';
+import type { Resume } from '../types';
 
 export const uploadResume = async (file: File): Promise<Resume> => {
   const formData = new FormData();

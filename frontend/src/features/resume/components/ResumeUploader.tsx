@@ -3,7 +3,7 @@ import { Upload, FileText, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from '../../../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
 import { uploadResume } from '../api/resumeApi';
-import { Resume } from '../types';
+import type { Resume } from '../types';
 
 interface ResumeUploaderProps {
   onUploadSuccess: (resume: Resume) => void;
@@ -38,8 +38,9 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({ onUploadSuccess 
       const resume = await uploadResume(file);
       onUploadSuccess(resume);
       setFile(null);
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Failed to upload resume. Please try again.');
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string, error?: string } }; message?: string };
+      setError(error.response?.data?.message || error.response?.data?.error || error.message || 'Upload failed');
     } finally {
       setIsUploading(false);
     }

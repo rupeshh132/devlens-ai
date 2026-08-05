@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Button } from '../../../components/ui/button';
 import { Progress } from '../../../components/ui/progress';
 import { generateSkillGapAnalysis } from '../api/skillgapApi';
-import { SkillGapAnalysis, GapReport } from '../types';
+import type { SkillGapAnalysis, GapReport } from '../types';
 import { Loader2, Briefcase, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Input } from '../../../components/ui/input';
 
@@ -24,8 +24,9 @@ export const SkillGapDashboard: React.FC<SkillGapDashboardProps> = ({ initialAna
       setError(null);
       const data = await generateSkillGapAnalysis({ targetRole });
       onAnalysisGenerated(data);
-    } catch (err: any) {
-      setError(err.response?.data?.message || err.message || 'Failed to generate analysis. Make sure you have uploaded a resume.');
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } }; message?: string };
+      setError(error.response?.data?.message || error.message || 'Failed to generate analysis. Make sure you have uploaded a resume.');
     } finally {
       setIsGenerating(false);
     }

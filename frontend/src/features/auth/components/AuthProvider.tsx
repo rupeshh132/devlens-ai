@@ -1,12 +1,12 @@
-import { createContext, useMemo, useCallback } from 'react';
+import { useMemo, useCallback } from 'react';
 import type { ReactNode } from 'react';
-import type { AuthContextType, LoginCredentials, RegisterCredentials } from '../types';
+import type { LoginCredentials, RegisterCredentials } from '../types';
 import { useCurrentUser } from '../hooks/useCurrentUser';
 import { useLogin } from '../hooks/useLogin';
 import { useRegister } from '../hooks/useRegister';
 import { useLogout } from '../hooks/useLogout';
 
-export const AuthContext = createContext<AuthContextType | null>(null);
+import { AuthContext } from './AuthContext';
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { data: user, isLoading: isUserLoading } = useCurrentUser();

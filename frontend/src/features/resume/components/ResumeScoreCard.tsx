@@ -1,5 +1,5 @@
 import React from 'react';
-import { Resume } from '../types';
+import type { Resume } from '../types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
 import { CheckCircle, AlertTriangle, Lightbulb } from 'lucide-react';
 import { Progress } from '../../../components/ui/progress';
@@ -11,14 +11,8 @@ interface ResumeScoreCardProps {
 export const ResumeScoreCard: React.FC<ResumeScoreCardProps> = ({ resume }) => {
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-green-500';
-    if (score >= 60) return 'text-yellow-500';
+    if (score >= 60) return 'text-amber-500';
     return 'text-red-500';
-  };
-
-  const getScoreBg = (score: number) => {
-    if (score >= 80) return 'bg-green-500';
-    if (score >= 60) return 'bg-yellow-500';
-    return 'bg-red-500';
   };
 
   const suggestions: string[] = resume.suggestions ? JSON.parse(resume.suggestions) : [];
