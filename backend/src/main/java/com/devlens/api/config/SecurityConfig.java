@@ -21,6 +21,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 
 @Configuration
@@ -82,12 +83,23 @@ public class SecurityConfig {
     @Bean
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(frontendUrl.split(",")));
+        
+        java.util.List<String> allowedOrigins = new java.util.ArrayList<>(Arrays.asList(frontendUrl.split(",")));
+        if (!allowedOrigins.contains("https://devlens-ai-pearl.vercel.app")) {
+            allowedOrigins.add("https://devlens-ai-pearl.vercel.app");
+        }
+        
+        configuration.setAllowedOrigins(allowedOrigins);
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
         org.springframework.web.cors.UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
+    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        return new CorsFilter(corsConfigurationSource());
     }
 }
