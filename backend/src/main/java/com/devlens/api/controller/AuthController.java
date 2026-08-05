@@ -27,8 +27,7 @@ public class AuthController {
                                                               @RequestHeader(value = "User-Agent", defaultValue = "unknown") String deviceId) {
         try {
             AuthResponse response = authenticationService.register(
-                    request.getFirstName(), 
-                    request.getLastName(), 
+                    request.getFullName(), 
                     request.getEmail(), 
                     request.getPassword(), 
                     deviceId

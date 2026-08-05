@@ -27,9 +27,20 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public AuthResponse register(String firstName, String lastName, String email, String password, String deviceId) {
+    public AuthResponse register(String fullName, String email, String password, String deviceId) {
         if (userRepository.existsByEmailAndStatusNot(email, com.devlens.api.entity.UserStatus.DELETED)) {
             throw new IllegalArgumentException("Email already in use");
+        }
+
+        String firstName = fullName.trim();
+        String lastName = " ";
+        int spaceIdx = firstName.indexOf(' ');
+        if (spaceIdx > 0) {
+            lastName = firstName.substring(spaceIdx + 1).trim();
+            firstName = firstName.substring(0, spaceIdx).trim();
+            if (lastName.isEmpty()) {
+                lastName = " ";
+            }
         }
 
         User user = User.builder()

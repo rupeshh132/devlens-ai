@@ -15,14 +15,8 @@ export const authApi = {
   },
 
   register: async (credentials: RegisterCredentials): Promise<{ user: User; accessToken: string }> => {
-    // Split fullName into firstName and lastName
-    const nameParts = credentials.fullName.split(' ');
-    const firstName = nameParts[0];
-    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : ' ';
-    
     const { data } = await api.post('/auth/register', {
-      firstName,
-      lastName,
+      fullName: credentials.fullName,
       email: credentials.email,
       password: credentials.password
     });

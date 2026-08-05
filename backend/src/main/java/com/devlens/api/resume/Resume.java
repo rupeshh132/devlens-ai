@@ -9,6 +9,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 import java.util.UUID;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "resumes")
@@ -38,6 +40,7 @@ public class Resume {
     @Column
     private Double atsScore;
 
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "JSONB")
     private String suggestions;
 
