@@ -67,7 +67,7 @@ export function RepositoryList() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col md:flex-row gap-4 items-center justify-between bg-card/50 p-4 rounded-lg border border-muted/60 backdrop-blur supports-[backdrop-filter]:bg-card/30">
+      <div className="flex flex-col md:flex-row gap-4 items-center justify-between bg-card p-4 rounded-xl border border-border">
         <SearchBar 
           placeholder="Search repositories..." 
           onSearch={setSearchQuery}
@@ -118,7 +118,7 @@ export function RepositoryList() {
             <RepositoryCard key={repo.id} repository={repo} />
           ))
         ) : (
-          <Card className="bg-card/50 border-dashed">
+          <Card className="border-dashed border-2 border-border shadow-none">
             <CardContent className="flex flex-col items-center justify-center py-12 text-center">
               <FolderGit2 className="h-12 w-12 text-muted-foreground mb-4" />
               <h3 className="text-lg font-semibold mb-2">No repositories found</h3>

@@ -33,16 +33,16 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
   };
 
   return (
-    <Card className="hover:bg-muted/50 transition-colors border-muted/60 bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/30">
+    <Card className="hover:border-primary/50 transition-colors border-border bg-card">
       <CardContent className="p-6">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <FolderGit2 className="h-5 w-5 text-muted-foreground" />
-              <Link to={`/repositories/${repository.id}`} className="font-semibold text-lg hover:underline text-foreground">
+              <Link to={`/repositories/${repository.id}`} className="font-bold text-lg hover:underline text-foreground tracking-tight">
                 {repository.owner} / {repository.name}
               </Link>
-              <Badge variant="outline" className="ml-2 text-xs py-0 h-5">
+              <Badge variant="outline" className="ml-2 text-[10px] py-0 h-5 font-semibold uppercase tracking-wider">
                 {repository.visibility === 'Private' ? (
                   <Lock className="h-3 w-3 mr-1" />
                 ) : (
@@ -57,25 +57,25 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
             </p>
             
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground pt-1">
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 font-medium">
                 <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
                 {repository.language}
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 font-medium">
                 <Star className="h-4 w-4" />
                 {repository.stars}
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 font-medium">
                 Updated {repository.lastUpdated}
               </div>
             </div>
           </div>
           
           <div className="flex flex-col md:items-end justify-between min-w-[200px] space-y-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <div className="text-right">
-                <p className="text-sm text-muted-foreground mb-1">Health Score</p>
-                <div className={`text-2xl font-bold leading-none ${getScoreColor(repository.score, repository.status)}`}>
+                <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Health Score</p>
+                <div className={`text-4xl font-black tracking-tighter leading-none ${getScoreColor(repository.score, repository.status)}`}>
                   {repository.status === 'Analyzing' ? '-' : repository.score}
                 </div>
               </div>

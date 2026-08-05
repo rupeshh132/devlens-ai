@@ -72,23 +72,23 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ initialRoadmap, onRoad
       </Card>
 
       {data && data.milestones && data.milestones.length > 0 && (
-        <div className="relative border-l-2 border-primary/20 ml-4 md:ml-6 space-y-8 mt-10">
+        <div className="relative border-l-2 border-border ml-4 md:ml-6 space-y-8 mt-10">
           {data.milestones.map((milestone: Milestone, index: number) => (
             <div key={index} className="relative pl-8">
               <div className="absolute -left-[21px] top-1 bg-background p-1">
                 {milestone.status === 'completed' ? (
-                  <CheckCircle className="h-8 w-8 text-green-500 bg-background rounded-full" />
+                  <CheckCircle className="h-8 w-8 text-emerald-500 bg-background rounded-full" />
                 ) : milestone.status === 'in_progress' ? (
-                  <Clock className="h-8 w-8 text-amber-500 bg-background rounded-full" />
+                  <Clock className="h-8 w-8 text-primary bg-background rounded-full" />
                 ) : (
                   <Circle className="h-8 w-8 text-muted-foreground bg-background rounded-full" />
                 )}
               </div>
-              <Card className="hover:border-primary/50 transition-colors">
+              <Card className="hover:border-primary/50 transition-colors border-border bg-card">
                 <CardHeader>
                   <div className="flex justify-between items-start">
-                    <CardTitle className="text-xl">{milestone.title}</CardTitle>
-                    <span className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full font-medium">
+                    <CardTitle className="text-2xl font-bold tracking-tight">{milestone.title}</CardTitle>
+                    <span className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full font-semibold border border-border/50 uppercase tracking-wider">
                       {milestone.estimatedTime}
                     </span>
                   </div>

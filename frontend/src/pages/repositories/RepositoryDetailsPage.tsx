@@ -101,13 +101,13 @@ export function RepositoryDetailsPage() {
       </div>
 
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-        <div className="space-y-2">
+        <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <FolderGit2 className="h-8 w-8 text-primary" />
-            <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            <div className="w-3 h-3 bg-primary" />
+            <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-foreground">
               {repository.name}
             </h1>
-            <Badge variant="outline" className="ml-2">
+            <Badge variant="outline" className="ml-3 text-xs py-0.5 h-6 font-semibold uppercase tracking-wider">
               {repository.visibility === 'Private' ? (
                 <Lock className="h-3 w-3 mr-1" />
               ) : (
@@ -116,7 +116,7 @@ export function RepositoryDetailsPage() {
               {repository.visibility}
             </Badge>
           </div>
-          <p className="text-muted-foreground text-lg max-w-2xl">
+          <p className="text-muted-foreground text-lg max-w-2xl font-medium">
             {repository.description}
           </p>
         </div>
@@ -147,7 +147,7 @@ export function RepositoryDetailsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
         <div className="md:col-span-2 space-y-6">
-          <Card className="bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/30 border-muted/60">
+          <Card className="bg-card border-border">
             <CardHeader>
               <CardTitle>Overview</CardTitle>
             </CardHeader>
@@ -181,7 +181,7 @@ export function RepositoryDetailsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/30 border-muted/60">
+          <Card className="bg-card border-border">
             <CardHeader>
               <CardTitle>Recent Commits</CardTitle>
             </CardHeader>
@@ -213,7 +213,7 @@ export function RepositoryDetailsPage() {
         </div>
 
         <div className="space-y-6">
-          <Card className="bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/30 border-muted/60">
+          <Card className="bg-card border-border">
             <CardHeader>
               <CardTitle>Health Score</CardTitle>
             </CardHeader>
@@ -221,10 +221,10 @@ export function RepositoryDetailsPage() {
               <div className="relative flex items-center justify-center h-32 w-32 rounded-full border-8 border-muted">
                 <div className={`absolute inset-0 rounded-full border-8 border-t-transparent border-r-transparent transform -rotate-45 ${repository.status === 'Analyzing' ? 'animate-spin border-muted-foreground' : (repository.score >= 90 ? 'border-emerald-500' : repository.score >= 70 ? 'border-yellow-500' : 'border-destructive')}`} style={{ opacity: 0.2 }} />
                 <div className="text-center">
-                  <span className={`text-4xl font-bold ${getScoreColor(repository.score, repository.status)}`}>
+                  <span className={`text-6xl font-black tracking-tighter ${getScoreColor(repository.score, repository.status)}`}>
                     {repository.status === 'Analyzing' ? '-' : repository.score}
                   </span>
-                  <p className="text-xs text-muted-foreground mt-1">out of 100</p>
+                  <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mt-2">out of 100</p>
                 </div>
               </div>
               <div className="mt-6 text-center space-y-1">
