@@ -43,7 +43,7 @@ function MarketingNavbar() {
         {/* Right Side: Links & Buttons */}
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
-            <a href="#features" className="transition-colors hover:text-brand-navy">Features</a>
+            <Link to="/features" className="transition-colors hover:text-brand-navy">Features</Link>
             <a href="#how-it-works" className="transition-colors hover:text-brand-navy">How it Works</a>
             <a href="#pricing" className="transition-colors hover:text-brand-navy">Pricing</a>
             <a href="#faq" className="transition-colors hover:text-brand-navy">FAQ</a>

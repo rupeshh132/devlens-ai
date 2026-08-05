@@ -7,6 +7,7 @@ import { Loader2 } from 'lucide-react';
 
 const NotFound = lazy(() => import('../pages/NotFound').then(module => ({ default: module.NotFound })));
 const LandingPage = lazy(() => import('../pages/LandingPage').then(module => ({ default: module.LandingPage })));
+const FeaturesPage = lazy(() => import('../pages/FeaturesPage').then(module => ({ default: module.FeaturesPage })));
 const Dashboard = lazy(() => import('../pages/Dashboard').then(module => ({ default: module.Dashboard })));
 const RepositoriesPage = lazy(() => import('../pages/repositories/RepositoriesPage').then(module => ({ default: module.RepositoriesPage })));
 const RepositoryDetailsPage = lazy(() => import('../pages/repositories/RepositoryDetailsPage').then(module => ({ default: module.RepositoryDetailsPage })));
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <SuspenseWrapper><LandingPage /></SuspenseWrapper>,
+    errorElement: <SuspenseWrapper><NotFound /></SuspenseWrapper>,
+  },
+  {
+    path: '/features',
+    element: <SuspenseWrapper><FeaturesPage /></SuspenseWrapper>,
     errorElement: <SuspenseWrapper><NotFound /></SuspenseWrapper>,
   },
   {
