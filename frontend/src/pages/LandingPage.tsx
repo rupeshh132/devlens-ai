@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Code2, Zap, Shield, Search, BarChart3, CheckCircle2, Terminal } from "lucide-react"
+import { ArrowRight, Code2, Zap, Search, BarChart3, CheckCircle2, Terminal } from "lucide-react"
 
 export function LandingPage() {
   return (
