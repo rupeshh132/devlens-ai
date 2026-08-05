@@ -29,6 +29,7 @@ import {
 
 const navItems = [
   { title: "Dashboard", icon: Home, url: "/dashboard" },
+  { title: "Profile", icon: User, url: "/profile" },
   { title: "Repositories", icon: FolderGit2, url: "/repositories" },
   { title: "Resume Upload", icon: FileText, url: "/resume" },
   { title: "Skill Gap Analysis", icon: BrainCircuit, url: "/skill-gap" },
@@ -86,6 +87,12 @@ export function DashboardLayout() {
                   <DropdownMenuContent align="end">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link to="/profile" className="cursor-pointer w-full flex items-center">
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Profile</span>
+                      </Link>
+                    </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => logout()}>
                       <LogOut className="mr-2 h-4 w-4" />
                       <span>Log out</span>

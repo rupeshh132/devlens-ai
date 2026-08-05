@@ -22,6 +22,8 @@ public class UserResponse {
     private String lastName;
     private UserRole role;
     private UserStatus status;
+    private Integer points;
+    private String badges;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

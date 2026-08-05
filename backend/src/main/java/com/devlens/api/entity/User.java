@@ -47,6 +47,14 @@ public class User {
     @Builder.Default
     private UserStatus status = UserStatus.ACTIVE;
 
+    @Column(nullable = false)
+    @Builder.Default
+    private Integer points = 0;
+
+    @Column(columnDefinition = "jsonb")
+    @Builder.Default
+    private String badges = "[]";
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
