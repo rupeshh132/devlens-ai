@@ -8,5 +8,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "app.oauth2")
 public class OAuthProperties {
-    private String redirectUri = "http://localhost:3000/oauth2/redirect";
+    private String redirectUri = "http://localhost:5173/oauth/callback";
 }

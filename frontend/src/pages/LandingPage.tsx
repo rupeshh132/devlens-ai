@@ -185,9 +185,12 @@ function HeroSection() {
                 variant="outline" 
                 className="h-14 px-8 text-base rounded-full font-bold border-border"
                 onClick={() => {
-                  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1';
-                  const baseUrl = apiUrl.replace(/\/api\/v1\/?$/, '');
-                  window.location.href = `${baseUrl}/oauth2/authorization/github`;
+                  const backendBase = (import.meta.env.VITE_API_URL || 
+                    'http://localhost:8080/api/v1')
+                    .replace('/api/v1', '');
+                  
+                  window.location.href = 
+                    `${backendBase}/oauth2/authorization/github`;
                 }}
               >
                 <Terminal className="mr-2 h-4 w-4" />

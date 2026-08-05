@@ -25,6 +25,10 @@ spring:
             client-id: ${GITHUB_CLIENT_ID:mock-client-id}
             client-secret: ${GITHUB_CLIENT_SECRET:mock-client-secret}
 
+app:
+  oauth2:
+    redirect-uri: ${OAUTH2_REDIRECT_URI:http://localhost:5173/oauth/callback}
+
   flyway:
     enabled: true
     baseline-on-migrate: true
