@@ -146,4 +146,60 @@ public class GeminiClientService {
             throw new RuntimeException("Failed to analyze skill gap with AI: " + e.getMessage(), e);
         }
     }
+
+    public String generateRoadmap(String title, String gapReportJson) {
+        String prompt = "You are a Technical Mentor and Career Planner. " +
+                "Generate a detailed step-by-step roadmap for: '" + title + "'.\n" +
+                "Use the following Skill Gap Analysis as context:\n" + gapReportJson + "\n\n" +
+                "Return ONLY a valid JSON response (no markdown, no backticks, no other text) with the following structure:\n" +
+                "{\n" +
+                "  \"milestones\": [\n" +
+                "    {\n" +
+                "      \"title\": \"Milestone Title (e.g. Master React Hooks)\",\n" +
+                "      \"description\": \"Detailed description of what to learn\",\n" +
+                "      \"estimatedTime\": \"e.g. 2 weeks\",\n" +
+                "      \"status\": \"pending\",\n" +
+                "      \"resources\": [\"Resource 1 URL or Name\", \"Resource 2 URL or Name\"]\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}\n";
+
+        Map<String, Object> requestBody = new HashMap<>();
+        Map<String, Object> contentMap = new HashMap<>();
+        Map<String, Object> partsMap = new HashMap<>();
+        
+        partsMap.put("text", prompt);
+        contentMap.put("parts", List.of(partsMap));
+        requestBody.put("contents", List.of(contentMap));
+
+        try {
+            String url = geminiApiUrl + "?key=" + geminiApiKey;
+            
+            String responseStr = restClient.post()
+                    .uri(url)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(requestBody)
+                    .retrieve()
+                    .body(String.class);
+
+            JsonNode rootNode = objectMapper.readTree(responseStr);
+            JsonNode textNode = rootNode.path("candidates").get(0).path("content").path("parts").get(0).path("text");
+            
+            String jsonOutput = textNode.asText().trim();
+            if (jsonOutput.startsWith("```json")) {
+                jsonOutput = jsonOutput.substring(7);
+            }
+            if (jsonOutput.startsWith("```")) {
+                jsonOutput = jsonOutput.substring(3);
+            }
+            if (jsonOutput.endsWith("```")) {
+                jsonOutput = jsonOutput.substring(0, jsonOutput.length() - 3);
+            }
+            
+            return jsonOutput.trim();
+        } catch (Exception e) {
+            log.error("Error communicating with Gemini API for Roadmap Generation", e);
+            throw new RuntimeException("Failed to generate roadmap with AI: " + e.getMessage(), e);
+        }
+    }
 }
