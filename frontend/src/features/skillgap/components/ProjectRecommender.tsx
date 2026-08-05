@@ -55,7 +55,7 @@ export const ProjectRecommender: React.FC<ProjectRecommenderProps> = ({ analysis
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {project.skillsTargeted.map(skill => (
-                    <span key={skill} className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md">
+                    <span key={skill} className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-medium rounded-full border border-border/50">
                       {skill}
                     </span>
                   ))}

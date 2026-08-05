@@ -78,12 +78,12 @@ export const SkillGapDashboard: React.FC<SkillGapDashboardProps> = ({ initialAna
             <CardHeader>
               <CardTitle>Overall Match</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-col items-center justify-center py-6 space-y-4">
-              <div className="text-5xl font-bold text-primary">
+            <CardContent className="flex flex-col items-center justify-center py-6 space-y-6">
+              <div className="text-7xl font-black tracking-tighter text-primary">
                 {report.overallMatchPercentage}%
               </div>
-              <Progress value={report.overallMatchPercentage} className="w-full h-3" />
-              <p className="text-muted-foreground text-center text-sm">
+              <Progress value={report.overallMatchPercentage} className="w-full h-2" />
+              <p className="text-muted-foreground text-center text-sm font-medium">
                 Based on the alignment between your resume and standard industry requirements for {initialAnalysis?.targetRole}.
               </p>
             </CardContent>
@@ -94,15 +94,15 @@ export const SkillGapDashboard: React.FC<SkillGapDashboardProps> = ({ initialAna
               <CardTitle>Skill Alignment</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div>
-                  <h4 className="font-semibold text-green-600 flex items-center gap-2 mb-2">
-                    <CheckCircle2 className="h-4 w-4" />
+                  <h4 className="font-semibold text-foreground flex items-center gap-2 mb-3">
+                    <CheckCircle2 className="h-4 w-4 text-primary" />
                     Matched Skills
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {report.matchedSkills.map(skill => (
-                      <span key={skill} className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-xs rounded-md border border-green-200 dark:border-green-800">
+                      <span key={skill} className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-medium rounded-full border border-border">
                         {skill}
                       </span>
                     ))}
@@ -111,13 +111,13 @@ export const SkillGapDashboard: React.FC<SkillGapDashboardProps> = ({ initialAna
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-amber-600 flex items-center gap-2 mb-2 mt-4">
-                    <AlertCircle className="h-4 w-4" />
+                  <h4 className="font-semibold text-foreground flex items-center gap-2 mb-3 mt-6">
+                    <AlertCircle className="h-4 w-4 text-primary" />
                     Missing Skills to Acquire
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {report.missingSkills.map(skill => (
-                      <span key={skill} className="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs rounded-md border border-amber-200 dark:border-amber-800">
+                      <span key={skill} className="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
                         {skill}
                       </span>
                     ))}

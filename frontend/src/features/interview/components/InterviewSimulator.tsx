@@ -87,10 +87,10 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
           <CardHeader>
             <div className="flex justify-between items-center text-sm text-muted-foreground mb-2 mt-2">
               <span>Question {currentQuestionIndex + 1} of {data.questions.length}</span>
-              <span className={`px-2 py-1 rounded-full text-xs font-semibold 
-                ${data.questions[currentQuestionIndex].difficulty === 'Easy' ? 'bg-green-500/10 text-green-500' : ''}
-                ${data.questions[currentQuestionIndex].difficulty === 'Medium' ? 'bg-amber-500/10 text-amber-500' : ''}
-                ${data.questions[currentQuestionIndex].difficulty === 'Hard' ? 'bg-red-500/10 text-red-500' : ''}
+              <span className={`px-3 py-1 rounded-full text-xs font-semibold border
+                ${data.questions[currentQuestionIndex].difficulty === 'Easy' ? 'bg-green-500/10 text-green-600 border-green-500/20' : ''}
+                ${data.questions[currentQuestionIndex].difficulty === 'Medium' ? 'bg-amber-500/10 text-amber-600 border-amber-500/20' : ''}
+                ${data.questions[currentQuestionIndex].difficulty === 'Hard' ? 'bg-red-500/10 text-red-600 border-red-500/20' : ''}
               `}>
                 {data.questions[currentQuestionIndex].difficulty}
               </span>
@@ -102,9 +102,9 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
           </CardHeader>
           <CardContent className="mt-6 min-h-[200px]">
             {showAnswer ? (
-              <div className="p-6 bg-secondary/30 rounded-lg border border-secondary/50 animate-in fade-in zoom-in-95 duration-200">
-                <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4" /> Expected Answer Strategy:
+              <div className="p-8 bg-card rounded-2xl border border-border animate-in fade-in zoom-in-95 duration-200">
+                <h4 className="font-bold tracking-tight text-foreground mb-4 flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 bg-primary mt-0.5" /> Expected Answer Strategy:
                 </h4>
                 <p className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
                   {data.questions[currentQuestionIndex].expectedAnswer}

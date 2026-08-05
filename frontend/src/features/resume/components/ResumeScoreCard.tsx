@@ -27,12 +27,12 @@ export const ResumeScoreCard: React.FC<ResumeScoreCardProps> = ({ resume }) => {
         <CardContent>
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             {/* Score Circle */}
-            <div className="flex flex-col items-center justify-center p-6 bg-gray-50 dark:bg-gray-800/50 rounded-full w-48 h-48 border-4 border-gray-100 dark:border-gray-800 relative">
-              <span className="text-sm font-medium text-gray-500 mb-1">ATS Score</span>
-              <span className={`text-5xl font-bold ${getScoreColor(resume.atsScore || 0)}`}>
+            <div className="flex flex-col items-center justify-center p-6 bg-card rounded-full w-48 h-48 border-8 border-border relative">
+              <span className="text-sm font-semibold tracking-wider uppercase text-muted-foreground mb-1">ATS Score</span>
+              <span className={`text-6xl font-black tracking-tighter ${getScoreColor(resume.atsScore || 0)}`}>
                 {resume.atsScore || 0}
               </span>
-              <span className="text-sm font-medium text-gray-500 mt-1">/ 100</span>
+              <span className="text-xs font-bold text-muted-foreground mt-1">/ 100</span>
             </div>
 
             {/* Overview */}
@@ -68,9 +68,9 @@ export const ResumeScoreCard: React.FC<ResumeScoreCardProps> = ({ resume }) => {
           <CardContent>
             <ul className="space-y-3">
               {suggestions.map((suggestion, idx) => (
-                <li key={idx} className="flex items-start bg-yellow-50 dark:bg-yellow-900/10 p-3 rounded-md">
-                  <AlertTriangle className="w-5 h-5 text-yellow-600 dark:text-yellow-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-800 dark:text-gray-200">{suggestion}</span>
+                <li key={idx} className="flex items-start bg-amber-500/10 p-4 rounded-xl border border-amber-500/20">
+                  <AlertTriangle className="w-5 h-5 text-amber-600 mr-3 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm font-medium text-foreground">{suggestion}</span>
                 </li>
               ))}
             </ul>

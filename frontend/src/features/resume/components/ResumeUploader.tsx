@@ -56,12 +56,12 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({ onUploadSuccess 
       </CardHeader>
       <CardContent className="space-y-4">
         <div 
-          className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-10 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+          className="border-2 border-dashed border-border rounded-2xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
           onClick={() => document.getElementById('resume-upload-input')?.click()}
         >
-          <Upload className="h-10 w-10 text-gray-400 mb-4" />
-          <h3 className="text-lg font-medium">Click to browse or drag and drop</h3>
-          <p className="text-sm text-gray-500 mt-1">PDF or DOCX (MAX. 5MB)</p>
+          <Upload className="h-12 w-12 text-muted-foreground mb-4" />
+          <h3 className="text-xl font-semibold tracking-tight">Click to browse or drag and drop</h3>
+          <p className="text-sm text-muted-foreground mt-2">PDF or DOCX (MAX. 5MB)</p>
           <input 
             id="resume-upload-input" 
             type="file" 
