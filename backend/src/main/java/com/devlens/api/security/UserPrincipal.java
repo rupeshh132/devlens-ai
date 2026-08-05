@@ -19,6 +19,7 @@ public class UserPrincipal implements UserDetails, OAuth2User {
 
     private final UUID id;
     private final String email;
+    private final String password;
     private final Collection<? extends GrantedAuthority> authorities;
     private Map<String, Object> attributes;
 
@@ -26,6 +27,7 @@ public class UserPrincipal implements UserDetails, OAuth2User {
         return new UserPrincipal(
                 user.getId(),
                 user.getEmail(),
+                user.getPassword(),
                 Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole().name())),
                 null
         );
@@ -53,7 +55,7 @@ public class UserPrincipal implements UserDetails, OAuth2User {
 
     @Override
     public String getPassword() {
-        return ""; // No password validation done via Security in this architecture, or we can return a dummy.
+        return password;
     }
 
     @Override

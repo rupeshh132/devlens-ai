@@ -88,4 +88,62 @@ public class GeminiClientService {
             throw new RuntimeException("Failed to analyze code with AI: " + e.getMessage(), e);
         }
     }
+
+    public String analyzeSkillGap(String resumeText, String targetRole) {
+        String prompt = "You are an Expert Career Coach and Technical Recruiter. " +
+                "Analyze the candidate's resume against their target role: '" + targetRole + "'.\n" +
+                "Return ONLY a valid JSON response (no markdown, no backticks, no other text) with the following structure:\n" +
+                "{\n" +
+                "  \"overallMatchPercentage\": (integer between 0 and 100),\n" +
+                "  \"matchedSkills\": [\"skill1\", \"skill2\"],\n" +
+                "  \"missingSkills\": [\"skill3\", \"skill4\"],\n" +
+                "  \"projectIdeas\": [\n" +
+                "    {\n" +
+                "      \"title\": \"Project Name\",\n" +
+                "      \"description\": \"Description of what to build\",\n" +
+                "      \"skillsTargeted\": [\"skill3\", \"skill4\"]\n" +
+                "    }\n" +
+                "  ],\n" +
+                "  \"recommendations\": [\"recommendation 1\", \"recommendation 2\"]\n" +
+                "}\n\n" +
+                "Candidate Resume:\n" + resumeText;
+
+        Map<String, Object> requestBody = new HashMap<>();
+        Map<String, Object> contentMap = new HashMap<>();
+        Map<String, Object> partsMap = new HashMap<>();
+        
+        partsMap.put("text", prompt);
+        contentMap.put("parts", List.of(partsMap));
+        requestBody.put("contents", List.of(contentMap));
+
+        try {
+            String url = geminiApiUrl + "?key=" + geminiApiKey;
+            
+            String responseStr = restClient.post()
+                    .uri(url)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(requestBody)
+                    .retrieve()
+                    .body(String.class);
+
+            JsonNode rootNode = objectMapper.readTree(responseStr);
+            JsonNode textNode = rootNode.path("candidates").get(0).path("content").path("parts").get(0).path("text");
+            
+            String jsonOutput = textNode.asText().trim();
+            if (jsonOutput.startsWith("```json")) {
+                jsonOutput = jsonOutput.substring(7);
+            }
+            if (jsonOutput.startsWith("```")) {
+                jsonOutput = jsonOutput.substring(3);
+            }
+            if (jsonOutput.endsWith("```")) {
+                jsonOutput = jsonOutput.substring(0, jsonOutput.length() - 3);
+            }
+            
+            return jsonOutput.trim();
+        } catch (Exception e) {
+            log.error("Error communicating with Gemini API for Skill Gap Analysis", e);
+            throw new RuntimeException("Failed to analyze skill gap with AI: " + e.getMessage(), e);
+        }
+    }
 }

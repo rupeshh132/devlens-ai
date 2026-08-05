@@ -1,5 +1,6 @@
-package com.devlens.api.entity;
+package com.devlens.api.skillgap;
 
+import com.devlens.api.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,35 +18,23 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@Table(name = "skill_gap_analyses")
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class SkillGapAnalysis {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @Column
-    private String password;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(nullable = false)
-    private String firstName;
+    private String targetRole;
 
-    @Column(nullable = false)
-    private String lastName;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    @Builder.Default
-    private UserRole role = UserRole.USER;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    @Builder.Default
-    private UserStatus status = UserStatus.ACTIVE;
+    @Column(columnDefinition = "jsonb", nullable = false)
+    private String gapReport; // Stored as JSON string to preserve Gemini's rich structure
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

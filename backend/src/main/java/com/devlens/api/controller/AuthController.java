@@ -3,6 +3,7 @@ package com.devlens.api.controller;
 import com.devlens.api.common.ApiResponse;
 import com.devlens.api.dto.AuthResponse;
 import com.devlens.api.dto.LoginRequest;
+import com.devlens.api.dto.RegisterRequest;
 import com.devlens.api.security.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -20,6 +21,25 @@ import jakarta.servlet.http.Cookie;
 public class AuthController {
 
     private final AuthenticationService authenticationService;
+
+    @PostMapping("/register")
+    public ResponseEntity<ApiResponse<AuthResponse>> register(@Valid @RequestBody RegisterRequest request,
+                                                              @RequestHeader(value = "User-Agent", defaultValue = "unknown") String deviceId) {
+        try {
+            AuthResponse response = authenticationService.register(
+                    request.getFirstName(), 
+                    request.getLastName(), 
+                    request.getEmail(), 
+                    request.getPassword(), 
+                    deviceId
+            );
+            return ResponseEntity.status(201)
+                    .header(HttpHeaders.SET_COOKIE, authenticationService.createHttpOnlyCookie(response.getRefreshToken()).toString())
+                    .body(ApiResponse.success(response, "User registered successfully"));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(ApiResponse.error(400, e.getMessage()));
+        }
+    }
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request,

@@ -10,7 +10,9 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -22,6 +24,34 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final RefreshTokenService refreshTokenService;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    @Transactional
+    public AuthResponse register(String firstName, String lastName, String email, String password, String deviceId) {
+        if (userRepository.existsByEmailAndStatusNot(email, com.devlens.api.entity.UserStatus.DELETED)) {
+            throw new IllegalArgumentException("Email already in use");
+        }
+
+        User user = User.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(email)
+                .password(passwordEncoder.encode(password))
+                .role(com.devlens.api.entity.UserRole.USER)
+                .status(com.devlens.api.entity.UserStatus.ACTIVE)
+                .build();
+        
+        user = userRepository.save(user);
+
+        UserPrincipal userPrincipal = UserPrincipal.create(user);
+        String accessToken = jwtService.generateToken(userPrincipal);
+        RefreshToken refreshToken = refreshTokenService.createOrUpdateRefreshToken(user, deviceId);
+
+        return AuthResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken.getToken())
+                .build();
+    }
 
     public AuthResponse login(String email, String password, String deviceId) {
         Authentication authentication = authenticationManager.authenticate(
