@@ -126,10 +126,14 @@ function HeroSection() {
             DevLens AI 2.0 is now available
           </Badge>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter max-w-5xl mx-auto mb-6 leading-[1.05]">
-            Code Reviews on <span className="text-primary">Autopilot</span>
+            Master Your Career on <motion.span 
+              className="text-primary inline-block"
+              animate={{ y: [-8, 8, -8] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            >Autopilot</motion.span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            Elevate your codebase with AI-powered static analysis, automated PR reviews, and actionable insights. Ship faster without compromising quality.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+            Elevate your tech journey with AI-powered Resume Analysis, intelligent Mock Interviews, and personalized Skill Roadmaps. Land your dream job faster.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="h-14 px-8 text-base w-full sm:w-auto rounded-full font-bold">
@@ -175,24 +179,24 @@ function TrustedStatsSection() {
 // ---------------------------------------------------------
 const features = [
   {
-    title: "Deep Static Analysis",
-    description: "Detect bugs, vulnerabilities, and code smells before they hit production with our advanced AST analysis engine.",
+    title: "AI Resume Analysis",
+    description: "Get instant, ATS-friendly feedback on your resume. Identify missing keywords and actionable improvements.",
     icon: Search,
   },
   {
-    title: "Automated PR Reviews",
-    description: "Connect your GitHub repository and let DevLens AI automatically review every pull request within seconds.",
+    title: "Mock Interviews",
+    description: "Practice with our AI interviewer. Get real-time feedback on your answers and perfect your delivery.",
     icon: Zap,
   },
   {
-    title: "Security Scanning",
-    description: "Identify potential security vulnerabilities and secrets exposed in your codebase with enterprise-grade scanning.",
-    icon: Shield,
+    title: "Skill Gap Dashboard",
+    description: "Compare your current skills against industry standards for your target roles to see exactly what you need to learn.",
+    icon: BarChart3,
   },
   {
-    title: "Performance Metrics",
-    description: "Track code complexity, test coverage, and duplication over time with comprehensive dashboard charts.",
-    icon: BarChart3,
+    title: "Dynamic Roadmaps",
+    description: "Generate a personalized step-by-step learning journey based on your skill gaps, complete with resources.",
+    icon: Code2,
   }
 ]
 
@@ -201,8 +205,8 @@ function FeaturesGridSection() {
     <section id="features" className="py-24 bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Everything you need to ship quality code</h2>
-          <p className="text-lg text-muted-foreground">A complete suite of tools designed to help engineering teams maintain high standards without slowing down.</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Everything you need to land the job</h2>
+          <p className="text-lg text-muted-foreground">A complete suite of AI tools designed to help you prepare, practice, and succeed in your tech career.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, i) => (
@@ -237,9 +241,9 @@ function FeaturesGridSection() {
 // ---------------------------------------------------------
 function HowItWorksSection() {
   const steps = [
-    { title: "Connect Repository", desc: "Link your GitHub or GitLab account in one click." },
-    { title: "Configure Rules", desc: "Customize analysis rules or use our recommended defaults." },
-    { title: "Get Insights", desc: "Receive instant feedback on every commit and pull request." }
+    { title: "Upload Profile", desc: "Upload your resume and enter your target tech role." },
+    { title: "Identify Gaps", desc: "Our AI analyzes your skills and points out what you need to learn." },
+    { title: "Practice & Improve", desc: "Follow your roadmap and practice with AI mock interviews." }
   ]
   return (
     <section id="how-it-works" className="py-24 bg-muted/30 border-y">
@@ -247,8 +251,8 @@ function HowItWorksSection() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           <div className="flex-1 space-y-8">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Seamless integration into your workflow</h2>
-              <p className="text-lg text-muted-foreground">DevLens AI sits quietly in the background, analyzing code as you write it, and reporting issues exactly where you need them.</p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">A streamlined path to success</h2>
+              <p className="text-lg text-muted-foreground">DevLens AI takes the guesswork out of interview prep. We analyze where you are, tell you where you need to go, and help you practice until you are ready.</p>
             </div>
             <div className="space-y-6">
               {steps.map((step, i) => (
@@ -306,8 +310,8 @@ function PreviewsSection() {
   return (
     <section className="py-24 bg-background overflow-hidden relative">
       <div className="container mx-auto px-4 max-w-screen-xl text-center mb-16 relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Enterprise-grade Dashboard</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Get a bird's-eye view of your codebase health, track metrics over time, and drill down into specific issues.</p>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Comprehensive Insights</h2>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Get a bird's-eye view of your career readiness, track your interview scores over time, and drill down into specific skill gaps.</p>
       </div>
       
       <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
@@ -365,10 +369,10 @@ function WhyDevLensSection() {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">Why engineering leaders choose DevLens AI</h2>
             <p className="text-lg opacity-90 mb-8 leading-relaxed">
-              We built DevLens AI because traditional static analysis tools are too noisy, too slow, and require too much configuration. Our AI-driven approach understands context, reducing false positives by up to 80%.
+              We built DevLens AI because traditional interview prep is too fragmented. Our unified AI platform brings resume analysis, skill mapping, and mock interviews into one seamless experience.
             </p>
             <ul className="space-y-4">
-              {['Zero-configuration setup', 'Context-aware AI analysis', 'Real-time feedback in IDEs', 'Enterprise-grade security'].map((item, i) => (
+              {['Zero-configuration setup', 'Context-aware AI feedback', 'Real-time interview practice', 'Personalized learning paths'].map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
                   <span className="font-medium text-lg">{item}</span>
@@ -378,10 +382,10 @@ function WhyDevLensSection() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { label: 'Time Saved', val: '40%' },
-              { label: 'False Positives', val: '-80%' },
-              { label: 'Code Quality', val: '+2.5x' },
-              { label: 'Review Speed', val: '5x' },
+              { label: 'Interview Confidence', val: '+80%' },
+              { label: 'Resume ATS Score', val: '95+' },
+              { label: 'Prep Time Saved', val: '20hrs' },
+              { label: 'Job Offers', val: '3x' },
             ].map((stat, i) => (
               <div key={i} className="bg-primary-foreground/10 p-8 rounded-3xl border border-primary-foreground/20">
                 <div className="text-5xl font-black tracking-tighter mb-2">{stat.val}</div>
@@ -524,8 +528,8 @@ function CtaSection() {
     <section className="py-24 md:py-32 bg-background text-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5"></div>
       <div className="container mx-auto px-4 relative z-10 max-w-3xl">
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">Ready to write better code?</h2>
-        <p className="text-xl text-muted-foreground mb-10 font-medium">Join thousands of developers who are shipping high-quality code faster with DevLens AI.</p>
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">Ready to land your dream job?</h2>
+        <p className="text-xl text-muted-foreground mb-10 font-medium">Join thousands of developers who are accelerating their careers with DevLens AI.</p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button size="lg" className="h-14 px-8 text-lg rounded-full font-bold">
             Start Building for Free
