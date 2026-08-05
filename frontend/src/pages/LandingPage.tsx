@@ -34,9 +34,9 @@ function MarketingNavbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <Link to="/" className="flex items-center space-x-2">
-            <Code2 className="h-6 w-6 text-primary" />
-            <span className="font-bold hidden sm:inline-block">DevLens AI</span>
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="w-3 h-3 bg-primary" />
+            <span className="font-black tracking-tight hidden sm:inline-block">DevLens AI</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6 ml-6 text-sm font-medium text-muted-foreground">
             <a href="#features" className="transition-colors hover:text-foreground">Features</a>
@@ -122,21 +122,21 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Badge variant="outline" className="mb-6 rounded-full px-4 py-1.5 border-primary/20 bg-primary/10 text-primary">
+          <Badge variant="outline" className="mb-6 rounded-full px-4 py-1.5 border-border uppercase tracking-widest font-bold text-[10px]">
             DevLens AI 2.0 is now available
           </Badge>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto mb-6">
-            Code Reviews on <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Autopilot</span>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter max-w-5xl mx-auto mb-6 leading-[1.05]">
+            Code Reviews on <span className="text-primary">Autopilot</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
             Elevate your codebase with AI-powered static analysis, automated PR reviews, and actionable insights. Ship faster without compromising quality.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="h-12 px-8 text-base w-full sm:w-auto">
+            <Button size="lg" className="h-14 px-8 text-base w-full sm:w-auto rounded-full font-bold">
               Start Building for Free
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 text-base w-full sm:w-auto">
+            <Button size="lg" variant="outline" className="h-14 px-8 text-base w-full sm:w-auto rounded-full font-bold">
               <Terminal className="mr-2 h-4 w-4" />
               Sign in with GitHub
             </Button>
@@ -153,10 +153,10 @@ function HeroSection() {
 // ---------------------------------------------------------
 function TrustedStatsSection() {
   return (
-    <section className="py-12 border-y bg-muted/30">
+    <section className="py-12 border-y border-border bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl text-center">
-        <p className="text-sm font-semibold text-muted-foreground mb-8 uppercase tracking-wider">Trusted by innovative engineering teams worldwide</p>
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16 lg:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        <p className="text-xs font-bold text-muted-foreground mb-8 uppercase tracking-widest">Trusted by innovative engineering teams worldwide</p>
+        <div className="flex flex-wrap justify-center gap-8 md:gap-16 lg:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
           {/* Dummy logos using text for now */}
           {['ACME Corp', 'Globex', 'Soylent', 'Initech', 'Massive Dynamic'].map((company) => (
             <div key={company} className="text-xl font-bold font-mono tracking-tighter text-foreground flex items-center">
@@ -213,12 +213,12 @@ function FeaturesGridSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <Card className="h-full bg-muted/40 border-none shadow-none hover:bg-muted transition-colors">
+              <Card className="h-full bg-card border-2 border-border shadow-none hover:border-primary/50 transition-colors">
                 <CardHeader>
-                  <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                    <feature.icon className="h-5 w-5 text-primary" />
+                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <feature.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardTitle className="text-2xl font-bold tracking-tight">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">{feature.description}</p>
@@ -265,8 +265,8 @@ function HowItWorksSection() {
             </div>
           </div>
           <div className="flex-1 w-full relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-blue-500/20 blur-3xl rounded-full" />
-            <div className="relative rounded-xl border bg-background/50 backdrop-blur-xl p-6 shadow-2xl">
+            <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full" />
+            <div className="relative rounded-3xl border-2 border-border bg-card p-6 shadow-none">
               {/* Mock Terminal/Integration UI */}
               <div className="flex items-center gap-2 mb-4 pb-4 border-b">
                 <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -316,7 +316,7 @@ function PreviewsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="rounded-2xl border bg-muted/20 shadow-2xl overflow-hidden backdrop-blur-sm"
+          className="rounded-3xl border-2 border-border bg-card shadow-none overflow-hidden"
         >
           {/* Mock Dashboard UI */}
           <div className="flex flex-col h-[500px]">
@@ -383,9 +383,9 @@ function WhyDevLensSection() {
               { label: 'Code Quality', val: '+2.5x' },
               { label: 'Review Speed', val: '5x' },
             ].map((stat, i) => (
-              <div key={i} className="bg-background/10 backdrop-blur-md p-6 rounded-xl border border-primary-foreground/20">
-                <div className="text-4xl font-bold mb-2">{stat.val}</div>
-                <div className="text-sm opacity-80">{stat.label}</div>
+              <div key={i} className="bg-primary-foreground/10 p-8 rounded-3xl border border-primary-foreground/20">
+                <div className="text-5xl font-black tracking-tighter mb-2">{stat.val}</div>
+                <div className="text-xs font-bold uppercase tracking-widest opacity-80">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -409,13 +409,13 @@ function PricingSection() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Free Plan */}
-          <Card className="flex flex-col">
+          <Card className="flex flex-col border-2 border-border shadow-none rounded-3xl">
             <CardHeader>
-              <CardTitle className="text-2xl">Community</CardTitle>
-              <CardDescription>Perfect for open source projects and small teams.</CardDescription>
+              <CardTitle className="text-3xl font-black tracking-tight">Community</CardTitle>
+              <CardDescription className="font-medium text-base">Perfect for open source projects and small teams.</CardDescription>
               <div className="mt-4">
-                <span className="text-4xl font-bold">$0</span>
-                <span className="text-muted-foreground">/month</span>
+                <span className="text-6xl font-black tracking-tighter">$0</span>
+                <span className="text-muted-foreground font-medium">/month</span>
               </div>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
@@ -432,16 +432,16 @@ function PricingSection() {
           </Card>
           
           {/* Pro Plan */}
-          <Card className="flex flex-col border-primary relative shadow-lg">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
+          <Card className="flex flex-col border-2 border-primary relative shadow-none rounded-3xl">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <Badge className="bg-primary text-primary-foreground uppercase tracking-widest text-[10px] font-bold px-4 py-1">Most Popular</Badge>
             </div>
             <CardHeader>
-              <CardTitle className="text-2xl">Pro</CardTitle>
-              <CardDescription>For professional developers and growing teams.</CardDescription>
+              <CardTitle className="text-3xl font-black tracking-tight">Pro</CardTitle>
+              <CardDescription className="font-medium text-base">For professional developers and growing teams.</CardDescription>
               <div className="mt-4">
-                <span className="text-4xl font-bold">$29</span>
-                <span className="text-muted-foreground">/user/month</span>
+                <span className="text-6xl font-black tracking-tighter">$29</span>
+                <span className="text-muted-foreground font-medium">/user/mo</span>
               </div>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
@@ -458,12 +458,12 @@ function PricingSection() {
           </Card>
           
           {/* Enterprise Plan */}
-          <Card className="flex flex-col md:col-span-2 lg:col-span-1">
+          <Card className="flex flex-col md:col-span-2 lg:col-span-1 border-2 border-border shadow-none rounded-3xl">
             <CardHeader>
-              <CardTitle className="text-2xl">Enterprise</CardTitle>
-              <CardDescription>Custom solutions for large engineering organizations.</CardDescription>
+              <CardTitle className="text-3xl font-black tracking-tight">Enterprise</CardTitle>
+              <CardDescription className="font-medium text-base">Custom solutions for large engineering organizations.</CardDescription>
               <div className="mt-4">
-                <span className="text-4xl font-bold">Custom</span>
+                <span className="text-5xl font-black tracking-tighter">Custom</span>
               </div>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
@@ -524,13 +524,13 @@ function CtaSection() {
     <section className="py-24 md:py-32 bg-background text-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5"></div>
       <div className="container mx-auto px-4 relative z-10 max-w-3xl">
-        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Ready to write better code?</h2>
-        <p className="text-xl text-muted-foreground mb-10">Join thousands of developers who are shipping high-quality code faster with DevLens AI.</p>
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">Ready to write better code?</h2>
+        <p className="text-xl text-muted-foreground mb-10 font-medium">Join thousands of developers who are shipping high-quality code faster with DevLens AI.</p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button size="lg" className="h-14 px-8 text-lg">
+          <Button size="lg" className="h-14 px-8 text-lg rounded-full font-bold">
             Start Building for Free
           </Button>
-          <Button size="lg" variant="outline" className="h-14 px-8 text-lg">
+          <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full font-bold">
             View Documentation
           </Button>
         </div>
