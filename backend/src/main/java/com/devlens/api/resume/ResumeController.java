@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
 import java.util.Map;
+import com.devlens.api.security.UserPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 @RestController
 @RequestMapping("/api/v1/resumes")
@@ -20,12 +22,10 @@ public class ResumeController {
     @PostMapping
     public ResponseEntity<?> uploadResume(
             @RequestParam("file") MultipartFile file,
-            Authentication authentication) {
+            @AuthenticationPrincipal UserPrincipal currentUser) {
         
         try {
-            // In a real app, user ID is typically extracted from the JWT token via SecurityContext
-            // For now, assume authentication.getName() returns the UUID string or we have a custom principal
-            UUID userId = UUID.fromString(authentication.getName());
+            UUID userId = currentUser.getId();
             
             Resume resume = resumeService.uploadAndParseResume(userId, file);
             return ResponseEntity.status(HttpStatus.CREATED).body(resume);
@@ -39,8 +39,8 @@ public class ResumeController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<Resume> getMyLatestResume(Authentication authentication) {
-        UUID userId = UUID.fromString(authentication.getName());
+    public ResponseEntity<Resume> getMyLatestResume(@AuthenticationPrincipal UserPrincipal currentUser) {
+        UUID userId = currentUser.getId();
         Resume resume = resumeService.getLatestResume(userId);
         return ResponseEntity.ok(resume);
     }

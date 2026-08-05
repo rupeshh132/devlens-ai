@@ -25,9 +25,10 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+        UserPrincipal userPrincipal = (UserPrincipal) userDetails;
         return Jwts.builder()
                 .claims(extraClaims)
-                .subject(userDetails.getUsername())
+                .subject(userPrincipal.getId().toString())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration()))
                 .signWith(getSignInKey())
@@ -35,8 +36,9 @@ public class JwtService {
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
-        final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+        UserPrincipal userPrincipal = (UserPrincipal) userDetails;
+        final String userIdString = extractUsername(token); // extractUsername now returns UUID string
+        return (userIdString.equals(userPrincipal.getId().toString())) && !isTokenExpired(token);
     }
 
     public String extractUsername(String token) {
