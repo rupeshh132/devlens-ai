@@ -18,7 +18,10 @@ const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
       >
         <div className="flex flex-col gap-2">
           {breadcrumb && <div className="mb-2">{breadcrumb}</div>}
-          <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
+          <div className="flex items-center gap-3">
+            <div className="w-2.5 h-2.5 bg-primary" />
+            <h1 className="text-3xl md:text-4xl font-black tracking-tight">{title}</h1>
+          </div>
           {description && (
             <p className="text-muted-foreground">{description}</p>
           )}

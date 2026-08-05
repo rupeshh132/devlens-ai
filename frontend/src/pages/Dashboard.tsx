@@ -19,9 +19,12 @@ export function Dashboard() {
       {/* Welcome Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">
-            Welcome back, {user?.fullName || 'Developer'}
-          </h1>
+          <div className="flex items-center gap-3">
+            <div className="w-2.5 h-2.5 bg-primary" />
+            <h1 className="text-3xl md:text-4xl font-black tracking-tight text-foreground">
+              Welcome back, {user?.fullName?.split(' ')[0] || 'Developer'}
+            </h1>
+          </div>
           <p className="text-muted-foreground mt-1">
             Here's what's happening with your projects today.
           </p>

@@ -37,7 +37,7 @@ export const UserProfile: React.FC = () => {
 
       <div className="grid gap-6 md:grid-cols-3">
         {/* Profile Info & Score */}
-        <Card className="col-span-1 border-primary/20 bg-gradient-to-br from-card to-primary/5 shadow-lg relative overflow-hidden">
+        <Card className="col-span-1 border-border bg-card relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-20">
             <Trophy className="h-24 w-24 text-primary" />
           </div>
@@ -67,7 +67,7 @@ export const UserProfile: React.FC = () => {
         </Card>
 
         {/* Badges & Achievements */}
-        <Card className="col-span-2 border-muted/60 backdrop-blur">
+        <Card className="col-span-2 border-border">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Medal className="h-5 w-5 text-amber-500" /> 
@@ -95,7 +95,7 @@ export const UserProfile: React.FC = () => {
       </div>
 
       {/* Activity History */}
-      <Card className="border-muted/60">
+      <Card className="border-border">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <History className="h-5 w-5" />

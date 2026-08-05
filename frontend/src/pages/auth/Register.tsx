@@ -107,7 +107,7 @@ export function Register() {
 
   return (
     <AuthLayout>
-      <Card className="w-full max-w-md mx-auto bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75 border-muted/60 shadow-xl">
+      <Card className="w-full max-w-md mx-auto bg-transparent border-none shadow-none">
         <CardHeader className="space-y-2">
           <CardTitle className="text-2xl font-bold tracking-tight">Create an account</CardTitle>
           <CardDescription className="text-muted-foreground">

@@ -102,8 +102,10 @@ export function DashboardLayout() {
               </NavbarActions>
             </Navbar>
             
-            <ContentArea scrollable className="p-4 md:p-6 lg:p-8">
-              <Outlet />
+            <ContentArea scrollable className="p-6 md:p-10 lg:p-16">
+              <div className="max-w-6xl mx-auto w-full">
+                <Outlet />
+              </div>
             </ContentArea>
           </div>
         </div>

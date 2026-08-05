@@ -14,9 +14,9 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       ref={ref}
       onClick={onClick}
       className={cn(
-        "rounded-xl border bg-card text-card-foreground shadow",
-        (hoverable || clickable || onClick) && "transition-all hover:shadow-md",
-        (clickable || onClick) && "cursor-pointer hover:border-primary/50",
+        "rounded-2xl border border-border bg-card text-card-foreground",
+        (hoverable || clickable || onClick) && "transition-all duration-300 hover:-translate-y-[2px] hover:shadow-sm",
+        (clickable || onClick) && "cursor-pointer hover:border-primary/30",
         loading && "opacity-70 pointer-events-none",
         className
       )}
