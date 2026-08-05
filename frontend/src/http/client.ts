@@ -11,7 +11,14 @@ export const httpClient = axios.create({
 
 httpClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    // Add auth token logic here in future
+    const token = localStorage.getItem('devlens_access_token');
+    if (token && config.headers) {
+      if (typeof config.headers.set === 'function') {
+        config.headers.set('Authorization', `Bearer ${token}`);
+      } else {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
     return config;
   },
   (error: AxiosError) => {
