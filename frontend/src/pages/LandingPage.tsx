@@ -117,24 +117,66 @@ function MarketingFooter() {
 // 1. Hero Section
 // ---------------------------------------------------------
 function HeroSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.7, 
+        ease: [0.16, 1, 0.3, 1] 
+      }
+    },
+  }
+
+  const headline = "Master Your Career on Autopilot".split(" ")
+
   return (
     <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32 bg-[#FAFAFA]">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
       <div className="container mx-auto relative z-10 px-4 max-w-screen-xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
             className="text-left"
           >
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-brand-navy mb-6 leading-[1.05]">
-              Master Your Career on Autopilot
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-brand-navy mb-6 leading-[1.05] flex flex-wrap gap-x-[0.3em] gap-y-2">
+              {headline.map((word, idx) => (
+                <motion.span key={idx} variants={itemVariants} className="inline-block relative">
+                  <motion.span
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 4,
+                      ease: "easeInOut",
+                      delay: idx * 0.2 + 0.8, // start floating after initial fade-in
+                    }}
+                    className="inline-block"
+                  >
+                    {word}
+                  </motion.span>
+                </motion.span>
+              ))}
             </h1>
-            <p className="text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed font-medium">
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed font-medium"
+            >
               Our AI-powered platform accelerates your professional growth, analyzing your skills and optimizing your resume for top opportunities.
-            </p>
-            <div className="flex flex-col sm:flex-row items-start gap-4">
+            </motion.p>
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start gap-4">
               <Button size="lg" className="h-14 px-8 text-base rounded-full font-bold bg-brand-coral hover:bg-brand-coral/90 text-white shadow-lg shadow-brand-coral/30">
                 Start Building for Free
               </Button>
@@ -142,7 +184,7 @@ function HeroSection() {
                 <Terminal className="mr-2 h-4 w-4" />
                 Sign in with GitHub
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
