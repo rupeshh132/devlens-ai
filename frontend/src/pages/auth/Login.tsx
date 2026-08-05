@@ -168,7 +168,11 @@ export function Login() {
               variant="outline"
               className="w-full"
               disabled={isLoading}
-              onClick={() => window.location.href = 'http://localhost:8080/oauth2/authorization/github'}
+              onClick={() => {
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1';
+                const baseUrl = apiUrl.replace(/\/api\/v1\/?$/, '');
+                window.location.href = `${baseUrl}/oauth2/authorization/github`;
+              }}
             >
               <Terminal className="mr-2 h-4 w-4" />
               GitHub
