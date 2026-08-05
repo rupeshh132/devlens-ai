@@ -17,7 +17,7 @@ export function OAuthCallback() {
 
   useEffect(() => {
     const handleOAuthCallback = async () => {
-      const code = searchParams.get('code');
+      const token = searchParams.get('token');
       const errorParam = searchParams.get('error');
 
       if (errorParam) {
@@ -26,21 +26,17 @@ export function OAuthCallback() {
         return;
       }
 
-      if (!code) {
+      if (!token) {
         setIsLoading(false);
-        setError('No authorization code found in the request.');
+        setError('No authorization token found in the request.');
         return;
       }
 
       try {
-        // Mock exchanging code for token
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        localStorage.setItem('devlens_access_token', token);
         
-        // Mock logging the user in using existing mocked service
-        // Provide dummy credentials since it's just a mock
-        await login({ email: 'oauth@example.com', password: 'mock-oauth-password' });
-        
-        navigate('/dashboard', { replace: true });
+        // Force a page reload to '/dashboard' so AuthProvider picks up the new token
+        window.location.href = '/dashboard';
       } catch {
         setIsLoading(false);
         setError('Failed to authenticate with provider. Please try again.');
