@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
 import { generateInterview } from '../api/interviewApi';
-import type { InterviewSession, InterviewSessionData, InterviewQuestion } from '../types';
+import type { InterviewSession, InterviewSessionData } from '../types';
 import { Loader2, Mic, Eye, EyeOff, MessageSquare } from 'lucide-react';
 
 interface InterviewSimulatorProps {
@@ -131,7 +131,7 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
             </Button>
             
             <Button 
-              variant={showAnswer ? "secondary" : "default"} 
+              variant={showAnswer ? "secondary" : undefined} 
               onClick={() => setShowAnswer(!showAnswer)}
               className="min-w-[140px] w-full sm:w-auto order-1 sm:order-2"
             >

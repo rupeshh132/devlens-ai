@@ -9,19 +9,17 @@ export const InterviewPage: React.FC = () => {
   const [session, setSession] = useState<InterviewSession | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchLatestSession = async () => {
-    try {
-      const data = await getLatestInterview();
-      setSession(data);
-    } catch {
-      console.log('No existing interview session found');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const fetchLatestSession = async () => {
+      try {
+        const data = await getLatestInterview();
+        setSession(data);
+      } catch {
+        console.log('No existing interview session found');
+      } finally {
+        setIsLoading(false);
+      }
+    };
     fetchLatestSession();
   }, []);
 

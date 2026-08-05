@@ -2,10 +2,14 @@ export type Role = 'ADMIN' | 'USER';
 
 export interface User {
   id: string;
-  fullName: string;
+  fullName?: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
-  avatar: string;
+  avatar?: string;
   role: Role;
+  points?: number;
+  badges?: string;
 }
 
 export interface AuthState {

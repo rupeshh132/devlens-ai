@@ -12,19 +12,17 @@ export const ResumePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUploadingNew, setIsUploadingNew] = useState(false);
 
-  const fetchLatestResume = async () => {
-    try {
-      const data = await getMyLatestResume();
-      setResume(data);
-    } catch {
-      console.log('No existing resume found');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/set-state-in-effect
+    const fetchLatestResume = async () => {
+      try {
+        const data = await getMyLatestResume();
+        setResume(data);
+      } catch {
+        console.log('No existing resume found');
+      } finally {
+        setIsLoading(false);
+      }
+    };
     fetchLatestResume();
   }, []);
 

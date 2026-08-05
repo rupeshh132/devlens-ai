@@ -10,19 +10,17 @@ export const SkillGapPage: React.FC = () => {
   const [analysis, setAnalysis] = useState<SkillGapAnalysis | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchLatestAnalysis = async () => {
-    try {
-      const data = await getLatestSkillGapAnalysis();
-      setAnalysis(data);
-    } catch {
-      console.log('No existing skill gap analysis found');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/set-state-in-effect
+    const fetchLatestAnalysis = async () => {
+      try {
+        const data = await getLatestSkillGapAnalysis();
+        setAnalysis(data);
+      } catch {
+        console.log('No existing skill gap analysis found');
+      } finally {
+        setIsLoading(false);
+      }
+    };
     fetchLatestAnalysis();
   }, []);
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useAuth } from '../../../features/auth/hooks/useAuth';
-import { Card, CardHeader, CardTitle, CardContent } from '../../../components/ui/card';
+import { useAuth } from '../../features/auth/hooks/useAuth';
+import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/card';
 import { Trophy, Medal, Star, Activity, History, BookOpen, Mic } from 'lucide-react';
-import { PageHeader } from '../../../components/layout/PageHeader';
+import { PageHeader } from '../../components/layout/PageHeader';
 
 export const UserProfile: React.FC = () => {
   const { user } = useAuth();

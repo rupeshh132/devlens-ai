@@ -9,19 +9,17 @@ export const RoadmapPage: React.FC = () => {
   const [roadmap, setRoadmap] = useState<Roadmap | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchLatestRoadmap = async () => {
-    try {
-      const data = await getLatestRoadmap();
-      setRoadmap(data);
-    } catch {
-      console.log('No existing roadmap found');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps, react-hooks/set-state-in-effect
+    const fetchLatestRoadmap = async () => {
+      try {
+        const data = await getLatestRoadmap();
+        setRoadmap(data);
+      } catch {
+        console.log('No existing roadmap found');
+      } finally {
+        setIsLoading(false);
+      }
+    };
     fetchLatestRoadmap();
   }, []);
 
