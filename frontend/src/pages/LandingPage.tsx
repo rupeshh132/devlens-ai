@@ -114,39 +114,42 @@ function MarketingFooter() {
 // ---------------------------------------------------------
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
+    <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32 bg-[#FAFAFA]">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-      <div className="container mx-auto relative z-10 px-4 max-w-screen-xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Badge variant="outline" className="mb-6 rounded-full px-4 py-1.5 border-border uppercase tracking-widest font-bold text-[10px]">
-            DevLens AI 2.0 is now available
-          </Badge>
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter max-w-5xl mx-auto mb-6 leading-[1.05]">
-            Master Your Career on <motion.span 
-              className="text-primary inline-block"
-              animate={{ y: [-8, 8, -8] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            >Autopilot</motion.span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
-            Elevate your tech journey with AI-powered Resume Analysis, intelligent Mock Interviews, and personalized Skill Roadmaps. Land your dream job faster.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="h-14 px-8 text-base w-full sm:w-auto rounded-full font-bold">
-              Start Building for Free
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button size="lg" variant="outline" className="h-14 px-8 text-base w-full sm:w-auto rounded-full font-bold">
-              <Terminal className="mr-2 h-4 w-4" />
-              Sign in with GitHub
-            </Button>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">No credit card required. Free forever for open source.</p>
-        </motion.div>
+      <div className="container mx-auto relative z-10 px-4 max-w-screen-xl">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-left"
+          >
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-brand-navy mb-6 leading-[1.05]">
+              Master Your Career on Autopilot
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed font-medium">
+              Our AI-powered platform accelerates your professional growth, analyzing your skills and optimizing your resume for top opportunities.
+            </p>
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Button size="lg" className="h-14 px-8 text-base rounded-full font-bold bg-brand-coral hover:bg-brand-coral/90 text-white shadow-lg shadow-brand-coral/30">
+                Start Building for Free
+              </Button>
+              <Button size="lg" variant="outline" className="h-14 px-8 text-base rounded-full font-bold border-border">
+                <Terminal className="mr-2 h-4 w-4" />
+                Sign in with GitHub
+              </Button>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand-coral/20 via-purple-500/10 to-transparent blur-3xl rounded-full transform scale-125"></div>
+            <img src="/images/hero_3d_resume.jpg" alt="3D Resume Analytics" className="relative z-10 w-full max-w-[500px] mx-auto h-auto object-cover rounded-[2rem] shadow-2xl mix-blend-multiply" />
+          </motion.div>
+        </div>
       </div>
     </section>
   )

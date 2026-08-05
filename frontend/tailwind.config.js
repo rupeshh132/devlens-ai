@@ -91,6 +91,8 @@ module.exports = {
           border:               'rgb(var(--sidebar-border))',
           ring:                 'rgb(var(--sidebar-ring))',
         },
+        'brand-navy': '#0B1B3D',
+        'brand-coral': '#FF6B6B',
       },
       borderRadius: {
         lg:   'var(--radius-lg)',
