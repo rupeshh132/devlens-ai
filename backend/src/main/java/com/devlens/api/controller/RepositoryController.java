@@ -1,5 +1,6 @@
 package com.devlens.api.controller;
 
+import com.devlens.api.dto.CommitResponse;
 import com.devlens.api.dto.CreateRepositoryRequest;
 import com.devlens.api.dto.RepositoryResponse;
 import com.devlens.api.dto.UpdateRepositoryRequest;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -77,5 +79,15 @@ public class RepositoryController {
         
         RepositoryResponse response = repositoryService.syncRepository(userPrincipal.getId(), repositoryId);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{repositoryId}/commits")
+    public ResponseEntity<List<CommitResponse>> getCommits(
+            @AuthenticationPrincipal UserPrincipal userPrincipal,
+            @PathVariable UUID repositoryId,
+            @RequestParam(defaultValue = "5") int limit) {
+
+        List<CommitResponse> commits = repositoryService.getCommits(userPrincipal.getId(), repositoryId, Math.min(limit, 10));
+        return ResponseEntity.ok(commits);
     }
 }

@@ -73,4 +73,12 @@ public class GitHubClient {
                 
         return (commits != null && !commits.isEmpty()) ? commits.get(0) : null;
     }
+
+    public List<GitHubCommitDto> getCommits(String owner, String repo, String branch, int perPage) {
+        List<GitHubCommitDto> commits = restClient.get()
+                .uri("/repos/{owner}/{repo}/commits?sha={branch}&per_page={perPage}", owner, repo, branch, perPage)
+                .retrieve()
+                .body(new ParameterizedTypeReference<List<GitHubCommitDto>>() {});
+        return commits != null ? commits : List.of();
+    }
 }

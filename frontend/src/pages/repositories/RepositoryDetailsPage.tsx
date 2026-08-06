@@ -4,6 +4,7 @@ import { useRepository } from '@/features/repositories/hooks/useRepository';
 import { useDeleteRepository } from '@/features/repositories/hooks/useDeleteRepository';
 import { useSyncRepository } from '@/features/repositories/hooks/useSyncRepository';
 import { useRepositoryAnalyses } from '@/features/repositories/hooks/useRepositoryAnalyses';
+import { useRepositoryCommits } from '@/features/repositories/hooks/useRepositoryCommits';
 import { api } from '@/lib/api';
 import type { RepositoryDetails } from '@/features/repositories/types';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -34,6 +35,7 @@ export function RepositoryDetailsPage() {
   const { mutateAsync: deleteRepo, isPending: isDeleting } = useDeleteRepository();
   const { mutateAsync: syncRepo, isPending: isRefreshing } = useSyncRepository();
   const { data: analyses } = useRepositoryAnalyses(id!);
+  const { data: commits, isLoading: isLoadingCommits } = useRepositoryCommits(id!);
   
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -213,20 +215,51 @@ export function RepositoryDetailsPage() {
               )}
             </CardHeader>
             <CardContent>
-              <div className="flex flex-col items-center justify-center py-6 gap-3 text-center">
-                <GitCommit className="h-8 w-8 text-muted-foreground/50" />
-                <p className="text-sm text-muted-foreground">Commit history will be available in an upcoming update.</p>
-                {repository.url && (
-                  <a
-                    href={`${repository.url}/commits`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs px-3 py-1.5 rounded-full border border-border hover:bg-muted transition-colors"
-                  >
-                    View commits on GitHub
-                  </a>
-                )}
-              </div>
+              {isLoadingCommits ? (
+                <div className="space-y-3">
+                  {[1, 2, 3].map(i => (
+                    <div key={i} className="flex items-start gap-3 animate-pulse">
+                      <div className="mt-1 w-7 h-7 rounded-md bg-muted" />
+                      <div className="flex-1 space-y-1.5">
+                        <div className="h-3.5 bg-muted rounded w-3/4" />
+                        <div className="h-3 bg-muted rounded w-1/2" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : commits && commits.length > 0 ? (
+                <div className="space-y-4">
+                  {commits.map((commit) => (
+                    <div key={commit.sha} className="flex items-start gap-3">
+                      <div className="mt-1 bg-muted p-1.5 rounded-md shrink-0">
+                        <GitCommit className="h-4 w-4 text-muted-foreground" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-medium text-sm truncate">{commit.message}</p>
+                        <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground flex-wrap">
+                          <span className="font-mono bg-muted px-1.5 py-0.5 rounded text-foreground">{commit.sha}</span>
+                          <span>by {commit.author}</span>
+                          {commit.date && (
+                            <>
+                              <span>•</span>
+                              <span>{new Date(commit.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-6 gap-2 text-center">
+                  <GitCommit className="h-8 w-8 text-muted-foreground/40" />
+                  <p className="text-sm text-muted-foreground">No commits found for this branch.</p>
+                  {repository.url && (
+                    <a href={`${repository.url}/commits`} target="_blank" rel="noopener noreferrer"
+                      className="text-xs text-primary hover:underline">View on GitHub →</a>
+                  )}
+                </div>
+              )}
             </CardContent>
           </Card>
 
