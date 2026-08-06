@@ -277,6 +277,7 @@ export function RepositoryDetailsPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   {(analyses as any[]).slice(0, 5).map((analysis: any) => (
                     <div key={analysis.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/50 border border-border">
                       <div className="flex items-center gap-3">

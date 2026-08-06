@@ -68,11 +68,10 @@ If you do not wish to accept cookies from us, you should instruct your browser t
 `
 
 export function LegalPage({ title }: { title: string }) {
-  let content = ""
-  if (title === "Privacy Policy") content = privacyContent
-  else if (title === "Terms of Service") content = termsContent
-  else if (title === "Cookie Policy") content = cookieContent
-  else content = `# ${title}\n\nContent coming soon.`
+  const content = title === "Privacy Policy" ? privacyContent
+    : title === "Terms of Service" ? termsContent
+    : title === "Cookie Policy" ? cookieContent
+    : `# ${title}\n\nContent coming soon.`;
 
   return (
     <PublicLayout>

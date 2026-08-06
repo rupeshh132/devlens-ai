@@ -10,8 +10,10 @@ export const getLatestRoadmap = async (): Promise<Roadmap | null> => {
   try {
     const { data } = await api.get('/roadmaps/latest');
     return data.data || null;
-  } catch (error: any) {
-    if (error.response?.status === 404 || error.response?.status === 500) {
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const err = error as any;
+    if (err.response?.status === 404 || err.response?.status === 500) {
       return null;
     }
     throw error;
