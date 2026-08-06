@@ -27,7 +27,8 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         return processOAuth2User(oAuth2User);
     }
 
-    private OAuth2User processOAuth2User(OAuth2User oAuth2User) {
+    @org.springframework.transaction.annotation.Transactional
+    public OAuth2User processOAuth2User(OAuth2User oAuth2User) {
         User mappedUser = gitHubUserMapper.mapToUser(oAuth2User);
 
         Optional<User> userOptional = userRepository.findByEmailAndStatusNot(mappedUser.getEmail(), UserStatus.DELETED);
@@ -38,10 +39,10 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
             // Profile sync: Update name if provided
             user.setFirstName(mappedUser.getFirstName());
             user.setLastName(mappedUser.getLastName());
-            user = userRepository.save(user);
+            user = userRepository.saveAndFlush(user);
         } else {
             // Auto user creation
-            user = userRepository.save(mappedUser);
+            user = userRepository.saveAndFlush(mappedUser);
         }
 
         return UserPrincipal.create(user, oAuth2User.getAttributes());

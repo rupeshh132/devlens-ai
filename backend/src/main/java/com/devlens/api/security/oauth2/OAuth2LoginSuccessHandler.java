@@ -32,8 +32,10 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
         // Extract device id from request or generate a generic one for OAuth
         String deviceId = request.getHeader("User-Agent");
-        if (deviceId == null) {
+        if (deviceId == null || deviceId.isBlank()) {
             deviceId = "OAuth2-Device";
+        } else if (deviceId.length() > 250) {
+            deviceId = deviceId.substring(0, 250);
         }
 
         // JWT + Refresh Token after login

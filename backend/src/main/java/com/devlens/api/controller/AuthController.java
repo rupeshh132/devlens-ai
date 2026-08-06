@@ -25,6 +25,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<AuthResponse>> register(@Valid @RequestBody RegisterRequest request,
                                                               @RequestHeader(value = "User-Agent", defaultValue = "unknown") String deviceId) {
+        if (deviceId.length() > 250) deviceId = deviceId.substring(0, 250);
         try {
             AuthResponse response = authenticationService.register(
                     request.getFullName(), 
@@ -43,6 +44,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request,
                                                            @RequestHeader(value = "User-Agent", defaultValue = "unknown") String deviceId) {
+        if (deviceId.length() > 250) deviceId = deviceId.substring(0, 250);
         AuthResponse response = authenticationService.login(request.getEmail(), request.getPassword(), deviceId);
         
         return ResponseEntity.ok()
@@ -53,6 +55,7 @@ public class AuthController {
     @PostMapping("/refresh")
     public ResponseEntity<ApiResponse<AuthResponse>> refresh(HttpServletRequest request,
                                                              @RequestHeader(value = "User-Agent", defaultValue = "unknown") String deviceId) {
+        if (deviceId.length() > 250) deviceId = deviceId.substring(0, 250);
         Cookie cookie = WebUtils.getCookie(request, "refresh_token");
         if (cookie == null || cookie.getValue().isEmpty()) {
             throw new AccessDeniedException("Refresh token is missing");
