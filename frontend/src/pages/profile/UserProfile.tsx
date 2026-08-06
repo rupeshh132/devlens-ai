@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../features/auth/hooks/useAuth';
+import { getRecentActivities } from '../../features/auth/services/activity.api';
+import type { ActivityDto } from '../../features/auth/services/activity.api';
 import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/card';
-import { Trophy, Medal, Star, Activity, History, BookOpen, Mic } from 'lucide-react';
+import { Trophy, Medal, Star, Activity, History, BookOpen, Mic, FileText } from 'lucide-react';
 import { PageHeader } from '../../components/layout/PageHeader';
 
 export const UserProfile: React.FC = () => {
   const { user } = useAuth();
-  
+  const [activities, setActivities] = useState<ActivityDto[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const data = await getRecentActivities();
+        setActivities(data);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchActivities();
+  }, []);
+
   // In a real implementation, we would fetch history and parsed badges from the backend.
   const points = user?.points || 0;
   
@@ -21,12 +37,15 @@ export const UserProfile: React.FC = () => {
     console.error("Failed to parse badges", e);
   }
 
-  // Placeholder history items until we add a full history API
-  const historyItems = [
-    { title: 'Mock Interview Completed', date: '2 hours ago', icon: Mic, type: 'interview' },
-    { title: 'Roadmap Generated', date: 'Yesterday', icon: BookOpen, type: 'roadmap' },
-    { title: 'Skill Gap Analysis', date: '2 days ago', icon: Activity, type: 'analysis' },
-  ];
+  const getActivityIcon = (type: string) => {
+    switch (type) {
+      case 'interview': return Mic;
+      case 'roadmap': return BookOpen;
+      case 'analysis': return Activity;
+      case 'resume': return FileText; // Will import FileText
+      default: return History;
+    }
+  };
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
@@ -104,21 +123,31 @@ export const UserProfile: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-6">
-            {historyItems.map((item, index) => (
-              <div key={index} className="flex items-start gap-4">
-                <div className={`p-2 rounded-full mt-0.5 
-                  ${item.type === 'interview' ? 'bg-blue-500/10 text-blue-500' : ''}
-                  ${item.type === 'roadmap' ? 'bg-green-500/10 text-green-500' : ''}
-                  ${item.type === 'analysis' ? 'bg-purple-500/10 text-purple-500' : ''}
-                `}>
-                  <item.icon className="h-4 w-4" />
-                </div>
-                <div className="flex-1 space-y-1">
-                  <p className="font-medium leading-none">{item.title}</p>
-                  <p className="text-sm text-muted-foreground">{item.date}</p>
-                </div>
-              </div>
-            ))}
+            {isLoading ? (
+              <div className="flex justify-center p-4"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>
+            ) : activities.length === 0 ? (
+              <p className="text-muted-foreground text-center py-4">No recent activity found.</p>
+            ) : (
+              activities.map((item, index) => {
+                const Icon = getActivityIcon(item.type);
+                return (
+                  <div key={item.id || index} className="flex items-start gap-4">
+                    <div className={`p-2 rounded-full mt-0.5 
+                      ${item.type === 'interview' ? 'bg-blue-500/10 text-blue-500' : ''}
+                      ${item.type === 'roadmap' ? 'bg-green-500/10 text-green-500' : ''}
+                      ${item.type === 'analysis' ? 'bg-purple-500/10 text-purple-500' : ''}
+                      ${item.type === 'resume' ? 'bg-orange-500/10 text-orange-500' : ''}
+                    `}>
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <div className="flex-1 space-y-1">
+                      <p className="font-medium leading-none">{item.title}</p>
+                      <p className="text-sm text-muted-foreground">{item.date}</p>
+                    </div>
+                  </div>
+                );
+              })
+            )}
           </div>
         </CardContent>
       </Card>
