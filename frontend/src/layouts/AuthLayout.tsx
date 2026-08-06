@@ -7,8 +7,8 @@ export function AuthLayout({ children }: { children?: ReactNode }) {
     <ErrorBoundary>
       <div className="container relative flex h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex border-r border-border">
-          <img src="/images/auth-bg.jpg" alt="Background" className="absolute inset-0 object-cover w-full h-full opacity-60 mix-blend-overlay" />
-          <div className="absolute inset-0 bg-brand-navy/90 mix-blend-multiply" />
+          <img src="/images/auth-bg.jpg" alt="Background" className="absolute inset-0 object-cover w-full h-full" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1d]/90 via-[#0a0f1d]/40 to-[#0a0f1d]/20" />
           <div className="relative z-20 flex items-center text-lg font-medium">
             <Link to="/" className="flex items-center gap-3">
               <div className="w-5 h-5 bg-brand-coral rounded-sm shadow-[0_0_15px_rgba(255,107,107,0.5)]" />
