@@ -12,7 +12,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Spinner } from '@/components/ui/spinner';
 import { PasswordInput } from '@/components/ui/password-input';
 import { Link, useNavigate } from 'react-router-dom';
-import { Terminal, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import { AuthLayout } from '@/layouts/AuthLayout';
 
 const registerSchema = z.object({
