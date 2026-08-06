@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useRepository } from '@/features/repositories/hooks/useRepository';
 import { useDeleteRepository } from '@/features/repositories/hooks/useDeleteRepository';
 import { useSyncRepository } from '@/features/repositories/hooks/useSyncRepository';
 import { useRepositoryAnalyses } from '@/features/repositories/hooks/useRepositoryAnalyses';
+import { api } from '@/lib/api';
 import type { RepositoryDetails } from '@/features/repositories/types';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -36,7 +36,19 @@ export function RepositoryDetailsPage() {
   const { data: analyses } = useRepositoryAnalyses(id!);
   
   const [isEditOpen, setIsEditOpen] = useState(false);
-  const commits: unknown[] = []; // Not implemented in backend yet
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+
+  const handleAnalyze = async () => {
+    if (!id) return;
+    setIsAnalyzing(true);
+    try {
+      await api.post('/analyses/start', { repositoryId: id });
+    } catch (err) {
+      console.error('Analysis failed to start', err);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
 
   const handleRefresh = async () => {
     if (id) {
@@ -138,9 +150,9 @@ export function RepositoryDetailsPage() {
               View Latest Report
             </Button>
           )}
-          <Button onClick={handleRefresh} disabled={isRefreshing}>
-            <Activity className="h-4 w-4 mr-2" />
-            Analyze Now
+          <Button onClick={handleAnalyze} disabled={isAnalyzing || isRefreshing}>
+            <Activity className={`h-4 w-4 mr-2 ${isAnalyzing ? 'animate-pulse' : ''}`} />
+            {isAnalyzing ? 'Starting...' : 'Analyze Now'}
           </Button>
         </div>
       </div>
@@ -178,38 +190,91 @@ export function RepositoryDetailsPage() {
                   <p className="font-medium">{repository.lastUpdated}</p>
                 </div>
               </div>
+              {repository.description && (
+                <div className="mt-4 pt-4 border-t border-border">
+                  <p className="text-sm text-muted-foreground">{repository.description}</p>
+                </div>
+              )}
             </CardContent>
           </Card>
 
           <Card className="bg-card border-border">
-            <CardHeader>
+            <CardHeader className="flex flex-row items-center justify-between pb-3">
               <CardTitle>Recent Commits</CardTitle>
+              {repository.url && (
+                <a
+                  href={`${repository.url}/commits`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-primary hover:underline flex items-center gap-1"
+                >
+                  View on GitHub →
+                </a>
+              )}
             </CardHeader>
             <CardContent>
-              {commits.length > 0 ? (
-                <div className="space-y-4">
-                  {commits.map((commit: any) => (
-                    <div key={commit.id} className="flex items-start gap-4">
-                      <div className="mt-1 bg-muted p-1.5 rounded-md">
-                        <GitCommit className="h-4 w-4 text-muted-foreground" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-sm">{commit.message}</p>
-                        <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
-                          <span className="font-mono bg-muted px-1.5 rounded text-foreground">{commit.id}</span>
-                          <span>by {commit.author}</span>
-                          <span>•</span>
-                          <span>{commit.date}</span>
+              <div className="flex flex-col items-center justify-center py-6 gap-3 text-center">
+                <GitCommit className="h-8 w-8 text-muted-foreground/50" />
+                <p className="text-sm text-muted-foreground">Commit history will be available in an upcoming update.</p>
+                {repository.url && (
+                  <a
+                    href={`${repository.url}/commits`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1.5 rounded-full border border-border hover:bg-muted transition-colors"
+                  >
+                    View commits on GitHub
+                  </a>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+
+          {analyses && analyses.length > 0 && (
+            <Card className="bg-card border-border">
+              <CardHeader>
+                <CardTitle>Analysis History</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {(analyses as any[]).slice(0, 5).map((analysis: any) => (
+                    <div key={analysis.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/50 border border-border">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-2 h-2 rounded-full ${
+                          analysis.status === 'COMPLETED' ? 'bg-emerald-500' :
+                          analysis.status === 'FAILED' ? 'bg-destructive' : 'bg-yellow-500'
+                        }`} />
+                        <div>
+                          <p className="text-sm font-medium">
+                            {analysis.status === 'COMPLETED' ? 'Analysis Complete' :
+                             analysis.status === 'FAILED' ? 'Analysis Failed' : 'In Progress'}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {analysis.createdAt
+                              ? new Date(analysis.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+                              : 'Unknown date'}
+                          </p>
                         </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        {analysis.score != null && (
+                          <span className={`text-sm font-bold ${
+                            analysis.score >= 90 ? 'text-emerald-500' :
+                            analysis.score >= 70 ? 'text-yellow-500' : 'text-destructive'
+                          }`}>{analysis.score}/100</span>
+                        )}
+                        {analysis.status === 'COMPLETED' && (
+                          <Button size="sm" variant="outline" onClick={() => navigate(`/analysis/${analysis.id}`)}>
+                            View Report
+                          </Button>
+                        )}
                       </div>
                     </div>
                   ))}
                 </div>
-              ) : (
-                <p className="text-sm text-muted-foreground">No recent commits found.</p>
-              )}
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          )}
         </div>
 
         <div className="space-y-6">
@@ -221,8 +286,10 @@ export function RepositoryDetailsPage() {
               <div className="relative flex items-center justify-center h-32 w-32 rounded-full border-8 border-muted">
                 <div className={`absolute inset-0 rounded-full border-8 border-t-transparent border-r-transparent transform -rotate-45 ${repository.status === 'Analyzing' ? 'animate-spin border-muted-foreground' : (repository.score >= 90 ? 'border-emerald-500' : repository.score >= 70 ? 'border-yellow-500' : 'border-destructive')}`} style={{ opacity: 0.2 }} />
                 <div className="text-center">
-                  <span className={`text-6xl font-black tracking-tighter ${getScoreColor(repository.score, repository.status)}`}>
-                    {repository.status === 'Analyzing' ? '-' : repository.score}
+                  <span className={`text-6xl font-black tracking-tighter ${
+                    repository.score === 0 ? 'text-muted-foreground' : getScoreColor(repository.score, repository.status)
+                  }`}>
+                    {repository.status === 'Analyzing' ? '-' : repository.score === 0 && repository.lastAnalysis === 'N/A' ? 'N/A' : repository.score}
                   </span>
                   <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mt-2">out of 100</p>
                 </div>

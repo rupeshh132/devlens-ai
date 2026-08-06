@@ -18,22 +18,44 @@ export interface UpdateRepositoryPayload {
   status?: 'ACTIVE' | 'INACTIVE' | 'DELETED';
 }
 
+const formatDate = (isoString: string | null | undefined): string => {
+  if (!isoString) return 'N/A';
+  try {
+    return new Date(isoString).toLocaleDateString('en-IN', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
+  } catch {
+    return 'N/A';
+  }
+};
+
 const mapBackendToFrontend = (data: unknown): RepositoryDetails => {
+  const raw = data as any;
+  const backendStatus: string = raw.status || 'ACTIVE';
+  const statusMap: Record<string, RepositoryStatus> = {
+    ACTIVE: 'Healthy',
+    INACTIVE: 'Warning',
+    DELETED: 'Critical',
+  };
+
   return {
-    id: (data as any).id,
-    name: (data as any).name,
-    owner: (data as any).owner,
-    visibility: (data as any).visibility === 'PUBLIC' ? 'Public' : 'Private',
-    language: 'Java', // Default or parse from backend if added
-    stars: 0,
-    lastUpdated: (data as any).updatedAt || new Date().toISOString(),
-    lastAnalysis: 'N/A',
-    score: 100,
-    status: ((data as any).status === 'ACTIVE' ? 'Healthy' : (data as any).status === 'INACTIVE' ? 'Warning' : 'Critical') as RepositoryStatus,
-    description: (data as any).url || '',
-    branches: 1,
-    isFavorite: false,
-    ...(data as Record<string, unknown>), // Keep raw data accessible
+    id: raw.id,
+    name: raw.name,
+    owner: raw.owner,
+    visibility: raw.visibility === 'PUBLIC' ? 'Public' : 'Private',
+    language: raw.language || 'Unknown',
+    stars: raw.stars ?? 0,
+    lastUpdated: formatDate(raw.updatedAt),
+    lastAnalysis: formatDate(raw.lastAnalyzedAt),
+    score: raw.lastAnalysisScore ?? 0,
+    status: (statusMap[backendStatus] ?? 'Critical') as RepositoryStatus,
+    description: raw.description || '',
+    branches: raw.branches ?? 1,
+    isFavorite: raw.isFavorite ?? false,
+    url: raw.url,
+    branch: raw.branch,
   };
 };
 
