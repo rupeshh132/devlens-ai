@@ -6,6 +6,7 @@ import { generateSkillGapAnalysis } from '../api/skillgapApi';
 import type { SkillGapAnalysis, GapReport } from '../types';
 import { Loader2, Briefcase, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Input } from '../../../components/ui/input';
+import { getApiErrorMessage } from '../../../utils/apiError';
 
 interface SkillGapDashboardProps {
   initialAnalysis: SkillGapAnalysis | null;
@@ -25,8 +26,7 @@ export const SkillGapDashboard: React.FC<SkillGapDashboardProps> = ({ initialAna
       const data = await generateSkillGapAnalysis({ targetRole });
       onAnalysisGenerated(data);
     } catch (err: unknown) {
-      const error = err as { response?: { data?: { message?: string } }; message?: string };
-      setError(error.response?.data?.message || error.message || 'Failed to generate analysis. Make sure you have uploaded a resume.');
+      setError(getApiErrorMessage(err, 'Failed to generate analysis. Make sure you have uploaded a resume.'));
     } finally {
       setIsGenerating(false);
     }

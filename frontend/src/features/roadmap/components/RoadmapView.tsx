@@ -5,6 +5,7 @@ import { Input } from '../../../components/ui/input';
 import { generateRoadmap } from '../api/roadmapApi';
 import type { Roadmap, RoadmapData, Milestone } from '../types';
 import { Loader2, Map as MapIcon, CheckCircle, Circle, Clock, ExternalLink } from 'lucide-react';
+import { getApiErrorMessage } from '../../../utils/apiError';
 
 interface RoadmapViewProps {
   initialRoadmap: Roadmap | null;
@@ -24,8 +25,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ initialRoadmap, onRoad
       const data = await generateRoadmap({ title });
       onRoadmapGenerated(data);
     } catch (err: unknown) {
-      const error = err as { response?: { data?: { message?: string } }; message?: string };
-      setError(error.response?.data?.message || error.message || 'Failed to generate roadmap. Ensure you have run a skill gap analysis first.');
+      setError(getApiErrorMessage(err, 'Failed to generate roadmap. Ensure you have run a skill gap analysis first.'));
     } finally {
       setIsGenerating(false);
     }

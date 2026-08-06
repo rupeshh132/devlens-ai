@@ -1,5 +1,6 @@
 package com.devlens.api.service;
 
+import com.devlens.api.exception.AiRateLimitException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,72 @@ public class GeminiClientService {
         this.objectMapper = objectMapper;
     }
 
+    // ─── Shared helper: call Gemini and extract text ──────────────────────────
+    private String callGemini(String prompt, String context) {
+        Map<String, Object> requestBody = new HashMap<>();
+        Map<String, Object> contentMap = new HashMap<>();
+        Map<String, Object> partsMap = new HashMap<>();
+
+        partsMap.put("text", prompt);
+        contentMap.put("parts", List.of(partsMap));
+        requestBody.put("contents", List.of(contentMap));
+
+        try {
+            String url = geminiApiUrl + "?key=" + geminiApiKey;
+
+            String responseStr = restClient.post()
+                    .uri(url)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(requestBody)
+                    .retrieve()
+                    .body(String.class);
+
+            JsonNode rootNode = objectMapper.readTree(responseStr);
+
+            // Check for API-level error (e.g. 429 quota returned as 200 with error body)
+            if (rootNode.has("error")) {
+                int code = rootNode.path("error").path("code").asInt(0);
+                String message = rootNode.path("error").path("message").asText("Unknown AI error");
+                if (code == 429) {
+                    log.warn("Gemini API quota exhausted for [{}]: {}", context, message);
+                    throw new AiRateLimitException(message);
+                }
+                throw new RuntimeException("Gemini API error [" + code + "]: " + message);
+            }
+
+            JsonNode textNode = rootNode.path("candidates").get(0)
+                    .path("content").path("parts").get(0).path("text");
+
+            String jsonOutput = textNode.asText().trim();
+
+            // Strip markdown code block wrappers if present
+            if (jsonOutput.startsWith("```json")) {
+                jsonOutput = jsonOutput.substring(7);
+            }
+            if (jsonOutput.startsWith("```")) {
+                jsonOutput = jsonOutput.substring(3);
+            }
+            if (jsonOutput.endsWith("```")) {
+                jsonOutput = jsonOutput.substring(0, jsonOutput.length() - 3);
+            }
+
+            return jsonOutput.trim();
+
+        } catch (AiRateLimitException e) {
+            throw e; // re-throw as-is so GlobalExceptionHandler maps it to 429
+        } catch (Exception e) {
+            // Detect 429 from HTTP-level exception message as a fallback
+            if (e.getMessage() != null && e.getMessage().contains("429")) {
+                log.warn("Gemini API 429 detected via HTTP exception for [{}]", context);
+                throw new AiRateLimitException("AI quota exceeded. Please try again in a few minutes.");
+            }
+            log.error("Error communicating with Gemini API for [{}]", context, e);
+            throw new RuntimeException("Failed to call Gemini AI [" + context + "]: " + e.getMessage(), e);
+        }
+    }
+
+    // ─── Public API methods ───────────────────────────────────────────────────
+
     public String analyzeCode(String codeContent) {
         String prompt = "You are a Senior Security Engineer and Code Reviewer. Analyze the following code and return ONLY a valid JSON response (no markdown, no backticks, no other text) with the following structure:\n" +
                 "{\n" +
@@ -48,45 +115,7 @@ public class GeminiClientService {
                 "}\n\n" +
                 "Code to analyze:\n\n" + codeContent;
 
-        Map<String, Object> requestBody = new HashMap<>();
-        Map<String, Object> contentMap = new HashMap<>();
-        Map<String, Object> partsMap = new HashMap<>();
-        
-        partsMap.put("text", prompt);
-        contentMap.put("parts", List.of(partsMap));
-        requestBody.put("contents", List.of(contentMap));
-
-        try {
-            String url = geminiApiUrl + "?key=" + geminiApiKey;
-            
-            String responseStr = restClient.post()
-                    .uri(url)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(requestBody)
-                    .retrieve()
-                    .body(String.class);
-
-            JsonNode rootNode = objectMapper.readTree(responseStr);
-            JsonNode textNode = rootNode.path("candidates").get(0).path("content").path("parts").get(0).path("text");
-            
-            String jsonOutput = textNode.asText().trim();
-            // Clean up possible markdown wrapper
-            if (jsonOutput.startsWith("```json")) {
-                jsonOutput = jsonOutput.substring(7);
-            }
-            if (jsonOutput.startsWith("```")) {
-                jsonOutput = jsonOutput.substring(3);
-            }
-            if (jsonOutput.endsWith("```")) {
-                jsonOutput = jsonOutput.substring(0, jsonOutput.length() - 3);
-            }
-            
-            return jsonOutput.trim();
-
-        } catch (Exception e) {
-            log.error("Error communicating with Gemini API", e);
-            throw new RuntimeException("Failed to analyze code with AI: " + e.getMessage(), e);
-        }
+        return callGemini(prompt, "Code Analysis");
     }
 
     public String analyzeSkillGap(String resumeText, String targetRole) {
@@ -108,43 +137,7 @@ public class GeminiClientService {
                 "}\n\n" +
                 "Candidate Resume:\n" + resumeText;
 
-        Map<String, Object> requestBody = new HashMap<>();
-        Map<String, Object> contentMap = new HashMap<>();
-        Map<String, Object> partsMap = new HashMap<>();
-        
-        partsMap.put("text", prompt);
-        contentMap.put("parts", List.of(partsMap));
-        requestBody.put("contents", List.of(contentMap));
-
-        try {
-            String url = geminiApiUrl + "?key=" + geminiApiKey;
-            
-            String responseStr = restClient.post()
-                    .uri(url)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(requestBody)
-                    .retrieve()
-                    .body(String.class);
-
-            JsonNode rootNode = objectMapper.readTree(responseStr);
-            JsonNode textNode = rootNode.path("candidates").get(0).path("content").path("parts").get(0).path("text");
-            
-            String jsonOutput = textNode.asText().trim();
-            if (jsonOutput.startsWith("```json")) {
-                jsonOutput = jsonOutput.substring(7);
-            }
-            if (jsonOutput.startsWith("```")) {
-                jsonOutput = jsonOutput.substring(3);
-            }
-            if (jsonOutput.endsWith("```")) {
-                jsonOutput = jsonOutput.substring(0, jsonOutput.length() - 3);
-            }
-            
-            return jsonOutput.trim();
-        } catch (Exception e) {
-            log.error("Error communicating with Gemini API for Skill Gap Analysis", e);
-            throw new RuntimeException("Failed to analyze skill gap with AI: " + e.getMessage(), e);
-        }
+        return callGemini(prompt, "Skill Gap Analysis");
     }
 
     public String generateRoadmap(String title, String gapReportJson) {
@@ -164,43 +157,7 @@ public class GeminiClientService {
                 "  ]\n" +
                 "}\n";
 
-        Map<String, Object> requestBody = new HashMap<>();
-        Map<String, Object> contentMap = new HashMap<>();
-        Map<String, Object> partsMap = new HashMap<>();
-        
-        partsMap.put("text", prompt);
-        contentMap.put("parts", List.of(partsMap));
-        requestBody.put("contents", List.of(contentMap));
-
-        try {
-            String url = geminiApiUrl + "?key=" + geminiApiKey;
-            
-            String responseStr = restClient.post()
-                    .uri(url)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(requestBody)
-                    .retrieve()
-                    .body(String.class);
-
-            JsonNode rootNode = objectMapper.readTree(responseStr);
-            JsonNode textNode = rootNode.path("candidates").get(0).path("content").path("parts").get(0).path("text");
-            
-            String jsonOutput = textNode.asText().trim();
-            if (jsonOutput.startsWith("```json")) {
-                jsonOutput = jsonOutput.substring(7);
-            }
-            if (jsonOutput.startsWith("```")) {
-                jsonOutput = jsonOutput.substring(3);
-            }
-            if (jsonOutput.endsWith("```")) {
-                jsonOutput = jsonOutput.substring(0, jsonOutput.length() - 3);
-            }
-            
-            return jsonOutput.trim();
-        } catch (Exception e) {
-            log.error("Error communicating with Gemini API for Roadmap Generation", e);
-            throw new RuntimeException("Failed to generate roadmap with AI: " + e.getMessage(), e);
-        }
+        return callGemini(prompt, "Roadmap Generation");
     }
 
     public String generateInterviewQuestions(String targetRole, String skillsJson) {
@@ -218,42 +175,6 @@ public class GeminiClientService {
                 "  ]\n" +
                 "}\n";
 
-        Map<String, Object> requestBody = new HashMap<>();
-        Map<String, Object> contentMap = new HashMap<>();
-        Map<String, Object> partsMap = new HashMap<>();
-        
-        partsMap.put("text", prompt);
-        contentMap.put("parts", List.of(partsMap));
-        requestBody.put("contents", List.of(contentMap));
-
-        try {
-            String url = geminiApiUrl + "?key=" + geminiApiKey;
-            
-            String responseStr = restClient.post()
-                    .uri(url)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(requestBody)
-                    .retrieve()
-                    .body(String.class);
-
-            JsonNode rootNode = objectMapper.readTree(responseStr);
-            JsonNode textNode = rootNode.path("candidates").get(0).path("content").path("parts").get(0).path("text");
-            
-            String jsonOutput = textNode.asText().trim();
-            if (jsonOutput.startsWith("```json")) {
-                jsonOutput = jsonOutput.substring(7);
-            }
-            if (jsonOutput.startsWith("```")) {
-                jsonOutput = jsonOutput.substring(3);
-            }
-            if (jsonOutput.endsWith("```")) {
-                jsonOutput = jsonOutput.substring(0, jsonOutput.length() - 3);
-            }
-            
-            return jsonOutput.trim();
-        } catch (Exception e) {
-            log.error("Error communicating with Gemini API for Interview Questions Generation", e);
-            throw new RuntimeException("Failed to generate interview questions with AI: " + e.getMessage(), e);
-        }
+        return callGemini(prompt, "Interview Questions");
     }
 }

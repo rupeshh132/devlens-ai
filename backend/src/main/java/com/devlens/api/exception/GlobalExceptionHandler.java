@@ -76,4 +76,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(ApiResponse.error(HttpStatus.CONFLICT.value(), ex.getMessage()));
     }
+
+    @ExceptionHandler(AiRateLimitException.class)
+    public ResponseEntity<ApiResponse<Void>> handleAiRateLimitException(AiRateLimitException ex) {
+        log.warn("AI API rate limit reached: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
+                .body(ApiResponse.error(HttpStatus.TOO_MANY_REQUESTS.value(),
+                        "AI service is temporarily unavailable due to quota limits. Please try again in a few minutes."));
+    }
 }
