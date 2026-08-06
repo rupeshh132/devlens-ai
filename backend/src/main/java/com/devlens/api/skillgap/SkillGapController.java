@@ -38,12 +38,8 @@ public class SkillGapController {
         User user = userRepository.findById(userPrincipal.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
                 
-        try {
-            SkillGapAnalysis analysis = skillGapService.getLatestAnalysis(user);
-            return ResponseEntity.ok(ApiResponse.success(analysis, "Latest skill gap analysis retrieved"));
-        } catch (RuntimeException e) {
-            return ResponseEntity.ok(ApiResponse.success(null, "No analysis found"));
-        }
+        SkillGapAnalysis analysis = skillGapService.getLatestAnalysis(user);
+        return ResponseEntity.ok(ApiResponse.success(analysis, "Latest skill gap analysis retrieved"));
     }
 }
 

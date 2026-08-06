@@ -20,7 +20,7 @@ public class RoadmapService {
     public Roadmap generateRoadmap(User user, String title) {
         // Find latest skill gap analysis to base roadmap upon
         SkillGapAnalysis latestAnalysis = skillGapRepository.findFirstByUserOrderByCreatedAtDesc(user)
-                .orElseThrow(() -> new RuntimeException("No skill gap analysis found. Please run a skill gap analysis first."));
+                .orElseThrow(() -> new IllegalArgumentException("No skill gap analysis found. Please run a skill gap analysis first."));
 
         // Call Gemini
         String roadmapJson = geminiClientService.generateRoadmap(title, latestAnalysis.getGapReport());
@@ -37,6 +37,6 @@ public class RoadmapService {
     
     public Roadmap getLatestRoadmap(User user) {
         return roadmapRepository.findFirstByUserOrderByCreatedAtDesc(user)
-                .orElseThrow(() -> new RuntimeException("No roadmap found."));
+                .orElseThrow(() -> new com.devlens.api.exception.ResourceNotFoundException("No roadmap found."));
     }
 }

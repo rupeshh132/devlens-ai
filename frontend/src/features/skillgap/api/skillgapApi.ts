@@ -7,6 +7,13 @@ export const generateSkillGapAnalysis = async (request: SkillGapRequest): Promis
 };
 
 export const getLatestSkillGapAnalysis = async (): Promise<SkillGapAnalysis | null> => {
-  const { data } = await api.get('/skill-gap/latest');
-  return data.data || null;
+  try {
+    const { data } = await api.get('/skill-gap/latest');
+    return data.data || null;
+  } catch (error: any) {
+    if (error.response?.status === 404 || error.response?.status === 500) {
+      return null;
+    }
+    throw error;
+  }
 };

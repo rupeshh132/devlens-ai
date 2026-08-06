@@ -13,7 +13,14 @@ export const uploadResume = async (file: File): Promise<Resume> => {
   return response.data;
 };
 
-export const getMyLatestResume = async (): Promise<Resume> => {
-  const response = await httpClient.get<Resume>('/resumes/me');
-  return response.data;
+export const getMyLatestResume = async (): Promise<Resume | null> => {
+  try {
+    const response = await httpClient.get<Resume>('/resumes/me');
+    return response.data;
+  } catch (error: any) {
+    if (error.response?.status === 404 || error.response?.status === 500) {
+      return null;
+    }
+    throw error;
+  }
 };

@@ -38,12 +38,8 @@ public class RoadmapController {
         User user = userRepository.findById(userPrincipal.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
                 
-        try {
-            Roadmap roadmap = roadmapService.getLatestRoadmap(user);
-            return ResponseEntity.ok(ApiResponse.success(roadmap, "Latest roadmap retrieved"));
-        } catch (RuntimeException e) {
-            return ResponseEntity.ok(ApiResponse.success(null, "No roadmap found"));
-        }
+        Roadmap roadmap = roadmapService.getLatestRoadmap(user);
+        return ResponseEntity.ok(ApiResponse.success(roadmap, "Latest roadmap retrieved"));
     }
 }
 

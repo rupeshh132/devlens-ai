@@ -7,6 +7,13 @@ export const generateRoadmap = async (request: RoadmapRequest): Promise<Roadmap>
 };
 
 export const getLatestRoadmap = async (): Promise<Roadmap | null> => {
-  const { data } = await api.get('/roadmaps/latest');
-  return data.data || null;
+  try {
+    const { data } = await api.get('/roadmaps/latest');
+    return data.data || null;
+  } catch (error: any) {
+    if (error.response?.status === 404 || error.response?.status === 500) {
+      return null;
+    }
+    throw error;
+  }
 };

@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { AlertTriangle, Info, ShieldAlert, FileText, CheckCircle2, Download } from 'lucide-react';
+import { AlertTriangle, Info, ShieldAlert, FileText, CheckCircle2, Download, Loader2 } from 'lucide-react';
 import { api } from '@/lib/api';
 
 export function AnalysisReportPage() {
@@ -29,6 +29,20 @@ export function AnalysisReportPage() {
       <div className="p-8 text-center text-red-500">
           <p>Failed to load report. It may not exist or you don't have access.</p>
         </div>
+    );
+  }
+
+  if (report.score === null || report.summary === null) {
+    return (
+      <div className="p-4 md:p-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 text-center flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="bg-muted p-8 rounded-full mb-6">
+          <Loader2 className="w-16 h-16 text-brand-navy animate-spin" />
+        </div>
+        <h1 className="text-4xl font-black tracking-tight text-brand-navy mb-4">Analysis in Progress</h1>
+        <p className="text-lg text-muted-foreground max-w-md mx-auto">
+          We are currently analyzing your codebase for vulnerabilities and generating a skill gap report. Please wait...
+        </p>
+      </div>
     );
   }
 

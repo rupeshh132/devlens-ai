@@ -44,8 +44,8 @@ public class AnalysisResultController {
 
         AnalysisReportResponse response = AnalysisReportResponse.builder()
                 .jobId(job.getId())
-                .score(job.getScore() != null ? job.getScore() : 100.0)
-                .summary(job.getSummary() != null ? job.getSummary() : "Analysis pending or no summary generated.")
+                .score(job.getScore())
+                .summary(job.getSummary())
                 .vulnerabilities(vulnerabilities.stream().map(v ->
                         AnalysisReportResponse.VulnerabilityDto.builder()
                                 .id(v.getId())

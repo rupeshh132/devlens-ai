@@ -20,7 +20,7 @@ public class SkillGapService {
     public SkillGapAnalysis analyzeSkillGap(User user, String targetRole) {
         // Find latest resume
         Resume latestResume = resumeRepository.findFirstByUserIdOrderByCreatedAtDesc(user.getId())
-                .orElseThrow(() -> new RuntimeException("No resume found. Please upload a resume first."));
+                .orElseThrow(() -> new IllegalArgumentException("No resume found. Please upload a resume first."));
 
         // Call Gemini
         String gapReportJson = geminiClientService.analyzeSkillGap(latestResume.getParsedText(), targetRole);
@@ -37,6 +37,6 @@ public class SkillGapService {
     
     public SkillGapAnalysis getLatestAnalysis(User user) {
         return skillGapRepository.findFirstByUserOrderByCreatedAtDesc(user)
-                .orElseThrow(() -> new RuntimeException("No skill gap analysis found."));
+                .orElseThrow(() -> new com.devlens.api.exception.ResourceNotFoundException("No skill gap analysis found."));
     }
 }

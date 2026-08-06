@@ -24,7 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import com.devlens.api.entity.AnalysisJob;
+import com.devlens.api.repository.AnalysisJobRepository;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +38,7 @@ public class RepositoryService {
     private final RepositoryMapper repositoryMapper;
     private final GitHubService gitHubService;
     private final GitHubClient gitHubClient;
+    private final AnalysisJobRepository analysisJobRepository;
 
     @Transactional
     public RepositoryResponse addRepository(UUID userId, CreateRepositoryRequest request) {
@@ -54,7 +58,7 @@ public class RepositoryService {
         repository.setStatus(RepositoryStatus.ACTIVE);
 
         repository = repositoryRepository.save(repository);
-        return repositoryMapper.toResponse(repository);
+        return mapToResponseWithAnalysis(repository);
     }
 
     @Transactional(readOnly = true)
@@ -69,13 +73,13 @@ public class RepositoryService {
                     userId, RepositoryStatus.DELETED, pageable);
         }
 
-        return repositories.map(repositoryMapper::toResponse);
+        return repositories.map(this::mapToResponseWithAnalysis);
     }
 
     @Transactional(readOnly = true)
     public RepositoryResponse getRepository(UUID userId, UUID repositoryId) {
         Repository repository = getRepositoryEntity(userId, repositoryId);
-        return repositoryMapper.toResponse(repository);
+        return mapToResponseWithAnalysis(repository);
     }
 
     @Transactional
@@ -93,7 +97,7 @@ public class RepositoryService {
         }
 
         repository = repositoryRepository.save(repository);
-        return repositoryMapper.toResponse(repository);
+        return mapToResponseWithAnalysis(repository);
     }
 
     @Transactional
@@ -119,7 +123,7 @@ public class RepositoryService {
         repository.setVisibility(metadata.getVisibility());
         
         repository = repositoryRepository.save(repository);
-        return repositoryMapper.toResponse(repository);
+        return mapToResponseWithAnalysis(repository);
     }
 
     @Transactional(readOnly = true)
@@ -146,6 +150,17 @@ public class RepositoryService {
         Repository repository = getRepositoryEntity(userId, repositoryId);
         repository.setFavorite(!repository.isFavorite());
         repository = repositoryRepository.save(repository);
-        return repositoryMapper.toResponse(repository);
+        return mapToResponseWithAnalysis(repository);
+    }
+
+    private RepositoryResponse mapToResponseWithAnalysis(Repository repository) {
+        RepositoryResponse response = repositoryMapper.toResponse(repository);
+        Optional<AnalysisJob> latestJobOpt = analysisJobRepository.findFirstByRepositoryIdOrderByCreatedAtDesc(repository.getId());
+        if (latestJobOpt.isPresent()) {
+            AnalysisJob latestJob = latestJobOpt.get();
+            response.setLastAnalysisScore(latestJob.getScore());
+            response.setLastAnalyzedAt(latestJob.getCompletedAt() != null ? latestJob.getCompletedAt() : latestJob.getCreatedAt());
+        }
+        return response;
     }
 }

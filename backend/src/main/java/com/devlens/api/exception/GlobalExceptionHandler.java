@@ -56,6 +56,13 @@ public class GlobalExceptionHandler {
                 .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiResponse<Void>> handleIllegalArgumentException(IllegalArgumentException ex) {
+        log.warn("Illegal argument: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiResponse<Void>> handleResourceNotFoundException(ResourceNotFoundException ex) {
         log.warn("Resource not found: {}", ex.getMessage());

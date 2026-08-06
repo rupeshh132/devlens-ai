@@ -19,6 +19,8 @@ public class RepositoryResponse {
     private RepositoryProvider provider;
     private RepositoryStatus status;
     private boolean isFavorite;
+    private Double lastAnalysisScore;
+    private Instant lastAnalyzedAt;
     private Instant createdAt;
     private Instant updatedAt;
 }
