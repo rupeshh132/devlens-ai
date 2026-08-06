@@ -6,110 +6,21 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge"
 import { Code2, Zap, Search, BarChart3, CheckCircle2, Terminal } from "lucide-react"
 
+import { PublicLayout } from "@/layouts/PublicLayout"
+
 export function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
-      <MarketingNavbar />
-      <main className="flex-1">
-        <HeroSection />
-        <TrustedStatsSection />
-        <FeaturesGridSection />
-        <HowItWorksSection />
-        <PreviewsSection />
-        <WhyDevLensSection />
-        <PricingSection />
-        <FaqSection />
-        <CtaSection />
-      </main>
-      <MarketingFooter />
-    </div>
-  )
-}
-
-// ---------------------------------------------------------
-// Navigation & Footer
-// ---------------------------------------------------------
-function MarketingNavbar() {
-  return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4">
-        {/* Left Side: Logo */}
-        <div className="flex items-center gap-2">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-3 h-3 bg-brand-coral" />
-            <span className="font-black tracking-tight hidden sm:inline-block text-brand-navy">DevLens AI</span>
-          </Link>
-        </div>
-        {/* Right Side: Links & Buttons */}
-        <div className="flex items-center gap-8">
-          <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
-            <Link to="/features" className="transition-colors hover:text-brand-navy">Features</Link>
-            <a href="#how-it-works" className="transition-colors hover:text-brand-navy">How it Works</a>
-            <a href="#pricing" className="transition-colors hover:text-brand-navy">Pricing</a>
-            <a href="#faq" className="transition-colors hover:text-brand-navy">FAQ</a>
-          </nav>
-          <div className="flex items-center gap-3">
-            <Link to="/login">
-              <Button variant="ghost" size="sm" className="font-bold text-brand-navy">Log in</Button>
-            </Link>
-            <Link to="/register">
-              <Button size="sm" className="bg-brand-coral hover:bg-brand-coral/90 text-white rounded-full font-bold shadow-md shadow-brand-coral/20">Get Started</Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </header>
-  )
-}
-
-function MarketingFooter() {
-  return (
-    <footer className="border-t py-12 md:py-16 lg:py-20 bg-muted/20">
-      <div className="container mx-auto px-4 grid gap-8 lg:grid-cols-4 max-w-screen-2xl">
-        <div className="space-y-4">
-          <Link to="/" className="flex items-center space-x-2">
-            <Code2 className="h-6 w-6 text-primary" />
-            <span className="font-bold">DevLens AI</span>
-          </Link>
-          <p className="text-sm text-muted-foreground max-w-xs">
-            Ship higher quality code faster with AI-powered static analysis and intelligent PR reviews.
-          </p>
-          <div className="flex items-center space-x-4">
-            <Terminal className="h-5 w-5 text-muted-foreground hover:text-foreground cursor-pointer transition-colors" />
-            {/* Other social icons can go here */}
-          </div>
-        </div>
-        <div>
-          <h3 className="font-semibold mb-4 text-sm">Product</h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="#" className="hover:text-foreground transition-colors">Features</a></li>
-            <li><a href="#" className="hover:text-foreground transition-colors">Integrations</a></li>
-            <li><a href="#" className="hover:text-foreground transition-colors">Pricing</a></li>
-            <li><a href="#" className="hover:text-foreground transition-colors">Changelog</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-semibold mb-4 text-sm">Resources</h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="#" className="hover:text-foreground transition-colors">Documentation</a></li>
-            <li><a href="#" className="hover:text-foreground transition-colors">Blog</a></li>
-            <li><a href="#" className="hover:text-foreground transition-colors">Community</a></li>
-            <li><a href="#" className="hover:text-foreground transition-colors">Help Center</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-semibold mb-4 text-sm">Legal</h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-foreground transition-colors">Terms of Service</a></li>
-            <li><a href="#" className="hover:text-foreground transition-colors">Cookie Policy</a></li>
-          </ul>
-        </div>
-      </div>
-      <div className="container mx-auto px-4 mt-12 pt-8 border-t text-center text-sm text-muted-foreground max-w-screen-2xl">
-        © {new Date().getFullYear()} DevLens AI, Inc. All rights reserved.
-      </div>
-    </footer>
+    <PublicLayout>
+      <HeroSection />
+      <TrustedStatsSection />
+      <FeaturesGridSection />
+      <HowItWorksSection />
+      <PreviewsSection />
+      <WhyDevLensSection />
+      <PricingSection />
+      <FaqSection />
+      <CtaSection />
+    </PublicLayout>
   )
 }
 
