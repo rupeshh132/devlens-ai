@@ -16,11 +16,14 @@ export function AuthLayout({ children }: { children?: ReactNode }) {
             </Link>
           </div>
           <div className="relative z-20 mt-auto">
-            <blockquote className="space-y-3">
-              <p className="text-xl font-medium leading-relaxed drop-shadow-md text-gray-100">
+            <blockquote className="space-y-4 p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl transition-all duration-300 hover:bg-white/15">
+              <p className="text-xl font-medium leading-relaxed drop-shadow-md text-gray-50">
                 &ldquo;Empowering developers with AI-driven insights. Understand your code, discover skill gaps, and accelerate your career faster than ever before.&rdquo;
               </p>
-              <footer className="text-base text-gray-300 font-semibold tracking-wide">The DevLens AI Team</footer>
+              <footer className="text-base text-gray-200 font-semibold tracking-wide flex items-center gap-2">
+                <div className="w-6 h-[2px] bg-brand-coral rounded-full" />
+                The DevLens AI Team
+              </footer>
             </blockquote>
           </div>
         </div>
