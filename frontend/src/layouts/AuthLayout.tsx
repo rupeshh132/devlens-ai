@@ -7,32 +7,20 @@ export function AuthLayout({ children }: { children?: ReactNode }) {
     <ErrorBoundary>
       <div className="container relative flex h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex border-r border-border">
-          <div className="absolute inset-0 bg-[#121212]" />
+          <img src="/images/auth-bg.jpg" alt="Background" className="absolute inset-0 object-cover w-full h-full opacity-60 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-brand-navy/90 mix-blend-multiply" />
           <div className="relative z-20 flex items-center text-lg font-medium">
-            <Link to="/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="mr-2 h-6 w-6"
-              >
-                <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-              </svg>
-              DevLens AI
+            <Link to="/" className="flex items-center gap-3">
+              <div className="w-5 h-5 bg-brand-coral rounded-sm shadow-[0_0_15px_rgba(255,107,107,0.5)]" />
+              <span className="font-black text-2xl text-white tracking-tight drop-shadow-md">DevLens AI</span>
             </Link>
           </div>
           <div className="relative z-20 mt-auto">
-            <blockquote className="space-y-2">
-              <p className="text-lg">
-                &ldquo;This library has saved me countless hours of work and
-                helped me deliver stunning designs to my clients faster than
-                ever before.&rdquo;
+            <blockquote className="space-y-3">
+              <p className="text-xl font-medium leading-relaxed drop-shadow-md text-gray-100">
+                &ldquo;Empowering developers with AI-driven insights. Understand your code, discover skill gaps, and accelerate your career faster than ever before.&rdquo;
               </p>
-              <footer className="text-sm">Sofia Davis</footer>
+              <footer className="text-base text-gray-300 font-semibold tracking-wide">The DevLens AI Team</footer>
             </blockquote>
           </div>
         </div>
