@@ -90,4 +90,13 @@ public class RepositoryController {
         List<CommitResponse> commits = repositoryService.getCommits(userPrincipal.getId(), repositoryId, Math.min(limit, 10));
         return ResponseEntity.ok(commits);
     }
+
+    @PatchMapping("/{repositoryId}/favorite")
+    public ResponseEntity<RepositoryResponse> toggleFavorite(
+            @AuthenticationPrincipal UserPrincipal userPrincipal,
+            @PathVariable UUID repositoryId) {
+
+        RepositoryResponse response = repositoryService.toggleFavorite(userPrincipal.getId(), repositoryId);
+        return ResponseEntity.ok(response);
+    }
 }

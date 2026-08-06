@@ -58,4 +58,7 @@ public class Repository {
     @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
+
+    @Column(name = "is_favorite", nullable = false)
+    private boolean isFavorite = false;
 }

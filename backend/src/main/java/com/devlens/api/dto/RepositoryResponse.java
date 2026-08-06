@@ -18,6 +18,7 @@ public class RepositoryResponse {
     private RepositoryVisibility visibility;
     private RepositoryProvider provider;
     private RepositoryStatus status;
+    private boolean isFavorite;
     private Instant createdAt;
     private Instant updatedAt;
 }

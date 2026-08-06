@@ -5,6 +5,7 @@ import { useDeleteRepository } from '@/features/repositories/hooks/useDeleteRepo
 import { useSyncRepository } from '@/features/repositories/hooks/useSyncRepository';
 import { useRepositoryAnalyses } from '@/features/repositories/hooks/useRepositoryAnalyses';
 import { useRepositoryCommits } from '@/features/repositories/hooks/useRepositoryCommits';
+import { useToggleFavorite } from '@/features/repositories/hooks/useToggleFavorite';
 import { api } from '@/lib/api';
 import type { RepositoryDetails } from '@/features/repositories/types';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -36,6 +37,7 @@ export function RepositoryDetailsPage() {
   const { mutateAsync: syncRepo, isPending: isRefreshing } = useSyncRepository();
   const { data: analyses } = useRepositoryAnalyses(id!);
   const { data: commits, isLoading: isLoadingCommits } = useRepositoryCommits(id!);
+  const { mutate: toggleFavorite, isPending: isTogglingFavorite } = useToggleFavorite(id!);
   
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -143,8 +145,13 @@ export function RepositoryDetailsPage() {
             <RefreshCcw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
-          <Button variant="outline" className={repository.isFavorite ? 'text-yellow-500 border-yellow-500/50' : ''}>
-            <Star className={`h-4 w-4 mr-2 ${repository.isFavorite ? 'fill-yellow-500' : ''}`} />
+          <Button
+            variant="outline"
+            onClick={() => toggleFavorite()}
+            disabled={isTogglingFavorite}
+            className={repository.isFavorite ? 'text-yellow-500 border-yellow-500/50' : ''}
+          >
+            <Star className={`h-4 w-4 mr-2 ${repository.isFavorite ? 'fill-yellow-500' : ''} ${isTogglingFavorite ? 'animate-pulse' : ''}`} />
             {repository.isFavorite ? 'Starred' : 'Star'}
           </Button>
           {analyses && analyses.length > 0 && (

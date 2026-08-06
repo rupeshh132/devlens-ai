@@ -140,4 +140,12 @@ public class RepositoryService {
             return new CommitResponse(c.getSha() != null ? c.getSha().substring(0, 7) : "", message, authorName, date);
         }).toList();
     }
+
+    @Transactional
+    public RepositoryResponse toggleFavorite(UUID userId, UUID repositoryId) {
+        Repository repository = getRepositoryEntity(userId, repositoryId);
+        repository.setFavorite(!repository.isFavorite());
+        repository = repositoryRepository.save(repository);
+        return repositoryMapper.toResponse(repository);
+    }
 }
