@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { Code2, Terminal } from "lucide-react"
+import { Terminal } from "lucide-react"
+import { Logo } from "@/components/ui/logo"
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,12 +20,7 @@ function MarketingNavbar() {
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4">
         {/* Left Side: Logo */}
-        <div className="flex items-center gap-2">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-3 h-3 bg-brand-coral" />
-            <span className="font-black tracking-tight hidden sm:inline-block text-brand-navy">DevLens AI</span>
-          </Link>
-        </div>
+        <Logo size="sm" hideTextOnMobile={true} />
         {/* Right Side: Links & Buttons */}
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
@@ -52,10 +48,7 @@ function MarketingFooter() {
     <footer className="border-t py-12 md:py-16 lg:py-20 bg-muted/20">
       <div className="container mx-auto px-4 grid gap-8 lg:grid-cols-4 max-w-screen-2xl">
         <div className="space-y-4">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <Code2 className="h-6 w-6 text-primary group-hover:text-brand-coral transition-colors" />
-            <span className="font-bold text-brand-navy">DevLens AI</span>
-          </Link>
+          <Logo size="md" />
           <p className="text-sm text-muted-foreground max-w-xs">
             Ship higher quality code faster with AI-powered static analysis and intelligent PR reviews.
           </p>

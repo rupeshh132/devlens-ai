@@ -5,6 +5,7 @@ import { ErrorBoundary } from "@/components/layout/ErrorBoundary"
 import { ContentArea } from "@/components/layout/ContentArea"
 import { Home, Settings, FolderGit2, LogOut, User, FileText, BrainCircuit, Map, Mic } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/ui/logo"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,10 +45,7 @@ export function DashboardLayout() {
           <Navbar>
             <div className="flex items-center gap-2 px-4">
               <NavbarBrand>
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 bg-brand-coral rounded-sm" />
-                  <span className="font-black text-xl text-brand-navy">DevLens AI</span>
-                </div>
+                <Logo size="md" hideTextOnMobile={true} />
               </NavbarBrand>
             </div>
             <NavbarActions>

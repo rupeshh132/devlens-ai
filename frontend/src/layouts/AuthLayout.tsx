@@ -1,5 +1,6 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary"
+import { Logo } from "@/components/ui/logo"
 import type { ReactNode } from "react"
 
 export function AuthLayout({ children }: { children?: ReactNode }) {
@@ -10,10 +11,7 @@ export function AuthLayout({ children }: { children?: ReactNode }) {
           <img src="/images/auth-bg.jpg" alt="Background" className="absolute inset-0 object-cover w-full h-full" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1d]/90 via-[#0a0f1d]/40 to-[#0a0f1d]/20" />
           <div className="absolute top-8 left-10 z-20 flex items-center text-lg font-medium">
-            <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
-              <div className="w-5 h-5 bg-brand-coral rounded-sm shadow-[0_0_15px_rgba(255,107,107,0.5)]" />
-              <span className="font-black text-2xl text-white tracking-tight drop-shadow-md">DevLens AI</span>
-            </Link>
+            <Logo size="lg" variant="light" />
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-4 p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl transition-all duration-300 hover:bg-white/15">

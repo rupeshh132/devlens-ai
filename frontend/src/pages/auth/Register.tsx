@@ -113,9 +113,9 @@ export function Register() {
   return (
     <AuthLayout>
       <Card className="w-full max-w-md mx-auto bg-transparent border-none shadow-none">
-        <CardHeader className="space-y-1 pb-4">
-          <CardTitle className="text-2xl font-bold tracking-tight">Create an account</CardTitle>
-          <CardDescription className="text-muted-foreground text-sm">
+        <CardHeader className="space-y-2 pb-4">
+          <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Create an account</CardTitle>
+          <CardDescription className="text-muted-foreground text-base">
             Enter your details below to create your account and get started.
           </CardDescription>
         </CardHeader>

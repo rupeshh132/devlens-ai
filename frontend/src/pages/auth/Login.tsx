@@ -71,8 +71,8 @@ export function Login() {
     <AuthLayout>
       <Card className="w-full max-w-md mx-auto bg-transparent border-none shadow-none">
         <CardHeader className="space-y-2">
-          <CardTitle className="text-2xl font-bold tracking-tight">Welcome back</CardTitle>
-          <CardDescription className="text-muted-foreground">
+          <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Welcome back</CardTitle>
+          <CardDescription className="text-muted-foreground text-base">
             Enter your credentials to sign in to your account.
           </CardDescription>
         </CardHeader>
