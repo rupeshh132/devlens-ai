@@ -56,7 +56,8 @@ springdoc:
     path: /swagger-ui.html
     operationsSorter: method
 
-gemini:
+groq:
   api:
-    url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
-    key: ${GEMINI_API_KEY:mock-api-key}
+    url: "https://api.groq.com/openai/v1/chat/completions"
+    key: ${GROQ_API_KEY}
+    model: "llama-3.3-70b-versatile"
