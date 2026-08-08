@@ -87,14 +87,14 @@ function HeroSection() {
             >
               Our AI-powered platform accelerates your professional growth, analyzing your skills and optimizing your resume for top opportunities.
             </motion.p>
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start gap-4">
-              <Button size="lg" className="h-14 px-8 text-base rounded-full font-bold bg-brand-coral hover:bg-brand-coral/90 text-white shadow-lg shadow-brand-coral/30">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+              <Button size="lg" className="h-14 px-8 text-base rounded-full font-bold bg-brand-coral hover:bg-brand-coral/90 text-white shadow-none transition-all w-full sm:w-auto">
                 Start Building for Free
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="h-14 px-8 text-base rounded-full font-bold border-border"
+                className="h-14 px-8 text-base rounded-full font-bold border-border shadow-none bg-white hover:bg-muted/50 transition-all w-full sm:w-auto"
                 onClick={() => {
                   const backendBase = (import.meta.env.VITE_API_URL || 
                     'http://localhost:8080/api/v1')
@@ -104,7 +104,7 @@ function HeroSection() {
                     `${backendBase}/oauth2/authorization/github`;
                 }}
               >
-                <Terminal className="mr-2 h-4 w-4" />
+                <Terminal className="mr-2 h-5 w-5" />
                 Sign in with GitHub
               </Button>
             </motion.div>
@@ -113,10 +113,68 @@ function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative"
+            className="relative lg:pl-10"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-coral/20 via-purple-500/10 to-transparent blur-3xl rounded-full transform scale-125"></div>
-            <img src="/images/hero_3d_resume.jpg" alt="3D Resume Analytics" className="relative z-10 w-full max-w-[500px] mx-auto h-auto object-cover rounded-[2rem] shadow-2xl mix-blend-multiply" />
+            {/* Clean UI Mockup instead of 3D Neon Image */}
+            <div className="relative z-10 w-full max-w-[500px] mx-auto bg-white rounded-[2rem] shadow-xl border border-border/60 overflow-hidden ring-1 ring-black/5">
+              {/* Window Header */}
+              <div className="bg-[#FAFAFA] border-b border-border/60 px-4 py-3 flex items-center gap-2">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                </div>
+                <div className="flex-1 text-center font-mono text-[10px] text-muted-foreground uppercase tracking-widest font-bold">
+                  devlens-ai / profile
+                </div>
+              </div>
+              
+              {/* Profile Card Mockup */}
+              <div className="p-6">
+                <div className="flex items-center gap-4 mb-6 pb-6 border-b border-border/40">
+                  <div className="w-16 h-16 rounded-full bg-brand-coral/10 flex items-center justify-center text-brand-coral font-black text-xl">
+                    SC
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-xl text-brand-navy">Sarah Chen</h3>
+                    <p className="text-sm font-medium text-muted-foreground">Senior Frontend Engineer</p>
+                  </div>
+                  <div className="ml-auto">
+                    <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200 font-bold px-3 py-1 rounded-full">
+                      92% Ready
+                    </Badge>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="font-bold text-brand-navy">React Architecture</span>
+                    <span className="font-mono font-medium text-muted-foreground">95/100</span>
+                  </div>
+                  <div className="h-2 w-full bg-[#FAFAFA] rounded-full overflow-hidden">
+                    <div className="h-full bg-green-500 rounded-full w-[95%]"></div>
+                  </div>
+                  
+                  <div className="flex justify-between items-center text-sm pt-2">
+                    <span className="font-bold text-brand-navy">System Design</span>
+                    <span className="font-mono font-medium text-muted-foreground">78/100</span>
+                  </div>
+                  <div className="h-2 w-full bg-[#FAFAFA] rounded-full overflow-hidden">
+                    <div className="h-full bg-blue-500 rounded-full w-[78%]"></div>
+                  </div>
+                </div>
+
+                <div className="mt-8 bg-[#FAFAFA] p-4 rounded-xl border border-border/40 flex gap-3 items-start">
+                  <Zap className="h-5 w-5 text-brand-coral flex-shrink-0 mt-0.5" />
+                  <p className="text-sm font-medium text-muted-foreground leading-relaxed">
+                    <strong className="text-brand-navy">AI Insight:</strong> You're highly proficient in React. Focus on improving your <span className="text-brand-coral">System Design</span> scores to unlock Staff-level roles.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Soft background glow instead of harsh gradients */}
+            <div className="absolute inset-0 bg-brand-coral/5 blur-3xl rounded-full transform scale-110 -z-10"></div>
           </motion.div>
         </div>
       </div>
