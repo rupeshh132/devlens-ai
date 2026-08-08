@@ -8,6 +8,7 @@ import { Loader2 } from 'lucide-react';
 const NotFound = lazy(() => import('../pages/NotFound').then(module => ({ default: module.NotFound })));
 const LandingPage = lazy(() => import('../pages/LandingPage').then(module => ({ default: module.LandingPage })));
 const FeaturesPage = lazy(() => import('../pages/FeaturesPage').then(module => ({ default: module.FeaturesPage })));
+const HowItWorksPage = lazy(() => import('../pages/public/HowItWorksPage').then(module => ({ default: module.HowItWorksPage })));
 const IntegrationsPage = lazy(() => import('../pages/public/IntegrationsPage').then(module => ({ default: module.IntegrationsPage })));
 const ChangelogPage = lazy(() => import('../pages/public/ChangelogPage').then(module => ({ default: module.ChangelogPage })));
 const DocsPage = lazy(() => import('../pages/public/DocsPage').then(module => ({ default: module.DocsPage })));
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
   {
     path: '/features',
     element: <SuspenseWrapper><FeaturesPage /></SuspenseWrapper>,
+    errorElement: <SuspenseWrapper><NotFound /></SuspenseWrapper>,
+  },
+  {
+    path: '/how-it-works',
+    element: <SuspenseWrapper><HowItWorksPage /></SuspenseWrapper>,
     errorElement: <SuspenseWrapper><NotFound /></SuspenseWrapper>,
   },
   {
