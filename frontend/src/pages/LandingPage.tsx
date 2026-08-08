@@ -225,8 +225,8 @@ function FeaturesGridSection() {
     <section id="features" className="py-24 bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Everything you need to land the job</h2>
-          <p className="text-lg text-muted-foreground">A complete suite of AI tools designed to help you prepare, practice, and succeed in your tech career.</p>
+          <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">Everything you need to land the job</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">A complete suite of AI tools designed to help you prepare, practice, and succeed in your tech career.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, i) => (
@@ -239,13 +239,13 @@ function FeaturesGridSection() {
             >
               <Card className="h-full bg-card border-2 border-border shadow-none hover:border-primary/50 transition-colors">
                 <CardHeader>
-                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <feature.icon className="h-6 w-6 text-primary" />
+                  <div className="h-12 w-12 rounded-full bg-brand-coral/10 flex items-center justify-center mb-4">
+                    <feature.icon className="h-6 w-6 text-brand-coral" />
                   </div>
-                  <CardTitle className="text-2xl font-bold tracking-tight">{feature.title}</CardTitle>
+                  <CardTitle className="text-2xl font-serif text-brand-navy tracking-tight">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -271,8 +271,8 @@ function HowItWorksSection() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           <div className="flex-1 space-y-8">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">A streamlined path to success</h2>
-              <p className="text-lg text-muted-foreground">DevLens AI takes the guesswork out of interview prep. We analyze where you are, tell you where you need to go, and help you practice until you are ready.</p>
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">A streamlined path to success</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">DevLens AI takes the guesswork out of interview prep. We analyze where you are, tell you where you need to go, and help you practice until you are ready.</p>
             </div>
             <div className="space-y-6">
               {steps.map((step, i) => (
@@ -281,8 +281,8 @@ function HowItWorksSection() {
                     {i + 1}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">{step.title}</h4>
-                    <p className="text-muted-foreground">{step.desc}</p>
+                    <h4 className="font-serif text-xl text-brand-navy">{step.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -330,8 +330,8 @@ function PreviewsSection() {
   return (
     <section className="py-24 bg-background overflow-hidden relative">
       <div className="container mx-auto px-4 max-w-screen-xl text-center mb-16 relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Comprehensive Insights</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Get a bird's-eye view of your career readiness, track your interview scores over time, and drill down into specific skill gaps.</p>
+        <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">Comprehensive Insights</h2>
+        <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">Get a bird's-eye view of your career readiness, track your interview scores over time, and drill down into specific skill gaps.</p>
       </div>
       
       <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
@@ -371,7 +371,7 @@ function PreviewsSection() {
             <div className="flex-1 p-5 md:p-8 overflow-y-auto bg-white">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                 <div>
-                  <h3 className="text-2xl font-bold tracking-tight text-brand-navy">Skill Gap Analysis</h3>
+                  <h3 className="text-2xl font-serif text-brand-navy tracking-tight">Skill Gap Analysis</h3>
                   <p className="text-sm font-medium text-muted-foreground mt-1">Target Role: Senior Frontend Engineer</p>
                 </div>
                 <div className="flex items-center gap-2 self-start sm:self-auto">
@@ -477,7 +477,7 @@ function WhyDevLensSection() {
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">Why engineering leaders choose DevLens AI</h2>
+            <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-6">Why engineering leaders choose DevLens AI</h2>
             <p className="text-lg opacity-90 mb-8 leading-relaxed">
               We built DevLens AI because traditional interview prep is too fragmented. Our unified AI platform brings resume analysis, skill mapping, and mock interviews into one seamless experience.
             </p>
@@ -519,16 +519,16 @@ function PricingSection() {
     <section id="pricing" className="py-24 bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Simple, transparent pricing</h2>
-          <p className="text-lg text-muted-foreground">Start for free, upgrade when you need enterprise features.</p>
+          <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">Simple, transparent pricing</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">Start for free, upgrade when you need enterprise features.</p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Free Plan */}
           <Card className="flex flex-col border-2 border-border shadow-none rounded-3xl">
             <CardHeader>
-              <CardTitle className="text-3xl font-black tracking-tight">Community</CardTitle>
-              <CardDescription className="font-medium text-base">Perfect for open source projects and small teams.</CardDescription>
+              <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Community</CardTitle>
+              <CardDescription className="font-medium text-base leading-relaxed">Perfect for open source projects and small teams.</CardDescription>
               <div className="mt-4">
                 <span className="text-6xl font-black tracking-tighter">$0</span>
                 <span className="text-muted-foreground font-medium">/month</span>
@@ -553,8 +553,8 @@ function PricingSection() {
               <Badge className="bg-primary text-primary-foreground uppercase tracking-widest text-[10px] font-bold px-4 py-1">Most Popular</Badge>
             </div>
             <CardHeader>
-              <CardTitle className="text-3xl font-black tracking-tight">Pro</CardTitle>
-              <CardDescription className="font-medium text-base">For professional developers and growing teams.</CardDescription>
+              <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Pro</CardTitle>
+              <CardDescription className="font-medium text-base leading-relaxed">For professional developers and growing teams.</CardDescription>
               <div className="mt-4">
                 <span className="text-6xl font-black tracking-tighter">$29</span>
                 <span className="text-muted-foreground font-medium">/user/mo</span>
@@ -576,8 +576,8 @@ function PricingSection() {
           {/* Enterprise Plan */}
           <Card className="flex flex-col md:col-span-2 lg:col-span-1 border-2 border-border shadow-none rounded-3xl">
             <CardHeader>
-              <CardTitle className="text-3xl font-black tracking-tight">Enterprise</CardTitle>
-              <CardDescription className="font-medium text-base">Custom solutions for large engineering organizations.</CardDescription>
+              <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Enterprise</CardTitle>
+              <CardDescription className="font-medium text-base leading-relaxed">Custom solutions for large engineering organizations.</CardDescription>
               <div className="mt-4">
                 <span className="text-5xl font-black tracking-tighter">Custom</span>
               </div>
@@ -615,7 +615,7 @@ function FaqSection() {
     <section id="faq" className="py-24 bg-muted/30 border-y">
       <div className="container mx-auto px-4 max-w-screen-md">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Frequently Asked Questions</h2>
+          <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">Frequently Asked Questions</h2>
         </div>
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, i) => (
@@ -640,8 +640,8 @@ function CtaSection() {
     <section className="py-24 md:py-32 bg-background text-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5"></div>
       <div className="container mx-auto px-4 relative z-10 max-w-3xl">
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">Ready to land your dream job?</h2>
-        <p className="text-xl text-muted-foreground mb-10 font-medium">Join thousands of developers who are accelerating their careers with DevLens AI.</p>
+        <h2 className="text-5xl md:text-6xl font-serif text-brand-navy tracking-tight mb-6">Ready to land your dream job?</h2>
+        <p className="text-xl text-muted-foreground mb-10 font-normal leading-relaxed">Join thousands of developers who are accelerating their careers with DevLens AI.</p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button size="lg" className="h-14 px-8 text-lg rounded-full font-bold">
             Start Building for Free
