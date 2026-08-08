@@ -17,14 +17,14 @@ export function Dashboard() {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       {/* Welcome Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 min-w-0">
-        <div className="min-w-0 flex-1">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-brand-navy truncate">
+            <h1 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-brand-navy">
               Welcome back, {user?.fullName?.split(' ')[0] || 'Developer'}
             </h1>
           </div>
-          <p className="text-muted-foreground mt-1 break-words whitespace-normal">
+          <p className="text-muted-foreground mt-1">
             Here's what's happening with your projects today.
           </p>
         </div>
@@ -58,15 +58,15 @@ export function Dashboard() {
         />
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 min-w-0">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* Main Content Area */}
-        <div className="lg:col-span-2 space-y-6 min-w-0">
+        <div className="lg:col-span-2 space-y-6">
           <RecentRepositories repositories={summary?.recentRepositories || []} />
           <ActivityFeed activities={summary?.recentAnalyses || []} />
         </div>
 
         {/* Sidebar Actions */}
-        <div className="space-y-6 min-w-0">
+        <div className="space-y-6">
           <QuickActions />
         </div>
       </div>
