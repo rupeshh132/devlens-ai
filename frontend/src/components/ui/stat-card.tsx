@@ -31,7 +31,7 @@ export function StatCard({
         {Icon && <Icon className="w-4 h-4 text-muted-foreground" />}
       </CardHeader>
       <CardContent>
-        <div className="text-4xl font-black tracking-tight">{value}</div>
+        <div className="text-4xl font-bold tracking-tight text-brand-navy">{value}</div>
         {(description || trendValue) && (
           <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
             {trendValue && (

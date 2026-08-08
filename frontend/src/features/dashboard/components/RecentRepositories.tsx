@@ -17,7 +17,7 @@ export function RecentRepositories({ repositories }: RecentRepositoriesProps) {
       case 'Critical':
         return 'destructive';
       case 'Analyzing':
-        return 'outline';
+        return 'info';
       default:
         return 'secondary';
     }
@@ -52,7 +52,9 @@ export function RecentRepositories({ repositories }: RecentRepositoriesProps) {
               {repositories.map((repo: Repository) => (
                 <TableRow key={repo.id}>
                   <TableCell className="font-medium">{repo.name}</TableCell>
-                  <TableCell>{repo.language}</TableCell>
+                  <TableCell className={repo.language === 'Unknown' ? 'text-muted-foreground italic text-xs' : ''}>
+                    {repo.language}
+                  </TableCell>
                   <TableCell className="text-muted-foreground">{repo.lastAnalysis}</TableCell>
                   <TableCell className={`text-right font-semibold ${getScoreColor(repo.score, repo.status)}`}>
                     {repo.status === 'Analyzing' ? '-' : repo.score}

@@ -55,7 +55,7 @@ export function QuickActions() {
               </div>
               <div className="flex flex-col items-start text-left">
                 <span className="font-medium text-sm leading-none mb-1">{action.label}</span>
-                <span className="text-xs text-muted-foreground font-normal">{action.description}</span>
+                <span className={`text-xs font-normal ${action.variant === 'primary' ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>{action.description}</span>
               </div>
             </div>
           </Button>

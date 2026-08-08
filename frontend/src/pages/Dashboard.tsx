@@ -20,8 +20,7 @@ export function Dashboard() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <div className="w-2.5 h-2.5 bg-primary" />
-            <h1 className="text-3xl md:text-4xl font-black tracking-tight text-foreground">
+            <h1 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-brand-navy">
               Welcome back, {user?.fullName?.split(' ')[0] || 'Developer'}
             </h1>
           </div>

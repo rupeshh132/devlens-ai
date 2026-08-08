@@ -40,7 +40,7 @@ export function DashboardLayout() {
     <ErrorBoundary>
       <div className="flex min-h-screen w-full bg-background relative pb-24">
         
-        <div className="flex flex-1 flex-col overflow-hidden">
+        <div className="flex flex-1 flex-col">
           <Navbar>
             <div className="flex items-center gap-2 px-4">
               <NavbarBrand>
@@ -78,7 +78,7 @@ export function DashboardLayout() {
           </Navbar>
           
           <ContentArea scrollable className="p-6 md:p-10 lg:p-16">
-            <div className="max-w-6xl mx-auto w-full">
+            <div className="max-w-6xl mx-auto w-full pb-28">
               <Outlet />
             </div>
           </ContentArea>
@@ -109,7 +109,7 @@ export function DashboardLayout() {
                           <item.icon className="w-6 h-6" />
                         </motion.div>
                         {isActive && (
-                          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brand-coral" />
+                          <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brand-coral" />
                         )}
                       </Link>
                     </TooltipTrigger>

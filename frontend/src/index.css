@@ -7,7 +7,7 @@
     /* ── Core surfaces ── */
     --color-background:     #F7F6F2;
     --color-surface:        #ECEBE7;
-    --color-card:           #ECEBE7;
+    --color-card:           #FFFFFF;
     --color-surface-dark:   #121212;
     --color-surface-raised: #E4E2DC;
 
@@ -70,7 +70,7 @@
   .dark {
     --color-background:     #F7F6F2;
     --color-surface:        #ECEBE7;
-    --color-card:           #ECEBE7;
+    --color-card:           #FFFFFF;
     --color-border:         #E2E0DB;
     --color-primary:        #FF4B38;
     --color-primary-hover:  #E8371E;
