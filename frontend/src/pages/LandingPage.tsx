@@ -51,7 +51,7 @@ function HeroSection() {
   }
 
   return (
-    <section className="relative overflow-hidden pt-24 pb-24 md:pt-32 md:pb-32 lg:pt-40 lg:pb-40 bg-brand-cream">
+    <section className="relative overflow-hidden pt-8 pb-24 md:pt-10 md:pb-32 lg:pt-12 lg:pb-40 bg-brand-cream">
       <div className="container mx-auto relative z-10 px-4 max-w-screen-xl">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
