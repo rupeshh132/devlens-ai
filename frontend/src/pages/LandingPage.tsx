@@ -292,34 +292,92 @@ function PreviewsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="rounded-3xl border-2 border-border bg-card shadow-none overflow-hidden"
+          className="rounded-[2rem] border border-border/60 bg-white shadow-2xl overflow-hidden ring-1 ring-black/5 max-w-5xl mx-auto"
         >
           {/* Mock Dashboard UI */}
-          <div className="flex flex-col h-[500px]">
-            <div className="h-12 border-b flex items-center px-4 gap-4 bg-muted/40">
-              <div className="w-48 h-6 bg-muted rounded-md hidden md:block animate-pulse" />
-              <div className="flex-1" />
-              <div className="w-8 h-8 rounded-full bg-muted animate-pulse" />
-            </div>
-            <div className="flex flex-1 overflow-hidden">
-              <div className="w-64 border-r p-4 hidden lg:flex flex-col gap-2">
-                {[1,2,3,4].map(i => <div key={i} className="h-8 bg-muted rounded-md w-full animate-pulse opacity-50" />)}
+          <div className="flex flex-col md:flex-row h-auto md:h-[600px]">
+            {/* Sidebar (Hidden on very small screens, visible as scrollable row or normal sidebar) */}
+            <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-border/60 p-4 md:p-6 bg-[#FAFAFA]">
+              <div className="hidden md:flex items-center gap-3 mb-8">
+                <div className="w-8 h-8 rounded-full bg-brand-coral/10 flex items-center justify-center">
+                  <Zap className="h-4 w-4 text-brand-coral" />
+                </div>
+                <span className="font-bold text-lg tracking-tight">DevLens AI</span>
               </div>
-              <div className="flex-1 p-6 overflow-y-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                  {[1,2,3].map(i => (
-                    <div key={i} className="h-24 rounded-lg border bg-background p-4 flex flex-col justify-between">
-                      <div className="h-4 w-24 bg-muted rounded animate-pulse" />
-                      <div className="h-8 w-16 bg-primary/20 rounded animate-pulse" />
+              <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 hide-scrollbar">
+                {[
+                  { icon: BarChart3, label: 'Overview', active: true },
+                  { icon: Search, label: 'Skill Gaps' },
+                  { icon: Code2, label: 'Roadmap' },
+                  { icon: Terminal, label: 'Interviews' },
+                ].map((item, i) => (
+                  <div key={i} className={`flex-shrink-0 flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-default ${item.active ? 'bg-white shadow-sm text-brand-navy ring-1 ring-border/50' : 'text-muted-foreground hover:text-foreground hover:bg-white/50'}`}>
+                    <item.icon className={`h-4 w-4 ${item.active ? 'text-brand-coral' : ''}`} />
+                    {item.label}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <div className="flex-1 p-5 md:p-8 overflow-y-auto bg-white">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                <div>
+                  <h3 className="text-2xl font-bold tracking-tight text-brand-navy">Skill Gap Analysis</h3>
+                  <p className="text-sm font-medium text-muted-foreground mt-1">Target Role: Senior Frontend Engineer</p>
+                </div>
+                <div className="flex items-center gap-2 self-start sm:self-auto">
+                  <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200 font-bold px-3 py-1 rounded-full shadow-sm">
+                    85% Match
+                  </Badge>
+                </div>
+              </div>
+
+              {/* Metrics Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                {[
+                  { label: 'Technical Score', value: '92', max: '/100', trend: '+5%', color: 'text-brand-coral' },
+                  { label: 'System Design', value: '78', max: '/100', trend: '+12%', color: 'text-blue-500' },
+                  { label: 'Communication', value: '88', max: '/100', trend: '+2%', color: 'text-purple-500' },
+                ].map((metric, i) => (
+                  <div key={i} className="bg-[#FAFAFA] p-5 rounded-[1.25rem] border border-border/60 flex flex-col justify-between">
+                    <span className="text-sm font-bold text-muted-foreground mb-3">{metric.label}</span>
+                    <div className="flex items-baseline gap-2">
+                      <div className="flex items-baseline">
+                        <span className={`text-4xl font-black tracking-tighter ${metric.color}`}>{metric.value}</span>
+                        <span className="text-base font-bold text-muted-foreground/50">{metric.max}</span>
+                      </div>
+                      <span className="text-xs font-bold text-green-500 bg-green-50 px-2 py-0.5 rounded-full">{metric.trend}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Skill Bars */}
+              <div className="bg-white p-6 rounded-[1.25rem] border border-border/60">
+                <h4 className="font-bold text-lg mb-6 text-brand-navy">Core Competencies</h4>
+                <div className="space-y-6">
+                  {[
+                    { skill: 'React & Next.js Ecosystem', score: 95 },
+                    { skill: 'TypeScript & Type Safety', score: 88 },
+                    { skill: 'Web Performance & CWV', score: 72 },
+                    { skill: 'System Architecture', score: 65 },
+                  ].map((item, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between text-sm mb-2 font-bold">
+                        <span className="text-brand-navy">{item.skill}</span>
+                        <span className="text-muted-foreground">{item.score}%</span>
+                      </div>
+                      <div className="h-3 w-full bg-[#FAFAFA] rounded-full overflow-hidden inset-ring-1 inset-ring-black/5">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${item.score}%` }}
+                          transition={{ duration: 1.2, delay: 0.2 + (i * 0.1), ease: "easeOut" }}
+                          className={`h-full rounded-full ${item.score > 80 ? 'bg-green-500' : item.score > 70 ? 'bg-brand-coral' : 'bg-yellow-500'}`}
+                        />
+                      </div>
                     </div>
                   ))}
-                </div>
-                <div className="h-64 rounded-lg border bg-background p-4 flex items-center justify-center">
-                  {/* Mock Chart Area */}
-                  <div className="text-muted-foreground flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5" />
-                    <span>Interactive Analysis Charts</span>
-                  </div>
                 </div>
               </div>
             </div>
