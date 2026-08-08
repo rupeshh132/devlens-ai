@@ -45,7 +45,7 @@ export function DocsPage() {
   return (
     <PublicLayout>
       <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
-        <div className="prose prose-slate dark:prose-invert prose-brand prose-headings:text-brand-navy prose-a:text-brand-coral hover:prose-a:text-brand-coral/80 max-w-none">
+        <div className="prose prose-lg dark:prose-invert mx-auto prose-headings:font-serif prose-headings:text-brand-navy prose-p:text-brand-navy/80 prose-li:text-brand-navy/80 prose-strong:text-brand-navy prose-a:text-brand-coral hover:prose-a:text-brand-coral/80 prose-th:text-brand-navy prose-td:text-brand-navy/80 prose-code:text-brand-coral max-w-3xl">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {docsContent}
           </ReactMarkdown>
