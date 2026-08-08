@@ -5,11 +5,11 @@ import type { ReactNode } from "react"
 export function AuthLayout({ children }: { children?: ReactNode }) {
   return (
     <ErrorBoundary>
-      <div className="container relative flex min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0 py-8 lg:py-0">
-        <div className="relative hidden h-full min-h-screen flex-col bg-muted p-10 text-white lg:flex border-r border-border">
+      <div className="min-h-screen w-full lg:grid lg:grid-cols-2">
+        <div className="relative hidden bg-muted p-10 text-white lg:flex flex-col justify-center border-r border-border">
           <img src="/images/auth-bg.jpg" alt="Background" className="absolute inset-0 object-cover w-full h-full" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1d]/90 via-[#0a0f1d]/40 to-[#0a0f1d]/20" />
-          <div className="relative z-20 flex items-center text-lg font-medium">
+          <div className="relative z-20 flex items-center text-lg font-medium absolute top-10 left-10">
             <Link to="/" className="flex items-center gap-3">
               <div className="w-5 h-5 bg-brand-coral rounded-sm shadow-[0_0_15px_rgba(255,107,107,0.5)]" />
               <span className="font-black text-2xl text-white tracking-tight drop-shadow-md">DevLens AI</span>
@@ -27,7 +27,7 @@ export function AuthLayout({ children }: { children?: ReactNode }) {
             </blockquote>
           </div>
         </div>
-        <div className="lg:p-8 w-full flex items-center justify-center">
+        <div className="flex items-center justify-center p-6 md:p-12 h-full min-h-screen">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             {children || <Outlet />}
           </div>
