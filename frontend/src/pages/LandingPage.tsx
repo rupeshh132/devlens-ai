@@ -1,5 +1,5 @@
-
-import { motion, type Variants } from "framer-motion"
+import { useEffect, useState, useRef } from "react"
+import { motion, type Variants, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -449,6 +449,38 @@ function PreviewsSection() {
 // ---------------------------------------------------------
 // 7. Why DevLens AI
 // ---------------------------------------------------------
+function AnimatedCounter({ value, prefix = "", suffix = "", duration = 2 }: { value: number, prefix?: string, suffix?: string, duration?: number }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const [displayValue, setDisplayValue] = useState(0)
+
+  useEffect(() => {
+    if (isInView) {
+      let startTimestamp: number;
+      const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
+        
+        // easeOutQuart
+        const easeOut = 1 - Math.pow(1 - progress, 4);
+        
+        setDisplayValue(Math.floor(easeOut * value));
+        
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+  }, [isInView, value, duration]);
+
+  return (
+    <span ref={ref}>
+      {prefix}{displayValue}{suffix}
+    </span>
+  )
+}
+
 function WhyDevLensSection() {
   return (
     <section className="py-24 bg-primary text-primary-foreground">
@@ -470,13 +502,15 @@ function WhyDevLensSection() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { label: 'Interview Confidence', val: '+80%' },
-              { label: 'Resume ATS Score', val: '95+' },
-              { label: 'Prep Time Saved', val: '20hrs' },
-              { label: 'Job Offers', val: '3x' },
+              { label: 'Interview Confidence', prefix: '+', num: 80, suffix: '%' },
+              { label: 'Resume ATS Score', prefix: '', num: 95, suffix: '+' },
+              { label: 'Prep Time Saved', prefix: '', num: 20, suffix: 'hrs' },
+              { label: 'Job Offers', prefix: '', num: 3, suffix: 'x' },
             ].map((stat, i) => (
               <div key={i} className="bg-primary-foreground/10 p-8 rounded-3xl border border-primary-foreground/20">
-                <div className="text-5xl font-black tracking-tighter mb-2">{stat.val}</div>
+                <div className="text-5xl font-black tracking-tighter mb-2">
+                  <AnimatedCounter value={stat.num} prefix={stat.prefix} suffix={stat.suffix} />
+                </div>
                 <div className="text-xs font-bold uppercase tracking-widest opacity-80">{stat.label}</div>
               </div>
             ))}
