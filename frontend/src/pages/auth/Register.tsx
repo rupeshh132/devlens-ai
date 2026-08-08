@@ -108,23 +108,22 @@ export function Register() {
   return (
     <AuthLayout>
       <Card className="w-full max-w-md mx-auto bg-transparent border-none shadow-none">
-        <CardHeader className="space-y-2">
+        <CardHeader className="space-y-1 pb-4">
           <CardTitle className="text-2xl font-bold tracking-tight">Create an account</CardTitle>
-          <CardDescription className="text-muted-foreground">
+          <CardDescription className="text-muted-foreground text-sm">
             Enter your details below to create your account and get started.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
             {error && (
-              <Alert variant="error">
+              <Alert variant="error" className="py-2">
                 <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Error</AlertTitle>
-                <AlertDescription>{error}</AlertDescription>
+                <AlertDescription className="text-xs">{error}</AlertDescription>
               </Alert>
             )}
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="fullName" className={errors.fullName ? "text-destructive" : ""}>
                 Full Name
               </Label>
@@ -134,14 +133,14 @@ export function Register() {
                 autoComplete="name"
                 disabled={isLoading}
                 {...register('fullName')}
-                className={errors.fullName ? "border-destructive focus-visible:ring-destructive" : ""}
+                className={`h-9 ${errors.fullName ? "border-destructive focus-visible:ring-destructive" : ""}`}
               />
               {errors.fullName && (
-                <p className="text-sm font-medium text-destructive">{errors.fullName.message}</p>
+                <p className="text-[11px] font-medium text-destructive">{errors.fullName.message}</p>
               )}
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="email" className={errors.email ? "text-destructive" : ""}>
                 Email
               </Label>
@@ -152,14 +151,14 @@ export function Register() {
                 autoComplete="email"
                 disabled={isLoading}
                 {...register('email')}
-                className={errors.email ? "border-destructive focus-visible:ring-destructive" : ""}
+                className={`h-9 ${errors.email ? "border-destructive focus-visible:ring-destructive" : ""}`}
               />
               {errors.email && (
-                <p className="text-sm font-medium text-destructive">{errors.email.message}</p>
+                <p className="text-[11px] font-medium text-destructive">{errors.email.message}</p>
               )}
             </div>
             
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="password" className={errors.password ? "text-destructive" : ""}>
                 Password
               </Label>
@@ -169,21 +168,21 @@ export function Register() {
                 autoComplete="new-password"
                 disabled={isLoading}
                 {...register('password')}
-                className={errors.password ? "border-destructive focus-visible:ring-destructive" : ""}
+                className={`h-9 ${errors.password ? "border-destructive focus-visible:ring-destructive" : ""}`}
               />
               {/* Password Strength Indicator */}
-              <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
+              <div className="h-1 w-full bg-secondary rounded-full overflow-hidden mt-1">
                 <div 
                   className={`h-full transition-all duration-300 ${getStrengthColor()}`} 
                   style={{ width: `${passwordStrength}%` }}
                 />
               </div>
               {errors.password && (
-                <p className="text-sm font-medium text-destructive">{errors.password.message}</p>
+                <p className="text-[11px] font-medium text-destructive">{errors.password.message}</p>
               )}
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               <Label htmlFor="confirmPassword" className={errors.confirmPassword ? "text-destructive" : ""}>
                 Confirm Password
               </Label>
@@ -193,20 +192,21 @@ export function Register() {
                 autoComplete="new-password"
                 disabled={isLoading}
                 {...register('confirmPassword')}
-                className={errors.confirmPassword ? "border-destructive focus-visible:ring-destructive" : ""}
+                className={`h-9 ${errors.confirmPassword ? "border-destructive focus-visible:ring-destructive" : ""}`}
               />
               {errors.confirmPassword && (
-                <p className="text-sm font-medium text-destructive">{errors.confirmPassword.message}</p>
+                <p className="text-[11px] font-medium text-destructive">{errors.confirmPassword.message}</p>
               )}
             </div>
 
-            <div className="flex items-start space-x-2 pt-2">
+            <div className="flex items-start space-x-2 pt-1">
               <Checkbox 
                 id="acceptTerms" 
                 disabled={isLoading}
                 onCheckedChange={(checked) => setValue('acceptTerms', checked === true, { shouldValidate: true })}
+                className="mt-0.5"
               />
-              <div className="grid gap-1.5 leading-none">
+              <div className="grid gap-1 leading-none">
                 <Label
                   htmlFor="acceptTerms"
                   className={`text-sm font-medium ${errors.acceptTerms ? "text-destructive" : "text-muted-foreground"}`}
@@ -214,21 +214,21 @@ export function Register() {
                   I accept the terms and conditions
                 </Label>
                 {errors.acceptTerms && (
-                  <p className="text-sm text-destructive">{errors.acceptTerms.message}</p>
+                  <p className="text-[11px] text-destructive">{errors.acceptTerms.message}</p>
                 )}
               </div>
             </div>
 
-            <Button type="submit" className="w-full mt-2" disabled={isLoading}>
+            <Button type="submit" className="w-full h-9 mt-1" disabled={isLoading}>
               {isLoading && <Spinner className="mr-2 h-4 w-4" />}
               {isLoading ? 'Creating account...' : 'Create Account'}
             </Button>
             
-            <div className="relative pt-2">
-              <div className="absolute inset-0 flex items-center pt-2">
+            <div className="relative pt-1 pb-1">
+              <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t border-muted-foreground/20" />
               </div>
-              <div className="relative flex justify-center text-xs uppercase pt-2">
+              <div className="relative flex justify-center text-[10px] uppercase">
                 <span className="bg-card px-2 text-muted-foreground">
                   Or continue with
                 </span>
@@ -238,7 +238,7 @@ export function Register() {
             <Button
               type="button"
               variant="outline"
-              className="w-full bg-white hover:bg-gray-50 border-input/50"
+              className="w-full bg-white hover:bg-gray-50 border-input/50 h-9"
               disabled={isLoading}
               onClick={() => {
                 const backendBase = (import.meta.env.VITE_API_URL || 
@@ -249,7 +249,7 @@ export function Register() {
                   `${backendBase}/oauth2/authorization/github`;
               }}
             >
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="mr-2 h-5 w-5" fill="currentColor">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="mr-2 h-4 w-4" fill="currentColor">
                 <title>GitHub</title>
                 <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
               </svg>
@@ -257,7 +257,7 @@ export function Register() {
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="flex justify-center border-t border-muted/50 p-6">
+        <CardFooter className="flex justify-center border-t border-muted/50 p-4">
           <p className="text-sm text-muted-foreground text-center">
             Already have an account?{' '}
             <Link to="/login" className="font-medium text-primary hover:underline">
