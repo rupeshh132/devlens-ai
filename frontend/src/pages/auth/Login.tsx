@@ -51,8 +51,12 @@ export function Login() {
       await login({ email: data.email, password: data.password });
       const from = location.state?.from?.pathname || '/dashboard';
       navigate(from, { replace: true });
-    } catch (err: unknown) {
-      if (err instanceof Error) {
+    } catch (err: any) {
+      if (err.isAxiosError && err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else if (err.response?.status === 401) {
+        setError('Invalid email or password.');
+      } else if (err instanceof Error) {
         setError(err.message);
       } else {
         setError('An unexpected error occurred during login.');

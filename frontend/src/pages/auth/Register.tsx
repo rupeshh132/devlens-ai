@@ -87,8 +87,12 @@ export function Register() {
         password: data.password,
       });
       navigate('/dashboard');
-    } catch (err: unknown) {
-      if (err instanceof Error) {
+    } catch (err: any) {
+      if (err.isAxiosError && err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else if (err.response?.status === 409) {
+        setError('Email already exists.');
+      } else if (err instanceof Error) {
         setError(err.message);
       } else {
         setError('An unexpected error occurred during registration.');
