@@ -83,8 +83,8 @@ export function DashboardLayout() {
         </div>
 
         {/* Mac-Style Bottom Dock */}
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-          <div className="flex items-end gap-3 px-4 py-3 bg-background/80 backdrop-blur-xl border border-border shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] rounded-3xl">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[min(100vw-2rem,fit-content)] px-4 sm:px-0 pointer-events-none">
+          <div className="flex items-end gap-2 sm:gap-3 px-3 sm:px-4 py-3 bg-background/80 backdrop-blur-xl border border-border shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] rounded-3xl overflow-x-auto overflow-y-hidden hide-scrollbar pointer-events-auto">
             <TooltipProvider delayDuration={0}>
               {navItems.map((item) => {
                 const isActive = location.pathname === item.url || location.pathname.startsWith(`${item.url}/`)
@@ -92,16 +92,16 @@ export function DashboardLayout() {
                 return (
                   <Tooltip key={item.title}>
                     <TooltipTrigger asChild>
-                      <Link to={item.url} className="relative block">
+                      <Link to={item.url} className="relative block shrink-0">
                         <motion.div
                           whileHover={{ scale: 1.25, y: -10 }}
                           whileTap={{ scale: 0.95 }}
                           transition={{ type: "spring", stiffness: 400, damping: 25 }}
                           className={cn(
-                            "relative flex items-center justify-center w-14 h-14 rounded-2xl transition-all duration-300",
+                            "flex items-center justify-center rounded-2xl transition-all duration-300",
                             isActive 
-                              ? "bg-brand-coral text-white shadow-lg shadow-brand-coral/40" 
-                              : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground hover:shadow-md hover:shadow-black/5"
+                              ? "bg-brand-navy text-white shadow-lg shadow-brand-navy/20 w-12 h-12 sm:w-14 sm:h-14 -translate-y-2 sm:-translate-y-4" 
+                              : "bg-transparent text-muted-foreground hover:bg-muted w-10 h-10 sm:w-12 sm:h-12 hover:text-foreground"
                           )}
                         >
                           <item.icon className="w-6 h-6" />
