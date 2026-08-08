@@ -13,9 +13,9 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
   const getStatusBadgeVariant = (status: RepositoryDetails['status']) => {
     switch (status) {
       case 'Healthy':
-        return 'default';
+        return 'success';
       case 'Warning':
-        return 'secondary';
+        return 'warning';
       case 'Critical':
         return 'destructive';
       case 'Analyzing':
@@ -26,7 +26,7 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
   };
 
   const getScoreColor = (score: number, status: RepositoryDetails['status']) => {
-    if (status === 'Analyzing') return 'text-muted-foreground';
+    if (status === 'Analyzing' || (status === 'Healthy' && score === 0)) return 'text-muted-foreground';
     if (score >= 90) return 'text-emerald-500';
     if (score >= 70) return 'text-yellow-500';
     return 'text-destructive';
@@ -57,8 +57,8 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
             </p>
             
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground pt-1">
-              <div className="flex items-center gap-1.5 font-medium">
-                <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+              <div className={`flex items-center gap-1.5 font-medium ${repository.language === 'Unknown' ? 'italic text-muted-foreground/70' : ''}`}>
+                <div className={`w-2.5 h-2.5 rounded-full ${repository.language === 'Unknown' ? 'bg-muted-foreground/30' : 'bg-blue-500'}`} />
                 {repository.language}
               </div>
               <div className="flex items-center gap-1.5 font-medium">
@@ -76,11 +76,11 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
               <div className="text-right">
                 <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground mb-1">Health Score</p>
                 <div className={`text-4xl font-black tracking-tighter leading-none ${getScoreColor(repository.score, repository.status)}`}>
-                  {repository.status === 'Analyzing' ? '-' : repository.score}
+                  {(repository.status === 'Analyzing' || (repository.status === 'Healthy' && repository.score === 0)) ? '-' : repository.score}
                 </div>
               </div>
               <Badge variant={getStatusBadgeVariant(repository.status)}>
-                {repository.status}
+                {repository.status === 'Healthy' && repository.score === 0 ? 'Pending' : repository.status}
               </Badge>
             </div>
             

@@ -12,8 +12,7 @@ export function RepositoriesPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <div className="w-2.5 h-2.5 bg-primary" />
-            <h1 className="text-3xl md:text-4xl font-black tracking-tight text-foreground">Repositories</h1>
+            <h1 className="text-3xl md:text-4xl font-serif tracking-tight text-brand-navy">Repositories</h1>
           </div>
           <p className="text-muted-foreground mt-1">
             Manage and analyze your connected codebases.
