@@ -9,6 +9,8 @@ const NotFound = lazy(() => import('../pages/NotFound').then(module => ({ defaul
 const LandingPage = lazy(() => import('../pages/LandingPage').then(module => ({ default: module.LandingPage })));
 const FeaturesPage = lazy(() => import('../pages/FeaturesPage').then(module => ({ default: module.FeaturesPage })));
 const HowItWorksPage = lazy(() => import('../pages/public/HowItWorksPage').then(module => ({ default: module.HowItWorksPage })));
+const PricingPage = lazy(() => import('../pages/public/PricingPage').then(module => ({ default: module.PricingPage })));
+const FAQPage = lazy(() => import('../pages/public/FAQPage').then(module => ({ default: module.FAQPage })));
 const IntegrationsPage = lazy(() => import('../pages/public/IntegrationsPage').then(module => ({ default: module.IntegrationsPage })));
 const ChangelogPage = lazy(() => import('../pages/public/ChangelogPage').then(module => ({ default: module.ChangelogPage })));
 const DocsPage = lazy(() => import('../pages/public/DocsPage').then(module => ({ default: module.DocsPage })));
@@ -54,6 +56,16 @@ const router = createBrowserRouter([
   {
     path: '/how-it-works',
     element: <SuspenseWrapper><HowItWorksPage /></SuspenseWrapper>,
+    errorElement: <SuspenseWrapper><NotFound /></SuspenseWrapper>,
+  },
+  {
+    path: '/pricing',
+    element: <SuspenseWrapper><PricingPage /></SuspenseWrapper>,
+    errorElement: <SuspenseWrapper><NotFound /></SuspenseWrapper>,
+  },
+  {
+    path: '/faq',
+    element: <SuspenseWrapper><FAQPage /></SuspenseWrapper>,
     errorElement: <SuspenseWrapper><NotFound /></SuspenseWrapper>,
   },
   {

@@ -30,8 +30,8 @@ function MarketingNavbar() {
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
             <Link to="/features" className={`transition-colors hover:text-brand-navy ${location.pathname === '/features' ? 'text-brand-navy' : ''}`}>Features</Link>
             <Link to="/how-it-works" className={`transition-colors hover:text-brand-navy ${location.pathname === '/how-it-works' ? 'text-brand-navy' : ''}`}>How It Works</Link>
-            <Link to="/#pricing" className={`transition-colors hover:text-brand-navy ${location.hash === '#pricing' ? 'text-brand-navy' : ''}`}>Pricing</Link>
-            <Link to="/#faq" className={`transition-colors hover:text-brand-navy ${location.hash === '#faq' ? 'text-brand-navy' : ''}`}>FAQ</Link>
+            <Link to="/pricing" className={`transition-colors hover:text-brand-navy ${location.pathname === '/pricing' ? 'text-brand-navy' : ''}`}>Pricing</Link>
+            <Link to="/faq" className={`transition-colors hover:text-brand-navy ${location.pathname === '/faq' ? 'text-brand-navy' : ''}`}>FAQ</Link>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/login">
@@ -66,9 +66,9 @@ function MarketingFooter() {
         <div>
           <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-4">Product</h3>
           <ul className="space-y-4 text-sm text-muted-foreground">
-            <li><a href="/#features" className="inline-block hover:text-brand-coral hover:translate-x-1 transition-all duration-300">Features</a></li>
+            <li><Link to="/features" className="inline-block hover:text-brand-coral hover:translate-x-1 transition-all duration-300">Features</Link></li>
             <li><Link to="/integrations" className="inline-block hover:text-brand-coral hover:translate-x-1 transition-all duration-300">Integrations</Link></li>
-            <li><a href="/#pricing" className="inline-block hover:text-brand-coral hover:translate-x-1 transition-all duration-300">Pricing</a></li>
+            <li><Link to="/pricing" className="inline-block hover:text-brand-coral hover:translate-x-1 transition-all duration-300">Pricing</Link></li>
             <li><Link to="/changelog" className="inline-block hover:text-brand-coral hover:translate-x-1 transition-all duration-300">Changelog</Link></li>
           </ul>
         </div>
