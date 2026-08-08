@@ -44,8 +44,12 @@ const processQueue = (error: any, token: string | null = null) => {
 const forceLogout = () => {
   localStorage.removeItem('devlens_access_token');
   localStorage.removeItem('devlens_user');
-  // Hard redirect to login — clears all in-memory React state too
-  window.location.href = '/login';
+  // Don't redirect if already on a public auth page — prevents infinite loop
+  const path = window.location.pathname;
+  const isPublicPage = path.includes('/login') || path.includes('/register') || path.includes('/oauth');
+  if (!isPublicPage) {
+    window.location.href = '/login';
+  }
 };
 
 // ─── Helper: should we retry for server wakeup? ───────────────────────────────
