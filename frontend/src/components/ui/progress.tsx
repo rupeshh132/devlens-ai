@@ -6,12 +6,13 @@ import { cn } from "@/lib/utils"
 export interface ProgressProps extends React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> {
   label?: string;
   animated?: boolean;
+  indicatorClassName?: string;
 }
 
 const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
   ProgressProps
->(({ className, value, label, animated, ...props }, ref) => (
+>(({ className, value, label, animated, indicatorClassName, ...props }, ref) => (
   <div className="w-full">
     {label && (
       <div className="flex justify-between items-center mb-1.5">
@@ -31,7 +32,8 @@ const Progress = React.forwardRef<
   >
       <ProgressPrimitive.Indicator
         className={cn(
-          "h-full w-full flex-1 bg-primary transition-all",
+          "h-full w-full flex-1 transition-all",
+          indicatorClassName || "bg-primary",
           animated && "transition-all duration-500 ease-in-out"
         )}
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}

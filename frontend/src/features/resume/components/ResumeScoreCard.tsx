@@ -50,7 +50,7 @@ export const ResumeScoreCard: React.FC<ResumeScoreCardProps> = ({ resume }) => {
                   <span className="flex items-center"><CheckCircle className="w-4 h-4 text-green-500 mr-2"/> Skills Match</span>
                   <span className="font-medium">Good</span>
                 </div>
-                <Progress value={85} className="h-2" />
+                <Progress value={85} className="h-2" indicatorClassName="bg-emerald-500" />
               </div>
             </div>
           </div>
