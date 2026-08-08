@@ -87,10 +87,11 @@ export function Register() {
         password: data.password,
       });
       navigate('/dashboard');
-    } catch (err: any) {
-      if (err.isAxiosError && err.response?.data?.message) {
-        setError(err.response.data.message);
-      } else if (err.response?.status === 409) {
+    } catch (err: unknown) {
+      const e = err as { isAxiosError?: boolean; response?: { data?: { message?: string }; status?: number } };
+      if (e.isAxiosError && e.response?.data?.message) {
+        setError(e.response.data.message);
+      } else if (e.response?.status === 409) {
         setError('Email already exists.');
       } else if (err instanceof Error) {
         setError(err.message);
