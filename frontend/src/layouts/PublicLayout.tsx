@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Code2, Terminal } from "lucide-react"
 
@@ -13,6 +13,8 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
 }
 
 function MarketingNavbar() {
+  const location = useLocation();
+  
   return (
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4">
@@ -26,10 +28,10 @@ function MarketingNavbar() {
         {/* Right Side: Links & Buttons */}
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
-            <Link to="/features" className="transition-colors hover:text-brand-navy">Features</Link>
-            <Link to="/how-it-works" className="transition-colors hover:text-brand-navy">How it Works</Link>
-            <a href="/#pricing" className="transition-colors hover:text-brand-navy">Pricing</a>
-            <a href="/#faq" className="transition-colors hover:text-brand-navy">FAQ</a>
+            <Link to="/features" className={`transition-colors hover:text-brand-navy ${location.pathname === '/features' ? 'text-brand-navy' : ''}`}>Features</Link>
+            <Link to="/how-it-works" className={`transition-colors hover:text-brand-navy ${location.pathname === '/how-it-works' ? 'text-brand-navy' : ''}`}>How It Works</Link>
+            <Link to="/#pricing" className={`transition-colors hover:text-brand-navy ${location.hash === '#pricing' ? 'text-brand-navy' : ''}`}>Pricing</Link>
+            <Link to="/#faq" className={`transition-colors hover:text-brand-navy ${location.hash === '#faq' ? 'text-brand-navy' : ''}`}>FAQ</Link>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/login">
