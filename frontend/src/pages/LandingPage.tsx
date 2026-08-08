@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
-import { Code2, Zap, Search, BarChart3, CheckCircle2, Terminal } from "lucide-react"
+import { Code2, Zap, Search, BarChart3, CheckCircle2, Terminal, Lightbulb } from "lucide-react"
 
 import { PublicLayout } from "@/layouts/PublicLayout"
 
@@ -50,51 +50,40 @@ function HeroSection() {
     },
   }
 
-  const headline = "Master Your Career on Autopilot".split(" ")
-
   return (
-    <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32 bg-[#FAFAFA]">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+    <section className="relative overflow-hidden pt-24 pb-24 md:pt-32 md:pb-32 lg:pt-40 lg:pb-40 bg-brand-cream">
       <div className="container mx-auto relative z-10 px-4 max-w-screen-xl">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* Left Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="text-left"
+            className="text-left lg:col-span-6 pr-0 lg:pr-8"
           >
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-brand-navy mb-6 leading-[1.05] flex flex-wrap gap-x-[0.3em] gap-y-2">
-              {headline.map((word, idx) => (
-                <motion.span key={idx} variants={itemVariants} className="inline-block relative">
-                  <motion.span
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 4,
-                      ease: "easeInOut",
-                      delay: idx * 0.2 + 0.8, // start floating after initial fade-in
-                    }}
-                    className="inline-block"
-                  >
-                    {word}
-                  </motion.span>
-                </motion.span>
-              ))}
-            </h1>
+            <motion.h1 
+              variants={itemVariants} 
+              className="text-5xl md:text-7xl font-serif text-brand-navy mb-6 leading-[1.1] tracking-tight"
+            >
+              Master Your Career on Autopilot
+            </motion.h1>
+            
             <motion.p 
               variants={itemVariants}
-              className="text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed font-medium"
+              className="text-lg md:text-xl text-brand-navy/70 max-w-xl mb-10 leading-relaxed font-normal"
             >
               Our AI-powered platform accelerates your professional growth, analyzing your skills and optimizing your resume for top opportunities.
             </motion.p>
+            
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-              <Button size="lg" className="h-14 px-8 text-base rounded-full font-bold bg-brand-coral hover:bg-brand-coral/90 text-white shadow-none transition-all w-full sm:w-auto">
+              <Button size="lg" className="h-12 px-8 text-xs rounded-full font-bold bg-brand-coral hover:bg-brand-coral/90 text-white shadow-none transition-all w-full sm:w-auto uppercase tracking-widest">
                 Start Building for Free
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="h-14 px-8 text-base rounded-full font-bold border-border shadow-none bg-white hover:bg-muted/50 transition-all w-full sm:w-auto"
+                className="h-12 px-8 text-xs rounded-full font-bold border-brand-navy/20 shadow-none bg-transparent hover:bg-black/5 text-brand-navy transition-all w-full sm:w-auto uppercase tracking-widest"
                 onClick={() => {
                   const backendBase = (import.meta.env.VITE_API_URL || 
                     'http://localhost:8080/api/v1')
@@ -104,77 +93,78 @@ function HeroSection() {
                     `${backendBase}/oauth2/authorization/github`;
                 }}
               >
-                <Terminal className="mr-2 h-5 w-5" />
+                <Terminal className="mr-2 h-4 w-4" />
                 Sign in with GitHub
               </Button>
             </motion.div>
           </motion.div>
+
+          {/* Right Content - Lifestyle Image + Floating Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative lg:pl-10"
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="relative lg:col-span-6 mt-8 lg:mt-0 flex justify-center lg:justify-end"
           >
-            {/* Clean UI Mockup instead of 3D Neon Image */}
-            <div className="relative z-10 w-full max-w-[500px] mx-auto bg-white rounded-[2rem] shadow-xl border border-border/60 overflow-hidden ring-1 ring-black/5">
-              {/* Window Header */}
-              <div className="bg-[#FAFAFA] border-b border-border/60 px-4 py-3 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                </div>
-                <div className="flex-1 text-center font-mono text-[10px] text-muted-foreground uppercase tracking-widest font-bold">
-                  devlens-ai / profile
-                </div>
+            <div className="relative w-full max-w-[550px]">
+              {/* Lifestyle Image Background */}
+              <div className="relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80" 
+                  alt="Team collaborating" 
+                  className="w-full h-full object-cover"
+                />
+                {/* Subtle overlay for better text contrast if needed */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
               </div>
-              
-              {/* Profile Card Mockup */}
-              <div className="p-6">
-                <div className="flex items-center gap-4 mb-6 pb-6 border-b border-border/40">
-                  <div className="w-16 h-16 rounded-full bg-brand-coral/10 flex items-center justify-center text-brand-coral font-black text-xl">
-                    SC
-                  </div>
+
+              {/* Floating Profile Card */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                className="absolute -bottom-12 left-4 right-4 sm:left-12 sm:right-12 bg-white rounded-3xl p-6 md:p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-black/[0.04]"
+              >
+                <div className="flex justify-between items-start mb-6">
                   <div>
-                    <h3 className="font-bold text-xl text-brand-navy">Sarah Chen</h3>
-                    <p className="text-sm font-medium text-muted-foreground">Senior Frontend Engineer</p>
+                    <h3 className="font-serif text-3xl text-brand-navy mb-1">Sarah Chen</h3>
+                    <p className="text-sm font-medium text-brand-navy/60">Senior Frontend Engineer</p>
                   </div>
-                  <div className="ml-auto">
-                    <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200 font-bold px-3 py-1 rounded-full">
-                      92% Ready
-                    </Badge>
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="font-bold text-brand-navy">React Architecture</span>
-                    <span className="font-mono font-medium text-muted-foreground">95/100</span>
-                  </div>
-                  <div className="h-2 w-full bg-[#FAFAFA] rounded-full overflow-hidden">
-                    <div className="h-full bg-green-500 rounded-full w-[95%]"></div>
-                  </div>
-                  
-                  <div className="flex justify-between items-center text-sm pt-2">
-                    <span className="font-bold text-brand-navy">System Design</span>
-                    <span className="font-mono font-medium text-muted-foreground">78/100</span>
-                  </div>
-                  <div className="h-2 w-full bg-[#FAFAFA] rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500 rounded-full w-[78%]"></div>
+                  <div className="bg-muted px-3 py-1.5 rounded-full text-xs font-bold text-brand-navy/70 tracking-widest uppercase">
+                    92% Ready
                   </div>
                 </div>
 
-                <div className="mt-8 bg-[#FAFAFA] p-4 rounded-xl border border-border/40 flex gap-3 items-start">
-                  <Zap className="h-5 w-5 text-brand-coral flex-shrink-0 mt-0.5" />
-                  <p className="text-sm font-medium text-muted-foreground leading-relaxed">
+                <div className="space-y-5">
+                  <div>
+                    <div className="flex justify-between text-xs font-bold mb-2">
+                      <span className="text-brand-navy/70 uppercase tracking-wider">React Architecture</span>
+                      <span className="text-brand-navy font-mono">95/100</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-brand-cream rounded-full overflow-hidden">
+                      <div className="h-full bg-brand-coral rounded-full w-[95%]"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between text-xs font-bold mb-2">
+                      <span className="text-brand-navy/70 uppercase tracking-wider">System Design</span>
+                      <span className="text-brand-navy font-mono">78/100</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-brand-cream rounded-full overflow-hidden">
+                      <div className="h-full bg-blue-500/80 rounded-full w-[78%]"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 bg-brand-cream p-4 rounded-2xl flex gap-3 items-start border border-black/[0.03]">
+                  <Lightbulb className="h-5 w-5 text-brand-coral flex-shrink-0 mt-0.5" />
+                  <p className="text-[13px] font-medium text-brand-navy/70 leading-relaxed">
                     <strong className="text-brand-navy">AI Insight:</strong> You're highly proficient in React. Focus on improving your <span className="text-brand-coral">System Design</span> scores to unlock Staff-level roles.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
-            
-            {/* Soft background glow instead of harsh gradients */}
-            <div className="absolute inset-0 bg-brand-coral/5 blur-3xl rounded-full transform scale-110 -z-10"></div>
           </motion.div>
         </div>
       </div>

@@ -17,6 +17,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['"Libre Caslon Text"', 'serif'],
       },
       fontSize: {
         'display': ['64px', { lineHeight: '1.05', 
@@ -92,7 +93,8 @@ module.exports = {
           ring:                 'rgb(var(--sidebar-ring))',
         },
         'brand-navy': '#0B1B3D',
-        'brand-coral': '#FF6B6B',
+        'brand-coral': '#F06E5D', // Updated to Soft Coral as requested
+        'brand-cream': '#FBF9F8', // Added off-white/cream for soft human feel
       },
       borderRadius: {
         lg:   'var(--radius-lg)',
