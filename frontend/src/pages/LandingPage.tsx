@@ -182,6 +182,11 @@ function TrustedStatsSection() {
     { name: 'Soylent', icon: Box },
     { name: 'Initech', icon: Layers },
     { name: 'Massive Dynamic', icon: Shield },
+    { name: 'Cyberdyne', icon: Terminal },
+    { name: 'Tyrell Corp', icon: Search },
+    { name: 'Oscorp', icon: Code2 },
+    { name: 'Stark Ind.', icon: Zap },
+    { name: 'Wayne Ent.', icon: BarChart3 },
   ];
 
   // Duplicate the list so the marquee scrolls seamlessly
