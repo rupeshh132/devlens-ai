@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Terminal } from "lucide-react"
 import { Logo } from "@/components/ui/logo"
@@ -13,9 +13,37 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
   )
 }
 
+// Smooth-scroll to a section id if on the landing page, else navigate to landing + section
+function useSmoothSectionNav() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  return (sectionId: string) => (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (location.pathname === "/") {
+      // Already on landing page — just smooth-scroll to the section
+      const el = document.getElementById(sectionId)
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    } else {
+      // Navigate to landing page and scroll after arrival
+      navigate("/", { replace: false })
+      // Wait for the new page to mount, then scroll
+      setTimeout(() => {
+        const el = document.getElementById(sectionId)
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
+      }, 150)
+    }
+  }
+}
+
 function MarketingNavbar() {
-  const location = useLocation();
-  
+  const location = useLocation()
+  const smoothNav = useSmoothSectionNav()
+
   return (
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4">
@@ -24,8 +52,22 @@ function MarketingNavbar() {
         {/* Right Side: Links & Buttons */}
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
-            <Link to="/features" className={`transition-colors hover:text-brand-navy ${location.pathname === '/features' ? 'text-brand-navy' : ''}`}>Features</Link>
-            <Link to="/how-it-works" className={`transition-colors hover:text-brand-navy ${location.pathname === '/how-it-works' ? 'text-brand-navy' : ''}`}>How It Works</Link>
+            {/* Features — smooth scroll to #features on landing */}
+            <a
+              href="/#features"
+              onClick={smoothNav("features")}
+              className={`transition-colors hover:text-brand-navy cursor-pointer ${location.pathname === '/features' ? 'text-brand-navy' : ''}`}
+            >
+              Features
+            </a>
+            {/* How It Works — smooth scroll to #how-it-works on landing */}
+            <a
+              href="/#how-it-works"
+              onClick={smoothNav("how-it-works")}
+              className={`transition-colors hover:text-brand-navy cursor-pointer ${location.pathname === '/how-it-works' ? 'text-brand-navy' : ''}`}
+            >
+              How It Works
+            </a>
             <Link to="/pricing" className={`transition-colors hover:text-brand-navy ${location.pathname === '/pricing' ? 'text-brand-navy' : ''}`}>Pricing</Link>
             <Link to="/faq" className={`transition-colors hover:text-brand-navy ${location.pathname === '/faq' ? 'text-brand-navy' : ''}`}>FAQ</Link>
           </nav>
