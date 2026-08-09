@@ -3,7 +3,7 @@ package com.devlens.api.interview;
 import com.devlens.api.entity.User;
 import com.devlens.api.skillgap.SkillGapAnalysis;
 import com.devlens.api.skillgap.SkillGapAnalysisRepository;
-import com.devlens.api.service.GeminiClientService;
+import com.devlens.api.service.GroqClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class InterviewService {
 
     private final InterviewSessionRepository interviewSessionRepository;
     private final SkillGapAnalysisRepository skillGapAnalysisRepository;
-    private final GeminiClientService geminiClientService;
+    private final GroqClientService GroqClientService;
 
     @Transactional
     public InterviewSession generateInterviewSession(User user, InterviewSessionRequest request) {
@@ -33,7 +33,7 @@ public class InterviewService {
         }
 
         // Call Gemini to generate questions
-        String questionsJson = geminiClientService.generateInterviewQuestions(request.getTargetRole(), skillsJson);
+        String questionsJson = GroqClientService.generateInterviewQuestions(request.getTargetRole(), skillsJson);
 
         // Save session
         InterviewSession session = InterviewSession.builder()

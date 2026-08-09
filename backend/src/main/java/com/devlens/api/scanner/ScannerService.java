@@ -4,7 +4,7 @@ import com.devlens.api.entity.AnalysisJob;
 import com.devlens.api.entity.Vulnerability;
 import com.devlens.api.repository.AnalysisJobRepository;
 import com.devlens.api.repository.VulnerabilityRepository;
-import com.devlens.api.service.GeminiClientService;
+import com.devlens.api.service.GroqClientService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 public class ScannerService {
 
     private final FileScanner fileScanner;
-    private final GeminiClientService geminiClientService;
+    private final GroqClientService GroqClientService;
     private final ObjectMapper objectMapper;
     private final AnalysisJobRepository jobRepository;
     private final VulnerabilityRepository vulnerabilityRepository;
@@ -73,7 +73,7 @@ public class ScannerService {
                 codeContent = codeContent.substring(0, 50000);
             }
 
-            String aiResultJson = geminiClientService.analyzeCode(codeContent);
+            String aiResultJson = GroqClientService.analyzeCode(codeContent);
             JsonNode root = objectMapper.readTree(aiResultJson);
 
             AnalysisJob job = jobRepository.findById(context.getJobId()).orElseThrow();

@@ -3,7 +3,7 @@ package com.devlens.api.skillgap;
 import com.devlens.api.entity.User;
 import com.devlens.api.resume.Resume;
 import com.devlens.api.resume.ResumeRepository;
-import com.devlens.api.service.GeminiClientService;
+import com.devlens.api.service.GroqClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ public class SkillGapService {
 
     private final SkillGapAnalysisRepository skillGapRepository;
     private final ResumeRepository resumeRepository;
-    private final GeminiClientService geminiClientService;
+    private final GroqClientService GroqClientService;
 
     @Transactional
     public SkillGapAnalysis analyzeSkillGap(User user, String targetRole) {
@@ -23,7 +23,7 @@ public class SkillGapService {
                 .orElseThrow(() -> new IllegalArgumentException("No resume found. Please upload a resume first."));
 
         // Call Gemini
-        String gapReportJson = geminiClientService.analyzeSkillGap(latestResume.getParsedText(), targetRole);
+        String gapReportJson = GroqClientService.analyzeSkillGap(latestResume.getParsedText(), targetRole);
 
         // Save analysis
         SkillGapAnalysis analysis = SkillGapAnalysis.builder()

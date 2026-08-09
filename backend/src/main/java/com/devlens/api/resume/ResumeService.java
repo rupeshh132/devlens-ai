@@ -12,6 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
 
+import com.devlens.api.service.GroqClientService;
+import com.devlens.api.exception.AiRateLimitException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -19,6 +24,8 @@ public class ResumeService {
 
     private final ResumeRepository resumeRepository;
     private final UserRepository userRepository;
+    private final GroqClientService groqClientService;
+    private final ObjectMapper objectMapper;
     
     // Tika is thread-safe and can be reused
     private final Tika tika = new Tika();
@@ -53,14 +60,33 @@ public class ResumeService {
                 parsedText = parsedText.substring(0, 20000);
             }
 
+            double atsScore = 0.0;
+            String suggestionsJson = "[]";
+
+            try {
+                String aiResponse = groqClientService.analyzeResume(parsedText);
+                JsonNode root = objectMapper.readTree(aiResponse);
+                if (root.has("atsScore")) {
+                    atsScore = root.get("atsScore").asDouble();
+                }
+                if (root.has("suggestions")) {
+                    suggestionsJson = objectMapper.writeValueAsString(root.get("suggestions"));
+                }
+            } catch (AiRateLimitException e) {
+                log.error("AI rate limit reached during resume analysis for user: {}", userId);
+                throw e; // Let GlobalExceptionHandler handle it and return 429
+            } catch (Exception e) {
+                log.error("Failed to analyze resume with AI", e);
+                throw new RuntimeException("Failed to analyze resume with AI: " + e.getMessage());
+            }
+
             // Create new resume entry
             Resume resume = Resume.builder()
                     .user(user)
                     .fileName(file.getOriginalFilename())
                     .parsedText(parsedText.trim())
-                    // Mocked AI response for Sprint 1
-                    .atsScore(75.0)
-                    .suggestions("[\"Add more metrics to your experience section\", \"Highlight your Spring Boot expertise\"]")
+                    .atsScore(atsScore)
+                    .suggestions(suggestionsJson)
                     .build();
 
             // Delete old resumes for this user so only the newest one exists
@@ -68,6 +94,8 @@ public class ResumeService {
 
             return resumeRepository.save(resume);
             
+        } catch (AiRateLimitException e) {
+            throw e;
         } catch (Exception e) {
             log.error("Failed to parse resume file", e);
             throw new RuntimeException("Failed to process resume: " + e.getMessage());

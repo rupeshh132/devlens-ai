@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class GeminiClientService {
+public class GroqClientService {
 
     private final RestClient restClient;
     private final String groqApiUrl;
@@ -27,7 +27,7 @@ public class GeminiClientService {
     private final String groqModel;
     private final ObjectMapper objectMapper;
 
-    public GeminiClientService(
+    public GroqClientService(
             @Value("${groq.api.url}") String groqApiUrl,
             @Value("${groq.api.key}") String groqApiKey,
             @Value("${groq.api.model}") String groqModel,
@@ -190,5 +190,16 @@ public class GeminiClientService {
                 "}\n";
 
         return callGroq(prompt, "Interview Questions");
+    }
+    public String analyzeResume(String resumeText) {
+        String prompt = "You are an Expert ATS (Applicant Tracking System) and Technical Recruiter. " +
+                "Analyze the following resume text and return ONLY a valid JSON response (no markdown, no backticks, no other text) with this exact structure:\n" +
+                "{\n" +
+                "  \"atsScore\": (a number between 0.0 and 100.0 representing the overall resume strength),\n" +
+                "  \"suggestions\": [\"Specific suggestion 1\", \"Specific suggestion 2\", \"Specific suggestion 3\"]\n" +
+                "}\n\n" +
+                "Candidate Resume:\n" + resumeText;
+
+        return callGroq(prompt, "Resume Analysis");
     }
 }

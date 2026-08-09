@@ -3,7 +3,7 @@ package com.devlens.api.roadmap;
 import com.devlens.api.entity.User;
 import com.devlens.api.skillgap.SkillGapAnalysis;
 import com.devlens.api.skillgap.SkillGapAnalysisRepository;
-import com.devlens.api.service.GeminiClientService;
+import com.devlens.api.service.GroqClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ public class RoadmapService {
 
     private final RoadmapRepository roadmapRepository;
     private final SkillGapAnalysisRepository skillGapRepository;
-    private final GeminiClientService geminiClientService;
+    private final GroqClientService GroqClientService;
 
     @Transactional
     public Roadmap generateRoadmap(User user, String title) {
@@ -23,7 +23,7 @@ public class RoadmapService {
                 .orElseThrow(() -> new IllegalArgumentException("No skill gap analysis found. Please run a skill gap analysis first."));
 
         // Call Gemini
-        String roadmapJson = geminiClientService.generateRoadmap(title, latestAnalysis.getGapReport());
+        String roadmapJson = GroqClientService.generateRoadmap(title, latestAnalysis.getGapReport());
 
         // Save roadmap
         Roadmap roadmap = Roadmap.builder()

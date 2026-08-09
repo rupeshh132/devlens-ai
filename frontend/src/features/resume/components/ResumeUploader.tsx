@@ -39,8 +39,13 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({ onUploadSuccess 
       onUploadSuccess(resume);
       setFile(null);
     } catch (err: unknown) {
-      const error = err as { response?: { data?: { message?: string, error?: string } }; message?: string };
-      setError(error.response?.data?.message || error.response?.data?.error || error.message || 'Upload failed');
+      const error = err as { response?: { data?: { message?: string, error?: string }; status?: number }; message?: string };
+      
+      if (error.response?.status === 429) {
+        setError("AI Rate Limit reached. Please try again in a few minutes.");
+      } else {
+        setError(error.response?.data?.message || error.response?.data?.error || error.message || 'Upload failed');
+      }
     } finally {
       setIsUploading(false);
     }
