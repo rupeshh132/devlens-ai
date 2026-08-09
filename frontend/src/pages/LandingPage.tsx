@@ -199,7 +199,10 @@ function TrustedStatsSection() {
       </div>
       
       <div className="relative flex overflow-x-hidden group">
-        <div className="flex animate-custom-marquee whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+        <div 
+          className="flex animate-custom-marquee whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500"
+          style={{ '--marquee-duration': `${marqueeItems.length * 3}s` } as React.CSSProperties}
+        >
           {marqueeItems.map((company, idx) => (
             <div key={`${company.name}-${idx}`} className="mx-8 md:mx-16 text-xl font-bold font-mono tracking-tighter text-foreground flex items-center">
               {company.name}
