@@ -1,9 +1,16 @@
 import { Link, useLocation } from "react-router-dom"
+import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Terminal } from "lucide-react"
 import { Logo } from "@/components/ui/logo"
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
       <MarketingNavbar />
@@ -16,19 +23,6 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
 function MarketingNavbar() {
   const location = useLocation();
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
-    // If we are already on the home page, just scroll smoothly
-    if (location.pathname === '/') {
-      e.preventDefault();
-      const element = document.getElementById(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        // Update URL hash without jumping
-        window.history.pushState(null, '', `/#${hash}`);
-      }
-    }
-  };
-  
   return (
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4">
@@ -37,10 +31,10 @@ function MarketingNavbar() {
         {/* Right Side: Links & Buttons */}
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
-            <Link to="/#features" onClick={(e) => handleNavClick(e, 'features')} className={`transition-colors hover:text-brand-navy ${location.hash === '#features' || location.pathname === '/features' ? 'text-brand-navy' : ''}`}>Features</Link>
-            <Link to="/#how-it-works" onClick={(e) => handleNavClick(e, 'how-it-works')} className={`transition-colors hover:text-brand-navy ${location.hash === '#how-it-works' || location.pathname === '/how-it-works' ? 'text-brand-navy' : ''}`}>How It Works</Link>
-            <Link to="/#pricing" onClick={(e) => handleNavClick(e, 'pricing')} className={`transition-colors hover:text-brand-navy ${location.hash === '#pricing' || location.pathname === '/pricing' ? 'text-brand-navy' : ''}`}>Pricing</Link>
-            <Link to="/#faq" onClick={(e) => handleNavClick(e, 'faq')} className={`transition-colors hover:text-brand-navy ${location.hash === '#faq' || location.pathname === '/faq' ? 'text-brand-navy' : ''}`}>FAQ</Link>
+            <Link to="/features" className={`transition-colors hover:text-brand-navy ${location.pathname === '/features' ? 'text-brand-navy' : ''}`}>Features</Link>
+            <Link to="/how-it-works" className={`transition-colors hover:text-brand-navy ${location.pathname === '/how-it-works' ? 'text-brand-navy' : ''}`}>How It Works</Link>
+            <Link to="/pricing" className={`transition-colors hover:text-brand-navy ${location.pathname === '/pricing' ? 'text-brand-navy' : ''}`}>Pricing</Link>
+            <Link to="/faq" className={`transition-colors hover:text-brand-navy ${location.pathname === '/faq' ? 'text-brand-navy' : ''}`}>FAQ</Link>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/login">
