@@ -7,7 +7,15 @@ import {
 } from "@/components/ui/accordion"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
-import { HelpCircle } from "lucide-react"
+import { HelpCircle, Mail, Phone } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 export function FAQPage() {
   const faqs = [
@@ -49,7 +57,42 @@ export function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-xl text-brand-navy/70 leading-relaxed font-normal">
-              Everything you need to know about DevLens AI. Can't find the answer you're looking for? Feel free to <a href="mailto:support@devlens.ai" className="font-bold underline decoration-2 underline-offset-4" style={{ color: '#F06E5D' }}>contact our support team</a>.
+              Everything you need to know about DevLens AI. Can't find the answer you're looking for? Feel free to{' '}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <span className="font-bold underline decoration-2 underline-offset-4 cursor-pointer" style={{ color: '#F06E5D' }}>
+                    contact our support team
+                  </span>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-serif text-brand-navy">Contact Support</DialogTitle>
+                    <DialogDescription className="text-base text-brand-navy/70 mt-2">
+                      Reach out to our team directly for any assistance.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex flex-col gap-4 py-4 mt-2 border-t border-border/50">
+                    <div className="flex items-center gap-4 p-4 rounded-xl bg-brand-cream border border-border/50">
+                      <div className="h-10 w-10 rounded-full bg-brand-coral/10 flex items-center justify-center flex-shrink-0">
+                        <Mail className="h-5 w-5 text-brand-coral" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-brand-navy/60 uppercase tracking-wider">Email Us</span>
+                        <a href="mailto:vrupesh132@gmail.com" className="text-lg font-bold text-brand-navy hover:text-brand-coral transition-colors">vrupesh132@gmail.com</a>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 rounded-xl bg-brand-cream border border-border/50">
+                      <div className="h-10 w-10 rounded-full bg-brand-coral/10 flex items-center justify-center flex-shrink-0">
+                        <Phone className="h-5 w-5 text-brand-coral" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-brand-navy/60 uppercase tracking-wider">Call Us</span>
+                        <a href="tel:8090683207" className="text-lg font-bold text-brand-navy hover:text-brand-coral transition-colors">8090683207</a>
+                      </div>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>.
             </p>
           </div>
 
