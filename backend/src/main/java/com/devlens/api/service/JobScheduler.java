@@ -61,14 +61,19 @@ public class JobScheduler {
                 job.setCompletedAt(Instant.now());
                 job.setProgress(100);
                 
-                // Calculate score based on findings
-                int score = 100;
-                if (result.getFindings() != null) {
-                    score = Math.max(0, 100 - (result.getFindings().size() * 5));
+                // Only calculate fallback score if not already set by AI
+                if (job.getScore() == null) {
+                    int score = 100;
+                    if (result.getFindings() != null) {
+                        score = Math.max(0, 100 - (result.getFindings().size() * 5));
+                    }
+                    job.setScore((double) score);
                 }
-                job.setScore((double) score);
-                job.setSummary("Analysis completed successfully. Found " + 
-                    (result.getFindings() != null ? result.getFindings().size() : 0) + " potential issues in your codebase.");
+                
+                if (job.getSummary() == null || job.getSummary().isBlank()) {
+                    job.setSummary("Analysis completed successfully. Found " + 
+                        (result.getFindings() != null ? result.getFindings().size() : 0) + " potential issues in your codebase.");
+                }
             } else {
                 job.setStatus(AnalysisJobStatus.FAILED);
                 job.setErrorMessage(result.getErrorMessage());

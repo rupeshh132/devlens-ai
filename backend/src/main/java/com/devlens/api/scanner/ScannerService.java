@@ -101,6 +101,7 @@ public class ScannerService {
 
         } catch (Exception e) {
             log.error("AI Analysis failed", e);
+            throw new RuntimeException("AI Analysis failed: " + e.getMessage(), e);
         }
 
         log.info("Finished static code scan for repository {}. Scanned {} files, {} total lines.", 
