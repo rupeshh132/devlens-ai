@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Code2, UploadCloud, BrainCircuit, Mic } from 'lucide-react';
+import { Code2, UploadCloud, Mic } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export function QuickActions() {
