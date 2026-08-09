@@ -202,25 +202,25 @@ const features = [
     title: "AI Resume Analysis",
     description: "Get instant, ATS-friendly feedback on your resume. Identify missing keywords and actionable improvements.",
     icon: Search,
-    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Mock Interviews",
     description: "Practice with our AI interviewer. Get real-time feedback on your answers and perfect your delivery.",
     icon: Zap,
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Skill Gap Dashboard",
     description: "Compare your current skills against industry standards for your target roles to see exactly what you need to learn.",
     icon: BarChart3,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Dynamic Roadmaps",
     description: "Generate a personalized step-by-step learning journey based on your skill gaps, complete with resources.",
     icon: Code2,
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?auto=format&fit=crop&w=800&q=80"
   }
 ]
 
