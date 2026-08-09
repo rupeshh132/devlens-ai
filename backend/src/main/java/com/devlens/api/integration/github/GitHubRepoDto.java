@@ -20,6 +20,9 @@ public class GitHubRepoDto {
     private String language;
     private String description;
 
+    @JsonProperty("stargazers_count")
+    private Integer stargazersCount;
+
     @Data
     public static class GitHubOwner {
         private String login;

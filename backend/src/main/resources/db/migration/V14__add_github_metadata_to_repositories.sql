@@ -1,0 +1,4 @@
+ALTER TABLE repositories 
+ADD COLUMN language VARCHAR(100),
+ADD COLUMN description TEXT,
+ADD COLUMN stars INTEGER DEFAULT 0;

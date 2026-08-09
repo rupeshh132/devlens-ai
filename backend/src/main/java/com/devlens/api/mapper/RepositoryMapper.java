@@ -17,6 +17,9 @@ public interface RepositoryMapper {
     @Mapping(target = "isFavorite", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
+    @Mapping(target = "language", ignore = true)
+    @Mapping(target = "description", ignore = true)
+    @Mapping(target = "stars", ignore = true)
     Repository toEntity(CreateRepositoryRequest request);
 
     RepositoryResponse toResponse(Repository repository);

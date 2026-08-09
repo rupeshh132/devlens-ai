@@ -17,6 +17,10 @@ public class GitHubMapper {
         metadata.setDefaultBranch(repoDto.getDefaultBranch());
         metadata.setVisibility(repoDto.isPrivate() ? RepositoryVisibility.PRIVATE : RepositoryVisibility.PUBLIC);
         
+        metadata.setPrimaryLanguage(repoDto.getLanguage());
+        metadata.setDescription(repoDto.getDescription());
+        metadata.setStars(repoDto.getStargazersCount() != null ? repoDto.getStargazersCount() : 0);
+        
         metadata.setLanguages(languages);
         
         if (lastCommit != null) {

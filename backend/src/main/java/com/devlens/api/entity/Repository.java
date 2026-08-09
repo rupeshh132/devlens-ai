@@ -61,4 +61,13 @@ public class Repository {
 
     @Column(name = "is_favorite", nullable = false)
     private boolean isFavorite = false;
+
+    @Column(length = 100)
+    private String language;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column
+    private Integer stars = 0;
 }

@@ -9,6 +9,7 @@ import com.devlens.api.entity.RepositoryStatus;
 import com.devlens.api.entity.User;
 import com.devlens.api.exception.DuplicateResourceException;
 import com.devlens.api.exception.ResourceNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import com.devlens.api.integration.github.GitHubClient;
 import com.devlens.api.integration.github.GitHubCommitDto;
 import com.devlens.api.integration.github.GitHubMetadata;
@@ -29,6 +30,7 @@ import java.util.UUID;
 import com.devlens.api.entity.AnalysisJob;
 import com.devlens.api.repository.AnalysisJobRepository;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RepositoryService {
@@ -56,6 +58,22 @@ public class RepositoryService {
         Repository repository = repositoryMapper.toEntity(request);
         repository.setUser(user);
         repository.setStatus(RepositoryStatus.ACTIVE);
+        
+        try {
+            GitHubMetadata metadata = gitHubService.syncRepository(repository.getUrl());
+            repository.setName(metadata.getName());
+            if (metadata.getDefaultBranch() != null) {
+                repository.setBranch(metadata.getDefaultBranch());
+            }
+            if (metadata.getVisibility() != null) {
+                repository.setVisibility(metadata.getVisibility());
+            }
+            repository.setLanguage(metadata.getPrimaryLanguage());
+            repository.setDescription(metadata.getDescription());
+            repository.setStars(metadata.getStars());
+        } catch (Exception e) {
+            log.warn("Failed to fetch initial GitHub metadata for {}: {}", request.getUrl(), e.getMessage());
+        }
 
         repository = repositoryRepository.save(repository);
         return mapToResponseWithAnalysis(repository);
@@ -121,6 +139,9 @@ public class RepositoryService {
         repository.setName(metadata.getName());
         repository.setBranch(metadata.getDefaultBranch());
         repository.setVisibility(metadata.getVisibility());
+        repository.setLanguage(metadata.getPrimaryLanguage());
+        repository.setDescription(metadata.getDescription());
+        repository.setStars(metadata.getStars());
         
         repository = repositoryRepository.save(repository);
         return mapToResponseWithAnalysis(repository);

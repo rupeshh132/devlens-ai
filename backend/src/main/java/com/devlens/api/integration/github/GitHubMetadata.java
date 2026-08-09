@@ -12,6 +12,9 @@ public class GitHubMetadata {
     private String url;
     private String defaultBranch;
     private RepositoryVisibility visibility;
+    private String primaryLanguage;
+    private String description;
+    private Integer stars;
     private Map<String, Long> languages;
     private String lastCommitSha;
     private String lastCommitMessage;

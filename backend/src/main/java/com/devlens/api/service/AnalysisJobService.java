@@ -25,11 +25,29 @@ public class AnalysisJobService {
     private final RepositoryRepository repositoryRepository;
     private final JobScheduler jobScheduler;
     private final SseService sseService;
+    private final com.devlens.api.integration.github.GitHubService gitHubService;
 
     @Transactional
     public AnalysisJob queueJob(UUID repositoryId) {
         Repository repository = repositoryRepository.findById(repositoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Repository not found with id: " + repositoryId));
+
+        try {
+            com.devlens.api.integration.github.GitHubMetadata metadata = gitHubService.syncRepository(repository.getUrl());
+            repository.setName(metadata.getName());
+            if (metadata.getDefaultBranch() != null) {
+                repository.setBranch(metadata.getDefaultBranch());
+            }
+            if (metadata.getVisibility() != null) {
+                repository.setVisibility(metadata.getVisibility());
+            }
+            repository.setLanguage(metadata.getPrimaryLanguage());
+            repository.setDescription(metadata.getDescription());
+            repository.setStars(metadata.getStars());
+            repository = repositoryRepository.save(repository);
+        } catch (Exception e) {
+            log.warn("Failed to sync GitHub metadata before analysis for {}: {}", repository.getUrl(), e.getMessage());
+        }
 
         AnalysisJob job = AnalysisJob.builder()
                 .repository(repository)
