@@ -51,4 +51,13 @@ public class InterviewController {
                         null,
                         "No interview sessions found")));
     }
+
+    @PostMapping("/evaluate")
+    public ResponseEntity<ApiResponse<InterviewEvaluationResponse>> evaluateInterview(
+            @AuthenticationPrincipal UserPrincipal userPrincipal,
+            @RequestBody InterviewEvaluationRequest request) {
+            
+        InterviewEvaluationResponse evaluation = interviewService.evaluateInterview(request);
+        return ResponseEntity.ok(ApiResponse.success(evaluation, "Interview evaluated successfully"));
+    }
 }

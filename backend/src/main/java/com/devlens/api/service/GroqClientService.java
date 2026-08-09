@@ -202,4 +202,24 @@ public class GroqClientService {
 
         return callGroq(prompt, "Resume Analysis");
     }
+
+    public String evaluateInterviewAnswers(String questionsAnswersJson) {
+        String prompt = "You are an Expert Technical Interviewer. " +
+                "You have just conducted an interview. I will provide you with a set of 5 questions, the expected answers, and the candidate's actual typed answers.\n" +
+                "Evaluate the candidate's answers based on accuracy, completeness, and understanding of the core concepts.\n\n" +
+                "Return ONLY a valid JSON response (no markdown, no backticks, no other text) with this exact structure:\n" +
+                "{\n" +
+                "  \"overallScore\": (integer between 0 and 100, representing the overall performance),\n" +
+                "  \"feedback\": [\n" +
+                "    {\n" +
+                "      \"question\": \"The exact question text\",\n" +
+                "      \"score\": (integer between 0 and 100 for this specific answer),\n" +
+                "      \"feedback\": \"Brief feedback explaining what they did well and what they missed\"\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}\n\n" +
+                "Interview Data:\n" + questionsAnswersJson;
+
+        return callGroq(prompt, "Interview Evaluation");
+    }
 }

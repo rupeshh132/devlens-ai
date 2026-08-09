@@ -49,4 +49,20 @@ public class InterviewService {
     public Optional<InterviewSession> getLatestSession(User user) {
         return interviewSessionRepository.findFirstByUserOrderByCreatedAtDesc(user);
     }
+
+    public InterviewEvaluationResponse evaluateInterview(InterviewEvaluationRequest request) {
+        log.info("Evaluating interview with {} answers", request.getAnswers().size());
+        
+        try {
+            com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            String jsonInput = mapper.writeValueAsString(request);
+            
+            String responseJson = GroqClientService.evaluateInterviewAnswers(jsonInput);
+            
+            return mapper.readValue(responseJson, InterviewEvaluationResponse.class);
+        } catch (Exception e) {
+            log.error("Failed to evaluate interview answers", e);
+            throw new RuntimeException("Evaluation failed: " + e.getMessage(), e);
+        }
+    }
 }
