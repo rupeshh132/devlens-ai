@@ -202,21 +202,25 @@ const features = [
     title: "AI Resume Analysis",
     description: "Get instant, ATS-friendly feedback on your resume. Identify missing keywords and actionable improvements.",
     icon: Search,
+    image: "/assets/features/resume-analysis.jpg"
   },
   {
     title: "Mock Interviews",
     description: "Practice with our AI interviewer. Get real-time feedback on your answers and perfect your delivery.",
     icon: Zap,
+    image: "/assets/features/mock-interview.jpg"
   },
   {
     title: "Skill Gap Dashboard",
     description: "Compare your current skills against industry standards for your target roles to see exactly what you need to learn.",
     icon: BarChart3,
+    image: "/assets/features/skill-gap.jpg"
   },
   {
     title: "Dynamic Roadmaps",
     description: "Generate a personalized step-by-step learning journey based on your skill gaps, complete with resources.",
     icon: Code2,
+    image: "/assets/features/dynamic-roadmap.jpg"
   }
 ]
 
@@ -236,15 +240,23 @@ function FeaturesGridSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
+              className="flex"
             >
-              <Card className="h-full bg-card border-2 border-border shadow-none hover:border-primary/50 transition-colors">
-                <CardHeader>
+              <Card className="h-full w-full bg-card border-2 border-border shadow-none hover:border-brand-coral/50 transition-colors overflow-hidden group flex flex-col rounded-3xl">
+                <div className="w-full h-48 sm:h-40 md:h-48 overflow-hidden border-b border-border">
+                  <img 
+                    src={feature.image} 
+                    alt={feature.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                  />
+                </div>
+                <CardHeader className="pt-6">
                   <div className="h-12 w-12 rounded-full bg-brand-coral/10 flex items-center justify-center mb-4">
                     <feature.icon className="h-6 w-6 text-brand-coral" />
                   </div>
                   <CardTitle className="text-2xl font-serif text-brand-navy tracking-tight">{feature.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                   <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
