@@ -199,7 +199,7 @@ function TrustedStatsSection() {
       </div>
       
       <div className="relative flex overflow-x-hidden group">
-        <div className="flex animate-marquee whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+        <div className="flex animate-custom-marquee whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
           {marqueeItems.map((company, idx) => (
             <div key={`${company.name}-${idx}`} className="mx-8 md:mx-16 text-xl font-bold font-mono tracking-tighter text-foreground flex items-center">
               <company.icon className="h-6 w-6 mr-2 text-brand-navy" />

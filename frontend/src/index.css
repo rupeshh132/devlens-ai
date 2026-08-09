@@ -166,4 +166,15 @@
     border-radius: var(--radius-2xl);
     padding: 28px;
   }
+
+  /* Custom Marquee */
+  @keyframes custom-marquee-ltr {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+
+  .animate-custom-marquee {
+    animation: custom-marquee-ltr 150s linear infinite;
+    width: max-content;
+  }
 }
