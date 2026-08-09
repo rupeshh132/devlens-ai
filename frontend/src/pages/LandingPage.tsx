@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
-import { Code2, Zap, Search, BarChart3, CheckCircle2, Terminal, Lightbulb } from "lucide-react"
+import { Code2, Zap, Search, BarChart3, CheckCircle2, Terminal, Lightbulb, Hexagon, Globe, Box, Layers, Shield } from "lucide-react"
 
 import { PublicLayout } from "@/layouts/PublicLayout"
 
@@ -176,16 +176,29 @@ function HeroSection() {
 // 2. Trusted Stats
 // ---------------------------------------------------------
 function TrustedStatsSection() {
+  const companies = [
+    { name: 'ACME Corp', icon: Hexagon },
+    { name: 'Globex', icon: Globe },
+    { name: 'Soylent', icon: Box },
+    { name: 'Initech', icon: Layers },
+    { name: 'Massive Dynamic', icon: Shield },
+  ];
+
+  // Duplicate the list so the marquee scrolls seamlessly
+  const marqueeItems = [...companies, ...companies, ...companies, ...companies];
+
   return (
-    <section className="py-12 border-y border-border bg-background">
-      <div className="container mx-auto px-4 max-w-screen-xl text-center">
-        <p className="text-xs font-bold text-muted-foreground mb-8 uppercase tracking-widest">Trusted by innovative engineering teams worldwide</p>
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16 lg:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-          {/* Dummy logos using text for now */}
-          {['ACME Corp', 'Globex', 'Soylent', 'Initech', 'Massive Dynamic'].map((company) => (
-            <div key={company} className="text-xl font-bold font-mono tracking-tighter text-foreground flex items-center">
-              <Zap className="h-5 w-5 mr-1" />
-              {company}
+    <section className="py-12 border-y border-border bg-background overflow-hidden">
+      <div className="container mx-auto px-4 max-w-screen-xl text-center mb-8">
+        <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Trusted by innovative engineering teams worldwide</p>
+      </div>
+      
+      <div className="relative flex overflow-x-hidden group">
+        <div className="flex animate-marquee whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+          {marqueeItems.map((company, idx) => (
+            <div key={`${company.name}-${idx}`} className="mx-8 md:mx-16 text-xl font-bold font-mono tracking-tighter text-foreground flex items-center">
+              <company.icon className="h-6 w-6 mr-2 text-brand-navy" />
+              {company.name}
             </div>
           ))}
         </div>
