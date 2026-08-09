@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+import { api } from '@/lib/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -10,6 +13,22 @@ interface RepositoryCardProps {
 }
 
 export function RepositoryCard({ repository }: RepositoryCardProps) {
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const queryClient = useQueryClient();
+
+  const handleAnalyze = async () => {
+    setIsAnalyzing(true);
+    try {
+      await api.post('/analyses/start', { repositoryId: repository.id });
+      queryClient.invalidateQueries({ queryKey: ['repositories'] });
+      queryClient.invalidateQueries({ queryKey: ['repository', repository.id] });
+      queryClient.invalidateQueries({ queryKey: ['repository-analyses', repository.id] });
+    } catch (err) {
+      console.error('Analysis failed to start', err);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
   const getStatusBadgeVariant = (status: RepositoryDetails['status'], score: number) => {
     if (status === 'Healthy' && score === 0) return 'outline';
     if (status === 'Analyzing') return 'outline';
@@ -90,9 +109,13 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
                   Details
                 </Link>
               </Button>
-              <Button className="w-full md:w-auto">
-                <Activity className="h-4 w-4 mr-2" />
-                Analyze
+              <Button 
+                className="w-full md:w-auto" 
+                onClick={handleAnalyze} 
+                disabled={isAnalyzing || repository.status === 'Analyzing'}
+              >
+                <Activity className={`h-4 w-4 mr-2 ${isAnalyzing || repository.status === 'Analyzing' ? 'animate-pulse' : ''}`} />
+                {isAnalyzing || repository.status === 'Analyzing' ? 'Analyzing...' : 'Analyze'}
               </Button>
             </div>
           </div>
