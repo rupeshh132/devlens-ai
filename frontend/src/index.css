@@ -163,14 +163,3 @@
     padding: 28px;
   }
 }
-
-/* ── Global smooth scroll ── */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Offset scroll targets so fixed navbar doesn't cover them */
-section[id] {
-  scroll-margin-top: 72px;
-}
-
