@@ -63,6 +63,9 @@ public class ResumeService {
                     .suggestions("[\"Add more metrics to your experience section\", \"Highlight your Spring Boot expertise\"]")
                     .build();
 
+            // Delete old resumes for this user so only the newest one exists
+            resumeRepository.deleteByUserId(userId);
+
             return resumeRepository.save(resume);
             
         } catch (Exception e) {

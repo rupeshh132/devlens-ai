@@ -36,13 +36,14 @@ export const ResumePage: React.FC = () => {
       <PageHeader 
         title="Resume Analyzer" 
         description="Upload your resume to get an ATS score and AI suggestions based on your verified GitHub skills."
-      >
-        {resume && !isUploadingNew && (
-          <Button onClick={() => setIsUploadingNew(true)} variant="outline">
-            Upload New Resume
-          </Button>
-        )}
-      </PageHeader>
+        actions={
+          resume && !isUploadingNew && (
+            <Button onClick={() => setIsUploadingNew(true)} variant="outline">
+              Upload New Resume
+            </Button>
+          )
+        }
+      />
 
       {isLoading ? (
         <div className="flex h-64 w-full items-center justify-center">

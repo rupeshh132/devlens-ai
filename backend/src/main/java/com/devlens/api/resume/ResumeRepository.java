@@ -11,4 +11,5 @@ import java.util.List;
 public interface ResumeRepository extends JpaRepository<Resume, UUID> {
     List<Resume> findByUserIdOrderByCreatedAtDesc(UUID userId);
     Optional<Resume> findFirstByUserIdOrderByCreatedAtDesc(UUID userId);
+    void deleteByUserId(UUID userId);
 }
