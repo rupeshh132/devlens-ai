@@ -19,6 +19,7 @@ public class InterviewService {
     private final InterviewSessionRepository interviewSessionRepository;
     private final SkillGapAnalysisRepository skillGapAnalysisRepository;
     private final GroqClientService GroqClientService;
+    private final com.devlens.api.service.GamificationService gamificationService;
 
     @Transactional
     public InterviewSession generateInterviewSession(User user, InterviewSessionRequest request) {
@@ -50,7 +51,7 @@ public class InterviewService {
         return interviewSessionRepository.findFirstByUserOrderByCreatedAtDesc(user);
     }
 
-    public InterviewEvaluationResponse evaluateInterview(InterviewEvaluationRequest request) {
+    public InterviewEvaluationResponse evaluateInterview(User user, InterviewEvaluationRequest request) {
         log.info("Evaluating interview with {} answers", request.getAnswers().size());
         
         try {
@@ -59,7 +60,9 @@ public class InterviewService {
             
             String responseJson = GroqClientService.evaluateInterviewAnswers(jsonInput);
             
-            return mapper.readValue(responseJson, InterviewEvaluationResponse.class);
+            InterviewEvaluationResponse response = mapper.readValue(responseJson, InterviewEvaluationResponse.class);
+            gamificationService.awardPoints(user, 30);
+            return response;
         } catch (Exception e) {
             log.error("Failed to evaluate interview answers", e);
             throw new RuntimeException("Evaluation failed: " + e.getMessage(), e);

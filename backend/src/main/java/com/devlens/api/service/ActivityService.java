@@ -29,6 +29,7 @@ public class ActivityService {
     private final SkillGapAnalysisRepository skillGapAnalysisRepository;
     private final InterviewSessionRepository interviewSessionRepository;
     private final RoadmapRepository roadmapRepository;
+    private final com.devlens.api.repository.AnalysisJobRepository analysisJobRepository;
 
     private static class ActivityItem {
         Instant timestamp;
@@ -88,6 +89,18 @@ public class ActivityService {
                     .title("Roadmap Generated")
                     .date(formatTimeAgo(time))
                     .type("roadmap")
+                    .build()));
+        });
+
+        // Repository Analyses
+        List<com.devlens.api.entity.AnalysisJob> jobs = analysisJobRepository.findTop10ByRepositoryUserIdOrderByCreatedAtDesc(user.getId());
+        jobs.forEach(j -> {
+            Instant time = j.getCreatedAt() != null ? j.getCreatedAt() : Instant.now();
+            items.add(new ActivityItem(time, ActivityDto.builder()
+                    .id(j.getId().toString())
+                    .title("Repository Scan: " + (j.getRepository() != null ? j.getRepository().getName() : "Unknown"))
+                    .date(formatTimeAgo(time))
+                    .type("analysis") // use same icon as skillgap or whatever
                     .build()));
         });
 

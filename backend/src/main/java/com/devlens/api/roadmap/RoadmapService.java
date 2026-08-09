@@ -15,6 +15,7 @@ public class RoadmapService {
     private final RoadmapRepository roadmapRepository;
     private final SkillGapAnalysisRepository skillGapRepository;
     private final GroqClientService GroqClientService;
+    private final com.devlens.api.service.GamificationService gamificationService;
 
     @Transactional
     public Roadmap generateRoadmap(User user, String title) {
@@ -32,7 +33,9 @@ public class RoadmapService {
                 .roadmapData(roadmapJson)
                 .build();
 
-        return roadmapRepository.save(roadmap);
+        Roadmap saved = roadmapRepository.save(roadmap);
+        gamificationService.awardPoints(user, 15);
+        return saved;
     }
     
     public Roadmap getLatestRoadmap(User user) {

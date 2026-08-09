@@ -26,6 +26,7 @@ public class JobScheduler {
     private final AnalysisJobRepository jobRepository;
     private final AnalysisPipeline analysisPipeline;
     private final SseService sseService;
+    private final com.devlens.api.service.GamificationService gamificationService;
     
     // Track running jobs to support cancellation
     private final ConcurrentHashMap<UUID, Thread> runningJobs = new ConcurrentHashMap<>();
@@ -73,6 +74,11 @@ public class JobScheduler {
                 if (job.getSummary() == null || job.getSummary().isBlank()) {
                     job.setSummary("Analysis completed successfully. Found " + 
                         (result.getFindings() != null ? result.getFindings().size() : 0) + " potential issues in your codebase.");
+                }
+
+                // Award points to the user who owns the repository
+                if (job.getRepository() != null && job.getRepository().getUser() != null) {
+                    gamificationService.awardPoints(job.getRepository().getUser(), 25);
                 }
             } else {
                 job.setStatus(AnalysisJobStatus.FAILED);

@@ -26,6 +26,7 @@ public class ResumeService {
     private final UserRepository userRepository;
     private final GroqClientService groqClientService;
     private final ObjectMapper objectMapper;
+    private final com.devlens.api.service.GamificationService gamificationService;
     
     // Tika is thread-safe and can be reused
     private final Tika tika = new Tika();
@@ -91,6 +92,8 @@ public class ResumeService {
 
             // Delete old resumes for this user so only the newest one exists
             resumeRepository.deleteByUserId(userId);
+
+            gamificationService.awardPoints(user, 20);
 
             return resumeRepository.save(resume);
             

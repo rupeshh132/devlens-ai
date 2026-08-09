@@ -57,7 +57,10 @@ public class InterviewController {
             @AuthenticationPrincipal UserPrincipal userPrincipal,
             @RequestBody InterviewEvaluationRequest request) {
             
-        InterviewEvaluationResponse evaluation = interviewService.evaluateInterview(request);
+        User user = userRepository.findById(userPrincipal.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                
+        InterviewEvaluationResponse evaluation = interviewService.evaluateInterview(user, request);
         return ResponseEntity.ok(ApiResponse.success(evaluation, "Interview evaluated successfully"));
     }
 }
