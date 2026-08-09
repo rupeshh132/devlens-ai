@@ -10,7 +10,9 @@ interface RepositoryCardProps {
 }
 
 export function RepositoryCard({ repository }: RepositoryCardProps) {
-  const getStatusBadgeVariant = (status: RepositoryDetails['status']) => {
+  const getStatusBadgeVariant = (status: RepositoryDetails['status'], score: number) => {
+    if (status === 'Healthy' && score === 0) return 'outline';
+    if (status === 'Analyzing') return 'outline';
     switch (status) {
       case 'Healthy':
         return 'success';
@@ -18,8 +20,6 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
         return 'warning';
       case 'Critical':
         return 'destructive';
-      case 'Analyzing':
-        return 'outline';
       default:
         return 'secondary';
     }
@@ -79,7 +79,7 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
                   {(repository.status === 'Analyzing' || (repository.status === 'Healthy' && repository.score === 0)) ? '-' : repository.score}
                 </div>
               </div>
-              <Badge variant={getStatusBadgeVariant(repository.status)}>
+              <Badge variant={getStatusBadgeVariant(repository.status, repository.score)}>
                 {repository.status === 'Healthy' && repository.score === 0 ? 'Pending' : repository.status}
               </Badge>
             </div>
