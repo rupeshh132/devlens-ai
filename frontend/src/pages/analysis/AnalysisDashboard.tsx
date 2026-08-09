@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/set-state-in-effect */
+import { useQueryClient } from '@tanstack/react-query';
  
 import { useState, useEffect } from 'react';
 import { AnalysisOverview } from '@/features/analysis/components/AnalysisOverview';
@@ -34,17 +35,19 @@ export function AnalysisDashboard() {
   const startMutation = useStartAnalysis();
   const cancelMutation = useCancelAnalysis();
   const exportPdfMutation = useExportPdf();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (isConnectionClosed && progress) {
       setIsAnalyzing(false);
       if (progress.status === 'COMPLETED') {
         toast.success('Analysis completed successfully!');
+        queryClient.invalidateQueries({ queryKey: ['currentUser'] });
       } else if (progress.status === 'FAILED') {
         toast.error(`Analysis failed: ${progress.message || 'Unknown error'}`);
       }
     }
-  }, [isConnectionClosed, progress?.status, progress]);
+  }, [isConnectionClosed, progress?.status, progress, queryClient]);
 
   const handleAnalyze = async () => {
     try {

@@ -7,6 +7,8 @@ import { generateInterview, evaluateInterview } from '../api/interviewApi';
 import type { InterviewSession, InterviewSessionData, InterviewEvaluationResponse } from '../types';
 import { Loader2, Mic, Eye, EyeOff, MessageSquare, CheckCircle, BrainCircuit } from 'lucide-react';
 
+import { useQueryClient } from '@tanstack/react-query';
+
 interface InterviewSimulatorProps {
   initialSession: InterviewSession | null;
   onSessionGenerated: (session: InterviewSession) => void;
@@ -23,6 +25,7 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
   const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [evaluationResult, setEvaluationResult] = useState<InterviewEvaluationResponse | null>(null);
+  const queryClient = useQueryClient();
 
   const handleGenerate = async () => {
     if (!targetRole.trim()) return;
@@ -56,6 +59,7 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
       };
       const result = await evaluateInterview(payload);
       setEvaluationResult(result);
+      queryClient.invalidateQueries({ queryKey: ['currentUser'] });
     } catch (err: unknown) {
       const error = err as { response?: { data?: { message?: string } }; message?: string };
       setError(error.response?.data?.message || error.message || 'Failed to evaluate interview.');

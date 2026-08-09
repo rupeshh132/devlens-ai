@@ -7,6 +7,8 @@ import type { Roadmap, RoadmapData, Milestone } from '../types';
 import { Loader2, Map as MapIcon, CheckCircle, Circle, Clock, ExternalLink } from 'lucide-react';
 import { getApiErrorMessage } from '../../../utils/apiError';
 
+import { useQueryClient } from '@tanstack/react-query';
+
 interface RoadmapViewProps {
   initialRoadmap: Roadmap | null;
   onRoadmapGenerated: (roadmap: Roadmap) => void;
@@ -16,6 +18,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ initialRoadmap, onRoad
   const [isGenerating, setIsGenerating] = useState(false);
   const [title, setTitle] = useState(initialRoadmap?.title || 'Senior React Developer');
   const [error, setError] = useState<string | null>(null);
+  const queryClient = useQueryClient();
 
   const handleGenerate = async () => {
     if (!title.trim()) return;
@@ -24,6 +27,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({ initialRoadmap, onRoad
       setError(null);
       const data = await generateRoadmap({ title });
       onRoadmapGenerated(data);
+      queryClient.invalidateQueries({ queryKey: ['currentUser'] });
     } catch (err: unknown) {
       setError(getApiErrorMessage(err, 'Failed to generate roadmap. Ensure you have run a skill gap analysis first.'));
     } finally {

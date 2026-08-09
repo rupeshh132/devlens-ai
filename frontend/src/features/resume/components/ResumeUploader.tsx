@@ -4,6 +4,7 @@ import { Button } from '../../../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
 import { uploadResume } from '../api/resumeApi';
 import type { Resume } from '../types';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface ResumeUploaderProps {
   onUploadSuccess: (resume: Resume) => void;
@@ -13,6 +14,7 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({ onUploadSuccess 
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const queryClient = useQueryClient();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -38,6 +40,7 @@ export const ResumeUploader: React.FC<ResumeUploaderProps> = ({ onUploadSuccess 
       const resume = await uploadResume(file);
       onUploadSuccess(resume);
       setFile(null);
+      queryClient.invalidateQueries({ queryKey: ['currentUser'] });
     } catch (err: unknown) {
       const error = err as { response?: { data?: { message?: string, error?: string }; status?: number }; message?: string };
       
