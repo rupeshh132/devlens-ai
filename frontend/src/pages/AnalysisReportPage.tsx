@@ -32,6 +32,18 @@ export function AnalysisReportPage() {
     );
   }
 
+  if (report.status === 'FAILED') {
+    return (
+      <div className="p-4 md:p-8 space-y-6 text-center flex flex-col items-center justify-center min-h-[60vh]">
+        <AlertTriangle className="w-16 h-16 text-destructive mb-4" />
+        <h1 className="text-3xl font-bold text-destructive">Analysis Failed</h1>
+        <p className="text-muted-foreground max-w-md mx-auto">
+          {report.errorMessage || 'An unknown error occurred during analysis.'}
+        </p>
+      </div>
+    );
+  }
+
   if (report.score === null || report.summary === null) {
     return (
       <div className="p-4 md:p-8 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 text-center flex flex-col items-center justify-center min-h-[60vh]">

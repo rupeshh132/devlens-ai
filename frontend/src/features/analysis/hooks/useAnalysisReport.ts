@@ -9,6 +9,7 @@ export const useAnalysisReport = (jobId: string) => {
     refetchInterval: (query) => {
       // Poll every 3 seconds if the report exists but score/summary are null (still processing)
       const data = query.state.data;
+      if (data && data.status === 'FAILED') return false; // Stop polling on failure
       if (data && (data.score === null || data.summary === null)) {
         return 3000;
       }

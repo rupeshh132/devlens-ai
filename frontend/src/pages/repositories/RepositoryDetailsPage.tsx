@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { useRepository } from '@/features/repositories/hooks/useRepository';
 import { useDeleteRepository } from '@/features/repositories/hooks/useDeleteRepository';
 import { useSyncRepository } from '@/features/repositories/hooks/useSyncRepository';
@@ -42,11 +43,15 @@ export function RepositoryDetailsPage() {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
+  const queryClient = useQueryClient();
   const handleAnalyze = async () => {
     if (!id) return;
     setIsAnalyzing(true);
     try {
       await api.post('/analyses/start', { repositoryId: id });
+      queryClient.invalidateQueries({ queryKey: ['repositories'] });
+      queryClient.invalidateQueries({ queryKey: ['repository', id] });
+      queryClient.invalidateQueries({ queryKey: ['repository-analyses', id] });
     } catch (err) {
       console.error('Analysis failed to start', err);
     } finally {

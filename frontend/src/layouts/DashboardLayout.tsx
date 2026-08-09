@@ -39,7 +39,7 @@ export function DashboardLayout() {
   
   return (
     <ErrorBoundary>
-      <div className="flex min-h-screen w-full bg-background relative pb-36">
+      <div className="flex min-h-screen w-full bg-background relative pb-48">
         
         <div className="flex flex-1 flex-col">
           <Navbar>
@@ -76,7 +76,7 @@ export function DashboardLayout() {
           </Navbar>
           
           <ContentArea scrollable className="p-6 md:p-10 lg:p-16">
-            <div className="max-w-6xl mx-auto w-full pb-36">
+            <div className="max-w-6xl mx-auto w-full pb-48">
               <Outlet />
             </div>
           </ContentArea>

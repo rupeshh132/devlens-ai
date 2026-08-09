@@ -44,6 +44,8 @@ public class AnalysisResultController {
 
         AnalysisReportResponse response = AnalysisReportResponse.builder()
                 .jobId(job.getId())
+                .status(job.getStatus())
+                .errorMessage(job.getErrorMessage())
                 .score(job.getScore())
                 .summary(job.getSummary())
                 .vulnerabilities(vulnerabilities.stream().map(v ->

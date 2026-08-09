@@ -9,6 +9,8 @@ export interface Vulnerability {
 
 export interface AnalysisReport {
   jobId: string;
+  status?: string;
+  errorMessage?: string;
   score: number;
   summary: string;
   vulnerabilities: Vulnerability[];

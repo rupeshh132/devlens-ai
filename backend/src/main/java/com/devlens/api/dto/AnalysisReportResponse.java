@@ -10,6 +10,8 @@ import java.util.UUID;
 @Builder
 public class AnalysisReportResponse {
     private UUID jobId;
+    private com.devlens.api.entity.AnalysisJobStatus status;
+    private String errorMessage;
     private Double score;
     private String summary;
     private List<VulnerabilityDto> vulnerabilities;
