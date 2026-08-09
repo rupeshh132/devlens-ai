@@ -19,3 +19,8 @@ export const getLatestInterview = async (): Promise<InterviewSession | null> => 
     throw error;
   }
 };
+
+export const evaluateInterview = async (request: import('../types').InterviewEvaluationRequest): Promise<import('../types').InterviewEvaluationResponse> => {
+  const { data } = await api.post('/interviews/evaluate', request);
+  return data.data;
+};
