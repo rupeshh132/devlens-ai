@@ -167,18 +167,4 @@
     padding: 28px;
   }
 
-  /* Custom Marquee */
-  @keyframes custom-marquee-ltr {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0%); }
-  }
-
-  .animate-custom-marquee {
-    animation: custom-marquee-ltr var(--marquee-duration, 120s) linear infinite;
-    width: max-content;
-  }
-
-  .animate-custom-marquee:hover {
-    animation-play-state: paused;
-  }
 }

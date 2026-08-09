@@ -189,22 +189,16 @@ function TrustedStatsSection() {
     { name: 'Wayne Ent.' },
   ];
 
-  // Duplicate the list so the marquee scrolls seamlessly
-  const marqueeItems = [...companies, ...companies, ...companies, ...companies];
-
   return (
-    <section className="py-12 border-y border-border bg-background overflow-hidden">
+    <section className="py-12 border-y border-border bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl text-center mb-8">
         <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Trusted by innovative engineering teams worldwide</p>
       </div>
       
-      <div className="relative flex overflow-x-hidden group">
-        <div 
-          className="flex animate-custom-marquee whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500"
-          style={{ '--marquee-duration': `${marqueeItems.length * 3}s` } as React.CSSProperties}
-        >
-          {marqueeItems.map((company, idx) => (
-            <div key={`${company.name}-${idx}`} className="mx-8 md:mx-16 text-xl font-bold font-mono tracking-tighter text-foreground flex items-center">
+      <div className="container mx-auto px-4 max-w-screen-xl">
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+          {companies.map((company, idx) => (
+            <div key={`${company.name}-${idx}`} className="text-xl font-bold font-mono tracking-tighter text-foreground">
               {company.name}
             </div>
           ))}
