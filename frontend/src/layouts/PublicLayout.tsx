@@ -31,10 +31,10 @@ function MarketingNavbar() {
         {/* Right Side: Links & Buttons */}
         <div className="flex items-center gap-8">
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-muted-foreground">
-            <Link to="/features" className={`transition-colors hover:text-brand-navy ${location.pathname === '/features' ? 'text-brand-navy' : ''}`}>Features</Link>
-            <Link to="/how-it-works" className={`transition-colors hover:text-brand-navy ${location.pathname === '/how-it-works' ? 'text-brand-navy' : ''}`}>How It Works</Link>
-            <Link to="/pricing" className={`transition-colors hover:text-brand-navy ${location.pathname === '/pricing' ? 'text-brand-navy' : ''}`}>Pricing</Link>
-            <Link to="/faq" className={`transition-colors hover:text-brand-navy ${location.pathname === '/faq' ? 'text-brand-navy' : ''}`}>FAQ</Link>
+            <Link to="/features" className={`transition-colors hover:text-brand-coral ${location.pathname === '/features' ? 'text-brand-coral font-bold' : ''}`}>Features</Link>
+            <Link to="/how-it-works" className={`transition-colors hover:text-brand-coral ${location.pathname === '/how-it-works' ? 'text-brand-coral font-bold' : ''}`}>How It Works</Link>
+            <Link to="/pricing" className={`transition-colors hover:text-brand-coral ${location.pathname === '/pricing' ? 'text-brand-coral font-bold' : ''}`}>Pricing</Link>
+            <Link to="/faq" className={`transition-colors hover:text-brand-coral ${location.pathname === '/faq' ? 'text-brand-coral font-bold' : ''}`}>FAQ</Link>
           </nav>
           <div className="flex items-center gap-3">
             <Link to="/login">

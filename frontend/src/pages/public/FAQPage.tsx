@@ -49,7 +49,7 @@ export function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-xl text-brand-navy/70 leading-relaxed font-normal">
-              Everything you need to know about DevLens AI. Can't find the answer you're looking for? Feel free to <Link to="/contact" className="text-brand-coral hover:underline">contact our support team</Link>.
+              Everything you need to know about DevLens AI. Can't find the answer you're looking for? Feel free to <a href="mailto:support@devlens.ai" className="font-bold underline decoration-2 underline-offset-4" style={{ color: '#F06E5D' }}>contact our support team</a>.
             </p>
           </div>
 
