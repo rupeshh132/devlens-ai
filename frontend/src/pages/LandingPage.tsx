@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
-import { Code2, Zap, Search, BarChart3, CheckCircle2, Terminal, Lightbulb, Hexagon, Globe, Box, Layers, Shield } from "lucide-react"
+import { Code2, Search, BarChart3, CheckCircle2, Terminal, Lightbulb, MessageSquare } from "lucide-react"
 
 import { PublicLayout } from "@/layouts/PublicLayout"
 
@@ -177,16 +177,16 @@ function HeroSection() {
 // ---------------------------------------------------------
 function TrustedStatsSection() {
   const companies = [
-    { name: 'ACME Corp', icon: Hexagon },
-    { name: 'Globex', icon: Globe },
-    { name: 'Soylent', icon: Box },
-    { name: 'Initech', icon: Layers },
-    { name: 'Massive Dynamic', icon: Shield },
-    { name: 'Cyberdyne', icon: Terminal },
-    { name: 'Tyrell Corp', icon: Search },
-    { name: 'Oscorp', icon: Code2 },
-    { name: 'Stark Ind.', icon: Zap },
-    { name: 'Wayne Ent.', icon: BarChart3 },
+    { name: 'ACME Corp' },
+    { name: 'Globex' },
+    { name: 'Soylent' },
+    { name: 'Initech' },
+    { name: 'Massive Dynamic' },
+    { name: 'Cyberdyne' },
+    { name: 'Tyrell Corp' },
+    { name: 'Oscorp' },
+    { name: 'Stark Ind.' },
+    { name: 'Wayne Ent.' },
   ];
 
   // Duplicate the list so the marquee scrolls seamlessly
@@ -202,7 +202,6 @@ function TrustedStatsSection() {
         <div className="flex animate-custom-marquee whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
           {marqueeItems.map((company, idx) => (
             <div key={`${company.name}-${idx}`} className="mx-8 md:mx-16 text-xl font-bold font-mono tracking-tighter text-foreground flex items-center">
-              <company.icon className="h-6 w-6 mr-2 text-brand-navy" />
               {company.name}
             </div>
           ))}
@@ -225,7 +224,7 @@ const features = [
   {
     title: "Mock Interviews",
     description: "Practice with our AI interviewer. Get real-time feedback on your answers and perfect your delivery.",
-    icon: Zap,
+    icon: MessageSquare,
     image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -269,9 +268,7 @@ function FeaturesGridSection() {
                   />
                 </div>
                 <CardHeader className="pt-6">
-                  <div className="h-12 w-12 rounded-full bg-brand-coral/10 flex items-center justify-center mb-4">
-                    <feature.icon className="h-6 w-6 text-brand-coral" />
-                  </div>
+                  <feature.icon className="h-6 w-6 text-brand-coral mb-4" strokeWidth={2} />
                   <CardTitle className="text-2xl font-serif text-brand-navy tracking-tight">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1">
@@ -377,9 +374,7 @@ function PreviewsSection() {
             {/* Sidebar (Hidden on very small screens, visible as scrollable row or normal sidebar) */}
             <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-border/60 p-4 md:p-6 bg-[#FAFAFA]">
               <div className="hidden md:flex items-center gap-3 mb-8">
-                <div className="w-8 h-8 rounded-full bg-brand-coral/10 flex items-center justify-center">
-                  <Zap className="h-4 w-4 text-brand-coral" />
-                </div>
+                <Terminal className="h-5 w-5 text-brand-coral" strokeWidth={2.5} />
                 <span className="font-bold text-lg tracking-tight">DevLens AI</span>
               </div>
               <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 hide-scrollbar">

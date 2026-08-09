@@ -46,23 +46,23 @@ export function VerifyEmail() {
         <CardHeader className="space-y-2 pb-4">
           <div className="flex justify-center mb-4">
             {status === 'verifying' && (
-              <div className="h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center">
-                <Spinner className="h-8 w-8 text-primary" />
+              <div className="flex items-center justify-center mb-2">
+                <Spinner className="h-10 w-10 text-primary" />
               </div>
             )}
             {status === 'success' && (
-              <div className="h-16 w-16 bg-emerald-500/10 rounded-full flex items-center justify-center">
-                <CheckCircle2 className="h-8 w-8 text-emerald-600 dark:text-emerald-500" />
+              <div className="flex items-center justify-center mb-2">
+                <CheckCircle2 className="h-12 w-12 text-emerald-600 dark:text-emerald-500" strokeWidth={1.5} />
               </div>
             )}
             {status === 'expired' && (
-              <div className="h-16 w-16 bg-yellow-500/10 rounded-full flex items-center justify-center">
-                <XCircle className="h-8 w-8 text-yellow-600 dark:text-yellow-500" />
+              <div className="flex items-center justify-center mb-2">
+                <XCircle className="h-12 w-12 text-yellow-600 dark:text-yellow-500" strokeWidth={1.5} />
               </div>
             )}
             {status === 'invalid' && (
-              <div className="h-16 w-16 bg-destructive/10 rounded-full flex items-center justify-center">
-                <XCircle className="h-8 w-8 text-destructive" />
+              <div className="flex items-center justify-center mb-2">
+                <XCircle className="h-12 w-12 text-destructive" strokeWidth={1.5} />
               </div>
             )}
           </div>

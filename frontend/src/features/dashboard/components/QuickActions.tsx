@@ -22,7 +22,6 @@ export function QuickActions() {
     },
     {
       label: 'Skill Gap Analysis',
-      icon: BrainCircuit,
       variant: 'outline' as const,
       description: 'Identify your weak areas',
       href: '/skill-gap',
@@ -50,12 +49,14 @@ export function QuickActions() {
             className={`w-full justify-start h-auto py-3 px-4 ${action.variant === 'outline' ? 'border-muted-foreground/20 hover:bg-muted/50' : ''}`}
           >
             <div className="flex items-center gap-3">
-              <div className={`p-2 rounded-md ${action.variant === 'primary' ? 'bg-primary-foreground/10' : 'bg-muted'}`}>
-                <action.icon className="h-4 w-4" />
-              </div>
+              {action.icon && (
+                <div className={`${action.variant === 'primary' ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
+                  <action.icon className="h-4 w-4" strokeWidth={2} />
+                </div>
+              )}
               <div className="flex flex-col items-start text-left">
                 <span className="font-medium text-sm leading-none mb-1">{action.label}</span>
-                <span className={`text-xs font-normal ${action.variant === 'primary' ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>{action.description}</span>
+                <span className={`text-xs font-normal ${action.variant === 'primary' ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>{action.description}</span>
               </div>
             </div>
           </Button>

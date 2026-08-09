@@ -3,7 +3,7 @@ import { useAuth } from "@/features/auth/hooks/useAuth"
 import { Navbar, NavbarBrand, NavbarActions } from "@/components/ui/navbar"
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary"
 import { ContentArea } from "@/components/layout/ContentArea"
-import { Home, Settings, FolderGit2, LogOut, User, FileText, BrainCircuit, Map, Mic } from "lucide-react"
+import { Home, Settings, FolderGit2, LogOut, User, FileText, Map, Mic } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/ui/logo"
 import {
@@ -27,7 +27,7 @@ const navItems = [
   { title: "Dashboard", icon: Home, url: "/dashboard" },
   { title: "Repositories", icon: FolderGit2, url: "/repositories" },
   { title: "Resume Upload", icon: FileText, url: "/resume" },
-  { title: "Skill Gap Analysis", icon: BrainCircuit, url: "/skill-gap" },
+  { title: "Skill Gap", textLabel: "GAP", url: "/skill-gap" },
   { title: "Dynamic Roadmap", icon: Map, url: "/roadmap" },
   { title: "Mock Interview", icon: Mic, url: "/interview" },
   { title: "Settings", icon: Settings, url: "/settings" },
@@ -104,7 +104,11 @@ export function DashboardLayout() {
                               : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground hover:shadow-md hover:shadow-black/5"
                           )}
                         >
-                          <item.icon className="w-6 h-6" />
+                          {item.icon ? (
+                            <item.icon className="w-6 h-6" strokeWidth={2} />
+                          ) : (
+                            <span className="text-[12px] font-black tracking-widest">{item.textLabel}</span>
+                          )}
                         </motion.div>
                         {isActive && (
                           <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brand-coral" />

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '../../../components/ui/card';
 import { Button } from '../../../components/ui/button';
 import type { SkillGapAnalysis, GapReport, ProjectIdea } from '../types';
-import { Rocket, Code, ArrowRight } from 'lucide-react';
+import { Code, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ProjectRecommenderProps {
@@ -36,12 +36,7 @@ export const ProjectRecommender: React.FC<ProjectRecommenderProps> = ({ analysis
         {report.projectIdeas.map((project: ProjectIdea, index: number) => (
           <Card key={index} className="flex flex-col h-full hover:border-primary/50 transition-colors">
             <CardHeader>
-              <div className="flex items-center gap-2 mb-2">
-                <div className="p-2 bg-primary/10 rounded-md text-primary">
-                  <Rocket className="h-4 w-4" />
-                </div>
-              </div>
-              <CardTitle className="text-xl">{project.title}</CardTitle>
+              <CardTitle className="text-xl leading-tight">{project.title}</CardTitle>
             </CardHeader>
             <CardContent className="flex-1">
               <p className="text-sm text-muted-foreground mb-6">

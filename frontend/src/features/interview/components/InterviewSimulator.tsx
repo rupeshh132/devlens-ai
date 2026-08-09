@@ -111,8 +111,8 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
       {evaluationResult ? (
         <Card className="border-primary/20 shadow-lg">
           <CardHeader className="text-center pb-8 border-b">
-            <div className="mx-auto w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <CheckCircle className="h-10 w-10 text-primary" />
+            <div className="flex items-center justify-center mb-4">
+              <CheckCircle className="h-14 w-14 text-primary" strokeWidth={1.5} />
             </div>
             <CardTitle className="text-3xl font-bold">Interview Completed</CardTitle>
             <CardDescription className="text-lg mt-2">

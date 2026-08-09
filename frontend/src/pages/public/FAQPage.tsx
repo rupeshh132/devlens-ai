@@ -50,9 +50,7 @@ export function FAQPage() {
       <div className="bg-brand-cream py-16 md:py-24 min-h-[calc(100vh-14rem)]">
         <div className="container mx-auto px-4 max-w-screen-md">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-navy/5 text-brand-navy mb-6">
-              <HelpCircle className="w-8 h-8" />
-            </div>
+            <HelpCircle className="w-8 h-8 text-brand-navy mb-6 mx-auto" strokeWidth={2} />
             <h1 className="text-4xl md:text-5xl font-serif text-brand-navy tracking-tight mb-6">
               Frequently Asked Questions
             </h1>
@@ -73,8 +71,8 @@ export function FAQPage() {
                   </DialogHeader>
                   <div className="flex flex-col gap-4 py-4 mt-2 border-t border-border/50">
                     <div className="flex items-center gap-4 p-4 rounded-xl bg-brand-cream border border-border/50">
-                      <div className="h-10 w-10 rounded-full bg-brand-coral/10 flex items-center justify-center flex-shrink-0">
-                        <Mail className="h-5 w-5 text-brand-coral" />
+                      <div className="flex items-center justify-center flex-shrink-0 mr-2">
+                        <Mail className="h-6 w-6 text-brand-coral" strokeWidth={2} />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-sm font-bold text-brand-navy/60 uppercase tracking-wider">Email Us</span>
@@ -82,8 +80,8 @@ export function FAQPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-4 p-4 rounded-xl bg-brand-cream border border-border/50">
-                      <div className="h-10 w-10 rounded-full bg-brand-coral/10 flex items-center justify-center flex-shrink-0">
-                        <Phone className="h-5 w-5 text-brand-coral" />
+                      <div className="flex items-center justify-center flex-shrink-0 mr-2">
+                        <Phone className="h-6 w-6 text-brand-coral" strokeWidth={2} />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-sm font-bold text-brand-navy/60 uppercase tracking-wider">Call Us</span>

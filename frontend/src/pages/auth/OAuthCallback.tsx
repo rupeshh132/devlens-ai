@@ -55,8 +55,8 @@ export function OAuthCallback() {
       <Card className="w-full max-w-md mx-auto bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75 border-muted/60 shadow-xl text-center">
         <CardHeader className="space-y-2 pb-4">
           <div className="flex justify-center mb-4">
-            <div className="h-16 w-16 bg-destructive/10 rounded-full flex items-center justify-center">
-              <XCircle className="h-8 w-8 text-destructive" />
+            <div className="flex items-center justify-center mb-2">
+              <XCircle className="h-12 w-12 text-destructive" strokeWidth={1.5} />
             </div>
           </div>
           <CardTitle className="text-2xl font-bold tracking-tight">Authentication Failed</CardTitle>

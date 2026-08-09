@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Sparkles, Inbox } from 'lucide-react';
+import { Inbox } from 'lucide-react';
 import { RecommendationCard } from './RecommendationCard';
 import { RecommendationSearch } from './RecommendationSearch';
 import { RecommendationFilter } from './RecommendationFilter';
@@ -72,8 +72,7 @@ export function RecommendationsPanel({ recommendations }: RecommendationsPanelPr
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-2">
-        <Sparkles className="h-6 w-6 text-yellow-400" />
-        <h2 className="text-2xl font-bold text-white">AI Recommendations</h2>
+        <h2 className="text-2xl font-bold text-white tracking-tight">AI Recommendations</h2>
       </div>
 
       <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 space-y-4">
@@ -111,8 +110,8 @@ export function RecommendationsPanel({ recommendations }: RecommendationsPanelPr
           ))
         ) : (
           <div className="flex flex-col items-center justify-center py-16 bg-gray-900/50 border border-gray-800 border-dashed rounded-lg">
-            <div className="h-12 w-12 rounded-full bg-gray-800 flex items-center justify-center mb-4">
-              <Inbox className="h-6 w-6 text-gray-500" />
+            <div className="mb-4">
+              <Inbox className="h-8 w-8 text-gray-600" strokeWidth={1.5} />
             </div>
             <h3 className="text-lg font-medium text-gray-300">No recommendations found</h3>
             <p className="text-sm text-gray-500 mt-1">Try adjusting your filters or search query.</p>
