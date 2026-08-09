@@ -24,7 +24,7 @@ function MarketingNavbar() {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-0 z-[100] w-full border-b border-border/40 bg-background supports-[backdrop-filter]:bg-background/95 supports-[backdrop-filter]:backdrop-blur-md">
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4">
         {/* Left Side: Logo */}
         <Logo size="sm" hideTextOnMobile={true} />
