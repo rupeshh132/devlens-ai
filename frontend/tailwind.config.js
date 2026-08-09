@@ -121,8 +121,8 @@ module.exports = {
           to:   { opacity: '1' }
         },
         marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' }
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' }
         }
       },
       animation: {
@@ -130,7 +130,7 @@ module.exports = {
         'accordion-up':   'accordion-up 0.2s ease-out',
         'fade-up':        'fade-up 0.4s cubic-bezier(0.16,1,0.3,1) both',
         'fade-in':        'fade-in 0.3s ease both',
-        'marquee':        'marquee 80s linear infinite',
+        'marquee':        'marquee 150s linear infinite',
       },
     }
   },
