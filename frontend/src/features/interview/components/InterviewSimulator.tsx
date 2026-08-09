@@ -123,7 +123,7 @@ export const InterviewSimulator: React.FC<InterviewSimulatorProps> = ({ initialS
             <h3 className="text-xl font-semibold flex items-center gap-2">
               <BrainCircuit className="h-5 w-5 text-primary" /> Detailed Feedback
             </h3>
-            {evaluationResult.feedback.map((item: any, idx: number) => (
+            {evaluationResult.feedback.map((item: { question: string; score: number; feedback: string }, idx: number) => (
               <div key={idx} className="space-y-3 p-6 bg-secondary/30 rounded-lg border border-border/50">
                 <div className="flex justify-between items-start gap-4">
                   <h4 className="font-medium flex-1">Q{idx + 1}: {item.question}</h4>
