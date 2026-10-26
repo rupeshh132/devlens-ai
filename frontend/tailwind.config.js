@@ -112,6 +112,12 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to:   { height: '0' }
         },
+        
+        'float-up': {
+          '0%': { transform: 'translateY(100px) scale(0.8)', opacity: '0' },
+          '20%': { transform: 'translateY(50px) scale(1.1)', opacity: '1' },
+          '100%': { transform: 'translateY(-200px) scale(1)', opacity: '0' }
+        },
         'fade-up': {
           from: { opacity: '0', transform: 'translateY(16px)' },
           to:   { opacity: '1', transform: 'translateY(0)' }
@@ -128,6 +134,8 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up':   'accordion-up 0.2s ease-out',
+        
+        'float-up':       'float-up 2s ease-out forwards',
         'fade-up':        'fade-up 0.4s cubic-bezier(0.16,1,0.3,1) both',
         'fade-in':        'fade-in 0.3s ease both',
         'marquee':        'marquee 400s linear infinite',

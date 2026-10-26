@@ -37,7 +37,7 @@ export const mockQuickStats: QuickStats = {
 export const mockRepositories: Repository[] = [
   {
     id: '1',
-    name: 'devlens-ai-core',
+    name: 'preplens-core',
     language: 'TypeScript',
     lastAnalysis: '2 hours ago',
     score: 95,
@@ -82,9 +82,9 @@ export const mockActivityFeed: Activity[] = [
     id: '1',
     type: 'analysis_completed',
     title: 'Analysis Completed',
-    description: 'Security & performance scan finished for devlens-ai-core with score 95/100.',
+    description: 'Security & performance scan finished for preplens-core with score 95/100.',
     timestamp: '2 hours ago',
-    repoName: 'devlens-ai-core',
+    repoName: 'preplens-core',
   },
   {
     id: '2',

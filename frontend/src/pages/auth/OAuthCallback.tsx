@@ -33,7 +33,7 @@ export function OAuthCallback() {
       }
 
       try {
-        localStorage.setItem('devlens_access_token', token);
+        localStorage.setItem('preplens_access_token', token);
         
         // Force a page reload to '/dashboard' so AuthProvider picks up the new token
         window.location.href = '/dashboard';

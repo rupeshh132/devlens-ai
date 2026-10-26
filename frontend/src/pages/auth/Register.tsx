@@ -14,6 +14,7 @@ import { PasswordInput } from '@/components/ui/password-input';
 import { Link, useNavigate } from 'react-router-dom';
 import { AlertCircle } from 'lucide-react';
 import { AuthLayout } from '@/layouts/AuthLayout';
+import { api } from '@/lib/api';
 
 const registerSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters'),
@@ -26,6 +27,7 @@ const registerSchema = z.object({
     .regex(/[0-9]/, 'Password must contain at least one number')
     .regex(/[^A-Za-z0-9]/, 'Password must contain at least one special character'),
   confirmPassword: z.string().min(1, 'Please confirm your password'),
+  otp: z.string().length(6, 'OTP must be exactly 6 digits'),
   acceptTerms: z.boolean().refine((val) => val === true, {
     message: 'You must accept the terms and conditions',
   }),
@@ -41,6 +43,8 @@ export function Register() {
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
 
   const {
@@ -48,6 +52,7 @@ export function Register() {
     handleSubmit,
     setValue,
     watch,
+    trigger,
     formState: { errors },
   } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -56,12 +61,13 @@ export function Register() {
       email: '',
       password: '',
       confirmPassword: '',
+      otp: '',
       acceptTerms: false,
     },
   });
 
-  // eslint-disable-next-line react-hooks/incompatible-library
   const passwordValue = watch('password');
+  const emailValue = watch('email');
 
   useEffect(() => {
     if (!passwordValue) {
@@ -77,7 +83,32 @@ export function Register() {
     setPasswordStrength(strength);
   }, [passwordValue]);
 
+  const handleSendOtp = async () => {
+    const isEmailValid = await trigger('email');
+    if (!isEmailValid) return;
+    
+    setError('');
+    setIsSendingOtp(true);
+    try {
+      const res = await api.post('/auth/request-otp', { email: emailValue });
+      setOtpSent(true);
+      const devOtp = res.data?.data?.otp || res.data?.otp;
+      if (devOtp) {
+        setValue('otp', devOtp);
+        setError('');
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to send OTP. Please try again.');
+    } finally {
+      setIsSendingOtp(false);
+    }
+  };
+
   const onSubmit = async (data: RegisterFormValues) => {
+    if (!otpSent && !data.otp) {
+      setError("Please click 'Send OTP' next to your email first.");
+      return;
+    }
     setError('');
     setIsLoading(true);
     try {
@@ -85,6 +116,7 @@ export function Register() {
         fullName: data.fullName,
         email: data.email,
         password: data.password,
+        otp: data.otp,
       });
       navigate('/dashboard');
     } catch (err: unknown) {
@@ -113,8 +145,20 @@ export function Register() {
   return (
     <AuthLayout>
       <Card className="w-full max-w-md mx-auto bg-transparent border-none shadow-none">
+        
+        {/* Switcher Banner */}
+        <div className="mb-4 bg-blue-50 border border-blue-100 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <p className="text-sm font-semibold text-blue-900">Student preparing for exams?</p>
+            <p className="text-xs text-blue-700">Join PrepLens Learn for Mock Tests & AI study plans.</p>
+          </div>
+          <Button asChild variant="outline" size="sm" className="bg-white hover:bg-blue-50 text-blue-700 border-blue-200">
+            <Link to="/learn/register">Join as Student</Link>
+          </Button>
+        </div>
+
         <CardHeader className="space-y-2 pb-4">
-          <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Create an account</CardTitle>
+          <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Create Developer Account</CardTitle>
           <CardDescription className="text-muted-foreground text-base">
             Enter your details below to create your account and get started.
           </CardDescription>
@@ -149,19 +193,51 @@ export function Register() {
               <Label htmlFor="email" className={errors.email ? "text-destructive" : ""}>
                 Email
               </Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="name@example.com"
-                autoComplete="email"
-                disabled={isLoading}
-                {...register('email')}
-                className={`h-9 ${errors.email ? "border-destructive focus-visible:ring-destructive" : ""}`}
-              />
+              <div className="flex space-x-2">
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  autoComplete="email"
+                  disabled={isLoading || otpSent}
+                  {...register('email')}
+                  className={`h-9 flex-1 ${errors.email ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                />
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  className="h-9 whitespace-nowrap"
+                  disabled={isSendingOtp || isLoading || !emailValue}
+                  onClick={handleSendOtp}
+                >
+                  {isSendingOtp ? <Spinner className="h-4 w-4" /> : (otpSent ? 'Resend' : 'Send OTP')}
+                </Button>
+              </div>
               {errors.email && (
                 <p className="text-[11px] font-medium text-destructive">{errors.email.message}</p>
               )}
             </div>
+
+            {otpSent && (
+              <div className="space-y-1">
+                <Label htmlFor="otp" className={errors.otp ? "text-destructive" : "text-green-600 font-semibold"}>
+                  OTP Code
+                </Label>
+                <Input
+                  id="otp"
+                  placeholder="Enter 6-digit OTP sent to email"
+                  disabled={isLoading}
+                  {...register('otp')}
+                  className={`h-9 ${errors.otp ? "border-destructive focus-visible:ring-destructive" : "border-green-300 focus-visible:ring-green-500"}`}
+                />
+                {errors.otp && (
+                  <p className="text-[11px] font-medium text-destructive">{errors.otp.message}</p>
+                )}
+                {!errors.otp && (
+                  <p className="text-[11px] text-green-600">OTP sent successfully to your email!</p>
+                )}
+              </div>
+            )}
             
             <div className="space-y-1">
               <Label htmlFor="password" className={errors.password ? "text-destructive" : ""}>
@@ -224,7 +300,7 @@ export function Register() {
               </div>
             </div>
 
-            <Button type="submit" className="w-full h-9 mt-1" disabled={isLoading}>
+            <Button type="submit" className="w-full h-9 mt-1" disabled={isLoading || !otpSent}>
               {isLoading && <Spinner className="mr-2 h-4 w-4" />}
               {isLoading ? 'Creating account...' : 'Create Account'}
             </Button>
@@ -246,9 +322,8 @@ export function Register() {
               className="w-full bg-white hover:bg-gray-50 border-input/50 h-9"
               disabled={isLoading}
               onClick={() => {
-                const backendBase = (import.meta.env.VITE_API_URL || 
-                  'http://localhost:8080/api/v1')
-                  .replace('/api/v1', '');
+                if (!import.meta.env.VITE_API_URL) throw new Error("VITE_API_URL is missing!");
+                const backendBase = import.meta.env.VITE_API_URL.replace('/api/v1', '');
                 
                 window.location.href = 
                   `${backendBase}/oauth2/authorization/github`;

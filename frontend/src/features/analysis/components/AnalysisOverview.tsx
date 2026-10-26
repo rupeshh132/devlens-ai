@@ -38,7 +38,7 @@ export function AnalysisOverview({
           This repository hasn't been analyzed yet. Run your first analysis to get detailed insights into code quality, security, and architecture.
         </p>
         <AnalysisHeader 
-          repositoryName="devlens-ai" 
+          repositoryName="preplens" 
           branch="main"
           onAnalyze={onAnalyze}
           onDownloadReport={onDownloadReport}
@@ -60,7 +60,7 @@ export function AnalysisOverview({
   return (
     <div className="space-y-6">
       <AnalysisHeader 
-        repositoryName="devlens-ai" // In a real app, this would come from repo context
+        repositoryName="preplens" // In a real app, this would come from repo context
         branch="main"
         lastAnalysisDate={analysis?.completedAt}
         onAnalyze={onAnalyze}

@@ -66,7 +66,7 @@ public class ReportService {
             Font normalFont = new Font(Font.HELVETICA, 12, Font.NORMAL);
             Font monoFont = new Font(Font.COURIER, 10, Font.NORMAL);
 
-            document.add(new Paragraph("DevLens AI Code Analysis Report", titleFont));
+            document.add(new Paragraph("PrepLens AI Code Analysis Report", titleFont));
             document.add(new Paragraph(" "));
             
             document.add(new Paragraph("Repository: " + job.getRepository().getName(), headerFont));

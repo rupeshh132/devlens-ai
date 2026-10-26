@@ -24,8 +24,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -44,7 +47,7 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/v1/auth/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/actuator/**", "/api/v1/webhooks/**").permitAll()
+                .requestMatchers("/api/v1/auth/**", "/api/v1/learn/auth/**", "/api/v1/learn/content/**", "/api/v1/learn/pyq/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/actuator/**", "/api/v1/webhooks/**").permitAll()
                 .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/v1/users").permitAll()
                 .anyRequest().authenticated()
             )
@@ -84,15 +87,38 @@ public class SecurityConfig {
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration();
         
-        java.util.List<String> allowedOrigins = new java.util.ArrayList<>(Arrays.asList(frontendUrl.split(",")));
-        if (!allowedOrigins.contains("https://devlens-ai-pearl.vercel.app")) {
-            allowedOrigins.add("https://devlens-ai-pearl.vercel.app");
+        java.util.List<String> allowedOrigins = new java.util.ArrayList<>(Arrays.asList(
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "http://localhost:5174",
+            "http://127.0.0.1:5174",
+            "http://localhost:5175",
+            "http://127.0.0.1:5175",
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "https://devlens-ai-pearl.vercel.app"
+        ));
+        // Also add from env var if present
+        if (frontendUrl != null && !frontendUrl.isBlank()) {
+            for (String origin : frontendUrl.split(",")) {
+                String trimmed = origin.trim();
+                if (!allowedOrigins.contains(trimmed)) {
+                    allowedOrigins.add(trimmed);
+                }
+            }
         }
         
         configuration.setAllowedOrigins(allowedOrigins);
+        configuration.setAllowedOriginPatterns(Arrays.asList(
+            "http://localhost:*",
+            "http://127.0.0.1:*",
+            "https://*.vercel.app"
+        ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setExposedHeaders(Arrays.asList("Authorization", "Set-Cookie"));
         configuration.setAllowCredentials(true);
+        configuration.setMaxAge(3600L);
         org.springframework.web.cors.UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

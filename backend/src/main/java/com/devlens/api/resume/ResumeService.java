@@ -110,4 +110,36 @@ public class ResumeService {
         return resumeRepository.findFirstByUserIdOrderByCreatedAtDesc(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("No resume found for user: " + userId));
     }
+
+    public String tailorResume(UUID userId, MultipartFile file, String jobDescription) {
+        try {
+            String resumeText;
+
+            if (file != null && !file.isEmpty()) {
+                // Parse newly uploaded resume
+                resumeText = tika.parseToString(file.getInputStream());
+            } else {
+                // Use already stored resume
+                Resume stored = resumeRepository.findFirstByUserIdOrderByCreatedAtDesc(userId)
+                        .orElseThrow(() -> new ResourceNotFoundException("No resume found. Please upload a resume first."));
+                resumeText = stored.getParsedText();
+            }
+
+            if (resumeText == null || resumeText.trim().isEmpty()) {
+                throw new IllegalArgumentException("Could not extract text from the resume.");
+            }
+
+            // Truncate to avoid token overflow
+            if (resumeText.length() > 15000) resumeText = resumeText.substring(0, 15000);
+            if (jobDescription.length() > 10000) jobDescription = jobDescription.substring(0, 10000);
+
+            return groqClientService.tailorResume(resumeText.trim(), jobDescription.trim());
+
+        } catch (ResourceNotFoundException | IllegalArgumentException e) {
+            throw e;
+        } catch (Exception e) {
+            log.error("Failed to tailor resume", e);
+            throw new RuntimeException("Failed to tailor resume: " + e.getMessage());
+        }
+    }
 }

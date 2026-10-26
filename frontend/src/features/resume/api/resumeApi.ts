@@ -1,11 +1,11 @@
-import { httpClient } from '../../../http/client';
+import { api } from '../../../lib/api';
 import type { Resume } from '../types';
 
 export const uploadResume = async (file: File): Promise<Resume> => {
   const formData = new FormData();
   formData.append('file', file);
   
-  const response = await httpClient.post<Resume>('/resumes', formData, {
+  const response = await api.post<Resume>('/resumes', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -15,7 +15,7 @@ export const uploadResume = async (file: File): Promise<Resume> => {
 
 export const getMyLatestResume = async (): Promise<Resume | null> => {
   try {
-    const response = await httpClient.get<Resume>('/resumes/me');
+    const response = await api.get<Resume>('/resumes/me');
     return response.data;
   } catch (error) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

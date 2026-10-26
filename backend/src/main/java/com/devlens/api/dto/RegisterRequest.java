@@ -18,4 +18,8 @@ public class RegisterRequest {
     @NotBlank(message = "Password is required")
     @Size(min = 6, message = "Password must be at least 6 characters long")
     private String password;
+    
+    @NotBlank(message = "OTP is required for registration")
+    @Size(min = 6, max = 6, message = "OTP must be exactly 6 digits")
+    private String otp;
 }

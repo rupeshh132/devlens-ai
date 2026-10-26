@@ -37,7 +37,7 @@ public class Roadmap {
     private String title;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "jsonb", nullable = false)
+    @Column( nullable = false)
     private String roadmapData; // Stored as JSON string to preserve the timeline milestones
 
     @CreatedDate

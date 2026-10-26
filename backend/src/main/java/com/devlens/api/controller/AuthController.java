@@ -15,16 +15,35 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.util.WebUtils;
 import jakarta.servlet.http.Cookie;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Slf4j
 public class AuthController {
 
     private final AuthenticationService authenticationService;
+    private final com.devlens.api.service.OtpService otpService;
+
+    @PostMapping("/request-otp")
+    public ResponseEntity<ApiResponse<java.util.Map<String, String>>> requestOtp(@Valid @RequestBody com.devlens.api.dto.OtpRequest request) {
+        otpService.generateAndSendOtp(request.getEmail());
+        return ResponseEntity.ok(ApiResponse.success(
+            java.util.Map.of("email", request.getEmail()), 
+            "OTP sent successfully to " + request.getEmail()
+        ));
+    }
 
     @PostMapping("/register")
     public ResponseEntity<ApiResponse<AuthResponse>> register(@Valid @RequestBody RegisterRequest request,
                                                               @RequestHeader(value = "User-Agent", defaultValue = "unknown") String deviceId) {
+        log.info("REGISTER HIT: {}", request.getEmail());
+        
+        if (!otpService.verifyOtp(request.getEmail(), request.getOtp())) {
+            return ResponseEntity.badRequest().body(ApiResponse.error(400, "Invalid or expired OTP"));
+        }
+
         if (deviceId.length() > 250) deviceId = deviceId.substring(0, 250);
         try {
             AuthResponse response = authenticationService.register(
@@ -75,6 +94,11 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<ApiResponse<Void>> logout(HttpServletRequest request) {
+        org.springframework.security.core.Authentication auth = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getName() != null && !auth.getName().equals("anonymousUser")) {
+            authenticationService.clearActiveJwt(auth.getName());
+        }
+
         Cookie cookie = WebUtils.getCookie(request, "refresh_token");
         if (cookie != null && !cookie.getValue().isEmpty()) {
             authenticationService.logout(cookie.getValue());
@@ -83,5 +107,18 @@ public class AuthController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, authenticationService.clearHttpOnlyCookie().toString())
                 .body(ApiResponse.success(null, "Logged out successfully"));
+    }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<ApiResponse<Void>> forgotPassword(@Valid @RequestBody com.devlens.api.dto.auth.ForgotPasswordRequestDto request) {
+        authenticationService.forgotPassword(request.getEmail());
+        // Always return success even if email not found to prevent user enumeration
+        return ResponseEntity.ok(ApiResponse.success(null, "If an account with that email exists, a password reset link has been sent."));
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<ApiResponse<Void>> resetPassword(@Valid @RequestBody com.devlens.api.dto.auth.ResetPasswordRequestDto request) {
+        authenticationService.resetPassword(request.getToken(), request.getNewPassword());
+        return ResponseEntity.ok(ApiResponse.success(null, "Password has been successfully reset."));
     }
 }

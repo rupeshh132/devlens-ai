@@ -8,7 +8,7 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: (credentials: LoginCredentials) => authApi.login(credentials),
     onSuccess: (data) => {
-      localStorage.setItem('devlens_access_token', data.accessToken);
+      localStorage.setItem('preplens_access_token', data.accessToken);
       if (data.user) {
         queryClient.setQueryData(['currentUser'], data.user);
       } else {

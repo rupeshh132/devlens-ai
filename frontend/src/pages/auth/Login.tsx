@@ -70,10 +70,22 @@ export function Login() {
   return (
     <AuthLayout>
       <Card className="w-full max-w-md mx-auto bg-transparent border-none shadow-none">
+        
+        {/* Switcher Banner */}
+        <div className="mb-4 bg-blue-50 border border-blue-100 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <p className="text-sm font-semibold text-blue-900">Student preparing for exams?</p>
+            <p className="text-xs text-blue-700">Sign in to PrepLens Learn.</p>
+          </div>
+          <Button asChild variant="outline" size="sm" className="bg-white hover:bg-blue-50 text-blue-700 border-blue-200">
+            <Link to="/learn/login">Student Login</Link>
+          </Button>
+        </div>
+
         <CardHeader className="space-y-2">
-          <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Welcome back</CardTitle>
+          <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Developer Login</CardTitle>
           <CardDescription className="text-muted-foreground text-base">
-            Enter your credentials to sign in to your account.
+            Enter your credentials to sign in to your developer account.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -174,9 +186,8 @@ export function Login() {
               className="w-full bg-white hover:bg-gray-50 border-input/50"
               disabled={isLoading}
               onClick={() => {
-                const backendBase = (import.meta.env.VITE_API_URL || 
-                  'http://localhost:8080/api/v1')
-                  .replace('/api/v1', '');
+                if (!import.meta.env.VITE_API_URL) throw new Error("VITE_API_URL is missing!");
+                const backendBase = import.meta.env.VITE_API_URL.replace('/api/v1', '');
                 
                 window.location.href = 
                   `${backendBase}/oauth2/authorization/github`;

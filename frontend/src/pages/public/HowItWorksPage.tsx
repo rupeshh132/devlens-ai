@@ -5,7 +5,7 @@ export function HowItWorksPage() {
   const steps = [
     { 
       title: "1. Upload Your Profile & Connect", 
-      desc: "Connect your GitHub account or upload your resume. Tell us your target role, and DevLens AI instantly understands your current skill level and career aspirations." 
+      desc: "Connect your GitHub account or upload your resume. Tell us your target role, and PrepLens instantly understands your current skill level and career aspirations." 
     },
     { 
       title: "2. AI Skill Gap Analysis", 
@@ -31,7 +31,7 @@ export function HowItWorksPage() {
         <div className="container mx-auto px-4 max-w-screen-xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-brand-navy tracking-tight mb-6">
-              How DevLens AI Works
+              How PrepLens Works
             </h1>
             <p className="text-xl text-brand-navy/70 leading-relaxed font-normal">
               A streamlined, AI-powered path to accelerate your tech career. From analysis to job offer.
@@ -60,10 +60,10 @@ export function HowItWorksPage() {
                   <div className="w-3 h-3 rounded-full bg-red-400" />
                   <div className="w-3 h-3 rounded-full bg-yellow-400" />
                   <div className="w-3 h-3 rounded-full bg-green-400" />
-                  <span className="text-sm text-brand-navy/50 font-mono ml-2">terminal / devlens-ai</span>
+                  <span className="text-sm text-brand-navy/50 font-mono ml-2">terminal / preplens</span>
                 </div>
                 <div className="font-mono text-sm sm:text-base space-y-4">
-                  <p className="text-brand-navy/70">$ devlens analyze profile --target="Senior Frontend Engineer"</p>
+                  <p className="text-brand-navy/70">$ preplens analyze profile --target="Senior Frontend Engineer"</p>
                   <p className="text-brand-coral font-bold">Initializing AI engine...</p>
                   <p className="text-brand-navy/80">Scanning repositories: 14 found.</p>
                   <p className="text-brand-navy/80">Parsing resume data...</p>

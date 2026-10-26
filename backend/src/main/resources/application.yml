@@ -1,6 +1,13 @@
 spring:
   application:
     name: devlens-api
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
 
   datasource:
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/devlens}
@@ -8,12 +15,13 @@ spring:
     password: ${DB_PASSWORD:password}
     driver-class-name: org.postgresql.Driver
     hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 60000
+      max-lifetime: 180000
       connection-timeout: 30000
-      idle-timeout: 600000
-      max-lifetime: 1800000
-      maximum-pool-size: 5
-      minimum-idle: 1
       keepalive-time: 30000
+      validation-timeout: 3000
       connection-test-query: SELECT 1
 
   jpa:
@@ -33,6 +41,18 @@ spring:
             client-id: ${GITHUB_CLIENT_ID:mock-client-id}
             client-secret: ${GITHUB_CLIENT_SECRET:mock-client-secret}
 
+  mail:
+    host: smtp.resend.com
+    port: 587
+    username: resend
+    password: ${RESEND_API_KEY:mock_resend_key}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 app:
   oauth2:
     redirect-uri: ${OAUTH2_REDIRECT_URI:http://localhost:5173/oauth/callback}
@@ -49,6 +69,9 @@ server:
     include-binding-errors: never
 
 management:
+  health:
+    mail:
+      enabled: false
   endpoints:
     web:
       exposure:
@@ -67,5 +90,15 @@ springdoc:
 groq:
   api:
     url: "https://api.groq.com/openai/v1/chat/completions"
-    key: ${GROQ_API_KEY}
-    model: "llama-3.3-70b-versatile"
+    key: ${GROQ_API_KEY:dummy_groq_key}
+    model: "openai/gpt-oss-120b"
+
+razorpay:
+  key:
+    id: ${RAZORPAY_KEY_ID:dummy_key_id}
+    secret: ${RAZORPAY_KEY_SECRET:dummy_key_secret}
+  webhook-secret: ${RAZORPAY_WEBHOOK_SECRET:dummy_webhook_secret}
+
+supabase:
+  url: ${SUPABASE_URL:dummy_supabase_url}
+  key: ${SUPABASE_KEY:dummy_supabase_key}

@@ -23,7 +23,7 @@ export function FeaturesPage() {
     },
     {
       title: "Dynamic Learning Roadmaps",
-      description: "Stop guessing what to learn. DevLens AI generates step-by-step personalized roadmaps complete with curated resources, practical projects, and milestone checks based on your skill gaps.",
+      description: "Stop guessing what to learn. PrepLens generates step-by-step personalized roadmaps complete with curated resources, practical projects, and milestone checks based on your skill gaps.",
       image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80",
     },
     {
@@ -72,7 +72,7 @@ export function FeaturesPage() {
                 Everything You Need to <span className="text-brand-coral">Ship Yourself</span>
               </h1>
               <p className="text-xl text-brand-navy/70 font-normal leading-relaxed">
-                DevLens AI is a unified platform combining deep code analysis, intelligent resume optimization, and dynamic interview prep. We turn your raw potential into an undeniable engineering profile.
+                PrepLens is a unified platform combining deep code analysis, intelligent resume optimization, and dynamic interview prep. We turn your raw potential into an undeniable engineering profile.
               </p>
             </motion.div>
 

@@ -18,7 +18,8 @@ export const authApi = {
     const { data } = await api.post('/auth/register', {
       fullName: credentials.fullName,
       email: credentials.email,
-      password: credentials.password
+      password: credentials.password,
+      otp: credentials.otp
     });
     const payload = data.data || data;
     return payload;

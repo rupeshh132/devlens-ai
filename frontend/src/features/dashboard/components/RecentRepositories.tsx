@@ -34,7 +34,7 @@ export function RecentRepositories({ repositories }: RecentRepositoriesProps) {
     <Card className="col-span-1 lg:col-span-2">
       <CardHeader>
         <CardTitle>Recent Repositories</CardTitle>
-        <CardDescription>Latest codebases analyzed by DevLens AI.</CardDescription>
+        <CardDescription>Latest codebases analyzed by PrepLens.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto rounded-md border border-muted/50">

@@ -90,7 +90,7 @@ function MarketingFooter() {
         </div>
       </div>
       <div className="container mx-auto px-4 mt-12 pt-8 border-t text-center text-sm text-muted-foreground max-w-screen-2xl">
-        © {new Date().getFullYear()} DevLens AI, Inc. All rights reserved.
+        © {new Date().getFullYear()} PrepLens, Inc. All rights reserved.
       </div>
     </footer>
   )

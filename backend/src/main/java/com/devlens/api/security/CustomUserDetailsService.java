@@ -22,6 +22,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userRepository.findByEmailAndStatusNot(email, UserStatus.DELETED)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email : " + email));
 
+        if (user.getStatus() == UserStatus.SUSPENDED) {
+            throw new org.springframework.security.authentication.LockedException("Account has been suspended by administration");
+        }
+
         return UserPrincipal.create(user);
     }
 
@@ -29,6 +33,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserById(java.util.UUID id) throws UsernameNotFoundException {
         User user = userRepository.findByIdAndStatusNot(id, UserStatus.DELETED)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with id : " + id));
+
+        if (user.getStatus() == UserStatus.SUSPENDED) {
+            throw new org.springframework.security.authentication.LockedException("Account has been suspended by administration");
+        }
 
         return UserPrincipal.create(user);
     }

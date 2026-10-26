@@ -59,6 +59,14 @@ public class UserController {
         return ResponseEntity.ok(ApiResponse.success(response, "User updated successfully"));
     }
 
+    @PutMapping("/profile")
+    public ResponseEntity<ApiResponse<UserResponse>> updateProfile(
+            @AuthenticationPrincipal UserPrincipal userPrincipal,
+            @Valid @RequestBody com.devlens.api.dto.UpdateProfileRequestDto request) {
+        UserResponse response = userService.updateProfile(userPrincipal.getId(), request);
+        return ResponseEntity.ok(ApiResponse.success(response, "Profile updated successfully"));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable UUID id) {
         userService.deleteUser(id);

@@ -8,6 +8,9 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("test")
 class DevLensApiApplicationTests {
 
+    @org.springframework.boot.test.mock.mockito.MockBean
+    private org.springframework.mail.javamail.JavaMailSender javaMailSender;
+
     @Test
     void contextLoads() {
     }

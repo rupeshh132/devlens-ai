@@ -1,9 +1,10 @@
+import { useEffect } from "react"
 import { Link, Outlet, useLocation } from "react-router-dom"
 import { useAuth } from "@/features/auth/hooks/useAuth"
 import { Navbar, NavbarBrand, NavbarActions } from "@/components/ui/navbar"
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary"
 import { ContentArea } from "@/components/layout/ContentArea"
-import { Home, Settings, FolderGit2, LogOut, User, FileText, Map, Mic } from "lucide-react"
+import { Home, Settings, FolderGit2, LogOut, User, FileText, Map, Mic, GraduationCap, Trophy, Award, Crown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/ui/logo"
 import {
@@ -30,12 +31,44 @@ const navItems = [
   { title: "Skill Gap", textLabel: "GAP", url: "/skill-gap" },
   { title: "Dynamic Roadmap", icon: Map, url: "/roadmap" },
   { title: "Mock Interview", icon: Mic, url: "/interview" },
+  { title: "Academy", icon: GraduationCap, url: "/courses" },
+  { title: "My Certificates", icon: Award, url: "/certificates" },
+  { title: "Leaderboard", icon: Trophy, url: "/leaderboard" },
   { title: "Settings", icon: Settings, url: "/settings" },
 ]
 
 export function DashboardLayout() {
-  const { logout } = useAuth()
+  const { user, logout } = useAuth()
   const location = useLocation()
+
+  useEffect(() => {
+    const path = location.pathname;
+    let title = 'PrepLens';
+
+    if (path.includes('/dashboard')) {
+      title = 'Developer Dashboard | PrepLens';
+    } else if (path.includes('/repositories') || path.includes('/repo/')) {
+      title = 'GitHub Code Analysis & Repositories | PrepLens';
+    } else if (path.includes('/resume')) {
+      title = 'AI Resume Analyzer | PrepLens';
+    } else if (path.includes('/skill-gap')) {
+      title = 'Skill Gap & Readiness Analysis | PrepLens';
+    } else if (path.includes('/roadmap')) {
+      title = 'Dynamic Developer Roadmap | PrepLens';
+    } else if (path.includes('/interview')) {
+      title = 'AI Technical Mock Interview | PrepLens';
+    } else if (path.includes('/courses')) {
+      title = 'Developer Academy & Courses | PrepLens';
+    } else if (path.includes('/certificates')) {
+      title = 'My Certificates | PrepLens';
+    } else if (path.includes('/settings')) {
+      title = 'Account Settings | PrepLens';
+    } else {
+      title = 'PrepLens — AI Platform for Developers';
+    }
+
+    document.title = title;
+  }, [location.pathname]);
   
   return (
     <ErrorBoundary>
@@ -49,6 +82,13 @@ export function DashboardLayout() {
               </NavbarBrand>
             </div>
             <NavbarActions>
+              <Link
+                to="/dev-pricing"
+                className="hidden sm:inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all mr-2"
+              >
+                <Crown className="w-3.5 h-3.5" />
+                Dev Pro
+              </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="rounded-full hover:bg-muted">
@@ -60,6 +100,14 @@ export function DashboardLayout() {
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuLabel className="font-bold text-brand-navy">My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  {user?.role === 'ADMIN' && (
+                    <DropdownMenuItem asChild>
+                      <Link to="/admin/courses" className="cursor-pointer w-full flex items-center py-2 text-primary">
+                        <Settings className="mr-3 h-4 w-4" />
+                        <span className="font-medium">Admin Panel</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuItem asChild>
                     <Link to="/profile" className="cursor-pointer w-full flex items-center py-2">
                       <User className="mr-3 h-4 w-4 text-muted-foreground" />

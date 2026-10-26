@@ -42,7 +42,7 @@ public class Resume {
     private Double atsScore;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "JSONB")
+    @Column()
     private String suggestions;
 
     @CreatedDate

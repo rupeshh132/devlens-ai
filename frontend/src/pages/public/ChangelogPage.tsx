@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm"
 const changelogContent = `
 # Changelog
 
-All notable changes to DevLens AI will be documented in this file.
+All notable changes to PrepLens will be documented in this file.
 
 ## [1.1.0] - ${new Date().toISOString().split('T')[0]}
 ### Added
@@ -19,7 +19,7 @@ All notable changes to DevLens AI will be documented in this file.
 
 ## [1.0.0] - 2024-05-15
 ### Added
-- Initial release of DevLens AI.
+- Initial release of PrepLens.
 - GitHub repository integration.
 - Automated static code analysis dashboard.
 - JWT-based authentication system.

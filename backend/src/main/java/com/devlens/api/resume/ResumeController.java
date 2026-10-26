@@ -44,4 +44,19 @@ public class ResumeController {
         Resume resume = resumeService.getLatestResume(userId);
         return ResponseEntity.ok(resume);
     }
+
+    @PostMapping("/tailor")
+    public ResponseEntity<?> tailorResume(
+            @RequestParam(value = "file", required = false) MultipartFile file,
+            @RequestParam("jobDescription") String jobDescription,
+            @AuthenticationPrincipal UserPrincipal currentUser) {
+        try {
+            String result = resumeService.tailorResume(currentUser.getId(), file, jobDescription);
+            return ResponseEntity.ok(Map.of("result", result));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        }
+    }
 }

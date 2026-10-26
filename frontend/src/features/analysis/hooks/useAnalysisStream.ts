@@ -20,7 +20,7 @@ export function useAnalysisStream(jobId: string | undefined) {
     setIsConnectionClosed(false);
 
     // Hardcode the API base URL depending on your configuration or use an environment variable
-    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1';
+    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8081/api/v1';
     
     // Note: withCredentials: true ensures HttpOnly cookies are sent
     const eventSource = new EventSource(`${baseUrl}/analyses/${jobId}/progress/stream`, {

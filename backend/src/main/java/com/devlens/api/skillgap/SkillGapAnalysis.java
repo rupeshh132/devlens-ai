@@ -37,7 +37,7 @@ public class SkillGapAnalysis {
     private String targetRole;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "jsonb", nullable = false)
+    @Column( nullable = false)
     private String gapReport; // Stored as JSON string to preserve Gemini's rich structure
 
     @CreatedDate

@@ -1,27 +1,68 @@
+server:
+  port: 8081
+
 spring:
-  datasource:
-    url: jdbc:h2:mem:devlensdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password: password
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-  h2:
-    console:
+  servlet:
+    multipart:
       enabled: true
-      path: /h2-console
+      max-file-size: 50MB
+      max-request-size: 50MB
+  config:
+    import: optional:classpath:application-local.yml
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/devlens}
+    driverClassName: org.postgresql.Driver
+    username: ${DB_USER:${DB_USERNAME:postgres}}
+    password: ${DB_PASSWORD:password}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 60000
+      max-lifetime: 180000
+      connection-timeout: 30000
+      keepalive-time: 30000
+      validation-timeout: 3000
+      connection-test-query: SELECT 1
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    defer-datasource-initialization: false
+    properties:
+      hibernate:
+        format_sql: false
   flyway:
-    enabled: false
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+    connect-retries: 10
+    connect-retries-interval: 2
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/devlens}
+    user: ${DB_USER:${DB_USERNAME:postgres}}
+    password: ${DB_PASSWORD:password}
 
   security:
     oauth2:
       client:
         registration:
           github:
-            client-id: Ov23linU5RedVyvEUzjm
-            client-secret: a7623860e3afe64d90f2ee27e68be09330dfd43d
+            client-id: ${GITHUB_CLIENT_ID:dummy_github_client_id}
+            client-secret: ${GITHUB_CLIENT_SECRET:dummy_github_secret}
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:your_email@gmail.com}
+    password: ${MAIL_PASSWORD:your_app_password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+supabase:
+  url: ${SUPABASE_URL:https://bwcjpfkzisxuskpxbpxp.supabase.co}
+  key: ${SUPABASE_KEY:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3Y2pwZmt6aXN4dXNrcHhicHhwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4OTc1NzYxMywiZXhwIjoyMTA1MzMzNjEzfQ.BNLhuhVaURE5Gqnk2SjYsOdvgLnMtwFUW27cVVL4eIc}
 
 app:
   oauth2:
@@ -30,4 +71,14 @@ app:
 gemini:
   api:
     url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-    key: "YOUR_GEMINI_API_KEY_HERE"
+    key: ${GEMINI_API_KEY:dummy_gemini_key}
+
+razorpay:
+  key:
+    id: ${RAZORPAY_KEY_ID:dummy_razorpay_key}
+    secret: ${RAZORPAY_KEY_SECRET:dummy_razorpay_secret}
+  webhook-secret: ${RAZORPAY_WEBHOOK_SECRET:dummy_webhook_secret_for_local_testing}
+
+groq:
+  api:
+    key: ${GROQ_API_KEY:}

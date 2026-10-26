@@ -49,7 +49,7 @@ export function Logo({ className, size = 'md', variant = 'dark', hideTextOnMobil
           hideTextOnMobile && "hidden sm:inline-block"
         )}
       >
-        DevLens AI
+        PrepLens
       </span>
     </Link>
   )

@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const value = useMemo(() => ({
     user: user || null,
-    accessToken: localStorage.getItem('devlens_access_token'),
+    accessToken: localStorage.getItem('preplens_access_token'),
     refreshToken: null, // Removed from localStorage due to HttpOnly cookie
     isAuthenticated,
     isLoading,

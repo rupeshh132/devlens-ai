@@ -7,7 +7,10 @@ export const useLogout = () => {
   return useMutation({
     mutationFn: () => authApi.logout(),
     onSettled: () => {
-      localStorage.removeItem('devlens_access_token');
+      localStorage.removeItem('preplens_access_token');
+      localStorage.removeItem('learn_study_plan');
+      localStorage.removeItem('learn_exam_goal');
+      localStorage.removeItem('learn_subscription_plan');
       queryClient.setQueryData(['currentUser'], null);
       queryClient.clear();
       window.location.href = '/login';

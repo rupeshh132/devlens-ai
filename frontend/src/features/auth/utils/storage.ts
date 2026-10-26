@@ -1,4 +1,4 @@
-const STORAGE_PREFIX = 'devlens_';
+const STORAGE_PREFIX = 'preplens_';
 
 export const storage = {
   getToken: (key: string): string | null => {

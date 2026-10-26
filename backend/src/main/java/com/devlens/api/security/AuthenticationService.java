@@ -25,6 +25,8 @@ public class AuthenticationService {
     private final RefreshTokenService refreshTokenService;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final com.devlens.api.repository.PasswordResetTokenRepository passwordResetTokenRepository;
+    private final com.devlens.api.service.MailService mailService;
 
     @Transactional
     public AuthResponse register(String fullName, String email, String password, String deviceId) {
@@ -56,6 +58,10 @@ public class AuthenticationService {
 
         UserPrincipal userPrincipal = UserPrincipal.create(user);
         String accessToken = jwtService.generateToken(userPrincipal);
+        String jti = jwtService.extractJti(accessToken);
+        user.setActiveJwtId(jti);
+        userRepository.save(user);
+        
         RefreshToken refreshToken = refreshTokenService.createOrUpdateRefreshToken(user, deviceId);
 
         return AuthResponse.builder()
@@ -74,6 +80,9 @@ public class AuthenticationService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         String accessToken = jwtService.generateToken(userPrincipal);
+        String jti = jwtService.extractJti(accessToken);
+        user.setActiveJwtId(jti);
+        userRepository.save(user);
         
         // Single active refresh token per device - handled internally by createOrUpdateRefreshToken
         RefreshToken refreshToken = refreshTokenService.createOrUpdateRefreshToken(user, deviceId);
@@ -89,6 +98,9 @@ public class AuthenticationService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         String accessToken = jwtService.generateToken(userPrincipal);
+        String jti = jwtService.extractJti(accessToken);
+        user.setActiveJwtId(jti);
+        userRepository.save(user);
         
         RefreshToken refreshToken = refreshTokenService.createOrUpdateRefreshToken(user, deviceId);
 
@@ -108,6 +120,9 @@ public class AuthenticationService {
                     
                     UserPrincipal userPrincipal = UserPrincipal.create(user);
                     String accessToken = jwtService.generateToken(userPrincipal);
+                    String jti = jwtService.extractJti(accessToken);
+                    user.setActiveJwtId(jti);
+                    userRepository.save(user);
                     
                     return AuthResponse.builder()
                             .accessToken(accessToken)
@@ -119,6 +134,14 @@ public class AuthenticationService {
 
     public void logout(String refreshToken) {
         refreshTokenService.deleteByToken(refreshToken);
+    }
+    
+    @Transactional
+    public void clearActiveJwt(String email) {
+        userRepository.findByEmailAndStatusNot(email, com.devlens.api.entity.UserStatus.DELETED).ifPresent(user -> {
+            user.setActiveJwtId(null);
+            userRepository.save(user);
+        });
     }
     
     public void revokeAllUserTokens(UUID userId) {
@@ -145,5 +168,36 @@ public class AuthenticationService {
                 .maxAge(0)
                 .sameSite("Strict")
                 .build();
+    }
+
+    @Transactional
+    public void forgotPassword(String email) {
+        userRepository.findByEmailAndStatusNot(email, com.devlens.api.entity.UserStatus.DELETED).ifPresent(user -> {
+            passwordResetTokenRepository.deleteByUser(user);
+            
+            com.devlens.api.entity.PasswordResetToken resetToken = new com.devlens.api.entity.PasswordResetToken();
+            resetToken.setUser(user);
+            resetToken.setToken(java.util.UUID.randomUUID().toString());
+            resetToken.setExpiryDate(java.time.LocalDateTime.now().plusHours(24));
+            passwordResetTokenRepository.save(resetToken);
+            
+            mailService.sendPasswordResetEmail(user.getEmail(), resetToken.getToken());
+        });
+    }
+
+    @Transactional
+    public void resetPassword(String token, String newPassword) {
+        com.devlens.api.entity.PasswordResetToken resetToken = passwordResetTokenRepository.findByToken(token)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid or missing reset token"));
+                
+        if (resetToken.isExpired()) {
+            passwordResetTokenRepository.delete(resetToken);
+            throw new IllegalArgumentException("Token has expired");
+        }
+        
+        User user = resetToken.getUser();
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+        passwordResetTokenRepository.delete(resetToken);
     }
 }

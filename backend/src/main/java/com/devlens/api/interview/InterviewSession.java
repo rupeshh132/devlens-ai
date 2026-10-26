@@ -37,7 +37,7 @@ public class InterviewSession {
     private String targetRole;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "jsonb", nullable = false)
+    @Column( nullable = false)
     private String sessionData; // Stored as JSON string
 
     @CreatedDate

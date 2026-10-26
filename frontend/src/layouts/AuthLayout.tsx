@@ -20,7 +20,7 @@ export function AuthLayout({ children }: { children?: ReactNode }) {
               </p>
               <footer className="text-base text-gray-200 font-semibold tracking-wide flex items-center gap-2">
                 <div className="w-6 h-[2px] bg-brand-coral rounded-full" />
-                The DevLens AI Team
+                The PrepLens Team
               </footer>
             </blockquote>
           </div>

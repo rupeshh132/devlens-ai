@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { api } from '@/lib/api';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -74,7 +75,7 @@ export function ResetPassword() {
     setPasswordStrength(strength);
   }, [passwordValue]);
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: ResetPasswordFormValues) => {
     if (!token) {
       setError('Invalid reset token.');
       return;
@@ -84,16 +85,11 @@ export function ResetPassword() {
     setIsSuccess(false);
     setIsLoading(true);
     try {
-      // Mock API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
-      // Simulate success
+      await api.post('/auth/reset-password', { token, newPassword: data.password });
       setIsSuccess(true);
-      
-      // Redirect after a short delay
       setTimeout(() => navigate('/login'), 2000);
-    } catch {
-      setError('An unexpected error occurred. Please try again.');
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to reset password. Token might be expired.');
     } finally {
       setIsLoading(false);
     }

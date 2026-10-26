@@ -1,10 +1,11 @@
-import { useEffect, useState, useRef } from "react"
-import { motion, type Variants, useInView } from "framer-motion"
+
+import { motion, type Variants } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
-import { Code2, Search, BarChart3, CheckCircle2, Terminal, Lightbulb, MessageSquare } from "lucide-react"
+import { CheckCircle2, Terminal, MessageSquare, GraduationCap, Award, Trophy, Briefcase, ArrowRight, Star, Flame } from "lucide-react"
+import { Link } from "react-router-dom"
 
 import { PublicLayout } from "@/layouts/PublicLayout"
 
@@ -13,10 +14,9 @@ export function LandingPage() {
     <PublicLayout>
       <HeroSection />
       <TrustedStatsSection />
+      <InternshipBannerSection />
       <FeaturesGridSection />
-      <HowItWorksSection />
-      <PreviewsSection />
-      <WhyDevLensSection />
+      <AcademyHighlightSection />
       <PricingSection />
       <FaqSection />
       <CtaSection />
@@ -30,24 +30,11 @@ export function LandingPage() {
 function HeroSection() {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   }
-
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { 
-        duration: 0.7, 
-        ease: "easeOut" 
-      }
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
   }
 
   return (
@@ -55,51 +42,48 @@ function HeroSection() {
       <div className="container mx-auto relative z-10 px-4 max-w-screen-xl">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="text-left lg:col-span-6 pr-0 lg:pr-8"
           >
+            <motion.div variants={itemVariants} className="mb-4">
+              <Badge className="bg-brand-coral/10 text-brand-coral border-none uppercase tracking-widest px-4 py-1.5 font-bold">New: PrepLens Academy LMS</Badge>
+            </motion.div>
             <motion.h1 
               variants={itemVariants} 
-              className="text-5xl md:text-7xl font-serif text-brand-navy mb-6 leading-[1.1] tracking-tight"
+              className="text-5xl md:text-6xl lg:text-7xl font-serif text-brand-navy mb-6 leading-[1.1] tracking-tight"
             >
-              Master Your Career on Autopilot
+              Analyze. Learn. Graduate.
             </motion.h1>
             
             <motion.p 
               variants={itemVariants}
               className="text-lg md:text-xl text-brand-navy/70 max-w-xl mb-10 leading-relaxed font-normal"
             >
-              Our AI-powered platform accelerates your professional growth, analyzing your skills and optimizing your resume for top opportunities.
+              The ultimate AI platform for developers. Analyze your GitHub repos, find skill gaps, practice interviews, and master new skills through our premium Academy.
             </motion.p>
             
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-              <Button size="lg" className="h-12 px-8 text-xs rounded-full font-bold bg-brand-coral hover:bg-brand-coral/90 text-white shadow-none transition-all w-full sm:w-auto uppercase tracking-widest">
-                Start Building for Free
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="h-12 px-8 text-xs rounded-full font-bold border-brand-navy/20 shadow-none bg-transparent hover:bg-black/5 text-brand-navy transition-all w-full sm:w-auto uppercase tracking-widest"
+              <Button
+                size="lg"
+                className="h-14 px-8 text-sm rounded-full font-bold bg-brand-navy hover:bg-black text-white shadow-none transition-all w-full sm:w-auto uppercase tracking-widest"
                 onClick={() => {
-                  const backendBase = (import.meta.env.VITE_API_URL || 
-                    'http://localhost:8080/api/v1')
-                    .replace('/api/v1', '');
-                  
-                  window.location.href = 
-                    `${backendBase}/oauth2/authorization/github`;
+                  if (!import.meta.env.VITE_API_URL) throw new Error("VITE_API_URL is missing!");
+                  const backendBase = import.meta.env.VITE_API_URL.replace('/api/v1', '');
+                  window.location.href = `${backendBase}/oauth2/authorization/github`;
                 }}
               >
-                <Terminal className="mr-2 h-4 w-4" />
+                <Terminal className="mr-2 h-5 w-5" />
                 Sign in with GitHub
+              </Button>
+              <Button size="lg" variant="outline" className="h-14 px-8 text-sm rounded-full font-bold border-brand-navy/20 bg-transparent text-brand-navy w-full sm:w-auto uppercase tracking-widest">
+                Explore Academy
               </Button>
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Lifestyle Image + Floating Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -107,18 +91,15 @@ function HeroSection() {
             className="relative lg:col-span-6 mt-8 lg:mt-0 flex justify-center lg:justify-end"
           >
             <div className="relative w-full max-w-[550px]">
-              {/* Lifestyle Image Background */}
-              <div className="relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80" 
-                  alt="Team collaborating" 
-                  className="w-full h-full object-cover"
-                />
-                {/* Subtle overlay for better text contrast if needed */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+              <div className="relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-2xl bg-gradient-to-br from-brand-navy to-black border-4 border-white">
+                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                  <GraduationCap className="h-24 w-24 text-brand-coral mb-6" />
+                  <h2 className="text-4xl font-serif text-white mb-4 tracking-tight">PrepLens Academy</h2>
+                  <p className="text-white/70 text-lg">Your personalized journey from junior to senior engineer.</p>
+                </div>
               </div>
 
-              {/* Floating Profile Card */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -127,41 +108,21 @@ function HeroSection() {
               >
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <h3 className="font-serif text-3xl text-brand-navy mb-1">Sarah Chen</h3>
-                    <p className="text-sm font-medium text-brand-navy/60">Senior Frontend Engineer</p>
+                    <h3 className="font-serif text-2xl text-brand-navy mb-1">Advanced React</h3>
+                    <p className="text-sm font-medium text-brand-navy/60">Module 4: Performance Hooks</p>
                   </div>
-                  <div className="bg-muted px-3 py-1.5 rounded-full text-xs font-bold text-brand-navy/70 tracking-widest uppercase">
-                    92% Ready
-                  </div>
-                </div>
-
-                <div className="space-y-5">
-                  <div>
-                    <div className="flex justify-between text-xs font-bold mb-2">
-                      <span className="text-brand-navy/70 uppercase tracking-wider">React Architecture</span>
-                      <span className="text-brand-navy font-mono">95/100</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-brand-cream rounded-full overflow-hidden">
-                      <div className="h-full bg-brand-coral rounded-full w-[95%]"></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between text-xs font-bold mb-2">
-                      <span className="text-brand-navy/70 uppercase tracking-wider">System Design</span>
-                      <span className="text-brand-navy font-mono">78/100</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-brand-cream rounded-full overflow-hidden">
-                      <div className="h-full bg-blue-500/80 rounded-full w-[78%]"></div>
-                    </div>
+                  <div className="bg-brand-coral/10 text-brand-coral px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase flex items-center gap-1">
+                    <Trophy className="h-3 w-3" /> +100 PTS
                   </div>
                 </div>
-
-                <div className="mt-6 bg-brand-cream p-4 rounded-2xl flex gap-3 items-start border border-black/[0.03]">
-                  <Lightbulb className="h-5 w-5 text-brand-coral flex-shrink-0 mt-0.5" />
-                  <p className="text-[13px] font-medium text-brand-navy/70 leading-relaxed">
-                    <strong className="text-brand-navy">AI Insight:</strong> You're highly proficient in React. Focus on improving your <span className="text-brand-coral">System Design</span> scores to unlock Staff-level roles.
-                  </p>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs font-bold mb-1">
+                    <span className="text-brand-navy/70 uppercase tracking-wider">Course Progress</span>
+                    <span className="text-brand-navy font-mono">75%</span>
+                  </div>
+                  <div className="h-2 w-full bg-brand-cream rounded-full overflow-hidden">
+                    <div className="h-full bg-brand-coral rounded-full w-[75%]"></div>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -172,33 +133,17 @@ function HeroSection() {
   )
 }
 
-// ---------------------------------------------------------
-// 2. Trusted Stats
-// ---------------------------------------------------------
 function TrustedStatsSection() {
-  const companies = [
-    { name: 'ACME Corp' },
-    { name: 'Globex' },
-    { name: 'Soylent' },
-    { name: 'Initech' },
-    { name: 'Massive Dynamic' },
-    { name: 'Cyberdyne' },
-    { name: 'Tyrell Corp' },
-    { name: 'Oscorp' },
-    { name: 'Stark Ind.' },
-    { name: 'Wayne Ent.' },
-  ];
-
+  const companies = [{ name: 'Amazon' }, { name: 'Google' }, { name: 'Meta' }, { name: 'Netflix' }, { name: 'Microsoft' }];
   return (
     <section className="py-12 border-y border-border bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl text-center mb-8">
-        <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Trusted by innovative engineering teams worldwide</p>
+        <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Our students work at top tech companies</p>
       </div>
-      
       <div className="container mx-auto px-4 max-w-screen-xl">
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
           {companies.map((company, idx) => (
-            <div key={`${company.name}-${idx}`} className="text-xl font-bold font-mono tracking-tighter text-foreground">
+            <div key={idx} className="text-2xl font-bold font-serif tracking-tighter text-foreground">
               {company.name}
             </div>
           ))}
@@ -208,64 +153,45 @@ function TrustedStatsSection() {
   )
 }
 
-// ---------------------------------------------------------
-// 3. Features Grid
-// ---------------------------------------------------------
-const features = [
-  {
-    title: "AI Resume Analysis",
-    description: "Get instant, ATS-friendly feedback on your resume. Identify missing keywords and actionable improvements.",
-    icon: Search,
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Mock Interviews",
-    description: "Practice with our AI interviewer. Get real-time feedback on your answers and perfect your delivery.",
-    icon: MessageSquare,
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Skill Gap Dashboard",
-    description: "Compare your current skills against industry standards for your target roles to see exactly what you need to learn.",
-    icon: BarChart3,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Dynamic Roadmaps",
-    description: "Generate a personalized step-by-step learning journey based on your skill gaps, complete with resources.",
-    icon: Code2,
-    image: "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?auto=format&fit=crop&w=800&q=80"
-  }
-]
-
 function FeaturesGridSection() {
+  const features = [
+    {
+      title: "GitHub Repo AI",
+      description: "Connect your GitHub and let our AI analyze your code structure, security flaws, and suggest architecture improvements.",
+      icon: Terminal,
+    },
+    {
+      title: "AI Mock Interviews",
+      description: "Practice technical and behavioral interviews with a lifelike AI that grades your responses in real-time.",
+      icon: MessageSquare,
+    },
+    {
+      title: "PrepLens Academy",
+      description: "Enroll in premium, interactive courses tailored to close your specific skill gaps. Project-based learning.",
+      icon: GraduationCap,
+    },
+    {
+      title: "Verified Certificates",
+      description: "Complete courses and get your projects reviewed by human admins to earn verifiable certificates for your LinkedIn.",
+      icon: Award,
+    }
+  ];
+
   return (
     <section id="features" className="py-24 bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">Everything you need to land the job</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">A complete suite of AI tools designed to help you prepare, practice, and succeed in your tech career.</p>
+          <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">A complete ecosystem for developers</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">From analyzing your first commit to handing you your graduation certificate, we are with you every step of the way.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, i) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="flex"
-            >
-              <Card className="h-full w-full bg-card border-2 border-border shadow-none hover:border-brand-coral/50 transition-colors overflow-hidden group flex flex-col rounded-3xl">
-                <div className="w-full h-48 sm:h-40 md:h-48 overflow-hidden border-b border-border">
-                  <img 
-                    src={feature.image} 
-                    alt={feature.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                  />
-                </div>
+            <motion.div key={feature.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.1 }} viewport={{ once: true }} className="flex">
+              <Card className="h-full w-full bg-card border-2 border-border shadow-none hover:border-brand-coral/50 transition-colors group flex flex-col rounded-3xl p-2">
                 <CardHeader className="pt-6">
-                  <feature.icon className="h-6 w-6 text-brand-coral mb-4" strokeWidth={2} />
+                  <div className="h-12 w-12 rounded-xl bg-brand-cream flex items-center justify-center mb-4 group-hover:bg-brand-coral/10 transition-colors">
+                    <feature.icon className="h-6 w-6 text-brand-navy group-hover:text-brand-coral transition-colors" />
+                  </div>
                   <CardTitle className="text-2xl font-serif text-brand-navy tracking-tight">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-1">
@@ -280,252 +206,42 @@ function FeaturesGridSection() {
   )
 }
 
-// ---------------------------------------------------------
-// 4. How It Works
-// ---------------------------------------------------------
-function HowItWorksSection() {
-  const steps = [
-    { title: "Upload Profile", desc: "Upload your resume and enter your target tech role." },
-    { title: "Identify Gaps", desc: "Our AI analyzes your skills and points out what you need to learn." },
-    { title: "Practice & Improve", desc: "Follow your roadmap and practice with AI mock interviews." }
-  ]
+function AcademyHighlightSection() {
   return (
-    <section id="how-it-works" className="py-24 bg-muted/30 border-y">
-      <div className="container mx-auto px-4 max-w-screen-xl">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-          <div className="flex-1 space-y-8">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">A streamlined path to success</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">DevLens AI takes the guesswork out of interview prep. We analyze where you are, tell you where you need to go, and help you practice until you are ready.</p>
-            </div>
-            <div className="space-y-6">
-              {steps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground font-bold">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-xl text-brand-navy">{step.title}</h4>
-                    <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex-1 w-full relative">
-            <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full" />
-            <div className="relative rounded-3xl border-2 border-border bg-card p-6 shadow-none">
-              {/* Mock Terminal/Integration UI */}
-              <div className="flex items-center gap-2 mb-4 pb-4 border-b">
-                <div className="w-3 h-3 rounded-full bg-red-500" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
-                <span className="text-xs text-muted-foreground font-mono ml-2">github-actions / devlens-check</span>
-              </div>
-              <div className="font-mono text-sm space-y-2">
-                <p className="text-muted-foreground">$ devlens analyze ./src</p>
-                <p className="text-primary">Scanning 142 files...</p>
-                <div className="flex items-center gap-2 text-green-500">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>Syntax check passed</span>
-                </div>
-                <div className="flex items-center gap-2 text-yellow-500">
-                  <span className="w-4 h-4 text-center">!</span>
-                  <span>Found 2 complexity warnings in App.tsx</span>
-                </div>
-                <div className="flex items-center gap-2 text-green-500">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>Security scan passed (0 vulnerabilities)</span>
-                </div>
-                <p className="mt-4 pt-4 border-t text-muted-foreground">Analysis complete in 1.2s</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ---------------------------------------------------------
-// 5. & 6. AI Analysis & Dashboard Previews
-// ---------------------------------------------------------
-function PreviewsSection() {
-  return (
-    <section className="py-24 bg-background overflow-hidden relative">
-      <div className="container mx-auto px-4 max-w-screen-xl text-center mb-16 relative z-10">
-        <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">Comprehensive Insights</h2>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">Get a bird's-eye view of your career readiness, track your interview scores over time, and drill down into specific skill gaps.</p>
-      </div>
-      
+    <section className="py-24 bg-brand-navy text-white overflow-hidden relative">
+      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
       <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="rounded-[2rem] border border-border/60 bg-white shadow-2xl overflow-hidden ring-1 ring-black/5 max-w-5xl mx-auto"
-        >
-          {/* Mock Dashboard UI */}
-          <div className="flex flex-col md:flex-row h-auto md:h-[600px]">
-            {/* Sidebar (Hidden on very small screens, visible as scrollable row or normal sidebar) */}
-            <div className="w-full md:w-64 border-b md:border-b-0 md:border-r border-border/60 p-4 md:p-6 bg-[#FAFAFA]">
-              <div className="hidden md:flex items-center gap-3 mb-8">
-                <Terminal className="h-5 w-5 text-brand-coral" strokeWidth={2.5} />
-                <span className="font-bold text-lg tracking-tight">DevLens AI</span>
-              </div>
-              <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 hide-scrollbar">
-                {[
-                  { icon: BarChart3, label: 'Overview', active: true },
-                  { icon: Search, label: 'Skill Gaps' },
-                  { icon: Code2, label: 'Roadmap' },
-                  { icon: Terminal, label: 'Interviews' },
-                ].map((item, i) => (
-                  <div key={i} className={`flex-shrink-0 flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-default ${item.active ? 'bg-white shadow-sm text-brand-navy ring-1 ring-border/50' : 'text-muted-foreground hover:text-foreground hover:bg-white/50'}`}>
-                    <item.icon className={`h-4 w-4 ${item.active ? 'text-brand-coral' : ''}`} />
-                    {item.label}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="flex-1 p-5 md:p-8 overflow-y-auto bg-white">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-                <div>
-                  <h3 className="text-2xl font-serif text-brand-navy tracking-tight">Skill Gap Analysis</h3>
-                  <p className="text-sm font-medium text-muted-foreground mt-1">Target Role: Senior Frontend Engineer</p>
-                </div>
-                <div className="flex items-center gap-2 self-start sm:self-auto">
-                  <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200 font-bold px-3 py-1 rounded-full shadow-sm">
-                    85% Match
-                  </Badge>
-                </div>
-              </div>
-
-              {/* Metrics Row */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                {[
-                  { label: 'Technical Score', value: '92', max: '/100', trend: '+5%', color: 'text-brand-coral' },
-                  { label: 'System Design', value: '78', max: '/100', trend: '+12%', color: 'text-blue-500' },
-                  { label: 'Communication', value: '88', max: '/100', trend: '+2%', color: 'text-purple-500' },
-                ].map((metric, i) => (
-                  <div key={i} className="bg-[#FAFAFA] p-5 rounded-[1.25rem] border border-border/60 flex flex-col justify-between">
-                    <span className="text-sm font-bold text-muted-foreground mb-3">{metric.label}</span>
-                    <div className="flex items-baseline gap-2">
-                      <div className="flex items-baseline">
-                        <span className={`text-4xl font-black tracking-tighter ${metric.color}`}>{metric.value}</span>
-                        <span className="text-base font-bold text-muted-foreground/50">{metric.max}</span>
-                      </div>
-                      <span className="text-xs font-bold text-green-500 bg-green-50 px-2 py-0.5 rounded-full">{metric.trend}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Skill Bars */}
-              <div className="bg-white p-6 rounded-[1.25rem] border border-border/60">
-                <h4 className="font-bold text-lg mb-6 text-brand-navy">Core Competencies</h4>
-                <div className="space-y-6">
-                  {[
-                    { skill: 'React & Next.js Ecosystem', score: 95 },
-                    { skill: 'TypeScript & Type Safety', score: 88 },
-                    { skill: 'Web Performance & CWV', score: 72 },
-                    { skill: 'System Architecture', score: 65 },
-                  ].map((item, i) => (
-                    <div key={i}>
-                      <div className="flex justify-between text-sm mb-2 font-bold">
-                        <span className="text-brand-navy">{item.skill}</span>
-                        <span className="text-muted-foreground">{item.score}%</span>
-                      </div>
-                      <div className="h-3 w-full bg-[#FAFAFA] rounded-full overflow-hidden inset-ring-1 inset-ring-black/5">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${item.score}%` }}
-                          transition={{ duration: 1.2, delay: 0.2 + (i * 0.1), ease: "easeOut" }}
-                          className={`h-full rounded-full ${item.score > 80 ? 'bg-green-500' : item.score > 70 ? 'bg-brand-coral' : 'bg-yellow-500'}`}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
-// ---------------------------------------------------------
-// 7. Why DevLens AI
-// ---------------------------------------------------------
-function AnimatedCounter({ value, prefix = "", suffix = "", duration = 2 }: { value: number, prefix?: string, suffix?: string, duration?: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
-  const [displayValue, setDisplayValue] = useState(0)
-
-  useEffect(() => {
-    if (isInView) {
-      let startTimestamp: number;
-      const step = (timestamp: number) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
-        
-        // easeOutQuart
-        const easeOut = 1 - Math.pow(1 - progress, 4);
-        
-        setDisplayValue(Math.floor(easeOut * value));
-        
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
-        }
-      };
-      window.requestAnimationFrame(step);
-    }
-  }, [isInView, value, duration]);
-
-  return (
-    <span ref={ref}>
-      {prefix}{displayValue}{suffix}
-    </span>
-  )
-}
-
-function WhyDevLensSection() {
-  return (
-    <section className="py-24 bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 max-w-screen-xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif tracking-tight mb-6">Why engineering leaders choose DevLens AI</h2>
-            <p className="text-lg opacity-90 mb-8 leading-relaxed">
-              We built DevLens AI because traditional interview prep is too fragmented. Our unified AI platform brings resume analysis, skill mapping, and mock interviews into one seamless experience.
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          <div className="flex-1 space-y-8">
+            <Badge className="bg-brand-coral/20 text-brand-coral hover:bg-brand-coral/30 border-none uppercase tracking-widest px-4 py-1.5 font-bold">Gamified Learning</Badge>
+            <h2 className="text-4xl md:text-5xl font-serif tracking-tight leading-tight">Learn. Code. Earn.</h2>
+            <p className="text-lg text-white/70 leading-relaxed max-w-xl">
+              PrepLens Academy isn't just about watching videos. You will submit real GitHub repositories for your final projects, get human reviews, earn leaderboard points, and unlock stunning digital certificates.
             </p>
-            <ul className="space-y-4">
-              {['Zero-configuration setup', 'Context-aware AI feedback', 'Real-time interview practice', 'Personalized learning paths'].map((item, i) => (
+            <ul className="space-y-4 pt-4">
+              {[
+                "Focus Mode blocks distractions while learning",
+                "Earn +100 points for every approved project",
+                "Climb the global developer leaderboard",
+                "Secure payments via Razorpay integration"
+              ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-primary-foreground" />
-                  <span className="font-medium text-lg">{item}</span>
+                  <CheckCircle2 className="h-5 w-5 text-brand-coral" />
+                  <span className="text-white/90">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { label: 'Interview Confidence', prefix: '+', num: 80, suffix: '%' },
-              { label: 'Resume ATS Score', prefix: '', num: 95, suffix: '+' },
-              { label: 'Prep Time Saved', prefix: '', num: 20, suffix: 'hrs' },
-              { label: 'Job Offers', prefix: '', num: 3, suffix: 'x' },
-            ].map((stat, i) => (
-              <div key={i} className="bg-primary-foreground/10 p-8 rounded-3xl border border-primary-foreground/20">
-                <div className="text-5xl font-black tracking-tighter mb-2">
-                  <AnimatedCounter value={stat.num} prefix={stat.prefix} suffix={stat.suffix} />
+          <div className="flex-1 w-full relative">
+            <div className="aspect-square max-w-md mx-auto relative">
+              <div className="absolute inset-0 bg-brand-coral/20 blur-[100px] rounded-full"></div>
+              {/* Abstract Certificate/Trophy representation */}
+              <div className="relative h-full w-full bg-white/5 border border-white/10 rounded-full flex items-center justify-center backdrop-blur-sm p-12">
+                <div className="h-full w-full rounded-full border border-brand-coral/30 border-dashed flex flex-col items-center justify-center animate-[spin_60s_linear_infinite]">
+                  <Trophy className="h-32 w-32 text-yellow-500 animate-[spin_60s_linear_infinite_reverse]" />
                 </div>
-                <div className="text-xs font-bold uppercase tracking-widest opacity-80">{stat.label}</div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
@@ -533,87 +249,61 @@ function WhyDevLensSection() {
   )
 }
 
-// ---------------------------------------------------------
-// 8. Pricing
-// ---------------------------------------------------------
 function PricingSection() {
   return (
     <section id="pricing" className="py-24 bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">Simple, transparent pricing</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">Start for free, upgrade when you need enterprise features.</p>
+          <h2 className="text-3xl md:text-4xl font-serif text-brand-navy tracking-tight mb-4">Invest in your career</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">Start analyzing code for free, unlock premium courses when you're ready to level up.</p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Free Plan */}
-          <Card className="flex flex-col border-2 border-border shadow-none rounded-3xl">
+          <Card className="flex flex-col border-2 border-border shadow-none rounded-3xl p-4">
             <CardHeader>
-              <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Community</CardTitle>
-              <CardDescription className="font-medium text-base leading-relaxed">Perfect for open source projects and small teams.</CardDescription>
+              <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Basic Learner</CardTitle>
+              <CardDescription className="font-medium text-base leading-relaxed">Perfect for discovering your skill gaps.</CardDescription>
               <div className="mt-4">
-                <span className="text-6xl font-black tracking-tighter">$0</span>
-                <span className="text-muted-foreground font-medium">/month</span>
+                <span className="text-6xl font-black tracking-tighter">Free</span>
               </div>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
-              <ul className="space-y-3 flex-1 mb-8">
-                {['Public repositories only', 'Standard AI analysis', 'Basic dashboard', 'Community support'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>{feature}</span>
+              <ul className="space-y-4 flex-1 mb-8 mt-4">
+                {['Basic GitHub Repo Analysis', 'Resume & Skill Gap Scanning', 'Limited AI Mock Interviews', 'Access to Free Academy Courses'].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm">
+                    <CheckCircle2 className="h-5 w-5 text-brand-navy shrink-0" />
+                    <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
-              <Button className="w-full" variant="outline">Get Started</Button>
+              <Button className="w-full h-12 rounded-full font-bold uppercase tracking-widest text-xs" variant="outline">Start Free</Button>
             </CardContent>
           </Card>
           
-          {/* Pro Plan */}
-          <Card className="flex flex-col border-2 border-primary relative shadow-none rounded-3xl">
+          {/* Premium Plan */}
+          <Card className="flex flex-col border-2 border-brand-coral relative shadow-[0_20px_40px_-15px_rgba(255,107,107,0.2)] rounded-3xl p-4">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <Badge className="bg-primary text-primary-foreground uppercase tracking-widest text-[10px] font-bold px-4 py-1">Most Popular</Badge>
+              <Badge className="bg-brand-coral text-white uppercase tracking-widest text-[10px] font-bold px-4 py-1 border-none">Most Popular</Badge>
             </div>
             <CardHeader>
-              <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Pro</CardTitle>
-              <CardDescription className="font-medium text-base leading-relaxed">For professional developers and growing teams.</CardDescription>
-              <div className="mt-4">
-                <span className="text-6xl font-black tracking-tighter">$29</span>
-                <span className="text-muted-foreground font-medium">/user/mo</span>
+              <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Academy Pro</CardTitle>
+              <CardDescription className="font-medium text-base leading-relaxed">For developers serious about landing senior roles.</CardDescription>
+              <div className="mt-4 flex items-end gap-2">
+                <span className="text-6xl font-black tracking-tighter text-brand-coral">Pay</span>
+                <span className="text-muted-foreground font-medium pb-2">per course</span>
               </div>
             </CardHeader>
             <CardContent className="flex-1 flex flex-col">
-              <ul className="space-y-3 flex-1 mb-8">
-                {['Unlimited private repositories', 'Advanced context-aware AI', 'Detailed metrics & reporting', 'Priority email support'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>{feature}</span>
+              <ul className="space-y-4 flex-1 mb-8 mt-4">
+                {['Unlock Premium Academy Courses', 'Human Review on Final Projects', 'Verifiable Digital Certificates', 'Ad-Free Focus Mode Player'].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm">
+                    <CheckCircle2 className="h-5 w-5 text-brand-coral shrink-0" />
+                    <span className="text-brand-navy font-medium">{feature}</span>
                   </li>
                 ))}
               </ul>
-              <Button className="w-full">Start 14-day Free Trial</Button>
-            </CardContent>
-          </Card>
-          
-          {/* Enterprise Plan */}
-          <Card className="flex flex-col md:col-span-2 lg:col-span-1 border-2 border-border shadow-none rounded-3xl">
-            <CardHeader>
-              <CardTitle className="text-3xl font-serif text-brand-navy tracking-tight">Enterprise</CardTitle>
-              <CardDescription className="font-medium text-base leading-relaxed">Custom solutions for large engineering organizations.</CardDescription>
-              <div className="mt-4">
-                <span className="text-5xl font-black tracking-tighter">Custom</span>
-              </div>
-            </CardHeader>
-            <CardContent className="flex-1 flex flex-col">
-              <ul className="space-y-3 flex-1 mb-8">
-                {['Self-hosted deployment options', 'Custom analysis rules', 'SSO / SAML integration', 'Dedicated success manager'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button className="w-full" variant="outline">Contact Sales</Button>
+              <Button className="w-full h-12 rounded-full font-bold uppercase tracking-widest text-xs bg-brand-coral hover:bg-brand-coral/90 text-white">Browse Courses</Button>
             </CardContent>
           </Card>
         </div>
@@ -622,15 +312,12 @@ function PricingSection() {
   )
 }
 
-// ---------------------------------------------------------
-// 9. FAQ
-// ---------------------------------------------------------
 function FaqSection() {
   const faqs = [
-    { q: "How is DevLens AI different from ESLint or SonarQube?", a: "While traditional linters rely on static rule-matching, DevLens AI uses large language models to understand the context of your code. It catches logical errors and anti-patterns that standard linters miss, while producing significantly fewer false positives." },
-    { q: "Do you store our source code?", a: "No. For cloud plans, code is processed in-memory during analysis and immediately discarded. We do not use your proprietary code to train our base models. Enterprise plans offer self-hosted options where code never leaves your VPC." },
-    { q: "Which languages do you support?", a: "DevLens AI currently supports JavaScript, TypeScript, Python, Go, Rust, Java, and C++. We are continuously adding support for new languages based on community feedback." },
-    { q: "Can I use DevLens AI on my personal open-source projects?", a: "Yes! DevLens AI is completely free for public open-source repositories forever." }
+    { q: "How does PrepLens Academy work?", a: "You can browse free and premium courses in our library. Premium courses are unlocked via secure Razorpay checkout. Once enrolled, you watch videos in Focus Mode and submit a GitHub repository as your final project for admin review." },
+    { q: "Are the certificates verified?", a: "Yes! Every certificate has a unique ID and is issued only after a human admin approves your final project submission." },
+    { q: "Do you store our source code for analysis?", a: "No. For repo analysis, code is processed in-memory and immediately discarded. We do not use your proprietary code to train models." },
+    { q: "What happens if my project is rejected?", a: "If an admin rejects your final project, they will provide a reason. You can fix your code and resubmit the repository link as many times as needed." }
   ]
   
   return (
@@ -641,9 +328,9 @@ function FaqSection() {
         </div>
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`}>
-              <AccordionTrigger className="text-left text-lg font-medium">{faq.q}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed text-base">
+            <AccordionItem key={i} value={`item-${i}`} className="border-b-border">
+              <AccordionTrigger className="text-left text-lg font-serif text-brand-navy hover:text-brand-coral">{faq.q}</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed text-base pt-2 pb-6">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
@@ -654,24 +341,145 @@ function FaqSection() {
   )
 }
 
-// ---------------------------------------------------------
-// 10. CTA
-// ---------------------------------------------------------
 function CtaSection() {
   return (
-    <section className="py-24 md:py-32 bg-background text-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5"></div>
+    <section className="py-24 md:py-32 bg-brand-cream text-center relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
       <div className="container mx-auto px-4 relative z-10 max-w-3xl">
-        <h2 className="text-5xl md:text-6xl font-serif text-brand-navy tracking-tight mb-6">Ready to land your dream job?</h2>
-        <p className="text-xl text-muted-foreground mb-10 font-normal leading-relaxed">Join thousands of developers who are accelerating their careers with DevLens AI.</p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button size="lg" className="h-14 px-8 text-lg rounded-full font-bold">
-            Start Building for Free
-          </Button>
-          <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full font-bold">
-            View Documentation
+        <h2 className="text-5xl md:text-6xl font-serif text-brand-navy tracking-tight mb-6">Start your journey today.</h2>
+        <p className="text-xl text-brand-navy/70 mb-10 font-normal leading-relaxed">Join thousands of developers using PrepLens to accelerate their careers and master new skills.</p>
+        <div className="flex justify-center">
+          <Button size="lg" className="h-14 px-12 text-sm rounded-full font-bold bg-brand-coral hover:bg-brand-coral/90 text-white uppercase tracking-widest">
+            Create Free Account
           </Button>
         </div>
+      </div>
+    </section>
+  )
+}
+
+// ═══════════════════════════════════════════════════════════
+// INTERNSHIP BANNER SECTION — Main selling section
+// ═══════════════════════════════════════════════════════════
+function InternshipBannerSection() {
+  const steps = [
+    { step: "01", icon: Briefcase, title: "Pay Once", desc: "₹999 one-time mentorship fee via Razorpay. Secure & instant." },
+    { step: "02", icon: Terminal, title: "Build Your Project", desc: "Follow the brief, code your project, push to GitHub." },
+    { step: "03", icon: CheckCircle2, title: "Admin Reviews", desc: "Our team reviews your submission and approves within 48 hrs." },
+    { step: "04", icon: Award, title: "Get Certified", desc: "Receive your official Virtual Internship Certificate. Share on LinkedIn." },
+  ];
+
+  return (
+    <section className="py-20 md:py-28 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 relative overflow-hidden">
+      {/* Background noise/grid */}
+      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+      {/* Glow blobs */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 bg-orange-500/15 border border-orange-500/30 text-orange-400 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-6">
+            <Flame className="w-3.5 h-3.5" />
+            Limited Seats · Cohort 1 · Now Open
+          </div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight tracking-tight mb-5">
+            Earn a Real<br />
+            <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(90deg, #60a5fa, #818cf8)' }}>
+              Internship Certificate
+            </span>
+          </h2>
+
+          <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+            Not just a course. A complete <strong className="text-white/90">Virtual Internship Program</strong> — build a real project, get it reviewed by a human, and walk away with a certificate you can proudly share on LinkedIn.
+          </p>
+        </motion.div>
+
+        {/* 4-Step Process */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {steps.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="relative bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all group"
+            >
+              {/* Step number */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-black px-3 py-0.5 rounded-full tracking-widest">
+                {s.step}
+              </div>
+              {/* Arrow connector */}
+              {i < steps.length - 1 && (
+                <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+                  <ArrowRight className="w-5 h-5 text-blue-400/50" />
+                </div>
+              )}
+              <div className="w-12 h-12 bg-blue-600/20 text-blue-400 rounded-xl flex items-center justify-center mx-auto mb-4 mt-3 group-hover:bg-blue-600/30 transition-all">
+                <s.icon className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-white mb-2 text-sm tracking-wide uppercase">{s.title}</h3>
+              <p className="text-white/50 text-xs leading-relaxed">{s.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Pricing CTA Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto bg-white rounded-3xl p-8 md:p-10 text-center shadow-2xl"
+        >
+          <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            Certificate Included · One-Time Fee
+          </div>
+
+          <div className="mb-2">
+            <span className="text-5xl font-black text-gray-900">₹999</span>
+            <span className="text-gray-400 text-sm ml-2 line-through">₹2,499</span>
+          </div>
+          <p className="text-xs text-gray-400 mb-6 tracking-wider uppercase">Mentorship Fee — Pay Once, Learn Forever</p>
+
+          <ul className="text-sm text-gray-600 space-y-2 mb-8 text-left max-w-sm mx-auto">
+            {[
+              "Access to full Internship curriculum",
+              "1 GitHub project submission + human review",
+              "Official Virtual Internship Certificate",
+              "Certificate Verification ID (LinkedIn ready)",
+              "Leaderboard points + PrepLens profile badge",
+            ].map((f, i) => (
+              <li key={i} className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />
+                {f}
+              </li>
+            ))}
+          </ul>
+
+          <Link to="/courses">
+            <Button size="lg" className="w-full h-13 text-base font-bold rounded-2xl bg-blue-700 hover:bg-blue-800 text-white shadow-none uppercase tracking-widest">
+              Enroll Now — ₹999 Only
+            </Button>
+          </Link>
+
+          <p className="text-xs text-gray-400 mt-4 flex items-center justify-center gap-1.5">
+            <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+            Secure payment via Razorpay · 100% refund if not approved within 7 days
+          </p>
+        </motion.div>
+
       </div>
     </section>
   )

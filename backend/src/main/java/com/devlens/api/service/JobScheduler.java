@@ -8,7 +8,7 @@ import com.devlens.api.analysis.AnalysisContext;
 import com.devlens.api.analysis.AnalysisResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,17 +28,46 @@ public class JobScheduler {
     private final SseService sseService;
     private final com.devlens.api.service.GamificationService gamificationService;
     
-    // Track running jobs to support cancellation
+    // Track running jobs to support cancellation on THIS node
     private final ConcurrentHashMap<UUID, Thread> runningJobs = new ConcurrentHashMap<>();
 
-    @Async("jobExecutor")
-    @Transactional
+    // Keep this method for manual/backward compatibility, but it no longer runs @Async.
+    // Callers (like AnalysisJobService) will just return immediately, relying on the background poller to pick it up.
     public void executeJob(UUID jobId) {
-        log.info("Starting execution for job: {}", jobId);
+        log.info("Job {} submitted to database queue (Status = QUEUED)", jobId);
+    }
+
+    @Transactional(readOnly = true)
+    public java.util.Optional<AnalysisJob> fetchNextPendingJob() {
+        java.util.Optional<AnalysisJob> jobOpt = jobRepository.findNextPendingJob();
+        jobOpt.ifPresent(job -> {
+            if (job.getRepository() != null) {
+                job.getRepository().getUrl();
+                if (job.getRepository().getUser() != null) {
+                    job.getRepository().getUser().getId();
+                }
+            }
+        });
+        return jobOpt;
+    }
+
+    // Poller checks every 5 seconds for a queued job
+    @Scheduled(fixedDelay = 5000)
+    public void processPendingJobs() {
+        AnalysisJob job = fetchNextPendingJob().orElse(null);
+        if (job == null) {
+            return; // No jobs in queue
+        }
         
-        AnalysisJob job = jobRepository.findById(jobId).orElse(null);
-        if (job == null || job.getStatus() == AnalysisJobStatus.CANCELLED) {
-            log.info("Job {} is null or cancelled before starting", jobId);
+        log.info("Poller picked up job: {}", job.getId());
+        processJobSynchronously(job);
+    }
+
+    private void processJobSynchronously(AnalysisJob job) {
+        UUID jobId = job.getId();
+        
+        if (job.getStatus() == AnalysisJobStatus.CANCELLED) {
+            log.info("Job {} was cancelled before starting", jobId);
             return;
         }
 

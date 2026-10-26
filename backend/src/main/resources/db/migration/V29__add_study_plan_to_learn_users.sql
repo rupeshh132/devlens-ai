@@ -1,0 +1,1 @@
+ALTER TABLE learn_users ADD COLUMN current_study_plan_json TEXT;

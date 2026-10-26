@@ -23,6 +23,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
 
     @Transactional
     public UserResponse createUser(CreateUserRequest request) {
@@ -72,5 +73,24 @@ public class UserService {
         
         user.setStatus(UserStatus.DELETED);
         userRepository.save(user);
+    }
+
+    @Transactional
+    public UserResponse updateProfile(UUID userId, com.devlens.api.dto.UpdateProfileRequestDto request) {
+        User user = userRepository.findByIdAndStatusNot(userId, UserStatus.DELETED)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        if (request.getFirstName() != null) {
+            user.setFirstName(request.getFirstName());
+        }
+        if (request.getLastName() != null) {
+            user.setLastName(request.getLastName());
+        }
+        if (request.getNewPassword() != null && !request.getNewPassword().isBlank()) {
+            user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        }
+
+        User updatedUser = userRepository.save(user);
+        return userMapper.toResponse(updatedUser);
     }
 }

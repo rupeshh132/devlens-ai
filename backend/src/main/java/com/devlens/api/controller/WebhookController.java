@@ -12,6 +12,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import org.springframework.beans.factory.annotation.Value;
+
 @RestController
 @RequestMapping("/api/v1/webhooks")
 @RequiredArgsConstructor
@@ -22,10 +28,42 @@ public class WebhookController {
     private final AnalysisJobService analysisJobService;
     private final ObjectMapper objectMapper;
 
+    @Value("${GITHUB_WEBHOOK_SECRET:dummy_webhook_secret}")
+    private String githubWebhookSecret;
+
+    private boolean verifySignature(String payload, String signature) {
+        if (signature == null || !signature.startsWith("sha256=")) {
+            return false;
+        }
+        try {
+            Mac mac = Mac.getInstance("HmacSHA256");
+            SecretKeySpec secretKeySpec = new SecretKeySpec(githubWebhookSecret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+            mac.init(secretKeySpec);
+            byte[] hmacBytes = mac.doFinal(payload.getBytes(StandardCharsets.UTF_8));
+            
+            StringBuilder sb = new StringBuilder("sha256=");
+            for (byte b : hmacBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            
+            String expectedSignature = sb.toString();
+            return MessageDigest.isEqual(expectedSignature.getBytes(), signature.getBytes());
+        } catch (Exception e) {
+            log.error("Error verifying webhook signature", e);
+            return false;
+        }
+    }
+
     @PostMapping("/github")
     public ResponseEntity<String> handleGithubWebhook(
             @RequestHeader(value = "X-GitHub-Event", required = false) String eventType,
+            @RequestHeader(value = "X-Hub-Signature-256", required = false) String signature,
             @RequestBody String payload) {
+
+        if (!verifySignature(payload, signature)) {
+            log.warn("Invalid or missing webhook signature");
+            return ResponseEntity.status(401).body("Invalid or missing webhook signature");
+        }
 
         log.info("Received GitHub Webhook Event: {}", eventType);
 

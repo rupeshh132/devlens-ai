@@ -63,6 +63,26 @@ public class GlobalExceptionHandler {
                 .body(ApiResponse.error(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
     }
 
+    @ExceptionHandler(org.springframework.web.server.ResponseStatusException.class)
+    public ResponseEntity<ApiResponse<Void>> handleResponseStatusException(org.springframework.web.server.ResponseStatusException ex) {
+        log.warn("Response status exception: {}", ex.getMessage());
+        return ResponseEntity.status(ex.getStatusCode())
+                .body(ApiResponse.error(ex.getStatusCode().value(), ex.getReason() != null ? ex.getReason() : ex.getMessage()));
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ApiResponse<Void>> handleRuntimeException(RuntimeException ex) {
+        if (ex instanceof org.springframework.web.server.ResponseStatusException) {
+            org.springframework.web.server.ResponseStatusException rse = (org.springframework.web.server.ResponseStatusException) ex;
+            log.warn("Response status exception: {}", rse.getMessage());
+            return ResponseEntity.status(rse.getStatusCode())
+                    .body(ApiResponse.error(rse.getStatusCode().value(), rse.getReason() != null ? rse.getReason() : rse.getMessage()));
+        }
+        log.error("Unexpected Runtime exception", ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Something went wrong"));
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiResponse<Void>> handleResourceNotFoundException(ResourceNotFoundException ex) {
         log.warn("Resource not found: {}", ex.getMessage());

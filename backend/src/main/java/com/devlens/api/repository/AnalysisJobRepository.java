@@ -15,8 +15,14 @@ public interface AnalysisJobRepository extends JpaRepository<AnalysisJob, UUID> 
     List<AnalysisJob> findByRepositoryId(UUID repositoryId);
     List<AnalysisJob> findByStatus(AnalysisJobStatus status);
     
+    long countByRepositoryUserId(UUID userId);
     long countByRepositoryUserIdAndStatusIn(UUID userId, List<AnalysisJobStatus> statuses);
     long countByRepositoryUserIdAndStatus(UUID userId, AnalysisJobStatus status);
+    
+    long countByCreatedAtAfter(java.time.Instant date);
+    
+    @org.springframework.data.jpa.repository.Query(value = "SELECT * FROM analysis_jobs WHERE status = 'QUEUED' ORDER BY created_at ASC LIMIT 1 FOR UPDATE SKIP LOCKED", nativeQuery = true)
+    Optional<AnalysisJob> findNextPendingJob();
     
     Optional<AnalysisJob> findFirstByRepositoryIdOrderByCreatedAtDesc(UUID repositoryId);
 

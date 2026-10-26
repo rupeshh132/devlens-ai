@@ -58,7 +58,7 @@ export function Settings() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium text-foreground">Dark Theme</p>
-                <p className="text-sm text-muted-foreground">DevLens AI currently runs exclusively in dark mode for the best developer experience.</p>
+                <p className="text-sm text-muted-foreground">PrepLens currently runs exclusively in dark mode for the best developer experience.</p>
               </div>
               <Button disabled variant="outline">Active</Button>
             </div>

@@ -54,9 +54,12 @@ public class User {
     private Integer points = 0;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(columnDefinition = "jsonb")
+    @Column()
     @Builder.Default
     private String badges = "[]";
+
+    @Column(name = "active_jwt_id")
+    private String activeJwtId;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

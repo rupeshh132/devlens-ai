@@ -25,10 +25,20 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        UserPrincipal userPrincipal = (UserPrincipal) userDetails;
+        String jti = java.util.UUID.randomUUID().toString();
+        extraClaims.put("jti", jti);
+        String subjectId = "";
+        if (userDetails instanceof UserPrincipal) {
+            subjectId = ((UserPrincipal) userDetails).getId().toString();
+        } else if (userDetails instanceof com.devlens.learn.security.LearnUserPrincipal) {
+            subjectId = ((com.devlens.learn.security.LearnUserPrincipal) userDetails).getId().toString();
+        } else {
+            subjectId = userDetails.getUsername();
+        }
+        
         return Jwts.builder()
                 .claims(extraClaims)
-                .subject(userPrincipal.getId().toString())
+                .subject(subjectId)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration()))
                 .signWith(getSignInKey())
@@ -36,13 +46,23 @@ public class JwtService {
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
-        UserPrincipal userPrincipal = (UserPrincipal) userDetails;
-        final String userIdString = extractUsername(token); // extractUsername now returns UUID string
-        return (userIdString.equals(userPrincipal.getId().toString())) && !isTokenExpired(token);
+        final String userIdString = extractUsername(token);
+        if (userDetails instanceof UserPrincipal) {
+            UserPrincipal userPrincipal = (UserPrincipal) userDetails;
+            return (userIdString.equals(userPrincipal.getId().toString())) && !isTokenExpired(token);
+        } else if (userDetails instanceof com.devlens.learn.security.LearnUserPrincipal) {
+            com.devlens.learn.security.LearnUserPrincipal learnPrincipal = (com.devlens.learn.security.LearnUserPrincipal) userDetails;
+            return (userIdString.equals(learnPrincipal.getId().toString())) && !isTokenExpired(token);
+        }
+        return false;
     }
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+    
+    public String extractJti(String token) {
+        return extractClaim(token, Claims::getId);
     }
 
     private boolean isTokenExpired(String token) {

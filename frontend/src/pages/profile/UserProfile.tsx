@@ -3,13 +3,42 @@ import { useAuth } from '../../features/auth/hooks/useAuth';
 import { getRecentActivities } from '../../features/auth/services/activity.api';
 import type { ActivityDto } from '../../features/auth/services/activity.api';
 import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/card';
-import { Trophy, Medal, Star, Activity, History, BookOpen, Mic, FileText } from 'lucide-react';
+import { Trophy, Medal, Star, Activity, History, BookOpen, Mic, FileText, Edit2 } from 'lucide-react';
 import { PageHeader } from '../../components/layout/PageHeader';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { api } from '@/lib/api';
+import { toast } from 'sonner';
 
 export const UserProfile: React.FC = () => {
   const { user } = useAuth();
   const [activities, setActivities] = useState<ActivityDto[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [editForm, setEditForm] = useState({ firstName: '', lastName: '', newPassword: '' });
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setEditForm({ firstName: user.firstName || '', lastName: user.lastName || '', newPassword: '' });
+    }
+  }, [user]);
+
+  const handleUpdateProfile = async () => {
+    setSaving(true);
+    try {
+      await api.put('/users/profile', editForm);
+      toast.success('Profile updated successfully! Refreshing...');
+      setIsEditOpen(false);
+      setTimeout(() => window.location.reload(), 1500);
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || 'Failed to update profile');
+    } finally {
+      setSaving(false);
+    }
+  };
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -60,8 +89,50 @@ export const UserProfile: React.FC = () => {
           <div className="absolute top-0 right-0 p-4 opacity-20">
             <Trophy className="h-24 w-24 text-primary" />
           </div>
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
             <CardTitle className="text-xl">Developer Profile</CardTitle>
+            <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-8 w-8 p-0 rounded-full">
+                  <Edit2 className="h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Edit Profile</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div className="space-y-2">
+                    <Label>First Name</Label>
+                    <Input 
+                      value={editForm.firstName} 
+                      onChange={e => setEditForm({...editForm, firstName: e.target.value})} 
+                      placeholder="First Name" 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Last Name</Label>
+                    <Input 
+                      value={editForm.lastName} 
+                      onChange={e => setEditForm({...editForm, lastName: e.target.value})} 
+                      placeholder="Last Name" 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>New Password (Optional)</Label>
+                    <Input 
+                      type="password"
+                      value={editForm.newPassword} 
+                      onChange={e => setEditForm({...editForm, newPassword: e.target.value})} 
+                      placeholder="Leave blank to keep unchanged" 
+                    />
+                  </div>
+                  <Button onClick={handleUpdateProfile} className="w-full" disabled={saving}>
+                    {saving ? 'Saving...' : 'Save Changes'}
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </CardHeader>
           <CardContent className="space-y-6">
             <div>

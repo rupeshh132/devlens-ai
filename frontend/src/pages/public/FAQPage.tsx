@@ -20,7 +20,7 @@ import {
 export function FAQPage() {
   const faqs = [
     {
-      question: "How does DevLens AI analyze my GitHub?",
+      question: "How does PrepLens analyze my GitHub?",
       answer: "We use advanced static analysis and Large Language Models to read your public repositories. We evaluate code quality, architecture patterns, technology stack, and complexity to build a comprehensive profile of your engineering capabilities. We do NOT store your source code."
     },
     {
@@ -28,8 +28,8 @@ export function FAQPage() {
       answer: "Yes. Our AI is trained on thousands of real technical interviews from top-tier tech companies. It adapts to your answers in real-time, asks follow-up questions based on your specific responses, and evaluates both your technical accuracy and communication style."
     },
     {
-      question: "Can I use DevLens AI if I'm a beginner?",
-      answer: "Absolutely. DevLens AI is designed for developers at all stages. If you're a junior developer, the platform will identify your foundational gaps and provide a clear roadmap to reach a mid-level standard."
+      question: "Can I use PrepLens if I'm a beginner?",
+      answer: "Absolutely. PrepLens is designed for developers at all stages. If you're a junior developer, the platform will identify your foundational gaps and provide a clear roadmap to reach a mid-level standard."
     },
     {
       question: "How is my ATS resume score calculated?",
@@ -55,7 +55,7 @@ export function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-xl text-brand-navy/70 leading-relaxed font-normal">
-              Everything you need to know about DevLens AI. Can't find the answer you're looking for? Feel free to{' '}
+              Everything you need to know about PrepLens. Can't find the answer you're looking for? Feel free to{' '}
               <Dialog>
                 <DialogTrigger asChild>
                   <span className="font-bold underline decoration-2 underline-offset-4 cursor-pointer" style={{ color: '#F06E5D' }}>
@@ -111,7 +111,7 @@ export function FAQPage() {
           
           <div className="mt-16 text-center">
             <h3 className="text-2xl font-serif text-brand-navy mb-4">Still have questions?</h3>
-            <p className="text-brand-navy/70 mb-6">Our team is ready to help you get the most out of DevLens AI.</p>
+            <p className="text-brand-navy/70 mb-6">Our team is ready to help you get the most out of PrepLens.</p>
             <Link to="/register">
               <Button className="h-12 px-8 rounded-xl font-bold bg-brand-coral hover:bg-brand-coral/90 text-white shadow-none uppercase tracking-widest text-sm">
                 Get Started for Free

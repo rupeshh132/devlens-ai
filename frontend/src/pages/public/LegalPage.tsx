@@ -6,7 +6,7 @@ const privacyContent = `
 
 **Effective Date: ${new Date().toISOString().split('T')[0]}**
 
-Your privacy is important to us. It is DevLens AI's policy to respect your privacy regarding any information we may collect from you across our website, [https://devlens.ai](https://devlens.ai), and other sites we own and operate.
+Your privacy is important to us. It is PrepLens's policy to respect your privacy regarding any information we may collect from you across our website, [https://preplens.in](https://preplens.in), and other sites we own and operate.
 
 ## 1. Information We Collect
 
@@ -24,7 +24,7 @@ We may ask for personal information, such as your:
 We take security seriously and use industry-standard practices to protect your data. However, be aware that no method of transmission over the internet, or method of electronic storage is 100% secure.
 
 ## 3. Contact Us
-If you have any questions about how we handle user data and personal information, feel free to contact us at support@devlens.ai.
+If you have any questions about how we handle user data and personal information, feel free to contact us at support@preplens.in.
 `
 
 const termsContent = `
@@ -34,19 +34,19 @@ const termsContent = `
 
 ## 1. Terms
 
-By accessing the website at [https://devlens.ai](https://devlens.ai), you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.
+By accessing the website at [https://preplens.in](https://preplens.in), you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.
 
 ## 2. Use License
 
-Permission is granted to temporarily download one copy of the materials (information or software) on DevLens AI's website for personal, non-commercial transitory viewing only.
+Permission is granted to temporarily download one copy of the materials (information or software) on PrepLens's website for personal, non-commercial transitory viewing only.
 
 ## 3. Disclaimer
 
-The materials on DevLens AI's website are provided on an 'as is' basis. DevLens AI makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+The materials on PrepLens's website are provided on an 'as is' basis. PrepLens makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
 
 ## 4. Limitations
 
-In no event shall DevLens AI or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on DevLens AI's website.
+In no event shall PrepLens or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on PrepLens's website.
 `
 
 const cookieContent = `
@@ -54,7 +54,7 @@ const cookieContent = `
 
 **Effective Date: ${new Date().toISOString().split('T')[0]}**
 
-We use cookies to help improve your experience of [https://devlens.ai](https://devlens.ai). This cookie policy is part of DevLens AI's privacy policy, and covers the use of cookies between your device and our site.
+We use cookies to help improve your experience of [https://preplens.in](https://preplens.in). This cookie policy is part of PrepLens's privacy policy, and covers the use of cookies between your device and our site.
 
 ## What is a cookie?
 A cookie is a small piece of data that a website stores on your device when you visit, typically containing information about the website itself, a unique identifier that allows the site to recognize your web browser when you return, additional data that serves the purpose of the cookie, and the lifespan of the cookie itself.
@@ -64,7 +64,7 @@ We use cookies for the following purposes:
 - **Authentication**: To keep you logged in across sessions.
 - **Preferences**: To remember your dark mode or light mode settings.
 
-If you do not wish to accept cookies from us, you should instruct your browser to refuse cookies from [https://devlens.ai](https://devlens.ai).
+If you do not wish to accept cookies from us, you should instruct your browser to refuse cookies from [https://preplens.in](https://preplens.in).
 `
 
 export function LegalPage({ title }: { title: string }) {

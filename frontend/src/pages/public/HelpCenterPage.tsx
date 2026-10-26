@@ -13,7 +13,7 @@ export function HelpCenterPage() {
               Get in Touch
             </h1>
             <p className="text-xl text-brand-navy/70 leading-relaxed font-normal max-w-2xl mx-auto">
-              Have a question about DevLens AI or want to collaborate? I'm always open to discussing new projects, creative ideas, or opportunities.
+              Have a question about PrepLens or want to collaborate? I'm always open to discussing new projects, creative ideas, or opportunities.
             </p>
           </div>
 

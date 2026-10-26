@@ -3,15 +3,17 @@ import axios from 'axios';
 
 // 60 second timeout — Render free plan can take up to 50s to wake up.
 // This prevents premature timeout errors while the server is spinning up.
+const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8081/api/v1';
+
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api/v1',
+  baseURL: apiUrl,
   withCredentials: true,
   timeout: 60000,
 });
 
 // ─── Request Interceptor: Attach JWT to every request ────────────────────────
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('devlens_access_token');
+  const token = localStorage.getItem('preplens_access_token');
   if (token && config.headers) {
     if (typeof config.headers.set === 'function') {
       config.headers.set('Authorization', `Bearer ${token}`);
@@ -42,8 +44,8 @@ const processQueue = (error: any, token: string | null = null) => {
 
 // ─── Force Logout: clear all local state and redirect to /login ───────────────
 const forceLogout = () => {
-  localStorage.removeItem('devlens_access_token');
-  localStorage.removeItem('devlens_user');
+  localStorage.removeItem('preplens_access_token');
+  localStorage.removeItem('preplens_user');
   // Don't redirect if already on a public auth page — prevents infinite loop
   const path = window.location.pathname;
   const isPublicPage = path.includes('/login') || path.includes('/register') || path.includes('/oauth');
@@ -106,7 +108,7 @@ api.interceptors.response.use(
           response.data.data?.accessToken || response.data.accessToken;
 
         if (accessToken) {
-          localStorage.setItem('devlens_access_token', accessToken);
+          localStorage.setItem('preplens_access_token', accessToken);
           processQueue(null, accessToken);
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
           return api(originalRequest);

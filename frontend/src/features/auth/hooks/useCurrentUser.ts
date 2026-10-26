@@ -3,7 +3,7 @@ import { authApi } from '../services/auth.api';
 
 export const useCurrentUser = () => {
   // Only fetch if a token exists — prevents infinite redirect loop on login page
-  const hasToken = !!localStorage.getItem('devlens_access_token');
+  const hasToken = !!localStorage.getItem('preplens_access_token');
 
   return useQuery({
     queryKey: ['currentUser'],
