@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
 
+@org.junit.jupiter.api.Disabled("Manual integration test requiring live database")
 @SpringBootTest(classes = DevLensApiApplication.class)
 public class PaymentTest {
 

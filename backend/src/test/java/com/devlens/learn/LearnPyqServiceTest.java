@@ -13,6 +13,7 @@ import org.springframework.mock.web.MockMultipartFile;
 import java.util.List;
 import java.util.UUID;
 
+@org.junit.jupiter.api.Disabled("Manual integration test requiring live database and storage")
 @SpringBootTest(classes = DevLensApiApplication.class)
 public class LearnPyqServiceTest {
 

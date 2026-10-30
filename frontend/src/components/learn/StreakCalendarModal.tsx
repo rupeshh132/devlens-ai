@@ -80,6 +80,20 @@ export function StreakCalendarModal({
     };
   }, [isOpen, onClose]);
 
+  // Real XP sum from history records
+  const totalXp = useMemo(() => {
+    let sum = 0;
+    if (streakData.activityHistory) {
+      Object.values(streakData.activityHistory).forEach((rec: DailyActivityRecord) => {
+        sum += (typeof rec.xpEarned === 'number' ? rec.xpEarned : 50);
+      });
+    }
+    if (streakData.solvedToday && !streakData.activityHistory?.[todayStr]) {
+      sum += 25;
+    }
+    return sum;
+  }, [streakData, todayStr]);
+
   if (!isOpen) return null;
 
   const currentYear = viewDate.getFullYear();
@@ -139,20 +153,6 @@ export function StreakCalendarModal({
   const totalActiveDays = Object.keys(streakData.activityHistory || {}).length + (streakData.solvedToday && !streakData.activityHistory?.[todayStr] ? 1 : 0);
   const displayLongestStreak = totalActiveDays > 0 ? Math.max(streakData.longestStreak, streakData.streak) : streakData.streak;
   
-  // Real XP sum from history records
-  const totalXp = useMemo(() => {
-    let sum = 0;
-    if (streakData.activityHistory) {
-      Object.values(streakData.activityHistory).forEach((rec: DailyActivityRecord) => {
-        sum += (typeof rec.xpEarned === 'number' ? rec.xpEarned : 50);
-      });
-    }
-    if (streakData.solvedToday && !streakData.activityHistory?.[todayStr]) {
-      sum += 25;
-    }
-    return sum;
-  }, [streakData, todayStr]);
-
   const handleShareStreak = () => {
     const text = `🔥 My PrepLens ${targetClass} PYQ Streak:\n• Current Streak: ${streakData.streak} Days\n• Longest Streak: ${displayLongestStreak} Days\n• Total Active Days: ${totalActiveDays}\n• Habit XP: +${totalXp} XP\nCan you beat my streak? 🚀`;
     if (navigator.clipboard) {
