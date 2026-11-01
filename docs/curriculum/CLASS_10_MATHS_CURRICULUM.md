@@ -34,7 +34,7 @@
 | **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | `kmfDomy0qWg` (Ritik Mishra) | 5 Topics | 17495s (~4h 51m) | ✅ Verified (0s ➔ 17495s) |
 | **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | `vsGPaLIAW10` (Ritik Mishra) | 5 Topics | 16597s (~4h 36m) | ✅ Verified (0s ➔ 16597s) |
 | **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | `nxo1ItY3oTo` (Ritik Mishra) | 5 Topics | 15121s (~4h 12m) | ✅ Verified (0s ➔ 15121s) |
-| **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | `TXDyGK_GdNM` (Ritik Mishra) | 5 Topics | 10787s (~2h 59m) | ✅ Verified (0s ➔ 10787s) |
 | **Ch 8** | Introduction to Trigonometry | `65d29b56-2222-1000-0000-000000000008` | *Pending lecture* | 5 Topics | — | Ready for video |
 | **Ch 9** | Some Applications of Trigonometry (Heights and Distances) | `65d29b56-2222-1000-0000-000000000009` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 10** | Circles | `65d29b56-2222-1000-0000-000000000010` | *Pending lecture* | 4 Topics | — | Ready for video |
@@ -90,6 +90,7 @@
 - `backend/src/main/resources/db/migration/V49__seed_class10_maths_ch4_lectures.sql` — Chapter 4 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V50__seed_class10_maths_ch5_lectures.sql` — Chapter 5 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V51__seed_class10_maths_ch6_lectures.sql` — Chapter 6 verified video lectures & timestamps
+- `backend/src/main/resources/db/migration/V52__seed_class10_maths_ch7_lectures.sql` — Chapter 7 verified video lectures & timestamps
 
 ---
 
@@ -126,6 +127,19 @@
 | **3** | Concept of Similarity vs Congruence & Basic Similarity Illustrations | 5325s | 9272s | `https://www.youtube.com/watch?v=nxo1ItY3oTo&t=5325s&end=9272s` |
 | **4** | Criteria for Similarity of Triangles (AAA, SSS, SAS) & Board Problems | 9272s | 12314s | `https://www.youtube.com/watch?v=nxo1ItY3oTo&t=9272s&end=12314s` |
 | **5** | Advanced Geometric Proofs (Medians, Shadows, Ratio of Areas) & Summary | 12314s | 15121s | `https://www.youtube.com/watch?v=nxo1ItY3oTo&t=12314s&end=15121s` |
+
+---
+
+## Chapter 7: Coordinate Geometry Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Cartesian System, Coordinates & Direct Distance Formula | 0s | 2045s | `https://www.youtube.com/watch?v=TXDyGK_GdNM&end=2045s` |
+| **2** | Equidistant Points & Finding Unknown Coordinates | 2045s | 4288s | `https://www.youtube.com/watch?v=TXDyGK_GdNM&t=2045s&end=4288s` |
+| **3** | Geometric Figures (Triangles, Quadrilaterals) & Collinearity | 4288s | 6138s | `https://www.youtube.com/watch?v=TXDyGK_GdNM&t=4288s&end=6138s` |
+| **4** | Section Formula & Mid-Point Formula (Internal Division) | 6138s | 8542s | `https://www.youtube.com/watch?v=TXDyGK_GdNM&t=6138s&end=8542s` |
+| **5** | Trisection, Finding Ratio (k:1), Centroid & Chapter Summary | 8542s | 10787s | `https://www.youtube.com/watch?v=TXDyGK_GdNM&t=8542s&end=10787s` |
+
 
 
 
