@@ -5,7 +5,7 @@
 **Syllabus:** CBSE / NCERT Rationalized Annual Curriculum (2026-27)  
 **Total Chapters:** 14  
 **Total Topics:** 64 Topics (5 in Ch 1 + 5 in Ch 2 + 5 in Ch 3 + 49 across Ch 4-14)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V54  
+**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V55  
 
 ---
 
@@ -37,7 +37,7 @@
 | **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | `TXDyGK_GdNM` (Ritik Mishra) | 5 Topics | 10787s (~2h 59m) | ✅ Verified (0s ➔ 10787s) |
 | **Ch 8** | Introduction to Trigonometry | `65d29b56-2222-1000-0000-000000000008` | `wdaBwIv7Jso` (Ritik Mishra) | 5 Topics | 16010s (~4h 26m) | ✅ Verified (0s ➔ 16010s) |
 | **Ch 9** | Some Applications of Trigonometry (Heights and Distances) | `65d29b56-2222-1000-0000-000000000009` | `otABxL0TP6U` (Ritik Mishra) | 5 Topics | 11139s (~3h 05m) | ✅ Verified (0s ➔ 11139s) |
-| **Ch 10** | Circles | `65d29b56-2222-1000-0000-000000000010` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 10** | Circles | `65d29b56-2222-1000-0000-000000000010` | `dazX40Ct7J0` (Ritik Mishra) | 5 Topics | 13286s (~3h 41m) | ✅ Verified (0s ➔ 13286s) |
 | **Ch 11** | Areas Related to Circles | `65d29b56-2222-1000-0000-000000000011` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 12** | Surface Areas and Volumes | `65d29b56-2222-1000-0000-000000000012` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 13** | Statistics | `65d29b56-2222-1000-0000-000000000013` | *Pending lecture* | 8 Topics | — | Ready for video |
@@ -164,6 +164,19 @@
 | **3** | Two Triangles & Angle of Depression: Buildings, Cliffs & Lighthouses | 4759s | 7323s | `https://www.youtube.com/watch?v=otABxL0TP6U&t=4759s&end=7323s` |
 | **4** | Moving Objects: Speed of Aeroplanes, Moving Cars & Cloud Reflection | 7323s | 9308s | `https://www.youtube.com/watch?v=otABxL0TP6U&t=7323s&end=9308s` |
 | **5** | Advanced Board Questions, CBSE Case-Study Problems & Summary | 9308s | 11139s | `https://www.youtube.com/watch?v=otABxL0TP6U&t=9308s&end=11139s` |
+
+---
+
+## Chapter 10: Circles Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Foundations & Core Circle Theorems (Theorems 1 to 4) | 0s | 2830s | `https://www.youtube.com/watch?v=dazX40Ct7J0&end=2830s` |
+| **2** | Direct Tangent Properties & Circumscribed Polygons (Q1 to Q14) | 2830s | 6655s | `https://www.youtube.com/watch?v=dazX40Ct7J0&t=2830s&end=6655s` |
+| **3** | Angle Between Tangents, Concentric Circles & Parallel Tangents (Q15 to Q21) | 6655s | 9438s | `https://www.youtube.com/watch?v=dazX40Ct7J0&t=6655s&end=9438s` |
+| **4** | Center Subtended Angles & Incircle Triangle 5-Markers (Q22 to Q27) | 9438s | 11430s | `https://www.youtube.com/watch?v=dazX40Ct7J0&t=9438s&end=11430s` |
+| **5** | Incircle Formulas, Alternate Segment Theorem & Board PYQs (Q28 to Q37) | 11430s | 13286s | `https://www.youtube.com/watch?v=dazX40Ct7J0&t=11430s&end=13286s` |
+
 
 
 
