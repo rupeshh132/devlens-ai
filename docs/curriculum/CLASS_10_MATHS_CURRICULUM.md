@@ -5,7 +5,7 @@
 **Syllabus:** CBSE / NCERT Rationalized Annual Curriculum (2026-27)  
 **Total Chapters:** 14  
 **Total Topics:** 64 Topics (5 in Ch 1 + 5 in Ch 2 + 5 in Ch 3 + 49 across Ch 4-14)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V55  
+**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V56  
 
 ---
 
@@ -38,7 +38,7 @@
 | **Ch 8** | Introduction to Trigonometry | `65d29b56-2222-1000-0000-000000000008` | `wdaBwIv7Jso` (Ritik Mishra) | 5 Topics | 16010s (~4h 26m) | ✅ Verified (0s ➔ 16010s) |
 | **Ch 9** | Some Applications of Trigonometry (Heights and Distances) | `65d29b56-2222-1000-0000-000000000009` | `otABxL0TP6U` (Ritik Mishra) | 5 Topics | 11139s (~3h 05m) | ✅ Verified (0s ➔ 11139s) |
 | **Ch 10** | Circles | `65d29b56-2222-1000-0000-000000000010` | `dazX40Ct7J0` (Ritik Mishra) | 5 Topics | 13286s (~3h 41m) | ✅ Verified (0s ➔ 13286s) |
-| **Ch 11** | Areas Related to Circles | `65d29b56-2222-1000-0000-000000000011` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 11** | Areas Related to Circles | `65d29b56-2222-1000-0000-000000000011` | `usf6lf_3DnU` (Ritik Mishra) | 4 Topics | 8577s (~2h 23m) | ✅ Verified (0s ➔ 8577s) |
 | **Ch 12** | Surface Areas and Volumes | `65d29b56-2222-1000-0000-000000000012` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 13** | Statistics | `65d29b56-2222-1000-0000-000000000013` | *Pending lecture* | 8 Topics | — | Ready for video |
 | **Ch 14** | Probability | `65d29b56-2222-1000-0000-000000000014` | *Pending lecture* | 6 Topics | — | Ready for video |
@@ -176,6 +176,18 @@
 | **3** | Angle Between Tangents, Concentric Circles & Parallel Tangents (Q15 to Q21) | 6655s | 9438s | `https://www.youtube.com/watch?v=dazX40Ct7J0&t=6655s&end=9438s` |
 | **4** | Center Subtended Angles & Incircle Triangle 5-Markers (Q22 to Q27) | 9438s | 11430s | `https://www.youtube.com/watch?v=dazX40Ct7J0&t=9438s&end=11430s` |
 | **5** | Incircle Formulas, Alternate Segment Theorem & Board PYQs (Q28 to Q37) | 11430s | 13286s | `https://www.youtube.com/watch?v=dazX40Ct7J0&t=11430s&end=13286s` |
+
+---
+
+## Chapter 11: Areas Related to Circles Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction, Circle Perimeter & Area, Arc Length & Sector of a Circle | 0s | 2545s | `https://www.youtube.com/watch?v=usf6lf_3DnU&end=2545s` |
+| **2** | Clock Problems (Minute & Hour Hands) & Real-Life Sector Applications | 2545s | 5346s | `https://www.youtube.com/watch?v=usf6lf_3DnU&t=2545s&end=5346s` |
+| **3** | Segment of a Circle: Concepts, Formulas & Triangle Area Calculations | 5346s | 7356s | `https://www.youtube.com/watch?v=usf6lf_3DnU&t=5346s&end=7356s` |
+| **4** | General Segment Formula (1/2 r² sin θ), Round Table Cover, CBSE PYQs & Summary | 7356s | 8577s | `https://www.youtube.com/watch?v=usf6lf_3DnU&t=7356s&end=8577s` |
+
 
 
 
