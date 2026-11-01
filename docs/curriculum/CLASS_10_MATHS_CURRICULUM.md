@@ -4,8 +4,8 @@
 **Subject:** Mathematics (`id: 65d29b56-2222-0000-0000-000000000010`, `order_index: 2`)  
 **Syllabus:** CBSE / NCERT Rationalized Annual Curriculum (2026-27)  
 **Total Chapters:** 14  
-**Total Topics:** 64 Topics (5 in Ch 1 + 5 in Ch 2 + 5 in Ch 3 + 49 across Ch 4-14)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V58  
+**Total Topics:** 68 Verified Master Topics across 14 Chapters  
+**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V59  
 
 ---
 
@@ -41,7 +41,7 @@
 | **Ch 11** | Areas Related to Circles | `65d29b56-2222-1000-0000-000000000011` | `usf6lf_3DnU` (Ritik Mishra) | 4 Topics | 8577s (~2h 23m) | ✅ Verified (0s ➔ 8577s) |
 | **Ch 12** | Surface Areas and Volumes | `65d29b56-2222-1000-0000-000000000012` | `9-__HOYREi8` (Ritik Mishra) | 4 Topics | 8977s (~2h 29m) | ✅ Verified (0s ➔ 8977s) |
 | **Ch 13** | Statistics | `65d29b56-2222-1000-0000-000000000013` | `BPRM1J8QCb8` (Ritik Mishra) | 5 Topics | 7851s (~2h 11m) | ✅ Verified (0s ➔ 7851s) |
-| **Ch 14** | Probability | `65d29b56-2222-1000-0000-000000000014` | *Pending lecture* | 6 Topics | — | Ready for video |
+| **Ch 14** | Probability | `65d29b56-2222-1000-0000-000000000014` | `u1A7OvCJgIM` (Ritik Mishra) | 5 Topics | 9483s (~2h 38m) | ✅ Verified (0s ➔ 9483s) |
 
 ---
 
@@ -210,6 +210,19 @@
 | **3** | Median of Grouped Data & Missing Frequency Problems | 4220s | 5580s | `https://www.youtube.com/watch?v=BPRM1J8QCb8&t=4220s&end=5580s` |
 | **4** | Mode of Grouped Data & The Empirical Relationship (3 Median = Mode + 2 Mean) | 5580s | 6308s | `https://www.youtube.com/watch?v=BPRM1J8QCb8&t=5580s&end=6308s` |
 | **5** | CBSE Board Exam PYQs, Conceptual MCQs & Chapter Wrap-up | 6308s | 7851s | `https://www.youtube.com/watch?v=BPRM1J8QCb8&t=6308s&end=7851s` |
+
+---
+
+## Chapter 14: Probability Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Theoretical Foundations, Sample Spaces & Fundamental Properties | 0s | 2330s | `https://www.youtube.com/watch?v=u1A7OvCJgIM&end=2330s` |
+| **2** | Coins & Single Die Experiments, Multi-Coin Tosses & Case Study | 2330s | 3790s | `https://www.youtube.com/watch?v=u1A7OvCJgIM&t=2330s&end=3790s` |
+| **3** | Playing Cards (52-Deck Masterclass) & Two-Dice Grid Experiments | 3790s | 5190s | `https://www.youtube.com/watch?v=u1A7OvCJgIM&t=3790s&end=5190s` |
+| **4** | Urns, Balls & Marbles, Defective Items & Algebraic Probability Equations | 5190s | 7530s | `https://www.youtube.com/watch?v=u1A7OvCJgIM&t=5190s&end=7530s` |
+| **5** | Shop Days Matrix, Calendar & Leap Year Mathematics, Board Case Studies & Outro | 7530s | 9483s | `https://www.youtube.com/watch?v=u1A7OvCJgIM&t=7530s&end=9483s` |
+
 
 
 
