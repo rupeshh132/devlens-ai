@@ -4,8 +4,8 @@
 **Subject:** Mathematics (`id: 65d29b56-2222-0000-0000-000000000010`, `order_index: 2`)  
 **Syllabus:** CBSE / NCERT Rationalized Annual Curriculum (2026-27)  
 **Total Chapters:** 14  
-**Total Topics:** 62 Topics (5 Verified in Ch 1 + 57 across Ch 2-14)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V45 & V46  
+**Total Topics:** 64 Topics (5 in Ch 1 + 5 in Ch 2 + 54 across Ch 3-14)  
+**Status:** Live in Supabase & Version-Controlled in Flyway V45, V46 & V47  
 
 ---
 
@@ -29,7 +29,7 @@
 | Ch # | Chapter Name | Chapter ID | YouTube Video ID | Topics Count | Duration | Zero-Gap Status |
 |:---:|---|---|:---:|:---:|:---:|:---:|
 | **Ch 1** | Real Numbers | `65d29b56-2222-1000-0000-000000000001` | `-UdHmSTmQtw` (Shobhit Nirwan) | 5 Topics | 8893s (~2h 28m) | ✅ Verified (0s ➔ 8893s) |
-| **Ch 2** | Polynomials | `65d29b56-2222-1000-0000-000000000002` | *Pending lecture* | 3 Topics | — | Ready for video |
+| **Ch 2** | Polynomials | `65d29b56-2222-1000-0000-000000000002` | `kiegUjhq8Ao` (Ritik Mishra) | 5 Topics | 10797s (~2h 59m) | ✅ Verified (0s ➔ 10797s) |
 | **Ch 3** | Pair of Linear Equations in Two Variables | `65d29b56-2222-1000-0000-000000000003` | *Pending lecture* | 5 Topics | — | Ready for video |
 | **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | *Pending lecture* | 5 Topics | — | Ready for video |
 | **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | *Pending lecture* | 4 Topics | — | Ready for video |
@@ -57,7 +57,20 @@
 
 ---
 
+## Chapter 2: Polynomials Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction, Meaning, Degree & Types of Polynomials | 0s | 2226s | `https://www.youtube.com/watch?v=kiegUjhq8Ao&end=2226s` |
+| **2** | Geometrical Meaning of Zeroes & Graphs of Polynomials | 2226s | 3595s | `https://www.youtube.com/watch?v=kiegUjhq8Ao&t=2226s&end=3595s` |
+| **3** | Finding Zeroes of Quadratic Polynomials (Middle Term Splitting) | 3595s | 4522s | `https://www.youtube.com/watch?v=kiegUjhq8Ao&t=3595s&end=4522s` |
+| **4** | Relationship Between Zeroes & Coefficients + Practice Questions | 4522s | 8495s | `https://www.youtube.com/watch?v=kiegUjhq8Ao&t=4522s&end=8495s` |
+| **5** | Advanced Formulas, Symmetric Expressions (α²+β²) & Summary | 8495s | 10797s | `https://www.youtube.com/watch?v=kiegUjhq8Ao&t=8495s&end=10797s` |
+
+---
+
 ## Flyway Migration Reference
 
 - `backend/src/main/resources/db/migration/V45__seed_class10_maths_syllabus.sql` — 14 Chapters & initial syllabus
 - `backend/src/main/resources/db/migration/V46__seed_class10_maths_ch1_lectures.sql` — Chapter 1 verified video lectures & timestamps
+- `backend/src/main/resources/db/migration/V47__seed_class10_maths_ch2_lectures.sql` — Chapter 2 verified video lectures & timestamps
