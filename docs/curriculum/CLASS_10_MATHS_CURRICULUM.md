@@ -87,3 +87,17 @@
 - `backend/src/main/resources/db/migration/V46__seed_class10_maths_ch1_lectures.sql` — Chapter 1 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V47__seed_class10_maths_ch2_lectures.sql` — Chapter 2 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V48__seed_class10_maths_ch3_lectures.sql` — Chapter 3 verified video lectures & timestamps
+- `backend/src/main/resources/db/migration/V49__seed_class10_maths_ch4_lectures.sql` — Chapter 4 verified video lectures & timestamps
+
+---
+
+## Chapter 4: Quadratic Equations Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction, Standard Form & Roots of Quadratic Equations | 0s | 2400s | `https://www.youtube.com/watch?v=kmfDomy0qWg&end=2400s` |
+| **2** | Solution of Quadratic Equations by Factorisation (Middle Term Splitting) | 2400s | 6480s | `https://www.youtube.com/watch?v=kmfDomy0qWg&t=2400s&end=6480s` |
+| **3** | Quadratic Formula (Shreedharacharya's Rule) & Nature of Roots | 6480s | 10670s | `https://www.youtube.com/watch?v=kmfDomy0qWg&t=6480s&end=10670s` |
+| **4** | Word Problems: Numbers, Consecutive Integers, Fractions & Digits | 10670s | 13630s | `https://www.youtube.com/watch?v=kmfDomy0qWg&t=10670s&end=13630s` |
+| **5** | Word Problems: Speed-Distance, Geometry, Ages & Assertion-Reason HOTS | 13630s | 17495s | `https://www.youtube.com/watch?v=kmfDomy0qWg&t=13630s&end=17495s` |
+
