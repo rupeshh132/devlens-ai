@@ -4,8 +4,8 @@
 **Subject:** Mathematics (`id: 65d29b56-2222-0000-0000-000000000010`, `order_index: 2`)  
 **Syllabus:** CBSE / NCERT Rationalized Annual Curriculum (2026-27)  
 **Total Chapters:** 14  
-**Total Topics:** 61 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V45  
+**Total Topics:** 62 Topics (5 Verified in Ch 1 + 57 across Ch 2-14)  
+**Status:** Live in Supabase & Version-Controlled in Flyway V45 & V46  
 
 ---
 
@@ -24,29 +24,40 @@
 
 ---
 
-## 14 Rationalized Chapters Breakdown
+## Chapters Breakdown & Video Lecture Status
 
-| Ch # | Chapter Name | Chapter ID | Topics Count |
-|:---:|---|---|:---:|
-| **Ch 1** | Real Numbers | `65d29b56-2222-1000-0000-000000000001` | 4 Topics |
-| **Ch 2** | Polynomials | `65d29b56-2222-1000-0000-000000000002` | 3 Topics |
-| **Ch 3** | Pair of Linear Equations in Two Variables | `65d29b56-2222-1000-0000-000000000003` | 5 Topics |
-| **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | 5 Topics |
-| **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | 4 Topics |
-| **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | 6 Topics |
-| **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | 4 Topics |
-| **Ch 8** | Introduction to Trigonometry | `65d29b56-2222-1000-0000-000000000008` | 5 Topics |
-| **Ch 9** | Some Applications of Trigonometry (Heights and Distances) | `65d29b56-2222-1000-0000-000000000009` | 4 Topics |
-| **Ch 10** | Circles | `65d29b56-2222-1000-0000-000000000010` | 4 Topics |
-| **Ch 11** | Areas Related to Circles | `65d29b56-2222-1000-0000-000000000011` | 4 Topics |
-| **Ch 12** | Surface Areas and Volumes | `65d29b56-2222-1000-0000-000000000012` | 4 Topics |
-| **Ch 13** | Statistics | `65d29b56-2222-1000-0000-000000000013` | 8 Topics |
-| **Ch 14** | Probability | `65d29b56-2222-1000-0000-000000000014` | 6 Topics |
-| **TOTAL** | **Class 10 Mathematics** | **14 Chapters** | **61 Topics** |
+| Ch # | Chapter Name | Chapter ID | YouTube Video ID | Topics Count | Duration | Zero-Gap Status |
+|:---:|---|---|:---:|:---:|:---:|:---:|
+| **Ch 1** | Real Numbers | `65d29b56-2222-1000-0000-000000000001` | `-UdHmSTmQtw` (Shobhit Nirwan) | 5 Topics | 8893s (~2h 28m) | ✅ Verified (0s ➔ 8893s) |
+| **Ch 2** | Polynomials | `65d29b56-2222-1000-0000-000000000002` | *Pending lecture* | 3 Topics | — | Ready for video |
+| **Ch 3** | Pair of Linear Equations in Two Variables | `65d29b56-2222-1000-0000-000000000003` | *Pending lecture* | 5 Topics | — | Ready for video |
+| **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | *Pending lecture* | 5 Topics | — | Ready for video |
+| **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | *Pending lecture* | 6 Topics | — | Ready for video |
+| **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 8** | Introduction to Trigonometry | `65d29b56-2222-1000-0000-000000000008` | *Pending lecture* | 5 Topics | — | Ready for video |
+| **Ch 9** | Some Applications of Trigonometry (Heights and Distances) | `65d29b56-2222-1000-0000-000000000009` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 10** | Circles | `65d29b56-2222-1000-0000-000000000010` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 11** | Areas Related to Circles | `65d29b56-2222-1000-0000-000000000011` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 12** | Surface Areas and Volumes | `65d29b56-2222-1000-0000-000000000012` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 13** | Statistics | `65d29b56-2222-1000-0000-000000000013` | *Pending lecture* | 8 Topics | — | Ready for video |
+| **Ch 14** | Probability | `65d29b56-2222-1000-0000-000000000014` | *Pending lecture* | 6 Topics | — | Ready for video |
+
+---
+
+## Chapter 1: Real Numbers Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction & Basics of HCF & LCM (Prime Factorisation) | 0s | 880s | `https://www.youtube.com/watch?v=-UdHmSTmQtw&end=880s` |
+| **2** | Important Concepts, Divisibility Rules & Formula (HCF × LCM = a × b) | 880s | 4050s | `https://www.youtube.com/watch?v=-UdHmSTmQtw&t=880s&end=4050s` |
+| **3** | Master Shortcut & Word Problems on HCF and LCM | 4050s | 6290s | `https://www.youtube.com/watch?v=-UdHmSTmQtw&t=4050s&end=6290s` |
+| **4** | Composite Numbers & Proof of Irrationality (√5, √7) | 6290s | 8030s | `https://www.youtube.com/watch?v=-UdHmSTmQtw&t=6290s&end=8030s` |
+| **5** | Proof of Irrationality for Composite Forms & Chapter Summary | 8030s | 8893s | `https://www.youtube.com/watch?v=-UdHmSTmQtw&t=8030s&end=8893s` |
 
 ---
 
 ## Flyway Migration Reference
 
-All chapters and topics are version-controlled in Flyway migration:  
-`backend/src/main/resources/db/migration/V45__seed_class10_maths_syllabus.sql`
+- `backend/src/main/resources/db/migration/V45__seed_class10_maths_syllabus.sql` — 14 Chapters & initial syllabus
+- `backend/src/main/resources/db/migration/V46__seed_class10_maths_ch1_lectures.sql` — Chapter 1 verified video lectures & timestamps
