@@ -33,7 +33,7 @@
 | **Ch 3** | Pair of Linear Equations in Two Variables | `65d29b56-2222-1000-0000-000000000003` | `uz1yjvlu-RU` (Ritik Mishra) | 5 Topics | 11489s (~3h 11m) | ✅ Verified (0s ➔ 11489s) |
 | **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | `kmfDomy0qWg` (Ritik Mishra) | 5 Topics | 17495s (~4h 51m) | ✅ Verified (0s ➔ 17495s) |
 | **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | `vsGPaLIAW10` (Ritik Mishra) | 5 Topics | 16597s (~4h 36m) | ✅ Verified (0s ➔ 16597s) |
-| **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | *Pending lecture* | 6 Topics | — | Ready for video |
+| **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | `nxo1ItY3oTo` (Ritik Mishra) | 5 Topics | 15121s (~4h 12m) | ✅ Verified (0s ➔ 15121s) |
 | **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 8** | Introduction to Trigonometry | `65d29b56-2222-1000-0000-000000000008` | *Pending lecture* | 5 Topics | — | Ready for video |
 | **Ch 9** | Some Applications of Trigonometry (Heights and Distances) | `65d29b56-2222-1000-0000-000000000009` | *Pending lecture* | 4 Topics | — | Ready for video |
@@ -89,6 +89,7 @@
 - `backend/src/main/resources/db/migration/V48__seed_class10_maths_ch3_lectures.sql` — Chapter 3 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V49__seed_class10_maths_ch4_lectures.sql` — Chapter 4 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V50__seed_class10_maths_ch5_lectures.sql` — Chapter 5 verified video lectures & timestamps
+- `backend/src/main/resources/db/migration/V51__seed_class10_maths_ch6_lectures.sql` — Chapter 6 verified video lectures & timestamps
 
 ---
 
@@ -113,5 +114,18 @@
 | **3** | Advanced nth Term Problems: Divisibility, Middle Terms & Algebraic Conditions | 5184s | 9050s | `https://www.youtube.com/watch?v=vsGPaLIAW10&t=5184s&end=9050s` |
 | **4** | Sum of First n Terms of an AP (Sn): Formulas, Properties & Algebraic Problems | 9050s | 13446s | `https://www.youtube.com/watch?v=vsGPaLIAW10&t=9050s&end=13446s` |
 | **5** | Daily Life Situational Word Problems, Case Study Questions & Chapter Summary | 13446s | 16597s | `https://www.youtube.com/watch?v=vsGPaLIAW10&t=13446s&end=16597s` |
+
+---
+
+## Chapter 6: Triangles Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction, Basic Proportionality Theorem (BPT) & Converse | 0s | 1995s | `https://www.youtube.com/watch?v=nxo1ItY3oTo&end=1995s` |
+| **2** | Formal Proof of BPT & Algebraic Applications (Questions 3 to 14) | 1995s | 5325s | `https://www.youtube.com/watch?v=nxo1ItY3oTo&t=1995s&end=5325s` |
+| **3** | Concept of Similarity vs Congruence & Basic Similarity Illustrations | 5325s | 9272s | `https://www.youtube.com/watch?v=nxo1ItY3oTo&t=5325s&end=9272s` |
+| **4** | Criteria for Similarity of Triangles (AAA, SSS, SAS) & Board Problems | 9272s | 12314s | `https://www.youtube.com/watch?v=nxo1ItY3oTo&t=9272s&end=12314s` |
+| **5** | Advanced Geometric Proofs (Medians, Shadows, Ratio of Areas) & Summary | 12314s | 15121s | `https://www.youtube.com/watch?v=nxo1ItY3oTo&t=12314s&end=15121s` |
+
 
 
