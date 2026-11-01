@@ -5,7 +5,7 @@
 **Syllabus:** CBSE / NCERT Rationalized Annual Curriculum (2026-27)  
 **Total Chapters:** 14  
 **Total Topics:** 64 Topics (5 in Ch 1 + 5 in Ch 2 + 5 in Ch 3 + 49 across Ch 4-14)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V57  
+**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V58  
 
 ---
 
@@ -40,7 +40,7 @@
 | **Ch 10** | Circles | `65d29b56-2222-1000-0000-000000000010` | `dazX40Ct7J0` (Ritik Mishra) | 5 Topics | 13286s (~3h 41m) | ✅ Verified (0s ➔ 13286s) |
 | **Ch 11** | Areas Related to Circles | `65d29b56-2222-1000-0000-000000000011` | `usf6lf_3DnU` (Ritik Mishra) | 4 Topics | 8577s (~2h 23m) | ✅ Verified (0s ➔ 8577s) |
 | **Ch 12** | Surface Areas and Volumes | `65d29b56-2222-1000-0000-000000000012` | `9-__HOYREi8` (Ritik Mishra) | 4 Topics | 8977s (~2h 29m) | ✅ Verified (0s ➔ 8977s) |
-| **Ch 13** | Statistics | `65d29b56-2222-1000-0000-000000000013` | *Pending lecture* | 8 Topics | — | Ready for video |
+| **Ch 13** | Statistics | `65d29b56-2222-1000-0000-000000000013` | `BPRM1J8QCb8` (Ritik Mishra) | 5 Topics | 7851s (~2h 11m) | ✅ Verified (0s ➔ 7851s) |
 | **Ch 14** | Probability | `65d29b56-2222-1000-0000-000000000014` | *Pending lecture* | 6 Topics | — | Ready for video |
 
 ---
@@ -198,6 +198,19 @@
 | **2** | Surface Area of Combination of Solids: Concepts & Core Problems (Capsule, Toy, Surmounted Block, Cavity) | 1769s | 4950s | `https://www.youtube.com/watch?v=9-__HOYREi8&t=1769s&end=4950s` |
 | **3** | Volume of Combination of Solids: NCERT & Applied Problems (Pen Stand, Juice Glass, Iron Pole) | 4950s | 6872s | `https://www.youtube.com/watch?v=9-__HOYREi8&t=4950s&end=6872s` |
 | **4** | Board Examination PYQs, Water Displacement Problems & Chapter Summary | 6872s | 8977s | `https://www.youtube.com/watch?v=9-__HOYREi8&t=6872s&end=8977s` |
+
+---
+
+## Chapter 13: Statistics Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction to Statistics & Measures of Central Tendency for Raw Data | 0s | 1033s | `https://www.youtube.com/watch?v=BPRM1J8QCb8&end=1033s` |
+| **2** | Arithmetic Mean of Grouped Data: Direct, Assumed Mean & Step Deviation Methods | 1033s | 4220s | `https://www.youtube.com/watch?v=BPRM1J8QCb8&t=1033s&end=4220s` |
+| **3** | Median of Grouped Data & Missing Frequency Problems | 4220s | 5580s | `https://www.youtube.com/watch?v=BPRM1J8QCb8&t=4220s&end=5580s` |
+| **4** | Mode of Grouped Data & The Empirical Relationship (3 Median = Mode + 2 Mean) | 5580s | 6308s | `https://www.youtube.com/watch?v=BPRM1J8QCb8&t=5580s&end=6308s` |
+| **5** | CBSE Board Exam PYQs, Conceptual MCQs & Chapter Wrap-up | 6308s | 7851s | `https://www.youtube.com/watch?v=BPRM1J8QCb8&t=6308s&end=7851s` |
+
 
 
 
