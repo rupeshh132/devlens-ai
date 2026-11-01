@@ -31,7 +31,7 @@
 | **Ch 1** | Real Numbers | `65d29b56-2222-1000-0000-000000000001` | `-UdHmSTmQtw` (Shobhit Nirwan) | 5 Topics | 8893s (~2h 28m) | ✅ Verified (0s ➔ 8893s) |
 | **Ch 2** | Polynomials | `65d29b56-2222-1000-0000-000000000002` | `kiegUjhq8Ao` (Ritik Mishra) | 5 Topics | 10797s (~2h 59m) | ✅ Verified (0s ➔ 10797s) |
 | **Ch 3** | Pair of Linear Equations in Two Variables | `65d29b56-2222-1000-0000-000000000003` | `uz1yjvlu-RU` (Ritik Mishra) | 5 Topics | 11489s (~3h 11m) | ✅ Verified (0s ➔ 11489s) |
-| **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | *Pending lecture* | 5 Topics | — | Ready for video |
+| **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | `kmfDomy0qWg` (Ritik Mishra) | 5 Topics | 17495s (~4h 51m) | ✅ Verified (0s ➔ 17495s) |
 | **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | *Pending lecture* | 6 Topics | — | Ready for video |
 | **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | *Pending lecture* | 4 Topics | — | Ready for video |
