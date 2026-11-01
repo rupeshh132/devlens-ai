@@ -32,7 +32,7 @@
 | **Ch 2** | Polynomials | `65d29b56-2222-1000-0000-000000000002` | `kiegUjhq8Ao` (Ritik Mishra) | 5 Topics | 10797s (~2h 59m) | ✅ Verified (0s ➔ 10797s) |
 | **Ch 3** | Pair of Linear Equations in Two Variables | `65d29b56-2222-1000-0000-000000000003` | `uz1yjvlu-RU` (Ritik Mishra) | 5 Topics | 11489s (~3h 11m) | ✅ Verified (0s ➔ 11489s) |
 | **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | `kmfDomy0qWg` (Ritik Mishra) | 5 Topics | 17495s (~4h 51m) | ✅ Verified (0s ➔ 17495s) |
-| **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | `vsGPaLIAW10` (Ritik Mishra) | 5 Topics | 16597s (~4h 36m) | ✅ Verified (0s ➔ 16597s) |
 | **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | *Pending lecture* | 6 Topics | — | Ready for video |
 | **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 8** | Introduction to Trigonometry | `65d29b56-2222-1000-0000-000000000008` | *Pending lecture* | 5 Topics | — | Ready for video |
@@ -88,6 +88,7 @@
 - `backend/src/main/resources/db/migration/V47__seed_class10_maths_ch2_lectures.sql` — Chapter 2 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V48__seed_class10_maths_ch3_lectures.sql` — Chapter 3 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V49__seed_class10_maths_ch4_lectures.sql` — Chapter 4 verified video lectures & timestamps
+- `backend/src/main/resources/db/migration/V50__seed_class10_maths_ch5_lectures.sql` — Chapter 5 verified video lectures & timestamps
 
 ---
 
@@ -100,4 +101,17 @@
 | **3** | Quadratic Formula (Shreedharacharya's Rule) & Nature of Roots | 6480s | 10670s | `https://www.youtube.com/watch?v=kmfDomy0qWg&t=6480s&end=10670s` |
 | **4** | Word Problems: Numbers, Consecutive Integers, Fractions & Digits | 10670s | 13630s | `https://www.youtube.com/watch?v=kmfDomy0qWg&t=10670s&end=13630s` |
 | **5** | Word Problems: Speed-Distance, Geometry, Ages & Assertion-Reason HOTS | 13630s | 17495s | `https://www.youtube.com/watch?v=kmfDomy0qWg&t=13630s&end=17495s` |
+
+---
+
+## Chapter 5: Arithmetic Progressions Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction to Sequences & General Form of Arithmetic Progression | 0s | 2203s | `https://www.youtube.com/watch?v=vsGPaLIAW10&end=2203s` |
+| **2** | nth Term of an AP (an = a + (n - 1)d): Basic Formulas & Direct Questions | 2203s | 5184s | `https://www.youtube.com/watch?v=vsGPaLIAW10&t=2203s&end=5184s` |
+| **3** | Advanced nth Term Problems: Divisibility, Middle Terms & Algebraic Conditions | 5184s | 9050s | `https://www.youtube.com/watch?v=vsGPaLIAW10&t=5184s&end=9050s` |
+| **4** | Sum of First n Terms of an AP (Sn): Formulas, Properties & Algebraic Problems | 9050s | 13446s | `https://www.youtube.com/watch?v=vsGPaLIAW10&t=9050s&end=13446s` |
+| **5** | Daily Life Situational Word Problems, Case Study Questions & Chapter Summary | 13446s | 16597s | `https://www.youtube.com/watch?v=vsGPaLIAW10&t=13446s&end=16597s` |
+
 
