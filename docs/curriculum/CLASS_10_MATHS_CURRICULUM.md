@@ -4,8 +4,8 @@
 **Subject:** Mathematics (`id: 65d29b56-2222-0000-0000-000000000010`, `order_index: 2`)  
 **Syllabus:** CBSE / NCERT Rationalized Annual Curriculum (2026-27)  
 **Total Chapters:** 14  
-**Total Topics:** 64 Topics (5 in Ch 1 + 5 in Ch 2 + 54 across Ch 3-14)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V45, V46 & V47  
+**Total Topics:** 64 Topics (5 in Ch 1 + 5 in Ch 2 + 5 in Ch 3 + 49 across Ch 4-14)  
+**Status:** Live in Supabase & Version-Controlled in Flyway V45, V46, V47 & V48  
 
 ---
 
@@ -30,7 +30,7 @@
 |:---:|---|---|:---:|:---:|:---:|:---:|
 | **Ch 1** | Real Numbers | `65d29b56-2222-1000-0000-000000000001` | `-UdHmSTmQtw` (Shobhit Nirwan) | 5 Topics | 8893s (~2h 28m) | ✅ Verified (0s ➔ 8893s) |
 | **Ch 2** | Polynomials | `65d29b56-2222-1000-0000-000000000002` | `kiegUjhq8Ao` (Ritik Mishra) | 5 Topics | 10797s (~2h 59m) | ✅ Verified (0s ➔ 10797s) |
-| **Ch 3** | Pair of Linear Equations in Two Variables | `65d29b56-2222-1000-0000-000000000003` | *Pending lecture* | 5 Topics | — | Ready for video |
+| **Ch 3** | Pair of Linear Equations in Two Variables | `65d29b56-2222-1000-0000-000000000003` | `uz1yjvlu-RU` (Ritik Mishra) | 5 Topics | 11489s (~3h 11m) | ✅ Verified (0s ➔ 11489s) |
 | **Ch 4** | Quadratic Equations | `65d29b56-2222-1000-0000-000000000004` | *Pending lecture* | 5 Topics | — | Ready for video |
 | **Ch 5** | Arithmetic Progressions | `65d29b56-2222-1000-0000-000000000005` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | *Pending lecture* | 6 Topics | — | Ready for video |
@@ -69,8 +69,21 @@
 
 ---
 
+## Chapter 3: Pair of Linear Equations in Two Variables Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction, Standard Form & Graphical Method of Solution | 0s | 1422s | `https://www.youtube.com/watch?v=uz1yjvlu-RU&end=1422s` |
+| **2** | Algebraic Methods of Solution: Substitution & Elimination | 1422s | 4111s | `https://www.youtube.com/watch?v=uz1yjvlu-RU&t=1422s&end=4111s` |
+| **3** | Conditions for Consistency & Finding Unknown Value (k) | 4111s | 5356s | `https://www.youtube.com/watch?v=uz1yjvlu-RU&t=4111s&end=5356s` |
+| **4** | Word Problems: 2-Digit Numbers, Geometry & Cost Situations | 5356s | 8756s | `https://www.youtube.com/watch?v=uz1yjvlu-RU&t=5356s&end=8756s` |
+| **5** | Word Problems: Fractions, Age Problems, Speed-Distance & Outro | 8756s | 11489s | `https://www.youtube.com/watch?v=uz1yjvlu-RU&t=8756s&end=11489s` |
+
+---
+
 ## Flyway Migration Reference
 
 - `backend/src/main/resources/db/migration/V45__seed_class10_maths_syllabus.sql` — 14 Chapters & initial syllabus
 - `backend/src/main/resources/db/migration/V46__seed_class10_maths_ch1_lectures.sql` — Chapter 1 verified video lectures & timestamps
 - `backend/src/main/resources/db/migration/V47__seed_class10_maths_ch2_lectures.sql` — Chapter 2 verified video lectures & timestamps
+- `backend/src/main/resources/db/migration/V48__seed_class10_maths_ch3_lectures.sql` — Chapter 3 verified video lectures & timestamps
