@@ -5,7 +5,7 @@
 **Syllabus:** CBSE / NCERT Rationalized Annual Curriculum (2026-27)  
 **Total Chapters:** 14  
 **Total Topics:** 64 Topics (5 in Ch 1 + 5 in Ch 2 + 5 in Ch 3 + 49 across Ch 4-14)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V45, V46, V47 & V48  
+**Status:** Live in Supabase & Version-Controlled in Flyway V45 to V54  
 
 ---
 
@@ -36,7 +36,7 @@
 | **Ch 6** | Triangles | `65d29b56-2222-1000-0000-000000000006` | `nxo1ItY3oTo` (Ritik Mishra) | 5 Topics | 15121s (~4h 12m) | ✅ Verified (0s ➔ 15121s) |
 | **Ch 7** | Coordinate Geometry | `65d29b56-2222-1000-0000-000000000007` | `TXDyGK_GdNM` (Ritik Mishra) | 5 Topics | 10787s (~2h 59m) | ✅ Verified (0s ➔ 10787s) |
 | **Ch 8** | Introduction to Trigonometry | `65d29b56-2222-1000-0000-000000000008` | `wdaBwIv7Jso` (Ritik Mishra) | 5 Topics | 16010s (~4h 26m) | ✅ Verified (0s ➔ 16010s) |
-| **Ch 9** | Some Applications of Trigonometry (Heights and Distances) | `65d29b56-2222-1000-0000-000000000009` | *Pending lecture* | 4 Topics | — | Ready for video |
+| **Ch 9** | Some Applications of Trigonometry (Heights and Distances) | `65d29b56-2222-1000-0000-000000000009` | `otABxL0TP6U` (Ritik Mishra) | 5 Topics | 11139s (~3h 05m) | ✅ Verified (0s ➔ 11139s) |
 | **Ch 10** | Circles | `65d29b56-2222-1000-0000-000000000010` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 11** | Areas Related to Circles | `65d29b56-2222-1000-0000-000000000011` | *Pending lecture* | 4 Topics | — | Ready for video |
 | **Ch 12** | Surface Areas and Volumes | `65d29b56-2222-1000-0000-000000000012` | *Pending lecture* | 4 Topics | — | Ready for video |
@@ -152,6 +152,19 @@
 | **3** | Square Identities (sin²θ + cos²θ = 1) & T-Ratio Inter-Conversion | 6956s | 10438s | `https://www.youtube.com/watch?v=wdaBwIv7Jso&t=6956s&end=10438s` |
 | **4** | Proving Trigonometric Identities: Core CBSE & NCERT Questions | 10438s | 13595s | `https://www.youtube.com/watch?v=wdaBwIv7Jso&t=10438s&end=13595s` |
 | **5** | HOTS, Tricky Proving Questions, CBSE 2025 Problems & Chapter Summary | 13595s | 16010s | `https://www.youtube.com/watch?v=wdaBwIv7Jso&t=13595s&end=16010s` |
+
+---
+
+## Chapter 9: Some Applications of Trigonometry (Heights and Distances) Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction, Line of Sight, Angle of Elevation & Depression (Basics) | 0s | 2125s | `https://www.youtube.com/watch?v=otABxL0TP6U&end=2125s` |
+| **2** | Single Observer with Height & Two Points on Ground (Elevation Problems) | 2125s | 4759s | `https://www.youtube.com/watch?v=otABxL0TP6U&t=2125s&end=4759s` |
+| **3** | Two Triangles & Angle of Depression: Buildings, Cliffs & Lighthouses | 4759s | 7323s | `https://www.youtube.com/watch?v=otABxL0TP6U&t=4759s&end=7323s` |
+| **4** | Moving Objects: Speed of Aeroplanes, Moving Cars & Cloud Reflection | 7323s | 9308s | `https://www.youtube.com/watch?v=otABxL0TP6U&t=7323s&end=9308s` |
+| **5** | Advanced Board Questions, CBSE Case-Study Problems & Summary | 9308s | 11139s | `https://www.youtube.com/watch?v=otABxL0TP6U&t=9308s&end=11139s` |
+
 
 
 
