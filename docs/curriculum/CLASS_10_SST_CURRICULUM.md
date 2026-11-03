@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V61  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V62  
 
 ---
 
@@ -49,7 +49,7 @@
 | Ch # | Discipline / Book | Chapter Name | Chapter ID | Topics Count | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|:---:|
 | **Ch 1** | History | The Rise of Nationalism in Europe | `65d29b56-3333-1000-0000-000000000001` | 6 Topics | Board Theory | `ySNeX4av-uA` (Warrior 2026) \| ✅ Verified (0s ➔ 6238s) |
-| **Ch 2** | History | Nationalism in India | `65d29b56-3333-1000-0000-000000000002` | 6 Topics | Board Theory + Map (2m) | Ready for Video |
+| **Ch 2** | History | Nationalism in India | `65d29b56-3333-1000-0000-000000000002` | 6 Topics | Board Theory + Map (2m) | `t3DuTsx8Rmw` (Warrior 2026) \| ✅ Verified (0s ➔ 5265s) |
 | **Ch 3** | History | The Making of a Global World | `65d29b56-3333-1000-0000-000000000003` | 5 Topics | Split: Sec 1 Board / Sec 2-4 IDP | Ready for Video |
 | **Ch 4** | History | The Age of Industrialisation | `65d29b56-3333-1000-0000-000000000004` | 5 Topics | Periodic / Mid-Term Only | Ready for Video |
 | **Ch 5** | History | Print Culture and the Modern World | `65d29b56-3333-1000-0000-000000000005` | 6 Topics | Board Theory | Ready for Video |
@@ -120,4 +120,18 @@
 | **4** | Romantic Nationalism, Cultural Resistance & The 1848 Liberal Revolution | 4122s | 4845s | `https://www.youtube.com/watch?v=ySNeX4av-uA&t=4122s&end=4845s` |
 | **5** | The Making of Nation-States: Unification of Germany, Italy & Britain | 4845s | 5572s | `https://www.youtube.com/watch?v=ySNeX4av-uA&t=4845s&end=5572s` |
 | **6** | Visualising the Nation, Imperialism, Balkan Crisis & Board Practice | 5572s | 6238s | `https://www.youtube.com/watch?v=ySNeX4av-uA&t=5572s&end=6238s` |
+
+---
+
+## History Chapter 2: Nationalism in India Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | The First World War, Early Satyagraha Movements & The Rowlatt Act Crisis | 0s | 1110s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&end=1110s` |
+| **2** | The Khilafat Alliance & Launch of the Non-Cooperation Movement in Towns | 1110s | 1558s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&t=1110s&end=1558s` |
+| **3** | Rebellion in Countryside, Swaraj in Plantations, Chauri Chaura & Bardoli Satyagraha | 1558s | 2702s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&t=1558s&end=2702s` |
+| **4** | Towards Civil Disobedience: Swaraj Party, Simon Commission, Lahore Session & The Salt March | 2702s | 4013s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&t=2702s&end=4013s` |
+| **5** | Social Dynamics, Participant Perspectives & The Limits of Civil Disobedience (Poona Pact) | 4013s | 4490s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&t=4013s&end=4490s` |
+| **6** | The Sense of Collective Belonging, Quit India Movement (1942) & Final Board Exam Mastery | 4490s | 5265s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&t=4490s&end=5265s` |
+
 
