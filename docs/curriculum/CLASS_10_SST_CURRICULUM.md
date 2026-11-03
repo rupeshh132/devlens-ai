@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V63  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V64  
 
 ---
 
@@ -51,7 +51,7 @@
 | **Ch 1** | History | The Rise of Nationalism in Europe | `65d29b56-3333-1000-0000-000000000001` | 6 Topics | Board Theory | `ySNeX4av-uA` (Warrior 2026) \| ✅ Verified (0s ➔ 6238s) |
 | **Ch 2** | History | Nationalism in India | `65d29b56-3333-1000-0000-000000000002` | 6 Topics | Board Theory + Map (2m) | `t3DuTsx8Rmw` (Warrior 2026) \| ✅ Verified (0s ➔ 5265s) |
 | **Ch 3** | History | The Making of a Global World | `65d29b56-3333-1000-0000-000000000003` | 6 Topics | Split: Sec 1 Board / Sec 2-4 IDP | `IcMXEEShKzs` (Warrior 2026) \| ✅ Verified (0s ➔ 4654s) |
-| **Ch 4** | History | The Age of Industrialisation | `65d29b56-3333-1000-0000-000000000004` | 5 Topics | Periodic / Mid-Term Only | Ready for Video |
+| **Ch 4** | History | The Age of Industrialisation | `65d29b56-3333-1000-0000-000000000004` | 6 Topics | Periodic / Mid-Term Only | `2RqIwjsop6A` (Udaan) \| ✅ Verified (0s ➔ 7339s) |
 | **Ch 5** | History | Print Culture and the Modern World | `65d29b56-3333-1000-0000-000000000005` | 6 Topics | Board Theory | Ready for Video |
 | **Ch 6** | Geography | Resources and Development | `65d29b56-3333-1000-0000-000000000006` | 4 Topics | Board Theory + Soil Map | Ready for Video |
 | **Ch 7** | Geography | Forest and Wildlife Resources | `65d29b56-3333-1000-0000-000000000007` | 5 Topics | Board Theory | Ready for Video |
@@ -146,6 +146,20 @@
 | **4** | Colonial Exploitation: Rinderpest, Indentured Labour & Global Indian Trade [IDP] | 2724s | 3688s | `https://www.youtube.com/watch?v=IcMXEEShKzs&t=2724s&end=3688s` |
 | **5** | The Inter-War Economic Crisis: WWI, Mass Production & Great Depression [IDP] | 3688s | 4340s | `https://www.youtube.com/watch?v=IcMXEEShKzs&t=3688s&end=4340s` |
 | **6** | Post-WWII Settlement: Bretton Woods Institutions & Board Exam Practice | 4340s | 4654s | `https://www.youtube.com/watch?v=IcMXEEShKzs&t=4340s&end=4654s` |
+
+---
+
+## History Chapter 4: The Age of Industrialisation Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Before the Industrial Revolution: Proto-Industrialisation & Cotton Mills | 0s | 2477s | `https://www.youtube.com/watch?v=2RqIwjsop6A&end=2477s` |
+| **2** | Hand Labour, Steam Power & The Plight of Victorian Workers | 2477s | 4612s | `https://www.youtube.com/watch?v=2RqIwjsop6A&t=2477s&end=4612s` |
+| **3** | Industrialisation in the Colonies: Indian Textiles & Manchester Comes to India | 4612s | 5733s | `https://www.youtube.com/watch?v=2RqIwjsop6A&t=4612s&end=5733s` |
+| **4** | Factories Come Up: Early Indian Entrepreneurs & The Jobber System | 5733s | 6322s | `https://www.youtube.com/watch?v=2RqIwjsop6A&t=5733s&end=6322s` |
+| **5** | The Peculiarities of Industrial Growth & Small-Scale Handlooms | 6322s | 6946s | `https://www.youtube.com/watch?v=2RqIwjsop6A&t=6322s&end=6946s` |
+| **6** | Market for Goods: Advertisements, Labels, Calendars & Nationalist Appeal | 6946s | 7339s | `https://www.youtube.com/watch?v=2RqIwjsop6A&t=6946s&end=7339s` |
+
 
 
 
