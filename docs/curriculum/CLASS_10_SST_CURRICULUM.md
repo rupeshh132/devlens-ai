@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V61  
 
 ---
 
@@ -48,7 +48,7 @@
 
 | Ch # | Discipline / Book | Chapter Name | Chapter ID | Topics Count | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|:---:|
-| **Ch 1** | History | The Rise of Nationalism in Europe | `65d29b56-3333-1000-0000-000000000001` | 6 Topics | Board Theory | Ready for Video |
+| **Ch 1** | History | The Rise of Nationalism in Europe | `65d29b56-3333-1000-0000-000000000001` | 6 Topics | Board Theory | `ySNeX4av-uA` (Warrior 2026) \| ✅ Verified (0s ➔ 6238s) |
 | **Ch 2** | History | Nationalism in India | `65d29b56-3333-1000-0000-000000000002` | 6 Topics | Board Theory + Map (2m) | Ready for Video |
 | **Ch 3** | History | The Making of a Global World | `65d29b56-3333-1000-0000-000000000003` | 5 Topics | Split: Sec 1 Board / Sec 2-4 IDP | Ready for Video |
 | **Ch 4** | History | The Age of Industrialisation | `65d29b56-3333-1000-0000-000000000004` | 5 Topics | Periodic / Mid-Term Only | Ready for Video |
@@ -107,3 +107,17 @@
 6. **Lifelines of National Economy (Locating & Labelling):**
    - Major Sea Ports: Kandla, Mumbai, Marmagao, New Mangalore, Kochi, Tuticorin, Chennai, Visakhapatnam, Paradip, Haldia.
    - International Airports: Amritsar (Raja Sansi / Sri Guru Ram Dass Jee), Delhi (Indira Gandhi), Mumbai (Chhatrapati Shivaji Maharaj), Chennai (Meenambakkam), Kolkata (Netaji Subhash Chandra Bose), Hyderabad (Rajiv Gandhi).
+
+---
+
+## History Chapter 1: The Rise of Nationalism in Europe Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | The French Revolution, Collective Identity & The Napoleonic Era | 0s | 2042s | `https://www.youtube.com/watch?v=ySNeX4av-uA&end=2042s` |
+| **2** | Post-1815 Conservative Order & The Age of Revolutions (1830–1848) | 2042s | 3507s | `https://www.youtube.com/watch?v=ySNeX4av-uA&t=2042s&end=3507s` |
+| **3** | Social Classes, Liberal Ideology, Zollverein & Mid-Chapter Check | 3507s | 4122s | `https://www.youtube.com/watch?v=ySNeX4av-uA&t=3507s&end=4122s` |
+| **4** | Romantic Nationalism, Cultural Resistance & The 1848 Liberal Revolution | 4122s | 4845s | `https://www.youtube.com/watch?v=ySNeX4av-uA&t=4122s&end=4845s` |
+| **5** | The Making of Nation-States: Unification of Germany, Italy & Britain | 4845s | 5572s | `https://www.youtube.com/watch?v=ySNeX4av-uA&t=4845s&end=5572s` |
+| **6** | Visualising the Nation, Imperialism, Balkan Crisis & Board Practice | 5572s | 6238s | `https://www.youtube.com/watch?v=ySNeX4av-uA&t=5572s&end=6238s` |
+
