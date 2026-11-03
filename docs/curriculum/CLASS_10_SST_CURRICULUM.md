@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V62  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V63  
 
 ---
 
@@ -50,7 +50,7 @@
 |:---:|---|---|---|:---:|:---:|:---:|
 | **Ch 1** | History | The Rise of Nationalism in Europe | `65d29b56-3333-1000-0000-000000000001` | 6 Topics | Board Theory | `ySNeX4av-uA` (Warrior 2026) \| ✅ Verified (0s ➔ 6238s) |
 | **Ch 2** | History | Nationalism in India | `65d29b56-3333-1000-0000-000000000002` | 6 Topics | Board Theory + Map (2m) | `t3DuTsx8Rmw` (Warrior 2026) \| ✅ Verified (0s ➔ 5265s) |
-| **Ch 3** | History | The Making of a Global World | `65d29b56-3333-1000-0000-000000000003` | 5 Topics | Split: Sec 1 Board / Sec 2-4 IDP | Ready for Video |
+| **Ch 3** | History | The Making of a Global World | `65d29b56-3333-1000-0000-000000000003` | 6 Topics | Split: Sec 1 Board / Sec 2-4 IDP | `IcMXEEShKzs` (Warrior 2026) \| ✅ Verified (0s ➔ 4654s) |
 | **Ch 4** | History | The Age of Industrialisation | `65d29b56-3333-1000-0000-000000000004` | 5 Topics | Periodic / Mid-Term Only | Ready for Video |
 | **Ch 5** | History | Print Culture and the Modern World | `65d29b56-3333-1000-0000-000000000005` | 6 Topics | Board Theory | Ready for Video |
 | **Ch 6** | Geography | Resources and Development | `65d29b56-3333-1000-0000-000000000006` | 4 Topics | Board Theory + Soil Map | Ready for Video |
@@ -133,5 +133,19 @@
 | **4** | Towards Civil Disobedience: Swaraj Party, Simon Commission, Lahore Session & The Salt March | 2702s | 4013s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&t=2702s&end=4013s` |
 | **5** | Social Dynamics, Participant Perspectives & The Limits of Civil Disobedience (Poona Pact) | 4013s | 4490s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&t=4013s&end=4490s` |
 | **6** | The Sense of Collective Belonging, Quit India Movement (1942) & Final Board Exam Mastery | 4490s | 5265s | `https://www.youtube.com/watch?v=t3DuTsx8Rmw&t=4490s&end=5265s` |
+
+---
+
+## History Chapter 3: The Making of a Global World Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Chapter Foundations, Historical Timeline & Ancient Civilisations | 0s | 649s | `https://www.youtube.com/watch?v=IcMXEEShKzs&end=649s` |
+| **2** | Pre-Modern Global Networks: Silk Routes, Food Travels & European Conquest | 649s | 1643s | `https://www.youtube.com/watch?v=IcMXEEShKzs&t=649s&end=1643s` |
+| **3** | The 19th-Century World Economy: Three Flows, Technology & Colonial Partition [IDP] | 1643s | 2724s | `https://www.youtube.com/watch?v=IcMXEEShKzs&t=1643s&end=2724s` |
+| **4** | Colonial Exploitation: Rinderpest, Indentured Labour & Global Indian Trade [IDP] | 2724s | 3688s | `https://www.youtube.com/watch?v=IcMXEEShKzs&t=2724s&end=3688s` |
+| **5** | The Inter-War Economic Crisis: WWI, Mass Production & Great Depression [IDP] | 3688s | 4340s | `https://www.youtube.com/watch?v=IcMXEEShKzs&t=3688s&end=4340s` |
+| **6** | Post-WWII Settlement: Bretton Woods Institutions & Board Exam Practice | 4340s | 4654s | `https://www.youtube.com/watch?v=IcMXEEShKzs&t=4340s&end=4654s` |
+
 
 
