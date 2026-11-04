@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V80  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V81  
 
 ---
 
@@ -68,7 +68,7 @@
 | **Ch 18** | Economics | Development | `65d29b56-3333-1000-0000-000000000018` | 6 Topics | Board Theory | `L-FGyJY0Thk` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 6030s) |
 | **Ch 19** | Economics | Sectors of the Indian Economy | `65d29b56-3333-1000-0000-000000000019` | 6 Topics | Board Theory | `y7QdyRP-jwQ` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4674s) |
 | **Ch 20** | Economics | Money and Credit | `65d29b56-3333-1000-0000-000000000020` | 7 Topics | Board Theory | `V6LPuBEXCfE` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4146s) |
-| **Ch 21** | Economics | Globalization and the Indian Economy | `65d29b56-3333-1000-0000-000000000021` | 6 Topics | Split: Sec 1-2 Board / Sec 3+ IDP | Ready for Video |
+| **Ch 21** | Economics | Globalization and the Indian Economy | `65d29b56-3333-1000-0000-000000000021` | 4 Topics | Split: Sec 1-2 Board / Sec 3+ IDP | `8kiUJ65f8iQ` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 2580s) |
 | **Ch 22** | Economics | Consumer Rights | `65d29b56-3333-1000-0000-000000000022` | 4 Topics | Project Work Only (Internal) | Ready for Video |
 
 ---
@@ -348,6 +348,18 @@
 | **5** | Terms of Credit: Interest Rate, Collateral, Documentation & Credit Arrangements | 2068s | 2780s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=2068s&end=2780s` |
 | **6** | Formal Sector Credit vs Informal Sector Credit in India & Role of RBI | 2780s | 3655s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=2780s&end=3655s` |
 | **7** | Self-Help Groups (SHGs) for the Poor: Collateral-Free Micro-Credit & Women's Empowerment | 3655s | 4146s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=3655s&end=4146s` |
+
+---
+
+## Economics Chapter 4 (Overall Ch 21): Globalization and the Indian Economy Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction & What is Globalisation? Rapid Integration and Interconnection of Markets | 0s | 755s | `https://www.youtube.com/watch?v=8kiUJ65f8iQ&end=755s` |
+| **2** | Factors Enabling Globalisation (Part 1): Rapid Advances in Transportation & Information Technology (ICT) | 755s | 1095s | `https://www.youtube.com/watch?v=8kiUJ65f8iQ&t=755s&end=1095s` |
+| **3** | Factors Enabling Globalisation (Part 2): Liberalisation of Foreign Trade and Foreign Investment Policy | 1095s | 1843s | `https://www.youtube.com/watch?v=8kiUJ65f8iQ&t=1095s&end=1843s` |
+| **4** | India and the G20: Origins, Vasudhaiva Kutumbakam & India's Leadership in Global Economy | 1843s | 2580s | `https://www.youtube.com/watch?v=8kiUJ65f8iQ&t=1843s&end=2580s` |
+
 
 
 
