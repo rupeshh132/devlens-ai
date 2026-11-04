@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V79  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V80  
 
 ---
 
@@ -67,7 +67,7 @@
 | **Ch 17** | Political Science | Outcomes of Democracy | `65d29b56-3333-1000-0000-000000000017` | 5 Topics | Board Theory | `JVBWKBYsvH4` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 3381s) |
 | **Ch 18** | Economics | Development | `65d29b56-3333-1000-0000-000000000018` | 6 Topics | Board Theory | `L-FGyJY0Thk` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 6030s) |
 | **Ch 19** | Economics | Sectors of the Indian Economy | `65d29b56-3333-1000-0000-000000000019` | 6 Topics | Board Theory | `y7QdyRP-jwQ` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4674s) |
-| **Ch 20** | Economics | Money and Credit | `65d29b56-3333-1000-0000-000000000020` | 7 Topics | Board Theory | Ready for Video |
+| **Ch 20** | Economics | Money and Credit | `65d29b56-3333-1000-0000-000000000020` | 7 Topics | Board Theory | `V6LPuBEXCfE` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4146s) |
 | **Ch 21** | Economics | Globalization and the Indian Economy | `65d29b56-3333-1000-0000-000000000021` | 6 Topics | Split: Sec 1-2 Board / Sec 3+ IDP | Ready for Video |
 | **Ch 22** | Economics | Consumer Rights | `65d29b56-3333-1000-0000-000000000022` | 4 Topics | Project Work Only (Internal) | Ready for Video |
 
@@ -334,6 +334,21 @@
 | **4** | Where are Most People Employed? Disguised Unemployment & Strategies to Create Employment (MGNREGA) | 1969s | 3279s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&t=1969s&end=3279s` |
 | **5** | Division of Sectors as Organised and Unorganised & Protection of Vulnerable Workers | 3279s | 4085s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&t=3279s&end=4085s` |
 | **6** | Sectors in Terms of Ownership: Public vs Private Sectors & Role of Government | 4085s | 4674s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&t=4085s&end=4674s` |
+
+---
+
+## Economics Chapter 3 (Overall Ch 20): Money and Credit Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Money as a Medium of Exchange: The Barter System & Double Coincidence of Wants | 0s | 593s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&end=593s` |
+| **2** | Modern Forms of Money: Currency, Demand Deposits & Cheque Payments | 593s | 1373s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=593s&end=1373s` |
+| **3** | Loan Activities of Banks: Credit Creation and Banking Intermediation | 1373s | 1706s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=1373s&end=1706s` |
+| **4** | Two Different Credit Situations: Credit as Growth vs Debt-Trap (Salim & Swapna) | 1706s | 2068s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=1706s&end=2068s` |
+| **5** | Terms of Credit: Interest Rate, Collateral, Documentation & Credit Arrangements | 2068s | 2780s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=2068s&end=2780s` |
+| **6** | Formal Sector Credit vs Informal Sector Credit in India & Role of RBI | 2780s | 3655s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=2780s&end=3655s` |
+| **7** | Self-Help Groups (SHGs) for the Poor: Collateral-Free Micro-Credit & Women's Empowerment | 3655s | 4146s | `https://www.youtube.com/watch?v=V6LPuBEXCfE&t=3655s&end=4146s` |
+
 
 
 
