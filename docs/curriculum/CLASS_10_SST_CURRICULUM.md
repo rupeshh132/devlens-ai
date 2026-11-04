@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V64  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V65  
 
 ---
 
@@ -52,7 +52,7 @@
 | **Ch 2** | History | Nationalism in India | `65d29b56-3333-1000-0000-000000000002` | 6 Topics | Board Theory + Map (2m) | `t3DuTsx8Rmw` (Warrior 2026) \| ✅ Verified (0s ➔ 5265s) |
 | **Ch 3** | History | The Making of a Global World | `65d29b56-3333-1000-0000-000000000003` | 6 Topics | Split: Sec 1 Board / Sec 2-4 IDP | `IcMXEEShKzs` (Warrior 2026) \| ✅ Verified (0s ➔ 4654s) |
 | **Ch 4** | History | The Age of Industrialisation | `65d29b56-3333-1000-0000-000000000004` | 6 Topics | Periodic / Mid-Term Only | `2RqIwjsop6A` (Udaan) \| ✅ Verified (0s ➔ 7339s) |
-| **Ch 5** | History | Print Culture and the Modern World | `65d29b56-3333-1000-0000-000000000005` | 6 Topics | Board Theory | Ready for Video |
+| **Ch 5** | History | Print Culture and the Modern World | `65d29b56-3333-1000-0000-000000000005` | 6 Topics | Board Theory | `Ut7x2rgJdSY` (Warrior 2026) \| ✅ Verified (0s ➔ 5316s) |
 | **Ch 6** | Geography | Resources and Development | `65d29b56-3333-1000-0000-000000000006` | 4 Topics | Board Theory + Soil Map | Ready for Video |
 | **Ch 7** | Geography | Forest and Wildlife Resources | `65d29b56-3333-1000-0000-000000000007` | 5 Topics | Board Theory | Ready for Video |
 | **Ch 8** | Geography | Water Resources | `65d29b56-3333-1000-0000-000000000008` | 4 Topics | Board Theory + Dams Map | Ready for Video |
@@ -159,6 +159,20 @@
 | **4** | Factories Come Up: Early Indian Entrepreneurs & The Jobber System | 5733s | 6322s | `https://www.youtube.com/watch?v=2RqIwjsop6A&t=5733s&end=6322s` |
 | **5** | The Peculiarities of Industrial Growth & Small-Scale Handlooms | 6322s | 6946s | `https://www.youtube.com/watch?v=2RqIwjsop6A&t=6322s&end=6946s` |
 | **6** | Market for Goods: Advertisements, Labels, Calendars & Nationalist Appeal | 6946s | 7339s | `https://www.youtube.com/watch?v=2RqIwjsop6A&t=6946s&end=7339s` |
+
+---
+
+## History Chapter 5: Print Culture and the Modern World Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | The First Printed Books: China, Japan and Korea | 0s | 960s | `https://www.youtube.com/watch?v=Ut7x2rgJdSY&end=960s` |
+| **2** | Print Comes to Europe & Johann Gutenberg's Printing Press | 960s | 1416s | `https://www.youtube.com/watch?v=Ut7x2rgJdSY&t=960s&end=1416s` |
+| **3** | The Print Revolution and Its Impact: Religious Debates & Protestant Reformation | 1416s | 2515s | `https://www.youtube.com/watch?v=Ut7x2rgJdSY&t=1416s&end=2515s` |
+| **4** | The Reading Mania, Enlightenment Thinkers & The French Revolution | 2515s | 3160s | `https://www.youtube.com/watch?v=Ut7x2rgJdSY&t=2515s&end=3160s` |
+| **5** | The 19th Century: Children, Women and Workers & Printing Innovations | 3160s | 3772s | `https://www.youtube.com/watch?v=Ut7x2rgJdSY&t=3160s&end=3772s` |
+| **6** | India and the World of Print: Religious Reform, Vernacular Voices & Censorship | 3772s | 5316s | `https://www.youtube.com/watch?v=Ut7x2rgJdSY&t=3772s&end=5316s` |
+
 
 
 
