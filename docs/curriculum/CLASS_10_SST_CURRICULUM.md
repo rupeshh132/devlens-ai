@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V71  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V72  
 
 ---
 
@@ -59,7 +59,7 @@
 | **Ch 9** | Geography | Agriculture | `65d29b56-3333-1000-0000-000000000009` | 6 Topics | Board Theory + Crops Map | `ojMWfRRIF-E` (Warrior 2026) \| ✅ Verified (0s ➔ 5895s) |
 | **Ch 10** | Geography | Minerals and Energy Resources | `65d29b56-3333-1000-0000-000000000010` | 5 Topics | Board Theory + Minerals Map | `rRHekx6Npo4` (Warrior 2026) \| ✅ Verified (0s ➔ 4036s) |
 | **Ch 11** | Geography | Manufacturing Industries | `65d29b56-3333-1000-0000-000000000011` | 5 Topics | Board Theory + Industries Map | `V5b-581ESFI` (Warrior 2026) \| ✅ Verified (0s ➔ 5456s) |
-| **Ch 12** | Geography | Lifelines of National Economy | `65d29b56-3333-1000-0000-000000000012` | 4 Topics | Map Only in Board / Theory IDP | Ready for Video |
+| **Ch 12** | Geography | Lifelines of National Economy | `65d29b56-3333-1000-0000-000000000012` | 4 Topics | Map Only in Board / Theory IDP | `x0OzQNRziaE` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4383s) |
 | **Ch 13** | Political Science | Power-sharing | `65d29b56-3333-1000-0000-000000000013` | 3 Topics | Board Theory | Ready for Video |
 | **Ch 14** | Political Science | Federalism | `65d29b56-3333-1000-0000-000000000014` | 5 Topics | Board Theory | Ready for Video |
 | **Ch 15** | Political Science | Gender, Religion and Caste | `65d29b56-3333-1000-0000-000000000015` | 4 Topics | Board Theory | Ready for Video |
@@ -243,6 +243,18 @@
 | **3** | Mineral-Based Heavy Industries: Aluminium Smelting, Chemical & Fertilizer Industries | 3921s | 4550s | `https://www.youtube.com/watch?v=V5b-581ESFI&t=3921s&end=4550s` |
 | **4** | Core Manufacturing & Modern Technology: Cement, Automobile, IT & Electronics Industries | 4550s | 4848s | `https://www.youtube.com/watch?v=V5b-581ESFI&t=4550s&end=4848s` |
 | **5** | Environmental Degradation, Industrial Pollution Control & Sustainable Development (NTPC) | 4848s | 5456s | `https://www.youtube.com/watch?v=V5b-581ESFI&t=4848s&end=5456s` |
+
+---
+
+## Geography Chapter 7 (Overall Ch 12): Lifelines of National Economy Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction to Lifelines & Road Transport Network (Roadways & Classifications) | 0s | 1510s | `https://www.youtube.com/watch?v=x0OzQNRziaE&end=1510s` |
+| **2** | Railways & Pipelines: Heavy Freight, Passenger & Energy Lifelines | 1510s | 2450s | `https://www.youtube.com/watch?v=x0OzQNRziaE&t=1510s&end=2450s` |
+| **3** | Waterways, Major Sea Ports & Airways: Water & Air Transport Systems | 2450s | 3530s | `https://www.youtube.com/watch?v=x0OzQNRziaE&t=2450s&end=3530s` |
+| **4** | Communication Systems, International Trade & Tourism as a Trade | 3530s | 4383s | `https://www.youtube.com/watch?v=x0OzQNRziaE&t=3530s&end=4383s` |
+
 
 
 
