@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V66  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V67  
 
 ---
 
@@ -54,7 +54,7 @@
 | **Ch 4** | History | The Age of Industrialisation | `65d29b56-3333-1000-0000-000000000004` | 6 Topics | Periodic / Mid-Term Only | `2RqIwjsop6A` (Udaan) \| ✅ Verified (0s ➔ 7339s) |
 | **Ch 5** | History | Print Culture and the Modern World | `65d29b56-3333-1000-0000-000000000005` | 6 Topics | Board Theory | `Ut7x2rgJdSY` (Warrior 2026) \| ✅ Verified (0s ➔ 5316s) |
 | **Ch 6** | Geography | Resources and Development | `65d29b56-3333-1000-0000-000000000006` | 5 Topics | Board Theory + Soil Map | `FwXyG8lFtss` (Warrior 2026) \| ✅ Verified (0s ➔ 5964s) |
-| **Ch 7** | Geography | Forest and Wildlife Resources | `65d29b56-3333-1000-0000-000000000007` | 5 Topics | Board Theory | Ready for Video |
+| **Ch 7** | Geography | Forest and Wildlife Resources | `65d29b56-3333-1000-0000-000000000007` | 4 Topics | Board Theory | `GqLBGoMkEVA` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 2792s) |
 | **Ch 8** | Geography | Water Resources | `65d29b56-3333-1000-0000-000000000008` | 4 Topics | Board Theory + Dams Map | Ready for Video |
 | **Ch 9** | Geography | Agriculture | `65d29b56-3333-1000-0000-000000000009` | 6 Topics | Board Theory + Crops Map | Ready for Video |
 | **Ch 10** | Geography | Minerals and Energy Resources | `65d29b56-3333-1000-0000-000000000010` | 5 Topics | Board Theory + Minerals Map | Ready for Video |
@@ -184,6 +184,17 @@
 | **3** | Land Resources, Land Utilisation Patterns & Land Degradation and Conservation | 2260s | 3810s | `https://www.youtube.com/watch?v=FwXyG8lFtss&t=2260s&end=3810s` |
 | **4** | Soil as a Living Resource & Classification of Indian Soils | 3810s | 5468s | `https://www.youtube.com/watch?v=FwXyG8lFtss&t=3810s&end=5468s` |
 | **5** | Soil Erosion Types, Soil Conservation Measures & Board Exam Questions | 5468s | 5964s | `https://www.youtube.com/watch?v=FwXyG8lFtss&t=5468s&end=5964s` |
+
+---
+
+## Geography Chapter 2 (Overall Ch 7): Forest and Wildlife Resources Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Flora and Fauna in India & Biological Diversity | 0s | 713s | `https://www.youtube.com/watch?v=GqLBGoMkEVA&end=713s` |
+| **2** | Conservation of Forest and Wildlife in India & Project Tiger | 713s | 1550s | `https://www.youtube.com/watch?v=GqLBGoMkEVA&t=713s&end=1550s` |
+| **3** | Community and Conservation: Sacred Groves, Chipko Movement & JFM | 1550s | 2107s | `https://www.youtube.com/watch?v=GqLBGoMkEVA&t=1550s&end=2107s` |
+| **4** | Types and Distribution of Forest and Wildlife Resources & Outro | 2107s | 2792s | `https://www.youtube.com/watch?v=GqLBGoMkEVA&t=2107s&end=2792s` |
 
 
 
