@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V72  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V73  
 
 ---
 
@@ -60,7 +60,7 @@
 | **Ch 10** | Geography | Minerals and Energy Resources | `65d29b56-3333-1000-0000-000000000010` | 5 Topics | Board Theory + Minerals Map | `rRHekx6Npo4` (Warrior 2026) \| ✅ Verified (0s ➔ 4036s) |
 | **Ch 11** | Geography | Manufacturing Industries | `65d29b56-3333-1000-0000-000000000011` | 5 Topics | Board Theory + Industries Map | `V5b-581ESFI` (Warrior 2026) \| ✅ Verified (0s ➔ 5456s) |
 | **Ch 12** | Geography | Lifelines of National Economy | `65d29b56-3333-1000-0000-000000000012` | 4 Topics | Map Only in Board / Theory IDP | `x0OzQNRziaE` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4383s) |
-| **Ch 13** | Political Science | Power-sharing | `65d29b56-3333-1000-0000-000000000013` | 3 Topics | Board Theory | Ready for Video |
+| **Ch 13** | Political Science | Power-sharing | `65d29b56-3333-1000-0000-000000000013` | 3 Topics | Board Theory | `FngG6lgrNrk` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 3236s) |
 | **Ch 14** | Political Science | Federalism | `65d29b56-3333-1000-0000-000000000014` | 5 Topics | Board Theory | Ready for Video |
 | **Ch 15** | Political Science | Gender, Religion and Caste | `65d29b56-3333-1000-0000-000000000015` | 4 Topics | Board Theory | Ready for Video |
 | **Ch 16** | Political Science | Political Parties | `65d29b56-3333-1000-0000-000000000016` | 5 Topics | Board Theory | Ready for Video |
@@ -254,6 +254,17 @@
 | **2** | Railways & Pipelines: Heavy Freight, Passenger & Energy Lifelines | 1510s | 2450s | `https://www.youtube.com/watch?v=x0OzQNRziaE&t=1510s&end=2450s` |
 | **3** | Waterways, Major Sea Ports & Airways: Water & Air Transport Systems | 2450s | 3530s | `https://www.youtube.com/watch?v=x0OzQNRziaE&t=2450s&end=3530s` |
 | **4** | Communication Systems, International Trade & Tourism as a Trade | 3530s | 4383s | `https://www.youtube.com/watch?v=x0OzQNRziaE&t=3530s&end=4383s` |
+
+---
+
+## Political Science Chapter 1 (Overall Ch 13): Power-sharing Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Belgium and Sri Lanka: Ethnic Diversity, Majoritarianism & Accommodation | 0s | 1760s | `https://www.youtube.com/watch?v=FngG6lgrNrk&end=1760s` |
+| **2** | Why Power Sharing is Desirable: Prudential vs Moral Reasons | 1760s | 2210s | `https://www.youtube.com/watch?v=FngG6lgrNrk&t=1760s&end=2210s` |
+| **3** | Forms of Power Sharing: Horizontal, Vertical, Social Groups & Coalitions | 2210s | 3236s | `https://www.youtube.com/watch?v=FngG6lgrNrk&t=2210s&end=3236s` |
+
 
 
 
