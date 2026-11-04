@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V68  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V69  
 
 ---
 
@@ -56,7 +56,7 @@
 | **Ch 6** | Geography | Resources and Development | `65d29b56-3333-1000-0000-000000000006` | 5 Topics | Board Theory + Soil Map | `FwXyG8lFtss` (Warrior 2026) \| ✅ Verified (0s ➔ 5964s) |
 | **Ch 7** | Geography | Forest and Wildlife Resources | `65d29b56-3333-1000-0000-000000000007` | 4 Topics | Board Theory | `GqLBGoMkEVA` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 2792s) |
 | **Ch 8** | Geography | Water Resources | `65d29b56-3333-1000-0000-000000000008` | 4 Topics | Board Theory + Dams Map | `xOyDX8nAc_o` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4027s) |
-| **Ch 9** | Geography | Agriculture | `65d29b56-3333-1000-0000-000000000009` | 6 Topics | Board Theory + Crops Map | Ready for Video |
+| **Ch 9** | Geography | Agriculture | `65d29b56-3333-1000-0000-000000000009` | 6 Topics | Board Theory + Crops Map | `ojMWfRRIF-E` (Warrior 2026) \| ✅ Verified (0s ➔ 5895s) |
 | **Ch 10** | Geography | Minerals and Energy Resources | `65d29b56-3333-1000-0000-000000000010` | 5 Topics | Board Theory + Minerals Map | Ready for Video |
 | **Ch 11** | Geography | Manufacturing Industries | `65d29b56-3333-1000-0000-000000000011` | 5 Topics | Board Theory + Industries Map | Ready for Video |
 | **Ch 12** | Geography | Lifelines of National Economy | `65d29b56-3333-1000-0000-000000000012` | 4 Topics | Map Only in Board / Theory IDP | Ready for Video |
@@ -206,6 +206,20 @@
 | **2** | Multipurpose River Projects, Ancient Hydraulic Structures & Modern Dams | 1080s | 2072s | `https://www.youtube.com/watch?v=xOyDX8nAc_o&t=1080s&end=2072s` |
 | **3** | Opposition, Criticism of Large Dams & Ecological Movements | 2072s | 2940s | `https://www.youtube.com/watch?v=xOyDX8nAc_o&t=2072s&end=2940s` |
 | **4** | Rainwater Harvesting Systems, Regional Traditions & Modern Case Studies | 2940s | 4027s | `https://www.youtube.com/watch?v=xOyDX8nAc_o&t=2940s&end=4027s` |
+
+---
+
+## Geography Chapter 4 (Overall Ch 9): Agriculture Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Introduction to Agriculture & Types of Farming | 0s | 1260s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&end=1260s` |
+| **2** | Cropping Patterns (Rabi, Kharif, Zaid) & The Green Revolution | 1260s | 2060s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&t=1260s&end=2060s` |
+| **3** | Major Food Crops: Grains, Millets & Pulses (with Nitrogen Cycle) | 2060s | 3360s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&t=2060s&end=3360s` |
+| **4** | Food Crops Other Than Grains & Horticulture | 3360s | 4410s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&t=3360s&end=4410s` |
+| **5** | Crop Distribution Map Work & Non-Food / Fibre Crops | 4410s | 5010s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&t=4410s&end=5010s` |
+| **6** | Technological & Institutional Reforms, Bhoodan-Gramdan & Review | 5010s | 5895s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&t=5010s&end=5895s` |
+
 
 
 
