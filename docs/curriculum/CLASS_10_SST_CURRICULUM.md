@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V77  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V78  
 
 ---
 
@@ -65,7 +65,7 @@
 | **Ch 15** | Political Science | Gender, Religion and Caste | `65d29b56-3333-1000-0000-000000000015` | 3 Topics | Board Theory | `rq8QIxQMVn4` (NCERT Wallah) \| ✅ Verified (0s ➔ 4545s) |
 | **Ch 16** | Political Science | Political Parties | `65d29b56-3333-1000-0000-000000000016` | 4 Topics | Board Theory | `rCNNEZFLwtM` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4495s) |
 | **Ch 17** | Political Science | Outcomes of Democracy | `65d29b56-3333-1000-0000-000000000017` | 5 Topics | Board Theory | `JVBWKBYsvH4` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 3381s) |
-| **Ch 18** | Economics | Development | `65d29b56-3333-1000-0000-000000000018` | 6 Topics | Board Theory | Ready for Video |
+| **Ch 18** | Economics | Development | `65d29b56-3333-1000-0000-000000000018` | 6 Topics | Board Theory | `L-FGyJY0Thk` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 6030s) |
 | **Ch 19** | Economics | Sectors of the Indian Economy | `65d29b56-3333-1000-0000-000000000019` | 6 Topics | Board Theory | Ready for Video |
 | **Ch 20** | Economics | Money and Credit | `65d29b56-3333-1000-0000-000000000020` | 7 Topics | Board Theory | Ready for Video |
 | **Ch 21** | Economics | Globalization and the Indian Economy | `65d29b56-3333-1000-0000-000000000021` | 6 Topics | Split: Sec 1-2 Board / Sec 3+ IDP | Ready for Video |
@@ -308,6 +308,20 @@
 | **3** | Economic Outcomes: Economic Growth, Development & Reduction of Inequality and Poverty | 1598s | 2297s | `https://www.youtube.com/watch?v=JVBWKBYsvH4&t=1598s&end=2297s` |
 | **4** | Social Outcomes: Accommodation of Social Diversity & Negotiation of Differences | 2297s | 2842s | `https://www.youtube.com/watch?v=JVBWKBYsvH4&t=2297s&end=2842s` |
 | **5** | Dignity and Freedom of Citizens: Women's Rights, Caste Equality & Test of Democracy | 2842s | 3381s | `https://www.youtube.com/watch?v=JVBWKBYsvH4&t=2842s&end=3381s` |
+
+---
+
+## Economics Chapter 1 (Overall Ch 18): Development Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | What Development Promises: Different People, Different Goals & Conflicting Goals | 0s | 910s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&end=910s` |
+| **2** | Income and Other Goals: Beyond Material Wealth & Mixed Developmental Desires | 910s | 1510s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&t=910s&end=1510s` |
+| **3** | Comparing Countries: National Income, Per Capita Income & Limitations of Average Income | 1510s | 3270s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&t=1510s&end=3270s` |
+| **4** | Income and Other Criteria: Comparing Indian States (Haryana, Kerala & Bihar) | 3270s | 3990s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&t=3270s&end=3990s` |
+| **5** | Public Facilities, Body Mass Index (BMI) & UNDP Human Development Report (HDR) | 3990s | 5160s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&t=3990s&end=5160s` |
+| **6** | Sustainability of Development: Groundwater Crisis, Resource Exhaustion & Outro | 5160s | 6030s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&t=5160s&end=6030s` |
+
 
 
 
