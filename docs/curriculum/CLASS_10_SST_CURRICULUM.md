@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V78  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V79  
 
 ---
 
@@ -66,7 +66,7 @@
 | **Ch 16** | Political Science | Political Parties | `65d29b56-3333-1000-0000-000000000016` | 4 Topics | Board Theory | `rCNNEZFLwtM` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4495s) |
 | **Ch 17** | Political Science | Outcomes of Democracy | `65d29b56-3333-1000-0000-000000000017` | 5 Topics | Board Theory | `JVBWKBYsvH4` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 3381s) |
 | **Ch 18** | Economics | Development | `65d29b56-3333-1000-0000-000000000018` | 6 Topics | Board Theory | `L-FGyJY0Thk` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 6030s) |
-| **Ch 19** | Economics | Sectors of the Indian Economy | `65d29b56-3333-1000-0000-000000000019` | 6 Topics | Board Theory | Ready for Video |
+| **Ch 19** | Economics | Sectors of the Indian Economy | `65d29b56-3333-1000-0000-000000000019` | 6 Topics | Board Theory | `y7QdyRP-jwQ` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4674s) |
 | **Ch 20** | Economics | Money and Credit | `65d29b56-3333-1000-0000-000000000020` | 7 Topics | Board Theory | Ready for Video |
 | **Ch 21** | Economics | Globalization and the Indian Economy | `65d29b56-3333-1000-0000-000000000021` | 6 Topics | Split: Sec 1-2 Board / Sec 3+ IDP | Ready for Video |
 | **Ch 22** | Economics | Consumer Rights | `65d29b56-3333-1000-0000-000000000022` | 4 Topics | Project Work Only (Internal) | Ready for Video |
@@ -321,6 +321,20 @@
 | **4** | Income and Other Criteria: Comparing Indian States (Haryana, Kerala & Bihar) | 3270s | 3990s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&t=3270s&end=3990s` |
 | **5** | Public Facilities, Body Mass Index (BMI) & UNDP Human Development Report (HDR) | 3990s | 5160s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&t=3990s&end=5160s` |
 | **6** | Sustainability of Development: Groundwater Crisis, Resource Exhaustion & Outro | 5160s | 6030s | `https://www.youtube.com/watch?v=L-FGyJY0Thk&t=5160s&end=6030s` |
+
+---
+
+## Economics Chapter 2 (Overall Ch 19): Sectors of the Indian Economy Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Primary, Secondary and Tertiary Sectors of Economic Activities | 0s | 678s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&end=678s` |
+| **2** | Comparing the Three Sectors: Final Goods, Intermediate Goods & Gross Domestic Product (GDP) | 678s | 1218s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&t=678s&end=1218s` |
+| **3** | Historical Changes in Sectors & Rising Importance of the Tertiary Sector in India | 1218s | 1969s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&t=1218s&end=1969s` |
+| **4** | Where are Most People Employed? Disguised Unemployment & Strategies to Create Employment (MGNREGA) | 1969s | 3279s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&t=1969s&end=3279s` |
+| **5** | Division of Sectors as Organised and Unorganised & Protection of Vulnerable Workers | 3279s | 4085s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&t=3279s&end=4085s` |
+| **6** | Sectors in Terms of Ownership: Public vs Private Sectors & Role of Government | 4085s | 4674s | `https://www.youtube.com/watch?v=y7QdyRP-jwQ&t=4085s&end=4674s` |
+
 
 
 
