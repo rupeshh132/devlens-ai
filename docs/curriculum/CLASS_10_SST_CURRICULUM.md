@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V74  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V75  
 
 ---
 
@@ -62,7 +62,7 @@
 | **Ch 12** | Geography | Lifelines of National Economy | `65d29b56-3333-1000-0000-000000000012` | 4 Topics | Map Only in Board / Theory IDP | `x0OzQNRziaE` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4383s) |
 | **Ch 13** | Political Science | Power-sharing | `65d29b56-3333-1000-0000-000000000013` | 3 Topics | Board Theory | `FngG6lgrNrk` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 3236s) |
 | **Ch 14** | Political Science | Federalism | `65d29b56-3333-1000-0000-000000000014` | 4 Topics | Board Theory | `B_Gs1wyg6zw` (Warrior 2026) \| ✅ Verified (0s ➔ 4507s) |
-| **Ch 15** | Political Science | Gender, Religion and Caste | `65d29b56-3333-1000-0000-000000000015` | 4 Topics | Board Theory | Ready for Video |
+| **Ch 15** | Political Science | Gender, Religion and Caste | `65d29b56-3333-1000-0000-000000000015` | 3 Topics | Board Theory | `rq8QIxQMVn4` (NCERT Wallah) \| ✅ Verified (0s ➔ 4545s) |
 | **Ch 16** | Political Science | Political Parties | `65d29b56-3333-1000-0000-000000000016` | 5 Topics | Board Theory | Ready for Video |
 | **Ch 17** | Political Science | Outcomes of Democracy | `65d29b56-3333-1000-0000-000000000017` | 4 Topics | Board Theory | Ready for Video |
 | **Ch 18** | Economics | Development | `65d29b56-3333-1000-0000-000000000018` | 6 Topics | Board Theory | Ready for Video |
@@ -275,6 +275,17 @@
 | **2** | What Makes India a Federal Country? Three Lists, Special Provisions & Role of Judiciary | 1505s | 2836s | `https://www.youtube.com/watch?v=B_Gs1wyg6zw&t=1505s&end=2836s` |
 | **3** | How is Federalism Practised? Linguistic States, Language Policy & Centre-State Relations | 2836s | 3589s | `https://www.youtube.com/watch?v=B_Gs1wyg6zw&t=2836s&end=3589s` |
 | **4** | Decentralisation in India: Panchayati Raj, Urban Local Bodies & Board Exam Questions | 3589s | 4507s | `https://www.youtube.com/watch?v=B_Gs1wyg6zw&t=3589s&end=4507s` |
+
+---
+
+## Political Science Chapter 3 (Overall Ch 15): Gender, Religion and Caste Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Gender and Politics: Sexual Division of Labour, Feminist Movements & Political Representation | 0s | 2231s | `https://www.youtube.com/watch?v=rq8QIxQMVn4&end=2231s` |
+| **2** | Religion, Communalism and Politics & The Constitutional Framework of a Secular State | 2231s | 3535s | `https://www.youtube.com/watch?v=rq8QIxQMVn4&t=2231s&end=3535s` |
+| **3** | Caste and Politics: Caste Inequalities, Caste in Politics & Politics in Caste | 3535s | 4545s | `https://www.youtube.com/watch?v=rq8QIxQMVn4&t=3535s&end=4545s` |
+
 
 
 
