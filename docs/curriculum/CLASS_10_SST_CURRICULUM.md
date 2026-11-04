@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V76  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V77  
 
 ---
 
@@ -64,7 +64,7 @@
 | **Ch 14** | Political Science | Federalism | `65d29b56-3333-1000-0000-000000000014` | 4 Topics | Board Theory | `B_Gs1wyg6zw` (Warrior 2026) \| ✅ Verified (0s ➔ 4507s) |
 | **Ch 15** | Political Science | Gender, Religion and Caste | `65d29b56-3333-1000-0000-000000000015` | 3 Topics | Board Theory | `rq8QIxQMVn4` (NCERT Wallah) \| ✅ Verified (0s ➔ 4545s) |
 | **Ch 16** | Political Science | Political Parties | `65d29b56-3333-1000-0000-000000000016` | 4 Topics | Board Theory | `rCNNEZFLwtM` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4495s) |
-| **Ch 17** | Political Science | Outcomes of Democracy | `65d29b56-3333-1000-0000-000000000017` | 4 Topics | Board Theory | Ready for Video |
+| **Ch 17** | Political Science | Outcomes of Democracy | `65d29b56-3333-1000-0000-000000000017` | 5 Topics | Board Theory | `JVBWKBYsvH4` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 3381s) |
 | **Ch 18** | Economics | Development | `65d29b56-3333-1000-0000-000000000018` | 6 Topics | Board Theory | Ready for Video |
 | **Ch 19** | Economics | Sectors of the Indian Economy | `65d29b56-3333-1000-0000-000000000019` | 6 Topics | Board Theory | Ready for Video |
 | **Ch 20** | Economics | Money and Credit | `65d29b56-3333-1000-0000-000000000020` | 7 Topics | Board Theory | Ready for Video |
@@ -296,6 +296,19 @@
 | **2** | How Many Parties Should We Have? One-Party, Two-Party & Multi-Party Systems | 1720s | 2280s | `https://www.youtube.com/watch?v=rCNNEZFLwtM&t=1720s&end=2280s` |
 | **3** | National Parties vs State Parties: ECI Recognition Criteria & Major Indian Parties | 2280s | 3430s | `https://www.youtube.com/watch?v=rCNNEZFLwtM&t=2280s&end=3430s` |
 | **4** | Challenges to Political Parties & How Can Parties Be Reformed? (Complete Wrap-Up) | 3430s | 4495s | `https://www.youtube.com/watch?v=rCNNEZFLwtM&t=3430s&end=4495s` |
+
+---
+
+## Political Science Chapter 5 (Overall Ch 17): Outcomes of Democracy Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | How Do We Assess Democracy's Outcomes? Democratic vs Dictatorship Regimes & Expectations | 0s | 919s | `https://www.youtube.com/watch?v=JVBWKBYsvH4&end=919s` |
+| **2** | Political Outcomes: Accountable, Responsive and Legitimate Government | 919s | 1598s | `https://www.youtube.com/watch?v=JVBWKBYsvH4&t=919s&end=1598s` |
+| **3** | Economic Outcomes: Economic Growth, Development & Reduction of Inequality and Poverty | 1598s | 2297s | `https://www.youtube.com/watch?v=JVBWKBYsvH4&t=1598s&end=2297s` |
+| **4** | Social Outcomes: Accommodation of Social Diversity & Negotiation of Differences | 2297s | 2842s | `https://www.youtube.com/watch?v=JVBWKBYsvH4&t=2297s&end=2842s` |
+| **5** | Dignity and Freedom of Citizens: Women's Rights, Caste Equality & Test of Democracy | 2842s | 3381s | `https://www.youtube.com/watch?v=JVBWKBYsvH4&t=2842s&end=3381s` |
+
 
 
 
