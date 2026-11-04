@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V67  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V68  
 
 ---
 
@@ -55,7 +55,7 @@
 | **Ch 5** | History | Print Culture and the Modern World | `65d29b56-3333-1000-0000-000000000005` | 6 Topics | Board Theory | `Ut7x2rgJdSY` (Warrior 2026) \| ✅ Verified (0s ➔ 5316s) |
 | **Ch 6** | Geography | Resources and Development | `65d29b56-3333-1000-0000-000000000006` | 5 Topics | Board Theory + Soil Map | `FwXyG8lFtss` (Warrior 2026) \| ✅ Verified (0s ➔ 5964s) |
 | **Ch 7** | Geography | Forest and Wildlife Resources | `65d29b56-3333-1000-0000-000000000007` | 4 Topics | Board Theory | `GqLBGoMkEVA` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 2792s) |
-| **Ch 8** | Geography | Water Resources | `65d29b56-3333-1000-0000-000000000008` | 4 Topics | Board Theory + Dams Map | Ready for Video |
+| **Ch 8** | Geography | Water Resources | `65d29b56-3333-1000-0000-000000000008` | 4 Topics | Board Theory + Dams Map | `xOyDX8nAc_o` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4027s) |
 | **Ch 9** | Geography | Agriculture | `65d29b56-3333-1000-0000-000000000009` | 6 Topics | Board Theory + Crops Map | Ready for Video |
 | **Ch 10** | Geography | Minerals and Energy Resources | `65d29b56-3333-1000-0000-000000000010` | 5 Topics | Board Theory + Minerals Map | Ready for Video |
 | **Ch 11** | Geography | Manufacturing Industries | `65d29b56-3333-1000-0000-000000000011` | 5 Topics | Board Theory + Industries Map | Ready for Video |
@@ -195,6 +195,17 @@
 | **2** | Conservation of Forest and Wildlife in India & Project Tiger | 713s | 1550s | `https://www.youtube.com/watch?v=GqLBGoMkEVA&t=713s&end=1550s` |
 | **3** | Community and Conservation: Sacred Groves, Chipko Movement & JFM | 1550s | 2107s | `https://www.youtube.com/watch?v=GqLBGoMkEVA&t=1550s&end=2107s` |
 | **4** | Types and Distribution of Forest and Wildlife Resources & Outro | 2107s | 2792s | `https://www.youtube.com/watch?v=GqLBGoMkEVA&t=2107s&end=2792s` |
+
+---
+
+## Geography Chapter 3 (Overall Ch 8): Water Resources Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Water Scarcity, Hydrological Cycle & Causes of Water Depletion | 0s | 1080s | `https://www.youtube.com/watch?v=xOyDX8nAc_o&end=1080s` |
+| **2** | Multipurpose River Projects, Ancient Hydraulic Structures & Modern Dams | 1080s | 2072s | `https://www.youtube.com/watch?v=xOyDX8nAc_o&t=1080s&end=2072s` |
+| **3** | Opposition, Criticism of Large Dams & Ecological Movements | 2072s | 2940s | `https://www.youtube.com/watch?v=xOyDX8nAc_o&t=2072s&end=2940s` |
+| **4** | Rainwater Harvesting Systems, Regional Traditions & Modern Case Studies | 2940s | 4027s | `https://www.youtube.com/watch?v=xOyDX8nAc_o&t=2940s&end=4027s` |
 
 
 
