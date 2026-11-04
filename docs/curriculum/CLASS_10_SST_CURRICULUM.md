@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V81  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V82 (100% COMPLETE!)  
 
 ---
 
@@ -69,7 +69,7 @@
 | **Ch 19** | Economics | Sectors of the Indian Economy | `65d29b56-3333-1000-0000-000000000019` | 6 Topics | Board Theory | `y7QdyRP-jwQ` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4674s) |
 | **Ch 20** | Economics | Money and Credit | `65d29b56-3333-1000-0000-000000000020` | 7 Topics | Board Theory | `V6LPuBEXCfE` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4146s) |
 | **Ch 21** | Economics | Globalization and the Indian Economy | `65d29b56-3333-1000-0000-000000000021` | 4 Topics | Split: Sec 1-2 Board / Sec 3+ IDP | `8kiUJ65f8iQ` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 2580s) |
-| **Ch 22** | Economics | Consumer Rights | `65d29b56-3333-1000-0000-000000000022` | 4 Topics | Project Work Only (Internal) | Ready for Video |
+| **Ch 22** | Economics | Consumer Rights | `65d29b56-3333-1000-0000-000000000022` | 4 Topics | Project Work Only (Internal) | `gtFjdcVcvys` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 1779s) |
 
 ---
 
@@ -359,6 +359,18 @@
 | **2** | Factors Enabling Globalisation (Part 1): Rapid Advances in Transportation & Information Technology (ICT) | 755s | 1095s | `https://www.youtube.com/watch?v=8kiUJ65f8iQ&t=755s&end=1095s` |
 | **3** | Factors Enabling Globalisation (Part 2): Liberalisation of Foreign Trade and Foreign Investment Policy | 1095s | 1843s | `https://www.youtube.com/watch?v=8kiUJ65f8iQ&t=1095s&end=1843s` |
 | **4** | India and the G20: Origins, Vasudhaiva Kutumbakam & India's Leadership in Global Economy | 1843s | 2580s | `https://www.youtube.com/watch?v=8kiUJ65f8iQ&t=1843s&end=2580s` |
+
+---
+
+## Economics Chapter 5 (Overall Ch 22): Consumer Rights Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | The Consumer in the Marketplace & Right to Safety: Protection Against Hazardous Goods & Services (Reji's Case) | 0s | 340s | `https://www.youtube.com/watch?v=gtFjdcVcvys&end=340s` |
+| **2** | Right to be Informed & The RTI Act 2005: Product Details, MRP & Transparency in Public Services (Amrita's Case) | 340s | 740s | `https://www.youtube.com/watch?v=gtFjdcVcvys&t=340s&end=740s` |
+| **3** | Right to Choose & Right to Seek Redressal: Compensation for Unfair Trade Practices (Abirami & Prakash's Case) | 740s | 1230s | `https://www.youtube.com/watch?v=gtFjdcVcvys&t=740s&end=1230s` |
+| **4** | COPRA Three-Tier Redressal Machinery (District, State, National) & Standardisation Marks (ISI, AGMARK, Hallmark) | 1230s | 1779s | `https://www.youtube.com/watch?v=gtFjdcVcvys&t=1230s&end=1779s` |
+
 
 
 
