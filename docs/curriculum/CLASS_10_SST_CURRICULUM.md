@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V75  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V76  
 
 ---
 
@@ -63,7 +63,7 @@
 | **Ch 13** | Political Science | Power-sharing | `65d29b56-3333-1000-0000-000000000013` | 3 Topics | Board Theory | `FngG6lgrNrk` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 3236s) |
 | **Ch 14** | Political Science | Federalism | `65d29b56-3333-1000-0000-000000000014` | 4 Topics | Board Theory | `B_Gs1wyg6zw` (Warrior 2026) \| ✅ Verified (0s ➔ 4507s) |
 | **Ch 15** | Political Science | Gender, Religion and Caste | `65d29b56-3333-1000-0000-000000000015` | 3 Topics | Board Theory | `rq8QIxQMVn4` (NCERT Wallah) \| ✅ Verified (0s ➔ 4545s) |
-| **Ch 16** | Political Science | Political Parties | `65d29b56-3333-1000-0000-000000000016` | 5 Topics | Board Theory | Ready for Video |
+| **Ch 16** | Political Science | Political Parties | `65d29b56-3333-1000-0000-000000000016` | 4 Topics | Board Theory | `rCNNEZFLwtM` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4495s) |
 | **Ch 17** | Political Science | Outcomes of Democracy | `65d29b56-3333-1000-0000-000000000017` | 4 Topics | Board Theory | Ready for Video |
 | **Ch 18** | Economics | Development | `65d29b56-3333-1000-0000-000000000018` | 6 Topics | Board Theory | Ready for Video |
 | **Ch 19** | Economics | Sectors of the Indian Economy | `65d29b56-3333-1000-0000-000000000019` | 6 Topics | Board Theory | Ready for Video |
@@ -285,6 +285,18 @@
 | **1** | Gender and Politics: Sexual Division of Labour, Feminist Movements & Political Representation | 0s | 2231s | `https://www.youtube.com/watch?v=rq8QIxQMVn4&end=2231s` |
 | **2** | Religion, Communalism and Politics & The Constitutional Framework of a Secular State | 2231s | 3535s | `https://www.youtube.com/watch?v=rq8QIxQMVn4&t=2231s&end=3535s` |
 | **3** | Caste and Politics: Caste Inequalities, Caste in Politics & Politics in Caste | 3535s | 4545s | `https://www.youtube.com/watch?v=rq8QIxQMVn4&t=3535s&end=4545s` |
+
+---
+
+## Political Science Chapter 4 (Overall Ch 16): Political Parties Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | Why Do We Need Political Parties? Meaning, 3 Components & 7 Key Functions | 0s | 1720s | `https://www.youtube.com/watch?v=rCNNEZFLwtM&end=1720s` |
+| **2** | How Many Parties Should We Have? One-Party, Two-Party & Multi-Party Systems | 1720s | 2280s | `https://www.youtube.com/watch?v=rCNNEZFLwtM&t=1720s&end=2280s` |
+| **3** | National Parties vs State Parties: ECI Recognition Criteria & Major Indian Parties | 2280s | 3430s | `https://www.youtube.com/watch?v=rCNNEZFLwtM&t=2280s&end=3430s` |
+| **4** | Challenges to Political Parties & How Can Parties Be Reformed? (Complete Wrap-Up) | 3430s | 4495s | `https://www.youtube.com/watch?v=rCNNEZFLwtM&t=3430s&end=4495s` |
+
 
 
 
