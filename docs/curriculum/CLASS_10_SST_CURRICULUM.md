@@ -6,7 +6,7 @@
 **Total Books:** 4 Disciplines (History, Geography, Political Science, Economics)  
 **Total Chapters:** 22 Chapters (5 History + 7 Geography + 5 Political Science + 5 Economics)  
 **Total Topics:** 111 Core Competency Topics  
-**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V69  
+**Status:** Live in Supabase & Version-Controlled in Flyway V60 to V70  
 
 ---
 
@@ -57,7 +57,7 @@
 | **Ch 7** | Geography | Forest and Wildlife Resources | `65d29b56-3333-1000-0000-000000000007` | 4 Topics | Board Theory | `GqLBGoMkEVA` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 2792s) |
 | **Ch 8** | Geography | Water Resources | `65d29b56-3333-1000-0000-000000000008` | 4 Topics | Board Theory + Dams Map | `xOyDX8nAc_o` (Digraj Singh Rajput) \| ✅ Verified (0s ➔ 4027s) |
 | **Ch 9** | Geography | Agriculture | `65d29b56-3333-1000-0000-000000000009` | 6 Topics | Board Theory + Crops Map | `ojMWfRRIF-E` (Warrior 2026) \| ✅ Verified (0s ➔ 5895s) |
-| **Ch 10** | Geography | Minerals and Energy Resources | `65d29b56-3333-1000-0000-000000000010` | 5 Topics | Board Theory + Minerals Map | Ready for Video |
+| **Ch 10** | Geography | Minerals and Energy Resources | `65d29b56-3333-1000-0000-000000000010` | 5 Topics | Board Theory + Minerals Map | `rRHekx6Npo4` (Warrior 2026) \| ✅ Verified (0s ➔ 4036s) |
 | **Ch 11** | Geography | Manufacturing Industries | `65d29b56-3333-1000-0000-000000000011` | 5 Topics | Board Theory + Industries Map | Ready for Video |
 | **Ch 12** | Geography | Lifelines of National Economy | `65d29b56-3333-1000-0000-000000000012` | 4 Topics | Map Only in Board / Theory IDP | Ready for Video |
 | **Ch 13** | Political Science | Power-sharing | `65d29b56-3333-1000-0000-000000000013` | 3 Topics | Board Theory | Ready for Video |
@@ -219,6 +219,19 @@
 | **4** | Food Crops Other Than Grains & Horticulture | 3360s | 4410s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&t=3360s&end=4410s` |
 | **5** | Crop Distribution Map Work & Non-Food / Fibre Crops | 4410s | 5010s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&t=4410s&end=5010s` |
 | **6** | Technological & Institutional Reforms, Bhoodan-Gramdan & Review | 5010s | 5895s | `https://www.youtube.com/watch?v=ojMWfRRIF-E&t=5010s&end=5895s` |
+
+---
+
+## Geography Chapter 5 (Overall Ch 10): Minerals and Energy Resources Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Video Embed URL |
+|:---:|---|:---:|:---:|---|
+| **1** | What is a Mineral, Mode of Occurrence & Mining Laws (Rat-Hole Mining) | 0s | 1597s | `https://www.youtube.com/watch?v=rRHekx6Npo4&end=1597s` |
+| **2** | Classification of Minerals & Ferrous Minerals (Iron Ore Belts & Manganese) | 1597s | 2437s | `https://www.youtube.com/watch?v=rRHekx6Npo4&t=1597s&end=2437s` |
+| **3** | Non-Ferrous & Non-Metallic Minerals, Mining Hazards & Conservation of Minerals | 2437s | 3012s | `https://www.youtube.com/watch?v=rRHekx6Npo4&t=2437s&end=3012s` |
+| **4** | Energy Resources: Conventional Sources (Coal, Petroleum & Natural Gas) | 3012s | 3488s | `https://www.youtube.com/watch?v=rRHekx6Npo4&t=3012s&end=3488s` |
+| **5** | Non-Conventional Energy Sources, Conservation of Energy & Map Work Review | 3488s | 4036s | `https://www.youtube.com/watch?v=rRHekx6Npo4&t=3488s&end=4036s` |
+
 
 
 
