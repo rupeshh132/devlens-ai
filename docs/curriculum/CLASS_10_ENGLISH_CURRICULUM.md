@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V107  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V108  
 
 ---
 
@@ -100,7 +100,7 @@
 | **Ch 22** | The Midnight Visitor | `65d29b56-4444-1000-0000-000000000022` | Robert Arthur | Board Exam Core | `6eF2YKQfwwc` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 596s) |
 | **Ch 23** | A Question of Trust | `65d29b56-4444-1000-0000-000000000023` | Victor Canning | Board Exam Core | `MirMcVysJv4` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 803s) |
 | **Ch 24** | Footprints Without Feet | `65d29b56-4444-1000-0000-000000000024` | H.G. Wells | Board Exam Core | `X-7ocYHrf70` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 760s, Outro Promo Trimmed) |
-| **Ch 25** | The Making of a Scientist | `65d29b56-4444-1000-0000-000000000025` | Robert W. Peterson | Board Exam Core | Ready for Video |
+| **Ch 25** | The Making of a Scientist | `65d29b56-4444-1000-0000-000000000025` | Robert W. Peterson | Board Exam Core | `64PaWs5BZ8Q` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 1038s, Ad-Free Verified) |
 | **Ch 26** | The Necklace | `65d29b56-4444-1000-0000-000000000026` | Guy de Maupassant | Board Exam Core | Ready for Video |
 | **Ch 27** | Bholi | `65d29b56-4444-1000-0000-000000000027` | K.A. Abbas | Board Exam Core | Ready for Video |
 | **Ch 28** | The Book That Saved the Earth | `65d29b56-4444-1000-0000-000000000028` | Claire Boiko | Board Exam Core | Ready for Video |
@@ -356,6 +356,15 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | Footprints Without Feet: Griffin's Invisibility Experiment, London Escapades & Iping Mystery (Animated One-Shot) | 0s | 760s | 760s (~12.7 min) | `https://www.youtube.com/watch?v=X-7ocYHrf70&end=760s` |
+
+---
+
+## Footprints Without Feet Chapter 6 (Overall Ch 25): The Making of a Scientist Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | The Making of a Scientist: Full Chapter Explanation, Richard Ebright's Butterfly Research & DNA Theory (Animated One-Shot) | 0s | 1038s | 1038s (~17.3 min) | `https://www.youtube.com/watch?v=64PaWs5BZ8Q` |
+
 
 
 
