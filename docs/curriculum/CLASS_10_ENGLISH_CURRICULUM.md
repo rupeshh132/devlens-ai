@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V84  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V85  
 
 ---
 
@@ -63,7 +63,7 @@
 | Ch # | Chapter Title | Chapter ID | Author | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|
 | **Ch 1** | A Letter to God | `65d29b56-4444-1000-0000-000000000001` | G.L. Fuentes | Board Exam Core | `JhqV9jIVVYg` (Magnet Brains) \| ✅ Verified (0s ➔ 4274s) |
-| **Ch 2** | Nelson Mandela: Long Walk to Freedom | `65d29b56-4444-1000-0000-000000000002` | Nelson Rolihlahla Mandela | Board Exam Core | Ready for Video |
+| **Ch 2** | Nelson Mandela: Long Walk to Freedom | `65d29b56-4444-1000-0000-000000000002` | Nelson Rolihlahla Mandela | Board Exam Core | `O1PocKoabTo` (Magnet Brains) \| ✅ Verified (0s ➔ 4750s) |
 | **Ch 3** | Two Stories about Flying | `65d29b56-4444-1000-0000-000000000003` | Liam O'Flaherty / Frederick Forsyth | Board Exam Core | Ready for Video |
 | **Ch 4** | From the Diary of Anne Frank | `65d29b56-4444-1000-0000-000000000004` | Anne Frank | Board Exam Core | Ready for Video |
 | **Ch 5** | Glimpses of India | `65d29b56-4444-1000-0000-000000000005` | Lucio Rodrigues / Lokesh Abrol / Arup Kumar Datta | Board Exam Core | Ready for Video |
@@ -145,6 +145,18 @@
 | **2** | The Gathering Storm, Destructive Hailstorm & Lencho's Unshakable Faith in God | 295s | 2348s | 2053s (~34 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=295s&end=2348s` |
 | **3** | The Postmaster's Act of Benevolence, The 70 Pesos Collection & The 'Bunch of Crooks' Irony | 2348s | 3580s | 1232s (~20.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=2348s&end=3580s` |
 | **4** | Comprehensive Chapter Summary, Character Analysis (Lencho vs Postmaster) & Core Themes | 3580s | 4274s | 694s (~11.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=3580s&end=4274s` |
+
+---
+
+## First Flight Prose Chapter 2: Nelson Mandela: Long Walk to Freedom Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Introduction, Historical Context of Apartheid & South Africa's First Democratic Non-Racial Election | 0s | 590s | 590s (~10 min) | `https://www.youtube.com/watch?v=O1PocKoabTo&end=590s` |
+| **2** | The 10th May Inauguration Ceremony at Pretoria Amphitheatre & Nelson Mandela's Historic Presidential Address | 590s | 1880s | 1290s (~21.5 min) | `https://www.youtube.com/watch?v=O1PocKoabTo&t=590s&end=1880s` |
+| **3** | Military Flypast, Dual National Anthems, Meaning of Courage & Tribute to African Patriots (Oliver Tambo, Walter Sisulu) | 1880s | 3450s | 1570s (~26 min) | `https://www.youtube.com/watch?v=O1PocKoabTo&t=1880s&end=3450s` |
+| **4** | Twin Obligations of Man, The Evolution of Freedom & The Indivisible Bonds of Humanity (Oppressor & Oppressed) | 3450s | 4750s | 1300s (~21.5 min) | `https://www.youtube.com/watch?v=O1PocKoabTo&t=3450s&end=4750s` |
+
 
 ---
 
