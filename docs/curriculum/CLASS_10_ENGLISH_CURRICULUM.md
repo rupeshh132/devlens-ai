@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V84  
 
 ---
 
@@ -62,7 +62,7 @@
 
 | Ch # | Chapter Title | Chapter ID | Author | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|
-| **Ch 1** | A Letter to God | `65d29b56-4444-1000-0000-000000000001` | G.L. Fuentes | Board Exam Core | Ready for Video |
+| **Ch 1** | A Letter to God | `65d29b56-4444-1000-0000-000000000001` | G.L. Fuentes | Board Exam Core | `JhqV9jIVVYg` (Magnet Brains) \| ✅ Verified (0s ➔ 4274s) |
 | **Ch 2** | Nelson Mandela: Long Walk to Freedom | `65d29b56-4444-1000-0000-000000000002` | Nelson Rolihlahla Mandela | Board Exam Core | Ready for Video |
 | **Ch 3** | Two Stories about Flying | `65d29b56-4444-1000-0000-000000000003` | Liam O'Flaherty / Frederick Forsyth | Board Exam Core | Ready for Video |
 | **Ch 4** | From the Diary of Anne Frank | `65d29b56-4444-1000-0000-000000000004` | Anne Frank | Board Exam Core | Ready for Video |
@@ -78,8 +78,8 @@
 
 | Ch # | Poem Title | Chapter ID | Poet | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|
-| **Ch 10** | Poem 1: Dust of Snow | `65d29b56-4444-1000-0000-000000000010` | Robert Frost | Board Exam Core | Ready for Video |
-| **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | Ready for Video |
+| **Ch 10** | Poem 1: Dust of Snow | `65d29b56-4444-1000-0000-000000000010` | Robert Frost | Board Exam Core | `JhqV9jIVVYg` (Magnet Brains) \| ✅ Verified (4274s ➔ 5701s) |
+| **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | `JhqV9jIVVYg` (Magnet Brains) \| ✅ Verified (5701s ➔ 8058s) |
 | **Ch 12** | Poem 3: A Tiger in the Zoo | `65d29b56-4444-1000-0000-000000000012` | Leslie Norris | Board Exam Core | Ready for Video |
 | **Ch 13** | Poem 4: How to Tell Wild Animals | `65d29b56-4444-1000-0000-000000000013` | Carolyn Wells | Board Exam Core | Ready for Video |
 | **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | Ready for Video |
@@ -134,3 +134,35 @@
 |:---:|---|---|---|:---:|:---:|
 | **Ch 36** | Reading: Discursive Passage Comprehension | `65d29b56-4444-1000-0000-000000000036` | Inference, Analysis, Interpretation, Vocabulary (400-450 words) | Board Exam Core (10m) | Ready for Video |
 | **Ch 37** | Reading: Case-Based Factual Passage Comprehension | `65d29b56-4444-1000-0000-000000000037` | Statistical Data, Charts, Tables, Evaluation (200-250 words) | Board Exam Core (10m) | Ready for Video |
+
+---
+
+## First Flight Prose Chapter 1: A Letter to God Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Introduction & Course Overview: Setting the Scene in the Valley and Lencho's Field of Ripe Corn | 0s | 295s | 295s (~5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&end=295s` |
+| **2** | The Gathering Storm, Destructive Hailstorm & Lencho's Unshakable Faith in God | 295s | 2348s | 2053s (~34 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=295s&end=2348s` |
+| **3** | The Postmaster's Act of Benevolence, The 70 Pesos Collection & The 'Bunch of Crooks' Irony | 2348s | 3580s | 1232s (~20.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=2348s&end=3580s` |
+| **4** | Comprehensive Chapter Summary, Character Analysis (Lencho vs Postmaster) & Core Themes | 3580s | 4274s | 694s (~11.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=3580s&end=4274s` |
+
+---
+
+## First Flight Poem 1 (Overall Ch 10): Dust of Snow Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Stanza-by-Stanza Poem Explanation: The Crow, Hemlock Tree & The Transformative Falling Snow | 4274s | 4782s | 508s (~8.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=4274s&end=4782s` |
+| **2** | Poem Summary, Poetic Devices (Alliteration, Enjambment, Inversion) & Symbolic Reversal of Mood | 4782s | 5047s | 265s (~4.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=4782s&end=5047s` |
+| **3** | NCERT Textbook Solutions, Reference to Context (RTC) & CBSE Board Practice Questions | 5047s | 5701s | 654s (~11 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=5047s&end=5701s` |
+
+---
+
+## First Flight Poem 2 (Overall Ch 11): Fire and Ice Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Stanza-by-Stanza Poem Explanation: Fire as Desire and Ice as Hatred (Dual Cataclysmic Forces) | 5701s | 6385s | 684s (~11.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=5701s&end=6385s` |
+| **2** | Poem Summary, Deep Metaphorical Themes, Paradox & Rhyme Scheme (ABA ABC BCB) | 6385s | 6796s | 411s (~7 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=6385s&end=6796s` |
+| **3** | NCERT Questions 1 to 8 Discussion, Board Analysis & Comprehensive Chapter Wrap-Up | 6796s | 8058s | 1262s (~21 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=6796s&end=8058s` |
+
