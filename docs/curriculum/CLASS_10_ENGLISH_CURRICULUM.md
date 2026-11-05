@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V105  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V106  
 
 ---
 
@@ -98,7 +98,7 @@
 | **Ch 20** | A Triumph of Surgery | `65d29b56-4444-1000-0000-000000000020` | James Herriot | Board Exam Core | `u6gnjdY54rY` (Educational Bhaiya) \| ✅ Verified (0s ➔ 821s) |
 | **Ch 21** | The Thief’s Story | `65d29b56-4444-1000-0000-000000000021` | Ruskin Bond | Board Exam Core | `gSL7emBB6w0` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 695s) |
 | **Ch 22** | The Midnight Visitor | `65d29b56-4444-1000-0000-000000000022` | Robert Arthur | Board Exam Core | `6eF2YKQfwwc` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 596s) |
-| **Ch 23** | A Question of Trust | `65d29b56-4444-1000-0000-000000000023` | Victor Canning | Board Exam Core | Ready for Video |
+| **Ch 23** | A Question of Trust | `65d29b56-4444-1000-0000-000000000023` | Victor Canning | Board Exam Core | `MirMcVysJv4` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 803s) |
 | **Ch 24** | Footprints Without Feet | `65d29b56-4444-1000-0000-000000000024` | H.G. Wells | Board Exam Core | Ready for Video |
 | **Ch 25** | The Making of a Scientist | `65d29b56-4444-1000-0000-000000000025` | Robert W. Peterson | Board Exam Core | Ready for Video |
 | **Ch 26** | The Necklace | `65d29b56-4444-1000-0000-000000000026` | Guy de Maupassant | Board Exam Core | Ready for Video |
@@ -340,5 +340,14 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | The Midnight Visitor: Full Chapter Explanation, Ausable's Quick Wit & The Balcony Trick (Animated One-Shot) | 0s | 596s | 596s (~9.9 min) | `https://www.youtube.com/watch?v=6eF2YKQfwwc` |
+
+---
+
+## Footprints Without Feet Chapter 4 (Overall Ch 23): A Question of Trust Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | A Question of Trust: Full Chapter Explanation, Horace Danby's Heist & The Lady in Red (Animated One-Shot) | 0s | 803s | 803s (~13.4 min) | `https://www.youtube.com/watch?v=MirMcVysJv4` |
+
 
 
