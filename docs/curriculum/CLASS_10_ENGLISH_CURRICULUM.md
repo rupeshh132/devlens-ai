@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V96  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V97  
 
 ---
 
@@ -82,7 +82,7 @@
 | **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | `yoTofq5xTa8` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 291s) |
 | **Ch 12** | Poem 3: A Tiger in the Zoo | `65d29b56-4444-1000-0000-000000000012` | Leslie Norris | Board Exam Core | `vcws6xqciTE` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 369s) |
 | **Ch 13** | Poem 4: How to Tell Wild Animals | `65d29b56-4444-1000-0000-000000000013` | Carolyn Wells | Board Exam Core | `0Gdy2HCr9PM` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 471s) |
-| **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | Ready for Video |
+| **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | `CCM-iLb7EPk` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 402s) |
 | **Ch 15** | Poem 6: Amanda! | `65d29b56-4444-1000-0000-000000000015` | Robin Klein | Board Exam Core | Ready for Video |
 | **Ch 16** | Poem 7: The Trees | `65d29b56-4444-1000-0000-000000000016` | Adrienne Rich | Board Exam Core | Ready for Video |
 | **Ch 17** | Poem 8: Fog | `65d29b56-4444-1000-0000-000000000017` | Carl Sandburg | Board Exam Core | Ready for Video |
@@ -265,4 +265,12 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | How to Tell Wild Animals: Full Poem Explanation, Humour & Poetic License (Animated One-Shot) | 0s | 471s | 471s (~7.9 min) | `https://www.youtube.com/watch?v=0Gdy2HCr9PM` |
+
+---
+
+## First Flight Poem 5 (Overall Ch 14): The Ball Poem Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | The Ball Poem: Full Poem Explanation, Epistemology of Loss & Poetic Devices (Animated One-Shot) | 0s | 402s | 402s (~6.7 min) | `https://www.youtube.com/watch?v=CCM-iLb7EPk` |
 
