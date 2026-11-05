@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V97  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V98  
 
 ---
 
@@ -83,7 +83,7 @@
 | **Ch 12** | Poem 3: A Tiger in the Zoo | `65d29b56-4444-1000-0000-000000000012` | Leslie Norris | Board Exam Core | `vcws6xqciTE` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 369s) |
 | **Ch 13** | Poem 4: How to Tell Wild Animals | `65d29b56-4444-1000-0000-000000000013` | Carolyn Wells | Board Exam Core | `0Gdy2HCr9PM` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 471s) |
 | **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | `CCM-iLb7EPk` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 402s) |
-| **Ch 15** | Poem 6: Amanda! | `65d29b56-4444-1000-0000-000000000015` | Robin Klein | Board Exam Core | Ready for Video |
+| **Ch 15** | Poem 6: Amanda! | `65d29b56-4444-1000-0000-000000000015` | Robin Klein | Board Exam Core | `MjO-mHuQfU0` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 492s) |
 | **Ch 16** | Poem 7: The Trees | `65d29b56-4444-1000-0000-000000000016` | Adrienne Rich | Board Exam Core | Ready for Video |
 | **Ch 17** | Poem 8: Fog | `65d29b56-4444-1000-0000-000000000017` | Carl Sandburg | Board Exam Core | Ready for Video |
 | **Ch 18** | Poem 9: The Tale of Custard the Dragon | `65d29b56-4444-1000-0000-000000000018` | Ogden Nash | Board Exam Core | Ready for Video |
@@ -273,4 +273,12 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | The Ball Poem: Full Poem Explanation, Epistemology of Loss & Poetic Devices (Animated One-Shot) | 0s | 402s | 402s (~6.7 min) | `https://www.youtube.com/watch?v=CCM-iLb7EPk` |
+
+---
+
+## First Flight Poem 6 (Overall Ch 15): Amanda! Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Amanda!: Full Poem Explanation, Escapism vs Parental Control & Poetic Devices (Animated One-Shot) | 0s | 492s | 492s (~8.2 min) | `https://www.youtube.com/watch?v=MjO-mHuQfU0` |
 
