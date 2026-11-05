@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V93  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V94  
 
 ---
 
@@ -79,7 +79,7 @@
 | Ch # | Poem Title | Chapter ID | Poet | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|
 | **Ch 10** | Poem 1: Dust of Snow | `65d29b56-4444-1000-0000-000000000010` | Robert Frost | Board Exam Core | `lH15wkPM5Vg` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 310s) |
-| **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | Ready for Video |
+| **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | `yoTofq5xTa8` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 291s) |
 | **Ch 12** | Poem 3: A Tiger in the Zoo | `65d29b56-4444-1000-0000-000000000012` | Leslie Norris | Board Exam Core | Ready for Video |
 | **Ch 13** | Poem 4: How to Tell Wild Animals | `65d29b56-4444-1000-0000-000000000013` | Carolyn Wells | Board Exam Core | Ready for Video |
 | **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | Ready for Video |
@@ -248,7 +248,5 @@
 
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
-| **1** | Stanza-by-Stanza Poem Explanation: Fire as Desire and Ice as Hatred (Dual Cataclysmic Forces) | 5701s | 6385s | 684s (~11.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=5701s&end=6385s` |
-| **2** | Poem Summary, Deep Metaphorical Themes, Paradox & Rhyme Scheme (ABA ABC BCB) | 6385s | 6796s | 411s (~7 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=6385s&end=6796s` |
-| **3** | NCERT Questions 1 to 8 Discussion, Board Analysis & Comprehensive Chapter Wrap-Up | 6796s | 8058s | 1262s (~21 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=6796s&end=8058s` |
+| **1** | Fire and Ice: Full Poem Explanation, Symbolism of Desire & Hatred (Animated One-Shot) | 0s | 291s | 291s (~4.9 min) | `https://www.youtube.com/watch?v=yoTofq5xTa8` |
 
