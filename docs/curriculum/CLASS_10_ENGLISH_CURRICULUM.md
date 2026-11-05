@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V92  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V93  
 
 ---
 
@@ -78,8 +78,8 @@
 
 | Ch # | Poem Title | Chapter ID | Poet | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|
-| **Ch 10** | Poem 1: Dust of Snow | `65d29b56-4444-1000-0000-000000000010` | Robert Frost | Board Exam Core | `JhqV9jIVVYg` (Magnet Brains) \| ✅ Verified (4274s ➔ 5701s) |
-| **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | `JhqV9jIVVYg` (Magnet Brains) \| ✅ Verified (5701s ➔ 8058s) |
+| **Ch 10** | Poem 1: Dust of Snow | `65d29b56-4444-1000-0000-000000000010` | Robert Frost | Board Exam Core | `lH15wkPM5Vg` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 310s) |
+| **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | Ready for Video |
 | **Ch 12** | Poem 3: A Tiger in the Zoo | `65d29b56-4444-1000-0000-000000000012` | Leslie Norris | Board Exam Core | Ready for Video |
 | **Ch 13** | Poem 4: How to Tell Wild Animals | `65d29b56-4444-1000-0000-000000000013` | Carolyn Wells | Board Exam Core | Ready for Video |
 | **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | Ready for Video |
@@ -240,9 +240,7 @@
 
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
-| **1** | Stanza-by-Stanza Poem Explanation: The Crow, Hemlock Tree & The Transformative Falling Snow | 4274s | 4782s | 508s (~8.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=4274s&end=4782s` |
-| **2** | Poem Summary, Poetic Devices (Alliteration, Enjambment, Inversion) & Symbolic Reversal of Mood | 4782s | 5047s | 265s (~4.5 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=4782s&end=5047s` |
-| **3** | NCERT Textbook Solutions, Reference to Context (RTC) & CBSE Board Practice Questions | 5047s | 5701s | 654s (~11 min) | `https://www.youtube.com/watch?v=JhqV9jIVVYg&t=5047s&end=5701s` |
+| **1** | Dust of Snow: Full Poem Explanation, Poetic Devices & Theme (Animated One-Shot) | 0s | 310s | 310s (~5.2 min) | `https://www.youtube.com/watch?v=lH15wkPM5Vg` |
 
 ---
 
