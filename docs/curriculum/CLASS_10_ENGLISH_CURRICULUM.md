@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V88  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V89  
 
 ---
 
@@ -67,7 +67,7 @@
 | **Ch 3** | Two Stories about Flying | `65d29b56-4444-1000-0000-000000000003` | Liam O'Flaherty / Frederick Forsyth | Board Exam Core | `ZTmmJZZhljE` (Part 1: Magnet Brains) \| ✅ Verified (0s ➔ 3849s) |
 | **Ch 4** | From the Diary of Anne Frank | `65d29b56-4444-1000-0000-000000000004` | Anne Frank | Board Exam Core | `9pENOqI6pl4` (Magnet Brains) \| ✅ Verified (0s ➔ 4505s) |
 | **Ch 5** | Glimpses of India | `65d29b56-4444-1000-0000-000000000005` | Lucio Rodrigues / Lokesh Abrol / Arup Kumar Datta | Board Exam Core | `_EIF5nPScc0` (Kriti Di) \| ✅ Verified (0s ➔ 2914s) |
-| **Ch 6** | Mijbil the Otter | `65d29b56-4444-1000-0000-000000000006` | Gavin Maxwell | Board Exam Core | Ready for Video |
+| **Ch 6** | Mijbil the Otter | `65d29b56-4444-1000-0000-000000000006` | Gavin Maxwell | Board Exam Core | `_xY1T-1GYMQ` (Educational Bhaiya) \| ✅ Verified (0s ➔ 1077s) |
 | **Ch 7** | Madam Rides the Bus | `65d29b56-4444-1000-0000-000000000007` | Vallikkannan | Board Exam Core | Ready for Video |
 | **Ch 8** | The Sermon at Benares | `65d29b56-4444-1000-0000-000000000008` | Betty Renshaw | Board Exam Core | Ready for Video |
 | **Ch 9** | The Proposal (Play) | `65d29b56-4444-1000-0000-000000000009` | Anton Chekhov | Board Exam Core | Ready for Video |
@@ -188,6 +188,17 @@
 | **1** | Part 1: A Baker from Goa — Traditional Goan Pader, Bread-Making Heritage & Kabai | 0s | 1040s | 1040s (~17.5 min) | `https://www.youtube.com/watch?v=_EIF5nPScc0&end=1040s` |
 | **2** | Part 2: Coorg — The Land of Rolling Hills, Kodavu Martial Heritage, Wildlife & Brahmagiri | 1040s | 2120s | 1080s (~18 min) | `https://www.youtube.com/watch?v=_EIF5nPScc0&t=1040s&end=2120s` |
 | **3** | Part 3: Tea from Assam — Rajvir & Pranjol's Journey, Legends of Tea & Dhekiabari Tea Estate | 2120s | 2914s | 794s (~13 min) | `https://www.youtube.com/watch?v=_EIF5nPScc0&t=2120s&end=2914s` |
+
+---
+
+## First Flight Prose Chapter 6: Mijbil the Otter Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Gavin Maxwell's Journey to Iraq, Camusfearna & Arrival of the Otter in Basra | 0s | 240s | 240s (~4 min) | `https://www.youtube.com/watch?v=_xY1T-1GYMQ&end=240s` |
+| **2** | Mijbil's Appearance (Maxwell's Otter), Bathroom Water Obsession & Playful Inventions | 240s | 570s | 330s (~5.5 min) | `https://www.youtube.com/watch?v=_xY1T-1GYMQ&t=240s&end=570s` |
+| **3** | The Terrifying Box Ordeal, Airport Dash & Flight Commotion to London | 570s | 820s | 250s (~4.2 min) | `https://www.youtube.com/watch?v=_xY1T-1GYMQ&t=570s&end=820s` |
+| **4** | London Flat Life, Primary School Wall Ritual & The Hilarious Identity Guesses | 820s | 1077s | 257s (~4.3 min) | `https://www.youtube.com/watch?v=_xY1T-1GYMQ&t=820s&end=1077s` |
 
 
 ---
