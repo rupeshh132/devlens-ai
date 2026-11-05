@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V86  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V87  
 
 ---
 
@@ -65,7 +65,7 @@
 | **Ch 1** | A Letter to God | `65d29b56-4444-1000-0000-000000000001` | G.L. Fuentes | Board Exam Core | `JhqV9jIVVYg` (Magnet Brains) \| ✅ Verified (0s ➔ 4274s) |
 | **Ch 2** | Nelson Mandela: Long Walk to Freedom | `65d29b56-4444-1000-0000-000000000002` | Nelson Rolihlahla Mandela | Board Exam Core | `O1PocKoabTo` (Magnet Brains) \| ✅ Verified (0s ➔ 4750s) |
 | **Ch 3** | Two Stories about Flying | `65d29b56-4444-1000-0000-000000000003` | Liam O'Flaherty / Frederick Forsyth | Board Exam Core | `ZTmmJZZhljE` (Part 1: Magnet Brains) \| ✅ Verified (0s ➔ 3849s) |
-| **Ch 4** | From the Diary of Anne Frank | `65d29b56-4444-1000-0000-000000000004` | Anne Frank | Board Exam Core | Ready for Video |
+| **Ch 4** | From the Diary of Anne Frank | `65d29b56-4444-1000-0000-000000000004` | Anne Frank | Board Exam Core | `9pENOqI6pl4` (Magnet Brains) \| ✅ Verified (0s ➔ 4505s) |
 | **Ch 5** | Glimpses of India | `65d29b56-4444-1000-0000-000000000005` | Lucio Rodrigues / Lokesh Abrol / Arup Kumar Datta | Board Exam Core | Ready for Video |
 | **Ch 6** | Mijbil the Otter | `65d29b56-4444-1000-0000-000000000006` | Gavin Maxwell | Board Exam Core | Ready for Video |
 | **Ch 7** | Madam Rides the Bus | `65d29b56-4444-1000-0000-000000000007` | Vallikkannan | Board Exam Core | Ready for Video |
@@ -167,6 +167,17 @@
 | **2** | The Young Seagull on the Ledge: Terror of the Abyss, Siblings' Flight & The Threat of Starvation | 280s | 1600s | 1320s (~22 min) | `https://www.youtube.com/watch?v=ZTmmJZZhljE&t=280s&end=1600s` |
 | **3** | The Mother's Clever Ruse, The Dive for Fish & The Joyous Triumph of the First Flight | 1600s | 2940s | 1340s (~22.5 min) | `https://www.youtube.com/watch?v=ZTmmJZZhljE&t=1600s&end=2940s` |
 | **4** | Comprehensive Chapter Summary, Key Themes, Metaphor of Flight & Outro | 2940s | 3849s | 909s (~15 min) | `https://www.youtube.com/watch?v=ZTmmJZZhljE&t=2940s&end=3849s` |
+
+---
+
+## First Flight Prose Chapter 4: From the Diary of Anne Frank Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Introduction, Historical Context of Anne Frank & The Secret Annex Background | 0s | 253s | 253s (~4m) | `https://www.youtube.com/watch?v=9pENOqI6pl4&end=253s` |
+| **2** | The Need for a Diary, "Paper Has More Patience Than People" & Anne's Early Life and Family History | 253s | 2010s | 1757s (~29m) | `https://www.youtube.com/watch?v=9pENOqI6pl4&t=253s&end=2010s` |
+| **3** | The Diary Entry of 20 June 1942: Classroom Anxiety, Mr. Keesing & The Three Chatterbox Essays | 2010s | 3109s | 1099s (~18m) | `https://www.youtube.com/watch?v=9pENOqI6pl4&t=2010s&end=3109s` |
+| **4** | Comprehensive Chapter Summary, Key Themes, Character Sketch of Anne Frank & Outro | 3109s | 4505s | 1396s (~23m) | `https://www.youtube.com/watch?v=9pENOqI6pl4&t=3109s&end=4505s` |
 
 
 ---
