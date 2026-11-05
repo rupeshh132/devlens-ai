@@ -1,0 +1,136 @@
+# Class 10 English Language and Literature (Subject Code: 184) — Official CBSE / Delhi DoE (2026-27) Curriculum
+
+**Exam Type:** CBSE Class 10 (`id: 65d29b56-f973-43b6-9a6e-98a908c0940e`)  
+**Subject:** English Language and Literature (`id: 65d29b56-4444-0000-0000-000000000010`, `order_index: 4`, `code: 184`)  
+**Syllabus:** CBSE / NCERT Annual Curriculum (2026-27), aligned with NEP 2020 & NCF-SE  
+**Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
+**Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
+**Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83  
+
+---
+
+## Course Structure & Marks Distribution (Theory 80 + IA 20 = 100)
+
+| Section | Section Name | Focus Areas | Total Marks | Weightage |
+|:---:|---|---|:---:|:---:|
+| **Section A** | **Reading Skills** | Conceptual understanding, decoding, analyzing, inferring, interpreting and vocabulary through unseen passages (Discursive & Factual). | **20** | 25.00% |
+| **Section B** | **Writing Skills and Grammar** | Creative expression, organization of ideas, formal correspondence, analytical writing, grammatical accuracy (Tenses, Modals, Subject-Verb Concord, Determiners, Reported Speech). | **20** | 25.00% |
+| **Section C** | **Language through Literature** | Recalling, reasoning, appreciating literary conventions, critical thinking, theme analysis and character studies from *First Flight* and *Footprints Without Feet*. | **40** | 50.00% |
+| **Total Theory** | | | **80** | **100%** |
+| **IA** | **Internal Assessment** | Assessment of Listening and Speaking Skills (ASL - 10) + Periodic Tests (5) + Portfolio / Subject Enrichment (5) | **20** | — |
+| **Grand Total** | | | **100** | |
+
+---
+
+## Question Paper Blueprint & Sectional Breakdown (80 Marks)
+
+### Section A: Reading Skills (20 Marks)
+1. **Discursive Passage (400-450 words) — 10 Marks:**
+   - 10 questions (combination of MCQs, objective type, and short answers of 30-40 words).
+   - Tests comprehension, inference, analysis, interpretation, evaluation, and vocabulary.
+2. **Case-Based Factual Passage (with visual input - statistical data, charts, etc.) (200-250 words) — 10 Marks:**
+   - 10 questions assessing data interpretation, analytical evaluation, and factual inference.
+
+### Section B: Writing Skills and Grammar (20 Marks)
+- **Grammar (10 Marks):**
+  - 10 questions out of 12 to be answered.
+  - Formats: Gap filling, Editing / Error correction, Transformation exercises.
+  - Topics: Determiners, Tenses, Modals, Subject-Verb Concord, Reported Speech (Commands & Requests, Statements, Questions).
+- **Writing Skills (10 Marks):**
+  - **Formal Letter (5 Marks):** 1 out of 2 questions (100-120 words). Types: Letter to Editor, Letter of Complaint (Business/Civic), Inquiry, Placing Orders.
+  - **Analytical Paragraph (5 Marks):** 1 out of 2 questions (100-120 words). Based on given Map, Chart, Graph, or Cue(s).
+
+### Section C: Language through Literature (40 Marks)
+1. **Reference to the Context (RTC) Extracts (10 Marks):**
+   - 1 out of 2 extracts from Drama / Prose (*First Flight* or *Footprints*) — 5 Marks ($5 \times 1$)
+   - 1 out of 2 extracts from Poetry (*First Flight*) — 5 Marks ($5 \times 1$)
+2. **Short Answer Questions — First Flight (12 Marks):**
+   - 4 out of 5 questions to be answered in 40-50 words each ($4 \times 3 = 12$ Marks).
+3. **Short Answer Questions — Footprints Without Feet (6 Marks):**
+   - 2 out of 3 questions to be answered in 40-50 words each ($2 \times 3 = 6$ Marks).
+4. **Long Answer Question — First Flight (6 Marks):**
+   - 1 out of 2 questions to be answered in 100-120 words (Theme, plot, character sketch, comparison).
+5. **Long Answer Question — Footprints Without Feet (6 Marks):**
+   - 1 out of 2 questions to be answered in 100-120 words (Character analysis, moral dilemma, message).
+
+---
+
+## Complete 37 Chapters Architecture & Video Lecture Roadmap
+
+### Book 1: First Flight — Prose (9 Chapters)
+
+| Ch # | Chapter Title | Chapter ID | Author | Board Status | Video Lecture Status |
+|:---:|---|---|---|:---:|:---:|
+| **Ch 1** | A Letter to God | `65d29b56-4444-1000-0000-000000000001` | G.L. Fuentes | Board Exam Core | Ready for Video |
+| **Ch 2** | Nelson Mandela: Long Walk to Freedom | `65d29b56-4444-1000-0000-000000000002` | Nelson Rolihlahla Mandela | Board Exam Core | Ready for Video |
+| **Ch 3** | Two Stories about Flying | `65d29b56-4444-1000-0000-000000000003` | Liam O'Flaherty / Frederick Forsyth | Board Exam Core | Ready for Video |
+| **Ch 4** | From the Diary of Anne Frank | `65d29b56-4444-1000-0000-000000000004` | Anne Frank | Board Exam Core | Ready for Video |
+| **Ch 5** | Glimpses of India | `65d29b56-4444-1000-0000-000000000005` | Lucio Rodrigues / Lokesh Abrol / Arup Kumar Datta | Board Exam Core | Ready for Video |
+| **Ch 6** | Mijbil the Otter | `65d29b56-4444-1000-0000-000000000006` | Gavin Maxwell | Board Exam Core | Ready for Video |
+| **Ch 7** | Madam Rides the Bus | `65d29b56-4444-1000-0000-000000000007` | Vallikkannan | Board Exam Core | Ready for Video |
+| **Ch 8** | The Sermon at Benares | `65d29b56-4444-1000-0000-000000000008` | Betty Renshaw | Board Exam Core | Ready for Video |
+| **Ch 9** | The Proposal (Play) | `65d29b56-4444-1000-0000-000000000009` | Anton Chekhov | Board Exam Core | Ready for Video |
+
+---
+
+### Book 2: First Flight — Poetry (10 Poems)
+
+| Ch # | Poem Title | Chapter ID | Poet | Board Status | Video Lecture Status |
+|:---:|---|---|---|:---:|:---:|
+| **Ch 10** | Poem 1: Dust of Snow | `65d29b56-4444-1000-0000-000000000010` | Robert Frost | Board Exam Core | Ready for Video |
+| **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | Ready for Video |
+| **Ch 12** | Poem 3: A Tiger in the Zoo | `65d29b56-4444-1000-0000-000000000012` | Leslie Norris | Board Exam Core | Ready for Video |
+| **Ch 13** | Poem 4: How to Tell Wild Animals | `65d29b56-4444-1000-0000-000000000013` | Carolyn Wells | Board Exam Core | Ready for Video |
+| **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | Ready for Video |
+| **Ch 15** | Poem 6: Amanda! | `65d29b56-4444-1000-0000-000000000015` | Robin Klein | Board Exam Core | Ready for Video |
+| **Ch 16** | Poem 7: The Trees | `65d29b56-4444-1000-0000-000000000016` | Adrienne Rich | Board Exam Core | Ready for Video |
+| **Ch 17** | Poem 8: Fog | `65d29b56-4444-1000-0000-000000000017` | Carl Sandburg | Board Exam Core | Ready for Video |
+| **Ch 18** | Poem 9: The Tale of Custard the Dragon | `65d29b56-4444-1000-0000-000000000018` | Ogden Nash | Board Exam Core | Ready for Video |
+| **Ch 19** | Poem 10: For Anne Gregory | `65d29b56-4444-1000-0000-000000000019` | William Butler Yeats | Board Exam Core | Ready for Video |
+
+---
+
+### Book 3: Footprints Without Feet — Supplementary Reader (9 Chapters)
+
+| Ch # | Chapter Title | Chapter ID | Author | Board Status | Video Lecture Status |
+|:---:|---|---|---|:---:|:---:|
+| **Ch 20** | A Triumph of Surgery | `65d29b56-4444-1000-0000-000000000020` | James Herriot | Board Exam Core | Ready for Video |
+| **Ch 21** | The Thief’s Story | `65d29b56-4444-1000-0000-000000000021` | Ruskin Bond | Board Exam Core | Ready for Video |
+| **Ch 22** | The Midnight Visitor | `65d29b56-4444-1000-0000-000000000022` | Robert Arthur | Board Exam Core | Ready for Video |
+| **Ch 23** | A Question of Trust | `65d29b56-4444-1000-0000-000000000023` | Victor Canning | Board Exam Core | Ready for Video |
+| **Ch 24** | Footprints Without Feet | `65d29b56-4444-1000-0000-000000000024` | H.G. Wells | Board Exam Core | Ready for Video |
+| **Ch 25** | The Making of a Scientist | `65d29b56-4444-1000-0000-000000000025` | Robert W. Peterson | Board Exam Core | Ready for Video |
+| **Ch 26** | The Necklace | `65d29b56-4444-1000-0000-000000000026` | Guy de Maupassant | Board Exam Core | Ready for Video |
+| **Ch 27** | Bholi | `65d29b56-4444-1000-0000-000000000027` | K.A. Abbas | Board Exam Core | Ready for Video |
+| **Ch 28** | The Book That Saved the Earth | `65d29b56-4444-1000-0000-000000000028` | Claire Boiko | Board Exam Core | Ready for Video |
+
+---
+
+### Section B: Grammar (5 Chapters)
+
+| Ch # | Chapter Title | Chapter ID | Focus Areas | Board Status | Video Lecture Status |
+|:---:|---|---|---|:---:|:---:|
+| **Ch 29** | Grammar: Determiners | `65d29b56-4444-1000-0000-000000000029` | Articles, Quantifiers, Demonstratives, Possessives | Board Exam Core | Ready for Video |
+| **Ch 30** | Grammar: Tenses | `65d29b56-4444-1000-0000-000000000030` | Present, Past & Future Forms, Gap Filling, Editing | Board Exam Core | Ready for Video |
+| **Ch 31** | Grammar: Modals | `65d29b56-4444-1000-0000-000000000031` | Expressing Ability, Permission, Obligation, Advice | Board Exam Core | Ready for Video |
+| **Ch 32** | Grammar: Subject-Verb Concord | `65d29b56-4444-1000-0000-000000000032` | Subject-Verb Agreement, Compound Subjects, Collective Nouns | Board Exam Core | Ready for Video |
+| **Ch 33** | Grammar: Reported Speech | `65d29b56-4444-1000-0000-000000000033` | Commands, Requests, Statements, Questions, Dialogues | Board Exam Core | Ready for Video |
+
+---
+
+### Section B: Writing Skills (2 Chapters)
+
+| Ch # | Chapter Title | Chapter ID | Focus Areas | Board Status | Video Lecture Status |
+|:---:|---|---|---|:---:|:---:|
+| **Ch 34** | Writing: Formal Letter Writing | `65d29b56-4444-1000-0000-000000000034` | Letter to Editor, Complaint, Inquiry, Placing Order | Board Exam Core (5m) | Ready for Video |
+| **Ch 35** | Writing: Analytical Paragraph Writing | `65d29b56-4444-1000-0000-000000000035` | Analyzing Data, Graphs, Charts, Maps & Cue-based Prompts | Board Exam Core (5m) | Ready for Video |
+
+---
+
+### Section A: Reading Skills (2 Chapters)
+
+| Ch # | Chapter Title | Chapter ID | Focus Areas | Board Status | Video Lecture Status |
+|:---:|---|---|---|:---:|:---:|
+| **Ch 36** | Reading: Discursive Passage Comprehension | `65d29b56-4444-1000-0000-000000000036` | Inference, Analysis, Interpretation, Vocabulary (400-450 words) | Board Exam Core (10m) | Ready for Video |
+| **Ch 37** | Reading: Case-Based Factual Passage Comprehension | `65d29b56-4444-1000-0000-000000000037` | Statistical Data, Charts, Tables, Evaluation (200-250 words) | Board Exam Core (10m) | Ready for Video |
