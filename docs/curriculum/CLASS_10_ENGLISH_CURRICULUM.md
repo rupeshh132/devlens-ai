@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V91  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V92  
 
 ---
 
@@ -70,7 +70,7 @@
 | **Ch 6** | Mijbil the Otter | `65d29b56-4444-1000-0000-000000000006` | Gavin Maxwell | Board Exam Core | `_xY1T-1GYMQ` (Educational Bhaiya) \| ✅ Verified (0s ➔ 1077s) |
 | **Ch 7** | Madam Rides the Bus | `65d29b56-4444-1000-0000-000000000007` | Vallikkannan | Board Exam Core | `vxAb8ECdNK0` (Educational Bhaiya) \| ✅ Verified (0s ➔ 959s) |
 | **Ch 8** | The Sermon at Benares | `65d29b56-4444-1000-0000-000000000008` | Betty Renshaw | Board Exam Core | `5Np1mMJ_MZk` (Educational Bhaiya) \| ✅ Verified (0s ➔ 600s) |
-| **Ch 9** | The Proposal (Play) | `65d29b56-4444-1000-0000-000000000009` | Anton Chekhov | Board Exam Core | Ready for Video |
+| **Ch 9** | The Proposal (Play) | `65d29b56-4444-1000-0000-000000000009` | Anton Chekhov | Board Exam Core | `ZrJsp2JrfYQ` (Educational Bhaiya) \| ✅ Verified (0s ➔ 927s) |
 
 ---
 
@@ -221,6 +221,17 @@
 | **2** | Kisa Gotami's Despair, The Mustard Seed Quest & The Universal Truth of Death | 150s | 360s | 210s (~3.5 min) | `https://www.youtube.com/watch?v=5Np1mMJ_MZk&t=150s&end=360s` |
 | **3** | The Epiphany by the Wayside: Flickering City Lights & Overcoming Selfishness in Grief | 360s | 460s | 100s (~1.7 min) | `https://www.youtube.com/watch?v=5Np1mMJ_MZk&t=360s&end=460s` |
 | **4** | The Buddha's Sermon: Inevitability of Death, Ripe Fruits Metaphor & Attaining Peace of Mind | 460s | 600s | 140s (~2.3 min) | `https://www.youtube.com/watch?v=5Np1mMJ_MZk&t=460s&end=600s` |
+
+---
+
+## First Flight Prose Chapter 9: The Proposal (Play) Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Lomov's Formal Arrival, Marriage Intentions & Chubukov's Overjoyed Consent | 0s | 270s | 270s (~4.5 min) | `https://www.youtube.com/watch?v=ZrJsp2JrfYQ&end=270s` |
+| **2** | The First Dispute: The Oxen Meadows Ownership & Fierce Generational Insults | 270s | 530s | 260s (~4.3 min) | `https://www.youtube.com/watch?v=ZrJsp2JrfYQ&t=270s&end=530s` |
+| **3** | Natalya's Hysteria, Lomov's Recall & The Second Dispute: Guess vs Squeezer | 530s | 730s | 200s (~3.3 min) | `https://www.youtube.com/watch?v=ZrJsp2JrfYQ&t=530s&end=730s` |
+| **4** | Lomov's Collapse, The Frantic Betrothal & Chekhovian Farce ("Champagne! Champagne!") | 730s | 927s | 197s (~3.3 min) | `https://www.youtube.com/watch?v=ZrJsp2JrfYQ&t=730s&end=927s` |
 
 
 ---
