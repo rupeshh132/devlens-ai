@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V103  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V104  
 
 ---
 
@@ -96,7 +96,7 @@
 | Ch # | Chapter Title | Chapter ID | Author | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|
 | **Ch 20** | A Triumph of Surgery | `65d29b56-4444-1000-0000-000000000020` | James Herriot | Board Exam Core | `u6gnjdY54rY` (Educational Bhaiya) \| ✅ Verified (0s ➔ 821s) |
-| **Ch 21** | The Thief’s Story | `65d29b56-4444-1000-0000-000000000021` | Ruskin Bond | Board Exam Core | Ready for Video |
+| **Ch 21** | The Thief’s Story | `65d29b56-4444-1000-0000-000000000021` | Ruskin Bond | Board Exam Core | `gSL7emBB6w0` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 695s) |
 | **Ch 22** | The Midnight Visitor | `65d29b56-4444-1000-0000-000000000022` | Robert Arthur | Board Exam Core | Ready for Video |
 | **Ch 23** | A Question of Trust | `65d29b56-4444-1000-0000-000000000023` | Victor Canning | Board Exam Core | Ready for Video |
 | **Ch 24** | Footprints Without Feet | `65d29b56-4444-1000-0000-000000000024` | H.G. Wells | Board Exam Core | Ready for Video |
@@ -324,4 +324,12 @@
 | **2** | Dr. Herriot's Surgery Treatment: Fasting, Exercise & Dog Pack | 410s | 555s | 145s (~2.4 min) | `https://www.youtube.com/watch?v=u6gnjdY54rY&t=410s&end=555s` |
 | **3** | Recovery of Tricki & Mrs. Pumphrey's Grateful Misunderstanding | 555s | 745s | 190s (~3.2 min) | `https://www.youtube.com/watch?v=u6gnjdY54rY&t=555s&end=745s` |
 | **4** | Themes, Character Analysis & Board Exam Questions | 745s | 821s | 76s (~1.3 min) | `https://www.youtube.com/watch?v=u6gnjdY54rY&t=745s&end=821s` |
+
+---
+
+## Footprints Without Feet Chapter 2 (Overall Ch 21): The Thief's Story Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | The Thief's Story: Full Chapter Explanation, Hari Singh's Transformation & Anil's Trust (Animated One-Shot) | 0s | 695s | 695s (~11.6 min) | `https://www.youtube.com/watch?v=gSL7emBB6w0` |
 
