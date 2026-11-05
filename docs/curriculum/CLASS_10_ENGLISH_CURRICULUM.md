@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V94  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V95  
 
 ---
 
@@ -80,7 +80,7 @@
 |:---:|---|---|---|:---:|:---:|
 | **Ch 10** | Poem 1: Dust of Snow | `65d29b56-4444-1000-0000-000000000010` | Robert Frost | Board Exam Core | `lH15wkPM5Vg` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 310s) |
 | **Ch 11** | Poem 2: Fire and Ice | `65d29b56-4444-1000-0000-000000000011` | Robert Frost | Board Exam Core | `yoTofq5xTa8` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 291s) |
-| **Ch 12** | Poem 3: A Tiger in the Zoo | `65d29b56-4444-1000-0000-000000000012` | Leslie Norris | Board Exam Core | Ready for Video |
+| **Ch 12** | Poem 3: A Tiger in the Zoo | `65d29b56-4444-1000-0000-000000000012` | Leslie Norris | Board Exam Core | `vcws6xqciTE` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 369s) |
 | **Ch 13** | Poem 4: How to Tell Wild Animals | `65d29b56-4444-1000-0000-000000000013` | Carolyn Wells | Board Exam Core | Ready for Video |
 | **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | Ready for Video |
 | **Ch 15** | Poem 6: Amanda! | `65d29b56-4444-1000-0000-000000000015` | Robin Klein | Board Exam Core | Ready for Video |
@@ -249,4 +249,12 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | Fire and Ice: Full Poem Explanation, Symbolism of Desire & Hatred (Animated One-Shot) | 0s | 291s | 291s (~4.9 min) | `https://www.youtube.com/watch?v=yoTofq5xTa8` |
+
+---
+
+## First Flight Poem 3 (Overall Ch 12): A Tiger in the Zoo Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | A Tiger in the Zoo: Full Poem Explanation, Zoo vs Wild Contrast & Poetic Devices (Animated One-Shot) | 0s | 369s | 369s (~6.1 min) | `https://www.youtube.com/watch?v=vcws6xqciTE` |
 
