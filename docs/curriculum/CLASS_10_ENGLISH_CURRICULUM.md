@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V90  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V91  
 
 ---
 
@@ -69,7 +69,7 @@
 | **Ch 5** | Glimpses of India | `65d29b56-4444-1000-0000-000000000005` | Lucio Rodrigues / Lokesh Abrol / Arup Kumar Datta | Board Exam Core | `_EIF5nPScc0` (Kriti Di) \| ✅ Verified (0s ➔ 2914s) |
 | **Ch 6** | Mijbil the Otter | `65d29b56-4444-1000-0000-000000000006` | Gavin Maxwell | Board Exam Core | `_xY1T-1GYMQ` (Educational Bhaiya) \| ✅ Verified (0s ➔ 1077s) |
 | **Ch 7** | Madam Rides the Bus | `65d29b56-4444-1000-0000-000000000007` | Vallikkannan | Board Exam Core | `vxAb8ECdNK0` (Educational Bhaiya) \| ✅ Verified (0s ➔ 959s) |
-| **Ch 8** | The Sermon at Benares | `65d29b56-4444-1000-0000-000000000008` | Betty Renshaw | Board Exam Core | Ready for Video |
+| **Ch 8** | The Sermon at Benares | `65d29b56-4444-1000-0000-000000000008` | Betty Renshaw | Board Exam Core | `5Np1mMJ_MZk` (Educational Bhaiya) \| ✅ Verified (0s ➔ 600s) |
 | **Ch 9** | The Proposal (Play) | `65d29b56-4444-1000-0000-000000000009` | Anton Chekhov | Board Exam Core | Ready for Video |
 
 ---
@@ -210,6 +210,17 @@
 | **2** | Boarding the Bus, The Jolly Conductor's Teasing & Magnificent Canal and Palm Views | 260s | 520s | 260s (~4.3 min) | `https://www.youtube.com/watch?v=vxAb8ECdNK0&t=260s&end=520s` |
 | **3** | The Galloping Cow Scene, Reaching the Town & Valli's Dignified Refusal of the Cold Drink | 520s | 740s | 220s (~3.7 min) | `https://www.youtube.com/watch?v=vxAb8ECdNK0&t=520s&end=740s` |
 | **4** | The Somber Reality of Death, Safe Return Home & Valli's Knowing Secret Smile | 740s | 959s | 219s (~3.7 min) | `https://www.youtube.com/watch?v=vxAb8ECdNK0&t=740s&end=959s` |
+
+---
+
+## First Flight Prose Chapter 8: The Sermon at Benares Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Prince Siddhartha Gautama, The Four Sights & The Path to Enlightenment under Bodhi Tree | 0s | 150s | 150s (~2.5 min) | `https://www.youtube.com/watch?v=5Np1mMJ_MZk&end=150s` |
+| **2** | Kisa Gotami's Despair, The Mustard Seed Quest & The Universal Truth of Death | 150s | 360s | 210s (~3.5 min) | `https://www.youtube.com/watch?v=5Np1mMJ_MZk&t=150s&end=360s` |
+| **3** | The Epiphany by the Wayside: Flickering City Lights & Overcoming Selfishness in Grief | 360s | 460s | 100s (~1.7 min) | `https://www.youtube.com/watch?v=5Np1mMJ_MZk&t=360s&end=460s` |
+| **4** | The Buddha's Sermon: Inevitability of Death, Ripe Fruits Metaphor & Attaining Peace of Mind | 460s | 600s | 140s (~2.3 min) | `https://www.youtube.com/watch?v=5Np1mMJ_MZk&t=460s&end=600s` |
 
 
 ---
