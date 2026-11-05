@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V99  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V100  
 
 ---
 
@@ -85,7 +85,7 @@
 | **Ch 14** | Poem 5: The Ball Poem | `65d29b56-4444-1000-0000-000000000014` | John Berryman | Board Exam Core | `CCM-iLb7EPk` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 402s) |
 | **Ch 15** | Poem 6: Amanda! | `65d29b56-4444-1000-0000-000000000015` | Robin Klein | Board Exam Core | `MjO-mHuQfU0` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 492s) |
 | **Ch 16** | Poem 7: The Trees | `65d29b56-4444-1000-0000-000000000016` | Adrienne Rich | Board Exam Core | `VuVEqovwCIA` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 682s) |
-| **Ch 17** | Poem 8: Fog | `65d29b56-4444-1000-0000-000000000017` | Carl Sandburg | Board Exam Core | Ready for Video |
+| **Ch 17** | Poem 8: Fog | `65d29b56-4444-1000-0000-000000000017` | Carl Sandburg | Board Exam Core | `OZuUm42gTHc` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 348s) |
 | **Ch 18** | Poem 9: The Tale of Custard the Dragon | `65d29b56-4444-1000-0000-000000000018` | Ogden Nash | Board Exam Core | Ready for Video |
 | **Ch 19** | Poem 10: For Anne Gregory | `65d29b56-4444-1000-0000-000000000019` | William Butler Yeats | Board Exam Core | Ready for Video |
 
@@ -289,4 +289,12 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | The Trees: Full Poem Explanation, Nature's Reclamation & Feminist Allegory (Animated One-Shot) | 0s | 682s | 682s (~11.4 min) | `https://www.youtube.com/watch?v=VuVEqovwCIA` |
+
+---
+
+## First Flight Poem 8 (Overall Ch 17): Fog Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Fog: Full Poem Explanation, Cat Metaphor, Imagery & Poetic Devices (Animated One-Shot) | 0s | 348s | 348s (~5.8 min) | `https://www.youtube.com/watch?v=OZuUm42gTHc` |
 
