@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V85  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V86  
 
 ---
 
@@ -64,7 +64,7 @@
 |:---:|---|---|---|:---:|:---:|
 | **Ch 1** | A Letter to God | `65d29b56-4444-1000-0000-000000000001` | G.L. Fuentes | Board Exam Core | `JhqV9jIVVYg` (Magnet Brains) \| ✅ Verified (0s ➔ 4274s) |
 | **Ch 2** | Nelson Mandela: Long Walk to Freedom | `65d29b56-4444-1000-0000-000000000002` | Nelson Rolihlahla Mandela | Board Exam Core | `O1PocKoabTo` (Magnet Brains) \| ✅ Verified (0s ➔ 4750s) |
-| **Ch 3** | Two Stories about Flying | `65d29b56-4444-1000-0000-000000000003` | Liam O'Flaherty / Frederick Forsyth | Board Exam Core | Ready for Video |
+| **Ch 3** | Two Stories about Flying | `65d29b56-4444-1000-0000-000000000003` | Liam O'Flaherty / Frederick Forsyth | Board Exam Core | `ZTmmJZZhljE` (Part 1: Magnet Brains) \| ✅ Verified (0s ➔ 3849s) |
 | **Ch 4** | From the Diary of Anne Frank | `65d29b56-4444-1000-0000-000000000004` | Anne Frank | Board Exam Core | Ready for Video |
 | **Ch 5** | Glimpses of India | `65d29b56-4444-1000-0000-000000000005` | Lucio Rodrigues / Lokesh Abrol / Arup Kumar Datta | Board Exam Core | Ready for Video |
 | **Ch 6** | Mijbil the Otter | `65d29b56-4444-1000-0000-000000000006` | Gavin Maxwell | Board Exam Core | Ready for Video |
@@ -156,6 +156,17 @@
 | **2** | The 10th May Inauguration Ceremony at Pretoria Amphitheatre & Nelson Mandela's Historic Presidential Address | 590s | 1880s | 1290s (~21.5 min) | `https://www.youtube.com/watch?v=O1PocKoabTo&t=590s&end=1880s` |
 | **3** | Military Flypast, Dual National Anthems, Meaning of Courage & Tribute to African Patriots (Oliver Tambo, Walter Sisulu) | 1880s | 3450s | 1570s (~26 min) | `https://www.youtube.com/watch?v=O1PocKoabTo&t=1880s&end=3450s` |
 | **4** | Twin Obligations of Man, The Evolution of Freedom & The Indivisible Bonds of Humanity (Oppressor & Oppressed) | 3450s | 4750s | 1300s (~21.5 min) | `https://www.youtube.com/watch?v=O1PocKoabTo&t=3450s&end=4750s` |
+
+---
+
+## First Flight Prose Chapter 3: Two Stories about Flying (Part 1: His First Flight) Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Introduction & Author Profile: Liam O'Flaherty & The Theme of Overcoming Fear | 0s | 280s | 280s (~4.5 min) | `https://www.youtube.com/watch?v=ZTmmJZZhljE&end=280s` |
+| **2** | The Young Seagull on the Ledge: Terror of the Abyss, Siblings' Flight & The Threat of Starvation | 280s | 1600s | 1320s (~22 min) | `https://www.youtube.com/watch?v=ZTmmJZZhljE&t=280s&end=1600s` |
+| **3** | The Mother's Clever Ruse, The Dive for Fish & The Joyous Triumph of the First Flight | 1600s | 2940s | 1340s (~22.5 min) | `https://www.youtube.com/watch?v=ZTmmJZZhljE&t=1600s&end=2940s` |
+| **4** | Comprehensive Chapter Summary, Key Themes, Metaphor of Flight & Outro | 2940s | 3849s | 909s (~15 min) | `https://www.youtube.com/watch?v=ZTmmJZZhljE&t=2940s&end=3849s` |
 
 
 ---
