@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V117  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V118  
 
 ---
 
@@ -124,7 +124,7 @@
 | Ch # | Chapter Title | Chapter ID | Focus Areas | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|
 | **Ch 34** | Writing: Formal Letter Writing | `65d29b56-4444-1000-0000-000000000034` | Letter to Editor, Complaint, Inquiry, Placing Order | Board Exam Core (5m) | `esZDtBDSpZU` (Educational Bhaiya) \| ✅ Dedicated One-Shot (60s ➔ 1327s, Intro Promo Trimmed) |
-| **Ch 35** | Writing: Analytical Paragraph Writing | `65d29b56-4444-1000-0000-000000000035` | Analyzing Data, Graphs, Charts, Maps & Cue-based Prompts | Board Exam Core (5m) | Ready for Video |
+| **Ch 35** | Writing: Analytical Paragraph Writing | `65d29b56-4444-1000-0000-000000000035` | Analyzing Data, Graphs, Charts, Maps & Cue-based Prompts | Board Exam Core (5m) | `l3WfCIW7ovI` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 843s, Ad-Free Verified) |
 
 ---
 
@@ -436,6 +436,15 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | Formal Letter Writing: CBSE Format, Marking Scheme, Editor, Inquiry & Complaint Letters (One-Shot) | 60s | 1327s | 1267s (~21.1 min) | `https://www.youtube.com/watch?v=esZDtBDSpZU&t=60s` |
+
+---
+
+## Section B: Writing Skills Chapter 2 (Overall Ch 35): Analytical Paragraph Writing Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Analytical Paragraph: Complete Format, Line Graphs, Bar Charts, Pie Charts, Tables & Magic Lines (One-Shot) | 0s | 843s | 843s (~14.1 min) | `https://www.youtube.com/watch?v=l3WfCIW7ovI` |
+
 
 
 
