@@ -8,11 +8,11 @@
 DELETE FROM learn_content_items
 WHERE topic_id IN (
     SELECT id FROM learn_topics
-    WHERE chapter_id = '65d29b56-4444-1000-0000-0000000027' OR chapter_id = '65d29b56-4444-1000-0000-000000000027'
+    WHERE chapter_id = '65d29b56-4444-1000-0000-000000000027'
 );
 
 DELETE FROM learn_topics
-WHERE chapter_id = '65d29b56-4444-1000-0000-0000000027' OR chapter_id = '65d29b56-4444-1000-0000-000000000027';
+WHERE chapter_id = '65d29b56-4444-1000-0000-000000000027';
 
 -- 2. Insert single unified Master Topic
 INSERT INTO learn_topics (id, chapter_id, title, order_index, is_active)
