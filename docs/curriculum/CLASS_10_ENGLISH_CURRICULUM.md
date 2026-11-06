@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V119  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V120 (100% COMPLETE!)  
 
 ---
 
@@ -133,7 +133,7 @@
 | Ch # | Chapter Title | Chapter ID | Focus Areas | Board Status | Video Lecture Status |
 |:---:|---|---|---|:---:|:---:|
 | **Ch 36** | Reading: Discursive Passage Comprehension | `65d29b56-4444-1000-0000-000000000036` | Inference, Analysis, Interpretation, Vocabulary (400-450 words) | Board Exam Core (10m) | `pSG8O0UYQpo` (Magnet Brains) \| ✅ Dedicated One-Shot (0s ➔ 2790s, Outro Promo Trimmed) |
-| **Ch 37** | Reading: Case-Based Factual Passage Comprehension | `65d29b56-4444-1000-0000-000000000037` | Statistical Data, Charts, Tables, Evaluation (200-250 words) | Board Exam Core (10m) | Ready for Video |
+| **Ch 37** | Reading: Case-Based Factual Passage Comprehension | `65d29b56-4444-1000-0000-000000000037` | Statistical Data, Charts, Tables, Evaluation (200-250 words) | Board Exam Core (10m) | `JKxQIqjbq8I` (Magnet Brains) \| ✅ Dedicated One-Shot (11s ➔ 10835s, 10 Solved Passages) |
 
 ---
 
@@ -452,6 +452,15 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | Discursive Passage: Reading Techniques, Central Idea, Inference Questions & Full CBSE SQP Walkthrough (One-Shot) | 0s | 2790s | 2790s (~46.5 min) | `https://www.youtube.com/watch?v=pSG8O0UYQpo&end=2790s` |
+
+---
+
+## Section A: Reading Skills Chapter 2 (Overall Ch 37): Case-Based Factual Passage Comprehension Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Case-Based Factual Passage: Interpreting Visual Data, Charts, Reports & 10 Solved CBSE Passages (One-Shot) | 11s | 10835s | 10824s (~180.4 min / ~3.0 hrs) | `https://www.youtube.com/watch?v=JKxQIqjbq8I&t=11s&end=10835s` |
+
 
 
 
