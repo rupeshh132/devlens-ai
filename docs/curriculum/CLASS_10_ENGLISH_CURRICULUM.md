@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V110  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V111  
 
 ---
 
@@ -103,7 +103,7 @@
 | **Ch 25** | The Making of a Scientist | `65d29b56-4444-1000-0000-000000000025` | Robert W. Peterson | Board Exam Core | `64PaWs5BZ8Q` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 1038s, Ad-Free Verified) |
 | **Ch 26** | The Necklace | `65d29b56-4444-1000-0000-000000000026` | Guy de Maupassant | Board Exam Core | `ECvdooUVkL4` (Educational Bhaiya) \| ✅ Dedicated One-Shot (70s ➔ 1177s, Intro Promo Trimmed) |
 | **Ch 27** | Bholi | `65d29b56-4444-1000-0000-000000000027` | K.A. Abbas | Board Exam Core | `H4oh4imcBIk` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 844s, Ad-Free Verified) |
-| **Ch 28** | The Book That Saved the Earth | `65d29b56-4444-1000-0000-000000000028` | Claire Boiko | Board Exam Core | Ready for Video |
+| **Ch 28** | The Book That Saved the Earth | `65d29b56-4444-1000-0000-000000000028` | Claire Boiko | Board Exam Core | `Si8uiDGqSrw` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 880s, Outro Promo Trimmed) |
 
 ---
 
@@ -381,9 +381,11 @@
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | Bholi: Full Chapter Explanation, Sulekha's Transformation, Dowry Rejection & Teacher's Masterpiece (Animated One-Shot) | 0s | 844s | 844s (~14.1 min) | `https://www.youtube.com/watch?v=H4oh4imcBIk` |
 
+---
 
+## Footprints Without Feet Chapter 9 (Overall Ch 28): The Book That Saved the Earth Topics & Video Timestamps
 
-
-
-
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | The Book That Saved the Earth: Full Play Explanation, Think-Tank's Martian Invasion & Mother Goose (Animated One-Shot) | 0s | 880s | 880s (~14.7 min) | `https://www.youtube.com/watch?v=Si8uiDGqSrw&end=880s` |
 
