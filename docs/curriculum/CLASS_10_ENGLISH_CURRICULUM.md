@@ -6,7 +6,7 @@
 **Total Sections:** 3 Board Sections (Reading Skills, Writing Skills & Grammar, Language Through Literature)  
 **Total Books:** 3 Books (First Flight - Prose, First Flight - Poetry, Footprints Without Feet) + Grammar & Writing  
 **Total Chapters:** 37 Modular Chapters (9 Prose + 10 Poems + 9 Supplementary + 5 Grammar + 2 Writing + 2 Reading)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V115  
+**Status:** Live in Supabase & Version-Controlled in Flyway V83 to V116  
 
 ---
 
@@ -115,7 +115,7 @@
 | **Ch 30** | Grammar: Tenses | `65d29b56-4444-1000-0000-000000000030` | Present, Past & Future Forms, Gap Filling, Editing | Board Exam Core | `NA6E-NULuo8` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 785s, Ad-Free Verified) |
 | **Ch 31** | Grammar: Modals | `65d29b56-4444-1000-0000-000000000031` | Expressing Ability, Permission, Obligation, Advice | Board Exam Core | `iCx24s1DxyI` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 978s, Complete Overview) |
 | **Ch 32** | Grammar: Subject-Verb Concord | `65d29b56-4444-1000-0000-000000000032` | Subject-Verb Agreement, Compound Subjects, Collective Nouns | Board Exam Core | `WQaAlbmQmUI` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 585s, Ad-Free Verified) |
-| **Ch 33** | Grammar: Reported Speech | `65d29b56-4444-1000-0000-000000000033` | Commands, Requests, Statements, Questions, Dialogues | Board Exam Core | Ready for Video |
+| **Ch 33** | Grammar: Reported Speech | `65d29b56-4444-1000-0000-000000000033` | Commands, Requests, Statements, Questions, Dialogues | Board Exam Core | `yfP8EByXrKU` (Educational Bhaiya) \| ✅ Dedicated One-Shot (0s ➔ 788s, Outro Promo Trimmed) |
 
 ---
 
@@ -420,6 +420,15 @@
 | # | Master Topic Title | Start | End | Duration | Video Embed URL |
 |:---:|---|:---:|:---:|:---:|---|
 | **1** | Subject-Verb Concord: All Essential Rules, Compound Subjects, Exceptions & Tricks (One-Shot) | 0s | 585s | 585s (~9.8 min) | `https://www.youtube.com/watch?v=WQaAlbmQmUI` |
+
+---
+
+## Section B: Grammar Chapter 5 (Overall Ch 33): Reported Speech Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Reported Speech: Direct to Indirect, Tense/Pronoun Shifts, Commands, Questions & Practice (One-Shot) | 0s | 788s | 788s (~13.1 min) | `https://www.youtube.com/watch?v=yfP8EByXrKU&end=788s` |
+
 
 
 
