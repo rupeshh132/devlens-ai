@@ -1,0 +1,168 @@
+# Class 11 Mathematics (Subject Code: 041) — Official CBSE / Delhi DoE (2026-27) Curriculum
+
+**Exam Type:** Class 11 (`id: 303d9917-55e9-4f81-8a0f-129ba4c01aef`)  
+**Subject:** Mathematics (`id: 65d29b56-2222-0000-0000-000000000011`, `code: 041`, `order_index: 1`)  
+**Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
+**Total Chapters:** 14 Official NCERT Chapters  
+**Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121  
+
+---
+
+## Course Structure & Marks Distribution (Theory 80 + Internal Assessment 20 = 100)
+
+| Unit No. | Unit Name | Chapters Included | Marks Weightage |
+|:---:|---|---|:---:|
+| **I** | **Sets and Functions** | Ch 1: Sets<br>Ch 2: Relations & Functions<br>Ch 3: Trigonometric Functions | **23 Marks** |
+| **II** | **Algebra** | Ch 4: Complex Numbers & Quadratic Equations<br>Ch 5: Linear Inequalities<br>Ch 6: Permutations & Combinations<br>Ch 7: Binomial Theorem<br>Ch 8: Sequence and Series | **25 Marks** |
+| **III** | **Coordinate Geometry** | Ch 9: Straight Lines<br>Ch 10: Conic Sections<br>Ch 11: Introduction to Three-Dimensional Geometry | **12 Marks** |
+| **IV** | **Calculus** | Ch 12: Limits and Derivatives | **08 Marks** |
+| **V** | **Statistics and Probability** | Ch 13: Statistics<br>Ch 14: Probability | **12 Marks** |
+| **TOTAL** | **Theory Examination** | **14 Chapters (Full Syllabus)** | **80 Marks** |
+| **IA** | **Internal Assessment** | Periodic Tests (10 Marks) + Math Lab Activities & Viva (10 Marks) | **20 Marks** |
+| **GRAND TOTAL** | **Annual Score** | **Theory + Internal Assessment** | **100 Marks** |
+
+---
+
+## Chapters Breakdown & Curriculum Architecture
+
+| Ch # | Chapter Name | Chapter ID | Unit | Focus & Scope | Topics Count | Status |
+|:---:|---|---|:---:|---|:---:|:---:|
+| **Ch 1** | Sets | `65d29b56-2222-1100-0000-000000000001` | Unit I | Sets, Subsets, Intervals, Operations & Formative Applications | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 2** | Relations and Functions | `65d29b56-2222-1100-0000-000000000002` | Unit I | Cartesian Products, Real Functions, Graphs & Formative Composition | 6 Topics | 🚀 Live in DB (V121) |
+| **Ch 3** | Trigonometric Functions | `65d29b56-2222-1100-0000-000000000003` | Unit I | Radians, Graphs, Angle Identities & Formative General Solutions | 6 Topics | 🚀 Live in DB (V121) |
+| **Ch 4** | Complex Numbers and Quadratic Equations | `65d29b56-2222-1100-0000-000000000004` | Unit II | Imaginary Unit, Argand Plane, Formative Polar & Induction (PMI) | 6 Topics | 🚀 Live in DB (V121) |
+| **Ch 5** | Linear Inequalities | `65d29b56-2222-1100-0000-000000000005` | Unit II | Algebraic Solutions in 1-Var & Formative 2-Var Graphical Systems | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 6** | Permutations and Combinations | `65d29b56-2222-1100-0000-000000000006` | Unit II | FPC, Factorials, ⁿPᵣ, ⁿCᵣ & Combinatorial Problem Solving | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 7** | Binomial Theorem | `65d29b56-2222-1100-0000-000000000007` | Unit II | Positive Integral Indices, Pascal's Triangle & Formative Middle Terms | 4 Topics | 🚀 Live in DB (V121) |
+| **Ch 8** | Sequence and Series | `65d29b56-2222-1100-0000-000000000008` | Unit II | AP, GP, Infinite GP, AM-GM Inequality & Formative Special Sums | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 9** | Straight Lines | `65d29b56-2222-1100-0000-000000000009` | Unit III | Slope, Standard Line Forms, Distance & Formative Normal Form | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 10** | Conic Sections | `65d29b56-2222-1100-0000-000000000010` | Unit III | Circles, Parabolas, Ellipses, Hyperbolas & Focal Properties | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance & Formative Section Formula | 4 Topics | 🚀 Live in DB (V121) |
+| **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Tangents, First Principles, Product/Quotient & Formative Chain Rule | 6 Topics | 🚀 Live in DB (V121) |
+| **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Range, Mean Deviation, Variance & Standard Deviation | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 14** | Probability | `65d29b56-2222-1100-0000-000000000014` | Unit V | Axiomatic Probability, Event Algebra & Formative Sample Spaces | 5 Topics | 🚀 Live in DB (V121) |
+| **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **72 Topics** | 🚀 **Live in DB** |
+
+---
+
+## Detailed Topic Blueprint (Chapter 1 to Chapter 14)
+
+### Chapter 1: Sets
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000001`
+1. `65d29b56-2222-2101-0000-000000000001`: Sets & Representations (Roster & Set-Builder Forms, Empty, Finite & Infinite, Equal Sets)
+2. `65d29b56-2222-2101-0000-000000000002`: Subsets, Subsets of Real Numbers, Intervals as Subsets of R & Universal Set
+3. `65d29b56-2222-2101-0000-000000000003`: Venn Diagrams & Operations on Sets (Union, Intersection, Difference of Sets)
+4. `65d29b56-2222-2101-0000-000000000004`: Complement of a Set & Properties of Complement (De Morgan's Laws)
+5. `65d29b56-2222-2101-0000-000000000005`: [Enrichment / Formative] Practical Word Problems on Union and Intersection of Two Sets
+
+### Chapter 2: Relations and Functions
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000002`
+1. `65d29b56-2222-2102-0000-000000000001`: Cartesian Product of Sets & Cartesian Product of Reals (R x R x R)
+2. `65d29b56-2222-2102-0000-000000000002`: Relations: Definition, Pictorial Diagrams, Domain, Co-domain and Range
+3. `65d29b56-2222-2102-0000-000000000003`: Functions as Special Relations, Pictorial Representation, Domain & Range
+4. `65d29b56-2222-2102-0000-000000000004`: Standard Real Functions & Graphs (Identity, Constant, Polynomial, Rational, Modulus, Signum, Exponential, Logarithmic & GIF)
+5. `65d29b56-2222-2102-0000-000000000005`: Algebra of Real Functions (Sum, Difference, Product and Quotient)
+6. `65d29b56-2222-2102-0000-000000000006`: [Enrichment / Formative] Composition of Functions (fog and gof)
+
+### Chapter 3: Trigonometric Functions
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000003`
+1. `65d29b56-2222-2103-0000-000000000001`: Angles: Degree & Radian Measures, Interconversions & Unit Circle Definition
+2. `65d29b56-2222-2103-0000-000000000002`: Signs, Domain, Range & Graphs of Trigonometric Functions (sin²x + cos²x = 1)
+3. `65d29b56-2222-2103-0000-000000000003`: Compound Angle Identities (sin(x±y), cos(x±y), tan(x±y), cot(x±y))
+4. `65d29b56-2222-2103-0000-000000000004`: Transformation Formulas: Sum/Difference to Product & Product to Sum
+5. `65d29b56-2222-2103-0000-000000000005`: Multiple & Submultiple Angles: Identities for sin2x, cos2x, tan2x, sin3x, cos3x, tan3x
+6. `65d29b56-2222-2103-0000-000000000006`: [Enrichment / Formative] General Solution of Trigonometric Equations (sin y = sin a, cos y = cos a, tan y = tan a)
+
+### Chapter 4: Complex Numbers and Quadratic Equations
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000004`
+1. `65d29b56-2222-2104-0000-000000000001`: Introduction to Imaginary Numbers, Need for √-1 & Integral Powers of i
+2. `65d29b56-2222-2104-0000-000000000002`: Algebra of Complex Numbers (Addition, Subtraction, Multiplication & Division)
+3. `65d29b56-2222-2104-0000-000000000003`: Modulus, Conjugate & Argand Plane (Complex Plane Representation)
+4. `65d29b56-2222-2104-0000-000000000004`: [Enrichment / Formative] Polar Representation of Complex Numbers & Euler's Form
+5. `65d29b56-2222-2104-0000-000000000005`: [Enrichment / Formative] Fundamental Theorem of Algebra & Quadratic Equations with Complex Roots
+6. `65d29b56-2222-2104-0000-000000000006`: [Enrichment / Formative] Principle of Mathematical Induction (Proof by Induction & Natural Number Foundations)
+
+### Chapter 5: Linear Inequalities
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000005`
+1. `65d29b56-2222-2105-0000-000000000001`: Introduction to Linear Inequalities & Rules of Inequality
+2. `65d29b56-2222-2105-0000-000000000002`: Algebraic Solutions of Linear Inequalities in One Variable
+3. `65d29b56-2222-2105-0000-000000000003`: Graphical Representation of Solutions on the Number Line
+4. `65d29b56-2222-2105-0000-000000000004`: [Enrichment / Formative] Graphical Solution of Linear Inequalities in Two Variables
+5. `65d29b56-2222-2105-0000-000000000005`: [Enrichment / Formative] Graphical Method of Solving Systems of Linear Inequalities in Two Variables
+
+### Chapter 6: Permutations and Combinations
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000006`
+1. `65d29b56-2222-2106-0000-000000000001`: Fundamental Principle of Counting (Multiplication & Addition Principles)
+2. `65d29b56-2222-2106-0000-000000000002`: Factorial Notation (n!) & Computation Properties
+3. `65d29b56-2222-2106-0000-000000000003`: Permutations: Derivation of Formula for ⁿPᵣ & Restricted Permutations
+4. `65d29b56-2222-2106-0000-000000000004`: Combinations: Derivation of Formula for ⁿCᵣ, Properties & Relation with ⁿPᵣ
+5. `65d29b56-2222-2106-0000-000000000005`: Practical & Contextual Applications of Permutations and Combinations
+
+### Chapter 7: Binomial Theorem
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000007`
+1. `65d29b56-2222-2107-0000-000000000001`: Historical Perspective, Pascal's Triangle & Pattern Observation
+2. `65d29b56-2222-2107-0000-000000000002`: Statement & Proof of Binomial Theorem for Positive Integral Indices
+3. `65d29b56-2222-2107-0000-000000000003`: Binomial Expansions & Simple Applications (Approximations & Divisibility)
+4. `65d29b56-2222-2107-0000-000000000004`: [Enrichment / Formative] General Term (Tᵣ₊₁) and Middle Term(s) in Binomial Expansion
+
+### Chapter 8: Sequence and Series
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000008`
+1. `65d29b56-2222-2108-0000-000000000001`: Sequences and Series: Definitions, Recall of AP & Arithmetic Mean (A.M.)
+2. `65d29b56-2222-2108-0000-000000000002`: Geometric Progression (G.P.): General Term (aₙ = arⁿ⁻¹) & Properties
+3. `65d29b56-2222-2108-0000-000000000003`: Sum of First n Terms of a G.P. (Sₙ) & Sum of an Infinite G.P. (S∞)
+4. `65d29b56-2222-2108-0000-000000000004`: Geometric Mean (G.M.) & Relationship between A.M. and G.M. (A.M. ≥ G.M.)
+5. `65d29b56-2222-2108-0000-000000000005`: [Enrichment / Formative] Special Sum Formulas: Sum of First n Natural Numbers, Squares & Cubes (Σk, Σk², Σk³)
+
+### Chapter 9: Straight Lines
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000009`
+1. `65d29b56-2222-2109-0000-000000000001`: Slope of a Line, Collinearity of Points & Angle between Two Lines
+2. `65d29b56-2222-2109-0000-000000000002`: Standard Forms: Parallel to Axes, Point-Slope & Two-Point Forms
+3. `65d29b56-2222-2109-0000-000000000003`: Slope-Intercept & Intercept Forms of Line Equation
+4. `65d29b56-2222-2109-0000-000000000004`: Perpendicular Distance of a Point from a Line & Distance between Parallel Lines
+5. `65d29b56-2222-2109-0000-000000000005`: [Enrichment / Formative] Normal Form (x cos α + y sin α = p) & General Form Reduction (Ax + By + C = 0)
+
+### Chapter 10: Conic Sections
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000010`
+1. `65d29b56-2222-2110-0000-000000000001`: Sections of a Cone (Circle, Ellipse, Parabola, Hyperbola & Degenerate Cases)
+2. `65d29b56-2222-2110-0000-000000000002`: Standard Equation of a Circle & Concentric / General Forms
+3. `65d29b56-2222-2110-0000-000000000003`: Parabola: Standard Equations (y²=4ax, x²=4ay), Focus, Directrix, Axis & Latus Rectum
+4. `65d29b56-2222-2110-0000-000000000004`: Ellipse: Standard Equations (x²/a² + y²/b² = 1), Major/Minor Axes, Foci, Eccentricity & Latus Rectum
+5. `65d29b56-2222-2110-0000-000000000005`: Hyperbola: Standard Equations (x²/a² - y²/b² = 1), Foci, Vertices, Transverse/Conjugate Axes & Latus Rectum
+
+### Chapter 11: Introduction to Three-Dimensional Geometry
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000011`
+1. `65d29b56-2222-2111-0000-000000000001`: Coordinate Axes, Coordinate Planes & Octants in 3D Space
+2. `65d29b56-2222-2111-0000-000000000002`: Coordinates of a Point in 3D Space & Signs in Different Octants
+3. `65d29b56-2222-2111-0000-000000000003`: Distance Formula between Two Points in 3D Space & Collinearity Applications
+4. `65d29b56-2222-2111-0000-000000000004`: [Enrichment / Formative] Section Formula in Three Dimensions (Internal and External Division & Centroid)
+
+### Chapter 12: Limits and Derivatives
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000012`
+1. `65d29b56-2222-2112-0000-000000000001`: Intuitive Idea of Limits, Left-Hand & Right-Hand Limits
+2. `65d29b56-2222-2112-0000-000000000002`: Limits of Polynomial, Rational & Standard Trigonometric Functions (lim sinx/x = 1)
+3. `65d29b56-2222-2112-0000-000000000003`: Limits of Exponential & Logarithmic Functions (lim (eˣ-1)/x = 1)
+4. `65d29b56-2222-2112-0000-000000000004`: Derivative as Rate of Change, Geometric Slope of Tangent & Definition from First Principles
+5. `65d29b56-2222-2112-0000-000000000005`: Algebra of Derivatives: Sum, Difference, Product Rule & Quotient Rule
+6. `65d29b56-2222-2112-0000-000000000006`: [Enrichment / Formative] Derivatives of Composite Functions (Introduction to Chain Rule)
+
+### Chapter 13: Statistics
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000013`
+1. `65d29b56-2222-2113-0000-000000000001`: Measures of Dispersion: Concept of Spread & Range
+2. `65d29b56-2222-2113-0000-000000000002`: Mean Deviation about Mean for Ungrouped & Grouped Frequency Distributions
+3. `65d29b56-2222-2113-0000-000000000003`: Mean Deviation about Median for Ungrouped & Grouped Frequency Distributions
+4. `65d29b56-2222-2113-0000-000000000004`: Variance and Standard Deviation of Ungrouped Data
+5. `65d29b56-2222-2113-0000-000000000005`: Variance and Standard Deviation of Continuous Grouped Frequency Distributions (Short-cut Method)
+
+### Chapter 14: Probability
+- **Chapter ID:** `65d29b56-2222-1100-0000-000000000014`
+1. `65d29b56-2222-2114-0000-000000000001`: [Enrichment / Formative] Random Experiments, Outcomes and Sample Space (Set Representation)
+2. `65d29b56-2222-2114-0000-000000000002`: Event Algebra: Occurrence of Events, 'Not' (Complementary), 'And' & 'Or' Events
+3. `65d29b56-2222-2114-0000-000000000003`: Mutually Exclusive and Exhaustive Events
+4. `65d29b56-2222-2114-0000-000000000004`: Axiomatic (Set-Theoretic) Approach to Probability
+5. `65d29b56-2222-2114-0000-000000000005`: Probability of an Event, Probability of 'Not A', 'A or B', and 'A and B'
+
+---
+
+## Flyway Migration Reference
+- `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
