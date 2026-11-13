@@ -32,7 +32,7 @@
 | **Ch 2** | Relations and Functions | `65d29b56-2222-1100-0000-000000000002` | Unit I | Cartesian Products, Real Functions, Graphs & Algebra of Functions | 5 Topics | `4VXUlNRlT3c` (PW) \| ✅ Verified (0s ➔ 15684s) |
 | **Ch 3** | Trigonometric Functions | `65d29b56-2222-1100-0000-000000000003` | Unit I | Radians, T-Ratios, Graphs, Identities & Transformations | 5 Topics | `kcSMOgFRp6w` (PW) \| ✅ Verified (0s ➔ 17668s) |
 | **Ch 4** | Complex Numbers and Quadratic Equations | `65d29b56-2222-1100-0000-000000000004` | Unit II | Imaginary Unit, Algebra, Conjugate, Modulus & Argand Plane | 5 Topics | `7tu6_GH5qAw` (PW) \| ✅ Verified (0s ➔ 9515s) |
-| **Ch 5** | Linear Inequalities | `65d29b56-2222-1100-0000-000000000005` | Unit II | Algebraic Solutions in 1-Var & Formative 2-Var Graphical Systems | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 5** | Linear Inequalities | `65d29b56-2222-1100-0000-000000000005` | Unit II | Intervals, Algebraic Solutions, Number Line & Word Problems | 5 Topics | `Kdcd7m0jme0` (PW) \| ✅ Verified (0s ➔ 6298s) |
 | **Ch 6** | Permutations and Combinations | `65d29b56-2222-1100-0000-000000000006` | Unit II | FPC, Factorials, ⁿPᵣ, ⁿCᵣ & Combinatorial Problem Solving | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 7** | Binomial Theorem | `65d29b56-2222-1100-0000-000000000007` | Unit II | Positive Integral Indices, Pascal's Triangle & Formative Middle Terms | 4 Topics | 🚀 Live in DB (V121) |
 | **Ch 8** | Sequence and Series | `65d29b56-2222-1100-0000-000000000008` | Unit II | AP, GP, Infinite GP, AM-GM Inequality & Formative Special Sums | 5 Topics | 🚀 Live in DB (V121) |
@@ -82,11 +82,11 @@
 
 ### Chapter 5: Linear Inequalities
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000005`
-1. `65d29b56-2222-2105-0000-000000000001`: Introduction to Linear Inequalities & Rules of Inequality
-2. `65d29b56-2222-2105-0000-000000000002`: Algebraic Solutions of Linear Inequalities in One Variable
-3. `65d29b56-2222-2105-0000-000000000003`: Graphical Representation of Solutions on the Number Line
-4. `65d29b56-2222-2105-0000-000000000004`: [Enrichment / Formative] Graphical Solution of Linear Inequalities in Two Variables
-5. `65d29b56-2222-2105-0000-000000000005`: [Enrichment / Formative] Graphical Method of Solving Systems of Linear Inequalities in Two Variables
+1. `65d29b56-2222-2105-0000-000000000001`: Introduction to Linear Inequalities, Intervals & Fundamental Rules of Inequations
+2. `65d29b56-2222-2105-0000-000000000002`: Algebraic Solutions of Linear Inequalities in One Variable (N, Z, R & Fractional Forms)
+3. `65d29b56-2222-2105-0000-000000000003`: Representation on Number Line & Systems of Linear Inequalities in One Variable
+4. `65d29b56-2222-2105-0000-000000000004`: Practical Word Problems: Marks, Consecutive Integers & Geometric Constraints
+5. `65d29b56-2222-2105-0000-000000000005`: Advanced Applied Word Problems: Temperature Ranges & Mixture Concentration Problems
 
 ### Chapter 6: Permutations and Combinations
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000006`
@@ -209,9 +209,22 @@
 
 ---
 
+## Chapter 5: Linear Inequalities Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Introduction to Linear Inequalities, Intervals & Fundamental Rules of Inequations | 0s | 894s | 894s (~14.9 min) | `https://www.youtube.com/watch?v=Kdcd7m0jme0&end=894s` |
+| **2** | Algebraic Solutions of Linear Inequalities in One Variable (N, Z, R & Fractional Forms) | 894s | 2280s | 1386s (~23.1 min) | `https://www.youtube.com/watch?v=Kdcd7m0jme0&t=894s&end=2280s` |
+| **3** | Representation on Number Line & Systems of Linear Inequalities in One Variable | 2280s | 3160s | 880s (~14.7 min) | `https://www.youtube.com/watch?v=Kdcd7m0jme0&t=2280s&end=3160s` |
+| **4** | Practical Word Problems: Marks, Consecutive Integers & Geometric Constraints | 3160s | 4650s | 1490s (~24.8 min) | `https://www.youtube.com/watch?v=Kdcd7m0jme0&t=3160s&end=4650s` |
+| **5** | Advanced Applied Word Problems: Temperature Ranges & Mixture Concentration Problems | 4650s | 6298s | 1648s (~27.5 min) | `https://www.youtube.com/watch?v=Kdcd7m0jme0&t=4650s&end=6298s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
 - `backend/src/main/resources/db/migration/V123__seed_class11_maths_ch2_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 15684s) for Chapter 2: Relations and Functions (`4VXUlNRlT3c`).
 - `backend/src/main/resources/db/migration/V124__seed_class11_maths_ch3_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 17668s) for Chapter 3: Trigonometric Functions (`kcSMOgFRp6w`).
 - `backend/src/main/resources/db/migration/V125__seed_class11_maths_ch4_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 9515s) for Chapter 4: Complex Numbers and Quadratic Equations (`7tu6_GH5qAw`).
+- `backend/src/main/resources/db/migration/V126__seed_class11_maths_ch5_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 6298s) for Chapter 5: Linear Inequalities (`Kdcd7m0jme0`).
