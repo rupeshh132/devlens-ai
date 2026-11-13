@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V122  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V123  
 
 ---
 
@@ -29,7 +29,7 @@
 | Ch # | Chapter Name | Chapter ID | Unit | Focus & Scope | Topics Count | Status |
 |:---:|---|---|:---:|---|:---:|:---:|
 | **Ch 1** | Sets | `65d29b56-2222-1100-0000-000000000001` | Unit I | Sets, Subsets, Intervals, Operations & Formative Applications | 5 Topics | `F_7WUK7htRg` (PW) \| ✅ Verified (0s ➔ 13789s) |
-| **Ch 2** | Relations and Functions | `65d29b56-2222-1100-0000-000000000002` | Unit I | Cartesian Products, Real Functions, Graphs & Formative Composition | 6 Topics | 🚀 Live in DB (V121) |
+| **Ch 2** | Relations and Functions | `65d29b56-2222-1100-0000-000000000002` | Unit I | Cartesian Products, Real Functions, Graphs & Algebra of Functions | 5 Topics | `4VXUlNRlT3c` (PW) \| ✅ Verified (0s ➔ 15684s) |
 | **Ch 3** | Trigonometric Functions | `65d29b56-2222-1100-0000-000000000003` | Unit I | Radians, Graphs, Angle Identities & Formative General Solutions | 6 Topics | 🚀 Live in DB (V121) |
 | **Ch 4** | Complex Numbers and Quadratic Equations | `65d29b56-2222-1100-0000-000000000004` | Unit II | Imaginary Unit, Argand Plane, Formative Polar & Induction (PMI) | 6 Topics | 🚀 Live in DB (V121) |
 | **Ch 5** | Linear Inequalities | `65d29b56-2222-1100-0000-000000000005` | Unit II | Algebraic Solutions in 1-Var & Formative 2-Var Graphical Systems | 5 Topics | 🚀 Live in DB (V121) |
@@ -58,12 +58,11 @@
 
 ### Chapter 2: Relations and Functions
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000002`
-1. `65d29b56-2222-2102-0000-000000000001`: Cartesian Product of Sets & Cartesian Product of Reals (R x R x R)
-2. `65d29b56-2222-2102-0000-000000000002`: Relations: Definition, Pictorial Diagrams, Domain, Co-domain and Range
-3. `65d29b56-2222-2102-0000-000000000003`: Functions as Special Relations, Pictorial Representation, Domain & Range
-4. `65d29b56-2222-2102-0000-000000000004`: Standard Real Functions & Graphs (Identity, Constant, Polynomial, Rational, Modulus, Signum, Exponential, Logarithmic & GIF)
-5. `65d29b56-2222-2102-0000-000000000005`: Algebra of Real Functions (Sum, Difference, Product and Quotient)
-6. `65d29b56-2222-2102-0000-000000000006`: [Enrichment / Formative] Composition of Functions (fog and gof)
+1. `65d29b56-2222-2102-0000-000000000001`: Ordered Pairs & Cartesian Product of Sets (Number of Elements & Subsets of R × R)
+2. `65d29b56-2222-2102-0000-000000000002`: Relations: Definition, Pictorial Diagrams, Domain, Co-domain, Range & Inverse of a Relation
+3. `65d29b56-2222-2102-0000-000000000003`: Functions as Special Relations: Definition, Vertical Line Test, Representation & Equal Functions
+4. `65d29b56-2222-2102-0000-000000000004`: Real-Valued Functions: Finding Domain and Range of Algebraic, Rational & Square Root Functions
+5. `65d29b56-2222-2102-0000-000000000005`: Standard Real Functions with Graphs & Algebra of Functions
 
 ### Chapter 3: Trigonometric Functions
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000003`
@@ -176,6 +175,19 @@
 
 ---
 
+## Chapter 2: Relations and Functions Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Ordered Pairs & Cartesian Product of Sets (Number of Elements & Subsets of R × R) | 0s | 2525s | 2525s (~42.1 min) | `https://www.youtube.com/watch?v=4VXUlNRlT3c&end=2525s` |
+| **2** | Relations: Definition, Pictorial Diagrams, Domain, Co-domain, Range & Inverse of a Relation | 2525s | 6657s | 4132s (~68.9 min) | `https://www.youtube.com/watch?v=4VXUlNRlT3c&t=2525s&end=6657s` |
+| **3** | Functions as Special Relations: Definition, Vertical Line Test, Representation & Equal Functions | 6657s | 10487s | 3830s (~63.8 min) | `https://www.youtube.com/watch?v=4VXUlNRlT3c&t=6657s&end=10487s` |
+| **4** | Real-Valued Functions: Finding Domain and Range of Algebraic, Rational & Square Root Functions | 10487s | 13767s | 3280s (~54.7 min) | `https://www.youtube.com/watch?v=4VXUlNRlT3c&t=10487s&end=13767s` |
+| **5** | Standard Real Functions with Graphs & Algebra of Functions | 13767s | 15684s | 1917s (~32.0 min) | `https://www.youtube.com/watch?v=4VXUlNRlT3c&t=13767s&end=15684s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
+- `backend/src/main/resources/db/migration/V123__seed_class11_maths_ch2_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 15684s) for Chapter 2: Relations and Functions (`4VXUlNRlT3c`).
