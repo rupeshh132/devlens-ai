@@ -35,7 +35,7 @@
 | **Ch 5** | Linear Inequalities | `65d29b56-2222-1100-0000-000000000005` | Unit II | Intervals, Algebraic Solutions, Number Line & Word Problems | 5 Topics | `Kdcd7m0jme0` (PW) \| ✅ Verified (0s ➔ 6298s) |
 | **Ch 6** | Permutations and Combinations | `65d29b56-2222-1100-0000-000000000006` | Unit II | Factorials, FPC, Permutations, Restricted & Combinations | 5 Topics | `Y1X_zLptX_E` (PW) \| ✅ Verified (0s ➔ 16822s) |
 | **Ch 7** | Binomial Theorem | `65d29b56-2222-1100-0000-000000000007` | Unit II | Pascal's Triangle, Expansions, Multi-Term & Divisibility | 5 Topics | `hxPoUsmq7Xs` (PW) \| ✅ Verified (0s ➔ 6526s) |
-| **Ch 8** | Sequence and Series | `65d29b56-2222-1100-0000-000000000008` | Unit II | AP, GP, Infinite GP, AM-GM Inequality & Formative Special Sums | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 8** | Sequence and Series | `65d29b56-2222-1100-0000-000000000008` | Unit II | A.M., G.P. General Term, Term Selection, Sum of G.P. & G.M. | 5 Topics | `pVX8_vNbta4` (PW) \| ✅ Verified (0s ➔ 14114s) |
 | **Ch 9** | Straight Lines | `65d29b56-2222-1100-0000-000000000009` | Unit III | Slope, Standard Line Forms, Distance & Formative Normal Form | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 10** | Conic Sections | `65d29b56-2222-1100-0000-000000000010` | Unit III | Circles, Parabolas, Ellipses, Hyperbolas & Focal Properties | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance & Formative Section Formula | 4 Topics | 🚀 Live in DB (V121) |
@@ -106,11 +106,11 @@
 
 ### Chapter 8: Sequence and Series
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000008`
-1. `65d29b56-2222-2108-0000-000000000001`: Sequences and Series: Definitions, Recall of AP & Arithmetic Mean (A.M.)
-2. `65d29b56-2222-2108-0000-000000000002`: Geometric Progression (G.P.): General Term (aₙ = arⁿ⁻¹) & Properties
-3. `65d29b56-2222-2108-0000-000000000003`: Sum of First n Terms of a G.P. (Sₙ) & Sum of an Infinite G.P. (S∞)
-4. `65d29b56-2222-2108-0000-000000000004`: Geometric Mean (G.M.) & Relationship between A.M. and G.M. (A.M. ≥ G.M.)
-5. `65d29b56-2222-2108-0000-000000000005`: [Enrichment / Formative] Special Sum Formulas: Sum of First n Natural Numbers, Squares & Cubes (Σk, Σk², Σk³)
+1. `65d29b56-2222-2108-0000-000000000001`: Arithmetic Mean (A.M.), Insertion of n Arithmetic Means & Problem Solving
+2. `65d29b56-2222-2108-0000-000000000002`: Geometric Progression (G.P.): Definition, General Term (aₙ = arⁿ⁻¹) & Geometric Series
+3. `65d29b56-2222-2108-0000-000000000003`: Properties of G.P.: nᵗʰ Term from End & Selection of Terms in Geometric Progression
+4. `65d29b56-2222-2108-0000-000000000004`: Sum of First n Terms of a G.P. (Sₙ) & Sum of an Infinite G.P. (S∞)
+5. `65d29b56-2222-2108-0000-000000000005`: Geometric Mean (G.M.), Insertion of n G.M.s & Relationship between A.M. and G.M. (A.M. ≥ G.M.)
 
 ### Chapter 9: Straight Lines
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000009`
@@ -246,6 +246,18 @@
 
 ---
 
+## Chapter 8: Sequence and Series Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Arithmetic Mean (A.M.), Insertion of n Arithmetic Means & Problem Solving | 0s | 1342s | 1342s (~22.4 min) | `https://www.youtube.com/watch?v=pVX8_vNbta4&end=1342s` |
+| **2** | Geometric Progression (G.P.): Definition, General Term (aₙ = arⁿ⁻¹) & Geometric Series | 1342s | 5837s | 4495s (~74.9 min) | `https://www.youtube.com/watch?v=pVX8_vNbta4&t=1342s&end=5837s` |
+| **3** | Properties of G.P.: nᵗʰ Term from End & Selection of Terms in Geometric Progression | 5837s | 6546s | 709s (~11.8 min) | `https://www.youtube.com/watch?v=pVX8_vNbta4&t=5837s&end=6546s` |
+| **4** | Sum of First n Terms of a G.P. (Sₙ) & Sum of an Infinite G.P. (S∞) | 6546s | 11006s | 4460s (~74.3 min) | `https://www.youtube.com/watch?v=pVX8_vNbta4&t=6546s&end=11006s` |
+| **5** | Geometric Mean (G.M.), Insertion of n G.M.s & Relationship between A.M. and G.M. (A.M. ≥ G.M.) | 11006s | 14114s | 3108s (~51.8 min) | `https://www.youtube.com/watch?v=pVX8_vNbta4&t=11006s&end=14114s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
@@ -255,3 +267,4 @@
 - `backend/src/main/resources/db/migration/V126__seed_class11_maths_ch5_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 6298s) for Chapter 5: Linear Inequalities (`Kdcd7m0jme0`).
 - `backend/src/main/resources/db/migration/V127__seed_class11_maths_ch6_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 16822s) for Chapter 6: Permutations and Combinations (`Y1X_zLptX_E`).
 - `backend/src/main/resources/db/migration/V128__seed_class11_maths_ch7_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 6526s) for Chapter 7: Binomial Theorem (`hxPoUsmq7Xs`).
+- `backend/src/main/resources/db/migration/V129__seed_class11_maths_ch8_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 14114s) for Chapter 8: Sequence and Series (`pVX8_vNbta4`).
