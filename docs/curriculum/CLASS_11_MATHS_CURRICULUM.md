@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V122  
 
 ---
 
@@ -28,7 +28,7 @@
 
 | Ch # | Chapter Name | Chapter ID | Unit | Focus & Scope | Topics Count | Status |
 |:---:|---|---|:---:|---|:---:|:---:|
-| **Ch 1** | Sets | `65d29b56-2222-1100-0000-000000000001` | Unit I | Sets, Subsets, Intervals, Operations & Formative Applications | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 1** | Sets | `65d29b56-2222-1100-0000-000000000001` | Unit I | Sets, Subsets, Intervals, Operations & Formative Applications | 5 Topics | `F_7WUK7htRg` (PW) \| ✅ Verified (0s ➔ 13789s) |
 | **Ch 2** | Relations and Functions | `65d29b56-2222-1100-0000-000000000002` | Unit I | Cartesian Products, Real Functions, Graphs & Formative Composition | 6 Topics | 🚀 Live in DB (V121) |
 | **Ch 3** | Trigonometric Functions | `65d29b56-2222-1100-0000-000000000003` | Unit I | Radians, Graphs, Angle Identities & Formative General Solutions | 6 Topics | 🚀 Live in DB (V121) |
 | **Ch 4** | Complex Numbers and Quadratic Equations | `65d29b56-2222-1100-0000-000000000004` | Unit II | Imaginary Unit, Argand Plane, Formative Polar & Induction (PMI) | 6 Topics | 🚀 Live in DB (V121) |
@@ -164,5 +164,18 @@
 
 ---
 
+## Chapter 1: Sets Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Sets & Representations (Roster & Set-Builder Forms, Empty, Finite, Infinite & Equal Sets) | 0s | 2718s | 2718s (~45.3 min) | `https://www.youtube.com/watch?v=F_7WUK7htRg&end=2718s` |
+| **2** | Subsets, Subsets of Real Numbers, Intervals as Subsets of R & Power Set | 2718s | 5778s | 3060s (~51.0 min) | `https://www.youtube.com/watch?v=F_7WUK7htRg&t=2718s&end=5778s` |
+| **3** | Venn Diagrams & Operations on Sets (Union, Intersection & Difference of Sets) | 5778s | 7664s | 1886s (~31.4 min) | `https://www.youtube.com/watch?v=F_7WUK7htRg&t=5778s&end=7664s` |
+| **4** | Complement of a Set, Laws of Algebra of Sets & De Morgan's Laws | 7664s | 9282s | 1618s (~27.0 min) | `https://www.youtube.com/watch?v=F_7WUK7htRg&t=7664s&end=9282s` |
+| **5** | [Enrichment / Formative] Practical Word Problems on Cardinality of Sets & Comprehensive Practice | 9282s | 13789s | 4507s (~75.1 min) | `https://www.youtube.com/watch?v=F_7WUK7htRg&t=9282s&end=13789s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
+- `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
