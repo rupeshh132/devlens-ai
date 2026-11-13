@@ -33,7 +33,7 @@
 | **Ch 3** | Trigonometric Functions | `65d29b56-2222-1100-0000-000000000003` | Unit I | Radians, T-Ratios, Graphs, Identities & Transformations | 5 Topics | `kcSMOgFRp6w` (PW) \| ✅ Verified (0s ➔ 17668s) |
 | **Ch 4** | Complex Numbers and Quadratic Equations | `65d29b56-2222-1100-0000-000000000004` | Unit II | Imaginary Unit, Algebra, Conjugate, Modulus & Argand Plane | 5 Topics | `7tu6_GH5qAw` (PW) \| ✅ Verified (0s ➔ 9515s) |
 | **Ch 5** | Linear Inequalities | `65d29b56-2222-1100-0000-000000000005` | Unit II | Intervals, Algebraic Solutions, Number Line & Word Problems | 5 Topics | `Kdcd7m0jme0` (PW) \| ✅ Verified (0s ➔ 6298s) |
-| **Ch 6** | Permutations and Combinations | `65d29b56-2222-1100-0000-000000000006` | Unit II | FPC, Factorials, ⁿPᵣ, ⁿCᵣ & Combinatorial Problem Solving | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 6** | Permutations and Combinations | `65d29b56-2222-1100-0000-000000000006` | Unit II | Factorials, FPC, Permutations, Restricted & Combinations | 5 Topics | `Y1X_zLptX_E` (PW) \| ✅ Verified (0s ➔ 16822s) |
 | **Ch 7** | Binomial Theorem | `65d29b56-2222-1100-0000-000000000007` | Unit II | Positive Integral Indices, Pascal's Triangle & Formative Middle Terms | 4 Topics | 🚀 Live in DB (V121) |
 | **Ch 8** | Sequence and Series | `65d29b56-2222-1100-0000-000000000008` | Unit II | AP, GP, Infinite GP, AM-GM Inequality & Formative Special Sums | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 9** | Straight Lines | `65d29b56-2222-1100-0000-000000000009` | Unit III | Slope, Standard Line Forms, Distance & Formative Normal Form | 5 Topics | 🚀 Live in DB (V121) |
@@ -90,11 +90,11 @@
 
 ### Chapter 6: Permutations and Combinations
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000006`
-1. `65d29b56-2222-2106-0000-000000000001`: Fundamental Principle of Counting (Multiplication & Addition Principles)
-2. `65d29b56-2222-2106-0000-000000000002`: Factorial Notation (n!) & Computation Properties
-3. `65d29b56-2222-2106-0000-000000000003`: Permutations: Derivation of Formula for ⁿPᵣ & Restricted Permutations
-4. `65d29b56-2222-2106-0000-000000000004`: Combinations: Derivation of Formula for ⁿCᵣ, Properties & Relation with ⁿPᵣ
-5. `65d29b56-2222-2106-0000-000000000005`: Practical & Contextual Applications of Permutations and Combinations
+1. `65d29b56-2222-2106-0000-000000000001`: Factorial Notation (n!), Computational Properties & Algebraic Equations
+2. `65d29b56-2222-2106-0000-000000000002`: Fundamental Principles of Counting (Multiplication & Addition Principles) & Problem Solving
+3. `65d29b56-2222-2106-0000-000000000003`: Permutations: Definition, Theorems, Derivation of ⁿPᵣ Formula & Basic Arrangements
+4. `65d29b56-2222-2106-0000-000000000004`: Restricted Permutations & Permutations of Objects Not All Distinct (Repeated Elements)
+5. `65d29b56-2222-2106-0000-000000000005`: Combinations: Definition, Notations, ⁿCᵣ Properties & Comprehensive Problem Solving
 
 ### Chapter 7: Binomial Theorem
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000007`
@@ -221,6 +221,18 @@
 
 ---
 
+## Chapter 6: Permutations and Combinations Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Factorial Notation (n!), Computational Properties & Algebraic Equations | 0s | 2922s | 2922s (~48.7 min) | `https://www.youtube.com/watch?v=Y1X_zLptX_E&end=2922s` |
+| **2** | Fundamental Principles of Counting (Multiplication & Addition Principles) & Problem Solving | 2922s | 7507s | 4585s (~76.4 min) | `https://www.youtube.com/watch?v=Y1X_zLptX_E&t=2922s&end=7507s` |
+| **3** | Permutations: Definition, Theorems, Derivation of ⁿPᵣ Formula & Basic Arrangements | 7507s | 9942s | 2435s (~40.6 min) | `https://www.youtube.com/watch?v=Y1X_zLptX_E&t=7507s&end=9942s` |
+| **4** | Restricted Permutations & Permutations of Objects Not All Distinct (Repeated Elements) | 9942s | 13320s | 3378s (~56.3 min) | `https://www.youtube.com/watch?v=Y1X_zLptX_E&t=9942s&end=13320s` |
+| **5** | Combinations: Definition, Notations, ⁿCᵣ Properties & Comprehensive Problem Solving | 13320s | 16822s | 3502s (~58.4 min) | `https://www.youtube.com/watch?v=Y1X_zLptX_E&t=13320s&end=16822s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
@@ -228,3 +240,4 @@
 - `backend/src/main/resources/db/migration/V124__seed_class11_maths_ch3_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 17668s) for Chapter 3: Trigonometric Functions (`kcSMOgFRp6w`).
 - `backend/src/main/resources/db/migration/V125__seed_class11_maths_ch4_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 9515s) for Chapter 4: Complex Numbers and Quadratic Equations (`7tu6_GH5qAw`).
 - `backend/src/main/resources/db/migration/V126__seed_class11_maths_ch5_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 6298s) for Chapter 5: Linear Inequalities (`Kdcd7m0jme0`).
+- `backend/src/main/resources/db/migration/V127__seed_class11_maths_ch6_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 16822s) for Chapter 6: Permutations and Combinations (`Y1X_zLptX_E`).
