@@ -31,7 +31,7 @@
 | **Ch 1** | Sets | `65d29b56-2222-1100-0000-000000000001` | Unit I | Sets, Subsets, Intervals, Operations & Formative Applications | 5 Topics | `F_7WUK7htRg` (PW) \| ✅ Verified (0s ➔ 13789s) |
 | **Ch 2** | Relations and Functions | `65d29b56-2222-1100-0000-000000000002` | Unit I | Cartesian Products, Real Functions, Graphs & Algebra of Functions | 5 Topics | `4VXUlNRlT3c` (PW) \| ✅ Verified (0s ➔ 15684s) |
 | **Ch 3** | Trigonometric Functions | `65d29b56-2222-1100-0000-000000000003` | Unit I | Radians, T-Ratios, Graphs, Identities & Transformations | 5 Topics | `kcSMOgFRp6w` (PW) \| ✅ Verified (0s ➔ 17668s) |
-| **Ch 4** | Complex Numbers and Quadratic Equations | `65d29b56-2222-1100-0000-000000000004` | Unit II | Imaginary Unit, Argand Plane, Formative Polar & Induction (PMI) | 6 Topics | 🚀 Live in DB (V121) |
+| **Ch 4** | Complex Numbers and Quadratic Equations | `65d29b56-2222-1100-0000-000000000004` | Unit II | Imaginary Unit, Algebra, Conjugate, Modulus & Argand Plane | 5 Topics | `7tu6_GH5qAw` (PW) \| ✅ Verified (0s ➔ 9515s) |
 | **Ch 5** | Linear Inequalities | `65d29b56-2222-1100-0000-000000000005` | Unit II | Algebraic Solutions in 1-Var & Formative 2-Var Graphical Systems | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 6** | Permutations and Combinations | `65d29b56-2222-1100-0000-000000000006` | Unit II | FPC, Factorials, ⁿPᵣ, ⁿCᵣ & Combinatorial Problem Solving | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 7** | Binomial Theorem | `65d29b56-2222-1100-0000-000000000007` | Unit II | Positive Integral Indices, Pascal's Triangle & Formative Middle Terms | 4 Topics | 🚀 Live in DB (V121) |
@@ -42,7 +42,7 @@
 | **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Tangents, First Principles, Product/Quotient & Formative Chain Rule | 6 Topics | 🚀 Live in DB (V121) |
 | **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Range, Mean Deviation, Variance & Standard Deviation | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 14** | Probability | `65d29b56-2222-1100-0000-000000000014` | Unit V | Axiomatic Probability, Event Algebra & Formative Sample Spaces | 5 Topics | 🚀 Live in DB (V121) |
-| **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **72 Topics** | 🚀 **Live in DB** |
+| **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **71 Topics** | 🚀 **Live in DB** |
 
 ---
 
@@ -74,12 +74,11 @@
 
 ### Chapter 4: Complex Numbers and Quadratic Equations
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000004`
-1. `65d29b56-2222-2104-0000-000000000001`: Introduction to Imaginary Numbers, Need for √-1 & Integral Powers of i
-2. `65d29b56-2222-2104-0000-000000000002`: Algebra of Complex Numbers (Addition, Subtraction, Multiplication & Division)
-3. `65d29b56-2222-2104-0000-000000000003`: Modulus, Conjugate & Argand Plane (Complex Plane Representation)
-4. `65d29b56-2222-2104-0000-000000000004`: [Enrichment / Formative] Polar Representation of Complex Numbers & Euler's Form
-5. `65d29b56-2222-2104-0000-000000000005`: [Enrichment / Formative] Fundamental Theorem of Algebra & Quadratic Equations with Complex Roots
-6. `65d29b56-2222-2104-0000-000000000006`: [Enrichment / Formative] Principle of Mathematical Induction (Proof by Induction & Natural Number Foundations)
+1. `65d29b56-2222-2104-0000-000000000001`: Need for Complex Numbers, Imaginary Unit (i), Integral Powers of Iota & Problem Solving
+2. `65d29b56-2222-2104-0000-000000000002`: Definition & Algebra of Complex Numbers: Real & Imaginary Parts, Operations & Algebraic Identities
+3. `65d29b56-2222-2104-0000-000000000003`: Equality of Complex Numbers, Conjugate of a Complex Number & Conjugate Properties
+4. `65d29b56-2222-2104-0000-000000000004`: Modulus of Complex Numbers, Multiplicative Inverse & Modulus Properties with Problem Solving
+5. `65d29b56-2222-2104-0000-000000000005`: Argand Plane (Complex Plane): Geometric Representation, Real & Imaginary Axes & Chapter Review
 
 ### Chapter 5: Linear Inequalities
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000005`
@@ -198,8 +197,21 @@
 
 ---
 
+## Chapter 4: Complex Numbers and Quadratic Equations Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Need for Complex Numbers, Imaginary Unit (i), Integral Powers of Iota & Problem Solving | 0s | 2970s | 2970s (~49.5 min) | `https://www.youtube.com/watch?v=7tu6_GH5qAw&end=2970s` |
+| **2** | Definition & Algebra of Complex Numbers: Real & Imaginary Parts, Operations & Algebraic Identities | 2970s | 4558s | 1588s (~26.5 min) | `https://www.youtube.com/watch?v=7tu6_GH5qAw&t=2970s&end=4558s` |
+| **3** | Equality of Complex Numbers, Conjugate of a Complex Number & Conjugate Properties | 4558s | 6165s | 1607s (~26.8 min) | `https://www.youtube.com/watch?v=7tu6_GH5qAw&t=4558s&end=6165s` |
+| **4** | Modulus of Complex Numbers, Multiplicative Inverse & Modulus Properties with Problem Solving | 6165s | 8942s | 2777s (~46.3 min) | `https://www.youtube.com/watch?v=7tu6_GH5qAw&t=6165s&end=8942s` |
+| **5** | Argand Plane (Complex Plane): Geometric Representation, Real & Imaginary Axes & Chapter Review | 8942s | 9515s | 573s (~9.6 min) | `https://www.youtube.com/watch?v=7tu6_GH5qAw&t=8942s&end=9515s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
 - `backend/src/main/resources/db/migration/V123__seed_class11_maths_ch2_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 15684s) for Chapter 2: Relations and Functions (`4VXUlNRlT3c`).
 - `backend/src/main/resources/db/migration/V124__seed_class11_maths_ch3_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 17668s) for Chapter 3: Trigonometric Functions (`kcSMOgFRp6w`).
+- `backend/src/main/resources/db/migration/V125__seed_class11_maths_ch4_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 9515s) for Chapter 4: Complex Numbers and Quadratic Equations (`7tu6_GH5qAw`).
