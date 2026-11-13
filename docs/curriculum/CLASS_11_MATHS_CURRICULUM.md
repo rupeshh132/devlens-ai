@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V123  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V124  
 
 ---
 
@@ -30,7 +30,7 @@
 |:---:|---|---|:---:|---|:---:|:---:|
 | **Ch 1** | Sets | `65d29b56-2222-1100-0000-000000000001` | Unit I | Sets, Subsets, Intervals, Operations & Formative Applications | 5 Topics | `F_7WUK7htRg` (PW) \| ✅ Verified (0s ➔ 13789s) |
 | **Ch 2** | Relations and Functions | `65d29b56-2222-1100-0000-000000000002` | Unit I | Cartesian Products, Real Functions, Graphs & Algebra of Functions | 5 Topics | `4VXUlNRlT3c` (PW) \| ✅ Verified (0s ➔ 15684s) |
-| **Ch 3** | Trigonometric Functions | `65d29b56-2222-1100-0000-000000000003` | Unit I | Radians, Graphs, Angle Identities & Formative General Solutions | 6 Topics | 🚀 Live in DB (V121) |
+| **Ch 3** | Trigonometric Functions | `65d29b56-2222-1100-0000-000000000003` | Unit I | Radians, T-Ratios, Graphs, Identities & Transformations | 5 Topics | `kcSMOgFRp6w` (PW) \| ✅ Verified (0s ➔ 17668s) |
 | **Ch 4** | Complex Numbers and Quadratic Equations | `65d29b56-2222-1100-0000-000000000004` | Unit II | Imaginary Unit, Argand Plane, Formative Polar & Induction (PMI) | 6 Topics | 🚀 Live in DB (V121) |
 | **Ch 5** | Linear Inequalities | `65d29b56-2222-1100-0000-000000000005` | Unit II | Algebraic Solutions in 1-Var & Formative 2-Var Graphical Systems | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 6** | Permutations and Combinations | `65d29b56-2222-1100-0000-000000000006` | Unit II | FPC, Factorials, ⁿPᵣ, ⁿCᵣ & Combinatorial Problem Solving | 5 Topics | 🚀 Live in DB (V121) |
@@ -66,12 +66,11 @@
 
 ### Chapter 3: Trigonometric Functions
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000003`
-1. `65d29b56-2222-2103-0000-000000000001`: Angles: Degree & Radian Measures, Interconversions & Unit Circle Definition
-2. `65d29b56-2222-2103-0000-000000000002`: Signs, Domain, Range & Graphs of Trigonometric Functions (sin²x + cos²x = 1)
-3. `65d29b56-2222-2103-0000-000000000003`: Compound Angle Identities (sin(x±y), cos(x±y), tan(x±y), cot(x±y))
-4. `65d29b56-2222-2103-0000-000000000004`: Transformation Formulas: Sum/Difference to Product & Product to Sum
-5. `65d29b56-2222-2103-0000-000000000005`: Multiple & Submultiple Angles: Identities for sin2x, cos2x, tan2x, sin3x, cos3x, tan3x
-6. `65d29b56-2222-2103-0000-000000000006`: [Enrichment / Formative] General Solution of Trigonometric Equations (sin y = sin a, cos y = cos a, tan y = tan a)
+1. `65d29b56-2222-2103-0000-000000000001`: Angles & Measurement: Degree & Radian Measures, Circular System, Interconversions & Visualisation
+2. `65d29b56-2222-2103-0000-000000000002`: Signs of Trigonometric Functions, ASTC Rule, Allied Angles & Graphical Representation
+3. `65d29b56-2222-2103-0000-000000000003`: Compound Angle Identities & Evaluation of Trigonometric Values
+4. `65d29b56-2222-2103-0000-000000000004`: Transformation Formulas: Product-to-Sum and Sum-to-Product (C & D Formulas)
+5. `65d29b56-2222-2103-0000-000000000005`: Multiple & Submultiple Angles (2x, 3x, x/2), Advanced Identities & Board Problem Solving
 
 ### Chapter 4: Complex Numbers and Quadratic Equations
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000004`
@@ -187,7 +186,20 @@
 
 ---
 
+## Chapter 3: Trigonometric Functions Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Angles & Measurement: Degree & Radian Measures, Circular System, Interconversions & Visualisation | 0s | 3980s | 3980s (~66.3 min) | `https://www.youtube.com/watch?v=kcSMOgFRp6w&end=3980s` |
+| **2** | Signs of Trigonometric Functions, ASTC Rule, Allied Angles & Graphical Representation | 3980s | 9391s | 5411s (~90.2 min) | `https://www.youtube.com/watch?v=kcSMOgFRp6w&t=3980s&end=9391s` |
+| **3** | Compound Angle Identities & Evaluation of Trigonometric Values | 9391s | 11910s | 2519s (~42.0 min) | `https://www.youtube.com/watch?v=kcSMOgFRp6w&t=9391s&end=11910s` |
+| **4** | Transformation Formulas: Product-to-Sum and Sum-to-Product (C & D Formulas) | 11910s | 14315s | 2405s (~40.1 min) | `https://www.youtube.com/watch?v=kcSMOgFRp6w&t=11910s&end=14315s` |
+| **5** | Multiple & Submultiple Angles (2x, 3x, x/2), Advanced Identities & Board Problem Solving | 14315s | 17668s | 3353s (~55.9 min) | `https://www.youtube.com/watch?v=kcSMOgFRp6w&t=14315s&end=17668s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
 - `backend/src/main/resources/db/migration/V123__seed_class11_maths_ch2_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 15684s) for Chapter 2: Relations and Functions (`4VXUlNRlT3c`).
+- `backend/src/main/resources/db/migration/V124__seed_class11_maths_ch3_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 17668s) for Chapter 3: Trigonometric Functions (`kcSMOgFRp6w`).
