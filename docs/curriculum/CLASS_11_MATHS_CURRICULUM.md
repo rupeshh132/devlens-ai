@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V124  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V130  
 
 ---
 
@@ -36,7 +36,7 @@
 | **Ch 6** | Permutations and Combinations | `65d29b56-2222-1100-0000-000000000006` | Unit II | Factorials, FPC, Permutations, Restricted & Combinations | 5 Topics | `Y1X_zLptX_E` (PW) \| ✅ Verified (0s ➔ 16822s) |
 | **Ch 7** | Binomial Theorem | `65d29b56-2222-1100-0000-000000000007` | Unit II | Pascal's Triangle, Expansions, Multi-Term & Divisibility | 5 Topics | `hxPoUsmq7Xs` (PW) \| ✅ Verified (0s ➔ 6526s) |
 | **Ch 8** | Sequence and Series | `65d29b56-2222-1100-0000-000000000008` | Unit II | A.M., G.P. General Term, Term Selection, Sum of G.P. & G.M. | 5 Topics | `pVX8_vNbta4` (PW) \| ✅ Verified (0s ➔ 14114s) |
-| **Ch 9** | Straight Lines | `65d29b56-2222-1100-0000-000000000009` | Unit III | Slope, Standard Line Forms, Distance & Formative Normal Form | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 9** | Straight Lines | `65d29b56-2222-1100-0000-000000000009` | Unit III | Slope, Angle Between Lines, Line Equations, Intercept & Perpendicular Distance | 5 Topics | `lRrHW6hfAiA` (PW) \| ✅ Verified (0s ➔ 13016s) |
 | **Ch 10** | Conic Sections | `65d29b56-2222-1100-0000-000000000010` | Unit III | Circles, Parabolas, Ellipses, Hyperbolas & Focal Properties | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance & Formative Section Formula | 4 Topics | 🚀 Live in DB (V121) |
 | **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Tangents, First Principles, Product/Quotient & Formative Chain Rule | 6 Topics | 🚀 Live in DB (V121) |
@@ -114,11 +114,11 @@
 
 ### Chapter 9: Straight Lines
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000009`
-1. `65d29b56-2222-2109-0000-000000000001`: Slope of a Line, Collinearity of Points & Angle between Two Lines
-2. `65d29b56-2222-2109-0000-000000000002`: Standard Forms: Parallel to Axes, Point-Slope & Two-Point Forms
-3. `65d29b56-2222-2109-0000-000000000003`: Slope-Intercept & Intercept Forms of Line Equation
-4. `65d29b56-2222-2109-0000-000000000004`: Perpendicular Distance of a Point from a Line & Distance between Parallel Lines
-5. `65d29b56-2222-2109-0000-000000000005`: [Enrichment / Formative] Normal Form (x cos α + y sin α = p) & General Form Reduction (Ax + By + C = 0)
+1. `65d29b56-2222-2109-0000-000000000001`: Slope of a Line, Angle Between Two Lines & Parallelism / Perpendicularity Conditions
+2. `65d29b56-2222-2109-0000-000000000002`: Standard Equations of a Line: Lines Parallel to Axes, Slope-Intercept & Point-Slope Forms
+3. `65d29b56-2222-2109-0000-000000000003`: Two-Point Form of a Line: Equation Derivation & Geometric Applications
+4. `65d29b56-2222-2109-0000-000000000004`: Intercept Form of a Line (x/a + y/b = 1) & Coordinate Geometry Applications
+5. `65d29b56-2222-2109-0000-000000000005`: Perpendicular Distance of a Point from a Line & Distance Between Parallel Lines
 
 ### Chapter 10: Conic Sections
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000010`
@@ -258,6 +258,18 @@
 
 ---
 
+## Chapter 9: Straight Lines Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Slope of a Line, Angle Between Two Lines & Parallelism / Perpendicularity Conditions | 0s | 3499s | 3499s (~58.3 min) | `https://www.youtube.com/watch?v=lRrHW6hfAiA&end=3499s` |
+| **2** | Standard Equations of a Line: Lines Parallel to Axes, Slope-Intercept & Point-Slope Forms | 3499s | 7994s | 4495s (~74.9 min) | `https://www.youtube.com/watch?v=lRrHW6hfAiA&t=3499s&end=7994s` |
+| **3** | Two-Point Form of a Line: Equation Derivation & Geometric Applications | 7994s | 8833s | 839s (~14.0 min) | `https://www.youtube.com/watch?v=lRrHW6hfAiA&t=7994s&end=8833s` |
+| **4** | Intercept Form of a Line (x/a + y/b = 1) & Coordinate Geometry Applications | 8833s | 12175s | 3342s (~55.7 min) | `https://www.youtube.com/watch?v=lRrHW6hfAiA&t=8833s&end=12175s` |
+| **5** | Perpendicular Distance of a Point from a Line & Distance Between Parallel Lines | 12175s | 13016s | 841s (~14.0 min) | `https://www.youtube.com/watch?v=lRrHW6hfAiA&t=12175s&end=13016s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
@@ -268,3 +280,4 @@
 - `backend/src/main/resources/db/migration/V127__seed_class11_maths_ch6_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 16822s) for Chapter 6: Permutations and Combinations (`Y1X_zLptX_E`).
 - `backend/src/main/resources/db/migration/V128__seed_class11_maths_ch7_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 6526s) for Chapter 7: Binomial Theorem (`hxPoUsmq7Xs`).
 - `backend/src/main/resources/db/migration/V129__seed_class11_maths_ch8_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 14114s) for Chapter 8: Sequence and Series (`pVX8_vNbta4`).
+- `backend/src/main/resources/db/migration/V130__seed_class11_maths_ch9_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13016s) for Chapter 9: Straight Lines (`lRrHW6hfAiA`).
