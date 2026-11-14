@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V133  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V134  
 
 ---
 
@@ -40,7 +40,7 @@
 | **Ch 10** | Conic Sections | `65d29b56-2222-1100-0000-000000000010` | Unit III | Circles, Parabola Standard Forms, Ellipse, Hyperbola & Conic Geometry | 5 Topics | `5w2tWzcsiy4` (PW) \| ✅ Verified (0s ➔ 13600s) |
 | **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance, Section Formula & Centroid | 4 Topics | `iTV5LP5j17s` (PW) \| ✅ Verified (0s ➔ 4345s) |
 | **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Indeterminate Forms, Trigonometric Limits, First Principles & Derivatives | 6 Topics | `CHWhaAlo_ms` (PW) \| ✅ Verified (0s ➔ 13435s) |
-| **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Range, Mean Deviation, Variance & Standard Deviation | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Dispersion, Range, Mean Deviation (Mean/Median), Variance & Standard Deviation | 5 Topics | `4LxrzD-MRBk` (PW) \| ✅ Verified (0s ➔ 9480s) |
 | **Ch 14** | Probability | `65d29b56-2222-1100-0000-000000000014` | Unit V | Axiomatic Probability, Event Algebra & Formative Sample Spaces | 5 Topics | 🚀 Live in DB (V121) |
 | **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **72 Topics** | 🚀 **Live in DB** |
 
@@ -146,11 +146,11 @@
 
 ### Chapter 13: Statistics
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000013`
-1. `65d29b56-2222-2113-0000-000000000001`: Measures of Dispersion: Concept of Spread & Range
-2. `65d29b56-2222-2113-0000-000000000002`: Mean Deviation about Mean for Ungrouped & Grouped Frequency Distributions
-3. `65d29b56-2222-2113-0000-000000000003`: Mean Deviation about Median for Ungrouped & Grouped Frequency Distributions
-4. `65d29b56-2222-2113-0000-000000000004`: Variance and Standard Deviation of Ungrouped Data
-5. `65d29b56-2222-2113-0000-000000000005`: Variance and Standard Deviation of Continuous Grouped Frequency Distributions (Short-cut Method)
+1. `65d29b56-2222-2113-0000-000000000001`: Measures of Dispersion: Frequency Distributions, Concept of Dispersion & Range
+2. `65d29b56-2222-2113-0000-000000000002`: Mean Deviation for Ungrouped Data (About Mean & About Median)
+3. `65d29b56-2222-2113-0000-000000000003`: Mean Deviation for Grouped Data: Discrete & Continuous Frequency Distributions
+4. `65d29b56-2222-2113-0000-000000000004`: Variance & Standard Deviation: Concepts, Formulae & Calculation for Ungrouped Data
+5. `65d29b56-2222-2113-0000-000000000005`: Variance & Standard Deviation for Continuous Grouped Data, Short-cut Method & Comprehensive Practice
 
 ### Chapter 14: Probability
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000014`
@@ -306,6 +306,18 @@
 
 ---
 
+## Chapter 13: Statistics Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Measures of Dispersion: Frequency Distributions, Concept of Dispersion & Range | 0s | 1882s | 1882s (~31.4 min) | `https://www.youtube.com/watch?v=4LxrzD-MRBk&end=1882s` |
+| **2** | Mean Deviation for Ungrouped Data (About Mean & About Median) | 1882s | 2601s | 719s (~12.0 min) | `https://www.youtube.com/watch?v=4LxrzD-MRBk&t=1882s&end=2601s` |
+| **3** | Mean Deviation for Grouped Data: Discrete & Continuous Frequency Distributions | 2601s | 4160s | 1559s (~26.0 min) | `https://www.youtube.com/watch?v=4LxrzD-MRBk&t=2601s&end=4160s` |
+| **4** | Variance & Standard Deviation: Concepts, Formulae & Calculation for Ungrouped Data | 4160s | 4844s | 684s (~11.4 min) | `https://www.youtube.com/watch?v=4LxrzD-MRBk&t=4160s&end=4844s` |
+| **5** | Variance & Standard Deviation for Continuous Grouped Data, Short-cut Method & Comprehensive Practice | 4844s | 9480s | 4636s (~77.3 min) | `https://www.youtube.com/watch?v=4LxrzD-MRBk&t=4844s&end=9480s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
@@ -320,3 +332,4 @@
 - `backend/src/main/resources/db/migration/V131__seed_class11_maths_ch10_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13600s) for Chapter 10: Conic Sections (`5w2tWzcsiy4`).
 - `backend/src/main/resources/db/migration/V132__seed_class11_maths_ch11_lectures.sql`: Seeds verified 4 Master Topics and continuous zero-gap video lecture timestamps (0s to 4345s) for Chapter 11: Introduction to Three-Dimensional Geometry (`iTV5LP5j17s`).
 - `backend/src/main/resources/db/migration/V133__seed_class11_maths_ch12_lectures.sql`: Seeds verified 6 Master Topics and continuous zero-gap video lecture timestamps (0s to 13435s) for Chapter 12: Limits and Derivatives (`CHWhaAlo_ms`).
+- `backend/src/main/resources/db/migration/V134__seed_class11_maths_ch13_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 9480s) for Chapter 13: Statistics (`4LxrzD-MRBk`).
