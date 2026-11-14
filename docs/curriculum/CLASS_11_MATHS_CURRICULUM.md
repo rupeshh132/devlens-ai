@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V132  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V133  
 
 ---
 
@@ -39,7 +39,7 @@
 | **Ch 9** | Straight Lines | `65d29b56-2222-1100-0000-000000000009` | Unit III | Slope, Angle Between Lines, Line Equations, Intercept & Perpendicular Distance | 5 Topics | `lRrHW6hfAiA` (PW) \| ✅ Verified (0s ➔ 13016s) |
 | **Ch 10** | Conic Sections | `65d29b56-2222-1100-0000-000000000010` | Unit III | Circles, Parabola Standard Forms, Ellipse, Hyperbola & Conic Geometry | 5 Topics | `5w2tWzcsiy4` (PW) \| ✅ Verified (0s ➔ 13600s) |
 | **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance, Section Formula & Centroid | 4 Topics | `iTV5LP5j17s` (PW) \| ✅ Verified (0s ➔ 4345s) |
-| **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Tangents, First Principles, Product/Quotient & Formative Chain Rule | 6 Topics | 🚀 Live in DB (V121) |
+| **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Indeterminate Forms, Trigonometric Limits, First Principles & Derivatives | 6 Topics | `CHWhaAlo_ms` (PW) \| ✅ Verified (0s ➔ 13435s) |
 | **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Range, Mean Deviation, Variance & Standard Deviation | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 14** | Probability | `65d29b56-2222-1100-0000-000000000014` | Unit V | Axiomatic Probability, Event Algebra & Formative Sample Spaces | 5 Topics | 🚀 Live in DB (V121) |
 | **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **72 Topics** | 🚀 **Live in DB** |
@@ -137,12 +137,12 @@
 
 ### Chapter 12: Limits and Derivatives
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000012`
-1. `65d29b56-2222-2112-0000-000000000001`: Intuitive Idea of Limits, Left-Hand & Right-Hand Limits
-2. `65d29b56-2222-2112-0000-000000000002`: Limits of Polynomial, Rational & Standard Trigonometric Functions (lim sinx/x = 1)
-3. `65d29b56-2222-2112-0000-000000000003`: Limits of Exponential & Logarithmic Functions (lim (eˣ-1)/x = 1)
-4. `65d29b56-2222-2112-0000-000000000004`: Derivative as Rate of Change, Geometric Slope of Tangent & Definition from First Principles
-5. `65d29b56-2222-2112-0000-000000000005`: Algebra of Derivatives: Sum, Difference, Product Rule & Quotient Rule
-6. `65d29b56-2222-2112-0000-000000000006`: [Enrichment / Formative] Derivatives of Composite Functions (Introduction to Chain Rule)
+1. `65d29b56-2222-2112-0000-000000000001`: Intuitive Idea of Limits: Left-Hand Limit (LHL), Right-Hand Limit (RHL) & Existence of Limits
+2. `65d29b56-2222-2112-0000-000000000002`: Indeterminate Forms & Algebraic Limits: Direct Substitution, Factorisation & Rationalisation
+3. `65d29b56-2222-2112-0000-000000000003`: Standard Algebraic Limit Theorem (lim (xⁿ - aⁿ)/(x - a) = n·aⁿ⁻¹) & Problem Solving
+4. `65d29b56-2222-2112-0000-000000000004`: Trigonometric Limits: Sandwich Theorem, Standard Limits (lim sinx/x = 1) & Trigonometric Evaluations
+5. `65d29b56-2222-2112-0000-000000000005`: Derivative as Rate of Change, Geometric Slope of Tangent & Differentiation from First Principles
+6. `65d29b56-2222-2112-0000-000000000006`: [Enrichment / Formative] Algebra of Derivatives: Standard Formulas, Product Rule, Quotient Rule & Chain Rule
 
 ### Chapter 13: Statistics
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000013`
@@ -293,6 +293,19 @@
 
 ---
 
+## Chapter 12: Limits and Derivatives Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Intuitive Idea of Limits: Left-Hand Limit (LHL), Right-Hand Limit (RHL) & Existence of Limits | 0s | 2784s | 2784s (~46.4 min) | `https://www.youtube.com/watch?v=CHWhaAlo_ms&end=2784s` |
+| **2** | Indeterminate Forms & Algebraic Limits: Direct Substitution, Factorisation & Rationalisation | 2784s | 4398s | 1614s (~26.9 min) | `https://www.youtube.com/watch?v=CHWhaAlo_ms&t=2784s&end=4398s` |
+| **3** | Standard Algebraic Limit Theorem (lim (xⁿ - aⁿ)/(x - a) = n·aⁿ⁻¹) & Problem Solving | 4398s | 5153s | 755s (~12.6 min) | `https://www.youtube.com/watch?v=CHWhaAlo_ms&t=4398s&end=5153s` |
+| **4** | Trigonometric Limits: Sandwich Theorem, Standard Limits (lim sinx/x = 1) & Trigonometric Evaluations | 5153s | 10314s | 5161s (~86.0 min) | `https://www.youtube.com/watch?v=CHWhaAlo_ms&t=5153s&end=10314s` |
+| **5** | Derivative as Rate of Change, Geometric Slope of Tangent & Differentiation from First Principles | 10314s | 11814s | 1500s (~25.0 min) | `https://www.youtube.com/watch?v=CHWhaAlo_ms&t=10314s&end=11814s` |
+| **6** | [Enrichment / Formative] Algebra of Derivatives: Standard Formulas, Product Rule, Quotient Rule & Chain Rule | 11814s | 13435s | 1621s (~27.0 min) | `https://www.youtube.com/watch?v=CHWhaAlo_ms&t=11814s&end=13435s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
@@ -306,3 +319,4 @@
 - `backend/src/main/resources/db/migration/V130__seed_class11_maths_ch9_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13016s) for Chapter 9: Straight Lines (`lRrHW6hfAiA`).
 - `backend/src/main/resources/db/migration/V131__seed_class11_maths_ch10_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13600s) for Chapter 10: Conic Sections (`5w2tWzcsiy4`).
 - `backend/src/main/resources/db/migration/V132__seed_class11_maths_ch11_lectures.sql`: Seeds verified 4 Master Topics and continuous zero-gap video lecture timestamps (0s to 4345s) for Chapter 11: Introduction to Three-Dimensional Geometry (`iTV5LP5j17s`).
+- `backend/src/main/resources/db/migration/V133__seed_class11_maths_ch12_lectures.sql`: Seeds verified 6 Master Topics and continuous zero-gap video lecture timestamps (0s to 13435s) for Chapter 12: Limits and Derivatives (`CHWhaAlo_ms`).
