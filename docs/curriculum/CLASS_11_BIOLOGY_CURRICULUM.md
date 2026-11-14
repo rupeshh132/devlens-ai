@@ -4,7 +4,7 @@
 **Subject:** Biology (`id: 65d29b56-0440-0000-0000-000000000011`, `code: 044`, `order_index: 2`)  
 **Syllabus Authority:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Annual Curriculum (2026-27)  
 **Total Chapters:** 19 Official NCERT Chapters + 1 Formative Enrichment Module (20 Total)  
-**Total Topics:** 108 Verified Master Topics (Summative Core + Formative Enrichment Modules)  
+**Total Topics:** 109 Verified Master Topics (Summative Core + Formative Enrichment Modules)  
 **Status:** Architecture Scaffolded & Seeded in Flyway V136 (Ready for Lecture Video Seeding)  
 
 ---
@@ -54,7 +54,7 @@
 
 | Ch # | Chapter Name | Chapter ID | Unit | Focus & Scope | Topics Count |
 |:---:|---|---|:---:|---|:---:|
-| **Ch 1** | The Living World | `65d29b56-0440-1100-0000-000000000001` | Unit I | Characteristics, 3 Domains, Taxonomic Hierarchy & Binomial Nomenclature | 4 Topics |
+| **Ch 1** | The Living World | `65d29b56-0440-1100-0000-000000000001` | Unit I | Characteristics, 3 Domains, Taxonomic Hierarchy & Binomial Nomenclature | 5 Topics | `FNLxE6vrWzs` (PW NEET \| Vipin Sir) \| ✅ Verified (0s ➔ 8255s) |
 | **Ch 2** | Biological Classification | `65d29b56-0440-1100-0000-000000000002` | Unit I | Five Kingdoms, Monera, Protista, Fungi, Viruses, Viroids & Lichens | 5 Topics |
 | **Ch 3** | Plant Kingdom | `65d29b56-0440-1100-0000-000000000003` | Unit I | Algae, Bryophytes, Pteridophytes, Gymnosperms & Angiosperms | 5 Topics |
 | **Ch 4** | Animal Kingdom | `65d29b56-0440-1100-0000-000000000004` | Unit I | Non-Chordata Phyla (Porifera to Hemichordata) & Chordata Classes | 6 Topics |
@@ -74,7 +74,7 @@
 | **Ch 18** | Neural Control and Coordination | `65d29b56-0440-1100-0000-000000000018` | Unit V | Neuron, Nerve Impulse Conduction, Synapse, CNS (Brain/Spinal Cord) & PNS | 5 Topics |
 | **Ch 19** | Chemical Coordination and Integration | `65d29b56-0440-1100-0000-000000000019` | Unit V | Endocrine Glands, Hormone Actions, Hypo/Hyper Secretion & Disorders | 6 Topics |
 | **Ch 20** | Digestion and Absorption (Formative & Bridge) | `65d29b56-0440-1100-0000-000000000020` | Unit V | Alimentary Canal, Digestion, Absorption, Assimilation, PEM & Disorders | 4 Topics |
-| **TOTAL** | **Class 11 Biology (044)** | | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **108 Topics** |
+| **TOTAL** | **Class 11 Biology (044)** | | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **109 Topics** |
 
 ---
 
@@ -82,10 +82,12 @@
 
 ### Chapter 1: The Living World
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000001`
-1. `65d29b56-0440-2101-0000-000000000001`: What is Living & Biodiversity (Characteristics of Life, Biodiversity & Need for Classification)
-2. `65d29b56-0440-2101-0000-000000000002`: Three Domains of Life, Taxonomy & Systematics
-3. `65d29b56-0440-2101-0000-000000000003`: Concept of Species & Taxonomical Hierarchy (Kingdom, Phylum, Class, Order, Family, Genus, Species)
-4. `65d29b56-0440-2101-0000-000000000004`: Binomial Nomenclature & Universal Rules of Botanical / Zoological Nomenclature
+- **Video:** PW NEET / Competition Wallah (`FNLxE6vrWzs`) | Vipin Sir | Total Duration: 8255s (2h 17m 35s, Outro trimmed)
+1. `65d29b56-0440-2101-0000-000000000001`: What is Living: Characteristics vs Defining Features, Growth & Reproduction (`0s` ➔ `2800s`)
+2. `65d29b56-0440-2101-0000-000000000002`: Defining Properties of Life: Metabolism, Cellular Organisation & Consciousness (`2800s` ➔ `4115s`)
+3. `65d29b56-0440-2101-0000-000000000003`: Biodiversity, Need for Classification & Binomial Nomenclature (Universal Rules) (`4115s` ➔ `5255s`)
+4. `65d29b56-0440-2101-0000-000000000004`: Taxonomy, Systematics & Taxonomic Categories (Concept of Species to Kingdom) (`5255s` ➔ `6663s`)
+5. `65d29b56-0440-2101-0000-000000000005`: Taxonomic Hierarchy, Organisms in Categories & High-Yield Exam Practice (`6663s` ➔ `8255s`)
 
 ### Chapter 2: Biological Classification
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000002`
