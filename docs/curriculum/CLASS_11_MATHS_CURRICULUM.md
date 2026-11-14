@@ -4,7 +4,7 @@
 **Subject:** Mathematics (`id: 65d29b56-2222-0000-0000-000000000011`, `code: 041`, `order_index: 1`)  
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
-**Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
+**Total Topics:** 70 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
 **Status:** Complete & Live in Supabase & Version-Controlled in Flyway V121 to V135 (100% Verified Video Lectures)  
 
 ---
@@ -42,7 +42,7 @@
 | **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Indeterminate Forms, Trigonometric Limits, First Principles & Derivatives | 6 Topics | `CHWhaAlo_ms` (PW) \| ✅ Verified (0s ➔ 13435s) |
 | **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Dispersion, Range, Mean Deviation (Mean/Median), Variance & Standard Deviation | 5 Topics | `4LxrzD-MRBk` (PW) \| ✅ Verified (0s ➔ 9480s) |
 | **Ch 14** | Probability | `65d29b56-2222-1100-0000-000000000014` | Unit V | Sample Spaces, Event Algebra, Mutually Exclusive/Exhaustive & Axiomatic Probability | 5 Topics | `5Ok1AkHBsnw` (PW) \| ✅ Verified (0s ➔ 9951s) |
-| **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **72 Topics** | ✅ **100% Verified Lectures Live in DB (V121-V135)** |
+| **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **70 Topics** | ✅ **100% Verified Lectures Live in DB (V121-V135)** |
 
 ---
 
