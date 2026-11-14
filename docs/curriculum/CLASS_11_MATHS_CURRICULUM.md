@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V131  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V132  
 
 ---
 
@@ -38,7 +38,7 @@
 | **Ch 8** | Sequence and Series | `65d29b56-2222-1100-0000-000000000008` | Unit II | A.M., G.P. General Term, Term Selection, Sum of G.P. & G.M. | 5 Topics | `pVX8_vNbta4` (PW) \| ✅ Verified (0s ➔ 14114s) |
 | **Ch 9** | Straight Lines | `65d29b56-2222-1100-0000-000000000009` | Unit III | Slope, Angle Between Lines, Line Equations, Intercept & Perpendicular Distance | 5 Topics | `lRrHW6hfAiA` (PW) \| ✅ Verified (0s ➔ 13016s) |
 | **Ch 10** | Conic Sections | `65d29b56-2222-1100-0000-000000000010` | Unit III | Circles, Parabola Standard Forms, Ellipse, Hyperbola & Conic Geometry | 5 Topics | `5w2tWzcsiy4` (PW) \| ✅ Verified (0s ➔ 13600s) |
-| **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance & Formative Section Formula | 4 Topics | 🚀 Live in DB (V121) |
+| **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance, Section Formula & Centroid | 4 Topics | `iTV5LP5j17s` (PW) \| ✅ Verified (0s ➔ 4345s) |
 | **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Tangents, First Principles, Product/Quotient & Formative Chain Rule | 6 Topics | 🚀 Live in DB (V121) |
 | **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Range, Mean Deviation, Variance & Standard Deviation | 5 Topics | 🚀 Live in DB (V121) |
 | **Ch 14** | Probability | `65d29b56-2222-1100-0000-000000000014` | Unit V | Axiomatic Probability, Event Algebra & Formative Sample Spaces | 5 Topics | 🚀 Live in DB (V121) |
@@ -130,10 +130,10 @@
 
 ### Chapter 11: Introduction to Three-Dimensional Geometry
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000011`
-1. `65d29b56-2222-2111-0000-000000000001`: Coordinate Axes, Coordinate Planes & Octants in 3D Space
-2. `65d29b56-2222-2111-0000-000000000002`: Coordinates of a Point in 3D Space & Signs in Different Octants
-3. `65d29b56-2222-2111-0000-000000000003`: Distance Formula between Two Points in 3D Space & Collinearity Applications
-4. `65d29b56-2222-2111-0000-000000000004`: [Enrichment / Formative] Section Formula in Three Dimensions (Internal and External Division & Centroid)
+1. `65d29b56-2222-2111-0000-000000000001`: Coordinate Axes, Coordinate Planes, Octants & Coordinates of a Point in 3D Space
+2. `65d29b56-2222-2111-0000-000000000002`: Distance Formula between Two Points in 3D Space & Collinearity Applications
+3. `65d29b56-2222-2111-0000-000000000003`: Section Formula in Three Dimensions: Internal and External Division
+4. `65d29b56-2222-2111-0000-000000000004`: [Enrichment / Formative] Centroid of a Triangle in 3D Space & Coordinate Applications
 
 ### Chapter 12: Limits and Derivatives
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000012`
@@ -282,6 +282,17 @@
 
 ---
 
+## Chapter 11: Introduction to Three-Dimensional Geometry Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Coordinate Axes, Coordinate Planes, Octants & Coordinates of a Point in 3D Space | 0s | 1536s | 1536s (~25.6 min) | `https://www.youtube.com/watch?v=iTV5LP5j17s&end=1536s` |
+| **2** | Distance Formula between Two Points in 3D Space & Collinearity Applications | 1536s | 2491s | 955s (~15.9 min) | `https://www.youtube.com/watch?v=iTV5LP5j17s&t=1536s&end=2491s` |
+| **3** | Section Formula in Three Dimensions: Internal and External Division | 2491s | 4120s | 1629s (~27.2 min) | `https://www.youtube.com/watch?v=iTV5LP5j17s&t=2491s&end=4120s` |
+| **4** | [Enrichment / Formative] Centroid of a Triangle in 3D Space & Coordinate Applications | 4120s | 4345s | 225s (~3.8 min) | `https://www.youtube.com/watch?v=iTV5LP5j17s&t=4120s&end=4345s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
@@ -294,3 +305,4 @@
 - `backend/src/main/resources/db/migration/V129__seed_class11_maths_ch8_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 14114s) for Chapter 8: Sequence and Series (`pVX8_vNbta4`).
 - `backend/src/main/resources/db/migration/V130__seed_class11_maths_ch9_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13016s) for Chapter 9: Straight Lines (`lRrHW6hfAiA`).
 - `backend/src/main/resources/db/migration/V131__seed_class11_maths_ch10_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13600s) for Chapter 10: Conic Sections (`5w2tWzcsiy4`).
+- `backend/src/main/resources/db/migration/V132__seed_class11_maths_ch11_lectures.sql`: Seeds verified 4 Master Topics and continuous zero-gap video lecture timestamps (0s to 4345s) for Chapter 11: Introduction to Three-Dimensional Geometry (`iTV5LP5j17s`).
