@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V134  
+**Status:** Complete & Live in Supabase & Version-Controlled in Flyway V121 to V135 (100% Verified Video Lectures)  
 
 ---
 
@@ -41,8 +41,8 @@
 | **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance, Section Formula & Centroid | 4 Topics | `iTV5LP5j17s` (PW) \| ✅ Verified (0s ➔ 4345s) |
 | **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Indeterminate Forms, Trigonometric Limits, First Principles & Derivatives | 6 Topics | `CHWhaAlo_ms` (PW) \| ✅ Verified (0s ➔ 13435s) |
 | **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Dispersion, Range, Mean Deviation (Mean/Median), Variance & Standard Deviation | 5 Topics | `4LxrzD-MRBk` (PW) \| ✅ Verified (0s ➔ 9480s) |
-| **Ch 14** | Probability | `65d29b56-2222-1100-0000-000000000014` | Unit V | Axiomatic Probability, Event Algebra & Formative Sample Spaces | 5 Topics | 🚀 Live in DB (V121) |
-| **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **72 Topics** | 🚀 **Live in DB** |
+| **Ch 14** | Probability | `65d29b56-2222-1100-0000-000000000014` | Unit V | Sample Spaces, Event Algebra, Mutually Exclusive/Exhaustive & Axiomatic Probability | 5 Topics | `5Ok1AkHBsnw` (PW) \| ✅ Verified (0s ➔ 9951s) |
+| **TOTAL** | **Class 11 Mathematics (041)** | | | **Complete NCERT + Formative Enriched Curriculum** | **72 Topics** | ✅ **100% Verified Lectures Live in DB (V121-V135)** |
 
 ---
 
@@ -155,10 +155,10 @@
 ### Chapter 14: Probability
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000014`
 1. `65d29b56-2222-2114-0000-000000000001`: [Enrichment / Formative] Random Experiments, Outcomes and Sample Space (Set Representation)
-2. `65d29b56-2222-2114-0000-000000000002`: Event Algebra: Occurrence of Events, 'Not' (Complementary), 'And' & 'Or' Events
-3. `65d29b56-2222-2114-0000-000000000003`: Mutually Exclusive and Exhaustive Events
-4. `65d29b56-2222-2114-0000-000000000004`: Axiomatic (Set-Theoretic) Approach to Probability
-5. `65d29b56-2222-2114-0000-000000000005`: Probability of an Event, Probability of 'Not A', 'A or B', and 'A and B'
+2. `65d29b56-2222-2114-0000-000000000002`: Event Algebra: Types of Events (Sure, Impossible, Compound) & Negation of an Event ('Not A')
+3. `65d29b56-2222-2114-0000-000000000003`: Mutually Exclusive Events, Exhaustive Events & System of Events
+4. `65d29b56-2222-2114-0000-000000000004`: Axiomatic Approach to Probability & Equally Likely Outcomes: Concept & Problem Solving
+5. `65d29b56-2222-2114-0000-000000000005`: Addition Theorem of Probability, Probability of 'Not A', 'A or B', 'A and B' & Exam Practice
 
 ---
 
@@ -318,6 +318,18 @@
 
 ---
 
+## Chapter 14: Probability Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | [Enrichment / Formative] Random Experiments, Outcomes and Sample Space (Set Representation) | 0s | 2210s | 2210s (~36.8 min) | `https://www.youtube.com/watch?v=5Ok1AkHBsnw&end=2210s` |
+| **2** | Event Algebra: Types of Events (Sure, Impossible, Compound) & Negation of an Event ('Not A') | 2210s | 3278s | 1068s (~17.8 min) | `https://www.youtube.com/watch?v=5Ok1AkHBsnw&t=2210s&end=3278s` |
+| **3** | Mutually Exclusive Events, Exhaustive Events & System of Events | 3278s | 4414s | 1136s (~18.9 min) | `https://www.youtube.com/watch?v=5Ok1AkHBsnw&t=3278s&end=4414s` |
+| **4** | Axiomatic Approach to Probability & Equally Likely Outcomes: Concept & Problem Solving | 4414s | 8135s | 3721s (~62.0 min) | `https://www.youtube.com/watch?v=5Ok1AkHBsnw&t=4414s&end=8135s` |
+| **5** | Addition Theorem of Probability, Probability of 'Not A', 'A or B', 'A and B' & Exam Practice | 8135s | 9951s | 1816s (~30.3 min) | `https://www.youtube.com/watch?v=5Ok1AkHBsnw&t=8135s&end=9951s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
@@ -333,3 +345,4 @@
 - `backend/src/main/resources/db/migration/V132__seed_class11_maths_ch11_lectures.sql`: Seeds verified 4 Master Topics and continuous zero-gap video lecture timestamps (0s to 4345s) for Chapter 11: Introduction to Three-Dimensional Geometry (`iTV5LP5j17s`).
 - `backend/src/main/resources/db/migration/V133__seed_class11_maths_ch12_lectures.sql`: Seeds verified 6 Master Topics and continuous zero-gap video lecture timestamps (0s to 13435s) for Chapter 12: Limits and Derivatives (`CHWhaAlo_ms`).
 - `backend/src/main/resources/db/migration/V134__seed_class11_maths_ch13_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 9480s) for Chapter 13: Statistics (`4LxrzD-MRBk`).
+- `backend/src/main/resources/db/migration/V135__seed_class11_maths_ch14_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 9951s) for Chapter 14: Probability (`5Ok1AkHBsnw`).
