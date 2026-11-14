@@ -55,7 +55,7 @@
 | Ch # | Chapter Name | Chapter ID | Unit | Focus & Scope | Topics Count |
 |:---:|---|---|:---:|---|:---:|
 | **Ch 1** | The Living World | `65d29b56-0440-1100-0000-000000000001` | Unit I | Characteristics, 3 Domains, Taxonomic Hierarchy & Binomial Nomenclature | 5 Topics | `FNLxE6vrWzs` (PW NEET \| Vipin Sir) \| ✅ Verified (0s ➔ 8255s) |
-| **Ch 2** | Biological Classification | `65d29b56-0440-1100-0000-000000000002` | Unit I | Five Kingdoms, Monera, Protista, Fungi, Viruses, Viroids & Lichens | 5 Topics |
+| **Ch 2** | Biological Classification | `65d29b56-0440-1100-0000-000000000002` | Unit I | Five Kingdoms, Monera, Protista, Fungi, Viruses, Viroids & Lichens | 5 Topics | `soS6dnpNSIg` (PW Class 11) \| ✅ Verified (0s ➔ 13756s) |
 | **Ch 3** | Plant Kingdom | `65d29b56-0440-1100-0000-000000000003` | Unit I | Algae, Bryophytes, Pteridophytes, Gymnosperms & Angiosperms | 5 Topics |
 | **Ch 4** | Animal Kingdom | `65d29b56-0440-1100-0000-000000000004` | Unit I | Non-Chordata Phyla (Porifera to Hemichordata) & Chordata Classes | 6 Topics |
 | **Ch 5** | Morphology of Flowering Plants | `65d29b56-0440-1100-0000-000000000005` | Unit II | Roots, Stems, Leaves, Inflorescence, Flowers & Family Solanaceae | 6 Topics |
@@ -91,11 +91,12 @@
 
 ### Chapter 2: Biological Classification
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000002`
-1. `65d29b56-0440-2102-0000-000000000001`: Systems of Classification & Five Kingdom System Overview (Whittaker's Criteria)
-2. `65d29b56-0440-2102-0000-000000000002`: Kingdom Monera (Archaebacteria, Eubacteria, Cyanobacteria & Mycoplasma)
-3. `65d29b56-0440-2102-0000-000000000003`: Kingdom Protista (Chrysophytes, Dinoflagellates, Euglenoids, Slime Moulds, Protozoans)
-4. `65d29b56-0440-2102-0000-000000000004`: Kingdom Fungi (Phycomycetes, Ascomycetes, Basidiomycetes, Deuteromycetes)
-5. `65d29b56-0440-2102-0000-000000000005`: Acellular Entities: Viruses, Viroids, Prions & Lichens
+- **Video:** PW Class 11 / NEET (`soS6dnpNSIg`) | Total Duration: 13756s (3h 49m 16s, Outro trimmed)
+1. `65d29b56-0440-2102-0000-000000000001`: Systems of Classification, Five Kingdom Overview & Three Domain System (`0s` ➔ `1935s`)
+2. `65d29b56-0440-2102-0000-000000000002`: Kingdom Monera: Bacterial Morphology, Nutrition, Archaebacteria, Eubacteria & Mycoplasma (`1935s` ➔ `4385s`)
+3. `65d29b56-0440-2102-0000-000000000003`: Kingdom Protista: Chrysophytes, Dinoflagellates, Euglenoids, Slime Moulds & Protozoans (`4385s` ➔ `7208s`)
+4. `65d29b56-0440-2102-0000-000000000004`: Kingdom Fungi: Mycelium, Reproduction & Classes (Phycomycetes, Ascomycetes, Basidiomycetes, Deuteromycetes) (`7208s` ➔ `11966s`)
+5. `65d29b56-0440-2102-0000-000000000005`: Acellular Entities: Viruses, Viroids, Prions & Lichens (`11966s` ➔ `13756s`)
 
 ### Chapter 3: Plant Kingdom
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000003`
