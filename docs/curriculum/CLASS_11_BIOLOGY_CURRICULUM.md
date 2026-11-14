@@ -58,7 +58,7 @@
 | **Ch 2** | Biological Classification | `65d29b56-0440-1100-0000-000000000002` | Unit I | Five Kingdoms, Monera, Protista, Fungi, Viruses, Viroids & Lichens | 5 Topics | `soS6dnpNSIg` (PW Class 11) \| ✅ Verified (0s ➔ 13756s) |
 | **Ch 3** | Plant Kingdom | `65d29b56-0440-1100-0000-000000000003` | Unit I | Algae, Bryophytes, Pteridophytes, Gymnosperms & Angiosperms | 5 Topics | `38t4sSVaRjI` (PW Class 11) \| ✅ Verified (0s ➔ 11306s) |
 | **Ch 4** | Animal Kingdom | `65d29b56-0440-1100-0000-000000000004` | Unit I | Non-Chordata Phyla (Porifera to Hemichordata) & Chordata Classes | 6 Topics | `gJVD_kj4rq8` (PW Class 11) \| ✅ Verified (0s ➔ 11340s) |
-| **Ch 5** | Morphology of Flowering Plants | `65d29b56-0440-1100-0000-000000000005` | Unit II | Roots, Stems, Leaves, Inflorescence, Flowers & Family Solanaceae | 6 Topics |
+| **Ch 5** | Morphology of Flowering Plants | `65d29b56-0440-1100-0000-000000000005` | Unit II | Roots, Stems, Leaves, Inflorescence, Flowers & Family Solanaceae | 6 Topics | `lfbG0NUiHLs` (PW Class 11) \| ✅ Verified (0s ➔ 16800s) |
 | **Ch 6** | Anatomy of Flowering Plants | `65d29b56-0440-1100-0000-000000000006` | Unit II | Meristems, Permanent Tissues, Tissue Systems & Internal Organ Anatomy | 5 Topics |
 | **Ch 7** | Structural Organization in Animals | `65d29b56-0440-1100-0000-000000000007` | Unit II | Animal Tissues & Complete Frog Anatomy (Digestive, Vascular, Nervous, Urinogenital) | 5 Topics |
 | **Ch 8** | Cell: The Unit of Life | `65d29b56-0440-1100-0000-000000000008` | Unit III | Prokaryotic/Eukaryotic Cells, Membranes, Organelles & Nucleus | 7 Topics |
@@ -119,12 +119,13 @@
 
 ### Chapter 5: Morphology of Flowering Plants
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000005`
-1. `65d29b56-0440-2105-0000-000000000001`: Morphology of Root: Types (Tap, Adventitious), Regions & Modifications
-2. `65d29b56-0440-2105-0000-000000000002`: Morphology of Stem: Characteristics, Nodes, Internodes & Modifications
-3. `65d29b56-0440-2105-0000-000000000003`: Morphology of Leaf: Parts, Venation, Simple vs Compound Leaves, Phyllotaxy & Modifications
-4. `65d29b56-0440-2105-0000-000000000004`: Inflorescence (Racemose & Cymose) & Flower Structure (Calyx, Corolla, Aestivation)
-5. `65d29b56-0440-2105-0000-000000000005`: Androecium, Gynoecium, Placentation, Fruit and Seed Structure
-6. `65d29b56-0440-2105-0000-000000000006`: Semi-Technical Description of Family Solanaceae (Floral Formula & Floral Diagram)
+- **Video:** PW Class 11 Science (`lfbG0NUiHLs`) | Total Duration: 16800s (4h 40m 00s, Outro trimmed)
+1. `65d29b56-0440-2105-0000-000000000001`: Morphology of Root: Types (Tap, Adventitious), Regions & Modifications (`0s` ➔ `3127s`)
+2. `65d29b56-0440-2105-0000-000000000002`: Morphology of Stem: Characteristics, Nodes, Internodes & Modifications (`3127s` ➔ `3952s`)
+3. `65d29b56-0440-2105-0000-000000000003`: Morphology of Leaf: Parts, Venation, Simple vs Compound Leaves, Phyllotaxy & Modifications (`3952s` ➔ `6492s`)
+4. `65d29b56-0440-2105-0000-000000000004`: Inflorescence (Racemose & Cymose) & Flower Structure (Calyx, Corolla, Aestivation) (`6492s` ➔ `11187s`)
+5. `65d29b56-0440-2105-0000-000000000005`: Androecium, Gynoecium, Placentation, Fruit and Seed Structure (`11187s` ➔ `15775s`)
+6. `65d29b56-0440-2105-0000-000000000006`: Semi-Technical Description of Family Solanaceae (Floral Formula & Floral Diagram) (`15775s` ➔ `16800s`)
 
 ### Chapter 6: Anatomy of Flowering Plants
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000006`
