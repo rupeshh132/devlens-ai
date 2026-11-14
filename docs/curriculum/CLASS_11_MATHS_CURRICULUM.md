@@ -5,7 +5,7 @@
 **Syllabus:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Curriculum (2026-27)  
 **Total Chapters:** 14 Official NCERT Chapters  
 **Total Topics:** 72 Verified Master Topics (Summative Board Core + Formative Enrichment Modules)  
-**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V130  
+**Status:** Live in Supabase & Version-Controlled in Flyway V121 to V131  
 
 ---
 
@@ -37,7 +37,7 @@
 | **Ch 7** | Binomial Theorem | `65d29b56-2222-1100-0000-000000000007` | Unit II | Pascal's Triangle, Expansions, Multi-Term & Divisibility | 5 Topics | `hxPoUsmq7Xs` (PW) \| ✅ Verified (0s ➔ 6526s) |
 | **Ch 8** | Sequence and Series | `65d29b56-2222-1100-0000-000000000008` | Unit II | A.M., G.P. General Term, Term Selection, Sum of G.P. & G.M. | 5 Topics | `pVX8_vNbta4` (PW) \| ✅ Verified (0s ➔ 14114s) |
 | **Ch 9** | Straight Lines | `65d29b56-2222-1100-0000-000000000009` | Unit III | Slope, Angle Between Lines, Line Equations, Intercept & Perpendicular Distance | 5 Topics | `lRrHW6hfAiA` (PW) \| ✅ Verified (0s ➔ 13016s) |
-| **Ch 10** | Conic Sections | `65d29b56-2222-1100-0000-000000000010` | Unit III | Circles, Parabolas, Ellipses, Hyperbolas & Focal Properties | 5 Topics | 🚀 Live in DB (V121) |
+| **Ch 10** | Conic Sections | `65d29b56-2222-1100-0000-000000000010` | Unit III | Circles, Parabola Standard Forms, Ellipse, Hyperbola & Conic Geometry | 5 Topics | `5w2tWzcsiy4` (PW) \| ✅ Verified (0s ➔ 13600s) |
 | **Ch 11** | Introduction to Three-Dimensional Geometry | `65d29b56-2222-1100-0000-000000000011` | Unit III | 3D Coordinates, Octants, Distance & Formative Section Formula | 4 Topics | 🚀 Live in DB (V121) |
 | **Ch 12** | Limits and Derivatives | `65d29b56-2222-1100-0000-000000000012` | Unit IV | Limits, Tangents, First Principles, Product/Quotient & Formative Chain Rule | 6 Topics | 🚀 Live in DB (V121) |
 | **Ch 13** | Statistics | `65d29b56-2222-1100-0000-000000000013` | Unit V | Range, Mean Deviation, Variance & Standard Deviation | 5 Topics | 🚀 Live in DB (V121) |
@@ -122,11 +122,11 @@
 
 ### Chapter 10: Conic Sections
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000010`
-1. `65d29b56-2222-2110-0000-000000000001`: Sections of a Cone (Circle, Ellipse, Parabola, Hyperbola & Degenerate Cases)
-2. `65d29b56-2222-2110-0000-000000000002`: Standard Equation of a Circle & Concentric / General Forms
-3. `65d29b56-2222-2110-0000-000000000003`: Parabola: Standard Equations (y²=4ax, x²=4ay), Focus, Directrix, Axis & Latus Rectum
-4. `65d29b56-2222-2110-0000-000000000004`: Ellipse: Standard Equations (x²/a² + y²/b² = 1), Major/Minor Axes, Foci, Eccentricity & Latus Rectum
-5. `65d29b56-2222-2110-0000-000000000005`: Hyperbola: Standard Equations (x²/a² - y²/b² = 1), Foci, Vertices, Transverse/Conjugate Axes & Latus Rectum
+1. `65d29b56-2222-2110-0000-000000000001`: Circle: Definition, Standard Equation (x-h)² + (y-k)² = r², General Form & Problem Solving
+2. `65d29b56-2222-2110-0000-000000000002`: Introduction to Conic Sections: Focus-Directrix Property, Eccentricity & Standard Parabola (y² = 4ax)
+3. `65d29b56-2222-2110-0000-000000000003`: Parabola: Alternative Standard Forms (x² = 4ay, y² = -4ax, x² = -4ay), Latus Rectum & Problem Solving
+4. `65d29b56-2222-2110-0000-000000000004`: Ellipse: Definition, Standard Equations (x²/a² + y²/b² = 1), Major/Minor Axes, Foci, Eccentricity & Problem Solving
+5. `65d29b56-2222-2110-0000-000000000005`: Hyperbola: Definition, Standard Equations (x²/a² - y²/b² = 1), Transverse/Conjugate Axes, Foci, Eccentricity & Problem Solving
 
 ### Chapter 11: Introduction to Three-Dimensional Geometry
 - **Chapter ID:** `65d29b56-2222-1100-0000-000000000011`
@@ -270,6 +270,18 @@
 
 ---
 
+## Chapter 10: Conic Sections Topics & Video Timestamps
+
+| # | Master Topic Title | Start | End | Duration | Video Embed URL |
+|:---:|---|:---:|:---:|:---:|---|
+| **1** | Circle: Definition, Standard Equation (x-h)² + (y-k)² = r², General Form & Problem Solving | 0s | 3903s | 3903s (~65.1 min) | `https://www.youtube.com/watch?v=5w2tWzcsiy4&end=3903s` |
+| **2** | Introduction to Conic Sections: Focus-Directrix Property, Eccentricity & Standard Parabola (y² = 4ax) | 3903s | 5333s | 1430s (~23.8 min) | `https://www.youtube.com/watch?v=5w2tWzcsiy4&t=3903s&end=5333s` |
+| **3** | Parabola: Alternative Standard Forms (x² = 4ay, y² = -4ax, x² = -4ay), Latus Rectum & Problem Solving | 5333s | 7056s | 1723s (~28.7 min) | `https://www.youtube.com/watch?v=5w2tWzcsiy4&t=5333s&end=7056s` |
+| **4** | Ellipse: Definition, Standard Equations (x²/a² + y²/b² = 1), Major/Minor Axes, Foci, Eccentricity & Problem Solving | 7056s | 10332s | 3276s (~54.6 min) | `https://www.youtube.com/watch?v=5w2tWzcsiy4&t=7056s&end=10332s` |
+| **5** | Hyperbola: Definition, Standard Equations (x²/a² - y²/b² = 1), Transverse/Conjugate Axes, Foci, Eccentricity & Problem Solving | 10332s | 13600s | 3268s (~54.5 min) | `https://www.youtube.com/watch?v=5w2tWzcsiy4&t=10332s&end=13600s` |
+
+---
+
 ## Flyway Migration Reference
 - `backend/src/main/resources/db/migration/V121__seed_class11_mathematics_curriculum.sql`: Seeds Class 11 Mathematics subject (`65d29b56-2222-0000-0000-000000000011`), 14 NCERT chapters (`65d29b56-2222-1100-...`), and 72 master topics (`65d29b56-2222-21XX-...`) with official Delhi DoE formative tags.
 - `backend/src/main/resources/db/migration/V122__seed_class11_maths_ch1_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13789s) for Chapter 1: Sets (`F_7WUK7htRg`).
@@ -281,3 +293,4 @@
 - `backend/src/main/resources/db/migration/V128__seed_class11_maths_ch7_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 6526s) for Chapter 7: Binomial Theorem (`hxPoUsmq7Xs`).
 - `backend/src/main/resources/db/migration/V129__seed_class11_maths_ch8_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 14114s) for Chapter 8: Sequence and Series (`pVX8_vNbta4`).
 - `backend/src/main/resources/db/migration/V130__seed_class11_maths_ch9_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13016s) for Chapter 9: Straight Lines (`lRrHW6hfAiA`).
+- `backend/src/main/resources/db/migration/V131__seed_class11_maths_ch10_lectures.sql`: Seeds verified 5 Master Topics and continuous zero-gap video lecture timestamps (0s to 13600s) for Chapter 10: Conic Sections (`5w2tWzcsiy4`).
