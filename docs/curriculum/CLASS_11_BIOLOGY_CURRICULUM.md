@@ -56,7 +56,7 @@
 |:---:|---|---|:---:|---|:---:|
 | **Ch 1** | The Living World | `65d29b56-0440-1100-0000-000000000001` | Unit I | Characteristics, 3 Domains, Taxonomic Hierarchy & Binomial Nomenclature | 5 Topics | `FNLxE6vrWzs` (PW NEET \| Vipin Sir) \| ✅ Verified (0s ➔ 8255s) |
 | **Ch 2** | Biological Classification | `65d29b56-0440-1100-0000-000000000002` | Unit I | Five Kingdoms, Monera, Protista, Fungi, Viruses, Viroids & Lichens | 5 Topics | `soS6dnpNSIg` (PW Class 11) \| ✅ Verified (0s ➔ 13756s) |
-| **Ch 3** | Plant Kingdom | `65d29b56-0440-1100-0000-000000000003` | Unit I | Algae, Bryophytes, Pteridophytes, Gymnosperms & Angiosperms | 5 Topics |
+| **Ch 3** | Plant Kingdom | `65d29b56-0440-1100-0000-000000000003` | Unit I | Algae, Bryophytes, Pteridophytes, Gymnosperms & Angiosperms | 5 Topics | `38t4sSVaRjI` (PW Class 11) \| ✅ Verified (0s ➔ 11306s) |
 | **Ch 4** | Animal Kingdom | `65d29b56-0440-1100-0000-000000000004` | Unit I | Non-Chordata Phyla (Porifera to Hemichordata) & Chordata Classes | 6 Topics |
 | **Ch 5** | Morphology of Flowering Plants | `65d29b56-0440-1100-0000-000000000005` | Unit II | Roots, Stems, Leaves, Inflorescence, Flowers & Family Solanaceae | 6 Topics |
 | **Ch 6** | Anatomy of Flowering Plants | `65d29b56-0440-1100-0000-000000000006` | Unit II | Meristems, Permanent Tissues, Tissue Systems & Internal Organ Anatomy | 5 Topics |
@@ -100,11 +100,12 @@
 
 ### Chapter 3: Plant Kingdom
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000003`
-1. `65d29b56-0440-2103-0000-000000000001`: Classification of Plants & Algae (Chlorophyceae, Phaeophyceae, Rhodophyceae)
-2. `65d29b56-0440-2103-0000-000000000002`: Bryophytes: Amphibians of Plant Kingdom (Liverworts & Mosses)
-3. `65d29b56-0440-2103-0000-000000000003`: Pteridophytes: Vascular Cryptogams (Homospory, Heterospory, Lycopsida, Sphenopsida, Pteropsida)
-4. `65d29b56-0440-2103-0000-000000000004`: Gymnosperms: Naked-seeded Plants, Conifers & Life Cycle
-5. `65d29b56-0440-2103-0000-000000000005`: Angiosperms: Overview, Monocots vs Dicots & Plant Life Cycles (Alternation of Generations)
+- **Video:** PW Class 11 Science (`38t4sSVaRjI`) | Total Duration: 11306s (3h 8m 26s, Outro trimmed)
+1. `65d29b56-0440-2103-0000-000000000001`: Systems of Plant Classification & Algae (Chlorophyceae, Phaeophyceae, Rhodophyceae) (`0s` ➔ `5070s`)
+2. `65d29b56-0440-2103-0000-000000000002`: Bryophytes: Amphibians of Plant Kingdom (Liverworts, Mosses & Economic Importance) (`5070s` ➔ `8274s`)
+3. `65d29b56-0440-2103-0000-000000000003`: Pteridophytes: Vascular Cryptogams (Sporangia Arrangement, Heterospory & Life Cycle) (`8274s` ➔ `9552s`)
+4. `65d29b56-0440-2103-0000-000000000004`: Gymnosperms: Naked-seeded Plants, Conifers & Life Cycle (`9552s` ➔ `11112s`)
+5. `65d29b56-0440-2103-0000-000000000005`: Angiosperms Overview & Plant Life Cycles (Alternation of Generations) (`11112s` ➔ `11306s`)
 
 ### Chapter 4: Animal Kingdom
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000004`
