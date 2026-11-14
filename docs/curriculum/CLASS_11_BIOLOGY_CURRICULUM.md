@@ -57,7 +57,7 @@
 | **Ch 1** | The Living World | `65d29b56-0440-1100-0000-000000000001` | Unit I | Characteristics, 3 Domains, Taxonomic Hierarchy & Binomial Nomenclature | 5 Topics | `FNLxE6vrWzs` (PW NEET \| Vipin Sir) \| ✅ Verified (0s ➔ 8255s) |
 | **Ch 2** | Biological Classification | `65d29b56-0440-1100-0000-000000000002` | Unit I | Five Kingdoms, Monera, Protista, Fungi, Viruses, Viroids & Lichens | 5 Topics | `soS6dnpNSIg` (PW Class 11) \| ✅ Verified (0s ➔ 13756s) |
 | **Ch 3** | Plant Kingdom | `65d29b56-0440-1100-0000-000000000003` | Unit I | Algae, Bryophytes, Pteridophytes, Gymnosperms & Angiosperms | 5 Topics | `38t4sSVaRjI` (PW Class 11) \| ✅ Verified (0s ➔ 11306s) |
-| **Ch 4** | Animal Kingdom | `65d29b56-0440-1100-0000-000000000004` | Unit I | Non-Chordata Phyla (Porifera to Hemichordata) & Chordata Classes | 6 Topics |
+| **Ch 4** | Animal Kingdom | `65d29b56-0440-1100-0000-000000000004` | Unit I | Non-Chordata Phyla (Porifera to Hemichordata) & Chordata Classes | 6 Topics | `gJVD_kj4rq8` (PW Class 11) \| ✅ Verified (0s ➔ 11340s) |
 | **Ch 5** | Morphology of Flowering Plants | `65d29b56-0440-1100-0000-000000000005` | Unit II | Roots, Stems, Leaves, Inflorescence, Flowers & Family Solanaceae | 6 Topics |
 | **Ch 6** | Anatomy of Flowering Plants | `65d29b56-0440-1100-0000-000000000006` | Unit II | Meristems, Permanent Tissues, Tissue Systems & Internal Organ Anatomy | 5 Topics |
 | **Ch 7** | Structural Organization in Animals | `65d29b56-0440-1100-0000-000000000007` | Unit II | Animal Tissues & Complete Frog Anatomy (Digestive, Vascular, Nervous, Urinogenital) | 5 Topics |
@@ -109,12 +109,13 @@
 
 ### Chapter 4: Animal Kingdom
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000004`
-1. `65d29b56-0440-2104-0000-000000000001`: Basis of Classification (Levels of Organization, Symmetry, Germ Layers, Coelom, Segmentation, Notochord)
-2. `65d29b56-0440-2104-0000-000000000002`: Non-Chordates I: Porifera, Coelenterata (Cnidaria), Ctenophora
-3. `65d29b56-0440-2104-0000-000000000003`: Non-Chordates II: Platyhelminthes, Aschelminthes, Annelida
-4. `65d29b56-0440-2104-0000-000000000004`: Non-Chordates III: Arthropoda, Mollusca, Echinodermata, Hemichordata
-5. `65d29b56-0440-2104-0000-000000000005`: Phylum Chordata: Urochordata, Cephalochordata, Vertebrata (Agnatha & Gnathostomata - Chondrichthyes, Osteichthyes)
-6. `65d29b56-0440-2104-0000-000000000006`: Superclass Tetrapoda: Amphibia, Reptilia, Aves, Mammalia
+- **Video:** PW Class 11 Science (`gJVD_kj4rq8`) | Total Duration: 11340s (3h 9m 00s, Outro trimmed)
+1. `65d29b56-0440-2104-0000-000000000001`: Basis of Classification (Levels of Organization, Symmetry, Germ Layers, Coelom, Segmentation, Notochord) (`0s` ➔ `2720s`)
+2. `65d29b56-0440-2104-0000-000000000002`: Non-Chordates I: Porifera, Coelenterata (Cnidaria) & Ctenophora (`2720s` ➔ `4628s`)
+3. `65d29b56-0440-2104-0000-000000000003`: Non-Chordates II: Platyhelminthes, Aschelminthes & Annelida (`4628s` ➔ `6158s`)
+4. `65d29b56-0440-2104-0000-000000000004`: Non-Chordates III: Arthropoda, Mollusca, Echinodermata & Hemichordata (`6158s` ➔ `8105s`)
+5. `65d29b56-0440-2104-0000-000000000005`: Phylum Chordata: Subphyla & Pisces (Cyclostomata, Chondrichthyes, Osteichthyes) (`8105s` ➔ `10196s`)
+6. `65d29b56-0440-2104-0000-000000000006`: Superclass Tetrapoda: Amphibia, Reptilia, Aves & Mammalia (`10196s` ➔ `11340s`)
 
 ### Chapter 5: Morphology of Flowering Plants
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000005`
