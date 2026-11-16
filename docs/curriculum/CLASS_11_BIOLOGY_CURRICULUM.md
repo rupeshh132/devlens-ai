@@ -67,7 +67,7 @@
 | **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics | `8pARJFHbL0o` (PW Class 11) \| ✅ Verified (0s ➔ 15083s) |
 | **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics | `xiwwNqRg9t8` (PW Class 11) \| ✅ Verified (0s ➔ 16339s) |
 | **Ch 13** | Plant Growth and Development | `65d29b56-0440-1100-0000-000000000013` | Unit IV | Growth Kinetics, Differentiation, Phytohormones (PGRs) & Germination | 5 Topics | `HndqlohQ6pw` (PW Class 11) \| ✅ Verified (0s ➔ 10550s) |
-| **Ch 14** | Breathing and Exchange of Gases | `65d29b56-0440-1100-0000-000000000014` | Unit V | Respiratory System, Breathing Mechanics, Gas Transport & Disorders | 5 Topics | Pending |
+| **Ch 14** | Breathing and Exchange of Gases | `65d29b56-0440-1100-0000-000000000014` | Unit V | Respiratory System, Breathing Mechanics, Gas Transport & Disorders | 5 Topics | `u5wOicCsERg` (PW Class 11) \| ✅ Verified (0s ➔ 6630s) |
 | **Ch 15** | Body Fluids and Circulation | `65d29b56-0440-1100-0000-000000000015` | Unit V | Blood, Lymph, Heart Anatomy, Cardiac Cycle, ECG, Double Circulation | 6 Topics | Pending |
 | **Ch 16** | Excretory Products and Their Elimination | `65d29b56-0440-1100-0000-000000000016` | Unit V | Ammonotelism, Nephron, Urine Formation, Countercurrent & RAAS | 6 Topics | Pending |
 | **Ch 17** | Locomotion and Movement | `65d29b56-0440-1100-0000-000000000017` | Unit V | Muscle Contraction, Sliding Filament, Skeletal System, Joints & Disorders | 5 Topics | Pending |
@@ -206,11 +206,12 @@
 
 ### Chapter 14: Breathing and Exchange of Gases
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000014`
-1. `65d29b56-0440-2114-0000-000000000001`: Respiratory Organs Across Animals & Human Respiratory System Anatomy
-2. `65d29b56-0440-2114-0000-000000000002`: Mechanism of Breathing (Inspiration, Expiration) & Respiratory Volumes and Capacities
-3. `65d29b56-0440-2114-0000-000000000003`: Exchange of Gases (Alveolar & Tissue Level Partial Pressures)
-4. `65d29b56-0440-2114-0000-000000000004`: Transport of Gases: Oxygen Transport (Oxyhemoglobin Dissociation Curve) & Carbon Dioxide Transport
-5. `65d29b56-0440-2114-0000-000000000005`: Regulation of Respiration & Respiratory Disorders (Asthma, Emphysema, Occupational Respiratory Disorders)
+- **Video:** PW Class 11 Science (`u5wOicCsERg`) | Total Duration: 6630s (1h 50m 30s, Outro trimmed)
+1. `65d29b56-0440-2114-0000-000000000001`: Respiratory Organs Across Animals & Human Respiratory System Anatomy (`0s` ➔ `2533s`)
+2. `65d29b56-0440-2114-0000-000000000002`: Mechanism of Breathing & Respiratory Volumes and Capacities (`2533s` ➔ `4105s`)
+3. `65d29b56-0440-2114-0000-000000000003`: Exchange of Gases: Partial Pressures, Alveolar Diffusion & Factors Affecting Exchange (`4105s` ➔ `5001s`)
+4. `65d29b56-0440-2114-0000-000000000004`: Transport of Gases: Oxygen-Hemoglobin Dissociation Curve & Carbon Dioxide Transport (`5001s` ➔ `6119s`)
+5. `65d29b56-0440-2114-0000-000000000005`: Regulation of Respiration & Disorders of Respiratory System (Asthma, Emphysema, Occupational) (`6119s` ➔ `6630s`)
 
 ### Chapter 15: Body Fluids and Circulation
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000015`
