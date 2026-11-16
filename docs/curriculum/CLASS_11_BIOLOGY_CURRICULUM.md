@@ -63,7 +63,7 @@
 | **Ch 7** | Structural Organization in Animals | `65d29b56-0440-1100-0000-000000000007` | Unit II | Animal Tissues & Complete Frog Anatomy (Digestive, Vascular, Nervous, Urinogenital) | 5 Topics | `0qtXzH_I1aA` (PW Class 11) \| ✅ Verified (0s ➔ 10650s) |
 | **Ch 8** | Cell: The Unit of Life | `65d29b56-0440-1100-0000-000000000008` | Unit III | Prokaryotic/Eukaryotic Cells, Membranes, Organelles & Nucleus | 7 Topics | `6rpCt0IKMzo` (PW Class 11) \| ✅ Verified (0s ➔ 19200s) |
 | **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics | `kmggUcIFm30` (PW Class 11) \| ✅ Verified (0s ➔ 9697s) |
-| **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics | Pending |
+| **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics | `4bTa-o535Jw` (PW Class 11) \| ✅ Verified (0s ➔ 16297s) |
 | **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics | Pending |
 | **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics | Pending |
 | **Ch 13** | Plant Growth and Development | `65d29b56-0440-1100-0000-000000000013` | Unit IV | Growth Kinetics, Differentiation, Phytohormones (PGRs) & Germination | 5 Topics | Pending |
@@ -168,11 +168,12 @@
 
 ### Chapter 10: Cell Cycle and Cell Division
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000010`
-1. `65d29b56-0440-2110-0000-000000000001`: Cell Cycle Overview & Interphase (G1, S, G2 and G0 Quiescent Stage)
-2. `65d29b56-0440-2110-0000-000000000002`: M Phase: Mitosis (Prophase, Metaphase, Anaphase, Telophase)
-3. `65d29b56-0440-2110-0000-000000000003`: Cytokinesis in Plant vs Animal Cells & Significance of Mitosis
-4. `65d29b56-0440-2110-0000-000000000004`: Meiosis I: Prophase I Stages (Leptotene, Zygotene, Pachytene, Diplotene, Diakinesis) & Segregation
-5. `65d29b56-0440-2110-0000-000000000005`: Meiosis II, Cytokinesis & Significance of Meiosis (Genetic Recombination)
+- **Video:** PW Class 11 Science (`4bTa-o535Jw`) | Total Duration: 16297s (4h 31m 37s, Outro trimmed)
+1. `65d29b56-0440-2110-0000-000000000001`: Cell Cycle Overview, Interphase (G1, S, G2, G0) & Chromosomal Basics (`0s` ➔ `6570s`)
+2. `65d29b56-0440-2110-0000-000000000002`: M Phase: Mitosis (Prophase, Metaphase, Anaphase & Telophase) (`6570s` ➔ `9529s`)
+3. `65d29b56-0440-2110-0000-000000000003`: Cytokinesis in Plant vs Animal Cells & Significance of Mitosis (`9529s` ➔ `10782s`)
+4. `65d29b56-0440-2110-0000-000000000004`: Meiosis I: Stages of Prophase I, Crossing Over, Metaphase I to Telophase I (`10782s` ➔ `15452s`)
+5. `65d29b56-0440-2110-0000-000000000005`: Meiosis II, Cytokinesis & Biological Significance of Meiosis (`15452s` ➔ `16297s`)
 
 ### Chapter 11: Photosynthesis in Higher Plants
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000011`
