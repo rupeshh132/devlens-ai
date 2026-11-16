@@ -71,7 +71,7 @@
 | **Ch 15** | Body Fluids and Circulation | `65d29b56-0440-1100-0000-000000000015` | Unit V | Blood, Lymph, Heart Anatomy, Cardiac Cycle, ECG, Double Circulation | 6 Topics | `Y6BuLZ5-FDs` (PW Class 11) \| ✅ Verified (0s ➔ 8280s) |
 | **Ch 16** | Excretory Products and Their Elimination | `65d29b56-0440-1100-0000-000000000016` | Unit V | Ammonotelism, Nephron, Urine Formation, Countercurrent & RAAS | 6 Topics | `M7C0sRGBrJA` (PW Class 11) \| ✅ Verified (0s ➔ 5001s) |
 | **Ch 17** | Locomotion and Movement | `65d29b56-0440-1100-0000-000000000017` | Unit V | Muscle Contraction, Sliding Filament, Skeletal System, Joints & Disorders | 5 Topics | `vNnZYN_WYqE` (PW Class 11) \| ✅ Verified (0s ➔ 6827s) |
-| **Ch 18** | Neural Control and Coordination | `65d29b56-0440-1100-0000-000000000018` | Unit V | Neuron, Nerve Impulse Conduction, Synapse, CNS (Brain/Spinal Cord) & PNS | 5 Topics | Pending |
+| **Ch 18** | Neural Control and Coordination | `65d29b56-0440-1100-0000-000000000018` | Unit V | Neuron, Nerve Impulse Conduction, Synapse, CNS (Brain/Spinal Cord) & PNS | 5 Topics | `odaz7IVZV8c` (PW Class 11) \| ✅ Verified (0s ➔ 7479s) |
 | **Ch 19** | Chemical Coordination and Integration | `65d29b56-0440-1100-0000-000000000019` | Unit V | Endocrine Glands, Hormone Actions, Hypo/Hyper Secretion & Disorders | 6 Topics | Pending |
 | **Ch 20** | Digestion and Absorption (Formative & Bridge) | `65d29b56-0440-1100-0000-000000000020` | Unit V | Alimentary Canal, Digestion, Absorption, Assimilation, PEM & Disorders | 4 Topics | Pending |
 | **TOTAL** | **Class 11 Biology (044)** | | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **109 Topics** | **20 Chapters Processed / Scaffolded** |
@@ -244,11 +244,12 @@
 
 ### Chapter 18: Neural Control and Coordination
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000018`
-1. `65d29b56-0440-2118-0000-000000000001`: Neural System Overview & Structure of Neuron (Myelinated vs Non-myelinated)
-2. `65d29b56-0440-2118-0000-000000000002`: Generation, Conduction and Synaptic Transmission of Nerve Impulse (Resting & Action Potential)
-3. `65d29b56-0440-2118-0000-000000000003`: Central Nervous System: Forebrain (Cerebrum, Thalamus, Hypothalamus), Midbrain & Hindbrain (Cerebellum, Pons, Medulla)
-4. `65d29b56-0440-2118-0000-000000000004`: Spinal Cord Anatomy & Reflex Action / Reflex Arc
-5. `65d29b56-0440-2118-0000-000000000005`: Peripheral Nervous System (Somatic & Autonomic - Sympathetic and Parasympathetic)
+- **Video:** PW Class 11 Science (`odaz7IVZV8c`) | Aarushi Ma'am | Total Duration: 7479s (2h 04m 39s, Outro trimmed)
+1. `65d29b56-0440-2118-0000-000000000001`: Human Neural System Architecture & Peripheral Nervous System (PNS: Somatic & Autonomic) (`0s` ➔ `1095s`)
+2. `65d29b56-0440-2118-0000-000000000002`: Neuron as Structural & Functional Unit: Microscopic Anatomy, Types of Neurons & Axons (`1095s` ➔ `1894s`)
+3. `65d29b56-0440-2118-0000-000000000003`: Generation and Conduction of Nerve Impulse (Resting Potential, Action Potential & Saltatory Conduction) (`1894s` ➔ `4125s`)
+4. `65d29b56-0440-2118-0000-000000000004`: Synaptic Transmission: Electrical vs Chemical Synapses, Synaptic Cleft & Neurotransmitters (`4125s` ➔ `4847s`)
+5. `65d29b56-0440-2118-0000-000000000005`: Central Nervous System (CNS): Cranial Meninges, Forebrain, Midbrain, Hindbrain & Brainstem (`4847s` ➔ `7479s`)
 
 ### Chapter 19: Chemical Coordination and Integration
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000019`
