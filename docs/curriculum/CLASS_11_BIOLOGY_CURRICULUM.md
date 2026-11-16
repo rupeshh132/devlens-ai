@@ -59,7 +59,7 @@
 | **Ch 3** | Plant Kingdom | `65d29b56-0440-1100-0000-000000000003` | Unit I | Algae, Bryophytes, Pteridophytes, Gymnosperms & Angiosperms | 5 Topics | `38t4sSVaRjI` (PW Class 11) \| ✅ Verified (0s ➔ 11306s) |
 | **Ch 4** | Animal Kingdom | `65d29b56-0440-1100-0000-000000000004` | Unit I | Non-Chordata Phyla (Porifera to Hemichordata) & Chordata Classes | 6 Topics | `gJVD_kj4rq8` (PW Class 11) \| ✅ Verified (0s ➔ 11340s) |
 | **Ch 5** | Morphology of Flowering Plants | `65d29b56-0440-1100-0000-000000000005` | Unit II | Roots, Stems, Leaves, Inflorescence, Flowers & Family Solanaceae | 6 Topics | `lfbG0NUiHLs` (PW Class 11) \| ✅ Verified (0s ➔ 16800s) |
-| **Ch 6** | Anatomy of Flowering Plants | `65d29b56-0440-1100-0000-000000000006` | Unit II | Meristems, Permanent Tissues, Tissue Systems & Internal Organ Anatomy | 5 Topics |
+| **Ch 6** | Anatomy of Flowering Plants | `65d29b56-0440-1100-0000-000000000006` | Unit II | Meristems, Permanent Tissues, Tissue Systems & Internal Organ Anatomy | 5 Topics | `CtZ4FG6AAQ4` (PW Class 11) \| ✅ Verified (0s ➔ 14215s) |
 | **Ch 7** | Structural Organization in Animals | `65d29b56-0440-1100-0000-000000000007` | Unit II | Animal Tissues & Complete Frog Anatomy (Digestive, Vascular, Nervous, Urinogenital) | 5 Topics |
 | **Ch 8** | Cell: The Unit of Life | `65d29b56-0440-1100-0000-000000000008` | Unit III | Prokaryotic/Eukaryotic Cells, Membranes, Organelles & Nucleus | 7 Topics |
 | **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics |
@@ -129,11 +129,12 @@
 
 ### Chapter 6: Anatomy of Flowering Plants
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000006`
-1. `65d29b56-0440-2106-0000-000000000001`: Plant Tissues: Meristematic Tissues (Apical, Intercalary, Lateral)
-2. `65d29b56-0440-2106-0000-000000000002`: Permanent Tissues: Simple (Parenchyma, Collenchyma, Sclerenchyma) & Complex (Xylem & Phloem)
-3. `65d29b56-0440-2106-0000-000000000003`: Tissue Systems: Epidermal Tissue System, Ground Tissue System, Vascular Tissue System
-4. `65d29b56-0440-2106-0000-000000000004`: Anatomy of Dicotyledonous and Monocotyledonous Roots and Stems
-5. `65d29b56-0440-2106-0000-000000000005`: Anatomy of Dorsiventral (Dicot) and Isobilateral (Monocot) Leaves
+- **Video:** PW Class 11 Science (`CtZ4FG6AAQ4`) | Total Duration: 14215s (3h 56m 55s, Outro trimmed)
+1. `65d29b56-0440-2106-0000-000000000001`: Plant Tissues: Meristematic & Simple Permanent Tissues (Parenchyma, Collenchyma, Sclerenchyma) (`0s` ➔ `2028s`)
+2. `65d29b56-0440-2106-0000-000000000002`: Tissue Systems: Epidermal, Ground & Vascular Systems (Xylem, Phloem & Bundle Types) (`2028s` ➔ `6968s`)
+3. `65d29b56-0440-2106-0000-000000000003`: Anatomy of Dicotyledonous and Monocotyledonous Roots (`6968s` ➔ `9979s`)
+4. `65d29b56-0440-2106-0000-000000000004`: Anatomy of Dicotyledonous and Monocotyledonous Stems (`9979s` ➔ `12186s`)
+5. `65d29b56-0440-2106-0000-000000000005`: Anatomy of Dorsiventral (Dicot) and Isobilateral (Monocot) Leaves (`12186s` ➔ `14215s`)
 
 ### Chapter 7: Structural Organization in Animals
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000007`
