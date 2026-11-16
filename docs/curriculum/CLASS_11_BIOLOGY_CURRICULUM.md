@@ -60,7 +60,7 @@
 | **Ch 4** | Animal Kingdom | `65d29b56-0440-1100-0000-000000000004` | Unit I | Non-Chordata Phyla (Porifera to Hemichordata) & Chordata Classes | 6 Topics | `gJVD_kj4rq8` (PW Class 11) \| ✅ Verified (0s ➔ 11340s) |
 | **Ch 5** | Morphology of Flowering Plants | `65d29b56-0440-1100-0000-000000000005` | Unit II | Roots, Stems, Leaves, Inflorescence, Flowers & Family Solanaceae | 6 Topics | `lfbG0NUiHLs` (PW Class 11) \| ✅ Verified (0s ➔ 16800s) |
 | **Ch 6** | Anatomy of Flowering Plants | `65d29b56-0440-1100-0000-000000000006` | Unit II | Meristems, Permanent Tissues, Tissue Systems & Internal Organ Anatomy | 5 Topics | `CtZ4FG6AAQ4` (PW Class 11) \| ✅ Verified (0s ➔ 14215s) |
-| **Ch 7** | Structural Organization in Animals | `65d29b56-0440-1100-0000-000000000007` | Unit II | Animal Tissues & Complete Frog Anatomy (Digestive, Vascular, Nervous, Urinogenital) | 5 Topics |
+| **Ch 7** | Structural Organization in Animals | `65d29b56-0440-1100-0000-000000000007` | Unit II | Animal Tissues & Complete Frog Anatomy (Digestive, Vascular, Nervous, Urinogenital) | 5 Topics | `0qtXzH_I1aA` (PW Class 11) \| ✅ Verified (0s ➔ 10650s) |
 | **Ch 8** | Cell: The Unit of Life | `65d29b56-0440-1100-0000-000000000008` | Unit III | Prokaryotic/Eukaryotic Cells, Membranes, Organelles & Nucleus | 7 Topics |
 | **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics |
 | **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics |
@@ -138,11 +138,12 @@
 
 ### Chapter 7: Structural Organization in Animals
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000007`
-1. `65d29b56-0440-2107-0000-000000000001`: Animal Tissues Overview (Epithelial, Connective, Muscular, Neural)
-2. `65d29b56-0440-2107-0000-000000000002`: Morphology of Frog (Rana tigrina): External Features, Body Divisions & Skin
-3. `65d29b56-0440-2107-0000-000000000003`: Frog Anatomy: Digestive System and Respiratory System
-4. `65d29b56-0440-2107-0000-000000000004`: Frog Anatomy: Circulatory (Blood Vascular & Lymphatic) System
-5. `65d29b56-0440-2107-0000-000000000005`: Frog Anatomy: Excretory, Nervous & Male/Female Reproductive Systems
+- **Video:** PW Class 11 Science (`0qtXzH_I1aA`) | Total Duration: 10650s (2h 57m 30s, Outro trimmed)
+1. `65d29b56-0440-2107-0000-000000000001`: Animal Tissues Overview (Epithelial, Connective, Muscular & Neural Tissues) (`0s` ➔ `6371s`)
+2. `65d29b56-0440-2107-0000-000000000002`: Morphology of Frog (Rana tigrina): External Features, Body Divisions & Skin (`6371s` ➔ `7867s`)
+3. `65d29b56-0440-2107-0000-000000000003`: Frog Anatomy: Digestive System & Respiratory System (`7867s` ➔ `8528s`)
+4. `65d29b56-0440-2107-0000-000000000004`: Frog Anatomy: Circulatory (Blood Vascular & Lymphatic) System (`8528s` ➔ `9328s`)
+5. `65d29b56-0440-2107-0000-000000000005`: Frog Anatomy: Excretory, Nervous, Sensory & Urinogenital / Reproductive Systems (`9328s` ➔ `10650s`)
 
 ### Chapter 8: Cell: The Unit of Life
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000008`
