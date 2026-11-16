@@ -66,7 +66,7 @@
 | **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics | `4bTa-o535Jw` (PW Class 11) \| ✅ Verified (0s ➔ 16297s) |
 | **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics | `8pARJFHbL0o` (PW Class 11) \| ✅ Verified (0s ➔ 15083s) |
 | **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics | `xiwwNqRg9t8` (PW Class 11) \| ✅ Verified (0s ➔ 16339s) |
-| **Ch 13** | Plant Growth and Development | `65d29b56-0440-1100-0000-000000000013` | Unit IV | Growth Kinetics, Differentiation, Phytohormones (PGRs) & Germination | 5 Topics | Pending |
+| **Ch 13** | Plant Growth and Development | `65d29b56-0440-1100-0000-000000000013` | Unit IV | Growth Kinetics, Differentiation, Phytohormones (PGRs) & Germination | 5 Topics | `HndqlohQ6pw` (PW Class 11) \| ✅ Verified (0s ➔ 10550s) |
 | **Ch 14** | Breathing and Exchange of Gases | `65d29b56-0440-1100-0000-000000000014` | Unit V | Respiratory System, Breathing Mechanics, Gas Transport & Disorders | 5 Topics | Pending |
 | **Ch 15** | Body Fluids and Circulation | `65d29b56-0440-1100-0000-000000000015` | Unit V | Blood, Lymph, Heart Anatomy, Cardiac Cycle, ECG, Double Circulation | 6 Topics | Pending |
 | **Ch 16** | Excretory Products and Their Elimination | `65d29b56-0440-1100-0000-000000000016` | Unit V | Ammonotelism, Nephron, Urine Formation, Countercurrent & RAAS | 6 Topics | Pending |
@@ -197,11 +197,12 @@
 
 ### Chapter 13: Plant Growth and Development
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000013`
-1. `65d29b56-0440-2113-0000-000000000001`: Plant Growth: Characteristics, Phases of Growth & Arithmetic vs Geometric Growth Rates
-2. `65d29b56-0440-2113-0000-000000000002`: Differentiation, Dedifferentiation, Redifferentiation & Development / Plasticity
-3. `65d29b56-0440-2113-0000-000000000003`: Plant Growth Promoters: Auxins, Gibberellins and Cytokinins (Physiological Roles & Applications)
-4. `65d29b56-0440-2113-0000-000000000004`: Plant Growth Inhibitors: Ethylene and Abscisic Acid (ABA)
-5. `65d29b56-0440-2113-0000-000000000005`: Seed Germination, Dormancy & Conditions Necessary for Plant Growth
+- **Video:** PW Class 11 Science (`HndqlohQ6pw`) | Total Duration: 10550s (2h 55m 50s, Outro trimmed)
+1. `65d29b56-0440-2113-0000-000000000001`: Plant Growth: Characteristics, Indeterminate Nature, Measurement & Phases of Growth (`0s` ➔ `3120s`)
+2. `65d29b56-0440-2113-0000-000000000002`: Growth Rates: Arithmetic vs Geometric Growth, Sigmoid Curve & Quantitative Comparisons (`3120s` ➔ `4816s`)
+3. `65d29b56-0440-2113-0000-000000000003`: Differentiation, Dedifferentiation, Redifferentiation, Plasticity & Growth Conditions (`4816s` ➔ `6703s`)
+4. `65d29b56-0440-2113-0000-000000000004`: Plant Growth Promoters: Auxins, Gibberellins and Cytokinins (Discovery, Roles & Bioassays) (`6703s` ➔ `9685s`)
+5. `65d29b56-0440-2113-0000-000000000005`: Plant Growth Inhibitors: Ethylene, Abscisic Acid (ABA) & Seed Dormancy (`9685s` ➔ `10550s`)
 
 ### Chapter 14: Breathing and Exchange of Gases
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000014`
