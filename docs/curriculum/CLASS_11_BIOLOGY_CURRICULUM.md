@@ -62,7 +62,7 @@
 | **Ch 6** | Anatomy of Flowering Plants | `65d29b56-0440-1100-0000-000000000006` | Unit II | Meristems, Permanent Tissues, Tissue Systems & Internal Organ Anatomy | 5 Topics | `CtZ4FG6AAQ4` (PW Class 11) \| ✅ Verified (0s ➔ 14215s) |
 | **Ch 7** | Structural Organization in Animals | `65d29b56-0440-1100-0000-000000000007` | Unit II | Animal Tissues & Complete Frog Anatomy (Digestive, Vascular, Nervous, Urinogenital) | 5 Topics | `0qtXzH_I1aA` (PW Class 11) \| ✅ Verified (0s ➔ 10650s) |
 | **Ch 8** | Cell: The Unit of Life | `65d29b56-0440-1100-0000-000000000008` | Unit III | Prokaryotic/Eukaryotic Cells, Membranes, Organelles & Nucleus | 7 Topics | `6rpCt0IKMzo` (PW Class 11) \| ✅ Verified (0s ➔ 19200s) |
-| **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics | Pending |
+| **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics | `kmggUcIFm30` (PW Class 11) \| ✅ Verified (0s ➔ 9697s) |
 | **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics | Pending |
 | **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics | Pending |
 | **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics | Pending |
@@ -158,12 +158,13 @@
 
 ### Chapter 9: Biomolecules
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000009`
-1. `65d29b56-0440-2109-0000-000000000001`: Chemical Analysis of Living Tissues & Cellular Pool of Biomolecules
-2. `65d29b56-0440-2109-0000-000000000002`: Carbohydrates: Monosaccharides, Disaccharides & Polysaccharides (Starch, Glycogen, Cellulose)
-3. `65d29b56-0440-2109-0000-000000000003`: Lipids: Fatty Acids, Glycerol, Triglycerides, Phospholipids & Sterols
-4. `65d29b56-0440-2109-0000-000000000004`: Amino Acids & Protein Structures (Primary, Secondary, Tertiary, Quaternary)
-5. `65d29b56-0440-2109-0000-000000000005`: Nucleic Acids: Structure of Nucleotides, DNA Double Helix & RNA
-6. `65d29b56-0440-2109-0000-000000000006`: Enzymes: Chemical Nature, Classification, Factors Affecting Activity & Mechanism of Action
+- **Video:** PW Class 11 Science (`kmggUcIFm30`) | Total Duration: 9697s (2h 41m 37s, Outro trimmed)
+1. `65d29b56-0440-2109-0000-000000000001`: Chemical Analysis of Living Tissues, Ash Analysis & Biomolecules Pool (`0s` ➔ `1389s`)
+2. `65d29b56-0440-2109-0000-000000000002`: Carbohydrates: Monosaccharides, Oligosaccharides, Polysaccharides & Reducing Sugars (`1389s` ➔ `4152s`)
+3. `65d29b56-0440-2109-0000-000000000003`: Amino Acids & Proteins: Peptide Bonds, Protein Conformations & Functions (`4152s` ➔ `5716s`)
+4. `65d29b56-0440-2109-0000-000000000004`: Lipids: Fatty Acids, Glycerol, Triglycerides, Phospholipids & Sterols (`5716s` ➔ `6855s`)
+5. `65d29b56-0440-2109-0000-000000000005`: Nucleic Acids: Nucleotides, DNA Double Helix Structure & RNA Types (`6855s` ➔ `7623s`)
+6. `65d29b56-0440-2109-0000-000000000006`: Enzymes: Mechanism of Action, Activation Energy, Factors, Classification & Co-factors (`7623s` ➔ `9697s`)
 
 ### Chapter 10: Cell Cycle and Cell Division
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000010`
