@@ -5,7 +5,7 @@
 **Syllabus Authority:** Directorate of Education (GNCT of Delhi) & CBSE Senior Secondary Annual Curriculum (2026-27)  
 **Total Chapters:** 19 Official NCERT Chapters + 1 Formative Enrichment Module (20 Total)  
 **Total Topics:** 109 Verified Master Topics (Summative Core + Formative Enrichment Modules)  
-**Status:** Architecture Scaffolded & Seeded in Flyway V136 (Ready for Lecture Video Seeding)  
+**Status:** 100% Fully Seeded, Verified & Deployed (All 20 Chapters / 109 Topics with Zero-Gap Video Lecture Mappings, V136 - V156)  
 
 ---
 
@@ -73,8 +73,8 @@
 | **Ch 17** | Locomotion and Movement | `65d29b56-0440-1100-0000-000000000017` | Unit V | Muscle Contraction, Sliding Filament, Skeletal System, Joints & Disorders | 5 Topics | `vNnZYN_WYqE` (PW Class 11) \| ✅ Verified (0s ➔ 6827s) |
 | **Ch 18** | Neural Control and Coordination | `65d29b56-0440-1100-0000-000000000018` | Unit V | Neuron, Nerve Impulse Conduction, Synapse, CNS (Brain/Spinal Cord) & PNS | 5 Topics | `odaz7IVZV8c` (PW Class 11) \| ✅ Verified (0s ➔ 7479s) |
 | **Ch 19** | Chemical Coordination and Integration | `65d29b56-0440-1100-0000-000000000019` | Unit V | Endocrine Glands, Hormone Actions, Hypo/Hyper Secretion & Disorders | 6 Topics | `Thrj60T2uxo` (PW Class 11) \| ✅ Verified (0s ➔ 6776s) |
-| **Ch 20** | Digestion and Absorption (Formative & Bridge) | `65d29b56-0440-1100-0000-000000000020` | Unit V | Alimentary Canal, Digestion, Absorption, Assimilation, PEM & Disorders | 4 Topics | Pending |
-| **TOTAL** | **Class 11 Biology (044)** | | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **109 Topics** | **20 Chapters Processed / Scaffolded** |
+| **Ch 20** | Digestion and Absorption (Formative & Bridge) | `65d29b56-0440-1100-0000-000000000020` | Unit V | Alimentary Canal, Digestion, Absorption, Assimilation, PEM & Disorders | 4 Topics | `5T1tKsdRSs8` (Competition Wallah) \| ✅ Verified (0s ➔ 5140s) |
+| **TOTAL** | **Class 11 Biology (044)** | | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **109 Topics** | **20 Chapters (100% Complete & Verified)** |
 
 ---
 
@@ -263,10 +263,11 @@
 
 ### Chapter 20: Digestion and Absorption (Formative & Bridge Module)
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000020`
-1. `65d29b56-0440-2120-0000-000000000001`: [Formative Module] Anatomy of Human Digestive System (Alimentary Canal Histology & Digestive Glands)
-2. `65d29b56-0440-2120-0000-000000000002`: [Formative Module] Digestion of Food: Enzymes, Gastrointestinal Hormones & Peristalsis
-3. `65d29b56-0440-2120-0000-000000000003`: [Formative Module] Absorption, Assimilation, Egestion & Calorific Values of Nutrients
-4. `65d29b56-0440-2120-0000-000000000004`: [Formative Module] Nutritional & Digestive Disorders (PEM - Kwashiorkor & Marasmus, Jaundice, Indigestion, Constipation, Vomiting, Diarrhea)
+- **Video:** Competition Wallah / PW NEET (`5T1tKsdRSs8`) | Akanksha Ma'am | Total Duration: 5140s (1h 25m 40s, Outro trimmed)
+1. `65d29b56-0440-2120-0000-000000000001`: [Formative Module] Anatomy of Human Digestive System (Alimentary Canal Histology & Digestive Glands) (`0s` ➔ `1420s`)
+2. `65d29b56-0440-2120-0000-000000000002`: [Formative Module] Digestion of Food: Enzymes, Gastrointestinal Hormones & Peristalsis (`1420s` ➔ `3000s`)
+3. `65d29b56-0440-2120-0000-000000000003`: [Formative Module] Absorption, Assimilation, Egestion & Calorific Values of Nutrients (`3000s` ➔ `4150s`)
+4. `65d29b56-0440-2120-0000-000000000004`: [Formative Module] Nutritional & Digestive Disorders (PEM - Kwashiorkor & Marasmus, Jaundice, Indigestion, Constipation, Vomiting, Diarrhea) (`4150s` ➔ `5140s`)
 
 ---
 
