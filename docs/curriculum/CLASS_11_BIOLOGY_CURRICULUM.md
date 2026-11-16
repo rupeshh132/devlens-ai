@@ -65,7 +65,7 @@
 | **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics | `kmggUcIFm30` (PW Class 11) \| ✅ Verified (0s ➔ 9697s) |
 | **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics | `4bTa-o535Jw` (PW Class 11) \| ✅ Verified (0s ➔ 16297s) |
 | **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics | `8pARJFHbL0o` (PW Class 11) \| ✅ Verified (0s ➔ 15083s) |
-| **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics | Pending |
+| **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics | `xiwwNqRg9t8` (PW Class 11) \| ✅ Verified (0s ➔ 16339s) |
 | **Ch 13** | Plant Growth and Development | `65d29b56-0440-1100-0000-000000000013` | Unit IV | Growth Kinetics, Differentiation, Phytohormones (PGRs) & Germination | 5 Topics | Pending |
 | **Ch 14** | Breathing and Exchange of Gases | `65d29b56-0440-1100-0000-000000000014` | Unit V | Respiratory System, Breathing Mechanics, Gas Transport & Disorders | 5 Topics | Pending |
 | **Ch 15** | Body Fluids and Circulation | `65d29b56-0440-1100-0000-000000000015` | Unit V | Blood, Lymph, Heart Anatomy, Cardiac Cycle, ECG, Double Circulation | 6 Topics | Pending |
@@ -187,12 +187,13 @@
 
 ### Chapter 12: Respiration in Plants
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000012`
-1. `65d29b56-0440-2112-0000-000000000001`: Cellular Respiration & Gas Exchange in Plants
-2. `65d29b56-0440-2112-0000-000000000002`: Glycolysis (EMP Pathway): Steps, Substrate Phosphorylation & Energetics
-3. `65d29b56-0440-2112-0000-000000000003`: Anaerobic Respiration: Fermentation (Alcoholic & Lactic Acid)
-4. `65d29b56-0440-2112-0000-000000000004`: Aerobic Respiration: Link Reaction (Oxidative Decarboxylation) & Krebs Cycle (TCA Cycle)
-5. `65d29b56-0440-2112-0000-000000000005`: Electron Transport System (ETS) & Oxidative Phosphorylation (Complexes I-V)
-6. `65d29b56-0440-2112-0000-000000000006`: Respiratory Balance Sheet, Amphibolic Nature of Respiration & Respiratory Quotient (RQ)
+- **Video:** PW Class 11 Science (`xiwwNqRg9t8`) | Total Duration: 16339s (4h 32m 19s, Outro trimmed)
+1. `65d29b56-0440-2112-0000-000000000001`: Cellular Respiration & Gas Exchange in Plants (`0s` ➔ `3517s`)
+2. `65d29b56-0440-2112-0000-000000000002`: Glycolysis (EMP Pathway): Steps, Substrate Phosphorylation & Energetics (`3517s` ➔ `6091s`)
+3. `65d29b56-0440-2112-0000-000000000003`: Anaerobic Respiration: Fermentation (Alcoholic & Lactic Acid) (`6091s` ➔ `7132s`)
+4. `65d29b56-0440-2112-0000-000000000004`: Aerobic Respiration: Link Reaction & Krebs Cycle (TCA Cycle) (`7132s` ➔ `10274s`)
+5. `65d29b56-0440-2112-0000-000000000005`: Electron Transport System (ETS) & Oxidative Phosphorylation (Complexes I-V) (`10274s` ➔ `14129s`)
+6. `65d29b56-0440-2112-0000-000000000006`: Respiratory Balance Sheet, Amphibolic Pathway & Respiratory Quotient (RQ) (`14129s` ➔ `16339s`)
 
 ### Chapter 13: Plant Growth and Development
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000013`
