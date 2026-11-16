@@ -72,7 +72,7 @@
 | **Ch 16** | Excretory Products and Their Elimination | `65d29b56-0440-1100-0000-000000000016` | Unit V | Ammonotelism, Nephron, Urine Formation, Countercurrent & RAAS | 6 Topics | `M7C0sRGBrJA` (PW Class 11) \| ✅ Verified (0s ➔ 5001s) |
 | **Ch 17** | Locomotion and Movement | `65d29b56-0440-1100-0000-000000000017` | Unit V | Muscle Contraction, Sliding Filament, Skeletal System, Joints & Disorders | 5 Topics | `vNnZYN_WYqE` (PW Class 11) \| ✅ Verified (0s ➔ 6827s) |
 | **Ch 18** | Neural Control and Coordination | `65d29b56-0440-1100-0000-000000000018` | Unit V | Neuron, Nerve Impulse Conduction, Synapse, CNS (Brain/Spinal Cord) & PNS | 5 Topics | `odaz7IVZV8c` (PW Class 11) \| ✅ Verified (0s ➔ 7479s) |
-| **Ch 19** | Chemical Coordination and Integration | `65d29b56-0440-1100-0000-000000000019` | Unit V | Endocrine Glands, Hormone Actions, Hypo/Hyper Secretion & Disorders | 6 Topics | Pending |
+| **Ch 19** | Chemical Coordination and Integration | `65d29b56-0440-1100-0000-000000000019` | Unit V | Endocrine Glands, Hormone Actions, Hypo/Hyper Secretion & Disorders | 6 Topics | `Thrj60T2uxo` (PW Class 11) \| ✅ Verified (0s ➔ 6776s) |
 | **Ch 20** | Digestion and Absorption (Formative & Bridge) | `65d29b56-0440-1100-0000-000000000020` | Unit V | Alimentary Canal, Digestion, Absorption, Assimilation, PEM & Disorders | 4 Topics | Pending |
 | **TOTAL** | **Class 11 Biology (044)** | | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **109 Topics** | **20 Chapters Processed / Scaffolded** |
 
@@ -253,12 +253,13 @@
 
 ### Chapter 19: Chemical Coordination and Integration
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000019`
-1. `65d29b56-0440-2119-0000-000000000001`: Endocrine Glands, Hormones as Chemical Messengers & Mechanism of Hormone Action
-2. `65d29b56-0440-2119-0000-000000000002`: The Hypothalamus and Pituitary Gland (Anterior and Posterior Pituitary Hormones)
-3. `65d29b56-0440-2119-0000-000000000003`: Pineal Gland, Thyroid Gland and Parathyroid Glands (Thyroxine, Calcitonin, PTH)
-4. `65d29b56-0440-2119-0000-000000000004`: Thymus, Adrenal Gland (Cortex and Medulla) & Endocrine Pancreas (Islets of Langerhans)
-5. `65d29b56-0440-2119-0000-000000000005`: Gonadal Hormones (Testes - Androgens, Ovaries - Estrogen & Progesterone) & Non-Endocrine Organ Hormones (Heart, Kidney, GI tract)
-6. `65d29b56-0440-2119-0000-000000000006`: Endocrine Disorders: Dwarfism, Acromegaly, Cretinism, Goitre, Exophthalmic Goitre, Diabetes Mellitus, Addison's Disease
+- **Video:** PW Class 11 Science (`Thrj60T2uxo`) | Aarushi Ma'am | Total Duration: 6776s (1h 52m 56s)
+1. `65d29b56-0440-2119-0000-000000000001`: Endocrine System Overview, Gland Types & Chemical Nature of Hormones (`0s` ➔ `399s`)
+2. `65d29b56-0440-2119-0000-000000000002`: The Hypothalamus, Pituitary Gland & Related Disorders (Gigantism, Dwarfism, Acromegaly) (`399s` ➔ `3030s`)
+3. `65d29b56-0440-2119-0000-000000000003`: Thyroid, Parathyroid, Thymus & Pineal Glands (Thyroxine, TCT, PTH, Thymosins & Melatonin) (`3030s` ➔ `4584s`)
+4. `65d29b56-0440-2119-0000-000000000004`: Adrenal Glands (Cortex & Medulla) and Endocrine Pancreas (Insulin, Glucagon & Diabetes) (`4584s` ➔ `5591s`)
+5. `65d29b56-0440-2119-0000-000000000005`: Gonadal Hormones (Testes & Ovaries) and Hormones of Other Organs (Heart, Kidney, GIT) (`5591s` ➔ `6325s`)
+6. `65d29b56-0440-2119-0000-000000000006`: Mechanism of Hormone Action: Membrane-Bound Receptors, Second Messengers & Intracellular Regulation (`6325s` ➔ `6776s`)
 
 ### Chapter 20: Digestion and Absorption (Formative & Bridge Module)
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000020`
