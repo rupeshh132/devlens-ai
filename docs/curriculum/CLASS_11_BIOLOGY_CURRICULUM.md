@@ -64,7 +64,7 @@
 | **Ch 8** | Cell: The Unit of Life | `65d29b56-0440-1100-0000-000000000008` | Unit III | Prokaryotic/Eukaryotic Cells, Membranes, Organelles & Nucleus | 7 Topics | `6rpCt0IKMzo` (PW Class 11) \| ✅ Verified (0s ➔ 19200s) |
 | **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics | `kmggUcIFm30` (PW Class 11) \| ✅ Verified (0s ➔ 9697s) |
 | **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics | `4bTa-o535Jw` (PW Class 11) \| ✅ Verified (0s ➔ 16297s) |
-| **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics | Pending |
+| **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics | `8pARJFHbL0o` (PW Class 11) \| ✅ Verified (0s ➔ 15083s) |
 | **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics | Pending |
 | **Ch 13** | Plant Growth and Development | `65d29b56-0440-1100-0000-000000000013` | Unit IV | Growth Kinetics, Differentiation, Phytohormones (PGRs) & Germination | 5 Topics | Pending |
 | **Ch 14** | Breathing and Exchange of Gases | `65d29b56-0440-1100-0000-000000000014` | Unit V | Respiratory System, Breathing Mechanics, Gas Transport & Disorders | 5 Topics | Pending |
@@ -177,12 +177,13 @@
 
 ### Chapter 11: Photosynthesis in Higher Plants
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000011`
-1. `65d29b56-0440-2111-0000-000000000001`: Early Historical Experiments & Chloroplast Structure as Photosynthetic Site
-2. `65d29b56-0440-2111-0000-000000000002`: Photosynthetic Pigments, Absorption Spectrum vs Action Spectrum
-3. `65d29b56-0440-2111-0000-000000000003`: Photochemical Phase (Light Reaction): PS I, PS II & Cyclic / Non-Cyclic Photophosphorylation (Z-Scheme)
-4. `65d29b56-0440-2111-0000-000000000004`: Chemiosmotic Hypothesis of ATP Synthesis across Thylakoid Membrane
-5. `65d29b56-0440-2111-0000-000000000005`: Biosynthetic Phase (Dark Reaction): Calvin Cycle (C3) & Hatch-Slack Pathway (C4)
-6. `65d29b56-0440-2111-0000-000000000006`: Photorespiration (C2 Cycle) & Factors Affecting Photosynthesis (Blackman's Law of Limiting Factors)
+- **Video:** PW Class 11 Science (`8pARJFHbL0o`) | Total Duration: 15083s (4h 11m 23s, Outro trimmed)
+1. `65d29b56-0440-2111-0000-000000000001`: Early Historical Experiments & Chloroplast Structure as Photosynthetic Site (`0s` ➔ `4860s`)
+2. `65d29b56-0440-2111-0000-000000000002`: Photosynthetic Pigments, Paper Chromatography, Absorption vs Action Spectrum (`4860s` ➔ `6095s`)
+3. `65d29b56-0440-2111-0000-000000000003`: Photochemical Phase (Light Reaction): PS I, PS II & Photophosphorylation (Z-Scheme) (`6095s` ➔ `9640s`)
+4. `65d29b56-0440-2111-0000-000000000004`: Chemiosmotic Hypothesis of ATP Synthesis across Thylakoid Membrane (`9640s` ➔ `10308s`)
+5. `65d29b56-0440-2111-0000-000000000005`: Biosynthetic Phase (Dark Reaction): Calvin Cycle (C3) & Photorespiration (C2 Cycle) (`10308s` ➔ `12780s`)
+6. `65d29b56-0440-2111-0000-000000000006`: Hatch-Slack Pathway (C4 Cycle), Kranz Anatomy & Factors Affecting Photosynthesis (`12780s` ➔ `15083s`)
 
 ### Chapter 12: Respiration in Plants
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000012`
