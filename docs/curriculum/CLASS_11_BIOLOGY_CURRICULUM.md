@@ -52,8 +52,8 @@
 
 ## Chapters Breakdown & Curriculum Architecture
 
-| Ch # | Chapter Name | Chapter ID | Unit | Focus & Scope | Topics Count |
-|:---:|---|---|:---:|---|:---:|
+| Ch # | Chapter Name | Chapter ID | Unit | Focus & Scope | Topics Count | Lecture Video & Verification |
+|:---:|---|---|:---:|---|:---:|:---|
 | **Ch 1** | The Living World | `65d29b56-0440-1100-0000-000000000001` | Unit I | Characteristics, 3 Domains, Taxonomic Hierarchy & Binomial Nomenclature | 5 Topics | `FNLxE6vrWzs` (PW NEET \| Vipin Sir) \| ✅ Verified (0s ➔ 8255s) |
 | **Ch 2** | Biological Classification | `65d29b56-0440-1100-0000-000000000002` | Unit I | Five Kingdoms, Monera, Protista, Fungi, Viruses, Viroids & Lichens | 5 Topics | `soS6dnpNSIg` (PW Class 11) \| ✅ Verified (0s ➔ 13756s) |
 | **Ch 3** | Plant Kingdom | `65d29b56-0440-1100-0000-000000000003` | Unit I | Algae, Bryophytes, Pteridophytes, Gymnosperms & Angiosperms | 5 Topics | `38t4sSVaRjI` (PW Class 11) \| ✅ Verified (0s ➔ 11306s) |
@@ -61,20 +61,20 @@
 | **Ch 5** | Morphology of Flowering Plants | `65d29b56-0440-1100-0000-000000000005` | Unit II | Roots, Stems, Leaves, Inflorescence, Flowers & Family Solanaceae | 6 Topics | `lfbG0NUiHLs` (PW Class 11) \| ✅ Verified (0s ➔ 16800s) |
 | **Ch 6** | Anatomy of Flowering Plants | `65d29b56-0440-1100-0000-000000000006` | Unit II | Meristems, Permanent Tissues, Tissue Systems & Internal Organ Anatomy | 5 Topics | `CtZ4FG6AAQ4` (PW Class 11) \| ✅ Verified (0s ➔ 14215s) |
 | **Ch 7** | Structural Organization in Animals | `65d29b56-0440-1100-0000-000000000007` | Unit II | Animal Tissues & Complete Frog Anatomy (Digestive, Vascular, Nervous, Urinogenital) | 5 Topics | `0qtXzH_I1aA` (PW Class 11) \| ✅ Verified (0s ➔ 10650s) |
-| **Ch 8** | Cell: The Unit of Life | `65d29b56-0440-1100-0000-000000000008` | Unit III | Prokaryotic/Eukaryotic Cells, Membranes, Organelles & Nucleus | 7 Topics |
-| **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics |
-| **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics |
-| **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics |
-| **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics |
-| **Ch 13** | Plant Growth and Development | `65d29b56-0440-1100-0000-000000000013` | Unit IV | Growth Kinetics, Differentiation, Phytohormones (PGRs) & Germination | 5 Topics |
-| **Ch 14** | Breathing and Exchange of Gases | `65d29b56-0440-1100-0000-000000000014` | Unit V | Respiratory System, Breathing Mechanics, Gas Transport & Disorders | 5 Topics |
-| **Ch 15** | Body Fluids and Circulation | `65d29b56-0440-1100-0000-000000000015` | Unit V | Blood, Lymph, Heart Anatomy, Cardiac Cycle, ECG, Double Circulation | 6 Topics |
-| **Ch 16** | Excretory Products and Their Elimination | `65d29b56-0440-1100-0000-000000000016` | Unit V | Ammonotelism, Nephron, Urine Formation, Countercurrent & RAAS | 6 Topics |
-| **Ch 17** | Locomotion and Movement | `65d29b56-0440-1100-0000-000000000017` | Unit V | Muscle Contraction, Sliding Filament, Skeletal System, Joints & Disorders | 5 Topics |
-| **Ch 18** | Neural Control and Coordination | `65d29b56-0440-1100-0000-000000000018` | Unit V | Neuron, Nerve Impulse Conduction, Synapse, CNS (Brain/Spinal Cord) & PNS | 5 Topics |
-| **Ch 19** | Chemical Coordination and Integration | `65d29b56-0440-1100-0000-000000000019` | Unit V | Endocrine Glands, Hormone Actions, Hypo/Hyper Secretion & Disorders | 6 Topics |
-| **Ch 20** | Digestion and Absorption (Formative & Bridge) | `65d29b56-0440-1100-0000-000000000020` | Unit V | Alimentary Canal, Digestion, Absorption, Assimilation, PEM & Disorders | 4 Topics |
-| **TOTAL** | **Class 11 Biology (044)** | | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **109 Topics** |
+| **Ch 8** | Cell: The Unit of Life | `65d29b56-0440-1100-0000-000000000008` | Unit III | Prokaryotic/Eukaryotic Cells, Membranes, Organelles & Nucleus | 7 Topics | `6rpCt0IKMzo` (PW Class 11) \| ✅ Verified (0s ➔ 19200s) |
+| **Ch 9** | Biomolecules | `65d29b56-0440-1100-0000-000000000009` | Unit III | Carbohydrates, Lipids, Proteins, Nucleic Acids & Enzyme Kinetics | 6 Topics | Pending |
+| **Ch 10** | Cell Cycle and Cell Division | `65d29b56-0440-1100-0000-000000000010` | Unit III | Interphase, Mitosis, Meiosis I & II, Cytokinesis & Recombination | 5 Topics | Pending |
+| **Ch 11** | Photosynthesis in Higher Plants | `65d29b56-0440-1100-0000-000000000011` | Unit IV | Pigments, Z-Scheme, Chemiosmosis, C3 & C4 Pathways, Photorespiration | 6 Topics | Pending |
+| **Ch 12** | Respiration in Plants | `65d29b56-0440-1100-0000-000000000012` | Unit IV | Glycolysis, Fermentation, Krebs Cycle, ETS, ATP Yield & RQ | 6 Topics | Pending |
+| **Ch 13** | Plant Growth and Development | `65d29b56-0440-1100-0000-000000000013` | Unit IV | Growth Kinetics, Differentiation, Phytohormones (PGRs) & Germination | 5 Topics | Pending |
+| **Ch 14** | Breathing and Exchange of Gases | `65d29b56-0440-1100-0000-000000000014` | Unit V | Respiratory System, Breathing Mechanics, Gas Transport & Disorders | 5 Topics | Pending |
+| **Ch 15** | Body Fluids and Circulation | `65d29b56-0440-1100-0000-000000000015` | Unit V | Blood, Lymph, Heart Anatomy, Cardiac Cycle, ECG, Double Circulation | 6 Topics | Pending |
+| **Ch 16** | Excretory Products and Their Elimination | `65d29b56-0440-1100-0000-000000000016` | Unit V | Ammonotelism, Nephron, Urine Formation, Countercurrent & RAAS | 6 Topics | Pending |
+| **Ch 17** | Locomotion and Movement | `65d29b56-0440-1100-0000-000000000017` | Unit V | Muscle Contraction, Sliding Filament, Skeletal System, Joints & Disorders | 5 Topics | Pending |
+| **Ch 18** | Neural Control and Coordination | `65d29b56-0440-1100-0000-000000000018` | Unit V | Neuron, Nerve Impulse Conduction, Synapse, CNS (Brain/Spinal Cord) & PNS | 5 Topics | Pending |
+| **Ch 19** | Chemical Coordination and Integration | `65d29b56-0440-1100-0000-000000000019` | Unit V | Endocrine Glands, Hormone Actions, Hypo/Hyper Secretion & Disorders | 6 Topics | Pending |
+| **Ch 20** | Digestion and Absorption (Formative & Bridge) | `65d29b56-0440-1100-0000-000000000020` | Unit V | Alimentary Canal, Digestion, Absorption, Assimilation, PEM & Disorders | 4 Topics | Pending |
+| **TOTAL** | **Class 11 Biology (044)** | | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **109 Topics** | **20 Chapters Processed / Scaffolded** |
 
 ---
 
@@ -147,13 +147,14 @@
 
 ### Chapter 8: Cell: The Unit of Life
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000008`
-1. `65d29b56-0440-2108-0000-000000000001`: Cell Theory & Basic Architecture of Prokaryotic vs Eukaryotic Cells
-2. `65d29b56-0440-2108-0000-000000000002`: Prokaryotic Cell: Cell Envelope, Mesosomes, Flagella, Pili & Plasmids
-3. `65d29b56-0440-2108-0000-000000000003`: Cell Membrane (Fluid Mosaic Model) and Cell Wall
-4. `65d29b56-0440-2108-0000-000000000004`: Endomembrane System: Endoplasmic Reticulum (RER, SER), Golgi Apparatus, Lysosomes, Vacuoles
-5. `65d29b56-0440-2108-0000-000000000005`: Semiautonomous Organelles: Mitochondria & Plastids (Chloroplasts, Chromoplasts, Leucoplasts)
-6. `65d29b56-0440-2108-0000-000000000006`: Ribosomes, Cytoskeleton, Cilia, Flagella, Centrosome & Microbodies
-7. `65d29b56-0440-2108-0000-000000000007`: Nucleus: Nuclear Envelope, Nucleoplasm, Chromatin, Nucleolus & Chromosome Types
+- **Video:** PW Class 11 Science (`6rpCt0IKMzo`) | Total Duration: 19200s (5h 20m 00s, Outro trimmed)
+1. `65d29b56-0440-2108-0000-000000000001`: Cell Theory & Overview of Prokaryotic vs Eukaryotic Cells (`0s` ➔ `3526s`)
+2. `65d29b56-0440-2108-0000-000000000002`: Prokaryotic Cell: Cell Envelope, Mesosomes, Flagella, Pili & Plasmids (`3526s` ➔ `7040s`)
+3. `65d29b56-0440-2108-0000-000000000003`: Plasma Membrane (Fluid Mosaic Model, Transport) & Cell Wall (`7040s` ➔ `9434s`)
+4. `65d29b56-0440-2108-0000-000000000004`: Endomembrane System: Endoplasmic Reticulum, Golgi Apparatus, Lysosomes & Vacuoles (`9434s` ➔ `11226s`)
+5. `65d29b56-0440-2108-0000-000000000005`: Semiautonomous Organelles: Mitochondria & Plastids (Chloroplasts, Chromoplasts, Leucoplasts) (`11226s` ➔ `13225s`)
+6. `65d29b56-0440-2108-0000-000000000006`: Ribosomes, Cytoskeleton, Cilia, Flagella, Centrosome & Centrioles (`13225s` ➔ `16641s`)
+7. `65d29b56-0440-2108-0000-000000000007`: Nucleus, Chromosome Structure & Microbodies (`16641s` ➔ `19200s`)
 
 ### Chapter 9: Biomolecules
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000009`
