@@ -70,7 +70,7 @@
 | **Ch 14** | Breathing and Exchange of Gases | `65d29b56-0440-1100-0000-000000000014` | Unit V | Respiratory System, Breathing Mechanics, Gas Transport & Disorders | 5 Topics | `u5wOicCsERg` (PW Class 11) \| ✅ Verified (0s ➔ 6630s) |
 | **Ch 15** | Body Fluids and Circulation | `65d29b56-0440-1100-0000-000000000015` | Unit V | Blood, Lymph, Heart Anatomy, Cardiac Cycle, ECG, Double Circulation | 6 Topics | `Y6BuLZ5-FDs` (PW Class 11) \| ✅ Verified (0s ➔ 8280s) |
 | **Ch 16** | Excretory Products and Their Elimination | `65d29b56-0440-1100-0000-000000000016` | Unit V | Ammonotelism, Nephron, Urine Formation, Countercurrent & RAAS | 6 Topics | `M7C0sRGBrJA` (PW Class 11) \| ✅ Verified (0s ➔ 5001s) |
-| **Ch 17** | Locomotion and Movement | `65d29b56-0440-1100-0000-000000000017` | Unit V | Muscle Contraction, Sliding Filament, Skeletal System, Joints & Disorders | 5 Topics | Pending |
+| **Ch 17** | Locomotion and Movement | `65d29b56-0440-1100-0000-000000000017` | Unit V | Muscle Contraction, Sliding Filament, Skeletal System, Joints & Disorders | 5 Topics | `vNnZYN_WYqE` (PW Class 11) \| ✅ Verified (0s ➔ 6827s) |
 | **Ch 18** | Neural Control and Coordination | `65d29b56-0440-1100-0000-000000000018` | Unit V | Neuron, Nerve Impulse Conduction, Synapse, CNS (Brain/Spinal Cord) & PNS | 5 Topics | Pending |
 | **Ch 19** | Chemical Coordination and Integration | `65d29b56-0440-1100-0000-000000000019` | Unit V | Endocrine Glands, Hormone Actions, Hypo/Hyper Secretion & Disorders | 6 Topics | Pending |
 | **Ch 20** | Digestion and Absorption (Formative & Bridge) | `65d29b56-0440-1100-0000-000000000020` | Unit V | Alimentary Canal, Digestion, Absorption, Assimilation, PEM & Disorders | 4 Topics | Pending |
@@ -235,11 +235,12 @@
 
 ### Chapter 17: Locomotion and Movement
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000017`
-1. `65d29b56-0440-2117-0000-000000000001`: Types of Movement (Amoeboid, Ciliary, Muscular) & Muscle Types
-2. `65d29b56-0440-2117-0000-000000000002`: Microscopic Anatomy of Skeletal Muscle, Sarcomere & Contractile Proteins (Actin & Myosin)
-3. `65d29b56-0440-2117-0000-000000000003`: Mechanism of Muscle Contraction (Sliding Filament Theory & Cross-bridge Cycling)
-4. `65d29b56-0440-2117-0000-000000000004`: Human Skeletal System: Axial Skeleton (Skull, Vertebral Column, Ribs, Sternum) & Appendicular Skeleton (Limbs, Girdles)
-5. `65d29b56-0440-2117-0000-000000000005`: Joints (Fibrous, Cartilaginous, Synovial) & Disorders (Myasthenia Gravis, Tetany, Muscular Dystrophy, Arthritis, Osteoporosis, Gout)
+- **Video:** PW Class 11 Science (`vNnZYN_WYqE`) | Aarushi Ma'am | Total Duration: 6827s (1h 53m 47s, Outro trimmed)
+1. `65d29b56-0440-2117-0000-000000000001`: Types of Movement (Amoeboid, Ciliary, Muscular) & Muscle Tissue Classification (`0s` ➔ `1429s`)
+2. `65d29b56-0440-2117-0000-000000000002`: Microscopic Anatomy of Skeletal Muscle, Sarcomere & Contractile Proteins (Actin & Myosin) (`1429s` ➔ `2540s`)
+3. `65d29b56-0440-2117-0000-000000000003`: Mechanism of Muscle Contraction (Sliding Filament Theory, Cross-bridge Cycle & Fiber Types) (`2540s` ➔ `3680s`)
+4. `65d29b56-0440-2117-0000-000000000004`: Human Skeletal System: Axial Skeleton (Skull, Vertebral Column, Ribs) & Appendicular Skeleton (Limbs, Girdles) (`3680s` ➔ `6017s`)
+5. `65d29b56-0440-2117-0000-000000000005`: Joints (Fibrous, Cartilaginous, Synovial) & Musculoskeletal Disorders (Myasthenia Gravis, Tetany, Arthritis, Osteoporosis) (`6017s` ➔ `6827s`)
 
 ### Chapter 18: Neural Control and Coordination
 - **Chapter ID:** `65d29b56-0440-1100-0000-000000000018`
