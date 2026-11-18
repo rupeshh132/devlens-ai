@@ -70,7 +70,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 3** | Hornbill: Discovering Tut: The Saga Continues | `65d29b56-0301-1100-0000-000000000003` | Section C: Hornbill Prose | `9bjsYS2xKIk` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 940s) |
 | **Ch 4** | Hornbill: The Adventure | `65d29b56-0301-1100-0000-000000000004` | Section C: Hornbill Prose | `CBkXVzQ57W8` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 1156s) |
 | **Ch 5** | Hornbill: Silk Road | `65d29b56-0301-1100-0000-000000000005` | Section C: Hornbill Prose | `vhI4Rm8S4so` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 760s) |
-| **Ch 6** | Hornbill Poem: A Photograph | `65d29b56-0301-1100-0000-000000000006` | Section C: Hornbill Poetry | ⏳ Scaffolded |
+| **Ch 6** | Hornbill Poem: A Photograph | `65d29b56-0301-1100-0000-000000000006` | Section C: Hornbill Poetry | `kJa_RYZqyuQ` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 330s) |
 | **Ch 7** | Hornbill Poem: The Laburnum Top | `65d29b56-0301-1100-0000-000000000007` | Section C: Hornbill Poetry | ⏳ Scaffolded |
 | **Ch 8** | Hornbill Poem: The Voice of the Rain | `65d29b56-0301-1100-0000-000000000008` | Section C: Hornbill Poetry | ⏳ Scaffolded |
 | **Ch 9** | Hornbill Poem: Childhood | `65d29b56-0301-1100-0000-000000000009` | Section C: Hornbill Poetry | ⏳ Scaffolded |
@@ -91,7 +91,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **5/26 Chapters Fully Seeded** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **6/26 Chapters Fully Seeded** |
 
 ---
 
@@ -126,6 +126,12 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 - **Chapter ID:** `65d29b56-0301-1100-0000-000000000005`
 - **Video:** Educational Bhaiya (`vhI4Rm8S4so`) | English Core Class 11 Animated | Total Duration: 760s (12m 40s, Complete Master Lecture, Outro trimmed)
 1. `65d29b56-0301-2105-0000-000000000001`: Silk Road (Complete Chapter Animated Journey: From Ravu to Mount Kailash & Kora Pilgrimage) (`0s` ➔ `760s`)
+
+### Chapter 6: Hornbill Poem: A Photograph
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000006`
+- **Video:** Educational Bhaiya (`kJa_RYZqyuQ`) | English Core Class 11 Animated | Total Duration: 330s (5m 30s, Complete Master Lecture, Outro trimmed)
+1. `65d29b56-0301-2106-0000-000000000001`: A Photograph (Complete Poem Analysis, Stanza-by-Stanza Meaning & Poetic Devices) (`0s` ➔ `330s`)
+
 
 
 
