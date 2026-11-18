@@ -70,7 +70,7 @@
 | Ch # | Chapter Name | Chapter ID | Focus & Scope | Topics Count | Lecture Video & Verification |
 |:---:|---|---|---|:---:|:---|
 | **Ch 1** | Some Basic Concepts of Chemistry | `65d29b56-0430-1100-0000-000000000001` | Mole Concept, Stoichiometry, Limiting Reagent & Solution Concentrations | 5 Topics | `1t9Dq4wyhBw` (Next Toppers) \| ✅ Verified (0s ➔ 10970s) |
-| **Ch 2** | Structure of Atom | `65d29b56-0430-1100-0000-000000000002` | Bohr Model, Dual Nature, Quantum Numbers, Orbitals & Electronic Config | 6 Topics | Pending |
+| **Ch 2** | Structure of Atom | `65d29b56-0430-1100-0000-000000000002` | Bohr Model, Dual Nature, Quantum Numbers, Orbitals & Electronic Config | 6 Topics | `S7uLXHDTamo` (Next Toppers) \| ✅ Verified (0s ➔ 13125s) |
 | **Ch 3** | Classification of Elements & Periodicity | `65d29b56-0430-1100-0000-000000000003` | Modern Periodic Table, Blocks & Trends in Radii, IE, EA, Electronegativity | 5 Topics | Pending |
 | **Ch 4** | Chemical Bonding & Molecular Structure | `65d29b56-0430-1100-0000-000000000004` | VSEPR, VBT, Hybridisation, Molecular Orbital Theory & Hydrogen Bonding | 6 Topics | Pending |
 | **Ch 5** | Thermodynamics | `65d29b56-0430-1100-0000-000000000005` | 1st/2nd Laws, Enthalpy of Reactions, Hess's Law, Entropy & Gibbs Free Energy | 6 Topics | Pending |
@@ -97,12 +97,13 @@
 
 ### Chapter 2: Structure of Atom
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000002`
-1. `65d29b56-0430-2102-0000-000000000001`: Discovery of Sub-atomic Particles (Cathode & Anode Rays) and Early Atomic Models (Thomson & Rutherford)
-2. `65d29b56-0430-2102-0000-000000000002`: Developments Leading to Bohr's Model: Dual Nature of EM Radiation, Planck's Quantum Theory & Photoelectric Effect
-3. `65d29b56-0430-2102-0000-000000000003`: Line Spectrum of Hydrogen, Bohr's Model for Hydrogen Atom, Energy Levels, Spectral Series & Limitations
-4. `65d29b56-0430-2102-0000-000000000004`: Dual Nature of Matter (de Broglie Relation) and Heisenberg's Uncertainty Principle
-5. `65d29b56-0430-2102-0000-000000000005`: Quantum Mechanical Model of Atom: Wave Functions, Quantum Numbers (n, l, m, s) & Shapes of s, p, d Orbitals
-6. `65d29b56-0430-2102-0000-000000000006`: Rules for Filling Electrons in Orbitals: Aufbau Principle, Pauli's Exclusion Principle, Hund's Rule & Electronic Configurations
+- **Video:** Next Toppers - 11th Science (`S7uLXHDTamo`) | Tapur Ma'am | Total Duration: 13125s (3h 38m 45s, Outro trimmed)
+1. `65d29b56-0430-2102-0000-000000000001`: Discovery of Sub-atomic Particles (Cathode & Anode Rays) and Early Atomic Models (Thomson & Rutherford) (`0s` ➔ `3503s`)
+2. `65d29b56-0430-2102-0000-000000000002`: Bohr's Model for Hydrogen Atom, Postulates, Hydrogen Line Spectrum & Spectral Series (`3503s` ➔ `4918s`)
+3. `65d29b56-0430-2102-0000-000000000003`: Dual Nature of Electromagnetic Radiation, Wave Parameters, Planck's Quantum Theory & Photoelectric Effect (`4918s` ➔ `6587s`)
+4. `65d29b56-0430-2102-0000-000000000004`: Dual Nature of Matter (de Broglie Relation) and Heisenberg's Uncertainty Principle (`6587s` ➔ `8033s`)
+5. `65d29b56-0430-2102-0000-000000000005`: Quantum Mechanical Model of Atom: Wave Functions, Orbitals & Quantum Numbers (n, l, m, s) (`8033s` ➔ `10065s`)
+6. `65d29b56-0430-2102-0000-000000000006`: Rules for Filling Electrons in Orbitals: Aufbau Principle, Pauli's Exclusion Principle, Hund's Rule & Electronic Configurations (`10065s` ➔ `13125s`)
 
 ### Chapter 3: Classification of Elements and Periodicity in Properties
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000003`
