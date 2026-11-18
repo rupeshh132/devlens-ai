@@ -76,7 +76,7 @@
 | **Ch 5** | Thermodynamics | `65d29b56-0430-1100-0000-000000000005` | 1st/2nd Laws, Enthalpy of Reactions, Hess's Law, Entropy & Gibbs Free Energy | 6 Topics | `NzB2YwNndZw` (Next Toppers) \| ✅ Verified (0s ➔ 6678s) |
 | **Ch 6** | Equilibrium | `65d29b56-0430-1100-0000-000000000006` | Chemical Equilibrium (Kc, Kp), Le Chatelier, pH, Buffers, Hydrolysis & Ksp | 7 Topics | `A4Ab8xZmTU4` (Next Toppers) \| ✅ Verified (0s ➔ 9454s) |
 | **Ch 7** | Redox Reactions | `65d29b56-0430-1100-0000-000000000007` | Oxidation Numbers, Balancing Equations (Half-reaction method) & Cells | 5 Topics | `X86UraGJtNk` (Next Toppers) \| ✅ Verified (0s ➔ 4877s) |
-| **Ch 8** | Organic Chemistry: Principles & Techniques | `65d29b56-0430-1100-0000-000000000008` | IUPAC Nomenclature, Isomerism, Reaction Intermediates & Purification | 8 Topics | Pending |
+| **Ch 8** | Organic Chemistry: Principles & Techniques | `65d29b56-0430-1100-0000-000000000008` | IUPAC Nomenclature, Isomerism, Reactive Intermediates, Effects & Mechanisms | 8 Topics | `soIba7r34ZM` (Next Toppers) \| ✅ Verified (0s ➔ 10525s) |
 | **Ch 9** | Hydrocarbons | `65d29b56-0430-1100-0000-000000000009` | Alkanes, Alkenes, Alkynes, Aromaticity & Electrophilic Substitution | 6 Topics | Pending |
 | **Ch 10** | s-Block and p-Block Elements (Formative) | `65d29b56-0430-1100-0000-000000000010` | Groups 1, 2, 13, 14: Trends, Diagonal Relationships & Anomalous Properties | 4 Topics | Pending |
 | **Ch 11** | The Gaseous State (Formative) | `65d29b56-0430-1100-0000-000000000011` | Gas Laws, Ideal Gas Equation, Kinetic Molecular Theory & Real Gases | 4 Topics | Pending |
@@ -156,14 +156,15 @@
 
 ### Chapter 8: Organic Chemistry – Some Basic Principles and Techniques
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000008`
-1. `65d29b56-0430-2108-0000-000000000001`: General Introduction, Tetravalence of Carbon, Hybridisation (sp3, sp2, sp) & Shapes of Organic Molecules
-2. `65d29b56-0430-2108-0000-000000000002`: Structural Representations of Organic Compounds: Complete, Condensed, Bond-line & 3D Wedge-Dash Formulas
-3. `65d29b56-0430-2108-0000-000000000003`: Classification of Organic Compounds & IUPAC Nomenclature (Aliphatic, Alicyclic & Polyfunctional Compounds)
-4. `65d29b56-0430-2108-0000-000000000004`: Isomerism in Organic Compounds: Structural Isomerism (Chain, Position, Functional, Metamerism, Tautomerism) & Stereoisomerism Basics
-5. `65d29b56-0430-2108-0000-000000000005`: Fundamental Concepts in Organic Reactions: Fission of Bonds (Homolytic vs Heterolytic), Reactive Intermediates (Carbocations, Carbanions, Radicals)
-6. `65d29b56-0430-2108-0000-000000000006`: Electronic Displacements in Covalent Bonds: Inductive Effect, Electromeric Effect, Resonance / Mesomeric Effect & Hyperconjugation
-7. `65d29b56-0430-2108-0000-000000000007`: Methods of Purification of Organic Compounds: Sublimation, Crystallization, Distillation (Simple, Fractional, Steam, Vacuum) & Chromatography
-8. `65d29b56-0430-2108-0000-000000000008`: Qualitative Analysis (Lassaigne's Test for N, S, Halogens) and Quantitative Analysis (C, H, N, Halogen, S, P Estimation)
+- **Video:** Next Toppers - 11th Science (`soIba7r34ZM`) | Tapur Ma'am | Total Duration: 10525s (2h 55m 25s, Outro trimmed)
+1. `65d29b56-0430-2108-0000-000000000001`: General Introduction, Tetravalence of Carbon, Hybridisation (sp3, sp2, sp) & Shapes of Organic Molecules (`0s` ➔ `935s`)
+2. `65d29b56-0430-2108-0000-000000000002`: Structural Representations of Organic Compounds: Complete, Condensed, Bond-line & 3D Wedge-Dash (`935s` ➔ `1441s`)
+3. `65d29b56-0430-2108-0000-000000000003`: Classification of Organic Compounds (Acyclic, Alicyclic, Aromatic, Heterocyclic) & Homologous Series (`1441s` ➔ `2580s`)
+4. `65d29b56-0430-2108-0000-000000000004`: IUPAC Nomenclature of Organic Compounds: Alkanes, Branched Chains, Functional Groups & Benzene Derivatives (`2580s` ➔ `5596s`)
+5. `65d29b56-0430-2108-0000-000000000005`: Isomerism in Organic Compounds: Structural (Chain, Position, Functional, Metamerism) & Stereoisomerism (`5596s` ➔ `6917s`)
+6. `65d29b56-0430-2108-0000-000000000006`: Fundamental Concepts: Bond Fission, Reactive Intermediates (Carbocations, Carbanions, Radicals) & Reagents (`6917s` ➔ `8236s`)
+7. `65d29b56-0430-2108-0000-000000000007`: Electronic Displacement Effects: Inductive Effect, Electromeric Effect, Resonance Effect & Hyperconjugation (`8236s` ➔ `9724s`)
+8. `65d29b56-0430-2108-0000-000000000008`: Types of Organic Reactions & Mechanism: Substitution, Addition, Elimination & Rearrangement Reactions (`9724s` ➔ `10525s`)
 
 ### Chapter 9: Hydrocarbons
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000009`
