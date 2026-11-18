@@ -74,7 +74,7 @@
 | **Ch 3** | Classification of Elements & Periodicity | `65d29b56-0430-1100-0000-000000000003` | Modern Periodic Table, Blocks & Trends in Radii, IE, EA, Electronegativity | 5 Topics | `I55bzdbtY2k` (Next Toppers) \| ✅ Verified (0s ➔ 8257s) |
 | **Ch 4** | Chemical Bonding & Molecular Structure | `65d29b56-0430-1100-0000-000000000004` | VSEPR, VBT, Hybridisation, Molecular Orbital Theory & Hydrogen Bonding | 6 Topics | `qle-q0CxtJk` (Next Toppers) \| ✅ Verified (0s ➔ 11122s) |
 | **Ch 5** | Thermodynamics | `65d29b56-0430-1100-0000-000000000005` | 1st/2nd Laws, Enthalpy of Reactions, Hess's Law, Entropy & Gibbs Free Energy | 6 Topics | `NzB2YwNndZw` (Next Toppers) \| ✅ Verified (0s ➔ 6678s) |
-| **Ch 6** | Equilibrium | `65d29b56-0430-1100-0000-000000000006` | Chemical Equilibrium (Kc, Kp), Le Chatelier, pH, Buffers, Hydrolysis & Ksp | 7 Topics | Pending |
+| **Ch 6** | Equilibrium | `65d29b56-0430-1100-0000-000000000006` | Chemical Equilibrium (Kc, Kp), Le Chatelier, pH, Buffers, Hydrolysis & Ksp | 7 Topics | `A4Ab8xZmTU4` (Next Toppers) \| ✅ Verified (0s ➔ 9454s) |
 | **Ch 7** | Redox Reactions | `65d29b56-0430-1100-0000-000000000007` | Oxidation Numbers, Balancing Equations (Half-reaction method) & Cells | 5 Topics | Pending |
 | **Ch 8** | Organic Chemistry: Principles & Techniques | `65d29b56-0430-1100-0000-000000000008` | IUPAC Nomenclature, Isomerism, Reaction Intermediates & Purification | 8 Topics | Pending |
 | **Ch 9** | Hydrocarbons | `65d29b56-0430-1100-0000-000000000009` | Alkanes, Alkenes, Alkynes, Aromaticity & Electrophilic Substitution | 6 Topics | Pending |
@@ -136,13 +136,14 @@
 
 ### Chapter 6: Equilibrium
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000006`
-1. `65d29b56-0430-2106-0000-000000000001`: Equilibrium in Physical Processes: Solid-Liquid, Liquid-Gas, Solid-Gas & Solutions (Henry's Law)
-2. `65d29b56-0430-2106-0000-000000000002`: Equilibrium in Chemical Processes: Dynamic Nature, Law of Mass Action, Kc and Kp Expressions & Kp = Kc(RT)^dn
-3. `65d29b56-0430-2106-0000-000000000003`: Homogeneous vs Heterogeneous Equilibria, Reaction Quotient (Q) & Applications of Equilibrium Constant
-4. `65d29b56-0430-2106-0000-000000000004`: Le Chatelier's Principle: Effect of Concentration, Pressure, Temperature, Catalyst and Inert Gas Addition
-5. `65d29b56-0430-2106-0000-000000000005`: Ionic Equilibrium: Arrhenius, Bronsted-Lowry & Lewis Acid-Base Concepts, Ionization of Water & pH Scale
-6. `65d29b56-0430-2106-0000-000000000006`: Ionization of Weak Acids and Bases (Ka, Kb), Ostwald's Dilution Law, Common Ion Effect & Buffer Solutions (Henderson Equation)
-7. `65d29b56-0430-2106-0000-000000000007`: Hydrolysis of Salts & Solubility Equilibria of Sparingly Soluble Salts (Solubility Product Ksp & Common Ion Effect)
+- **Video:** Next Toppers - 11th Science (`A4Ab8xZmTU4`) | Tapur Ma'am | Total Duration: 9454s (2h 37m 34s, Outro trimmed)
+1. `65d29b56-0430-2106-0000-000000000001`: Equilibrium in Physical Processes: Solid-Liquid, Liquid-Gas, Solid-Gas & Solutions (Henry's Law) (`0s` ➔ `1151s`)
+2. `65d29b56-0430-2106-0000-000000000002`: Equilibrium in Chemical Processes: Dynamic Nature, Law of Mass Action & Equilibrium Constant (Kc) (`1151s` ➔ `2515s`)
+3. `65d29b56-0430-2106-0000-000000000003`: Gaseous Equilibria (Kp = Kc(RT)^dn), Reaction Quotient (Q), Homogeneous/Heterogeneous & dG° = -RT ln K (`2515s` ➔ `3863s`)
+4. `65d29b56-0430-2106-0000-000000000004`: Le Chatelier's Principle: Effect of Concentration, Pressure, Temperature, Catalyst & Inert Gas (`3863s` ➔ `4400s`)
+5. `65d29b56-0430-2106-0000-000000000005`: Ionic Equilibrium: Electrolytes, Arrhenius, Bronsted-Lowry, Lewis Acid-Base Concepts, Ionization of Water (Kw) & pH Scale (`4400s` ➔ `6971s`)
+6. `65d29b56-0430-2106-0000-000000000006`: Ionization of Weak Acids and Bases (Ka, Kb), Polyprotic Acids, Common Ion Effect & Buffer Solutions (`6971s` ➔ `7937s`)
+7. `65d29b56-0430-2106-0000-000000000007`: Hydrolysis of Salts & Solubility Equilibria of Sparingly Soluble Salts (Solubility Product Ksp & Common Ion Effect) (`7937s` ➔ `9454s`)
 
 ### Chapter 7: Redox Reactions
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000007`
