@@ -72,7 +72,7 @@
 | **Ch 1** | Some Basic Concepts of Chemistry | `65d29b56-0430-1100-0000-000000000001` | Mole Concept, Stoichiometry, Limiting Reagent & Solution Concentrations | 5 Topics | `1t9Dq4wyhBw` (Next Toppers) \| ✅ Verified (0s ➔ 10970s) |
 | **Ch 2** | Structure of Atom | `65d29b56-0430-1100-0000-000000000002` | Bohr Model, Dual Nature, Quantum Numbers, Orbitals & Electronic Config | 6 Topics | `S7uLXHDTamo` (Next Toppers) \| ✅ Verified (0s ➔ 13125s) |
 | **Ch 3** | Classification of Elements & Periodicity | `65d29b56-0430-1100-0000-000000000003` | Modern Periodic Table, Blocks & Trends in Radii, IE, EA, Electronegativity | 5 Topics | `I55bzdbtY2k` (Next Toppers) \| ✅ Verified (0s ➔ 8257s) |
-| **Ch 4** | Chemical Bonding & Molecular Structure | `65d29b56-0430-1100-0000-000000000004` | VSEPR, VBT, Hybridisation, Molecular Orbital Theory & Hydrogen Bonding | 6 Topics | Pending |
+| **Ch 4** | Chemical Bonding & Molecular Structure | `65d29b56-0430-1100-0000-000000000004` | VSEPR, VBT, Hybridisation, Molecular Orbital Theory & Hydrogen Bonding | 6 Topics | `qle-q0CxtJk` (Next Toppers) \| ✅ Verified (0s ➔ 11122s) |
 | **Ch 5** | Thermodynamics | `65d29b56-0430-1100-0000-000000000005` | 1st/2nd Laws, Enthalpy of Reactions, Hess's Law, Entropy & Gibbs Free Energy | 6 Topics | Pending |
 | **Ch 6** | Equilibrium | `65d29b56-0430-1100-0000-000000000006` | Chemical Equilibrium (Kc, Kp), Le Chatelier, pH, Buffers, Hydrolysis & Ksp | 7 Topics | Pending |
 | **Ch 7** | Redox Reactions | `65d29b56-0430-1100-0000-000000000007` | Oxidation Numbers, Balancing Equations (Half-reaction method) & Cells | 5 Topics | Pending |
@@ -116,12 +116,13 @@
 
 ### Chapter 4: Chemical Bonding and Molecular Structure
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000004`
-1. `65d29b56-0430-2104-0000-000000000001`: Kossel-Lewis Approach, Octet Rule, Lewis Structures, Ionic/Electrovalent Bond & Lattice Enthalpy
-2. `65d29b56-0430-2104-0000-000000000002`: Covalent Bond Parameters: Bond Length, Angle, Enthalpy, Order, Resonance & Polarity of Bonds (Dipole Moment & Fajan's Rules)
-3. `65d29b56-0430-2104-0000-000000000003`: Valence Shell Electron Pair Repulsion (VSEPR) Theory and Molecular Geometry
-4. `65d29b56-0430-2104-0000-000000000004`: Valence Bond Theory (Orbital Overlap, Sigma and Pi Bonds) & Hybridisation (sp, sp2, sp3, sp3d, sp3d2)
-5. `65d29b56-0430-2104-0000-000000000005`: Molecular Orbital Theory (MOT): LCAO Concept, MO Energy Diagrams, Bond Order & Magnetism of Diatomics (H2 to O2)
-6. `65d29b56-0430-2104-0000-000000000006`: Intermolecular Forces and Hydrogen Bonding (Inter vs Intra-molecular & Effect on Boiling Points)
+- **Video:** Next Toppers - 11th Science (`qle-q0CxtJk`) | Tapur Ma'am | Total Duration: 11122s (3h 05m 22s, Outro trimmed)
+1. `65d29b56-0430-2104-0000-000000000001`: Kossel-Lewis Approach, Octet Rule, Lewis Structures, Ionic Bond & Lattice Enthalpy (`0s` ➔ `4608s`)
+2. `65d29b56-0430-2104-0000-000000000002`: Covalent Bond Parameters: Bond Length, Angle, Enthalpy, Resonance & Fajan's Rules (`4608s` ➔ `6128s`)
+3. `65d29b56-0430-2104-0000-000000000003`: Valence Bond Theory (Orbital Overlap, Sigma & Pi Bonds) and Hybridisation (sp, sp2, sp3, sp3d) (`6128s` ➔ `8719s`)
+4. `65d29b56-0430-2104-0000-000000000004`: Valence Shell Electron Pair Repulsion (VSEPR) Theory and Molecular Geometry (`8719s` ➔ `9959s`)
+5. `65d29b56-0430-2104-0000-000000000005`: Molecular Orbital Theory (MOT): LCAO Concept, MO Energy Diagrams, Bond Order & Magnetism (`9959s` ➔ `10815s`)
+6. `65d29b56-0430-2104-0000-000000000006`: Intermolecular Forces and Hydrogen Bonding (Inter vs Intra-molecular) (`10815s` ➔ `11122s`)
 
 ### Chapter 5: Thermodynamics
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000005`
