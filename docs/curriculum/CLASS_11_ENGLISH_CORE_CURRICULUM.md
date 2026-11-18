@@ -65,7 +65,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 
 | Ch # | Chapter Title | Chapter ID | Section & Domain | Status |
 |:---:|---|---|---|:---:|
-| **Ch 1** | Hornbill: The Portrait of a Lady | `65d29b56-0301-1100-0000-000000000001` | Section C: Hornbill Prose | ⏳ Scaffolded |
+| **Ch 1** | Hornbill: The Portrait of a Lady | `65d29b56-0301-1100-0000-000000000001` | Section C: Hornbill Prose | `NoK4h6ovI-A` (Magnet Brains) \| ✅ Verified (0s ➔ 2796s) |
 | **Ch 2** | Hornbill: We're Not Afraid to Die... If We Can All Be Together | `65d29b56-0301-1100-0000-000000000002` | Section C: Hornbill Prose | ⏳ Scaffolded |
 | **Ch 3** | Hornbill: Discovering Tut: The Saga Continues | `65d29b56-0301-1100-0000-000000000003` | Section C: Hornbill Prose | ⏳ Scaffolded |
 | **Ch 4** | Hornbill: The Adventure | `65d29b56-0301-1100-0000-000000000004` | Section C: Hornbill Prose | ⏳ Scaffolded |
@@ -91,4 +91,16 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **26 Chapters Scaffolded** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **1/26 Chapters Fully Seeded** |
+
+---
+
+## Chapter Lecture Blueprints & Continuous Timelines
+
+### Chapter 1: Hornbill: The Portrait of a Lady
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000001`
+- **Video:** Magnet Brains (`NoK4h6ovI-A`) | English Core Class 11 | Total Duration: 2796s (46m 36s, Full Lecture & Visual Mind Map)
+1. `65d29b56-0301-2101-0000-000000000001`: Author Introduction, Background & Phase 1: Village Life & Friendship with Grandmother (`0s` ➔ `1070s`)
+2. `65d29b56-0301-2101-0000-000000000002`: The Turning Point: Phase 2 (City School Life), Phase 3 (University), Going Abroad & Homecoming (`1070s` ➔ `2160s`)
+3. `65d29b56-0301-2101-0000-000000000003`: Grandmother's Final Hours, Mourning of the Sparrows & Comprehensive Visual Mind Map Summary (`2160s` ➔ `2796s`)
+
