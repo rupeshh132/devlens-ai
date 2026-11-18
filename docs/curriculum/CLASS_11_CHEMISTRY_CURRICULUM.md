@@ -75,7 +75,7 @@
 | **Ch 4** | Chemical Bonding & Molecular Structure | `65d29b56-0430-1100-0000-000000000004` | VSEPR, VBT, Hybridisation, Molecular Orbital Theory & Hydrogen Bonding | 6 Topics | `qle-q0CxtJk` (Next Toppers) \| ✅ Verified (0s ➔ 11122s) |
 | **Ch 5** | Thermodynamics | `65d29b56-0430-1100-0000-000000000005` | 1st/2nd Laws, Enthalpy of Reactions, Hess's Law, Entropy & Gibbs Free Energy | 6 Topics | `NzB2YwNndZw` (Next Toppers) \| ✅ Verified (0s ➔ 6678s) |
 | **Ch 6** | Equilibrium | `65d29b56-0430-1100-0000-000000000006` | Chemical Equilibrium (Kc, Kp), Le Chatelier, pH, Buffers, Hydrolysis & Ksp | 7 Topics | `A4Ab8xZmTU4` (Next Toppers) \| ✅ Verified (0s ➔ 9454s) |
-| **Ch 7** | Redox Reactions | `65d29b56-0430-1100-0000-000000000007` | Oxidation Numbers, Balancing Equations (Half-reaction method) & Cells | 5 Topics | Pending |
+| **Ch 7** | Redox Reactions | `65d29b56-0430-1100-0000-000000000007` | Oxidation Numbers, Balancing Equations (Half-reaction method) & Cells | 5 Topics | `X86UraGJtNk` (Next Toppers) \| ✅ Verified (0s ➔ 4877s) |
 | **Ch 8** | Organic Chemistry: Principles & Techniques | `65d29b56-0430-1100-0000-000000000008` | IUPAC Nomenclature, Isomerism, Reaction Intermediates & Purification | 8 Topics | Pending |
 | **Ch 9** | Hydrocarbons | `65d29b56-0430-1100-0000-000000000009` | Alkanes, Alkenes, Alkynes, Aromaticity & Electrophilic Substitution | 6 Topics | Pending |
 | **Ch 10** | s-Block and p-Block Elements (Formative) | `65d29b56-0430-1100-0000-000000000010` | Groups 1, 2, 13, 14: Trends, Diagonal Relationships & Anomalous Properties | 4 Topics | Pending |
@@ -147,11 +147,12 @@
 
 ### Chapter 7: Redox Reactions
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000007`
-1. `65d29b56-0430-2107-0000-000000000001`: Classical and Electronic Concepts of Oxidation and Reduction, Oxidizing and Reducing Agents
-2. `65d29b56-0430-2107-0000-000000000002`: Oxidation Number: Rules for Assignment, Fractional Oxidation States & Stock Notation
-3. `65d29b56-0430-2107-0000-000000000003`: Types of Redox Reactions: Combination, Decomposition, Displacement & Disproportionation Reactions
-4. `65d29b56-0430-2107-0000-000000000004`: Balancing of Redox Equations: Oxidation Number Method & Ion-Electron (Half-Reaction) Method
-5. `65d29b56-0430-2107-0000-000000000005`: Redox Reactions and Electrode Processes: Electrochemical Cells, Standard Hydrogen Electrode & Electrochemical Series
+- **Video:** Next Toppers - 11th Science (`X86UraGJtNk`) | Tapur Ma'am | Total Duration: 4877s (1h 21m 17s, Outro trimmed)
+1. `65d29b56-0430-2107-0000-000000000001`: Classical & Electronic Concepts of Redox Reactions, Oxidizing and Reducing Agents (`0s` ➔ `607s`)
+2. `65d29b56-0430-2107-0000-000000000002`: Oxidation Number: Rules for Assignment, Calculation & Stock Notation (`607s` ➔ `1460s`)
+3. `65d29b56-0430-2107-0000-000000000003`: Types of Redox Reactions: Combination, Decomposition, Displacement & Disproportionation (`1460s` ➔ `1932s`)
+4. `65d29b56-0430-2107-0000-000000000004`: Balancing of Redox Equations: Ion-Electron (Half-Reaction) Method in Acidic & Basic Media (`1932s` ➔ `4087s`)
+5. `65d29b56-0430-2107-0000-000000000005`: Balancing of Redox Equations: Oxidation Number Method & Stoichiometric Applications (`4087s` ➔ `4877s`)
 
 ### Chapter 8: Organic Chemistry – Some Basic Principles and Techniques
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000008`
