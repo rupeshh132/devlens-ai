@@ -66,7 +66,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | Ch # | Chapter Title | Chapter ID | Section & Domain | Status |
 |:---:|---|---|---|:---:|
 | **Ch 1** | Hornbill: The Portrait of a Lady | `65d29b56-0301-1100-0000-000000000001` | Section C: Hornbill Prose | `NoK4h6ovI-A` (Magnet Brains) \| ✅ Verified (0s ➔ 2796s) |
-| **Ch 2** | Hornbill: We're Not Afraid to Die... If We Can All Be Together | `65d29b56-0301-1100-0000-000000000002` | Section C: Hornbill Prose | ⏳ Scaffolded |
+| **Ch 2** | Hornbill: We're Not Afraid to Die... If We Can All Be Together | `65d29b56-0301-1100-0000-000000000002` | Section C: Hornbill Prose | `lrUa6TRGL44` (Magnet Brains) \| ✅ Verified (0s ➔ 6192s) |
 | **Ch 3** | Hornbill: Discovering Tut: The Saga Continues | `65d29b56-0301-1100-0000-000000000003` | Section C: Hornbill Prose | ⏳ Scaffolded |
 | **Ch 4** | Hornbill: The Adventure | `65d29b56-0301-1100-0000-000000000004` | Section C: Hornbill Prose | ⏳ Scaffolded |
 | **Ch 5** | Hornbill: Silk Road | `65d29b56-0301-1100-0000-000000000005` | Section C: Hornbill Prose | ⏳ Scaffolded |
@@ -91,7 +91,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **1/26 Chapters Fully Seeded** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **2/26 Chapters Fully Seeded** |
 
 ---
 
@@ -103,4 +103,13 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 1. `65d29b56-0301-2101-0000-000000000001`: Author Introduction, Background & Phase 1: Village Life & Friendship with Grandmother (`0s` ➔ `1070s`)
 2. `65d29b56-0301-2101-0000-000000000002`: The Turning Point: Phase 2 (City School Life), Phase 3 (University), Going Abroad & Homecoming (`1070s` ➔ `2160s`)
 3. `65d29b56-0301-2101-0000-000000000003`: Grandmother's Final Hours, Mourning of the Sparrows & Comprehensive Visual Mind Map Summary (`2160s` ➔ `2796s`)
+
+### Chapter 2: Hornbill: We're Not Afraid to Die... If We Can All Be Together
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000002`
+- **Video:** Magnet Brains (`lrUa6TRGL44`) | English Core Class 11 | Total Duration: 6192s (1h 43m 12s, Outro trimmed)
+1. `65d29b56-0301-2102-0000-000000000001`: Voyage Planning, Wavewalker Architecture & Smooth Passage to Cape Town (`0s` ➔ `1650s`)
+2. `65d29b56-0301-2102-0000-000000000002`: Gigantic Waves, Catastrophic Strike & The Desperate Fight for Survival (`1650s` ➔ `3750s`)
+3. `65d29b56-0301-2102-0000-000000000003`: Pinpricks in the Ocean, Suzanne's Bravery & Jonathan's Defining Courage (`3750s` ➔ `5250s`)
+4. `65d29b56-0301-2102-0000-000000000004`: Course 185°, Sighting Île Amsterdam & Tributes of Heroism and Survival (`5250s` ➔ `6192s`)
+
 
