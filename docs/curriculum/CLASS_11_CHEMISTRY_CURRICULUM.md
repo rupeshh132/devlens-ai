@@ -78,7 +78,7 @@
 | **Ch 7** | Redox Reactions | `65d29b56-0430-1100-0000-000000000007` | Oxidation Numbers, Balancing Equations (Half-reaction method) & Cells | 5 Topics | `X86UraGJtNk` (Next Toppers) \| ✅ Verified (0s ➔ 4877s) |
 | **Ch 8** | Organic Chemistry: Principles & Techniques | `65d29b56-0430-1100-0000-000000000008` | IUPAC Nomenclature, Isomerism, Reactive Intermediates, Effects & Mechanisms | 8 Topics | `soIba7r34ZM` (Next Toppers) \| ✅ Verified (0s ➔ 10525s) |
 | **Ch 9** | Hydrocarbons (Complete: Alkanes, Alkenes, Alkynes & Arenes) | `65d29b56-0430-1100-0000-000000000009` | Alkanes, Alkenes, Alkynes & Arenes (Electrophilic Substitution, Carcinogenicity) | 12 Topics | `sEchzMnCpH0` & `nGi3tGiKiv4` (Next Toppers) \| ✅ Verified (0s ➔ 5075s & 0s ➔ 6647s) |
-| **Ch 10** | s-Block and p-Block Elements (Formative) | `65d29b56-0430-1100-0000-000000000010` | Groups 1, 2, 13, 14: Trends, Diagonal Relationships & Anomalous Properties | 4 Topics | Pending |
+| **Ch 10** | s-Block and p-Block Elements (Formative) | `65d29b56-0430-1100-0000-000000000010` | Alkali Metals: Reactivity, Oxides, Hydroxides, Liquid NH3, Halides & Oxo-Salts | 4 Topics | `Q2pJ8XH3R2E` (Magnet Brains) \| ✅ Verified (0s ➔ 3685s) |
 | **Ch 11** | The Gaseous State (Formative) | `65d29b56-0430-1100-0000-000000000011` | Gas Laws, Ideal Gas Equation, Kinetic Molecular Theory & Real Gases | 4 Topics | Pending |
 | **TOTAL** | **Class 11 Chemistry (043)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **68 Topics** | **11 Chapters Scaffolded** |
 
@@ -185,10 +185,11 @@
 
 ### Chapter 10: s-Block and p-Block Elements (Formative & Bridge Module)
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000010`
-1. `65d29b56-0430-2110-0000-000000000001`: [Formative Module] Group 1 (Alkali Metals): Electronic Configuration, Radii, Ionization/Hydration Enthalpies & Physical/Chemical Trends
-2. `65d29b56-0430-2110-0000-000000000002`: [Formative Module] Group 2 (Alkaline Earth Metals): General Characteristics, Diagonal Relationships (Li-Mg, Be-Al) & Anomalous Behavior
-3. `65d29b56-0430-2110-0000-000000000003`: [Formative Module] Group 13 Elements (Boron Family): Electronic Configuration, Oxidation States, Inert Pair Effect & Trends in Physical/Chemical Properties
-4. `65d29b56-0430-2110-0000-000000000004`: [Formative Module] Group 14 Elements (Carbon Family): General Trends, Catenation, Allotropes of Carbon (Diamond, Graphite, Fullerenes) & Comparative Study
+- **Video:** Magnet Brains (`Q2pJ8XH3R2E`) | Bharat Panchal Sir | Total Duration: 3685s (1h 01m 25s, Outro trimmed)
+1. `65d29b56-0430-2110-0000-000000000001`: s-Block Alkali Metals: Reactivity towards Air, Oxide & Superoxide Formation (Normal Oxides, Peroxides, Superoxides) (`0s` ➔ `1002s`)
+2. `65d29b56-0430-2110-0000-000000000002`: s-Block Alkali Metals: Hydroxide Formation, Basicity Trends, Reducing Nature (E°) & Ionic Hydrides (`1002s` ➔ `2184s`)
+3. `65d29b56-0430-2110-0000-000000000003`: s-Block Alkali Metals: Solutions in Liquid Ammonia (Ammoniated Electrons & Bronze Phase) & Halide Formation (`2184s` ➔ `3374s`)
+4. `65d29b56-0430-2110-0000-000000000004`: s-Block Alkali Metals: Salts of Oxo-Acids (Carbonates, Bicarbonates) & Thermal Decomposition of Nitrates (`3374s` ➔ `3685s`)
 
 ### Chapter 11: The Gaseous State: States of Matter (Formative & Bridge Module)
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000011`
