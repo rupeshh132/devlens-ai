@@ -79,8 +79,8 @@
 | **Ch 8** | Organic Chemistry: Principles & Techniques | `65d29b56-0430-1100-0000-000000000008` | IUPAC Nomenclature, Isomerism, Reactive Intermediates, Effects & Mechanisms | 8 Topics | `soIba7r34ZM` (Next Toppers) \| ✅ Verified (0s ➔ 10525s) |
 | **Ch 9** | Hydrocarbons (Complete: Alkanes, Alkenes, Alkynes & Arenes) | `65d29b56-0430-1100-0000-000000000009` | Alkanes, Alkenes, Alkynes & Arenes (Electrophilic Substitution, Carcinogenicity) | 12 Topics | `sEchzMnCpH0` & `nGi3tGiKiv4` (Next Toppers) \| ✅ Verified (0s ➔ 5075s & 0s ➔ 6647s) |
 | **Ch 10** | s-Block and p-Block Elements (Formative) | `65d29b56-0430-1100-0000-000000000010` | Alkali Metals: Reactivity, Oxides, Hydroxides, Liquid NH3, Halides & Oxo-Salts | 4 Topics | `Q2pJ8XH3R2E` (Magnet Brains) \| ✅ Verified (0s ➔ 3685s) |
-| **Ch 11** | The Gaseous State (Formative) | `65d29b56-0430-1100-0000-000000000011` | Gas Laws, Ideal Gas Equation, Kinetic Molecular Theory & Real Gases | 4 Topics | Pending |
-| **TOTAL** | **Class 11 Chemistry (043)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **68 Topics** | **11 Chapters Scaffolded** |
+| **Ch 11** | The Gaseous State (Formative) | `65d29b56-0430-1100-0000-000000000011` | Gas Properties, Boyle's, Charles', Gay-Lussac's, Avogadro's & Ideal Gas Law | 4 Topics | `H4h4vsJ9it0` (Physics Wallah) \| ✅ Verified (0s ➔ 4139s) |
+| **TOTAL** | **Class 11 Chemistry (043)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **68 Topics** | **11 Chapters Fully Verified & Live (100%)** |
 
 ---
 
@@ -193,10 +193,11 @@
 
 ### Chapter 11: The Gaseous State: States of Matter (Formative & Bridge Module)
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000011`
-1. `65d29b56-0430-2111-0000-000000000001`: [Formative Module] Intermolecular Forces, Thermal Energy & Gas Laws (Boyle's, Charles's, Gay-Lussac's, Avogadro's Laws)
-2. `65d29b56-0430-2111-0000-000000000002`: [Formative Module] Ideal Gas Equation (PV = nRT), Universal Gas Constant (R) & Combined Gas Law
-3. `65d29b56-0430-2111-0000-000000000003`: [Formative Module] Dalton's Law of Partial Pressures, Graham's Law of Diffusion & Kinetic Molecular Theory of Gases
-4. `65d29b56-0430-2111-0000-000000000004`: [Formative Module] Deviations from Ideal Gas Behavior, Real Gases, Van der Waals Equation of State & Liquefaction of Gases
+- **Video:** Physics Wallah - Alakh Pandey (`H4h4vsJ9it0`) | Total Duration: 4139s (1h 08m 59s)
+1. `65d29b56-0430-2111-0000-000000000001`: Introduction to States of Matter & Measurable Properties of Gases (Mass, Volume, Temperature, Pressure, Density) (`0s` ➔ `1530s`)
+2. `65d29b56-0430-2111-0000-000000000002`: Boyle's Law: Pressure-Volume Relationship, Isothermal Curves (P-V, P-1/V), Applications & Numericals (`1530s` ➔ `2700s`)
+3. `65d29b56-0430-2111-0000-000000000003`: Charles' Law (Isobars & Absolute Zero) and Gay-Lussac's Pressure-Temperature Law (Isochores) (`2700s` ➔ `3620s`)
+4. `65d29b56-0430-2111-0000-000000000004`: Avogadro's Law, Combined Gas Law (Equation of State) & Derivation of Ideal Gas Equation (PV = nRT) (`3620s` ➔ `4139s`)
 
 ---
 
