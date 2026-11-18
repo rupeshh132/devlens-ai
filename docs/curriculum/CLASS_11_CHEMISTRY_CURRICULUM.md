@@ -73,7 +73,7 @@
 | **Ch 2** | Structure of Atom | `65d29b56-0430-1100-0000-000000000002` | Bohr Model, Dual Nature, Quantum Numbers, Orbitals & Electronic Config | 6 Topics | `S7uLXHDTamo` (Next Toppers) \| ✅ Verified (0s ➔ 13125s) |
 | **Ch 3** | Classification of Elements & Periodicity | `65d29b56-0430-1100-0000-000000000003` | Modern Periodic Table, Blocks & Trends in Radii, IE, EA, Electronegativity | 5 Topics | `I55bzdbtY2k` (Next Toppers) \| ✅ Verified (0s ➔ 8257s) |
 | **Ch 4** | Chemical Bonding & Molecular Structure | `65d29b56-0430-1100-0000-000000000004` | VSEPR, VBT, Hybridisation, Molecular Orbital Theory & Hydrogen Bonding | 6 Topics | `qle-q0CxtJk` (Next Toppers) \| ✅ Verified (0s ➔ 11122s) |
-| **Ch 5** | Thermodynamics | `65d29b56-0430-1100-0000-000000000005` | 1st/2nd Laws, Enthalpy of Reactions, Hess's Law, Entropy & Gibbs Free Energy | 6 Topics | Pending |
+| **Ch 5** | Thermodynamics | `65d29b56-0430-1100-0000-000000000005` | 1st/2nd Laws, Enthalpy of Reactions, Hess's Law, Entropy & Gibbs Free Energy | 6 Topics | `NzB2YwNndZw` (Next Toppers) \| ✅ Verified (0s ➔ 6678s) |
 | **Ch 6** | Equilibrium | `65d29b56-0430-1100-0000-000000000006` | Chemical Equilibrium (Kc, Kp), Le Chatelier, pH, Buffers, Hydrolysis & Ksp | 7 Topics | Pending |
 | **Ch 7** | Redox Reactions | `65d29b56-0430-1100-0000-000000000007` | Oxidation Numbers, Balancing Equations (Half-reaction method) & Cells | 5 Topics | Pending |
 | **Ch 8** | Organic Chemistry: Principles & Techniques | `65d29b56-0430-1100-0000-000000000008` | IUPAC Nomenclature, Isomerism, Reaction Intermediates & Purification | 8 Topics | Pending |
@@ -126,12 +126,13 @@
 
 ### Chapter 5: Thermodynamics
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000005`
-1. `65d29b56-0430-2105-0000-000000000001`: Thermodynamic Systems & State Functions: System vs Surroundings, State Variables, Internal Energy (U), Heat (q) and Work (w)
-2. `65d29b56-0430-2105-0000-000000000002`: First Law of Thermodynamics, Enthalpy (H), Heat Capacity (Cp, Cv), Cp - Cv = R & Calorimetry (dU and dH)
-3. `65d29b56-0430-2105-0000-000000000003`: Enthalpies of Reactions: Standard Formation, Combustion, Atomization, Phase Transitions & Bond Dissociation Enthalpy
-4. `65d29b56-0430-2105-0000-000000000004`: Hess's Law of Constant Heat Summation & Lattice Enthalpy Calculations
-5. `65d29b56-0430-2105-0000-000000000005`: Spontaneity, Entropy (S), Second Law of Thermodynamics & Absolute Entropy (Third Law)
-6. `65d29b56-0430-2105-0000-000000000006`: Gibbs Free Energy (G), Gibbs-Helmholtz Equation, Criterion for Spontaneity & Relation between dG° and K
+- **Video:** Next Toppers - 11th Science (`NzB2YwNndZw`) | Tapur Ma'am | Total Duration: 6678s (1h 51m 18s, Outro trimmed)
+1. `65d29b56-0430-2105-0000-000000000001`: Thermodynamic Systems & State Functions: System vs Surroundings, State Variables, Internal Energy (U), Heat (q) and Work (w) (`0s` ➔ `3342s`)
+2. `65d29b56-0430-2105-0000-000000000002`: First Law of Thermodynamics, Enthalpy (H), Heat Capacity (Cp, Cv), Cp - Cv = R & dH = dU + dnRT (`3342s` ➔ `4199s`)
+3. `65d29b56-0430-2105-0000-000000000003`: Enthalpies of Reactions: Standard Formation, Combustion, Atomization, Phase Transitions & Bond Dissociation (`4199s` ➔ `4945s`)
+4. `65d29b56-0430-2105-0000-000000000004`: Hess's Law of Constant Heat Summation, Born-Haber Cycle & Lattice Enthalpy Calculations (`4945s` ➔ `5487s`)
+5. `65d29b56-0430-2105-0000-000000000005`: Spontaneity, Entropy (S), Microstates, dS = q_rev/T & Second Law of Thermodynamics (`5487s` ➔ `6103s`)
+6. `65d29b56-0430-2105-0000-000000000006`: Gibbs Free Energy (G), Gibbs-Helmholtz Equation, Spontaneity Criterion, dG° = -RT ln K & Third Law (`6103s` ➔ `6678s`)
 
 ### Chapter 6: Equilibrium
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000006`
