@@ -69,7 +69,7 @@
 
 | Ch # | Chapter Name | Chapter ID | Focus & Scope | Topics Count | Lecture Video & Verification |
 |:---:|---|---|---|:---:|:---|
-| **Ch 1** | Some Basic Concepts of Chemistry | `65d29b56-0430-1100-0000-000000000001` | Mole Concept, Stoichiometry, Limiting Reagent & Solution Concentrations | 5 Topics | Pending |
+| **Ch 1** | Some Basic Concepts of Chemistry | `65d29b56-0430-1100-0000-000000000001` | Mole Concept, Stoichiometry, Limiting Reagent & Solution Concentrations | 5 Topics | `1t9Dq4wyhBw` (Next Toppers) \| ✅ Verified (0s ➔ 10970s) |
 | **Ch 2** | Structure of Atom | `65d29b56-0430-1100-0000-000000000002` | Bohr Model, Dual Nature, Quantum Numbers, Orbitals & Electronic Config | 6 Topics | Pending |
 | **Ch 3** | Classification of Elements & Periodicity | `65d29b56-0430-1100-0000-000000000003` | Modern Periodic Table, Blocks & Trends in Radii, IE, EA, Electronegativity | 5 Topics | Pending |
 | **Ch 4** | Chemical Bonding & Molecular Structure | `65d29b56-0430-1100-0000-000000000004` | VSEPR, VBT, Hybridisation, Molecular Orbital Theory & Hydrogen Bonding | 6 Topics | Pending |
@@ -88,11 +88,12 @@
 
 ### Chapter 1: Some Basic Concepts of Chemistry
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000001`
-1. `65d29b56-0430-2101-0000-000000000001`: Importance of Chemistry, Nature of Matter, Properties & Measurement (SI Units, Uncertainty & Significant Figures)
-2. `65d29b56-0430-2101-0000-000000000002`: Laws of Chemical Combination & Dalton's Atomic Theory
-3. `65d29b56-0430-2101-0000-000000000003`: Atomic, Isotopic and Molecular Masses, Mole Concept, Molar Mass & Percentage Composition
-4. `65d29b56-0430-2101-0000-000000000004`: Empirical and Molecular Formulas, Stoichiometry, Stoichiometric Calculations & Limiting Reagent
-5. `65d29b56-0430-2101-0000-000000000005`: Concentration of Solutions: Mass Percent, Mole Fraction, Molarity (M) and Molality (m)
+- **Video:** Next Toppers - 11th Science (`1t9Dq4wyhBw`) | Tapur Ma'am | Total Duration: 10970s (3h 02m 50s, Outro trimmed)
+1. `65d29b56-0430-2101-0000-000000000001`: Importance of Chemistry, Nature of Matter, Properties & Measurement (SI Units, Uncertainty & Significant Figures) (`0s` ➔ `3591s`)
+2. `65d29b56-0430-2101-0000-000000000002`: Laws of Chemical Combination & Dalton's Atomic Theory (`3591s` ➔ `5107s`)
+3. `65d29b56-0430-2101-0000-000000000003`: Atomic, Isotopic and Molecular Masses, Mole Concept, Molar Mass & Percentage Composition (`5107s` ➔ `7542s`)
+4. `65d29b56-0430-2101-0000-000000000004`: Empirical Formula & Concentration of Solutions (Mass %, Mole Fraction, Molarity & Molality) (`7542s` ➔ `8931s`)
+5. `65d29b56-0430-2101-0000-000000000005`: Stoichiometry, Stoichiometric Calculations & Limiting Reagent (`8931s` ➔ `10970s`)
 
 ### Chapter 2: Structure of Atom
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000002`
