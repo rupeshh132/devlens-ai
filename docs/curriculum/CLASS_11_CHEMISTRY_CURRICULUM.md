@@ -77,10 +77,10 @@
 | **Ch 6** | Equilibrium | `65d29b56-0430-1100-0000-000000000006` | Chemical Equilibrium (Kc, Kp), Le Chatelier, pH, Buffers, Hydrolysis & Ksp | 7 Topics | `A4Ab8xZmTU4` (Next Toppers) \| ✅ Verified (0s ➔ 9454s) |
 | **Ch 7** | Redox Reactions | `65d29b56-0430-1100-0000-000000000007` | Oxidation Numbers, Balancing Equations (Half-reaction method) & Cells | 5 Topics | `X86UraGJtNk` (Next Toppers) \| ✅ Verified (0s ➔ 4877s) |
 | **Ch 8** | Organic Chemistry: Principles & Techniques | `65d29b56-0430-1100-0000-000000000008` | IUPAC Nomenclature, Isomerism, Reactive Intermediates, Effects & Mechanisms | 8 Topics | `soIba7r34ZM` (Next Toppers) \| ✅ Verified (0s ➔ 10525s) |
-| **Ch 9** | Hydrocarbons | `65d29b56-0430-1100-0000-000000000009` | Alkanes, Alkenes, Alkynes, Aromaticity & Electrophilic Substitution | 6 Topics | Pending |
+| **Ch 9** | Hydrocarbons (Part 1: Alkanes) | `65d29b56-0430-1100-0000-000000000009` | Nomenclature, Preparation, Physical/Chemical Properties & Conformations | 5 Topics | `sEchzMnCpH0` (Next Toppers) \| ✅ Verified (0s ➔ 5075s) |
 | **Ch 10** | s-Block and p-Block Elements (Formative) | `65d29b56-0430-1100-0000-000000000010` | Groups 1, 2, 13, 14: Trends, Diagonal Relationships & Anomalous Properties | 4 Topics | Pending |
 | **Ch 11** | The Gaseous State (Formative) | `65d29b56-0430-1100-0000-000000000011` | Gas Laws, Ideal Gas Equation, Kinetic Molecular Theory & Real Gases | 4 Topics | Pending |
-| **TOTAL** | **Class 11 Chemistry (043)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **62 Topics** | **11 Chapters Scaffolded** |
+| **TOTAL** | **Class 11 Chemistry (043)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **61 Topics** | **11 Chapters Scaffolded** |
 
 ---
 
@@ -168,12 +168,13 @@
 
 ### Chapter 9: Hydrocarbons
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000009`
-1. `65d29b56-0430-2109-0000-000000000001`: Classification of Hydrocarbons & Alkanes: Structure, Nomenclature, Isomerism & Conformations (Sawhorse & Newman Projections of Ethane)
-2. `65d29b56-0430-2109-0000-000000000002`: Alkanes: Preparation Methods (Wurtz, Decarboxylation, Kolbe) & Chemical Reactions (Free Radical Halogenation, Combustion, Aromatization)
-3. `65d29b56-0430-2109-0000-000000000003`: Alkenes: Nomenclature, Geometrical Isomerism (cis-trans), Preparation & Electrophilic Additions (Markovnikov & Anti-Markovnikov Rules, Ozonolysis)
-4. `65d29b56-0430-2109-0000-000000000004`: Alkynes: Structure, Nomenclature, Acidity of Terminal Alkynes, Preparation & Addition Reactions (Hydration to Carbonyls & Polymerization)
-5. `65d29b56-0430-2109-0000-000000000005`: Aromatic Hydrocarbons: Benzene Structure, Huckel's Rule of Aromaticity & Electrophilic Substitution Reactions (Nitration, Halogenation, Friedel-Crafts)
-6. `65d29b56-0430-2109-0000-000000000006`: Directive Influence of Functional Groups in Monosubstituted Benzene (o/p vs m-Directors) & Carcinogenicity and Toxicity of Polynuclear Arenes
+- **Video (Part 1 - Alkanes):** Next Toppers - 11th Science (`sEchzMnCpH0`) | Tapur Ma'am | Total Duration: 5075s (1h 24m 35s, Outro trimmed)
+1. `65d29b56-0430-2109-0000-000000000001`: Classification of Hydrocarbons, Carbon Types (1°, 2°, 3°, 4°), Alkyl Groups & IUPAC Nomenclature of Alkanes (`0s` ➔ `1140s`)
+2. `65d29b56-0430-2109-0000-000000000002`: Alkanes: Methods of Preparation (Hydrogenation of Alkenes/Alkynes, Reduction of Alkyl Halides & Decarboxylation) (`1140s` ➔ `2584s`)
+3. `65d29b56-0430-2109-0000-000000000003`: Kolbe's Electrolytic Synthesis & Physical Properties of Alkanes (Boiling Point, Melting Point, Solubility & Density) (`2584s` ➔ `3669s`)
+4. `65d29b56-0430-2109-0000-000000000004`: Chemical Properties of Alkanes: Free Radical Halogenation, Combustion, Controlled Oxidation, Aromatization & Pyrolysis (`3669s` ➔ `4744s`)
+5. `65d29b56-0430-2109-0000-000000000005`: Conformations of Alkanes: Ethane Conformations, Torsional Strain, Sawhorse & Newman Projections (`4744s` ➔ `5075s`)
+*(Note: Part 2: Alkenes & Alkynes [`nGi3tGiKiv4`] and Part 3: Aromatic Hydrocarbons / Benzene are queued for sequential module appending)*
 
 ### Chapter 10: s-Block and p-Block Elements (Formative & Bridge Module)
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000010`
