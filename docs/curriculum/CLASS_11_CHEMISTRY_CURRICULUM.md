@@ -71,7 +71,7 @@
 |:---:|---|---|---|:---:|:---|
 | **Ch 1** | Some Basic Concepts of Chemistry | `65d29b56-0430-1100-0000-000000000001` | Mole Concept, Stoichiometry, Limiting Reagent & Solution Concentrations | 5 Topics | `1t9Dq4wyhBw` (Next Toppers) \| ✅ Verified (0s ➔ 10970s) |
 | **Ch 2** | Structure of Atom | `65d29b56-0430-1100-0000-000000000002` | Bohr Model, Dual Nature, Quantum Numbers, Orbitals & Electronic Config | 6 Topics | `S7uLXHDTamo` (Next Toppers) \| ✅ Verified (0s ➔ 13125s) |
-| **Ch 3** | Classification of Elements & Periodicity | `65d29b56-0430-1100-0000-000000000003` | Modern Periodic Table, Blocks & Trends in Radii, IE, EA, Electronegativity | 5 Topics | Pending |
+| **Ch 3** | Classification of Elements & Periodicity | `65d29b56-0430-1100-0000-000000000003` | Modern Periodic Table, Blocks & Trends in Radii, IE, EA, Electronegativity | 5 Topics | `I55bzdbtY2k` (Next Toppers) \| ✅ Verified (0s ➔ 8257s) |
 | **Ch 4** | Chemical Bonding & Molecular Structure | `65d29b56-0430-1100-0000-000000000004` | VSEPR, VBT, Hybridisation, Molecular Orbital Theory & Hydrogen Bonding | 6 Topics | Pending |
 | **Ch 5** | Thermodynamics | `65d29b56-0430-1100-0000-000000000005` | 1st/2nd Laws, Enthalpy of Reactions, Hess's Law, Entropy & Gibbs Free Energy | 6 Topics | Pending |
 | **Ch 6** | Equilibrium | `65d29b56-0430-1100-0000-000000000006` | Chemical Equilibrium (Kc, Kp), Le Chatelier, pH, Buffers, Hydrolysis & Ksp | 7 Topics | Pending |
@@ -107,11 +107,12 @@
 
 ### Chapter 3: Classification of Elements and Periodicity in Properties
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000003`
-1. `65d29b56-0430-2103-0000-000000000001`: Genesis of Periodic Classification (Dobereiner, Newlands, Mendeleev) & Modern Periodic Law
-2. `65d29b56-0430-2103-0000-000000000002`: Modern Periodic Table Structure, Periods, Groups & IUPAC Nomenclature of Elements with Z > 100
-3. `65d29b56-0430-2103-0000-000000000003`: Electronic Configurations and Divisions of Elements: s-, p-, d-, and f-Block Elements
-4. `65d29b56-0430-2103-0000-000000000004`: Periodic Trends in Physical Properties: Atomic Radii, Ionic Radii, Ionization Enthalpy & Electron Gain Enthalpy
-5. `65d29b56-0430-2103-0000-000000000005`: Periodic Trends in Chemical Properties: Electronegativity, Valency, Anomalous Behavior of Second Period & Diagonal Relationships
+- **Video:** Next Toppers - 11th Science (`I55bzdbtY2k`) | Tapur Ma'am | Total Duration: 8257s (2h 17m 37s, Outro trimmed)
+1. `65d29b56-0430-2103-0000-000000000001`: Genesis of Periodic Classification (Dobereiner, Newlands, Mendeleev) & Modern Periodic Law (`0s` ➔ `1453s`)
+2. `65d29b56-0430-2103-0000-000000000002`: Modern Periodic Table Structure, Periods, Groups & IUPAC Nomenclature of Elements with Z > 100 (`1453s` ➔ `2403s`)
+3. `65d29b56-0430-2103-0000-000000000003`: Electronic Configurations and Divisions of Elements: s-, p-, d-, and f-Block Elements (`2403s` ➔ `4066s`)
+4. `65d29b56-0430-2103-0000-000000000004`: Periodic Trends in Physical Properties: Atomic Radii, Ionic Radii, Shielding Effect & Lanthanide Contraction (`4066s` ➔ `6685s`)
+5. `65d29b56-0430-2103-0000-000000000005`: Periodic Trends: Ionization Enthalpy, Electronegativity, Valency & Chemical Reactivity (`6685s` ➔ `8257s`)
 
 ### Chapter 4: Chemical Bonding and Molecular Structure
 - **Chapter ID:** `65d29b56-0430-1100-0000-000000000004`
