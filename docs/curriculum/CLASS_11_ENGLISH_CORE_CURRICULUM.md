@@ -72,7 +72,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 5** | Hornbill: Silk Road | `65d29b56-0301-1100-0000-000000000005` | Section C: Hornbill Prose | `vhI4Rm8S4so` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 760s) |
 | **Ch 6** | Hornbill Poem: A Photograph | `65d29b56-0301-1100-0000-000000000006` | Section C: Hornbill Poetry | `kJa_RYZqyuQ` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 330s) |
 | **Ch 7** | Hornbill Poem: The Laburnum Top | `65d29b56-0301-1100-0000-000000000007` | Section C: Hornbill Poetry | `WnzCxG8tYFQ` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 526s) |
-| **Ch 8** | Hornbill Poem: The Voice of the Rain | `65d29b56-0301-1100-0000-000000000008` | Section C: Hornbill Poetry | ⏳ Scaffolded |
+| **Ch 8** | Hornbill Poem: The Voice of the Rain | `65d29b56-0301-1100-0000-000000000008` | Section C: Hornbill Poetry | `qUb3iYpYafc` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 350s) |
 | **Ch 9** | Hornbill Poem: Childhood | `65d29b56-0301-1100-0000-000000000009` | Section C: Hornbill Poetry | ⏳ Scaffolded |
 | **Ch 10** | Hornbill Poem: Father to Son | `65d29b56-0301-1100-0000-000000000010` | Section C: Hornbill Poetry | ⏳ Scaffolded |
 | **Ch 11** | Snapshots: The Summer of the Beautiful White Horse | `65d29b56-0301-1100-0000-000000000011` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
@@ -91,7 +91,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **7/26 Chapters Fully Seeded** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **8/26 Chapters Fully Seeded** |
 
 ---
 
@@ -136,6 +136,12 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 - **Chapter ID:** `65d29b56-0301-1100-0000-000000000007`
 - **Video:** Educational Bhaiya (`WnzCxG8tYFQ`) | English Core Class 11 Animated | Total Duration: 526s (8m 46s, Complete Master Lecture)
 1. `65d29b56-0301-2107-0000-000000000001`: The Laburnum Top (Complete Poem Analysis, Symbolism, Goldfinch Imagery & Poetic Devices) (`0s` ➔ `526s`)
+
+### Chapter 8: Hornbill Poem: The Voice of the Rain
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000008`
+- **Video:** Educational Bhaiya (`qUb3iYpYafc`) | English Core Class 11 Animated | Total Duration: 350s (5m 50s, Complete Master Lecture, Outro trimmed)
+1. `65d29b56-0301-2108-0000-000000000001`: The Voice of the Rain (Complete Poem Analysis, Cyclic Nature of Rain, Parallel with Song & Poetic Devices) (`0s` ➔ `350s`)
+
 
 
 
