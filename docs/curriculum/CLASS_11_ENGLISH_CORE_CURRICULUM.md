@@ -75,7 +75,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 8** | Hornbill Poem: The Voice of the Rain | `65d29b56-0301-1100-0000-000000000008` | Section C: Hornbill Poetry | `qUb3iYpYafc` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 350s) |
 | **Ch 9** | Hornbill Poem: Childhood | `65d29b56-0301-1100-0000-000000000009` | Section C: Hornbill Poetry | `kXCmiaH83fY` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 280s) |
 | **Ch 10** | Hornbill Poem: Father to Son | `65d29b56-0301-1100-0000-000000000010` | Section C: Hornbill Poetry | `atS_6CS5xWo` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 402s) |
-| **Ch 11** | Snapshots: The Summer of the Beautiful White Horse | `65d29b56-0301-1100-0000-000000000011` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
+| **Ch 11** | Snapshots: The Summer of the Beautiful White Horse | `65d29b56-0301-1100-0000-000000000011` | Section C: Snapshots Supplementary | `wgi3ARMObRE` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 1083s) |
 | **Ch 12** | Snapshots: The Address | `65d29b56-0301-1100-0000-000000000012` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
 | **Ch 13** | Snapshots: Mother's Day | `65d29b56-0301-1100-0000-000000000013` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
 | **Ch 14** | Snapshots: Birth | `65d29b56-0301-1100-0000-000000000014` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
@@ -91,7 +91,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **10/26 Chapters Fully Seeded** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **11/26 Chapters Fully Seeded** |
 
 ---
 
@@ -151,6 +151,12 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 - **Chapter ID:** `65d29b56-0301-1100-0000-000000000010`
 - **Video:** Educational Bhaiya (`atS_6CS5xWo`) | English Core Class 11 | Total Duration: 402s (6m 42s, Complete Master Lecture, Outro trimmed)
 1. `65d29b56-0301-2110-0000-000000000001`: Father to Son (Complete Poem Analysis, Generation Gap, Emotional Estrangement, Reconciliation & Poetic Devices) (`0s` ➔ `402s`)
+
+### Chapter 11: Snapshots: The Summer of the Beautiful White Horse
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000011`
+- **Video:** Educational Bhaiya (`wgi3ARMObRE`) | English Core Class 11 Animated | Total Duration: 1083s (18m 03s, Complete Master Lecture)
+1. `65d29b56-0301-2111-0000-000000000001`: The Summer of the Beautiful White Horse (Complete Animated Story: Garoghlanian Tribe, Aram, Mourad & John Byro) (`0s` ➔ `1083s`)
+
 
 
 
