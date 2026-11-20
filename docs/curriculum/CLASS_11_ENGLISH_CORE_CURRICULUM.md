@@ -78,7 +78,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 11** | Snapshots: The Summer of the Beautiful White Horse | `65d29b56-0301-1100-0000-000000000011` | Section C: Snapshots Supplementary | `wgi3ARMObRE` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 1083s) |
 | **Ch 12** | Snapshots: The Address | `65d29b56-0301-1100-0000-000000000012` | Section C: Snapshots Supplementary | `JcuYkVi_BQQ` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 825s) |
 | **Ch 13** | Snapshots: Mother's Day | `65d29b56-0301-1100-0000-000000000013` | Section C: Snapshots Supplementary | `l_j0J5FSD6E` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 1236s) |
-| **Ch 14** | Snapshots: Birth | `65d29b56-0301-1100-0000-000000000014` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
+| **Ch 14** | Snapshots: Birth | `65d29b56-0301-1100-0000-000000000014` | Section C: Snapshots Supplementary | `15GCJdMbT3Q` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 684s) |
 | **Ch 15** | Snapshots: The Tale of Melon City | `65d29b56-0301-1100-0000-000000000015` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
 | **Ch 16** | Grammar: Tenses & Gap Filling | `65d29b56-0301-1100-0000-000000000016` | Section B: Applied Grammar | ⏳ Scaffolded |
 | **Ch 17** | Grammar: Clauses (Noun, Adverbial & Relative Clauses) | `65d29b56-0301-1100-0000-000000000017` | Section B: Applied Grammar | ⏳ Scaffolded |
@@ -91,7 +91,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **13/26 Chapters Fully Seeded** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **14/26 Chapters Fully Seeded** |
 
 ---
 
@@ -166,6 +166,12 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 - **Chapter ID:** `65d29b56-0301-1100-0000-000000000013`
 - **Video:** Educational Bhaiya (`l_j0J5FSD6E`) | English Core Class 11 Animated | Total Duration: 1236s (20m 36s, Complete Master Lecture)
 1. `65d29b56-0301-2113-0000-000000000001`: Mother's Day (Complete Animated Play: Pearson Family, Personality Exchange with Mrs. Fitzgerald & Social Satire) (`0s` ➔ `1236s`)
+
+### Chapter 14: Snapshots: Birth
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000014`
+- **Video:** Educational Bhaiya (`15GCJdMbT3Q`) | English Core Class 11 Animated | Total Duration: 684s (11m 24s, Complete Master Lecture, Outro trimmed)
+1. `65d29b56-0301-2114-0000-000000000001`: Birth (Complete Animated Story: Dr. Andrew Manson, Joe Morgan, The Delivery Crisis & Medical Miracle) (`0s` ➔ `684s`)
+
 
 
 
