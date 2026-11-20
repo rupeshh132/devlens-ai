@@ -80,9 +80,9 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 13** | Snapshots: Mother's Day | `65d29b56-0301-1100-0000-000000000013` | Section C: Snapshots Supplementary | `l_j0J5FSD6E` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 1236s) |
 | **Ch 14** | Snapshots: Birth | `65d29b56-0301-1100-0000-000000000014` | Section C: Snapshots Supplementary | `15GCJdMbT3Q` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 684s) |
 | **Ch 15** | Snapshots: The Tale of Melon City | `65d29b56-0301-1100-0000-000000000015` | Section C: Snapshots Supplementary | `DCXEY5w_UvY` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 460s) |
-| **Ch 16** | Grammar: Tenses & Gap Filling | `65d29b56-0301-1100-0000-000000000016` | Section B: Applied Grammar | ⏳ Scaffolded |
-| **Ch 17** | Grammar: Clauses (Noun, Adverbial & Relative Clauses) | `65d29b56-0301-1100-0000-000000000017` | Section B: Applied Grammar | ⏳ Scaffolded |
-| **Ch 18** | Grammar: Sentence Reordering & Transformation of Sentences | `65d29b56-0301-1100-0000-000000000018` | Section B: Applied Grammar | ⏳ Scaffolded |
+| **Ch 16** | Grammar: Tenses & Gap Filling | `65d29b56-0301-1100-0000-000000000016` | Section B: Applied Grammar | `pXZtRXpGNck` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 6955s) |
+| **Ch 17** | Grammar: Clauses (Noun, Adverbial & Relative Clauses) | `65d29b56-0301-1100-0000-000000000017` | Section B: Applied Grammar | `IMfRZbGa890` (Magnet Brains) \| ✅ Verified Single Master Lecture (0s ➔ 2994s) |
+| **Ch 18** | Grammar: Sentence Reordering & Transformation of Sentences | `65d29b56-0301-1100-0000-000000000018` | Section B: Applied Grammar | `NbGhrArqNRs` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 894s) |
 | **Ch 19** | Writing Skills: Classified Advertisements | `65d29b56-0301-1100-0000-000000000019` | Section B: Creative Writing | ⏳ Scaffolded |
 | **Ch 20** | Writing Skills: Poster Making | `65d29b56-0301-1100-0000-000000000020` | Section B: Creative Writing | ⏳ Scaffolded |
 | **Ch 21** | Writing Skills: Speech Writing | `65d29b56-0301-1100-0000-000000000021` | Section B: Creative Writing | ⏳ Scaffolded |
@@ -91,7 +91,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **15/26 Chapters Fully Seeded** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **18/26 Chapters Fully Seeded (Section B Grammar & Section C Literature 100% Complete!)** |
 
 ---
 
@@ -176,6 +176,22 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 - **Chapter ID:** `65d29b56-0301-1100-0000-000000000015`
 - **Video:** Educational Bhaiya (`DCXEY5w_UvY`) | English Core Class 11 Animated | Total Duration: 460s (7m 40s, Complete Master Lecture, Outro trimmed)
 1. `65d29b56-0301-2115-0000-000000000001`: The Tale of Melon City (Complete Poem Analysis: Satire, Just & Placid King, Royal Decree & Laissez-Faire) (`0s` ➔ `460s`)
+
+### Chapter 16: Grammar: Tenses & Gap Filling
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000016`
+- **Video:** Dear Sir (`pXZtRXpGNck`) | Learn Tenses in English Grammar with Examples | Total Duration: 6955s (1h 55m 55s, Complete Master Lecture, Outro promo trimmed)
+1. `65d29b56-0301-2116-0000-000000000001`: Grammar: Tenses & Gap Filling (Complete Rules: Present, Past & Future Tenses, Structures & Gap Filling Practice) (`0s` ➔ `6955s`)
+
+### Chapter 17: Grammar: Clauses (Noun, Adverbial & Relative Clauses)
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000017`
+- **Video:** Magnet Brains (`IMfRZbGa890`) | Clauses - Introduction \| Class 11 English Grammar | Total Duration: 2994s (49m 54s, Complete Master Lecture, Website promo trimmed)
+1. `65d29b56-0301-2117-0000-000000000001`: Grammar: Clauses (Complete Concepts: Noun Clauses, Adverbial Clauses & Relative Clauses with Sentence Structure) (`0s` ➔ `2994s`)
+
+### Chapter 18: Grammar: Sentence Reordering & Transformation of Sentences
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000018`
+- **Video:** Dear Sir (`NbGhrArqNRs`) | Jumble Words Tricks \| Rearrangement of Sentence | Total Duration: 894s (14m 54s, Complete Master Lecture, Outro promo trimmed)
+1. `65d29b56-0301-2118-0000-000000000001`: Grammar: Sentence Reordering & Transformation of Sentences (Jumbled Words Tricks, Syntax Analysis & Transformation) (`0s` ➔ `894s`)
+
 
 
 
