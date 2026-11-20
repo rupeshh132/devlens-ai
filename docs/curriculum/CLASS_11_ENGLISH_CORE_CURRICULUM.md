@@ -87,11 +87,11 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 20** | Writing Skills: Poster Making | `65d29b56-0301-1100-0000-000000000020` | Section B: Creative Writing | `R-l9uU9Q8zw` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 790s) |
 | **Ch 21** | Writing Skills: Speech Writing | `65d29b56-0301-1100-0000-000000000021` | Section B: Creative Writing | `6jnbiukoKVo` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 1281s) |
 | **Ch 22** | Writing Skills: Debate Writing | `65d29b56-0301-1100-0000-000000000022` | Section B: Creative Writing | `Qavt9Wz62Lg` (Magnet Brains) \| ✅ Verified Single Master Lecture (0s ➔ 2100s) |
-| **Ch 23** | Reading Skills: Unseen Passages (Factual, Descriptive & Literary) | `65d29b56-0301-1100-0000-000000000023` | Section A: Reading Skills | ⏳ Scaffolded |
-| **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
-| **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
-| **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **22/26 Chapters Fully Seeded (Section B Writing & Grammar & Section C Literature 100% Complete!)** |
+| **Ch 23** | Reading Skills: Unseen Passages (Factual, Descriptive & Literary) | `65d29b56-0301-1100-0000-000000000023` | Section A: Reading Skills | `ho1Daf0BjpA` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 936s) |
+| **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | `kRI-F9vFv_0` (Physics Wallah English Medium) \| ✅ Verified Single Master Lecture (0s ➔ 3670s) |
+| **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | `sELIis1wfzM` (Magnet Brains) \| ✅ Verified Single Master Lecture (0s ➔ 2440s) |
+| **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | `U1GG0mN7lb8` (English Tutorials by Poonam) \| ✅ Verified Single Master Lecture (0s ➔ 1150s) |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **26/26 Chapters Fully Seeded (100% COMPLETE - ZERO GAPS!)** |
 
 ---
 
@@ -209,8 +209,28 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 
 ### Chapter 22: Writing Skills: Debate Writing
 - **Chapter ID:** `65d29b56-0301-1100-0000-000000000022`
-- **Video:** Magnet Brains (`Qavt9Wz62Lg`) | Debate Writing Introduction & Formats \| Class 11 English | Total Duration: 2100s (35m 00s, Complete Master Lecture, Website promo trimmed)
+- **Video:** Magnet Brains (`Qavt9Wz62Lg`) | Debate Writing Introduction & Formats | Class 11 English | Total Duration: 2100s (35m 00s, Complete Master Lecture, Website promo trimmed)
 1. `65d29b56-0301-2122-0000-000000000001`: Writing Skills: Debate Writing (Introduction, Rules & Guidelines, Arguments For/Against the Motion & Solved Example) (`0s` ➔ `2100s`)
+
+### Chapter 23: Reading Skills: Unseen Passages (Factual, Descriptive & Literary)
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000023`
+- **Video:** Dear Sir (`ho1Daf0BjpA`) | Unseen Passage in English | Unseen Passage Trick | Total Duration: 936s (15m 36s, Complete Master Lecture, Outro promo trimmed)
+1. `65d29b56-0301-2123-0000-000000000001`: Reading Skills: Unseen Passages (Master Strategies, Comprehension Techniques & Solved Passages) (`0s` ➔ `936s`)
+
+### Chapter 24: Reading Skills: Case-Based Factual Passages (Charts & Data)
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000024`
+- **Video:** Physics Wallah English Medium (`kRI-F9vFv_0`) | Reading Comprehension Class 11 English | Case-Based Passages | Total Duration: 3670s (01:01:10, Complete Master Lecture, End slate trimmed)
+1. `65d29b56-0301-2124-0000-000000000001`: Reading Skills: Case-Based Factual Passages (Data Interpretation, Graphical Analysis & Solved Case Studies) (`0s` ➔ `3670s`)
+
+### Chapter 25: Reading Skills: Note-Making and Summarization
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000025`
+- **Video:** Magnet Brains (`sELIis1wfzM`) | Note Making - Format & Solved Example | Class 11 English | Total Duration: 2440s (40m 40s, Complete Master Lecture, Website promo trimmed)
+1. `65d29b56-0301-2125-0000-000000000001`: Reading Skills: Note-Making and Summarization (Format, Abbreviations, Heading/Subheading & Summary Writing) (`0s` ➔ `2440s`)
+
+### Chapter 26: Internal Assessment: ASL (Listening & Speaking) & Project Work
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000026`
+- **Video:** English Tutorials by Poonam (`U1GG0mN7lb8`) | ASL Class 11 English | Assessment of Speaking and Listening Skills | Total Duration: 1150s (19m 10s, Complete Master Lecture, Floral outro card trimmed)
+1. `65d29b56-0301-2126-0000-000000000001`: Internal Assessment: Assessment of Speaking & Listening (ASL) Skills, Roleplay & Project Work Guidelines (`0s` ➔ `1150s`)
 
 
 
