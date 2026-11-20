@@ -58,7 +58,7 @@ pie title Class 11 Physics Theory Marks Distribution (70 Marks)
 
 | Ch # | Chapter Title | Chapter ID | Unit & Term | Status |
 |:---:|---|---|---|:---:|
-| **Ch 1** | Units and Measurements | `65d29b56-0420-1100-0000-000000000001` | Unit I: Physical World & Measurement (Mid-Term) | ⏳ Scaffolded |
+| **Ch 1** | Units and Measurements | `65d29b56-0420-1100-0000-000000000001` | Unit I: Physical World & Measurement (Mid-Term) | `5rm-iI9Nqyo` (PW Class 11 Science - Akshay Sir) \| ✅ Verified (5 Subtopics, 0s ➔ 8110s) |
 | **Ch 2** | Motion in a Straight Line | `65d29b56-0420-1100-0000-000000000002` | Unit II: Kinematics (Mid-Term) | ⏳ Scaffolded |
 | **Ch 3** | Motion in a Plane | `65d29b56-0420-1100-0000-000000000003` | Unit II: Kinematics (Mid-Term) | ⏳ Scaffolded |
 | **Ch 4** | Laws of Motion | `65d29b56-0420-1100-0000-000000000004` | Unit III: Laws of Motion (Mid-Term) | ⏳ Scaffolded |
@@ -72,7 +72,7 @@ pie title Class 11 Physics Theory Marks Distribution (70 Marks)
 | **Ch 12** | Kinetic Theory | `65d29b56-0420-1100-0000-000000000012` | Unit IX: Behaviour of Perfect Gases (Annual) | ⏳ Scaffolded |
 | **Ch 13** | Oscillations | `65d29b56-0420-1100-0000-000000000013` | Unit X: Oscillations & Waves (Annual) | ⏳ Scaffolded |
 | **Ch 14** | Waves | `65d29b56-0420-1100-0000-000000000014` | Unit X: Oscillations & Waves (Annual) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 Physics (042)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **14 Chapters Scaffolded (Ready for Curation)** |
+| **TOTAL** | **Class 11 Physics (042)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **1/14 Chapters Fully Seeded (Ch 1 Units and Measurements 100% Complete!)** |
 
 ---
 
@@ -150,3 +150,24 @@ pie title Class 11 Physics Theory Marks Distribution (70 Marks)
 ### Chapter 14: Waves
 - **Wave Motion:** Transverse and longitudinal waves, speed of travelling wave, displacement relation for a progressive wave.
 - **Superposition & Interference:** Principle of superposition of waves, reflection of waves, standing waves in strings and organ pipes, fundamental mode and harmonics, Beats.
+
+---
+
+## Chapter Lecture Blueprints & Continuous Timelines
+
+### Chapter 1: Units and Measurements
+- **Chapter ID:** `65d29b56-0420-1100-0000-000000000001`
+- **Master Video:** PW Class 11 Science - Akshay Tyagi Sir (`5rm-iI9Nqyo`) | Units and Measurements Class 11 One Shot | Total Teaching Duration: 8110s (02:15:10, Outro banter trimmed)
+- **Curation Structure:** 5 Continuous Master Subtopics (100% Zero Gap: `0s` ➔ `8110s`)
+
+1. `65d29b56-0420-2101-0000-000000000001`: Physical Quantities, Systems of Units & SI Standards (`0s` ➔ `2354s` | 39m 14s)
+   - *Physical vs Non-Physical Quantities, Scalars/Vectors, Base vs Derived Quantities, Supplementary Units (Radian, Steradian), Systems of Units (CGS, MKS, FPS, SI), Unit Conversions & Astronomical Units (AU, ly, pc), Parallax Method.*
+2. `65d29b56-0420-2101-0000-000000000002`: Dimensions & Dimensional Formulae of Physical Quantities (`2354s` ➔ `3586s` | 20m 32s)
+   - *Seven Base Dimensions of the Physical World, Dimensional Formulae, Dimensional Equations, Step-by-Step Derivations for Mechanics, Thermal & Electrical Quantities.*
+3. `65d29b56-0420-2101-0000-000000000003`: Applications of Dimensional Analysis (Homogeneity, Checking Equations & Deriving Relations) (`3586s` ➔ `5590s` | 33m 24s)
+   - *Principle of Homogeneity, Checking Correctness of Formulas & Equations, Unit Conversion between Systems, Deducing Relationships between Physical Quantities with Practice Questions.*
+4. `65d29b56-0420-2101-0000-000000000004`: Significant Figures, Uncertainty & Rounding Off in Calculations (`5590s` ➔ `7105s` | 25m 15s)
+   - *Rules for Significant Figures, Determining Uncertainty in Results, Scientific Notation, Rules for Rounding Off Uncertain Digits, Arithmetic Operations (Addition, Subtraction, Multiplication & Division) with Significant Figures.*
+5. `65d29b56-0420-2101-0000-000000000005`: NCERT Board Practice Questions & Limitations of Dimensional Analysis (`7105s` ➔ `8110s` | 16m 45s)
+   - *High-Weightage NCERT Exercise Problems, Board-Pattern Questions, Solved Numericals, Limitations of Dimensional Analysis (Trigonometric/Exponential Functions, Dimensionless Constants), Final Concept Roadmap & Chapter Summary.*
+
