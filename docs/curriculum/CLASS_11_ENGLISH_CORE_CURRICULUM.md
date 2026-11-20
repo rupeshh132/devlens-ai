@@ -77,7 +77,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 10** | Hornbill Poem: Father to Son | `65d29b56-0301-1100-0000-000000000010` | Section C: Hornbill Poetry | `atS_6CS5xWo` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 402s) |
 | **Ch 11** | Snapshots: The Summer of the Beautiful White Horse | `65d29b56-0301-1100-0000-000000000011` | Section C: Snapshots Supplementary | `wgi3ARMObRE` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 1083s) |
 | **Ch 12** | Snapshots: The Address | `65d29b56-0301-1100-0000-000000000012` | Section C: Snapshots Supplementary | `JcuYkVi_BQQ` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 825s) |
-| **Ch 13** | Snapshots: Mother's Day | `65d29b56-0301-1100-0000-000000000013` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
+| **Ch 13** | Snapshots: Mother's Day | `65d29b56-0301-1100-0000-000000000013` | Section C: Snapshots Supplementary | `l_j0J5FSD6E` (Educational Bhaiya) \| ✅ Verified Single Master Lecture (0s ➔ 1236s) |
 | **Ch 14** | Snapshots: Birth | `65d29b56-0301-1100-0000-000000000014` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
 | **Ch 15** | Snapshots: The Tale of Melon City | `65d29b56-0301-1100-0000-000000000015` | Section C: Snapshots Supplementary | ⏳ Scaffolded |
 | **Ch 16** | Grammar: Tenses & Gap Filling | `65d29b56-0301-1100-0000-000000000016` | Section B: Applied Grammar | ⏳ Scaffolded |
@@ -91,7 +91,7 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **12/26 Chapters Fully Seeded** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **13/26 Chapters Fully Seeded** |
 
 ---
 
@@ -161,6 +161,12 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 - **Chapter ID:** `65d29b56-0301-1100-0000-000000000012`
 - **Video:** Educational Bhaiya (`JcuYkVi_BQQ`) | English Core Class 11 Animated | Total Duration: 825s (13m 45s, Complete Master Lecture, Outro trimmed)
 1. `65d29b56-0301-2112-0000-000000000001`: The Address (Complete Animated Story: Post-War Trauma, Mrs. Dorling, Marconi Street & Letting Go) (`0s` ➔ `825s`)
+
+### Chapter 13: Snapshots: Mother's Day
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000013`
+- **Video:** Educational Bhaiya (`l_j0J5FSD6E`) | English Core Class 11 Animated | Total Duration: 1236s (20m 36s, Complete Master Lecture)
+1. `65d29b56-0301-2113-0000-000000000001`: Mother's Day (Complete Animated Play: Pearson Family, Personality Exchange with Mrs. Fitzgerald & Social Satire) (`0s` ➔ `1236s`)
+
 
 
 
