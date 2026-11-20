@@ -83,15 +83,15 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 | **Ch 16** | Grammar: Tenses & Gap Filling | `65d29b56-0301-1100-0000-000000000016` | Section B: Applied Grammar | `pXZtRXpGNck` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 6955s) |
 | **Ch 17** | Grammar: Clauses (Noun, Adverbial & Relative Clauses) | `65d29b56-0301-1100-0000-000000000017` | Section B: Applied Grammar | `IMfRZbGa890` (Magnet Brains) \| ✅ Verified Single Master Lecture (0s ➔ 2994s) |
 | **Ch 18** | Grammar: Sentence Reordering & Transformation of Sentences | `65d29b56-0301-1100-0000-000000000018` | Section B: Applied Grammar | `NbGhrArqNRs` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 894s) |
-| **Ch 19** | Writing Skills: Classified Advertisements | `65d29b56-0301-1100-0000-000000000019` | Section B: Creative Writing | ⏳ Scaffolded |
-| **Ch 20** | Writing Skills: Poster Making | `65d29b56-0301-1100-0000-000000000020` | Section B: Creative Writing | ⏳ Scaffolded |
-| **Ch 21** | Writing Skills: Speech Writing | `65d29b56-0301-1100-0000-000000000021` | Section B: Creative Writing | ⏳ Scaffolded |
-| **Ch 22** | Writing Skills: Debate Writing | `65d29b56-0301-1100-0000-000000000022` | Section B: Creative Writing | ⏳ Scaffolded |
+| **Ch 19** | Writing Skills: Classified Advertisements | `65d29b56-0301-1100-0000-000000000019` | Section B: Creative Writing | `CbRHAX_MvnM` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 1313s) |
+| **Ch 20** | Writing Skills: Poster Making | `65d29b56-0301-1100-0000-000000000020` | Section B: Creative Writing | `R-l9uU9Q8zw` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 790s) |
+| **Ch 21** | Writing Skills: Speech Writing | `65d29b56-0301-1100-0000-000000000021` | Section B: Creative Writing | `6jnbiukoKVo` (Dear Sir) \| ✅ Verified Single Master Lecture (0s ➔ 1281s) |
+| **Ch 22** | Writing Skills: Debate Writing | `65d29b56-0301-1100-0000-000000000022` | Section B: Creative Writing | `Qavt9Wz62Lg` (Magnet Brains) \| ✅ Verified Single Master Lecture (0s ➔ 2100s) |
 | **Ch 23** | Reading Skills: Unseen Passages (Factual, Descriptive & Literary) | `65d29b56-0301-1100-0000-000000000023` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 24** | Reading Skills: Case-Based Factual Passages (Charts & Data) | `65d29b56-0301-1100-0000-000000000024` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 25** | Reading Skills: Note-Making and Summarization | `65d29b56-0301-1100-0000-000000000025` | Section A: Reading Skills | ⏳ Scaffolded |
 | **Ch 26** | Internal Assessment: ASL (Listening & Speaking) & Project Work | `65d29b56-0301-1100-0000-000000000026` | Internal Assessment (20M) | ⏳ Scaffolded |
-| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **18/26 Chapters Fully Seeded (Section B Grammar & Section C Literature 100% Complete!)** |
+| **TOTAL** | **Class 11 English Core (301)** | | **Full Official Delhi DoE / CBSE Senior Secondary Architecture** | **22/26 Chapters Fully Seeded (Section B Writing & Grammar & Section C Literature 100% Complete!)** |
 
 ---
 
@@ -191,6 +191,27 @@ pie title Class 11 English Core Marks Distribution (100 Marks)
 - **Chapter ID:** `65d29b56-0301-1100-0000-000000000018`
 - **Video:** Dear Sir (`NbGhrArqNRs`) | Jumble Words Tricks \| Rearrangement of Sentence | Total Duration: 894s (14m 54s, Complete Master Lecture, Outro promo trimmed)
 1. `65d29b56-0301-2118-0000-000000000001`: Grammar: Sentence Reordering & Transformation of Sentences (Jumbled Words Tricks, Syntax Analysis & Transformation) (`0s` ➔ `894s`)
+
+### Chapter 19: Writing Skills: Classified Advertisements
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000019`
+- **Video:** Dear Sir (`CbRHAX_MvnM`) | Advertisement Writing Format & Types | Total Duration: 1313s (21m 53s, Complete Master Lecture, Outro promo trimmed)
+1. `65d29b56-0301-2119-0000-000000000001`: Writing Skills: Classified Advertisements (Format, Types: Situation Vacant/Wanted, For Sale, To Let & Solved Questions) (`0s` ➔ `1313s`)
+
+### Chapter 20: Writing Skills: Poster Making
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000020`
+- **Video:** Dear Sir (`R-l9uU9Q8zw`) | Poster Writing Format, Catchy Slogans & Visual Layout | Total Duration: 790s (13m 10s, Complete Master Lecture, Outro promo trimmed)
+1. `65d29b56-0301-2120-0000-000000000001`: Writing Skills: Poster Making (Layout, Visual Balance, Catchy Slogans, Essential Elements & Exam Practice) (`0s` ➔ `790s`)
+
+### Chapter 21: Writing Skills: Speech Writing
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000021`
+- **Video:** Dear Sir (`6jnbiukoKVo`) | Speech Writing Format, Marking Scheme & Scoring Tricks | Total Duration: 1281s (21m 21s, Complete Master Lecture, Outro promo trimmed)
+1. `65d29b56-0301-2121-0000-000000000001`: Writing Skills: Speech Writing (Marking Scheme, Formal Address, Layout, Fixed Lines & Model Practice) (`0s` ➔ `1281s`)
+
+### Chapter 22: Writing Skills: Debate Writing
+- **Chapter ID:** `65d29b56-0301-1100-0000-000000000022`
+- **Video:** Magnet Brains (`Qavt9Wz62Lg`) | Debate Writing Introduction & Formats \| Class 11 English | Total Duration: 2100s (35m 00s, Complete Master Lecture, Website promo trimmed)
+1. `65d29b56-0301-2122-0000-000000000001`: Writing Skills: Debate Writing (Introduction, Rules & Guidelines, Arguments For/Against the Motion & Solved Example) (`0s` ➔ `2100s`)
+
 
 
 
