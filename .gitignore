@@ -40,6 +40,8 @@ workspaces/
 backend/workspaces/
 dev-scripts/
 /dev-scripts/
+scratch/
+/scratch/
 
 # IDE files
 .idea/
