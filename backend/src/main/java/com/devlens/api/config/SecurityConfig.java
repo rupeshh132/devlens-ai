@@ -46,6 +46,10 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .headers(headers -> headers
+                .frameOptions(frame -> frame.disable())
+                .contentSecurityPolicy(csp -> csp.policyDirectives("frame-ancestors 'self' http://localhost:* http://127.0.0.1:* https://*.vercel.app"))
+            )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/v1/auth/**", "/api/v1/learn/auth/**", "/api/v1/learn/content/**", "/api/v1/learn/pyq/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/actuator/**", "/api/v1/webhooks/**").permitAll()
                 .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/v1/users").permitAll()

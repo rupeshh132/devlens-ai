@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { PlayCircle, Sparkles, Trophy, X, File, FileText, CheckCircle, ArrowLeft, BrainCircuit, Loader2, Video , Lightbulb, Clock, ThumbsUp, ThumbsDown, ArrowRight } from 'lucide-react';
+import { PlayCircle, Sparkles, Trophy, X, File, FileText, CheckCircle, ArrowLeft, BrainCircuit, Loader2, Video , Lightbulb, Clock, ThumbsUp, ThumbsDown, ArrowRight, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { learnApi } from '../../../lib/learn-api';
@@ -448,7 +448,18 @@ function VideoPlayer({
           !isPlaying ? (
             <div className="absolute inset-0 cursor-pointer z-10" onClick={() => setIsPlaying(true)}>
               {thumbnailUrl && (
-                <img src={thumbnailUrl} alt={video.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                <img
+                  src={thumbnailUrl}
+                  alt={video.title}
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (!img.dataset.fallback && videoId) {
+                      img.dataset.fallback = '1';
+                      img.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                    }
+                  }}
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                />
               )}
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />
               <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -883,6 +894,7 @@ function TopicQuiz({ topicId, topicTitle, chapterTitle, subjectName }: TopicQuiz
   const [showExplanation, setShowExplanation] = useState(false);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [numericDraft, setNumericDraft] = useState('');
 
   const isUuid = (str: string) => {
     return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
@@ -1053,7 +1065,6 @@ function TopicQuiz({ topicId, topicTitle, chapterTitle, subjectName }: TopicQuiz
     );
   }
 
-  const [numericDraft, setNumericDraft] = useState('');
   const q = questions[currentIndex];
   let options: Record<string, string> = {};
   try {
@@ -1431,8 +1442,49 @@ function AITutorWidget({ topicName }: { topicId?: string, topicName: string }) {
 
 export function TopicStudyPage() {
   const [activePdf, setActivePdf] = useState<ContentItem | null>(null);
+  const [pdfBlobUrl, setPdfBlobUrl] = useState<string | null>(null);
+  const [pdfLoadError, setPdfLoadError] = useState<string | null>(null);
   const [pdfReadTime, setPdfReadTime] = useState(0);
   const [pdfWatched, setPdfWatched] = useState<Record<string, boolean>>({});
+
+  // Preload Chapter PDF as an in-memory Blob URL so cross-origin localhost/Vercel iframes always render cleanly
+  useEffect(() => {
+    if (!activePdf?.contentUrl) {
+      setPdfBlobUrl(null);
+      setPdfLoadError(null);
+      return;
+    }
+    const targetUrl = resolveContentUrl(activePdf.contentUrl);
+    let cancelled = false;
+    let objectUrl: string | null = null;
+    setPdfLoadError(null);
+    setPdfBlobUrl(null);
+
+    if (targetUrl.includes('/api/')) {
+      fetch(targetUrl)
+        .then(async (res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.blob();
+        })
+        .then((blob) => {
+          if (cancelled) return;
+          objectUrl = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+          setPdfBlobUrl(objectUrl);
+        })
+        .catch(() => {
+          if (!cancelled) {
+            setPdfBlobUrl(targetUrl);
+          }
+        });
+    } else {
+      setPdfBlobUrl(targetUrl);
+    }
+
+    return () => {
+      cancelled = true;
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+    };
+  }, [activePdf]);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -1845,6 +1897,14 @@ export function TopicStudyPage() {
                             <><Clock className="w-4 h-4 mr-2" /> Focus to unlock</>
                           )}
                        </button>
+                       <a
+                         href={resolveContentUrl(activePdf.contentUrl)}
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition-colors"
+                       >
+                         <ExternalLink className="w-3.5 h-3.5" /> Open Tab
+                       </a>
                        <button 
                          onClick={() => { setActivePdf(null); setPdfReadTime(0); }}
                          className="w-10 h-10 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl flex items-center justify-center transition-colors border border-slate-700 hover:border-slate-500"
@@ -1869,16 +1929,31 @@ export function TopicStudyPage() {
                   {/* Reader Iframe */}
                   <div className="flex-1 p-2 sm:p-6 pb-0 flex justify-center overflow-hidden">
                      <div className="w-full max-w-5xl h-full bg-white rounded-t-xl overflow-hidden shadow-2xl relative">
-                        {/* Loading State */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50">
-                           <Loader2 className="w-8 h-8 animate-spin text-blue-500 mb-4" />
-                           <p className="text-slate-500 font-medium">Loading Document...</p>
-                        </div>
-                        <iframe 
-                          src={resolveContentUrl(activePdf.contentUrl)} 
-                          className="relative z-10 w-full h-full border-0" 
-                          title={activePdf.title}
-                        />
+                        {!pdfBlobUrl && !pdfLoadError && (
+                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 z-20">
+                             <Loader2 className="w-8 h-8 animate-spin text-blue-500 mb-4" />
+                             <p className="text-slate-500 font-medium">Loading Document...</p>
+                          </div>
+                        )}
+                        {pdfLoadError ? (
+                          <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center bg-white">
+                            <p className="text-sm font-semibold text-rose-600 mb-3">{pdfLoadError}</p>
+                            <a
+                              href={resolveContentUrl(activePdf.contentUrl)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl"
+                            >
+                              Open PDF Directly
+                            </a>
+                          </div>
+                        ) : pdfBlobUrl ? (
+                          <iframe 
+                            src={pdfBlobUrl} 
+                            className="relative z-10 w-full h-full border-0 bg-white" 
+                            title={activePdf.title}
+                          />
+                        ) : null}
                      </div>
                   </div>
                 </div>
