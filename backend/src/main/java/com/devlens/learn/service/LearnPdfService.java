@@ -27,6 +27,95 @@ public class LearnPdfService {
     private final LearnTestQuestionRepository testQuestionRepository;
     private final LearnQuestionRepository questionRepository;
     private final com.devlens.learn.repository.LearnUserRepository userRepository;
+    private final com.devlens.learn.repository.LearnChapterRepository chapterRepository;
+    private final com.devlens.learn.repository.LearnTopicRepository topicRepository;
+    private final com.devlens.learn.repository.LearnSubjectRepository subjectRepository;
+    private final com.devlens.learn.repository.LearnExamTypeRepository examTypeRepository;
+
+    public byte[] generateChapterNotesPdf(UUID chapterId) {
+        var chapter = chapterRepository.findById(chapterId)
+                .orElseThrow(() -> new RuntimeException("Chapter not found: " + chapterId));
+        var subject = subjectRepository.findById(chapter.getSubjectId()).orElse(null);
+        var examType = (subject != null) ? examTypeRepository.findById(subject.getExamTypeId()).orElse(null) : null;
+        var topics = topicRepository.findByChapterIdOrderByOrderIndexAsc(chapterId);
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try {
+            Document document = new Document(PageSize.A4, 45, 45, 48, 48);
+            PdfWriter writer = PdfWriter.getInstance(document, out);
+            writer.setPageEvent(new WatermarkPageEvent("PREPLENS LEARN  |  SYNCED NOTES"));
+            document.open();
+
+            Font brandFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, new Color(79, 70, 229));
+            Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 17, Color.BLACK);
+            Font metaFont = FontFactory.getFont(FontFactory.HELVETICA, 10, Color.DARK_GRAY);
+            Font sectionFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, new Color(30, 41, 59));
+            Font bodyBold = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10.5f, Color.BLACK);
+            Font bodyFont = FontFactory.getFont(FontFactory.HELVETICA, 10, Color.DARK_GRAY);
+
+            Paragraph brand = new Paragraph("PREPLENS LEARN — CHAPTER MASTER STUDY NOTES", brandFont);
+            document.add(brand);
+
+            Paragraph chTitle = new Paragraph(chapter.getTitle(), titleFont);
+            chTitle.setSpacingBefore(4);
+            chTitle.setSpacingAfter(4);
+            document.add(chTitle);
+
+            String trackInfo = (examType != null ? examType.getName() : "Competitive / Board")
+                    + "  |  Subject: " + (subject != null ? subject.getName() : "Core");
+            Paragraph meta = new Paragraph(trackInfo + "  |  Official Syllabus Synchronized Edition", metaFont);
+            meta.setSpacingAfter(14);
+            document.add(meta);
+
+            Paragraph topicsHeading = new Paragraph("1. Synchronized Topic Breakdown & Core Coverage", sectionFont);
+            topicsHeading.setSpacingAfter(6);
+            document.add(topicsHeading);
+
+            int tNum = 1;
+            for (var topic : topics) {
+                Paragraph tp = new Paragraph(tNum + ". " + topic.getTitle(), bodyBold);
+                tp.setSpacingBefore(4);
+                document.add(tp);
+                if (topic.getDescription() != null && !topic.getDescription().isBlank()) {
+                    Paragraph desc = new Paragraph("   " + topic.getDescription(), bodyFont);
+                    desc.setSpacingAfter(4);
+                    document.add(desc);
+                }
+                tNum++;
+            }
+
+            Paragraph practiceHeading = new Paragraph("2. High-Yield Concept Drills & Solved Reference", sectionFont);
+            practiceHeading.setSpacingBefore(14);
+            practiceHeading.setSpacingAfter(6);
+            document.add(practiceHeading);
+
+            int qNum = 1;
+            for (var topic : topics) {
+                List<LearnQuestion> qList = questionRepository.findByTopicId(topic.getId());
+                for (LearnQuestion q : qList) {
+                    Paragraph qp = new Paragraph("Q" + qNum + ". [" + (q.getQuestionType() != null ? q.getQuestionType() : "MCQ") + "] " + q.getQuestionText(), bodyBold);
+                    qp.setSpacingBefore(6);
+                    document.add(qp);
+                    Paragraph ansP = new Paragraph("   Answer Key: " + (q.getCorrectAnswer() != null ? q.getCorrectAnswer() : "-"), bodyFont);
+                    document.add(ansP);
+                    if (q.getExplanation() != null && !q.getExplanation().isBlank()) {
+                        Paragraph expP = new Paragraph("   Solution & Trap Note: " + q.getExplanation(), bodyFont);
+                        expP.setSpacingAfter(4);
+                        document.add(expP);
+                    }
+                    qNum++;
+                }
+            }
+            if (qNum == 1) {
+                document.add(new Paragraph("Practice this chapter's Live DPPs, Chapter Drills & Full CBT Papers in Mock Tests for step-by-step solutions.", bodyFont));
+            }
+
+            document.close();
+        } catch (Exception e) {
+            throw new RuntimeException("Error generating chapter notes PDF", e);
+        }
+        return out.toByteArray();
+    }
 
     public byte[] generateWatermarkedMockTestPdf(UUID mockTestId, UUID userId) {
         LearnMockTest mockTest = mockTestRepository.findById(mockTestId)
@@ -70,15 +159,17 @@ public class LearnPdfService {
                     Paragraph qP = new Paragraph("Q" + qNum + ". " + q.getQuestionText(), questionFont);
                     document.add(qP);
                     
-                    // Decode options JSON (simple string replace for prototype)
-                    String optionsStr = q.getOptionsJson()
-                            .replace("{", "")
-                            .replace("}", "")
-                            .replace("\"", "");
-                            
-                    for (String opt : optionsStr.split(",")) {
-                        Paragraph optP = new Paragraph("    " + opt.trim(), optionFont);
-                        document.add(optP);
+                    // Decode options JSON safely (null for subjective CBSE questions)
+                    if (q.getOptionsJson() != null && !q.getOptionsJson().trim().isEmpty()) {
+                        String optionsStr = q.getOptionsJson()
+                                .replace("{", "")
+                                .replace("}", "")
+                                .replace("\"", "");
+                                
+                        for (String opt : optionsStr.split(",")) {
+                            Paragraph optP = new Paragraph("    " + opt.trim(), optionFont);
+                            document.add(optP);
+                        }
                     }
                     document.add(new Paragraph(" "));
                     qNum++;

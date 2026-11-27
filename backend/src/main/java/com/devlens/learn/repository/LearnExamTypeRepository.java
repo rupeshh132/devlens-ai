@@ -13,7 +13,7 @@ public interface LearnExamTypeRepository extends JpaRepository<LearnExamType, UU
     
     Optional<LearnExamType> findBySlug(String slug);
     
-    Optional<LearnExamType> findByNameIgnoreCase(String name);
+    List<LearnExamType> findAllByNameIgnoreCase(String name);
     
     List<LearnExamType> findByIsActiveTrueOrderByDisplayOrderAsc();
     

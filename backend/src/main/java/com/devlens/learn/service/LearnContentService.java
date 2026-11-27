@@ -37,7 +37,32 @@ public class LearnContentService {
     }
 
     public List<LearnContentItem> getContentItemsByTopic(UUID topicId) {
-        return contentItemRepository.findByTopicIdOrderByOrderIndexAsc(topicId);
+        List<LearnContentItem> items = new java.util.ArrayList<>(contentItemRepository.findByTopicIdOrderByOrderIndexAsc(topicId));
+        boolean hasPdf = items.stream().anyMatch(i -> "NOTES_PDF".equalsIgnoreCase(i.getType()) || "PDF".equalsIgnoreCase(i.getType()));
+
+        if (!hasPdf) {
+            // Inherit Chapter PDF notes from any topic within the same chapter
+            topicRepository.findById(topicId).ifPresent(topic -> {
+                UUID chapterId = topic.getChapterId();
+                if (chapterId != null) {
+                    List<LearnTopic> chapterTopics = topicRepository.findByChapterIdOrderByOrderIndexAsc(chapterId);
+                    for (LearnTopic ct : chapterTopics) {
+                        if (!ct.getId().equals(topicId)) {
+                            List<LearnContentItem> otherItems = contentItemRepository.findByTopicIdOrderByOrderIndexAsc(ct.getId());
+                            for (LearnContentItem other : otherItems) {
+                                if ("NOTES_PDF".equalsIgnoreCase(other.getType()) || "PDF".equalsIgnoreCase(other.getType())) {
+                                    items.add(other);
+                                }
+                            }
+                            if (items.stream().anyMatch(i -> "NOTES_PDF".equalsIgnoreCase(i.getType()) || "PDF".equalsIgnoreCase(i.getType()))) {
+                                break;
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        return items;
     }
 
     public List<LearnQuestion> getQuestionsByTopic(UUID topicId) {

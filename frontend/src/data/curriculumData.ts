@@ -1,6 +1,7 @@
 import { 
-  FlaskConical, Calculator, Globe, BookOpen, Atom, Dna, Brain, Landmark, type LucideIcon 
+  FlaskConical, Calculator, Globe, BookOpen, Atom, Dna, Brain, Landmark, Leaf, Microscope, type LucideIcon 
 } from 'lucide-react';
+import { JEE_MAINS_CURRICULUM, JEE_ADVANCED_CURRICULUM, NEET_UG_CURRICULUM } from './competitiveCurriculum';
 
 export interface Topic {
   id: string;
@@ -11,6 +12,8 @@ export interface Chapter {
   id: string;
   title: string;
   topics?: Topic[];
+  syllabusTag?: 'NTA_SYNCED' | 'ADV_ONLY' | 'NMC_SYNCED';
+  classSource?: 'Class 11' | 'Class 12' | '11 & 12 Bridge' | 'Class 11 & 12';
 }
 
 export interface Subject {
@@ -63,6 +66,20 @@ export const SUBJECT_METADATA: Record<string, {
     badge: 'Diagrams & NCERT Lines',
     accentBg: 'bg-emerald-50 border-emerald-200',
     gradient: 'from-emerald-500 to-teal-600'
+  },
+  bot: {
+    icon: Leaf,
+    color: 'text-emerald-700',
+    badge: '45 Qs • Plant Kingdom, Genetics & Ecology',
+    accentBg: 'bg-emerald-50 border-emerald-200',
+    gradient: 'from-emerald-500 to-green-600'
+  },
+  zoo: {
+    icon: Microscope,
+    color: 'text-teal-700',
+    badge: '45 Qs • Human Physiology, Biotech & Evolution',
+    accentBg: 'bg-teal-50 border-teal-200',
+    gradient: 'from-teal-500 to-cyan-600'
   },
   math: {
     icon: Calculator,
@@ -120,58 +137,66 @@ export const SUBJECT_METADATA: Record<string, {
 // ─────────────────────────────────────────────────────────────────────────────
 // ACCURATE CBSE CHAPTER WEIGHTAGE CALCULATOR
 // ─────────────────────────────────────────────────────────────────────────────
-export function getChapterWeightage(chapterTitle: string): ChapterWeightage {
+export function getChapterWeightage(chapterTitle: string, examGoal?: string): ChapterWeightage {
   const t = chapterTitle.toLowerCase();
-  
-  // Tier 1: Highest marks & high repetition rate in Board Papers (8-10 Marks)
+  const g = (examGoal || '').toLowerCase();
+  const isJee = g.includes('jee');
+  const isNeet = g.includes('neet');
+  const isCompetitive = isJee || isNeet;
+
+  // Tier 1: Highest marks & high repetition rate (JEE: 8-16M / NEET: 12-20M / Boards: 8-10M)
   if (
     t.includes('optic') || t.includes('calculus') || t.includes('integral') || 
     t.includes('different') || t.includes('electro') || t.includes('magnet') ||
-    t.includes('organic') || t.includes('equilibrium') || t.includes('genetics') ||
+    t.includes('organic') || t.includes('goc') || t.includes('aldehyde') ||
+    t.includes('coordination') || t.includes('equilibrium') || t.includes('genetics') ||
     t.includes('inheritance') || t.includes('laws of motion') || t.includes('work') ||
-    t.includes('thermodynamic') || t.includes('light') || t.includes('electricity') ||
+    t.includes('thermodynamic') || t.includes('rotation') || t.includes('modern physics') ||
+    t.includes('semi') || t.includes('human physiology') || t.includes('biotech') ||
+    t.includes('human reproduction') || t.includes('light') || t.includes('electricity') ||
     t.includes('life processes') || t.includes('triangle') || t.includes('trigonometr') ||
     t.includes('chemical reaction') || t.includes('atoms and molecule') || t.includes('force')
   ) {
     return {
       tier: 'TIER_1',
       tierRank: 1,
-      marks: '8–10 Marks',
-      probability: '95% Prob.',
-      tag: 'Must-Master',
+      marks: isNeet ? '12–20 Marks (3–5 Qs)' : isJee ? '8–12 Marks (2–3 Qs)' : '8–10 Marks',
+      probability: isCompetitive ? '98% Shift Hit' : '95% Prob.',
+      tag: isCompetitive ? 'Do-or-Die' : 'Must-Master',
       color: 'text-rose-700 bg-rose-50 border-rose-200',
       badgeBg: 'bg-rose-500 text-white'
     };
   }
 
-  // Tier 2: Moderate marks & conceptual questions (5-7 Marks)
+  // Tier 2: Moderate marks & conceptual questions
   if (
     t.includes('solution') || t.includes('kinetics') || t.includes('structure') ||
     t.includes('matter') || t.includes('gravitat') || t.includes('acid') ||
-    t.includes('metal') || t.includes('matrix') || t.includes('vector') ||
+    t.includes('metal') || t.includes('matrix') || t.includes('matrices') || t.includes('vector') ||
     t.includes('cell') || t.includes('reproduction') || t.includes('human eye') ||
     t.includes('magnetic effect') || t.includes('quadratic') || t.includes('polynomial') ||
-    t.includes('coordinate') || t.includes('french') || t.includes('nationalism') ||
-    t.includes('resources') || t.includes('power sharing')
+    t.includes('coordinate') || t.includes('bonding') || t.includes('biomolecule') ||
+    t.includes('ecology') || t.includes('plant') || t.includes('animal') ||
+    t.includes('french') || t.includes('nationalism') || t.includes('resources') || t.includes('power sharing')
   ) {
     return {
       tier: 'TIER_2',
       tierRank: 2,
-      marks: '5–7 Marks',
-      probability: '82% Prob.',
-      tag: 'High Yield',
+      marks: isCompetitive ? '8–12 Marks (2–3 Qs)' : '5–7 Marks',
+      probability: isCompetitive ? '86% Shift Hit' : '82% Prob.',
+      tag: isCompetitive ? 'Rank Booster' : 'High Yield',
       color: 'text-blue-700 bg-blue-50 border-blue-200',
       badgeBg: 'bg-blue-500 text-white'
     };
   }
 
-  // Tier 3: Foundation & short questions (3-4 Marks)
+  // Tier 3: Foundation & short questions
   return {
     tier: 'TIER_3',
     tierRank: 3,
-    marks: '3–4 Marks',
-    probability: '65% Prob.',
-    tag: 'Foundation',
+    marks: isCompetitive ? '4 Marks (1 Q)' : '3–4 Marks',
+    probability: isCompetitive ? '65% Prob.' : '65% Prob.',
+    tag: isCompetitive ? 'Core Builder' : 'Foundation',
     color: 'text-slate-700 bg-slate-50 border-slate-200',
     badgeBg: 'bg-slate-500 text-white'
   };
@@ -1224,6 +1249,110 @@ const CLASS_9_CURRICULUM: Record<string, Chapter[]> = {
         { id: 'c9-e3-t2', title: 'Poem: Rain on the Roof (Coates Kinney) — Imagery & Memory' }
       ]
     }
+  ],
+  hindi: [
+    {
+      id: 'c9-hin-ch1',
+      title: 'दो बैलों की कथा (प्रेमचंद) - स्वतंत्रता एवं भाईचारा',
+      topics: [
+        { id: 'c9-h1-t1', title: 'हीरा और मोती का मूक संवाद एवं आत्मीयता' },
+        { id: 'c9-h1-t2', title: 'गया के अत्याचार एवं बालिका द्वारा मुक्ति' },
+        { id: 'c9-h1-t3', title: 'कांजीहौस की विभीषिका एवं सामूहिक संघर्ष' },
+        { id: 'c9-h1-t4', title: 'स्वतंत्रता संघर्ष एवं नैतिक जीवन-मूल्य' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch2',
+      title: 'ल्हासा की ओर (राहुल सांकृत्यायन) - तिब्बत यात्रा-वृत्तांत',
+      topics: [
+        { id: 'c9-h2-t1', title: 'तिब्बत की भौगोलिक स्थिति एवं डाँड़े के खतरे' },
+        { id: 'c9-h2-t2', title: 'सुमति का व्यक्तित्व एवं यजमान संबंध' },
+        { id: 'c9-h2-t3', title: 'शेखर विहार की 103 बौद्ध हस्तलिखित पोथियाँ (कंजूर)' },
+        { id: 'c9-h2-t4', title: 'तत्कालीन तिब्बती समाज एवं कानूनी स्थिति' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch3',
+      title: 'उपभोक्तावाद की संस्कृति (श्यामाचरण दुबे) - बाजारवाद',
+      topics: [
+        { id: 'c9-h3-t1', title: 'दिखावे की संस्कृति एवं विज्ञापनों का सम्मोहन' },
+        { id: 'c9-h3-t2', title: 'पाँच सितारा संस्कृति एवं सामाजिक विषमता' },
+        { id: 'c9-h3-t3', title: 'सांस्कृतिक अस्मिता एवं जीवन मूल्यों का क्षरण' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch4',
+      title: 'सांवले सपनों की याद (जाबिर हुसैन) - सालिम अली',
+      topics: [
+        { id: 'c9-h4-t1', title: 'बचपन की एयरगन घटना एवं पक्षी-प्रेम का उदय' },
+        { id: 'c9-h4-t2', title: 'साइलेंट वैली संरक्षण एवं चौधरी चरण सिंह से संवाद' },
+        { id: 'c9-h4-t3', title: 'डी.एच. लॉरेंस का प्रसंग एवं प्रकृति से एकाकार' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch5',
+      title: 'प्रेमचंद के फटे जूते (हरिशंकर परसाई) - यथार्थवादी व्यंग्य',
+      topics: [
+        { id: 'c9-h5-t1', title: 'प्रेमचंद का सादा व्यक्तित्व बनाम आधुनिक दिखावा' },
+        { id: 'c9-h5-t2', title: "सामाजिक रूढ़ियों के 'टीले' पर तीखा प्रहार" },
+        { id: 'c9-h5-t3', title: 'कुंभनदास की जूती एवं परसाई का व्यंग्य दर्शन' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch6',
+      title: 'साखियाँ एवं सबद (कबीरदास) - ज्ञान एवं समभाव',
+      topics: [
+        { id: 'c9-h6-t1', title: 'ज्ञान का हाथी एवं सहज साधना' },
+        { id: 'c9-h6-t2', title: 'पखापखी का त्याग एवं निष्पक्ष प्रभु भक्ति' },
+        { id: 'c9-h6-t3', title: 'मोको कहाँ ढूँढ़े बंदे (घट-घट वासी ईश्वर)' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch7',
+      title: 'वाख (ललद्यद) - आत्म-साक्षात्कार एवं मध्यम मार्ग',
+      topics: [
+        { id: 'c9-h7-t1', title: 'कच्चे धागे की नाव एवं प्रभु मिलन की व्याकुलता' },
+        { id: 'c9-h7-t2', title: 'भोग और त्याग का संतुलन (मध्यम मार्ग)' },
+        { id: 'c9-h7-t3', title: 'सत्कर्मों की कौड़ी एवं अंतःकरण की शुद्धि' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch8',
+      title: 'सवैये (रसखान) - ब्रजभूमि एवं कृष्ण-भक्ति',
+      topics: [
+        { id: 'c9-h8-t1', title: 'गोकुल ग्वाल, गोवर्धन पाषाण एवं कदंब बसेरा' },
+        { id: 'c9-h8-t2', title: 'लकुटी और कामरिया पर तीनों लोकों का त्याग' },
+        { id: 'c9-h8-t3', title: 'गोपियों का अनुराग एवं मुरली के प्रति ईर्ष्या' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch9',
+      title: 'कैदी और कोकिला (माखनलाल चतुर्वेदी) - राष्ट्रीय चेतना',
+      topics: [
+        { id: 'c9-h9-t1', title: 'हथकड़ियों को ब्रिटिश राज का गहना मानना' },
+        { id: 'c9-h9-t2', title: 'जेल की यातनाएं एवं कोल्हू का चर्रक चूँ' },
+        { id: 'c9-h9-t3', title: 'ब्रिटिश अकड़ का कूँआ खाली करने का संकल्प' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch10',
+      title: 'कृतिका पूरक: रीढ़ की हड्डी, मेरे संग की औरतें एवं इस जल प्रलय में',
+      topics: [
+        { id: 'c9-h10-t1', title: 'रीढ़ की हड्डी: उमा का स्वाभिमान एवं नारी शिक्षा' },
+        { id: 'c9-h10-t2', title: 'मेरे संग की औरतें: नानी, दादी व माँ की स्वतंत्र चेतना' },
+        { id: 'c9-h10-t3', title: 'इस जल प्रलय में: पटना बाढ़ की विभीषिका एवं मानवीय व्यवहार' }
+      ]
+    },
+    {
+      id: 'c9-hin-ch11',
+      title: 'व्यावहारिक व्याकरण: उपसर्ग, प्रत्यय, समास, वाक्य-भेद एवं अलंकार',
+      topics: [
+        { id: 'c9-h11-t1', title: 'उपसर्ग एवं प्रत्यय: शब्द निर्माण एवं नियम' },
+        { id: 'c9-h11-t2', title: 'समास: तत्पुरुष, कर्मधारय, द्विगु, द्वंद्व, बहुव्रीहि, अव्ययीभाव' },
+        { id: 'c9-h11-t3', title: 'अर्थ की दृष्टि से वाक्य के आठ भेद एवं रूपांतरण' },
+        { id: 'c9-h11-t4', title: 'अलंकार: अनुप्रास, यमक, उपमा, रूपक, उत्प्रेक्षा, अतिशयोक्ति, मानवीकरण' }
+      ]
+    }
   ]
 };
 
@@ -1417,12 +1546,13 @@ export function getSubjectsForClass(examGoal: string): Subject[] {
     ];
   }
 
-  // 2. Medical Competitive (NEET UG)
+  // 2. Medical Competitive (NEET UG — 45 Botany + 45 Zoology + 45 Chem + 45 Phy = 720 Marks)
   if (g.includes('neet')) {
     return [
-      { id: 'bio', name: 'Biology', icon: Dna, badge: 'High Yield Botany & Zoology', accentBg: 'bg-emerald-50 border-emerald-200', color: 'text-emerald-700' },
-      { id: 'chem', name: 'Chemistry', icon: FlaskConical, badge: 'NCERT Core & Physical Numericals', accentBg: 'bg-amber-50 border-amber-200', color: 'text-amber-700' },
-      { id: 'phy', name: 'Physics', icon: Atom, badge: 'Medical Physics & Optics', accentBg: 'bg-indigo-50 border-indigo-200', color: 'text-indigo-700' }
+      { id: 'bot', name: 'Botany', icon: Leaf, badge: '45 Qs • NCERT Line-by-Line & Genetics', accentBg: 'bg-emerald-50 border-emerald-200', color: 'text-emerald-700' },
+      { id: 'zoo', name: 'Zoology', icon: Microscope, badge: '45 Qs • Human Physiology & Biotech', accentBg: 'bg-teal-50 border-teal-200', color: 'text-teal-700' },
+      { id: 'chem', name: 'Chemistry', icon: FlaskConical, badge: '45 Qs • Physical, GOC & Inorganics', accentBg: 'bg-amber-50 border-amber-200', color: 'text-amber-700' },
+      { id: 'phy', name: 'Physics', icon: Atom, badge: '45 Qs • Numericals & Unit 20 Exp.', accentBg: 'bg-indigo-50 border-indigo-200', color: 'text-indigo-700' }
     ];
   }
 
@@ -1452,7 +1582,8 @@ export function getSubjectsForClass(examGoal: string): Subject[] {
     { id: 'sci', name: 'Science', icon: FlaskConical, badge: 'High Yield NCERT', accentBg: 'bg-emerald-50 border-emerald-200', color: 'text-emerald-700' },
     { id: 'math', name: 'Mathematics', icon: Calculator, badge: 'Core Marks', accentBg: 'bg-blue-50 border-blue-200', color: 'text-blue-700' },
     { id: 'sst', name: 'Social Science', icon: Globe, badge: 'History & Maps', accentBg: 'bg-amber-50 border-amber-200', color: 'text-amber-700' },
-    { id: 'eng', name: 'English', icon: BookOpen, badge: 'Literature & Grammar', accentBg: 'bg-rose-50 border-rose-200', color: 'text-rose-700' }
+    { id: 'eng', name: 'English', icon: BookOpen, badge: 'Literature & Grammar', accentBg: 'bg-rose-50 border-rose-200', color: 'text-rose-700' },
+    { id: 'hindi', name: 'Hindi', icon: BookOpen, badge: 'क्षितिज, कृतिका & व्याकरण', accentBg: 'bg-orange-50 border-orange-200', color: 'text-orange-700' }
   ];
 }
 
@@ -1473,20 +1604,21 @@ export function getCurriculumForClass(examGoal: string, subjectId: string): Chap
     return GOVT_CURRICULUM[firstKey] || [];
   }
 
-  // 2. Engineering (JEE Mains & JEE Advanced)
+  // 2. Engineering (JEE Mains NTA Rationalized vs JEE Advanced IIT Syllabus)
   if (g.includes('jee')) {
+    const isAdv = g.includes('adv') || g.includes('iit');
+    const source = isAdv ? JEE_ADVANCED_CURRICULUM : JEE_MAINS_CURRICULUM;
     const key = sub.includes('chem') ? 'chem' : sub.includes('math') ? 'math' : 'phy';
-    const c12 = CLASS_12_CURRICULUM[key] || [];
-    const c11 = CLASS_11_CURRICULUM[key] || [];
-    return [...c12, ...c11];
+    return source[key] || [];
   }
 
-  // 3. Medical (NEET UG)
+  // 3. Medical (NEET UG — NMC 79-Chapter Synchronized Syllabus)
   if (g.includes('neet')) {
-    const key = sub.includes('bio') ? 'bio' : sub.includes('chem') ? 'chem' : 'phy';
-    const c12 = CLASS_12_CURRICULUM[key] || [];
-    const c11 = CLASS_11_CURRICULUM[key] || [];
-    return [...c12, ...c11];
+    if (sub.includes('bot')) return NEET_UG_CURRICULUM.bot || [];
+    if (sub.includes('zoo')) return NEET_UG_CURRICULUM.zoo || [];
+    if (sub.includes('bio')) return [...(NEET_UG_CURRICULUM.bot || []), ...(NEET_UG_CURRICULUM.zoo || [])];
+    if (sub.includes('chem')) return NEET_UG_CURRICULUM.chem || [];
+    return NEET_UG_CURRICULUM.phy || [];
   }
 
   // 4. Senior Secondary & Secondary NCERT
@@ -1508,6 +1640,7 @@ export function getCurriculumForClass(examGoal: string, subjectId: string): Chap
   if (sub.includes('math')) return targetDB.math || [];
   if (sub.includes('sst') || sub.includes('social')) return targetDB.sst || [];
   if (sub.includes('eng')) return targetDB.eng || [];
+  if (sub.includes('hin')) return targetDB.hindi || targetDB.hin || [];
   if (sub.includes('sci')) return targetDB.sci || targetDB.phy || [];
 
   // Fallback to first available subject in target database
@@ -1530,16 +1663,19 @@ const SUBJECT_NAME_MAP: Record<string, string> = {
   chem: 'Chemistry',
   math: 'Mathematics',
   bio: 'Biology',
+  bot: 'Botany',
+  zoo: 'Zoology',
   sci: 'Science',
   sst: 'Social Science',
   eng: 'English',
+  hindi: 'Hindi',
   quant: 'Quantitative Aptitude',
   reasoning: 'General Intelligence & Reasoning',
   ga: 'General Awareness'
 };
 
 /**
- * Searches all class curriculums for a topic by ID (e.g. 'c11-p1-t1' or 'govt-q1-t1').
+ * Searches all class curriculums for a topic by ID (e.g. 'c11-p1-t1', 'jm-p1-t1', or 'nu-b1-t1').
  * Crucial for F5 page refreshes and direct URL navigation.
  */
 export function findTopicMetadata(topicId: string): ResolvedTopicMetadata | null {
@@ -1547,6 +1683,9 @@ export function findTopicMetadata(topicId: string): ResolvedTopicMetadata | null
   const tid = topicId.toLowerCase().trim();
 
   const classDatabases: { classLevel: string; data: Record<string, Chapter[]> }[] = [
+    { classLevel: 'JEE Advanced', data: JEE_ADVANCED_CURRICULUM },
+    { classLevel: 'JEE Mains', data: JEE_MAINS_CURRICULUM },
+    { classLevel: 'NEET UG', data: NEET_UG_CURRICULUM },
     { classLevel: 'Govt Exams', data: GOVT_CURRICULUM },
     { classLevel: 'Class 12', data: CLASS_12_CURRICULUM },
     { classLevel: 'Class 11', data: CLASS_11_CURRICULUM },

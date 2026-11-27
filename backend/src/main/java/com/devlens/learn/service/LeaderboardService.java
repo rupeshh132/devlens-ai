@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +25,14 @@ public class LeaderboardService {
     private final LearnXpLogRepository xpLogRepository;
     private final LearnLeaderboardWinnerRepository winnerRepository;
     private final com.devlens.learn.repository.LearnStudySessionRepository studySessionRepository;
+
+    private static final long LEADERBOARD_CACHE_TTL_MS = 60_000L;
+    private record CachedLeaderboard(List<Map<String, Object>> data, long expiresAt) {}
+    private final Map<String, CachedLeaderboard> leaderboardCache = new ConcurrentHashMap<>();
+
+    private void invalidateLeaderboardCache() {
+        leaderboardCache.clear();
+    }
 
     @Transactional
     public synchronized Map<String, Object> recordDailyChallengeXp(UUID userId, DailyChallengeXpRequest req) {
@@ -82,6 +91,7 @@ public class LeaderboardService {
                 .sum();
         user.setTotalXp(Math.max(0, totalLogSum));
         userRepository.save(user);
+        invalidateLeaderboardCache();
     }
 
     public List<Map<String, Object>> getLeaderboardForMonth(int month, int year) {
@@ -89,16 +99,33 @@ public class LeaderboardService {
     }
 
     public List<Map<String, Object>> getLeaderboardForMonth(int month, int year, boolean includeBanned) {
-        // Fetch all ACTIVE users (conditionally including banned for admin view)
+        String cacheKey = month + "-" + year + "-" + includeBanned;
+        CachedLeaderboard cached = leaderboardCache.get(cacheKey);
+        if (cached != null && System.currentTimeMillis() < cached.expiresAt()) {
+            return cached.data();
+        }
+
+        // Fetch all ACTIVE users (conditionally including banned for admin view) and bulk-load logs/sessions to avoid N+1 queries
         List<LearnUser> allUsers = userRepository.findAll().stream()
                 .filter(LearnUser::isActive)
                 .filter(u -> includeBanned || !u.isLeaderboardBanned())
                 .collect(Collectors.toList());
+
+        Map<UUID, List<LearnXpLog>> logsByUser = xpLogRepository.findAll().stream()
+                .collect(Collectors.groupingBy(LearnXpLog::getUserId));
+        Map<UUID, List<com.devlens.learn.entity.LearnStudySession>> sessionsByUser = studySessionRepository.findAll().stream()
+                .collect(Collectors.groupingBy(com.devlens.learn.entity.LearnStudySession::getUserId));
                 
         List<Map<String, Object>> rankedUsers = new ArrayList<>();
         
         for (LearnUser user : allUsers) {
-            Map<String, Object> stats = calculateEffectiveXpAndStats(user.getId(), month, year);
+            Map<String, Object> stats = computeMonthlyStats(
+                    logsByUser.getOrDefault(user.getId(), Collections.emptyList()),
+                    sessionsByUser.getOrDefault(user.getId(), Collections.emptyList()),
+                    user,
+                    month,
+                    year
+            );
             int effectiveXp = (int) stats.get("effectiveXp");
             
             if (effectiveXp > 0) {
@@ -173,7 +200,9 @@ public class LeaderboardService {
             }
         }
         
-        return rankedUsers.stream().limit(50).collect(Collectors.toList());
+        List<Map<String, Object>> result = rankedUsers.stream().limit(50).collect(Collectors.toList());
+        leaderboardCache.put(cacheKey, new CachedLeaderboard(result, System.currentTimeMillis() + LEADERBOARD_CACHE_TTL_MS));
+        return result;
     }
     
     public Map<String, Object> getMyRankForMonth(UUID userId, int month, int year) {
@@ -272,8 +301,28 @@ public class LeaderboardService {
     }
 
     private Map<String, Object> calculateEffectiveXpAndStats(UUID userId, int targetMonth, int targetYear) {
-        List<LearnXpLog> logs = xpLogRepository.findByUserId(userId).stream()
-                .filter(l -> l.getCreatedAt().getMonthValue() == targetMonth && l.getCreatedAt().getYear() == targetYear)
+        List<LearnXpLog> userLogs = xpLogRepository.findByUserId(userId);
+        List<com.devlens.learn.entity.LearnStudySession> userSessions = Collections.emptyList();
+        try {
+            userSessions = studySessionRepository.findByUserId(userId);
+        } catch (Exception ignored) {
+            // Silently fallback if study sessions query has issues
+        }
+        LearnUser user = userRepository.findById(userId).orElse(null);
+        return computeMonthlyStats(userLogs, userSessions, user, targetMonth, targetYear);
+    }
+
+    private Map<String, Object> computeMonthlyStats(
+            List<LearnXpLog> allUserLogs,
+            List<com.devlens.learn.entity.LearnStudySession> allUserSessions,
+            LearnUser user,
+            int targetMonth,
+            int targetYear
+    ) {
+        List<LearnXpLog> logs = allUserLogs.stream()
+                .filter(l -> l.getCreatedAt() != null
+                        && l.getCreatedAt().getMonthValue() == targetMonth
+                        && l.getCreatedAt().getYear() == targetYear)
                 .collect(Collectors.toList());
         
         int nonReferralXp = 0;
@@ -297,18 +346,13 @@ public class LeaderboardService {
         boolean isReferralCapped = referralXp > maxAllowableReferralXp;
 
         // Calculate true monthly study minutes for target month and year strictly from FOCUS_TIMER sessions
-        int monthlyStudyMinutes = 0;
-        try {
-            monthlyStudyMinutes = studySessionRepository.findByUserId(userId).stream()
-                    .filter(s -> s.getCreatedAt() != null 
-                            && s.getCreatedAt().getMonthValue() == targetMonth 
-                            && s.getCreatedAt().getYear() == targetYear
-                            && "FOCUS_TIMER".equalsIgnoreCase(s.getSessionType()))
-                    .mapToInt(s -> s.getDurationMinutes() != null ? s.getDurationMinutes() : 0)
-                    .sum();
-        } catch (Exception e) {
-            // Silently fallback if study sessions query has issues
-        }
+        int monthlyStudyMinutes = allUserSessions.stream()
+                .filter(s -> s.getCreatedAt() != null 
+                        && s.getCreatedAt().getMonthValue() == targetMonth 
+                        && s.getCreatedAt().getYear() == targetYear
+                        && "FOCUS_TIMER".equalsIgnoreCase(s.getSessionType()))
+                .mapToInt(s -> s.getDurationMinutes() != null ? s.getDurationMinutes() : 0)
+                .sum();
 
         // Secondary fallback to STUDY_TIME xp logs in target month (excluding legacy passive logs)
         if (monthlyStudyMinutes == 0) {
@@ -320,11 +364,9 @@ public class LeaderboardService {
 
         // Safe fallback for current month if student has user.getStudyMinutes()
         LocalDate now = LocalDate.now();
-        if (monthlyStudyMinutes == 0 && targetMonth == now.getMonthValue() && targetYear == now.getYear()) {
-            LearnUser u = userRepository.findById(userId).orElse(null);
-            if (u != null && u.getStudyMinutes() != null && u.getStudyMinutes() > 0) {
-                monthlyStudyMinutes = u.getStudyMinutes();
-            }
+        if (monthlyStudyMinutes == 0 && targetMonth == now.getMonthValue() && targetYear == now.getYear()
+                && user != null && user.getStudyMinutes() != null && user.getStudyMinutes() > 0) {
+            monthlyStudyMinutes = user.getStudyMinutes();
         }
         
         Map<String, Object> stats = new HashMap<>();
@@ -380,6 +422,7 @@ public class LeaderboardService {
         userRepository.findById(userId).ifPresent(u -> {
             u.setLeaderboardBanned(true);
             userRepository.save(u);
+            invalidateLeaderboardCache();
         });
     }
 
@@ -387,6 +430,7 @@ public class LeaderboardService {
         userRepository.findById(userId).ifPresent(u -> {
             u.setLeaderboardBanned(false);
             userRepository.save(u);
+            invalidateLeaderboardCache();
         });
     }
 }

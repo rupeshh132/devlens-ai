@@ -10,7 +10,7 @@ import { toast } from 'sonner';
 export interface PyqQuestion {
   id: string;
   qNum: number;
-  section: 'A' | 'B' | 'C' | 'D' | 'E';
+  section: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
   marks: number;
   topic: string;
   questionText: string;
@@ -27,8 +27,8 @@ export interface PyqPaper {
   title: string;
   subject: string;
   year: number;
-  targetClass?: 'Class 9' | 'Class 10' | 'Class 11' | 'Class 12' | 'All';
-  paperType: 'BOARD_EXAM' | 'CBSE_SAMPLE' | 'PRE_BOARD';
+  targetClass?: 'Class 9' | 'Class 10' | 'Class 11' | 'Class 12' | 'JEE Mains' | 'JEE Advanced' | 'NEET UG' | 'All';
+  paperType: 'BOARD_EXAM' | 'CBSE_SAMPLE' | 'PRE_BOARD' | 'JEE_SHIFT' | 'JEE_ADV_PAPER' | 'NEET_PAPER';
   paperCode: string;
   totalMarks: number;
   durationMins: number;
@@ -49,7 +49,7 @@ interface PyqPaperViewerModalProps {
 
 export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper, isOpen, onClose }) => {
   const [viewMode, setViewMode] = useState<'INTERACTIVE' | 'OFFICIAL_PDF'>('INTERACTIVE');
-  const [activeSection, setActiveSection] = useState<'ALL' | 'A' | 'B' | 'C' | 'D' | 'E'>('ALL');
+  const [activeSection, setActiveSection] = useState<'ALL' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F'>('ALL');
   const [expandedSolutions, setExpandedSolutions] = useState<Record<string, boolean>>({});
   const [bookmarkedMap, setBookmarkedMap] = useState<Record<string, boolean>>({});
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -136,11 +136,40 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
   };
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center ${isFullscreen ? 'p-0' : 'p-2 sm:p-4'} bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200`}>
-      <div className={`bg-slate-900 w-full ${isFullscreen ? 'h-screen w-screen max-w-none rounded-none border-none' : 'max-w-[96vw] xl:max-w-7xl h-[95vh] rounded-2xl shadow-2xl border border-slate-800'} flex flex-col overflow-hidden transition-all duration-200`}>
+    <div className={`fixed inset-0 z-50 flex items-center justify-center ${isFullscreen ? 'p-0' : 'p-2 sm:p-4'} bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200 print:static print:p-0 print:block print:bg-white`}>
+      {/* Print-specific style overrides */}
+      <style>{`
+        @media print {
+          @page {
+            margin: 12mm 14mm;
+            size: auto;
+          }
+          body {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          .pyq-print-card {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+          }
+        }
+      `}</style>
+
+      {/* Printable Centered PrepLens Watermark */}
+      <div className="hidden print:flex fixed inset-0 pointer-events-none z-0 items-center justify-center">
+        <img 
+          src="/images/preplens_round_logo.png" 
+          alt="PrepLens Watermark" 
+          className="w-[500px] h-[500px] object-contain opacity-25 select-none"
+        />
+      </div>
+
+      <div className={`bg-slate-900 w-full ${isFullscreen ? 'h-screen w-screen max-w-none rounded-none border-none' : 'max-w-[96vw] xl:max-w-7xl h-[95vh] rounded-2xl shadow-2xl border border-slate-800'} flex flex-col overflow-hidden transition-all duration-200 print:static print:max-h-none print:w-full print:border-none print:shadow-none print:overflow-visible print:bg-white relative z-10`}>
         
         {/* 1. UNIFIED PRO APPLICATION BAR (Compact 56px height) */}
-        <header className="h-14 bg-slate-900 text-white px-3 sm:px-4 flex items-center justify-between gap-3 border-b border-slate-800 shrink-0 select-none">
+        <header className="h-14 bg-slate-900 text-white px-3 sm:px-4 flex items-center justify-between gap-3 border-b border-slate-800 shrink-0 select-none print:hidden">
           {/* Left: Close & Title Details */}
           <div className="flex items-center gap-2.5 min-w-0">
             <button
@@ -267,11 +296,11 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
 
         {/* 2. INTERACTIVE SUB-HEADER (Sections & Stats - only in Questions mode) */}
         {viewMode === 'INTERACTIVE' && (
-          <div className="bg-slate-900/95 border-b border-slate-800 px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs shrink-0 select-none">
+          <div className="bg-slate-900/95 border-b border-slate-800 px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs shrink-0 select-none print:hidden">
             {/* Section Pills */}
             <div className="flex items-center gap-1">
               <span className="text-slate-400 font-medium mr-1 text-[11px] hidden sm:inline">Sections:</span>
-              {(['ALL', 'A', 'B', 'C', 'D', 'E'] as const).map(sec => (
+              {(['ALL', 'A', 'B', 'C', 'D', 'E', ...(questionsList.some(q => q.section === 'F') ? ['F' as const] : [])] as const).map(sec => (
                 <button
                   key={sec}
                   onClick={() => setActiveSection(sec)}
@@ -323,7 +352,16 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
           </div>
         ) : (
           /* SCROLLABLE QUESTIONS / OFFICIAL SHEET CONTENT */
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-slate-50 print:bg-white">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-slate-50 print:bg-white relative">
+            
+            {/* Subtle Screen Background Watermark for Brand Protection */}
+            <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center opacity-[0.035] print:hidden">
+              <img 
+                src="/images/preplens_round_logo.png" 
+                alt="" 
+                className="w-[480px] h-[480px] object-contain select-none"
+              />
+            </div>
             
             {viewMode === 'OFFICIAL_PDF' ? (
               /* OFFICIAL PAPER TYPOGRAPHY VIEW (when no PDF is attached) */

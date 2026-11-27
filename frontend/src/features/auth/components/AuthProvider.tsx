@@ -10,9 +10,9 @@ import { AuthContext } from './AuthContext';
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { data: user, isLoading: isUserLoading } = useCurrentUser();
-  const { mutateAsync: loginMutation, isPending: isLoginLoading } = useLogin();
-  const { mutateAsync: registerMutation, isPending: isRegisterLoading } = useRegister();
-  const { mutateAsync: logoutMutation, isPending: isLogoutLoading } = useLogout();
+  const { mutateAsync: loginMutation } = useLogin();
+  const { mutateAsync: registerMutation } = useRegister();
+  const { mutateAsync: logoutMutation } = useLogout();
 
   const login = useCallback(async (credentials: LoginCredentials) => {
     await loginMutation(credentials);
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await logoutMutation();
   }, [logoutMutation]);
 
-  const isLoading = isUserLoading || isLoginLoading || isRegisterLoading || isLogoutLoading;
+  const isLoading = isUserLoading;
   const isAuthenticated = !!user;
 
   const value = useMemo(() => ({

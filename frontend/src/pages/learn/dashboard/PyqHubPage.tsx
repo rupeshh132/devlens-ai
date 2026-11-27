@@ -5,18 +5,53 @@ import {
   Crown, Filter, CheckCircle2, Printer, BookOpen, 
   Flame, ChevronRight, GraduationCap, Loader2, Download
 } from 'lucide-react';
-import { PYQ_PAPERS_DATA } from '../../../data/pyqPapersData';
 import type { PyqPaper } from '../../../components/learn/PyqPaperViewerModal';
 import { PyqPaperViewerModal } from '../../../components/learn/PyqPaperViewerModal';
 import { usePremium } from '../../../hooks/usePremium';
 import { PaywallModal } from '../../../components/learn/PaywallModal';
 import { getSubjectsForClass } from '../../../data/curriculumData';
+import { normalizeTargetClass } from '../../../lib/dailyQuestionService';
 import { learnApi } from '../../../lib/learn-api';
 
 export function PyqHubPage() {
   const [searchParams] = useSearchParams();
   const targetPaperId = searchParams.get('paperId');
-  const [selectedClass, setSelectedClass] = useState<string>('ALL');
+
+  // Detect enrolled grade for student personalization (e.g. Anmol Vishwakarma -> Class 9)
+  const enrolledClass = useMemo<string | null>(() => {
+    const rawName = (localStorage.getItem('learn_user_name') || '').toLowerCase();
+    const rawGoal = localStorage.getItem('learn_exam_goal');
+
+    // Dedicated mapping for student Anmol Vishwakarma
+    if (rawName.includes('anmol')) {
+      if (localStorage.getItem('learn_exam_goal') !== 'Class 9') {
+        localStorage.setItem('learn_exam_goal', 'Class 9');
+      }
+      return 'Class 9';
+    }
+
+    if (rawGoal) {
+      return normalizeTargetClass(rawGoal);
+    }
+
+    return null;
+  }, []);
+
+  const [selectedClass, setSelectedClass] = useState<string>(() => {
+    const rawName = (localStorage.getItem('learn_user_name') || '').toLowerCase();
+    const rawGoal = localStorage.getItem('learn_exam_goal');
+    if (rawName.includes('anmol')) return 'Class 9';
+    if (rawGoal) return normalizeTargetClass(rawGoal);
+    return 'ALL';
+  });
+
+  // Ensure enrolled class is strictly locked for enrolled student
+  useEffect(() => {
+    if (enrolledClass) {
+      setSelectedClass(enrolledClass);
+    }
+  }, [enrolledClass]);
+
   const [selectedSubject, setSelectedSubject] = useState<string>('ALL');
   const [selectedType, setSelectedType] = useState<string>('ALL');
   const [selectedYear, setSelectedYear] = useState<string>('ALL');
@@ -28,6 +63,7 @@ export function PyqHubPage() {
 
   const { isPremium } = usePremium();
   const [backendPapers, setBackendPapers] = useState<PyqPaper[]>([]);
+  const [localPapers, setLocalPapers] = useState<PyqPaper[]>([]);
   const [loadingPapers, setLoadingPapers] = useState<boolean>(false);
 
   // Fetch all live papers uploaded by Admin from backend
@@ -69,12 +105,91 @@ export function PyqHubPage() {
     return () => { isMounted = false; };
   }, []);
 
+  // Lazy-load class-specific PYQ vault chunks so bundle stays fast per class
+  useEffect(() => {
+    let active = true;
+    const effectiveClass = enrolledClass || selectedClass;
+
+    const loadClassVault = async () => {
+      try {
+        let loaded: PyqPaper[] = [];
+        if (effectiveClass === 'Class 9') {
+          const m = await import('../../../data/pyqs/class9_pyq');
+          loaded = m.CLASS_9_PYQ_PAPERS;
+        } else if (effectiveClass === 'Class 10') {
+          const m = await import('../../../data/pyqs/class10_pyq');
+          loaded = m.CLASS_10_PYQ_PAPERS;
+        } else if (effectiveClass === 'Class 11') {
+          const m = await import('../../../data/pyqs/class11_pyq');
+          loaded = m.CLASS_11_PYQ_PAPERS;
+        } else if (effectiveClass === 'JEE Mains') {
+          const [mJee, m12] = await Promise.all([
+            import('../../../data/pyqs/jee_main_pyq'),
+            import('../../../data/pyqs/class12_pyq'),
+          ]);
+          loaded = [
+            ...mJee.JEE_MAINS_PYQ_PAPERS,
+            ...m12.CLASS_12_PYQ_PAPERS.filter(p =>
+              ['Physics', 'Chemistry', 'Mathematics'].includes(p.subject)
+            ),
+          ];
+        } else if (effectiveClass === 'NEET UG') {
+          const [mNeet, m12] = await Promise.all([
+            import('../../../data/pyqs/neet_pyq'),
+            import('../../../data/pyqs/class12_pyq'),
+          ]);
+          loaded = [
+            ...mNeet.NEET_UG_PYQ_PAPERS,
+            ...m12.CLASS_12_PYQ_PAPERS.filter(p =>
+              ['Biology', 'Physics', 'Chemistry'].includes(p.subject)
+            ),
+          ];
+        } else if (effectiveClass === 'JEE Advanced') {
+          const [mAdv, mJee, m12] = await Promise.all([
+            import('../../../data/pyqs/jee_advanced_pyq'),
+            import('../../../data/pyqs/jee_main_pyq'),
+            import('../../../data/pyqs/class12_pyq'),
+          ]);
+          loaded = [
+            ...mAdv.JEE_ADVANCED_PYQ_PAPERS,
+            ...mJee.JEE_MAINS_PYQ_PAPERS.slice(0, 6),
+            ...m12.CLASS_12_PYQ_PAPERS.filter(p =>
+              ['Physics', 'Chemistry', 'Mathematics'].includes(p.subject)
+            ),
+          ];
+        } else if (effectiveClass === 'Class 12') {
+          const m = await import('../../../data/pyqs/class12_pyq');
+          loaded = m.CLASS_12_PYQ_PAPERS;
+        } else {
+          const [m10, m9, m11, m12] = await Promise.all([
+            import('../../../data/pyqs/class10_pyq'),
+            import('../../../data/pyqs/class9_pyq'),
+            import('../../../data/pyqs/class11_pyq'),
+            import('../../../data/pyqs/class12_pyq'),
+          ]);
+          loaded = [
+            ...m10.CLASS_10_PYQ_PAPERS,
+            ...m9.CLASS_9_PYQ_PAPERS,
+            ...m11.CLASS_11_PYQ_PAPERS,
+            ...m12.CLASS_12_PYQ_PAPERS,
+          ];
+        }
+        if (active) setLocalPapers(loaded);
+      } catch (err) {
+        console.warn('Failed to load local PYQ vault chunk:', err);
+      }
+    };
+
+    loadClassVault();
+    return () => { active = false; };
+  }, [enrolledClass, selectedClass]);
+
   // Combine live backend papers with curated local papers
   const allPapers = useMemo(() => {
     const existingTitles = new Set(backendPapers.map(p => p.title.toLowerCase().trim()));
-    const remainingLocal = PYQ_PAPERS_DATA.filter(p => !existingTitles.has(p.title.toLowerCase().trim()));
+    const remainingLocal = localPapers.filter(p => !existingTitles.has(p.title.toLowerCase().trim()));
     return [...backendPapers, ...remainingLocal];
-  }, [backendPapers]);
+  }, [backendPapers, localPapers]);
 
   // Paper count per class for badges
   const classPaperCounts = useMemo(() => {
@@ -88,7 +203,8 @@ export function PyqHubPage() {
 
   // Dynamic subjects based on selected class
   const classSubjects = useMemo(() => {
-    if (selectedClass === 'ALL') {
+    const effectiveClass = enrolledClass || selectedClass;
+    if (effectiveClass === 'ALL') {
       return [
         { id: 'ALL', label: 'All Subjects' },
         { id: 'Physics', label: 'Physics' },
@@ -97,10 +213,11 @@ export function PyqHubPage() {
         { id: 'Biology', label: 'Biology' },
         { id: 'Science', label: 'Science' },
         { id: 'Social Science', label: 'Social Science' },
-        { id: 'English Core', label: 'English' },
+        { id: 'English', label: 'English' },
+        { id: 'Hindi', label: 'Hindi' },
       ];
     }
-    const list = getSubjectsForClass(selectedClass);
+    const list = getSubjectsForClass(effectiveClass);
     return [
       { id: 'ALL', label: 'All Subjects' },
       ...list.map(s => ({
@@ -108,21 +225,28 @@ export function PyqHubPage() {
         label: s.name
       }))
     ];
-  }, [selectedClass]);
+  }, [enrolledClass, selectedClass]);
 
   const filteredPapers = useMemo(() => {
+    const effectiveClass = enrolledClass || selectedClass;
     return allPapers.filter(paper => {
-      // 1. Class Filter
-      if (selectedClass !== 'ALL') {
+      // 1. Class Filter - Locked strictly if student is enrolled (e.g. Class 9 for Anmol)
+      if (effectiveClass !== 'ALL') {
         const paperClass = paper.targetClass || 'Class 10';
-        if (paperClass !== selectedClass) return false;
+        const isCompetitiveGoal = effectiveClass === 'JEE Mains' || effectiveClass === 'JEE Advanced' || effectiveClass === 'NEET UG';
+        if (isCompetitiveGoal) {
+          if (paperClass !== effectiveClass && paperClass !== 'Class 12' && paperClass !== 'Class 11') return false;
+        } else if (paperClass !== effectiveClass) {
+          return false;
+        }
       }
 
       // 2. Subject Filter
       if (selectedSubject !== 'ALL') {
         const sSub = selectedSubject.toLowerCase();
         const pSub = (paper.subject || '').toLowerCase();
-        if (sSub !== pSub && !pSub.includes(sSub) && !sSub.includes(pSub)) {
+        const isCombinedPcm = pSub.includes('pcm') && ['physics', 'chemistry', 'mathematics'].includes(sSub);
+        if (!isCombinedPcm && sSub !== pSub && !pSub.includes(sSub) && !sSub.includes(pSub)) {
           return false;
         }
       }
@@ -231,15 +355,28 @@ export function PyqHubPage() {
         <div className="relative z-10 max-w-3xl space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30">
             <GraduationCap className="w-3.5 h-3.5 text-amber-300" />
-            CBSE {selectedClass === 'ALL' ? 'Exam' : selectedClass} Vault
+            {enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG'
+              ? `${enrolledClass} Official PYQ Vault`
+              : `CBSE ${enrolledClass || (selectedClass === 'ALL' ? 'Exam' : selectedClass)} Vault`}
           </div>
           
           <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-white leading-tight">
-            Previous Years' Papers & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-200 to-amber-300">Model Question Papers</span>
+            {enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG'
+              ? `${enrolledClass} Official Question Papers`
+              : enrolledClass
+              ? `Original CBSE ${enrolledClass} Question Papers`
+              : "Previous Years' Papers"} & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-200 to-amber-300">Model Solutions</span>
           </h1>
           
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Practice actual CBSE Board Exam Papers with <strong>official step-by-step marking schemes</strong>, examiner tips, and common pitfalls so you know exactly where every half-mark is won or lost.
+            {enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG'
+              ? `Practice ${enrolledClass} papers and synchronized Class 11–12 PCM/PCB board archives with step-by-step solutions and official marking schemes.`
+              : `Practice actual CBSE ${enrolledClass || ''} Exam Papers with `}
+            {!(enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG') && (
+              <>
+                <strong>official step-by-step marking schemes</strong>, examiner tips, and common pitfalls so you know exactly where every half-mark is won or lost.
+              </>
+            )}
           </p>
 
           {/* Quick Metrics */}
@@ -268,40 +405,62 @@ export function PyqHubPage() {
       <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-4">
         
         {/* Class Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-slate-100">
-          <span className="text-xs font-bold text-slate-500 mr-1 flex items-center gap-1.5">
-            <GraduationCap className="w-4 h-4 text-blue-600" /> Filter by Class:
-          </span>
-          {[
-            { id: 'ALL', label: 'All Classes' },
-            { id: 'Class 11', label: 'Class 11' },
-            { id: 'Class 12', label: 'Class 12' },
-            { id: 'Class 10', label: 'Class 10' },
-            { id: 'Class 9', label: 'Class 9' }
-          ].map(cls => (
-            <button
-              key={cls.id}
-              onClick={() => {
-                setSelectedClass(cls.id);
-                setSelectedSubject('ALL');
-              }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                selectedClass === cls.id
-                  ? 'bg-blue-600 text-white shadow-xs'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
-            >
-              <span>{cls.label}</span>
-              {(classPaperCounts[cls.id] || 0) > 0 && (
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${
-                  selectedClass === cls.id ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
-                }`}>
-                  {classPaperCounts[cls.id]}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
+        {enrolledClass ? (
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-slate-500 flex items-center gap-1.5">
+                <GraduationCap className="w-4 h-4 text-blue-600" /> Enrolled Grade:
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-200 text-blue-700 font-bold text-xs rounded-xl shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                {enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG'
+                  ? `${enrolledClass} (Official Synced)`
+                  : `${enrolledClass} (CBSE Curriculum)`}
+              </span>
+              <span className="text-xs text-slate-400 font-medium hidden sm:inline">
+                Showing question papers strictly tailored to your grade.
+              </span>
+            </div>
+            <div className="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1 rounded-lg">
+              {filteredPapers.length} Papers Available
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-slate-100">
+            <span className="text-xs font-bold text-slate-500 mr-1 flex items-center gap-1.5">
+              <GraduationCap className="w-4 h-4 text-blue-600" /> Filter by Class:
+            </span>
+            {[
+              { id: 'ALL', label: 'All Classes' },
+              { id: 'Class 11', label: 'Class 11' },
+              { id: 'Class 12', label: 'Class 12' },
+              { id: 'Class 10', label: 'Class 10' },
+              { id: 'Class 9', label: 'Class 9' }
+            ].map(cls => (
+              <button
+                key={cls.id}
+                onClick={() => {
+                  setSelectedClass(cls.id);
+                  setSelectedSubject('ALL');
+                }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  selectedClass === cls.id
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
+              >
+                <span>{cls.label}</span>
+                {(classPaperCounts[cls.id] || 0) > 0 && (
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${
+                    selectedClass === cls.id ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
+                  }`}>
+                    {classPaperCounts[cls.id]}
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Top Search & Filter Bar */}
         <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
@@ -331,7 +490,10 @@ export function PyqHubPage() {
             <span className="text-xs font-bold text-slate-500 flex items-center gap-1 mr-1">
               <Filter className="w-3.5 h-3.5" /> Year:
             </span>
-            {(['ALL', '2024', '2023', '2022'] as const).map(yr => (
+            {((enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG')
+              ? (['ALL', '2025', '2024', '2023', '2022', '2021'] as const)
+              : (['ALL', '2024', '2023', '2022'] as const)
+            ).map(yr => (
               <button
                 key={yr}
                 onClick={() => setSelectedYear(yr)}
@@ -372,12 +534,21 @@ export function PyqHubPage() {
           {/* Paper Type Pills */}
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-xs font-bold text-slate-400 mr-1">Category:</span>
-            {[
-              { id: 'ALL', label: 'All Papers' },
-              { id: 'BOARD_EXAM', label: 'Board Exams' },
-              { id: 'CBSE_SAMPLE', label: 'Official SQPs' },
-              { id: 'PRE_BOARD', label: 'Pre-Boards' }
-            ].map(pt => (
+            {((enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG')
+              ? [
+                  { id: 'ALL', label: 'All Papers' },
+                  { id: 'JEE_ADV_PAPER', label: 'IIT Paper 1 & 2' },
+                  { id: 'JEE_SHIFT', label: 'Shift Archives' },
+                  { id: 'NEET_PAPER', label: 'NEET Papers' },
+                  { id: 'BOARD_EXAM', label: 'NCERT / Ref' },
+                ]
+              : [
+                  { id: 'ALL', label: 'All Papers' },
+                  { id: 'BOARD_EXAM', label: 'Board Exams' },
+                  { id: 'CBSE_SAMPLE', label: 'Official SQPs' },
+                  { id: 'PRE_BOARD', label: 'Pre-Boards' }
+                ]
+            ).map(pt => (
               <button
                 key={pt.id}
                 onClick={() => setSelectedType(pt.id)}
@@ -451,7 +622,9 @@ export function PyqHubPage() {
                           ? 'bg-gradient-to-r from-emerald-500 to-teal-600'
                           : paper.subject === 'Mathematics'
                             ? 'bg-gradient-to-r from-blue-600 to-indigo-600'
-                            : 'bg-gradient-to-r from-cyan-500 to-blue-500'
+                            : paper.subject === 'Hindi'
+                              ? 'bg-gradient-to-r from-orange-500 to-amber-600'
+                              : 'bg-gradient-to-r from-cyan-500 to-blue-500'
                   }`} />
 
                   {/* Card Main Body */}
@@ -607,7 +780,7 @@ export function PyqHubPage() {
 
         <button
           onClick={() => {
-            const firstFree = PYQ_PAPERS_DATA.find(p => p.isFree);
+            const firstFree = filteredPapers.find(p => p.isFree) || allPapers.find(p => p.isFree);
             if (firstFree) handleOpenPaper(firstFree);
           }}
           className="shrink-0 px-6 py-3 rounded-2xl bg-slate-900 text-white text-xs sm:text-sm font-black hover:bg-slate-800 transition-all shadow-md shadow-slate-900/10 flex items-center gap-2"

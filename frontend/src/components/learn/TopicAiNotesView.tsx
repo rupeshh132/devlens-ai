@@ -228,8 +228,11 @@ const BUILTIN_NOTES_DATABASE: Record<string, SmartNotesData> = {
 function generateDynamicNotes(
   topicTitle: string, 
   chapterTitle: string, 
-  subjectName: string
+  subjectName: string,
+  classLevel = ''
 ): SmartNotesData {
+  const isCompetitive = /jee|neet/i.test(classLevel);
+  const isJee = /jee/i.test(classLevel);
   // Find related formulas from FORMULAS_DATA
   const cleanTopic = topicTitle.toLowerCase();
   const cleanCh = chapterTitle.toLowerCase();
@@ -250,7 +253,9 @@ function generateDynamicNotes(
     {
       title: `Governing Equations of ${topicTitle}`,
       equation: `Standard Mathematical Model for ${chapterTitle}`,
-      explanation: 'Follow standard step-marking procedure: Given Data -> Formula -> Substitution -> Final Answer with Units.'
+      explanation: isCompetitive
+        ? 'Focus on limiting cases, graphical slopes, and sign conventions to crack +4/-1 MCQs & Section B numericals quickly.'
+        : 'Follow standard step-marking procedure: Given Data -> Formula -> Substitution -> Final Answer with Units.'
     },
     {
       title: 'Units & Dimensional Consistency',
@@ -262,7 +267,9 @@ function generateDynamicNotes(
   return {
     topicTitle: `${topicTitle}: High-Yield Revision Sheet`,
     estimatedReadTime: '4 min read',
-    summary: `${topicTitle} is a core high-yield topic in "${chapterTitle}" (${subjectName}). This fast revision sheet highlights the fundamental principles, key definitions, mathematical relationships, and sure-shot examiner traps required for top marks in your board and entrance exams.`,
+    summary: isCompetitive
+      ? `${topicTitle} (${chapterTitle}) is part of the official synchronized ${classLevel} syllabus (${isJee ? 'NTA rationalized — deleted topics excluded' : 'NMC 79-chapter synced'}). Focus on multi-concept bridges, dimensional shortcuts, and frequent negative-marking traps.`
+      : `${topicTitle} is a core high-yield topic in "${chapterTitle}" (${subjectName}). This fast revision sheet highlights the fundamental principles, key definitions, mathematical relationships, and sure-shot examiner traps required for top marks in your board and entrance exams.`,
     timestamps: [
       {
         timeStr: 'Part 1',
@@ -285,8 +292,10 @@ function generateDynamicNotes(
       {
         timeStr: 'Part 4',
         seconds: 900,
-        title: `Sure-Shot Board Questions & Examiner Pitfalls`,
-        summary: `Common student misconceptions, unit conversion errors, and step-marking guidelines to maximize your exam score.`
+        title: isCompetitive ? `PYQ Shift Traps & Fast Elimination Shortcuts` : `Sure-Shot Board Questions & Examiner Pitfalls`,
+        summary: isCompetitive
+          ? `Frequent -1 negative marking traps, dimensional checks, and Section B decimal rounding precision.`
+          : `Common student misconceptions, unit conversion errors, and step-marking guidelines to maximize your exam score.`
       }
     ],
     keyDefinitions: [
@@ -299,12 +308,25 @@ function generateDynamicNotes(
         definition: `All quantitative calculations in ${topicTitle} must adhere to international SI units and dimensional homogeneity.`
       },
       {
-        term: 'Boundary Conditions & Assumptions',
-        definition: `The specific physical conditions and theoretical assumptions under which the principles of ${topicTitle} hold valid.`
+        term: isCompetitive ? 'Entrance Exam Short-Circuit Rule' : 'Boundary Conditions & Assumptions',
+        definition: isCompetitive
+          ? `Check extreme limits (0, infinity, equal values) and dimensional balance to eliminate wrong options in under 15 seconds.`
+          : `The specific physical conditions and theoretical assumptions under which the principles of ${topicTitle} hold valid.`
       }
     ],
     formulasAndLaws: formulasList,
-    examSureShot: [
+    examSureShot: isCompetitive ? [
+      {
+        question: `NTA Shift Pattern Drill: Identify the key boundary condition and dimensional invariant governing "${topicTitle}".`,
+        marks: '+4 / -1 PYQ',
+        modelAnswer: `Always reduce multi-variable expressions in ${chapterTitle} to dimensionless ratios or conservation laws (Energy / Momentum / Charge / Mole Balance). Double-check sign conventions before marking options or entering Section B Numerical values.`
+      },
+      {
+        question: `Avoidable -1 Trap: What mistake causes students to lose marks on "${topicTitle}" in CBT papers?`,
+        marks: 'Numerical Sec B',
+        modelAnswer: `1) Forgetting mixed-unit conversion (cm/CGS vs SI, atm·L vs Joules).\n2) Applying equilibrium/constant-acceleration formulas outside their valid regime.\n3) Premature rounding in compulsory Section B numericals.`
+      }
+    ] : [
       {
         question: `Explain the fundamental concept of "${topicTitle}" in ${chapterTitle} and state its key physical significance.`,
         marks: '3 Marks',
@@ -316,7 +338,11 @@ function generateDynamicNotes(
         modelAnswer: `1) Inconsistent units: Always convert all variables into SI units before calculation.\n2) Missing sign conventions or boundary conditions specified in the problem statement.`
       }
     ],
-    quickTips: [
+    quickTips: isCompetitive ? [
+      `Test limiting cases (e.g., θ = 0°/90°, m₁ = m₂) to verify formula options instantly.`,
+      `Keep intermediate constants exact until the final step in JEE Main Section B compulsory numericals (-1 penalty applies on wrong values too).`,
+      `Verify dimensional homogeneity before computing arithmetic.`
+    ] : [
       `Always write down the full formula and define all symbols before substituting numerical values to secure step marks.`,
       `Verify dimensional homogeneity: The units on the left-hand side must exactly match the right-hand side.`,
       `Highlight final answers with neat underlines and correct units (e.g. m/s, Joules, Newtons, mol/L).`
@@ -339,7 +365,8 @@ export interface TopicAiNotesViewProps {
 export function getCuratedTopicNotes(
   topicTitle: string,
   chapterTitle = 'General Studies',
-  subjectName = 'Science'
+  subjectName = 'Science',
+  classLevel = ''
 ): SmartNotesData {
   const cleanTitle = (topicTitle || '').toLowerCase().trim();
   const cleanCh = (chapterTitle || '').toLowerCase().trim();
@@ -350,18 +377,19 @@ export function getCuratedTopicNotes(
 
   return matchedKey 
     ? BUILTIN_NOTES_DATABASE[matchedKey]
-    : generateDynamicNotes(topicTitle, chapterTitle, subjectName);
+    : generateDynamicNotes(topicTitle, chapterTitle, subjectName, classLevel);
 }
 
 export function TopicAiNotesView({
   topicTitle,
   chapterTitle = 'General Studies',
   subjectName = 'Science',
+  classLevel = '',
 }: TopicAiNotesViewProps) {
   const [copied, setCopied] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
 
-  const notes = getCuratedTopicNotes(topicTitle, chapterTitle, subjectName);
+  const notes = getCuratedTopicNotes(topicTitle, chapterTitle, subjectName, classLevel);
 
   useEffect(() => {
     setBookmarked(isItemSaved(notes.topicTitle));

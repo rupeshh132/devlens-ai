@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { BookOpen, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import { learnApi } from '../../../lib/learn-api';
 import { getStreakData } from '../../../lib/lockerStorage';
 
@@ -59,8 +59,8 @@ export function LearnLogin() {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-sm">
-            <BookOpen className="h-7 w-7 text-white" />
+          <div className="w-16 h-16 rounded-full overflow-hidden shadow-md border-2 border-white ring-4 ring-blue-500/15 bg-white flex items-center justify-center">
+            <img src="/preplens-logo.jpg" alt="PrepLens Learn" className="w-full h-full object-cover rounded-full" />
           </div>
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-900">

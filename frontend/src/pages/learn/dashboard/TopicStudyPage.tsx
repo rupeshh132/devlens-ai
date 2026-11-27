@@ -16,6 +16,17 @@ interface ContentItem {
   isFree: boolean;
 }
 
+function resolveContentUrl(url: string): string {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  if (url.startsWith('/api/')) {
+    const rawApiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:8081/api/v1').replace(/\/+$/, '');
+    const origin = rawApiUrl.replace(/\/api\/v1.*$/, '');
+    return `${origin}${url}`;
+  }
+  return url;
+}
+
 function getYoutubeId(url: string): string | null {
   if (!url) return null;
   const shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
@@ -1042,17 +1053,30 @@ function TopicQuiz({ topicId, topicTitle, chapterTitle, subjectName }: TopicQuiz
     );
   }
 
+  const [numericDraft, setNumericDraft] = useState('');
   const q = questions[currentIndex];
   let options: Record<string, string> = {};
   try {
-    options = JSON.parse(q.optionsJson);
+    options = typeof q.optionsJson === 'string' ? JSON.parse(q.optionsJson) : (q.optionsJson || {});
   } catch(e) {}
+  const hasQuizOptions = options && Object.keys(options).length > 0;
+
+  const isAnswerMatch = (submitted: string | null, expected: string) => {
+    if (!submitted) return false;
+    const s = submitted.trim();
+    const ex = (expected || '').trim();
+    if (!s || !ex) return false;
+    const n1 = Number(s);
+    const n2 = Number(ex);
+    if (!Number.isNaN(n1) && !Number.isNaN(n2)) return Math.abs(n1 - n2) < 1e-6;
+    return s.toLowerCase() === ex.toLowerCase();
+  };
 
   const handleOptionSelect = (key: string) => {
     if (showExplanation) return;
     setSelectedOption(key);
     setShowExplanation(true);
-    if (key === q.correctAnswer) {
+    if (isAnswerMatch(key, q.correctAnswer)) {
       setScore(s => s + 1);
     }
   };
@@ -1061,9 +1085,10 @@ function TopicQuiz({ topicId, topicTitle, chapterTitle, subjectName }: TopicQuiz
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(i => i + 1);
       setSelectedOption(null);
+      setNumericDraft('');
       setShowExplanation(false);
     } else {
-      handleFinish(score + (selectedOption === q.correctAnswer ? 1 : 0));
+      handleFinish(score);
     }
   };
 
@@ -1096,53 +1121,87 @@ function TopicQuiz({ topicId, topicTitle, chapterTitle, subjectName }: TopicQuiz
           {q.questionText}
         </h3>
         
-        <div className="space-y-3">
-          {Object.entries(options).map(([key, value]) => {
-            const isCorrect = key === q.correctAnswer;
-            const isSelected = key === selectedOption;
-            
-            let btnClass = "w-full flex items-center text-left p-4 rounded-2xl border-2 transition-all duration-300 relative overflow-hidden group ";
-            let icon = null;
-            
-            if (!showExplanation) {
-              btnClass += "border-slate-100 bg-white hover:border-purple-300 hover:bg-purple-50 hover:shadow-md hover:-translate-y-0.5 cursor-pointer text-slate-700";
-            } else {
-              if (isCorrect) {
-                btnClass += "border-emerald-500 bg-emerald-50 text-emerald-900 shadow-md";
-                icon = <CheckCircle className="w-6 h-6 text-emerald-500 shrink-0 ml-3 animate-in zoom-in" />;
-              } else if (isSelected) {
-                btnClass += "border-red-400 bg-red-50 text-red-900";
-                icon = <X className="w-6 h-6 text-red-500 shrink-0 ml-3 animate-in zoom-in" />;
+        {hasQuizOptions ? (
+          <div className="space-y-3">
+            {Object.entries(options).map(([key, value]) => {
+              const isCorrect = isAnswerMatch(key, q.correctAnswer);
+              const isSelected = key === selectedOption;
+              
+              let btnClass = "w-full flex items-center text-left p-4 rounded-2xl border-2 transition-all duration-300 relative overflow-hidden group ";
+              let icon = null;
+              
+              if (!showExplanation) {
+                btnClass += "border-slate-100 bg-white hover:border-purple-300 hover:bg-purple-50 hover:shadow-md hover:-translate-y-0.5 cursor-pointer text-slate-700";
               } else {
-                btnClass += "border-slate-100 bg-slate-50 opacity-60 text-slate-500 cursor-default";
+                if (isCorrect) {
+                  btnClass += "border-emerald-500 bg-emerald-50 text-emerald-900 shadow-md";
+                  icon = <CheckCircle className="w-6 h-6 text-emerald-500 shrink-0 ml-3 animate-in zoom-in" />;
+                } else if (isSelected) {
+                  btnClass += "border-red-400 bg-red-50 text-red-900";
+                  icon = <X className="w-6 h-6 text-red-500 shrink-0 ml-3 animate-in zoom-in" />;
+                } else {
+                  btnClass += "border-slate-100 bg-slate-50 opacity-60 text-slate-500 cursor-default";
+                }
               }
-            }
 
-            return (
-              <button 
-                key={key} 
-                onClick={() => handleOptionSelect(key)}
-                className={btnClass}
+              return (
+                <button 
+                  key={key} 
+                  onClick={() => handleOptionSelect(key)}
+                  className={btnClass}
+                  disabled={showExplanation}
+                >
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0 transition-colors ${showExplanation && isCorrect ? 'bg-emerald-200 text-emerald-800' : showExplanation && isSelected ? 'bg-red-200 text-red-800' : 'bg-slate-100 text-slate-500 group-hover:bg-purple-200 group-hover:text-purple-800'}`}>
+                    {key}
+                  </div>
+                  <span className="font-medium text-lg flex-1 pr-2">{value}</span>
+                  {icon}
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500">
+              Enter Numerical Answer
+            </label>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="text"
+                inputMode="decimal"
                 disabled={showExplanation}
-              >
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0 transition-colors ${showExplanation && isCorrect ? 'bg-emerald-200 text-emerald-800' : showExplanation && isSelected ? 'bg-red-200 text-red-800' : 'bg-slate-100 text-slate-500 group-hover:bg-purple-200 group-hover:text-purple-800'}`}>
-                  {key}
-                </div>
-                <span className="font-medium text-lg flex-1 pr-2">{value}</span>
-                {icon}
-              </button>
-            );
-          })}
-        </div>
+                value={showExplanation ? (selectedOption || '') : numericDraft}
+                onChange={(e) => setNumericDraft(e.target.value.replace(/[^0-9.-]/g, ''))}
+                placeholder="Type number (e.g. 12 or 2.5)"
+                className="flex-1 px-4 py-3 text-lg font-mono font-bold rounded-2xl border-2 border-slate-200 focus:border-purple-500 outline-hidden"
+              />
+              {!showExplanation && (
+                <button
+                  type="button"
+                  disabled={!numericDraft.trim()}
+                  onClick={() => handleOptionSelect(numericDraft.trim())}
+                  className="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white font-bold rounded-2xl transition-colors"
+                >
+                  Check Answer
+                </button>
+              )}
+            </div>
+            {showExplanation && (
+              <p className="text-sm font-bold text-emerald-700">
+                Official Answer Key: <span className="font-mono">{q.correctAnswer}</span>
+              </p>
+            )}
+          </div>
+        )}
       </div>
 
       {/* AI Explanation */}
       {showExplanation && (
         <div className="animate-in fade-in slide-in-from-bottom-4 zoom-in-95 duration-300">
-          <div className={`relative overflow-hidden p-6 rounded-3xl mb-6 border ${selectedOption === q.correctAnswer ? 'bg-emerald-50 border-emerald-200' : 'bg-red-50 border-red-200'}`}>
+          <div className={`relative overflow-hidden p-6 rounded-3xl mb-6 border ${isAnswerMatch(selectedOption, q.correctAnswer) ? 'bg-emerald-50 border-emerald-200' : 'bg-red-50 border-red-200'}`}>
             {/* Sparkles Decoration */}
             <div className="absolute -top-4 -right-4 opacity-10">
-              <Sparkles className={`w-32 h-32 ${selectedOption === q.correctAnswer ? 'text-emerald-500' : 'text-red-500'}`} />
+              <Sparkles className={`w-32 h-32 ${isAnswerMatch(selectedOption, q.correctAnswer) ? 'text-emerald-500' : 'text-red-500'}`} />
             </div>
             
             <div className="relative z-10">
@@ -1560,7 +1619,7 @@ export function TopicStudyPage() {
               activeTab === 'notes' ? 'border-blue-600 text-blue-600 bg-blue-50/50 font-bold' : 'border-transparent text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <FileText className="w-5 h-5" /> Smart Notes (PDF)
+            <FileText className="w-5 h-5" /> Full Chapter Notes (PDF)
             {pdfs.length > 0 && (
               <span className="ml-1 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {pdfs.length}
@@ -1663,9 +1722,9 @@ export function TopicStudyPage() {
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4 bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100">
                     <div>
                       <h2 className="text-2xl font-bold text-blue-950 flex items-center gap-2">
-                        <FileText className="text-blue-600" /> Smart Study Notes
+                        <FileText className="text-blue-600" /> Full Chapter Study Notes
                       </h2>
-                      <p className="text-blue-800/70 mt-1 font-medium">Read materials directly in our focus-reader to earn XP.</p>
+                      <p className="text-blue-800/70 mt-1 font-medium">Read the complete chapter notes directly in our focus-reader to earn XP.</p>
                     </div>
                     <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-blue-100 flex items-center gap-2">
                        <span className="flex h-3 w-3 relative">
@@ -1681,8 +1740,8 @@ export function TopicStudyPage() {
                       <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4">
                         <FileText className="w-10 h-10 text-slate-300" />
                       </div>
-                      <h3 className="text-lg font-semibold text-slate-700">No Materials Yet</h3>
-                      <p className="text-slate-500 mt-1 text-sm max-w-sm">Admin hasn't uploaded any notes or PDFs for this topic yet. Check back later!</p>
+                      <h3 className="text-lg font-semibold text-slate-700">No Chapter Notes Uploaded Yet</h3>
+                      <p className="text-slate-500 mt-1 text-sm max-w-sm">Complete handwritten and master PDF notes for this chapter will be uploaded soon. Stay tuned!</p>
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -1699,6 +1758,11 @@ export function TopicStudyPage() {
                             {/* Details Right */}
                             <div className="flex-1 ml-5 flex flex-col justify-between py-1">
                               <div>
+                                <div className="flex items-center gap-2 mb-1">
+                                  <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-800">
+                                    Full Chapter Notes
+                                  </span>
+                                </div>
                                 <h3 className="font-bold text-slate-800 text-lg leading-tight line-clamp-2 group-hover:text-blue-700 transition-colors">{pdf.title}</h3>
                                 <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1">
                                   <Clock className="w-3.5 h-3.5" /> Est. 10 min read
@@ -1713,8 +1777,10 @@ export function TopicStudyPage() {
                                   <PlayCircle className="w-4 h-4" /> Read & Earn XP
                                 </button>
                                 <a
-                                  href={pdf.contentUrl}
+                                  href={resolveContentUrl(pdf.contentUrl)}
                                   download
+                                  target="_blank"
+                                  rel="noreferrer"
                                   className="w-11 h-11 flex items-center justify-center bg-slate-50 hover:bg-slate-100 text-slate-600 rounded-xl border border-slate-200 transition-colors hover:text-blue-600"
                                   title="Download for offline"
                                 >
@@ -1809,7 +1875,7 @@ export function TopicStudyPage() {
                            <p className="text-slate-500 font-medium">Loading Document...</p>
                         </div>
                         <iframe 
-                          src={activePdf.contentUrl} 
+                          src={resolveContentUrl(activePdf.contentUrl)} 
                           className="relative z-10 w-full h-full border-0" 
                           title={activePdf.title}
                         />

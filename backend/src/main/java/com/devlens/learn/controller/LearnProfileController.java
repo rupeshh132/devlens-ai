@@ -31,6 +31,12 @@ public class LearnProfileController {
         }
     }
 
+    @PreAuthorize("hasRole('LEARN_USER')")
+    @GetMapping("/analytics/competitive-summary")
+    public ResponseEntity<java.util.Map<String, Object>> getCompetitiveSummary(@AuthenticationPrincipal LearnUserPrincipal principal) {
+        return ResponseEntity.ok(profileService.getCompetitiveAnalyticsSummary(principal.getId()));
+    }
+
 
     private final LearnProfileService profileService;
 

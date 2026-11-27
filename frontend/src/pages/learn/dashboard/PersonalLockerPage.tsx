@@ -18,7 +18,7 @@ import type { LockerItem } from '../../../lib/lockerStorage';
 export function PersonalLockerPage() {
   const navigate = useNavigate();
   const [items, setItems] = useState<LockerItem[]>(() => getLockerItems());
-  const [activeTab, setActiveTab] = useState<'ALL' | 'NOTE' | 'QUESTION' | 'FORMULA'>('ALL');
+  const [activeTab, setActiveTab] = useState<'ALL' | 'NOTE' | 'QUESTION' | 'FORMULA' | 'MISTAKE'>('ALL');
   const [activeSubject, setActiveSubject] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState<string>('');
   
@@ -88,11 +88,16 @@ export function PersonalLockerPage() {
   const countNotes = items.filter(i => i.type === 'NOTE').length;
   const countQuestions = items.filter(i => i.type === 'QUESTION').length;
   const countFormulas = items.filter(i => i.type === 'FORMULA').length;
+  const countMistakes = items.filter(i => i.meta?.mistake === true || i.tags.some(t => t.toLowerCase().includes('mistake'))).length;
 
   const filteredItems = useMemo(() => {
     return items.filter(item => {
       // 1. Type filter
-      if (activeTab !== 'ALL' && item.type !== activeTab) {
+      if (activeTab === 'MISTAKE') {
+        if (!(item.meta?.mistake === true || item.tags.some(t => t.toLowerCase().includes('mistake')))) {
+          return false;
+        }
+      } else if (activeTab !== 'ALL' && item.type !== activeTab) {
         return false;
       }
 
@@ -324,6 +329,7 @@ export function PersonalLockerPage() {
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 shrink-0">
             {[
               { id: 'ALL', label: `All (${items.length})` },
+              { id: 'MISTAKE', label: `🔥 Mistakes (${countMistakes})` },
               { id: 'NOTE', label: `📝 Notes (${countNotes})` },
               { id: 'QUESTION', label: `⭐ Questions (${countQuestions})` },
               { id: 'FORMULA', label: `📐 Formulas (${countFormulas})` },

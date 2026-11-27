@@ -14,17 +14,17 @@ const CATEGORY_DETAILS: Record<string, any> = {
   },
   '2': {
     title: 'JEE Mains & Advanced',
-    description: 'Master Physics, Chemistry, and Mathematics with AI-driven study plans and full-length mock tests.',
+    description: 'NTA rationalized 75-compulsory Qs (300M) JEE Main + IIT Dual-Paper JEE Advanced course with lectures, notes & rank analytics.',
     students: '124K+',
-    topics: ['Physics', 'Chemistry', 'Mathematics'],
-    features: ['100+ Full Mock Tests', 'PYQ Analysis (2010-2024)', 'AI Weakness Detection']
+    topics: ['Physics (incl. Unit 20)', 'Chemistry (NTA & ADV Track)', 'Mathematics (Synced)'],
+    features: ['NTA Rationalized Lectures & Notes', '75-Q CBT Simulators & MSQ Partial Marking', 'Shift-Wise PYQ & Error Analysis']
   },
   '3': {
     title: 'NEET UG',
-    description: 'Comprehensive biology, physics, and chemistry practice tailored for the NTA medical entrance.',
+    description: 'Official NMC 79-chapter synced course (180 compulsory Qs / 720M / 180 mins) with NCERT line-by-line Botany, Zoology, Chem & Physics.',
     students: '98K+',
-    topics: ['Biology', 'Physics', 'Chemistry'],
-    features: ['NCERT Line-by-Line MCQs', '80+ Full Length Tests', 'Rank Predictor']
+    topics: ['Botany (45 Qs)', 'Zoology (45 Qs)', 'Chemistry (45 Qs)', 'Physics (45 Qs)'],
+    features: ['NCERT Line-by-Line Lectures & Notes', '180-MCQ Speed Mock Series', 'Assertion-Reason & Diagram Mastery']
   },
   '4': {
     title: 'Govt Exams (SSC CGL / CHSL)',

@@ -703,8 +703,9 @@ export function ContentUploadPage() {
   // ─── PDF Submission ────────────────────────────────────────────────────────
   const handlePdfSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedTopic || !title.trim() || !pdfFile) {
-      toast.error('Please specify title and choose a PDF file');
+    const targetTopicId = selectedTopic || (topics.length > 0 ? topics[0].id : '');
+    if (!targetTopicId || !title.trim() || !pdfFile) {
+      toast.error('Please select a chapter, enter a title, and choose a PDF file');
       return;
     }
     setLoading(true);
@@ -715,11 +716,11 @@ export function ContentUploadPage() {
     formData.append('isFree', isPdfFree.toString());
 
     try {
-      await api.post(`/learn/admin/content/upload/${selectedTopic}`, formData, {
+      await api.post(`/learn/admin/content/upload/${targetTopicId}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
-      toast.success('Smart PDF Notes uploaded successfully!');
-      setMessage({ type: 'success', text: 'PDF Notes successfully uploaded.' });
+      toast.success('Full Chapter PDF Notes uploaded successfully!');
+      setMessage({ type: 'success', text: 'Full Chapter PDF Notes successfully uploaded.' });
       setTitle('');
       setPdfFile(null);
       setIsPdfFree(false);
@@ -1302,11 +1303,11 @@ export function ContentUploadPage() {
               ) : (
                 <form onSubmit={handlePdfSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Document Title:</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Full Chapter Notes Title:</label>
                     <input 
                       type="text" 
                       required 
-                      placeholder="e.g. Master Handwritten Formula Cheatsheet & Notes" 
+                      placeholder="e.g. Chapter 1 - Complete Chapter Handwritten Notes" 
                       className="w-full text-xs p-2.5 bg-slate-50 border border-slate-300 rounded-xl outline-none focus:border-blue-500 focus:bg-white transition-all font-medium text-slate-900"
                       value={title} 
                       onChange={(e) => setTitle(e.target.value)} 

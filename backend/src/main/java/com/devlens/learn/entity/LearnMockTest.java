@@ -33,6 +33,29 @@ public class LearnMockTest {
     @Column(name = "is_free")
     private boolean isFree;
 
+    private String subject;
+
+    @Column(name = "test_type")
+    private String testType = "FULL";
+
+    @Column(name = "class_level")
+    private String classLevel = "Class 9";
+
+    @Column(columnDefinition = "TEXT")
+    private String instructions;
+
+    @Column(name = "blueprint_json", columnDefinition = "TEXT")
+    private String blueprintJson;
+
+    @Column(name = "paper_pair_id")
+    private UUID paperPairId;
+
+    @Column(name = "paper_number")
+    private Short paperNumber;
+
+    @Column(name = "syllabus_version")
+    private String syllabusVersion;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

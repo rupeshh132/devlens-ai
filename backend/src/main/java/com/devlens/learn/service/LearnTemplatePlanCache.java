@@ -26,8 +26,12 @@ public class LearnTemplatePlanCache {
             return cache.get("CLASS_11");
         } else if (normalizedGoal.contains("12")) {
             return cache.get("CLASS_12");
-        } else if (normalizedGoal.contains("JEE") || normalizedGoal.contains("NEET")) {
-            return cache.get("JEE_NEET");
+        } else if (normalizedGoal.contains("JEE") && (normalizedGoal.contains("ADV") || normalizedGoal.contains("IIT"))) {
+            return cache.get("JEE_ADVANCED");
+        } else if (normalizedGoal.contains("JEE")) {
+            return cache.get("JEE_MAINS");
+        } else if (normalizedGoal.contains("NEET")) {
+            return cache.get("NEET_UG");
         } else if (normalizedGoal.contains("SSC") || normalizedGoal.contains("UPSC") || normalizedGoal.contains("GOVT") || normalizedGoal.contains("CIVIL")) {
             return cache.get("GOVT_EXAMS");
         }
@@ -158,27 +162,108 @@ public class LearnTemplatePlanCache {
         }
         """);
 
-        cache.put("JEE_NEET", """
+        cache.put("JEE_MAINS", """
         {
-          "plan_title": "Master Syllabus Roadmap for JEE / NEET Competitive Prep",
-          "estimated_duration": "Complete High-Intensity Plan",
+          "plan_title": "NTA JEE Mains 2026 Rationalized Syllabus Roadmap (75 Qs / 300 Marks)",
+          "estimated_duration": "Complete 16-Week High-Percentile Plan",
           "modules": [
             {
-              "module_name": "Phase 1: High-Weightage Physics & Physical Chemistry",
-              "duration": "Weeks 1-3",
+              "module_name": "Phase 1: High-Yield Mechanics, Thermodynamics & Core Maths (NTA Synced)",
+              "duration": "Weeks 1-4",
               "tasks": [
-                {"id": "jn_m1_t1", "title": "Mechanics: Vectors, Kinematics & NLM Deep-Dive", "completed": false},
-                {"id": "jn_m1_t2", "title": "Mole Concept, Thermodynamics & Chemical Equilibrium", "completed": false},
-                {"id": "jn_m1_t3", "title": "Calculus, Limits, Integration & Coordinate Geometry", "completed": false}
+                {"id": "jm_m1_t1", "title": "Physics: Units & Experimental Skills, Kinematics, NLM & Work-Energy (No deleted subtopics)", "completed": false},
+                {"id": "jm_m1_t2", "title": "Chemistry: Mole Concept, Atomic Structure, Chemical Bonding & Thermodynamics (States/Solid excluded)", "completed": false},
+                {"id": "jm_m1_t3", "title": "Maths: Quadratics, Sequence & Series, Sets/Functions & Straight Lines-Circles", "completed": false}
               ]
             },
             {
-              "module_name": "Phase 2: Organic Mechanisms & Electromagnetism",
-              "duration": "Weeks 4-6",
+              "module_name": "Phase 2: Electrodynamics, Equilibrium & Calculus Mastery",
+              "duration": "Weeks 5-10",
               "tasks": [
-                {"id": "jn_m2_t1", "title": "Electrostats, Capacitance & Current Electricity", "completed": false},
-                {"id": "jn_m2_t2", "title": "GOC, Hydrocarbons & Reaction Mechanisms", "completed": false},
-                {"id": "jn_m2_t3", "title": "Previous Years Questions (PYQs) Mock Test Series 1", "completed": false}
+                {"id": "jm_m2_t1", "title": "Physics: Rotational Motion, Electrostatics, Current Electricity & Magnetic Effects", "completed": false},
+                {"id": "jm_m2_t2", "title": "Chemistry: Chemical & Ionic Equilibrium, Electrochemistry, Kinetics & GOC-Hydrocarbons", "completed": false},
+                {"id": "jm_m2_t3", "title": "Maths: Limits, Continuity, Definite Integrals, Differential Equations & Vectors-3D Lines (No Planes)", "completed": false}
+              ]
+            },
+            {
+              "module_name": "Phase 3: Optics, Modern Physics, Named Organic & 75-Q Compulsory CBT Drills",
+              "duration": "Weeks 11-16",
+              "tasks": [
+                {"id": "jm_m3_t1", "title": "Physics: Ray & Wave Optics, Dual Nature, Atoms-Nuclei & Semiconductors (+4/-1 Sec B Numericals)", "completed": false},
+                {"id": "jm_m3_t2", "title": "Chemistry: Coordination Compounds, d & f Block, Aldehydes-Ketones-Amines & Biomolecules", "completed": false},
+                {"id": "jm_m3_t3", "title": "Full-Length 75-Question (20 MCQ + 5 Compulsory Numerical per Subject) Shift-Wise Mock Marathon", "completed": false}
+              ]
+            }
+          ]
+        }
+        """);
+
+        cache.put("JEE_ADVANCED", """
+        {
+          "plan_title": "IIT JEE Advanced Dual-Paper Ranker Roadmap (Paper 1 + Paper 2)",
+          "estimated_duration": "Complete 18-Week Multi-Concept & IIT Plan",
+          "modules": [
+            {
+              "module_name": "Phase 1: Deep Mechanics, Rotational Dynamics & Core Algebra",
+              "duration": "Weeks 1-6",
+              "tasks": [
+                {"id": "ja_m1_t1", "title": "Physics: Multi-Body Constraints, Rotational Roll+Slip, Angular Momentum & Fluid Statics", "completed": false},
+                {"id": "ja_m1_t2", "title": "Chemistry: Real Gases (States of Matter), Solid State Defects & Surface Chem (ADV ONLY)", "completed": false},
+                {"id": "ja_m1_t3", "title": "Maths: Complex Numbers Geometry, P&C Combinatorics, Matrices & Determinants", "completed": false}
+              ]
+            },
+            {
+              "module_name": "Phase 2: Electromagnetism, Reaction Mechanisms & Advanced Calculus",
+              "duration": "Weeks 7-12",
+              "tasks": [
+                {"id": "ja_m2_t1", "title": "Physics: Gauss Law Symmetry, RC/RL Transients, EMI & Variable-B Circuits", "completed": false},
+                {"id": "ja_m2_t2", "title": "Chemistry: Stereo-chemical Reaction Mechanisms, Qualitative Analysis, s-Block, Metallurgy & Polymers (ADV ONLY)", "completed": false},
+                {"id": "ja_m2_t3", "title": "Maths: Definite Integral Properties, Differential Equations, Conics & Scalar/Vector Triple Products", "completed": false}
+              ]
+            },
+            {
+              "module_name": "Phase 3: Paper 1 + Paper 2 Stamina (SCQ, Partial-Marking MSQ, Decimal Integer & Matrix)",
+              "duration": "Weeks 13-18",
+              "tasks": [
+                {"id": "ja_m3_t1", "title": "Physics: Optics (YDSE Shift, Lens Combinations), Thermal Radiation & Modern Physics Q-Value", "completed": false},
+                {"id": "ja_m3_t2", "title": "MSQ Partial Marking (+4/+3/+2/+1/-2) Trap Elimination Drills across PCM", "completed": false},
+                {"id": "ja_m3_t3", "title": "Full 6-Hour Twin Simulation (Paper 1 Morning + Paper 2 Afternoon) Series", "completed": false}
+              ]
+            }
+          ]
+        }
+        """);
+
+        cache.put("NEET_UG", """
+        {
+          "plan_title": "NMC NEET UG 79-Chapter Synced Master Roadmap (180 Compulsory Qs / 720 Marks)",
+          "estimated_duration": "Complete 16-Week Medical Ranker Plan",
+          "modules": [
+            {
+              "module_name": "Phase 1: NCERT Biology Foundation (Botany & Zoology) + Core Physics-Chem",
+              "duration": "Weeks 1-5",
+              "tasks": [
+                {"id": "nu_m1_t1", "title": "Botany: Living World, Biological Classification, Plant Kingdom & Cell Cycle (Transport/Mineral deleted)", "completed": false},
+                {"id": "nu_m1_t2", "title": "Zoology: Animal Kingdom, Structural Organisation (Cockroach & Frog) & Human Breathing-Circulation", "completed": false},
+                {"id": "nu_m1_t3", "title": "Physics & Chem: Kinematics, NLM, Unit 20 Experimental Skills, Mole Concept & Chemical Bonding", "completed": false}
+              ]
+            },
+            {
+              "module_name": "Phase 2: High-Weightage Genetics, Biotechnology, Organic & Electrodynamics",
+              "duration": "Weeks 6-11",
+              "tasks": [
+                {"id": "nu_m2_t1", "title": "Botany: Plant Physiology (Photosynthesis, Respiration, PGR), Sexual Reproduction & Updated Plant Families", "completed": false},
+                {"id": "nu_m2_t2", "title": "Zoology: Genetics, Molecular Basis (Lac Operon), Human Reproduction, Immunity & Biotechnology", "completed": false},
+                {"id": "nu_m2_t3", "title": "Chem & Physics: GOC, Aldehydes-Ketones, Solutions-Electrochemistry, Electrostatics & Current Electricity", "completed": false}
+              ]
+            },
+            {
+              "module_name": "Phase 3: NCERT Statement I/II, Assertion-Reason & 180-Min Speed Simulation",
+              "duration": "Weeks 12-16",
+              "tasks": [
+                {"id": "nu_m3_t1", "title": "Physics & Chem Fast Revision: Optics, Modern Physics, Semiconductors & Coordination Compounds", "completed": false},
+                {"id": "nu_m3_t2", "title": "NCERT Line-by-Line Diagram & Statement Trap Mastery (Botany 45 + Zoology 45)", "completed": false},
+                {"id": "nu_m3_t3", "title": "Full 180-Compulsory-MCQ (720 Marks / 180 Mins, +4/-1) Mock Test Marathon", "completed": false}
               ]
             }
           ]

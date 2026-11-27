@@ -898,7 +898,7 @@ export function ContentDashboardPage() {
                 {renderSortHeader('Topic', 'topic')}
                 {renderSortHeader('Video', 'video', 'text-center')}
                 <th className="p-4 font-semibold text-center select-none">AI Notes</th>
-                {renderSortHeader('Notes PDF', 'pdf', 'text-center')}
+                {renderSortHeader('Chapter PDF', 'pdf', 'text-center')}
                 {renderSortHeader('Feedback', 'satisfaction', 'text-center')}
                 {renderSortHeader('Status', 'status', 'text-center')}
                 <th className="p-4 font-semibold text-right select-none">Action</th>
@@ -991,27 +991,27 @@ export function ContentDashboardPage() {
                         </Link>
                       </td>
 
-                      {/* Notes PDF Verification Column */}
+                      {/* Chapter Notes PDF Verification Column */}
                       <td className="p-4 text-center">
                         {hasPdf ? (
                           <Link
                             to={`/learn/topic/${item.topic_id}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sky-500/15 text-sky-700 dark:text-sky-300 hover:bg-sky-500/25 border border-sky-500/20 transition-all text-xs font-bold cursor-pointer"
-                            title={`Click to preview & verify ${item.pdf_count} notes PDF(s) in study mode (opens new tab)`}
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/25 border border-emerald-500/30 transition-all text-xs font-bold cursor-pointer"
+                            title="Full Chapter PDF is active and shared across all subtopics"
                           >
                             <FileText className="w-3.5 h-3.5" />
-                            <span>{item.pdf_count}</span>
+                            <span>Chapter PDF</span>
                           </Link>
                         ) : (
                           <Link
                             to={`/admin/learn/upload?exam=${item.exam_type_id}&subject=${item.subject_id}&chapter=${item.chapter_id}&topic=${item.topic_id}`}
-                            className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-muted/60 text-muted-foreground hover:bg-sky-500/10 hover:text-sky-600 dark:hover:text-sky-400 hover:border-sky-500/30 border border-border transition-all text-[11px] font-medium"
-                            title="No notes PDF uploaded yet. Click to upload PDF"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-muted/60 text-muted-foreground hover:bg-sky-500/10 hover:text-sky-600 dark:hover:text-sky-400 hover:border-sky-500/30 border border-border transition-all text-[11px] font-medium"
+                            title="No chapter PDF uploaded yet. Click to upload 1 full chapter PDF"
                           >
                             <FileText className="w-3.5 h-3.5" />
-                            <span>+Add</span>
+                            <span>+ Add Chapter PDF</span>
                           </Link>
                         )}
                       </td>
@@ -1111,7 +1111,7 @@ export function ContentDashboardPage() {
                                   : 'bg-sky-500/15 text-sky-700 dark:text-sky-300 hover:bg-sky-500/25 border border-sky-500/20'
                               }`}
                             >
-                              {!hasVideo ? '+ Add Video' : '+ Add PDF'}
+                              {!hasVideo ? '+ Add Video' : '+ Add Chapter PDF'}
                             </Link>
                           </div>
                         )}

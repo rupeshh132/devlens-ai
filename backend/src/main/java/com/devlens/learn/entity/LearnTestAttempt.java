@@ -39,6 +39,10 @@ public class LearnTestAttempt {
     @Column(name = "topic_scores_json", columnDefinition = "JSONB")
     private String topicScoresJson; // Used for AI study plan generation
 
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.JSON)
+    @Column(name = "subject_stats_json", columnDefinition = "JSONB")
+    private String subjectStatsJson; // Subject-wise accuracy, marks, and negative loss stats
+
     private String status = "IN_PROGRESS"; // IN_PROGRESS, COMPLETED, EVALUATING
 
     @Column(name = "correct_answers")

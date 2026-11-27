@@ -13,6 +13,7 @@ import java.util.UUID;
 public class LearnContentController {
 
     private final LearnContentService learnContentService;
+    private final com.devlens.learn.service.LearnPdfService learnPdfService;
 
     @GetMapping("/exams")
     public ResponseEntity<?> getAllExamTypes() {
@@ -42,6 +43,15 @@ public class LearnContentController {
     @GetMapping("/topics/{topicId}/questions")
     public ResponseEntity<?> getTopicQuestions(@PathVariable UUID topicId) {
         return ResponseEntity.ok(learnContentService.getQuestionsByTopic(topicId));
+    }
+
+    @GetMapping("/chapters/{chapterId}/notes-pdf")
+    public ResponseEntity<byte[]> getChapterNotesPdf(@PathVariable UUID chapterId) {
+        byte[] pdfBytes = learnPdfService.generateChapterNotesPdf(chapterId);
+        org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+        headers.setContentType(org.springframework.http.MediaType.APPLICATION_PDF);
+        headers.add(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"PrepLens_Chapter_Notes_" + chapterId + ".pdf\"");
+        return new ResponseEntity<>(pdfBytes, headers, org.springframework.http.HttpStatus.OK);
     }
 
     @org.springframework.security.access.prepost.PreAuthorize("hasRole('LEARN_USER')")

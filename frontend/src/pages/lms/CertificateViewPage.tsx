@@ -97,9 +97,14 @@ export function CertificateViewPage() {
           <div className="p-12 md:p-16">
             {/* Header row */}
             <div className="flex items-start justify-between mb-10">
-              <div>
-                <p className="text-xs font-bold tracking-[0.3em] text-blue-700 uppercase mb-1">PrepLens</p>
-                <p className="text-xs text-gray-400 tracking-widest uppercase">Virtual Internship Program</p>
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-200 shadow-xs bg-white shrink-0 ring-2 ring-blue-700/10">
+                  <img src="/preplens-logo.jpg" alt="PrepLens Logo" className="w-full h-full object-cover rounded-full" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold tracking-[0.2em] text-blue-900 uppercase">PrepLens</p>
+                  <p className="text-xs text-gray-400 tracking-widest uppercase">Virtual Internship Program</p>
+                </div>
               </div>
               <div className="flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5">
                 <Award className="w-4 h-4 text-blue-700" />

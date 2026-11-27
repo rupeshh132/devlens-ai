@@ -189,7 +189,7 @@ public class LearnAIService {
         if (!isSupported) {
             throw new org.springframework.web.server.ResponseStatusException(
                 org.springframework.http.HttpStatus.BAD_REQUEST, 
-                "Unsupported target exam goal: " + examGoal + ". Supported goals: Class 9, Class 10, Class 11, Class 12, JEE Mains, NEET UG, SSC CGL, UPSC CSE"
+                "Unsupported target exam goal: " + examGoal + ". Supported goals: Class 9, Class 10, Class 11, Class 12, JEE Mains, JEE Advanced, NEET UG, SSC CGL, UPSC CSE"
             );
         }
         String hours = (dailyHours == null || dailyHours.isBlank()) ? "2" : dailyHours;

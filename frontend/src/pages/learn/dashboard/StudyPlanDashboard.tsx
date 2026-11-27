@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Target, BookOpen, Loader2, Sparkles, AlertCircle, CheckCircle2, Clock, Lock } from 'lucide-react';
-import { learnApi } from '../../../lib/learn-api';
+import { learnApi, fetchLearnProfileCached } from '../../../lib/learn-api';
 import { usePremium } from '../../../hooks/usePremium';
 import { PaywallModal } from '../../../components/learn/PaywallModal';
 import { DailyPyqStreakCard } from '../../../components/learn/DailyPyqStreakCard';
@@ -39,12 +39,12 @@ export function StudyPlanDashboard() {
     localStorage.removeItem('learn_study_plan');
   }, []);
 
-  // Fetch real examGoal from server
+  // Fetch real examGoal from server (deduplicated)
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await learnApi.get('/profile');
-        if (res.data?.examGoal) setExamGoal(res.data.examGoal);
+        const data = await fetchLearnProfileCached();
+        if (data?.examGoal) setExamGoal(data.examGoal);
       } catch (e) {
         console.error(e);
       }

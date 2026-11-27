@@ -21,8 +21,11 @@ public class MockTestController {
 
     @PreAuthorize("hasRole('LEARN_USER')")
     @GetMapping("/my-tests")
-    public ResponseEntity<?> getMyTests(@AuthenticationPrincipal LearnUserPrincipal principal) {
-        return ResponseEntity.ok(mockTestService.getMyTests(principal.getId()));
+    public ResponseEntity<?> getMyTests(
+            @AuthenticationPrincipal LearnUserPrincipal principal,
+            @RequestParam(required = false) String subject,
+            @RequestParam(required = false) String type) {
+        return ResponseEntity.ok(mockTestService.getMyTests(principal.getId(), subject, type));
     }
 
     @PreAuthorize("hasRole('LEARN_USER')")
@@ -63,6 +66,12 @@ public class MockTestController {
     @GetMapping("/attempt/{attemptId}")
     public ResponseEntity<?> getAttemptDetails(@PathVariable UUID attemptId) {
         return ResponseEntity.ok(mockTestService.getAttemptDetails(attemptId));
+    }
+
+    @PreAuthorize("hasRole('LEARN_USER')")
+    @GetMapping("/attempt/{attemptId}/review")
+    public ResponseEntity<?> getAttemptReview(@PathVariable UUID attemptId) {
+        return ResponseEntity.ok(mockTestService.getAttemptReview(attemptId));
     }
 
     @PreAuthorize("hasRole('LEARN_USER')")

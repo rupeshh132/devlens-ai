@@ -36,7 +36,12 @@ public class LearnAdminController {
                 c.id AS chapter_id, c.title AS chapter_title,
                 t.id AS topic_id, t.title AS topic_title,
                 COUNT(DISTINCT CASE WHEN i.type = 'VIDEO' THEN i.id END) AS video_count,
-                COUNT(DISTINCT CASE WHEN i.type = 'NOTES_PDF' THEN i.id END) AS pdf_count,
+                (
+                    SELECT COUNT(DISTINCT p.id)
+                    FROM learn_content_items p
+                    JOIN learn_topics pt ON pt.id = p.topic_id
+                    WHERE pt.chapter_id = c.id AND (p.type = 'NOTES_PDF' OR p.type = 'PDF')
+                ) AS pdf_count,
                 COUNT(DISTINCT CASE WHEN r.is_helpful = true THEN r.id END) AS helpful_count,
                 COUNT(DISTINCT CASE WHEN r.is_helpful = false THEN r.id END) AS doubt_count,
                 COUNT(DISTINCT r.id) AS total_ratings

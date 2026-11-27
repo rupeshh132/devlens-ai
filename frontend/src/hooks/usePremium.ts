@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { learnApi } from '../lib/learn-api';
+import { fetchLearnProfileCached } from '../lib/learn-api';
 
 interface PremiumStatus {
   isPremium: boolean;
@@ -10,32 +10,35 @@ interface PremiumStatus {
 
 export function usePremium(): PremiumStatus {
   const cachedPlan = typeof window !== 'undefined' ? localStorage.getItem('learn_subscription_plan') : null;
-  const initialIsPremium = Boolean(cachedPlan && cachedPlan.toUpperCase() !== 'FREE');
+  const cachedUntil = typeof window !== 'undefined' ? localStorage.getItem('learn_subscribed_until') : null;
+  const cachedNotExpired = !cachedUntil || new Date(cachedUntil).getTime() > Date.now();
+  const initialIsPremium = Boolean(cachedPlan && cachedPlan.toUpperCase() !== 'FREE' && cachedNotExpired);
 
   const [status, setStatus] = useState<PremiumStatus>({
     isPremium: initialIsPremium,
-    plan: cachedPlan || 'FREE',
-    subscribedUntil: null,
-    loading: true,
+    plan: initialIsPremium ? (cachedPlan || 'FREE') : 'FREE',
+    subscribedUntil: cachedUntil,
+    // If plan is already cached locally, don't block UI behind a loading spinner while refreshing in background
+    loading: cachedPlan === null,
   });
 
   useEffect(() => {
+    let active = true;
     const token = localStorage.getItem('learn_token') || localStorage.getItem('token');
     if (!token) {
       setStatus({ isPremium: false, plan: 'FREE', subscribedUntil: null, loading: false });
       return;
     }
 
-    learnApi
-      .get('/profile')
-      .then((res) => {
-        const data = res.data || {};
-        const plan: string = data.subscriptionPlan || 'FREE';
-        const subscribedUntil: string | null = data.subscribedUntil || null;
+    fetchLearnProfileCached()
+      .then((data) => {
+        if (!active) return;
+        const safeData = data || {};
+        const plan: string = safeData.subscriptionPlan || 'FREE';
+        const subscribedUntil: string | null = safeData.subscribedUntil || null;
 
-        // Comprehensive check:
         // 1. Check isPaidUser or paidUser boolean flags
-        const isPaidFlag = Boolean(data.paidUser ?? data.isPaidUser);
+        const isPaidFlag = Boolean(safeData.paidUser ?? safeData.isPaidUser);
 
         // 2. Check if subscriptionPlan is not FREE and subscribedUntil is in the future
         const hasActivePlanName = typeof plan === 'string' && plan.trim().toUpperCase() !== 'FREE';
@@ -44,17 +47,28 @@ export function usePremium(): PremiumStatus {
 
         const isPremium = isPaidFlag || hasValidPlan;
 
-        if (plan) {
-          localStorage.setItem('learn_subscription_plan', plan);
+        localStorage.setItem('learn_subscription_plan', isPremium ? plan : 'FREE');
+        if (subscribedUntil) {
+          localStorage.setItem('learn_subscribed_until', subscribedUntil);
+        } else {
+          localStorage.removeItem('learn_subscribed_until');
         }
 
-        setStatus({ isPremium, plan, subscribedUntil, loading: false });
+        setStatus({ isPremium, plan: isPremium ? plan : 'FREE', subscribedUntil, loading: false });
       })
       .catch(() => {
-        const hasCached = Boolean(cachedPlan && cachedPlan.toUpperCase() !== 'FREE');
-        setStatus({ isPremium: hasCached, plan: cachedPlan || 'FREE', subscribedUntil: null, loading: false });
+        if (!active) return;
+        const latestCached = localStorage.getItem('learn_subscription_plan');
+        const latestUntil = localStorage.getItem('learn_subscribed_until');
+        const notExp = !latestUntil || new Date(latestUntil).getTime() > Date.now();
+        const hasCached = Boolean(latestCached && latestCached.toUpperCase() !== 'FREE' && notExp);
+        setStatus({ isPremium: hasCached, plan: hasCached ? (latestCached || 'FREE') : 'FREE', subscribedUntil: latestUntil, loading: false });
       });
-  }, [cachedPlan]);
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return status;
 }

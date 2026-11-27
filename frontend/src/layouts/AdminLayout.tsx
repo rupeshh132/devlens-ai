@@ -80,11 +80,11 @@ export function AdminLayout() {
       {/* ─── Mobile Sticky Topbar (Screen < 768px) ─────────────────────────── */}
       <header className="sticky top-0 z-40 flex md:hidden items-center justify-between border-b border-border bg-card/95 backdrop-blur-md px-4 py-3 shadow-2xs">
         <div className="flex items-center gap-2.5">
-          <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-black text-base shadow-xs">
-            ⚡
+          <div className="h-9 w-9 rounded-full overflow-hidden shadow-xs border border-border shrink-0 bg-white ring-2 ring-primary/10">
+            <img src="/preplens-logo.jpg" alt="PrepLens Admin" className="w-full h-full object-cover rounded-full" />
           </div>
           <div>
-            <h2 className="text-sm font-bold text-foreground tracking-tight leading-none">DevLens Admin</h2>
+            <h2 className="text-sm font-bold text-foreground tracking-tight leading-none">PrepLens Admin</h2>
             <p className="text-[10px] text-muted-foreground mt-0.5">Developer Academy & CRM</p>
           </div>
         </div>
@@ -133,11 +133,11 @@ export function AdminLayout() {
             {/* Drawer Header (Fixed) */}
             <div className="p-4 border-b border-border shrink-0 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-black text-base">
-                  ⚡
+                <div className="h-9 w-9 rounded-full overflow-hidden shadow-xs border border-border shrink-0 bg-white ring-2 ring-primary/10">
+                  <img src="/preplens-logo.jpg" alt="PrepLens Admin" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <div>
-                  <h2 className="text-sm font-bold text-foreground tracking-tight leading-none">DevLens Admin</h2>
+                  <h2 className="text-sm font-bold text-foreground tracking-tight leading-none">PrepLens Admin</h2>
                   <p className="text-[10px] text-muted-foreground mt-0.5">Management Portal</p>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export function AdminLayout() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2.5 px-3.5 py-2.5 text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted rounded-xl transition-colors"
               >
-                <ArrowLeft className="h-4 w-4" /> Back to DevLens App
+                <ArrowLeft className="h-4 w-4" /> Back to PrepLens App
               </Link>
             </div>
           </aside>
@@ -176,11 +176,11 @@ export function AdminLayout() {
         <div className="p-4 pb-3 border-b border-border/40 shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-black text-lg shadow-xs">
-                ⚡
+              <div className="h-9 w-9 rounded-full overflow-hidden shadow-xs border border-border shrink-0 bg-white ring-2 ring-primary/10">
+                <img src="/preplens-logo.jpg" alt="PrepLens Admin" className="w-full h-full object-cover rounded-full" />
               </div>
               <div>
-                <h2 className="text-base font-bold text-foreground tracking-tight leading-none">DevLens Admin</h2>
+                <h2 className="text-base font-bold text-foreground tracking-tight leading-none">PrepLens Admin</h2>
                 <p className="text-[11px] text-muted-foreground mt-0.5">Developer Academy & CRM</p>
               </div>
             </div>
@@ -213,7 +213,7 @@ export function AdminLayout() {
             to="/dashboard" 
             className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted rounded-xl transition-colors"
           >
-            <ArrowLeft className="h-4 w-4" /> Back to DevLens App
+            <ArrowLeft className="h-4 w-4" /> Back to PrepLens App
           </Link>
         </div>
       </aside>

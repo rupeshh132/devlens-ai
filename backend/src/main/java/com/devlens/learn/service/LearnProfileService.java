@@ -30,6 +30,7 @@ public class LearnProfileService {
     private final LearnTestAttemptRepository testAttemptRepository;
     private final LearnQuestionRepository questionRepository;
     private final LearnTopicRepository topicRepository;
+    private final com.devlens.learn.repository.LearnMockTestRepository mockTestRepository;
     private final LeaderboardService leaderboardService;
     private final com.devlens.learn.repository.LearnStudySessionRepository studySessionRepository;
     private final com.devlens.learn.repository.LearnXpLogRepository xpLogRepository;
@@ -92,7 +93,7 @@ public class LearnProfileService {
                             cumulativeTopicStats.putIfAbsent(topicTitle, new int[2]);
                             cumulativeTopicStats.get(topicTitle)[1]++;
                             String userAns = answers.get(q.getId().toString());
-                            if (userAns != null && userAns.equalsIgnoreCase(q.getCorrectAnswer())) {
+                            if (userAns != null && MockTestService.evaluateQuestionStatic(null, null, q, userAns).correct) {
                                 cumulativeTopicStats.get(topicTitle)[0]++;
                             }
                         }
@@ -147,6 +148,7 @@ public class LearnProfileService {
         return heatmap;
     }
 
+    @org.springframework.transaction.annotation.Transactional
     public LearnProfileResponse getProfile(UUID userId) {
         LearnUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new com.devlens.api.exception.ResourceNotFoundException("User not found"));
@@ -188,9 +190,11 @@ public class LearnProfileService {
         }
         
         // Clean up any legacy PASSIVE sessions for this user so fake study time is cleared
-        List<com.devlens.learn.entity.LearnStudySession> passiveSessions = studySessionRepository.findByUserId(userId).stream()
+        List<com.devlens.learn.entity.LearnStudySession> allSessions = studySessionRepository.findByUserId(userId);
+        List<com.devlens.learn.entity.LearnStudySession> passiveSessions = allSessions.stream()
                 .filter(s -> "PASSIVE".equalsIgnoreCase(s.getSessionType()))
                 .collect(Collectors.toList());
+        boolean userDirty = false;
         if (!passiveSessions.isEmpty()) {
             int passiveXpToRemove = passiveSessions.stream()
                     .mapToInt(s -> s.getEarnedXp() != null ? s.getEarnedXp() : 0)
@@ -198,6 +202,7 @@ public class LearnProfileService {
             studySessionRepository.deleteAll(passiveSessions);
             if (passiveXpToRemove > 0 && user.getTotalXp() != null) {
                 user.setTotalXp(Math.max(0, user.getTotalXp() - passiveXpToRemove));
+                userDirty = true;
             }
             List<com.devlens.learn.entity.LearnXpLog> passiveXpLogs = xpLogRepository.findByUserId(userId).stream()
                     .filter(l -> l.getActivityType() == com.devlens.learn.entity.LearnXpLog.ActivityType.STUDY_TIME && l.getPointsAwarded() == 5)
@@ -208,12 +213,17 @@ public class LearnProfileService {
         }
 
         // Real-time study hours & minutes calculation strictly from active FOCUS_TIMER sessions
-        int studyMinutes = studySessionRepository.findByUserId(userId).stream()
+        int studyMinutes = allSessions.stream()
                 .filter(s -> "FOCUS_TIMER".equalsIgnoreCase(s.getSessionType()))
                 .mapToInt(s -> s.getDurationMinutes() != null ? s.getDurationMinutes() : 0)
                 .sum();
-        user.setStudyMinutes(studyMinutes);
-        userRepository.save(user);
+        if (!Objects.equals(user.getStudyMinutes(), studyMinutes)) {
+            user.setStudyMinutes(studyMinutes);
+            userDirty = true;
+        }
+        if (userDirty) {
+            userRepository.save(user);
+        }
 
         response.setStudyMinutes(studyMinutes);
         response.setStudyHours(studyMinutes / 60);
@@ -300,11 +310,22 @@ public class LearnProfileService {
         String plan = user.getCurrentStudyPlanJson();
         String goal = user.getExamGoal();
         
-        // Auto-invalidate old plan if the user changed their goal class
+        // Auto-invalidate old plan if the user changed their goal class or competitive exam track
         if (plan != null && goal != null) {
+            String gUpper = goal.toUpperCase();
+            String planHeader = (plan.length() > 220 ? plan.substring(0, 220) : plan).toUpperCase();
             String goalNum = goal.replaceAll("[^0-9]", "");
-            String planHeader = plan.length() > 150 ? plan.substring(0, 150) : plan;
+            boolean mismatch = false;
             if (!goalNum.isEmpty() && !planHeader.contains(goalNum)) {
+                mismatch = true;
+            } else if (gUpper.contains("NEET") && !planHeader.contains("NEET")) {
+                mismatch = true;
+            } else if (gUpper.contains("JEE") && gUpper.contains("ADV") && !planHeader.contains("ADVANCED")) {
+                mismatch = true;
+            } else if (gUpper.contains("JEE") && !gUpper.contains("ADV") && (!planHeader.contains("JEE") || planHeader.contains("ADVANCED"))) {
+                mismatch = true;
+            }
+            if (mismatch) {
                 user.setCurrentStudyPlanJson(null);
                 userRepository.save(user);
                 return null;
@@ -389,5 +410,162 @@ public class LearnProfileService {
             user.setPaywallHitCount((user.getPaywallHitCount() != null ? user.getPaywallHitCount() : 0) + 1);
             userRepository.save(user);
         });
+    }
+
+    public Map<String, Object> getCompetitiveAnalyticsSummary(UUID userId) {
+        LearnUser user = userRepository.findById(userId)
+                .orElseThrow(() -> new com.devlens.api.exception.ResourceNotFoundException("User not found"));
+
+        String examGoal = user.getExamGoal() != null ? user.getExamGoal() : "JEE Mains";
+        List<LearnTestAttempt> completed = testAttemptRepository.findByUserIdOrderByStartedAtDesc(userId).stream()
+                .filter(a -> "COMPLETED".equalsIgnoreCase(a.getStatus()))
+                .collect(Collectors.toList());
+
+        Map<UUID, com.devlens.learn.entity.LearnMockTest> testMap = Collections.emptyMap();
+        if (!completed.isEmpty()) {
+            Set<UUID> testIds = completed.stream().map(LearnTestAttempt::getMockTestId).collect(Collectors.toSet());
+            testMap = mockTestRepository.findAllById(testIds).stream()
+                    .collect(Collectors.toMap(com.devlens.learn.entity.LearnMockTest::getId, t -> t));
+        }
+
+        // Aggregate subject stats (correct, wrong, partial, total, netScore, maxMarks)
+        Map<String, java.math.BigDecimal[]> subjectAgg = new LinkedHashMap<>();
+        List<Map<String, Object>> recentHistory = new ArrayList<>();
+        double totalPctSum = 0.0;
+        int pctCount = 0;
+        java.math.BigDecimal bestRaw = java.math.BigDecimal.ZERO;
+        java.math.BigDecimal bestMax = java.math.BigDecimal.valueOf(100);
+        double bestPct = -100.0;
+
+        for (LearnTestAttempt att : completed) {
+            com.devlens.learn.entity.LearnMockTest test = testMap.get(att.getMockTestId());
+            int totalMarks = (test != null && test.getTotalMarks() != null && test.getTotalMarks() > 0)
+                    ? test.getTotalMarks() : 100;
+            java.math.BigDecimal rawScore = att.getScore() != null ? att.getScore() : java.math.BigDecimal.ZERO;
+            double pct = (rawScore.doubleValue() / totalMarks) * 100.0;
+            totalPctSum += pct;
+            pctCount++;
+            if (pct > bestPct) {
+                bestPct = pct;
+                bestRaw = rawScore;
+                bestMax = java.math.BigDecimal.valueOf(totalMarks);
+            }
+
+            if (recentHistory.size() < 8) {
+                Map<String, Object> h = new LinkedHashMap<>();
+                h.put("attemptId", att.getId());
+                h.put("testId", att.getMockTestId());
+                h.put("title", test != null ? test.getTitle() : "Mock Test");
+                h.put("score", rawScore);
+                h.put("totalMarks", totalMarks);
+                h.put("correctAnswers", att.getCorrectAnswers() != null ? att.getCorrectAnswers() : 0);
+                h.put("wrongAnswers", att.getWrongAnswers() != null ? att.getWrongAnswers() : 0);
+                h.put("submittedAt", att.getSubmittedAt());
+                recentHistory.add(h);
+            }
+
+            if (att.getSubjectStatsJson() != null && !att.getSubjectStatsJson().isBlank()) {
+                try {
+                    List<Map<String, Object>> stats = objectMapper.readValue(
+                            att.getSubjectStatsJson(),
+                            new TypeReference<List<Map<String, Object>>>() {}
+                    );
+                    for (Map<String, Object> row : stats) {
+                        String sub = String.valueOf(row.getOrDefault("subject", "General"));
+                        subjectAgg.putIfAbsent(sub, new java.math.BigDecimal[] {
+                            java.math.BigDecimal.ZERO, java.math.BigDecimal.ZERO, java.math.BigDecimal.ZERO,
+                            java.math.BigDecimal.ZERO, java.math.BigDecimal.ZERO, java.math.BigDecimal.ZERO
+                        });
+                        java.math.BigDecimal[] acc = subjectAgg.get(sub);
+                        acc[0] = acc[0].add(new java.math.BigDecimal(String.valueOf(row.getOrDefault("correct", 0))));
+                        acc[1] = acc[1].add(new java.math.BigDecimal(String.valueOf(row.getOrDefault("wrong", 0))));
+                        acc[2] = acc[2].add(new java.math.BigDecimal(String.valueOf(row.getOrDefault("partial", 0))));
+                        acc[3] = acc[3].add(new java.math.BigDecimal(String.valueOf(row.getOrDefault("total", 0))));
+                        acc[4] = acc[4].add(new java.math.BigDecimal(String.valueOf(row.getOrDefault("netScore", 0))));
+                        acc[5] = acc[5].add(new java.math.BigDecimal(String.valueOf(row.getOrDefault("maxMarks", 0))));
+                    }
+                } catch (Exception ignored) {}
+            }
+        }
+
+        List<Map<String, Object>> subjectBreakdown = new ArrayList<>();
+        for (Map.Entry<String, java.math.BigDecimal[]> e : subjectAgg.entrySet()) {
+            java.math.BigDecimal[] v = e.getValue();
+            int c = v[0].intValue();
+            int w = v[1].intValue();
+            int p = v[2].intValue();
+            int tot = v[3].intValue();
+            int att = c + w + p;
+            int accPct = att > 0 ? (int) Math.round(((c + p * 0.5) * 100.0) / att) : 0;
+            Map<String, Object> sMap = new LinkedHashMap<>();
+            sMap.put("subject", e.getKey());
+            sMap.put("correct", c);
+            sMap.put("wrong", w);
+            sMap.put("partial", p);
+            sMap.put("total", tot);
+            sMap.put("netScore", v[4]);
+            sMap.put("maxMarks", v[5]);
+            sMap.put("accuracy", accPct);
+            subjectBreakdown.add(sMap);
+        }
+
+        // Extract top recent mistakes for Auto-Healing Mistake Notebook
+        List<Map<String, Object>> recentMistakes = new ArrayList<>();
+        Map<String, Integer> weakChapters = new LinkedHashMap<>();
+        int scannedAttempts = 0;
+        for (LearnTestAttempt att : completed) {
+            if (scannedAttempts >= 5 || recentMistakes.size() >= 12) break;
+            if (att.getAnswersJson() == null || att.getAnswersJson().isBlank()) continue;
+            scannedAttempts++;
+            try {
+                Map<String, String> ansMap = objectMapper.readValue(att.getAnswersJson(), new TypeReference<Map<String, String>>() {});
+                if (ansMap.isEmpty()) continue;
+                List<UUID> qIds = new ArrayList<>();
+                for (String k : ansMap.keySet()) {
+                    try { qIds.add(UUID.fromString(k)); } catch (Exception ignored) {}
+                }
+                if (qIds.isEmpty()) continue;
+                for (LearnQuestion q : questionRepository.findAllById(qIds)) {
+                    String uAns = ansMap.get(q.getId().toString());
+                    if (uAns == null || uAns.isBlank()) continue;
+                    MockTestService.QuestionEvaluation ev = MockTestService.evaluateQuestionStatic(null, null, q, uAns);
+                    if (ev.evaluatable && !ev.correct) {
+                        String ch = q.getChapter() != null && !q.getChapter().isBlank() ? q.getChapter() : (q.getSubject() != null ? q.getSubject() : "General");
+                        weakChapters.put(ch, weakChapters.getOrDefault(ch, 0) + 1);
+                        if (recentMistakes.size() < 12) {
+                            Map<String, Object> m = new LinkedHashMap<>();
+                            m.put("questionId", q.getId().toString());
+                            m.put("subject", q.getSubject() != null ? q.getSubject() : "General");
+                            m.put("chapter", ch);
+                            m.put("questionText", q.getQuestionText());
+                            m.put("userAnswer", uAns);
+                            m.put("correctAnswer", q.getCorrectAnswer());
+                            m.put("explanation", q.getExplanation());
+                            recentMistakes.add(m);
+                        }
+                    }
+                }
+            } catch (Exception ignored) {}
+        }
+
+        double avgPct = pctCount > 0 ? (totalPctSum / pctCount) : 0.0;
+        Map<String, Object> prediction = CompetitiveAnalyticsCalculator.predictOutcome(
+                examGoal,
+                pctCount > 0 ? java.math.BigDecimal.valueOf(avgPct) : java.math.BigDecimal.ZERO,
+                java.math.BigDecimal.valueOf(100)
+        );
+        Map<String, Object> bestPrediction = CompetitiveAnalyticsCalculator.predictOutcome(examGoal, bestRaw, bestMax);
+
+        Map<String, Object> resp = new LinkedHashMap<>();
+        resp.put("examGoal", examGoal);
+        resp.put("completedTests", completed.size());
+        resp.put("averagePercentage", Math.round(avgPct * 10.0) / 10.0);
+        resp.put("prediction", prediction);
+        resp.put("bestPrediction", bestPrediction);
+        resp.put("subjectBreakdown", subjectBreakdown);
+        resp.put("recentMistakes", recentMistakes);
+        resp.put("weakChapters", weakChapters);
+        resp.put("recentHistory", recentHistory);
+        return resp;
     }
 }

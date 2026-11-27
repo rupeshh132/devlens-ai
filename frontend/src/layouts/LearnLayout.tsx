@@ -3,7 +3,7 @@ import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { BookOpen, Map, Trophy, Zap, LogOut, Crown, X, FileText, Bookmark, Flame, Menu } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { FocusTimerWidget } from '../components/learn/FocusTimerWidget';
-import { learnApi } from '../lib/learn-api';
+import { learnApi, fetchLearnProfileCached, invalidateLearnProfileCache } from '../lib/learn-api';
 import { getStreakData, subscribeToStreakUpdates, resetStreakStateForLogout, syncPendingDailyChallengeWithBackend } from '../lib/lockerStorage';
 import { StreakCalendarModal } from '../components/learn/StreakCalendarModal';
 import { normalizeTargetClass } from '../lib/dailyQuestionService';
@@ -22,6 +22,12 @@ export function LearnLayout() {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+
+    // Check if Anmol Vishwakarma is logged in and auto-set his target goal to Class 9
+    const rawName = (localStorage.getItem('learn_user_name') || '').toLowerCase();
+    if (rawName.includes('anmol') && localStorage.getItem('learn_exam_goal') !== 'Class 9') {
+      localStorage.setItem('learn_exam_goal', 'Class 9');
+    }
 
     // Dynamic Route Title for Learn Section
     const path = location.pathname;
@@ -67,12 +73,21 @@ export function LearnLayout() {
       syncPendingDailyChallengeWithBackend();
 
       const dismissed = localStorage.getItem('dismissed_phone_banner');
-      learnApi.get('/profile').then(res => {
-        if (res.data?.subscriptionPlan) {
-          localStorage.setItem('learn_subscription_plan', res.data.subscriptionPlan);
-          setIsPro(res.data.subscriptionPlan !== 'FREE');
+      fetchLearnProfileCached().then(data => {
+        if (!data) return;
+        if (data?.subscriptionPlan) {
+          localStorage.setItem('learn_subscription_plan', data.subscriptionPlan);
+          setIsPro(data.subscriptionPlan !== 'FREE');
         }
-        if (!res.data?.phone && !dismissed) {
+        if (data?.examGoal) {
+          const rawName = (localStorage.getItem('learn_user_name') || data?.fullName || '').toLowerCase();
+          if (rawName.includes('anmol')) {
+            localStorage.setItem('learn_exam_goal', 'Class 9');
+          } else {
+            localStorage.setItem('learn_exam_goal', data.examGoal);
+          }
+        }
+        if (!data?.phone && !dismissed) {
           setShowPhoneBanner(true);
         } else {
           setShowPhoneBanner(false);
@@ -82,7 +97,7 @@ export function LearnLayout() {
       setIsPro(false);
       setShowPhoneBanner(false);
     }
-  }, [location]);
+  }, [location.pathname]);
 
   const handleSaveBannerPhone = async () => {
     const clean = bannerPhone.replace(/\D/g, '').slice(0, 10);
@@ -92,6 +107,7 @@ export function LearnLayout() {
       await learnApi.put('/profile/phone', { phone: clean });
       setShowPhoneBanner(false);
       localStorage.setItem('dismissed_phone_banner', 'true');
+      invalidateLearnProfileCache();
     } catch (e) {
       // ignore
     } finally {
@@ -105,6 +121,7 @@ export function LearnLayout() {
   };
 
   const handleLogout = () => {
+    invalidateLearnProfileCache();
     localStorage.removeItem('learn_token');
     localStorage.removeItem('learn_user_email');
     localStorage.removeItem('learn_user_name');
@@ -152,8 +169,8 @@ export function LearnLayout() {
             {/* 1. Left: Brand Logo (Ekdum left side) */}
             <div className="flex items-center shrink-0">
               <Link to="/learn" className="flex items-center gap-2.5 group">
-                <div className="w-9 h-9 bg-gradient-to-tr from-blue-700 to-blue-500 rounded-xl flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-                  <BookOpen className="h-5 w-5 text-white" />
+                <div className="w-9 h-9 rounded-full overflow-hidden shadow-xs border border-slate-200 ring-2 ring-blue-500/15 group-hover:scale-105 transition-transform bg-white shrink-0">
+                  <img src="/preplens-logo.jpg" alt="PrepLens Learn Logo" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <span className="text-xl font-bold text-slate-900 tracking-tight">
                   PrepLens <span className="text-blue-600">Learn</span>

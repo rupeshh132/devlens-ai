@@ -23,14 +23,16 @@ export function FormulaCheatSheetModal({
   examGoal, 
   activeSubjectId 
 }: FormulaCheatSheetModalProps) {
-  // Helper to determine initial class from goal string
-  const resolveClass = (goal?: string): '9' | '10' | '11' | '12' => {
+  // Helper to determine initial class/track from goal string
+  const resolveClass = (goal?: string): '9' | '10' | '11' | '12' | 'jee' | 'neet' => {
     const g = (goal || '').toLowerCase();
-    if (g.includes('12') || g.includes('jee') || g.includes('neet')) return '12';
+    if (g.includes('jee')) return 'jee';
+    if (g.includes('neet')) return 'neet';
+    if (g.includes('12')) return '12';
     if (g.includes('11')) return '11';
     if (g.includes('10')) return '10';
     if (g.includes('9')) return '9';
-    return '11';
+    return '12';
   };
 
   const resolveSubject = (subId?: string, classLvl?: string): string => {
@@ -39,13 +41,19 @@ export function FormulaCheatSheetModal({
     if (s.includes('phy')) return 'phy';
     if (s.includes('chem')) return 'chem';
     if (s.includes('math')) return 'math';
-    if (s.includes('sci')) return 'sci';
-    // If user was on Class 9/10 Science, but viewing 11/12
-    if ((classLvl === '11' || classLvl === '12') && s.includes('sci')) return 'phy';
+    if (s.includes('bio') || s.includes('bot') || s.includes('zoo')) return 'bio';
+    if (s.includes('eco')) return 'eco';
+    if (s.includes('cs') || s.includes('computer')) return 'cs';
+    if (s.includes('hist')) return 'hist';
+    if (s.includes('pol')) return 'pol';
+    if (s.includes('sci')) {
+      if (classLvl === '11' || classLvl === '12' || classLvl === 'jee' || classLvl === 'neet') return 'phy';
+      return 'sci';
+    }
     return 'ALL';
   };
 
-  const [selectedClass, setSelectedClass] = useState<'9' | '10' | '11' | '12'>(() => resolveClass(examGoal));
+  const [selectedClass, setSelectedClass] = useState<'9' | '10' | '11' | '12' | 'jee' | 'neet'>(() => resolveClass(examGoal));
   const [selectedSubject, setSelectedSubject] = useState<string>(() => resolveSubject(activeSubjectId, resolveClass(examGoal)));
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -61,7 +69,7 @@ export function FormulaCheatSheetModal({
   }, [isOpen, examGoal, activeSubjectId]);
 
   // When class changes, ensure selectedSubject is valid for the new class
-  const handleClassChange = (newClass: '9' | '10' | '11' | '12') => {
+  const handleClassChange = (newClass: '9' | '10' | '11' | '12' | 'jee' | 'neet') => {
     setSelectedClass(newClass);
     const validSubs = getSubjectsForFormulaClass(newClass).map(s => s.id);
     if (!validSubs.includes(selectedSubject)) {
@@ -100,25 +108,77 @@ export function FormulaCheatSheetModal({
   };
 
   const classBadges: Record<string, { label: string; badge: string; color: string }> = {
-    '11': { label: 'Class 11', badge: 'CBSE & JEE/NEET Stream', color: 'bg-indigo-500 text-white' },
-    '12': { label: 'Class 12', badge: 'Board & Entrance Exam', color: 'bg-rose-500 text-white' },
-    '10': { label: 'Class 10', badge: 'CBSE Board Examination', color: 'bg-amber-400 text-slate-950' },
-    '9': { label: 'Class 9', badge: 'NCERT Foundation', color: 'bg-emerald-400 text-slate-950' },
+    'jee': { label: 'JEE Main & Adv', badge: '11+12 Complete PCM Competitive Sheet', color: 'bg-indigo-600 text-white' },
+    'neet': { label: 'NEET UG', badge: 'NMC Synced PCB Competitive Sheet', color: 'bg-emerald-600 text-white' },
+    '12': { label: 'Class 12', badge: 'Board & Competitive Exams (JEE/NEET/CUET)', color: 'bg-rose-500 text-white' },
+    '11': { label: 'Class 11', badge: 'Core Concepts & Competitive Foundation', color: 'bg-indigo-600 text-white' },
+    '10': { label: 'Class 10', badge: 'CBSE Board Examination Booster', color: 'bg-amber-400 text-slate-950' },
+    '9': { label: 'Class 9', badge: 'NCERT High School Foundation', color: 'bg-emerald-500 text-white' },
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
-      {/* Backdrop */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200 print:static print:p-0 print:block">
+      {/* Print-specific style overrides */}
+      <style>{`
+        @media print {
+          @page {
+            margin: 12mm 14mm;
+            size: auto;
+          }
+          body {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          .formula-print-card {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+            border: 1px solid #cbd5e1 !important;
+            background: #ffffff !important;
+            box-shadow: none !important;
+          }
+        }
+      `}</style>
+
+      {/* Backdrop (hidden on print) */}
       <div 
-        className="fixed inset-0 bg-slate-950/70 backdrop-blur-xs transition-opacity" 
+        className="fixed inset-0 bg-slate-950/70 backdrop-blur-xs transition-opacity print:hidden" 
         onClick={onClose} 
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-5xl max-h-[92vh] bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden z-10 animate-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-5xl max-h-[92vh] bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden z-10 animate-in zoom-in-95 duration-200 print:static print:max-h-none print:w-full print:shadow-none print:border-none print:overflow-visible">
         
-        {/* Modal Header */}
-        <div className="p-5 sm:p-6 border-b border-slate-200 bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        {/* Printable Centered PrepLens Watermark */}
+        <div className="hidden print:flex fixed inset-0 pointer-events-none z-0 items-center justify-center">
+          <img 
+            src="/images/preplens_round_logo.png" 
+            alt="PrepLens Watermark" 
+            className="w-[500px] h-[500px] object-contain opacity-25 select-none"
+          />
+        </div>
+
+        {/* Printable Official Header (Visible on print only) */}
+        <div className="hidden print:flex items-center justify-between pb-4 mb-4 border-b-2 border-slate-800 z-10">
+          <div className="flex items-center gap-3">
+            <img src="/images/preplens_round_logo.png" alt="PrepLens Logo" className="w-12 h-12 object-contain" />
+            <div>
+              <h1 className="text-xl font-black tracking-tight text-slate-900">PrepLens Smart Formula & Laws Cheat Sheet</h1>
+              <p className="text-xs text-slate-600 font-semibold">
+                Class {selectedClass} • {selectedSubject === 'ALL' ? 'All Subjects' : availableSubjects.find(s => s.id === selectedSubject)?.name} • Official NCERT & CBSE Revision Guide
+              </p>
+            </div>
+          </div>
+          <div className="text-right text-[10px] text-slate-500 font-mono">
+            <span className="font-bold text-slate-800">PREPLENS AI</span>
+            <br />
+            <span>Verified Academic Sheet</span>
+          </div>
+        </div>
+
+        {/* Modal Interactive Header (Hidden on print) */}
+        <div className="p-5 sm:p-6 border-b border-slate-200 bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 print:hidden">
           <div className="flex items-center gap-3">
             <div className="h-11 w-11 rounded-2xl bg-white/10 text-white flex items-center justify-center font-mono font-bold text-xl shadow-inner border border-white/15">
               fx
@@ -131,7 +191,7 @@ export function FormulaCheatSheetModal({
                 </span>
               </div>
               <p className="text-xs text-slate-300 mt-1">
-                Authentic NCERT formulas, variable keys, and high-probability board examiner tips.
+                Authentic NCERT formulas, variable keys with SI units, and high-probability board examiner traps.
               </p>
             </div>
           </div>
@@ -139,7 +199,7 @@ export function FormulaCheatSheetModal({
           <div className="flex items-center gap-2 self-end sm:self-center">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-colors cursor-pointer"
               title="Print cheat sheet or Save as PDF"
             >
               <Printer className="h-4 w-4" />
@@ -147,33 +207,33 @@ export function FormulaCheatSheetModal({
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
         </div>
 
-        {/* Filter & Subheader Bar */}
-        <div className="p-4 border-b border-slate-200 bg-slate-50 flex flex-col gap-3">
+        {/* Filter & Subheader Bar (Hidden on print) */}
+        <div className="p-4 border-b border-slate-200 bg-slate-50 flex flex-col gap-3 print:hidden">
           
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-            {/* Class Switcher Quick Pills */}
-            <div className="flex items-center gap-1.5 bg-slate-200/70 p-1 rounded-xl self-start">
+            {/* Class & Track Switcher Quick Pills */}
+            <div className="flex items-center flex-wrap gap-1 bg-slate-200/70 p-1 rounded-xl self-start">
               <span className="text-[11px] font-extrabold text-slate-500 uppercase px-2 flex items-center gap-1">
-                <GraduationCap className="w-3.5 h-3.5" /> Grade:
+                <GraduationCap className="w-3.5 h-3.5" /> Track:
               </span>
-              {(['9', '10', '11', '12'] as const).map((cls) => (
+              {(['9', '10', '11', '12', 'jee', 'neet'] as const).map((cls) => (
                 <button
                   key={cls}
                   onClick={() => handleClassChange(cls)}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     selectedClass === cls
                       ? 'bg-white text-indigo-700 shadow-sm border border-slate-200'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
                   }`}
                 >
-                  Class {cls}
+                  {cls === 'jee' ? 'JEE' : cls === 'neet' ? 'NEET' : `Class ${cls}`}
                 </button>
               ))}
             </div>
@@ -191,7 +251,7 @@ export function FormulaCheatSheetModal({
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
                 >
                   ✕
                 </button>
@@ -211,7 +271,7 @@ export function FormulaCheatSheetModal({
                 <button
                   key={sub.id}
                   onClick={() => setSelectedSubject(sub.id)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                     isSelected
                       ? 'bg-indigo-600 text-white shadow-xs'
                       : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
@@ -230,7 +290,7 @@ export function FormulaCheatSheetModal({
         </div>
 
         {/* Formulas Grid Feed */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 print:overflow-visible print:p-0 print:space-y-3 z-10">
           {filteredFormulas.length === 0 ? (
             <div className="py-20 text-center text-slate-400">
               <BookOpen className="w-12 h-12 mx-auto mb-2 opacity-30" />
@@ -238,15 +298,15 @@ export function FormulaCheatSheetModal({
               <p className="text-xs text-slate-500 mt-1">Try searching for keywords like "momentum", "mole", "integrals", or switch subject.</p>
             </div>
           ) : (
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2 print:grid-cols-1 print:gap-3">
               {filteredFormulas.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white rounded-2xl border border-slate-200 p-4 hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group"
+                  className="bg-white rounded-2xl border border-slate-200 p-4 hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group formula-print-card"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-100">
                           {item.subjectName}
                         </span>
@@ -256,7 +316,7 @@ export function FormulaCheatSheetModal({
                       </div>
                       <button
                         onClick={() => handleCopyFormula(item)}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-colors"
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-colors print:hidden cursor-pointer"
                         title="Copy formula"
                       >
                         {copiedId === item.id ? (
@@ -272,7 +332,7 @@ export function FormulaCheatSheetModal({
                     </h4>
 
                     {/* Formula Callout */}
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs font-bold text-slate-900 whitespace-pre-line leading-relaxed shadow-2xs">
+                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 font-mono text-xs font-bold text-slate-900 whitespace-pre-line leading-relaxed shadow-2xs print:bg-slate-50/50 print:border-slate-300">
                       {item.formula}
                     </div>
 
@@ -283,7 +343,7 @@ export function FormulaCheatSheetModal({
                   </div>
 
                   {/* Exam Tip */}
-                  <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-start gap-1.5 text-[11px] text-amber-900 bg-amber-50/70 p-2.5 rounded-xl border border-amber-200/60">
+                  <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-start gap-1.5 text-[11px] text-amber-900 bg-amber-50/70 p-2.5 rounded-xl border border-amber-200/60 print:bg-amber-50/40 print:border-amber-200">
                     <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
                     <span><strong className="font-bold">Examiner Tip:</strong> {item.examTip}</span>
                   </div>
@@ -294,14 +354,17 @@ export function FormulaCheatSheetModal({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
+        <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500 print:bg-transparent print:border-slate-300 print:pt-3 print:mt-4 z-10">
           <div className="flex items-center gap-1.5 font-medium">
-            <Layers className="w-4 h-4 text-indigo-600" />
+            <Layers className="w-4 h-4 text-indigo-600 print:hidden" />
             <span>Showing <strong>{filteredFormulas.length}</strong> high-yield formulas for Class {selectedClass}</span>
+          </div>
+          <div className="hidden print:block text-[10px] text-slate-400 font-mono">
+            PrepLens Official Academic Cheat Sheet • Verified against NCERT & CBSE Syllabi
           </div>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold transition-colors shadow-xs"
+            className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold transition-colors shadow-xs print:hidden cursor-pointer"
           >
             Close Sheet
           </button>

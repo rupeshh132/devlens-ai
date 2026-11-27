@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, Mail, Phone, Target, CreditCard, Calendar, Clock, Award, CheckCircle, Loader2, Zap, ArrowRight, ShieldCheck, Trophy, BrainCircuit, X, Check } from 'lucide-react';
-import { learnApi } from '../../../lib/learn-api';
+import { User, Mail, Phone, Target, CreditCard, Calendar, Clock, Award, CheckCircle, Loader2, Zap, ArrowRight, ShieldCheck, Trophy, BrainCircuit, X, Check, RefreshCw, AlertTriangle } from 'lucide-react';
+import { learnApi, fetchLearnProfileCached, invalidateLearnProfileCache, readCachedLearnProfileSnapshot } from '../../../lib/learn-api';
 import { syncPendingDailyChallengeWithBackend } from '../../../lib/lockerStorage';
+import { saveMistakeToLocker } from '../../../lib/rankPredictor';
 import { toast } from 'sonner';
 
 interface Transaction {
@@ -20,6 +21,8 @@ interface UserProfile {
   examGoal: string;
   subscriptionPlan: string;
   subscribedUntil: string | null;
+  paidUser?: boolean;
+  isPaidUser?: boolean;
   joinedDate: string;
   totalTestsTaken: number;
   averageAccuracy: number;
@@ -208,9 +211,185 @@ function AdvancedAnalyticsWidget({ isPremium, testsTaken }: { isPremium: boolean
 }
 // --- End Advanced Analytics Widget ---
 
+// --- Competitive Rank Predictor, Subject Split & Mistake Auto-Heal Card ---
+function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; testsTaken: number }) {
+  const navigate = useNavigate();
+  const [summary, setSummary] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [mistakesSaved, setMistakesSaved] = useState(false);
+
+  const isCompetitive = /jee|neet/i.test(examGoal || '');
+
+  useEffect(() => {
+    if (!isCompetitive && testsTaken === 0) return;
+    let active = true;
+    setLoading(true);
+    learnApi.get('/profile/analytics/competitive-summary')
+      .then(res => {
+        if (active) setSummary(res.data);
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => { active = false; };
+  }, [examGoal, testsTaken, isCompetitive]);
+
+  if (!isCompetitive && (!summary || summary.completedTests === 0)) return null;
+
+  const pred = summary?.prediction;
+  const bestPred = summary?.bestPrediction;
+  const subjects: any[] = summary?.subjectBreakdown || [];
+  const mistakes: any[] = summary?.recentMistakes || [];
+
+  const handleSaveAllMistakes = () => {
+    mistakes.forEach(m => saveMistakeToLocker(m, `${examGoal} Auto-Heal`));
+    setMistakesSaved(true);
+    toast.success(`Synced ${mistakes.length} mistake${mistakes.length === 1 ? '' : 's'} into Revision Locker → Mistakes!`);
+  };
+
+  return (
+    <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="p-6 border-b border-slate-100 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/25 text-indigo-200 border border-indigo-400/30 mb-1.5">
+            {examGoal} Analytics Engine
+          </span>
+          <h3 className="text-lg font-extrabold tracking-tight">Rank Predictor, Subject Split & Mistake Auto-Heal</h3>
+        </div>
+        {summary?.completedTests > 0 && pred && (
+          <div className="flex items-center gap-2 shrink-0">
+            <div className="px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 text-right">
+              <div className="text-[10px] uppercase tracking-wider text-indigo-200 font-bold">Projected Score</div>
+              <div className="text-sm font-black text-white">{pred.scaledScore} / {pred.officialMaxMarks}</div>
+            </div>
+            <div className="px-3 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-400/30 text-right">
+              <div className="text-[10px] uppercase tracking-wider text-emerald-200 font-bold">Est. Percentile</div>
+              <div className="text-sm font-black text-emerald-300">{pred.predictedPercentile}</div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="p-6 space-y-6">
+        {loading ? (
+          <div className="py-6 flex items-center justify-center gap-2 text-sm text-slate-500">
+            <Loader2 className="w-5 h-5 animate-spin text-indigo-600" />
+            <span>Computing percentile projection & mistake patterns...</span>
+          </div>
+        ) : !summary || summary.completedTests === 0 ? (
+          <div className="text-center py-6 space-y-3">
+            <p className="text-sm text-slate-600 font-medium">
+              Attempt at least one {examGoal} mock test to unlock your calibrated NTA/IIT/NMC Rank Predictor, subject mastery bars, and Mistake Notebook sync.
+            </p>
+            <button
+              type="button"
+              onClick={() => navigate('/learn/tests')}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition-colors cursor-pointer"
+            >
+              Launch First {examGoal} Mock <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        ) : (
+          <>
+            {pred && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200/80">
+                  <div className="text-[11px] font-bold uppercase text-indigo-700">Avg Predicted AIR Band</div>
+                  <div className="text-lg font-black text-slate-900 mt-1">{pred.predictedRankBand}</div>
+                  <div className="text-xs text-slate-600 mt-0.5">{pred.targetZone}</div>
+                </div>
+                {bestPred && (
+                  <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80">
+                    <div className="text-[11px] font-bold uppercase text-emerald-700">Peak Performance Potential</div>
+                    <div className="text-lg font-black text-slate-900 mt-1">{bestPred.predictedPercentile} ({bestPred.scaledScore}/{bestPred.officialMaxMarks})</div>
+                    <div className="text-xs text-slate-600 mt-0.5">{bestPred.predictedRankBand}</div>
+                  </div>
+                )}
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                  <div className="text-[11px] font-bold uppercase text-slate-500">Mocks Evaluated</div>
+                  <div className="text-lg font-black text-slate-900 mt-1">{summary.completedTests} Papers ({summary.averagePercentage}%)</div>
+                  <div className="text-xs text-slate-600 mt-0.5">Consistent timed practice boosts accuracy</div>
+                </div>
+              </div>
+            )}
+
+            {subjects.length > 0 && (
+              <div className="space-y-3">
+                <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Subject-Wise Score & Accuracy Split</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {subjects.map((st: any) => (
+                    <div key={st.subject} className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-extrabold text-slate-900">{st.subject}</span>
+                        <span className="font-bold text-indigo-700">{st.netScore}/{st.maxMarks} Marks</span>
+                      </div>
+                      <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-indigo-600 rounded-full"
+                          style={{ width: `${Math.min(100, Math.max(4, st.accuracy || 0))}%` }}
+                        />
+                      </div>
+                      <div className="flex items-center justify-between text-[11px] text-slate-600 font-semibold">
+                        <span>Accuracy: {st.accuracy}%</span>
+                        <span>+{st.correct}✓ / {st.wrong}✗</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {mistakes.length > 0 && (
+              <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <h4 className="text-sm font-extrabold text-amber-950">Mistake Auto-Heal Queue ({mistakes.length} Recent Errors)</h4>
+                    <p className="text-xs text-amber-800">Sync recent wrong answers into your Mistake Notebook and clear weak chapters.</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      disabled={mistakesSaved}
+                      onClick={handleSaveAllMistakes}
+                      className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 disabled:bg-emerald-600 text-white text-xs font-bold transition-colors cursor-pointer"
+                    >
+                      {mistakesSaved ? 'Synced to Locker ✓' : 'Save All to Mistake Notebook'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => navigate('/learn/locker')}
+                      className="px-3.5 py-2 rounded-xl bg-white hover:bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold transition-colors cursor-pointer"
+                    >
+                      Open Locker →
+                    </button>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                  {mistakes.slice(0, 4).map((m: any, idx: number) => (
+                    <div key={m.questionId || idx} className="bg-white p-3 rounded-xl border border-amber-200/80 text-xs space-y-1">
+                      <div className="flex items-center justify-between text-[11px] font-bold text-slate-500">
+                        <span className="text-indigo-700">{m.subject} • {m.chapter}</span>
+                        <span className="text-rose-600">Yours: {m.userAnswer} → Key: {m.correctAnswer}</span>
+                      </div>
+                      <p className="text-slate-800 font-medium line-clamp-2">{m.questionText}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function StudentProfilePage() {
-  const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [profile, setProfile] = useState<UserProfile | null>(() => readCachedLearnProfileSnapshot());
+  const [isLoading, setIsLoading] = useState<boolean>(() => !readCachedLearnProfileSnapshot());
+  const [profileError, setProfileError] = useState<{ status?: number; message: string } | null>(null);
+  const [isSyncing, setIsSyncing] = useState(false);
   const [isEditingPhone, setIsEditingPhone] = useState(false);
   const [phoneInput, setPhoneInput] = useState('');
   const [isSavingPhone, setIsSavingPhone] = useState(false);
@@ -225,6 +404,7 @@ export function StudentProfilePage() {
     setIsSavingPhone(true);
     try {
       await learnApi.put('/profile/phone', { phone: clean });
+      invalidateLearnProfileCache();
       setProfile(prev => prev ? { ...prev, phone: clean || null } : prev);
       setIsEditingPhone(false);
       toast.success(clean ? 'WhatsApp number updated!' : 'Phone number removed');
@@ -235,21 +415,36 @@ export function StudentProfilePage() {
     }
   };
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await learnApi.get('/profile');
-        setProfile(response.data);
-        if (response.data?.phone) {
-          setPhoneInput(response.data.phone);
+  const fetchProfile = useCallback(async (forceRefresh = false) => {
+    setIsSyncing(true);
+    setProfileError(null);
+    try {
+      const data = await fetchLearnProfileCached(forceRefresh);
+      if (data) {
+        setProfile(data);
+        if (data.phone) {
+          setPhoneInput(data.phone);
         }
-        if (response.data?.examGoal) {
-          localStorage.setItem('learn_exam_goal', response.data.examGoal);
+        if (data.examGoal) {
+          localStorage.setItem('learn_exam_goal', data.examGoal);
         }
-      } catch (error: any) {
-        console.warn("Real-time profile endpoint fallback mode", error);
-        
-        // Extract real user details from local storage if available
+      }
+    } catch (error: any) {
+      console.warn('Real-time profile endpoint sync failed', error);
+      const status = error?.response?.status;
+      setProfileError({
+        status,
+        message:
+          status === 401
+            ? 'Your login session expired. Please sign in again to load your live records.'
+            : 'Unable to sync live profile from server. Showing last saved details.',
+      });
+
+      const snapshot = readCachedLearnProfileSnapshot();
+      setProfile(prev => {
+        if (prev) return prev;
+        if (snapshot) return snapshot;
+
         let savedUser: any = null;
         try {
           const raw = localStorage.getItem('preplens_user') || localStorage.getItem('user');
@@ -258,9 +453,9 @@ export function StudentProfilePage() {
 
         const userName = savedUser?.fullName || savedUser?.name || localStorage.getItem('learn_user_name') || 'Student';
         const userEmail = savedUser?.email || localStorage.getItem('learn_user_email') || '';
-        const userGoal = localStorage.getItem('learn_exam_goal') || 'Class 10';
+        const userGoal = localStorage.getItem('learn_exam_goal') || 'Class 9';
 
-        setProfile({
+        return {
           fullName: userName,
           email: userEmail,
           examGoal: userGoal,
@@ -275,26 +470,28 @@ export function StudentProfilePage() {
           globalRank: 'Unranked',
           xpPoints: 0,
           transactions: []
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
+        };
+      });
+    } finally {
+      setIsLoading(false);
+      setIsSyncing(false);
+    }
+  }, []);
 
-    // Reconcile any uncommitted Daily PYQ XP first, then fetch profile
+  useEffect(() => {
     syncPendingDailyChallengeWithBackend().finally(() => {
-      fetchProfile();
+      fetchProfile(false);
     });
 
     const handleSessionLogged = () => {
-      fetchProfile();
+      fetchProfile(true);
     };
 
     const handleXpUpdated = (e: any) => {
       if (typeof e.detail?.totalXp === 'number') {
         setProfile(prev => prev ? { ...prev, xpPoints: e.detail.totalXp } : prev);
       } else {
-        fetchProfile();
+        fetchProfile(true);
       }
     };
     
@@ -304,7 +501,7 @@ export function StudentProfilePage() {
       window.removeEventListener('study_session_logged', handleSessionLogged);
       window.removeEventListener('preplens_xp_updated', handleXpUpdated);
     };
-  }, []);
+  }, [fetchProfile]);
 
   if (isLoading) {
     return (
@@ -315,14 +512,59 @@ export function StudentProfilePage() {
   }
 
   const transactions = profile?.transactions || [];
-  const isPremium = !!(profile?.subscriptionPlan && profile.subscriptionPlan !== 'FREE');
+  const hasPaidPlanName = Boolean(
+    profile?.subscriptionPlan && profile.subscriptionPlan.trim().toUpperCase() !== 'FREE'
+  );
+  const subscribedUntilMs = profile?.subscribedUntil
+    ? new Date(profile.subscribedUntil).getTime()
+    : null;
+  const isNotExpired = subscribedUntilMs === null || subscribedUntilMs > Date.now();
+  const isPlanExpired = hasPaidPlanName && subscribedUntilMs !== null && subscribedUntilMs <= Date.now();
+  const isPremium = Boolean(
+    profile?.paidUser ?? profile?.isPaidUser ?? (hasPaidPlanName && isNotExpired)
+  );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 text-slate-900 font-sans">
-      <div>
-        <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Student Profile</h1>
-        <p className="text-slate-500 text-sm mt-1">Manage your personal details, academic progress, and subscription history.</p>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Student Profile</h1>
+          <p className="text-slate-500 text-sm mt-1">Manage your personal details, academic progress, and subscription history.</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => fetchProfile(true)}
+          disabled={isSyncing}
+          className="inline-flex items-center gap-2 self-start sm:self-auto px-3.5 py-2 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 disabled:opacity-60 shadow-xs transition-colors"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin text-indigo-600' : ''}`} />
+          <span>{isSyncing ? 'Syncing...' : 'Refresh Profile'}</span>
+        </button>
       </div>
+
+      {profileError && (
+        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-start gap-2.5 text-amber-900 text-sm">
+            <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+            <span>{profileError.message}</span>
+          </div>
+          {profileError.status === 401 ? (
+            <button
+              onClick={() => navigate('/learn/login')}
+              className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shrink-0"
+            >
+              Sign In Again
+            </button>
+          ) : (
+            <button
+              onClick={() => fetchProfile(true)}
+              className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shrink-0"
+            >
+              Retry Sync
+            </button>
+          )}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
@@ -335,13 +577,15 @@ export function StudentProfilePage() {
               </div>
               <h2 className="text-xl font-extrabold text-slate-900">{profile?.fullName}</h2>
               
-              <div className="flex items-center gap-2 mt-2">
+              <div className="flex items-center gap-2 mt-2 flex-wrap justify-center">
                 <span className={`px-3 py-1 text-xs font-extrabold rounded-full ${
                   isPremium
                     ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                    : isPlanExpired
+                    ? 'bg-rose-50 text-rose-700 border border-rose-200'
                     : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
                 }`}>
-                  {isPremium ? '👑 Premium Member' : '🟢 Active Student'}
+                  {isPremium ? '👑 Premium Member' : isPlanExpired ? '⏱️ Plan Expired · Free' : '🟢 Active Student'}
                 </span>
                 <span className="px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-bold rounded-full border border-indigo-200/80 flex items-center gap-1">
                   <Zap className="w-3 h-3 text-amber-500 fill-amber-500" />
@@ -418,17 +662,27 @@ export function StudentProfilePage() {
           </div>
 
           {/* Current Plan Card */}
-          <div className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 rounded-3xl shadow-md p-6 text-white relative overflow-hidden">
+          <div className={`rounded-3xl shadow-md p-6 text-white relative overflow-hidden ${
+            isPlanExpired
+              ? 'bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900'
+              : 'bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800'
+          }`}>
             <div className="absolute -right-4 -bottom-4 opacity-10">
               <Award className="w-36 h-36" />
             </div>
 
             <div className="relative z-10">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-bold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm">
-                  {profile?.subscriptionPlan || 'FREE'} PLAN
+              <div className="flex items-center justify-between mb-3 gap-2">
+                <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border backdrop-blur-sm ${
+                  isPlanExpired
+                    ? 'bg-rose-500/20 text-rose-200 border-rose-400/40'
+                    : 'bg-white/20 border-white/30'
+                }`}>
+                  {isPlanExpired
+                    ? `${profile?.subscriptionPlan} · EXPIRED`
+                    : `${profile?.subscriptionPlan || 'FREE'} PLAN`}
                 </span>
-                <ShieldCheck className="w-5 h-5 text-emerald-300" />
+                <ShieldCheck className={`w-5 h-5 shrink-0 ${isPlanExpired ? 'text-rose-300' : 'text-emerald-300'}`} />
               </div>
 
               <h3 className="font-extrabold text-xl mb-1 flex items-center">
@@ -436,21 +690,33 @@ export function StudentProfilePage() {
                 Current Plan
               </h3>
               <p className="text-indigo-100 text-sm mb-6">
-                {isPremium ? 'Full access to AI Roadmaps & Mock Tests' : 'You are currently on the FREE plan.'}
+                {isPremium
+                  ? 'Full access to AI Roadmaps & Mock Tests'
+                  : isPlanExpired
+                  ? 'Your subscription has expired. You are currently on the Free tier.'
+                  : 'You are currently on the FREE plan.'}
               </p>
 
               <div className="flex justify-between items-end border-t border-white/20 pt-4">
                 <div>
-                  <p className="text-[11px] text-indigo-200 uppercase tracking-wider font-semibold">Next Billing</p>
+                  <p className={`text-[11px] uppercase tracking-wider font-semibold ${
+                    isPlanExpired ? 'text-rose-200' : 'text-indigo-200'
+                  }`}>
+                    {isPlanExpired ? 'Expired On' : isPremium ? 'Next Billing' : 'Status'}
+                  </p>
                   <p className="font-bold text-sm">
-                    {profile?.subscribedUntil ? new Date(profile.subscribedUntil).toLocaleDateString() : 'N/A'}
+                    {profile?.subscribedUntil
+                      ? new Date(profile.subscribedUntil).toLocaleDateString()
+                      : isPremium
+                      ? 'Lifetime'
+                      : 'Free Tier'}
                   </p>
                 </div>
                 <button
                   onClick={() => navigate('/learn/pricing')}
                   className="px-4 py-2 bg-white text-indigo-700 rounded-xl text-xs font-extrabold hover:bg-indigo-50 transition-all shadow-sm hover:scale-105 flex items-center gap-1.5"
                 >
-                  <span>{isPremium ? 'Manage Plan' : 'Upgrade to Pro'}</span>
+                  <span>{isPremium ? 'Manage Plan' : isPlanExpired ? 'Renew Plan' : 'Upgrade to Pro'}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -523,6 +789,8 @@ export function StudentProfilePage() {
               </div>
             </div>
           </div>
+
+          <CompetitiveAnalyticsCard examGoal={profile?.examGoal || ''} testsTaken={profile?.totalTestsTaken || 0} />
 
           <AdvancedAnalyticsWidget isPremium={isPremium} testsTaken={profile?.totalTestsTaken || 0} />
 

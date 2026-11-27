@@ -27,4 +27,16 @@ public class LearnTestQuestion {
 
     @Column(name = "order_index")
     private Integer orderIndex = 0;
+
+    @Column(name = "internal_choice_group")
+    private String internalChoiceGroup;
+
+    @Column(name = "question_sub_num")
+    private String questionSubNum;
+
+    @Column(name = "negative_marks", precision = 5, scale = 2)
+    private java.math.BigDecimal negativeMarks;
+
+    @Column(name = "subject_label")
+    private String subjectLabel;
 }

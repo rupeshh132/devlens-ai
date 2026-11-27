@@ -13,4 +13,10 @@ public class MockTestSummaryDto {
     private boolean isFree;
     private boolean taken;
     private BigDecimal score;
+    private String subject;
+    private String testType;
+    private String classLevel;
+    private Integer questionCount;
+    private UUID paperPairId;
+    private Short paperNumber;
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { BookOpen, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import { learnApi } from '../../../lib/learn-api';
 import { api } from '@/lib/api';
 import { getStreakData } from '../../../lib/lockerStorage';
@@ -125,8 +125,8 @@ export function LearnRegister() {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-sm">
-            <BookOpen className="h-7 w-7 text-white" />
+          <div className="w-16 h-16 rounded-full overflow-hidden shadow-md border-2 border-white ring-4 ring-blue-500/15 bg-white flex items-center justify-center">
+            <img src="/preplens-logo.jpg" alt="PrepLens Learn" className="w-full h-full object-cover rounded-full" />
           </div>
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-900">
@@ -241,8 +241,9 @@ export function LearnRegister() {
                   <option value="Class 12">Class 12 (Boards & Entrance Prep)</option>
                 </optgroup>
                 <optgroup label="Competitive & Govt Exams">
-                  <option value="JEE Mains">JEE Mains / Advanced (Engineering)</option>
-                  <option value="NEET UG">NEET UG (Medical)</option>
+                  <option value="JEE Mains">JEE Mains (NTA B.E./B.Tech)</option>
+                  <option value="JEE Advanced">JEE Advanced (IIT Entrance)</option>
+                  <option value="NEET UG">NEET UG (Medical — NMC Synced)</option>
                   <option value="SSC CGL">SSC CGL / CHSL (Govt Jobs)</option>
                   <option value="UPSC CSE">UPSC CSE (Civil Services)</option>
                 </optgroup>
