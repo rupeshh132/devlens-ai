@@ -1,0 +1,734 @@
+[
+  {
+    "moduleId": "chem_01",
+    "weightageNote": "Weightage: 5-7% (Stoichiometry, Redox Equivalents, Quantum Numbers & Radial Wavefunctions).",
+    "syllabusAlert": "Syllabus Sync: Empirical formula, Limiting Reagent, Molarity/Molality, Bohr Atom & Schrodinger Quantum Orbitals 100% active.",
+    "sections": [
+      {
+        "heading": "Stoichiometry, Concentration Terms & Redox Titrations",
+        "summary": "Mole equals mass / molar mass = N / N_A = V(L at STP 22.7 L / NTP 22.4 L). Normality = Molarity x n-factor.",
+        "keyPoints": [
+          "Temperature-independent concentrations: Molality (m = mol solute / kg solvent), Mole fraction (X), % w/w. Temperature-dependent: Molarity (M), Normality (N).",
+          "Law of Equivalence: mEq of Oxidant = mEq of Reductant => N1 V1 = N2 V2.",
+          "Key n-factors: KMnO4 = 5 (acidic -> Mn^2+), 3 (neutral -> MnO2), 1 (alkaline -> MnO4^2-); K2Cr2O7 = 6 (acidic -> 2 Cr^3+); H2C2O4 = 2."
+        ]
+      },
+      {
+        "heading": "Bohr Atom & Quantum Mechanical Orbitals (Psi^2)",
+        "summary": "Wavefunction Psi(r, theta, phi) yields probability density |Psi|^2; nodes are regions of zero electron probability.",
+        "keyPoints": [
+          "Bohr velocity v = 2.18 x 10^6 (Z/n) m/s; Radius r_n = 0.529 (n^2 / Z) A; Energy E_n = -13.6 (Z^2 / n^2) eV.",
+          "Quantum number constraints: n >= 1; l in [0 .. n-1]; m_l in [-l .. +l]; s = +/- 1/2.",
+          "Radial (spherical) nodes = n - l - 1; Angular (planar/conical) nodes = l; Total nodes = n - 1."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Molarity - Molality Relation", "formula": "m = (1000 M) / (1000 d - M * M_solute)", "note": "d = solution density in g/mL"},
+      {"concept": "Heisenberg Uncertainty", "formula": "dx * dp >= h / (4 pi)", "note": "Rules out fixed trajectories for microscopic electrons"},
+      {"concept": "Radial & Angular Nodes", "formula": "Radial = n - l - 1 ; Angular = l ; Total = n - 1", "note": "4p orbital has 2 radial nodes and 1 angular node"}
+    ],
+    "comparison": {
+      "title": "Orbital Shape & Node Count Matrix",
+      "headers": ["Subshell", "l Value", "Max Electrons", "Angular Nodes", "Radial Nodes"],
+      "rows": [
+        ["3s", "0", "2", "0", "2"],
+        ["3p", "1", "6", "1", "1"],
+        ["3d", "2", "10", "2", "0"],
+        ["4f", "3", "14", "3", "0"]
+      ]
+    },
+    "traps": [
+      "Molarity changes when temperature rises because solution volume expands; Molality & Mole fraction never change with T!",
+      "Number of spectral lines emitted from level n2 down to ground n1=1 is n2(n2 - 1)/2, NOT just n2 - 1!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Redox Titration",
+        "question": "How many moles of KMnO4 in acidic medium are needed to oxidize 1 mole of Ferrous Oxalate (FeC2O4) completely?",
+        "steps": [
+          "Fe^2+ -> Fe^3+ (1e-) AND C2O4^2- -> 2 CO2 (2e-) => total n-factor of FeC2O4 = 1 + 2 = 3.",
+          "n-factor of KMnO4 (acidic) = 5.",
+          "n_KMnO4 x 5 = 1 x 3 => n_KMnO4 = 3/5 = 0.6 mole."
+        ],
+        "answer": "0.6 mole",
+        "pitfall": "Forgetting that BOTH Fe^2+ and oxalate C2O4^2- get oxidized gives wrong answer 0.2 or 0.4!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_02",
+    "weightageNote": "Weightage: 7-9% (Highest-yield Inorganic block: Periodicity, VSEPR, Hybridization, MOT & H-Bonding).",
+    "syllabusAlert": "Syllabus Sync: Periodic trends, Fajan's Polarization, VSEPR geometries, Dipole Moment & MOT B2-Ne2 100% active.",
+    "sections": [
+      {
+        "heading": "Periodic Trends & Ionization / Electron Gain Exceptions",
+        "summary": "Half-filled and completely-filled subshells create crucial bumps across Period 2/3 ionization and electron affinity trends.",
+        "keyPoints": [
+          "IE1 Period 2: Li < B < Be < C < O < N < F < Ne (Be > B because 2s^2; N > O because 2p^3 half-filled!).",
+          "Electron Gain Enthalpy (magnitude): Cl > F > Br > I (2p compact inter-electronic repulsion makes F slightly less exothermic than Cl!); similarly S > O.",
+          "Isoelectronic cations shrink with higher nuclear charge: Al^3+ < Mg^2+ < Na^+ < F^- < O^2- < N^3-."
+        ]
+      },
+      {
+        "heading": "VSEPR Shapes, Hybridization, MOT & Fajan's Rules",
+        "summary": "Steric number = sigma bonds + lone pairs determines electron geometry; lone-pair positions determine final molecular shape.",
+        "keyPoints": [
+          "Key anomalous shapes: SF4 (See-Saw sp3d), ClF3 (T-shaped sp3d), XeF2 (Linear sp3d), XeF4 (Square Planar sp3d2), IF7 (Pentagonal Bipyramidal).",
+          "MOT s-p mixing (<= 14 e- like B2, C2, N2): pi_2px = pi_2py sits LOWER than sigma_2pz! Hence B2 (10e-) is paramagnetic while C2 (12e-, BO=2) is diamagnetic.",
+          "For >14 e- (O2, F2): sigma_2pz is lower; O2 has 2 unpaired pi* electrons (paramagnetic, BO=2). Superoxide O2^- BO=1.5; O2^+ BO=2.5."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Steric Number Formula", "formula": "SN = (V + M - C + A) / 2", "note": "V = central valence e-, M = monovalent H/X atoms, C = cation charge, A = anion charge"},
+      {"concept": "MOT Bond Order", "formula": "BO = (N_b - N_a) / 2", "note": "Higher BO -> stronger bond -> shorter bond length"},
+      {"concept": "Fajan's Covalent Character", "formula": "Small Cation + Large Anion + High Charge", "note": "Pseudo-noble d^10 (Cu+/Ag+) polarizes far stronger than s^2p^6"}
+    ],
+    "comparison": {
+      "title": "Hybridization & Lone-Pair Geometry Table",
+      "headers": ["Steric No", "Lone Pairs", "Hybridization", "Shape & Example"],
+      "rows": [
+        ["4", "1 / 2", "sp3", "Pyramidal (NH3, 107 deg) / Bent (H2O, 104.5 deg)"],
+        ["5", "1 / 2 / 3", "sp3d", "See-Saw (SF4) / T-shaped (ClF3) / Linear (XeF2, I3^-)"],
+        ["6", "1 / 2", "sp3d2", "Square Pyramidal (BrF5) / Square Planar (XeF4)"]
+      ]
+    },
+    "traps": [
+      "NO2, ClO2, CO2 vs SO2: CO2 has 0 dipole moment (linear), whereas BF3, XeF4, PCl5, SF6 also have EXACT zero dipole moment due to symmetry cancellation!",
+      "H-bond strength order: HF > H2O > NH3 per bond, YET H2O has HIGHER boiling point than HF because H2O forms 4 H-bonds per molecule in 3D network!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "MOT Magnetic Order",
+        "question": "Arrange O2^+, O2, O2^-, O2^2- in increasing order of O-O bond length.",
+        "steps": [
+          "Bond orders: O2^+ (2.5) > O2 (2.0) > O2^- (1.5) > O2^2- (1.0).",
+          "Bond length varies inversely with Bond Order: O2^+ < O2 < O2^- < O2^2-."
+        ],
+        "answer": "O2^+ < O2 < O2^- < O2^2-",
+        "pitfall": "O2, O2^+, O2^- are all paramagnetic; ONLY peroxide O2^2- is diamagnetic!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_03",
+    "weightageNote": "Weightage: 5-6% (Enthalpy, Hess Law, Gibbs Delta G, Raoult's Law & Van't Hoff Colligative Properties).",
+    "syllabusAlert": "Syllabus Sync: Thermodynamics + Dilute Solutions 100% core in JEE Mains, NEET UG, and JEE Advanced.",
+    "sections": [
+      {
+        "heading": "Chemical Thermodynamics: Enthalpy, Hess Law & Spontaneity",
+        "summary": "Enthalpy change Delta H = Delta U + Delta n_g R T bridges bomb calorimeter measurements (q_v = Delta U) to constant pressure heat (q_p = Delta H).",
+        "keyPoints": [
+          "Standard Enthalpy of Formation Delta H_f = 0 ONLY for reference elemental states (O2(g), C(graphite), S8(rhombic), Br2(l)); diamond != 0!",
+          "Bond enthalpy shortcut: Delta H_rxn = Sum BE(reactants) - Sum BE(products) [NOTE: Reactants MINUS Products!].",
+          "Gibbs Free Energy: Delta G = Delta H - T Delta S. Process is spontaneous when Delta G < 0. If Delta H < 0 and Delta S > 0 -> spontaneous at ALL T!"
+        ]
+      },
+      {
+        "heading": "Liquid Solutions: Raoult's Law & Van't Hoff Factor (i)",
+        "summary": "Colligative properties depend purely on total solute particle concentration: multiply m or M by Van't Hoff factor i = 1 + (n - 1)alpha.",
+        "keyPoints": [
+          "Positive Raoult deviation (A-B weaker than A-A/B-B): Ethanol + Water -> Minimum boiling azeotrope (Delta H_mix > 0, Delta V_mix > 0).",
+          "Negative Raoult deviation (A-B H-bonding stronger): CHCl3 + Acetone, HNO3 + Water -> Maximum boiling azeotrope.",
+          "Osmotic pressure pi = i C R T is the BEST method for macromolecules (proteins/polymers) since measurements work cleanly at room T."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Gibbs Equilibrium Link", "formula": "Delta G deg = -2.303 R T log10(K_eq)", "note": "Delta G = 0 at equilibrium, NOT Delta G deg!"},
+      {"concept": "Boiling / Freezing Shifts", "formula": "dT_b = i K_b m ; dT_f = i K_f m", "note": "Cryoscopic K_f(H2O) = 1.86, K_b(H2O) = 0.52 K.kg/mol"},
+      {"concept": "Relative Vapour Lowering", "formula": "(P0 - P) / P0 = i n_solute / (i n_solute + n_solvent)", "note": "Exact Raoult form vs dilute approximation"}
+    ],
+    "comparison": {
+      "title": "Signs of Delta H & Delta S for Spontaneity",
+      "headers": ["Delta H", "Delta S", "Delta G = dH - T dS", "Spontaneity"],
+      "rows": [
+        ["Negative (-)", "Positive (+)", "Always < 0", "Spontaneous at ALL temperatures"],
+        ["Positive (+)", "Negative (-)", "Always > 0", "Non-spontaneous at ALL temperatures"],
+        ["Negative (-)", "Negative (-)", "< 0 only at LOW T", "Enthalpy driven (T < dH/dS)"],
+        ["Positive (+)", "Positive (+)", "< 0 only at HIGH T", "Entropy driven (T > dH/dS)"]
+      ]
+    },
+    "traps": [
+      "Chemistry Physics Sign Flip: Chemistry dU = q + w with w = -P_ext dV! Never mix Physics +P dV with Chemistry -P dV!",
+      "0.1 M BaCl2 (i=3) has HIGHER boiling point and LOWER freezing point than 0.1 M NaCl (i=2) or 0.1 M Urea (i=1)!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Van't Hoff Colligative",
+        "question": "Calculate the freezing point of an aqueous solution containing 0.1 mol/kg K4[Fe(CN)6] assuming 80% dissociation (K_f = 1.86 K.kg/mol).",
+        "steps": [
+          "K4[Fe(CN)6] -> 4 K^+ + [Fe(CN)6]^4- gives n = 5 ions.",
+          "i = 1 + (n - 1) alpha = 1 + 4 x 0.8 = 4.2.",
+          "dT_f = i * K_f * m = 4.2 x 1.86 x 0.1 = 0.781 K => T_f = -0.781 deg C."
+        ],
+        "answer": "-0.781 deg C",
+        "pitfall": "Always subtract dT_f from 0 deg C (273.15 K) for freezing point depression!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_04",
+    "weightageNote": "Weightage: 5-6% (Kp/Kc, Le Chatelier, Buffers, Salt Hydrolysis & Ksp Precipitation).",
+    "syllabusAlert": "Syllabus Sync: Chemical Equilibrium, Ionic pH/Buffers/Ksp & Balancing Redox 100% active.",
+    "sections": [
+      {
+        "heading": "Chemical Equilibrium & Le Chatelier's Principle",
+        "summary": "Equilibrium constant K depends STRICTLY on temperature (van't Hoff equation); catalysts & inert gas at constant volume do NOT shift equilibrium.",
+        "keyPoints": [
+          "Kp = Kc (R T)^(Delta n_g), where Delta n_g counts strictly GASEOUS products minus reactants.",
+          "Reversing reaction inverts K -> 1/K; multiplying by coefficient m raises K -> K^m; adding two steps multiplies K1 * K2.",
+          "Raising pressure shifts toward FEWER gas moles; raising T favors ENDOTHERMIC (Delta H > 0) direction."
+        ]
+      },
+      {
+        "heading": "Ionic Equilibrium: Buffers, Salt Hydrolysis & Ksp",
+        "summary": "Ostwald dilution works for weak electrolytes; common ion suppresses both weak acid ionization and sparingly soluble salt solubility.",
+        "keyPoints": [
+          "Henderson Buffer: Acidic pH = pKa + log([Salt]/[Acid]); Basic pOH = pKb + log([Salt]/[Base]). Max capacity at [Salt] = [Acid].",
+          "Salt of Weak Acid + Weak Base (CH3COONH4): pH = 7 + (pKa - pKb)/2 (INDEPENDENT of concentration!).",
+          "Solubility Product: AB -> S^2; A2B/AB2 -> 4 S^3; A3B/AB3 -> 27 S^4. Precipitation happens ONLY when Qsp > Ksp."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Amphiprotic Salt (NaHCO3)", "formula": "pH = (pKa1 + pKa2) / 2", "note": "Independent of dilution concentration"},
+      {"concept": "Buffer Maximum Efficiency", "formula": "pH = pKa (+/- 1 range)", "note": "Occurs when conjugate ratio = 1"},
+      {"concept": "Hydrolysis Constant (WA+SB)", "formula": "K_h = K_w / K_a ; pH = 7 + (pKa + log C)/2", "note": "Solution is basic (pH > 7)"}
+    ],
+    "comparison": {
+      "title": "Salt Hydrolysis & pH Lookup",
+      "headers": ["Salt Type", "Example", "Nature", "pH Formula (at 298 K)"],
+      "rows": [
+        ["Strong Acid + Strong Base", "NaCl, KNO3", "Neutral", "7.0 exactly"],
+        ["Weak Acid + Strong Base", "CH3COONa", "Basic (>7)", "7 + 0.5(pKa + log C)"],
+        ["Strong Acid + Weak Base", "NH4Cl", "Acidic (<7)", "7 - 0.5(pKb + log C)"],
+        ["Weak Acid + Weak Base", "CH3COONH4", "Near 7", "7 + 0.5(pKa - pKb)"]
+      ]
+    },
+    "traps": [
+      "10^(-8) M HCl has pH = 6.96 (NEVER 8!), because auto-ionization of water [H+] = 10^(-7) M must be included!",
+      "Adding inert gas at CONSTANT VOLUME changes zero partial pressures -> ZERO shift; at CONSTANT PRESSURE it acts like volume expansion!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Buffer Numerical",
+        "question": "Calculate pH of buffer obtained by mixing 100 mL of 0.2 M CH3COOH (pKa = 4.76) with 100 mL of 0.1 M NaOH.",
+        "steps": [
+          "Initial mmoles: CH3COOH = 20, NaOH = 10.",
+          "After neutralization: remaining CH3COOH = 10 mmol, formed CH3COONa = 10 mmol.",
+          "pH = 4.76 + log(10 / 10) = 4.76."
+        ],
+        "answer": "pH = 4.76",
+        "pitfall": "At half-neutralization point of any weak acid titration, pH equals pKa directly!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_05",
+    "weightageNote": "Weightage: 5-7% (Nernst Equation, Kohlrausch Conductance, 1st-Order Half-Life & Arrhenius Kinetics).",
+    "syllabusAlert": "Syllabus Sync: Batteries/Fuel Cells/Corrosion trimmed slightly in Boards, core Nernst, Conductance, Faraday & 1st-Order Kinetics 100% active everywhere.",
+    "sections": [
+      {
+        "heading": "Electrochemistry: Nernst, Faraday & Conductance",
+        "summary": "EMF E_cell = E_cathode - E_anode (SRP); cell works spontaneously when E_cell > 0 and Delta G = -n F E_cell < 0.",
+        "keyPoints": [
+          "Nernst Equation at 298 K: E_cell = E deg_cell - (0.0591 / n) log10(Q). At equilibrium, E_cell = 0 => E deg_cell = (0.0591 / n) log10(K_c).",
+          "Faraday's Law: Deposited mass w = (E_eq * Q) / 96500 = (M * I * t) / (n * 96500).",
+          "Kohlrausch Law: Lambda_m deg = sum of ionic conductivities. On dilution, specific conductivity kappa DECREASES while molar conductivity Lambda_m INCREASES!"
+        ]
+      },
+      {
+        "heading": "Chemical Kinetics: Order, Molecularity & Arrhenius",
+        "summary": "Order is experimental sum of concentration exponents in Rate = k[A]^x[B]^y; molecularity applies strictly to elementary single steps.",
+        "keyPoints": [
+          "Zero order: [A] = [A]_0 - k t; t_1/2 = [A]_0 / (2k); units mol L^(-1) s^(-1). Rate never drops until reactant finishes.",
+          "First order: k = (2.303 / t) log([A]_0 / [A]); t_1/2 = 0.693 / k (independent of [A]_0!); t_75% = 2 t_1/2, t_99.9% = 10 t_1/2.",
+          "Arrhenius: k = A e^(-Ea / RT) => log(k2 / k1) = (Ea / 2.303 R) (1/T1 - 1/T2). Catalyst lowers Ea WITHOUT shifting Delta H, Delta G or K_eq!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Zero vs 1st Order Units", "formula": "Unit of k = (mol/L)^(1 - n) s^(-1)", "note": "n=0 -> mol/L/s; n=1 -> s^(-1); n=2 -> L/(mol.s)"},
+      {"concept": "Adding Half-Cells Rule", "formula": "E3 deg = (n1 E1 deg + n2 E2 deg) / n3", "note": "E deg is INTENSIVE (add Delta G deg = -nFE deg, NEVER add E deg directly!)"},
+      {"concept": "First Order Pressure Form", "formula": "k = (2.303/t) log[ P_i / (2 P_i - P_t) ]", "note": "For A(g) -> B(g) + C(g) decomposition"}
+    ],
+    "comparison": {
+      "title": "Zero vs First vs Second Order Kinetics",
+      "headers": ["Order n", "Integrated Equation", "Half-Life t_1/2", "Linear Plot"],
+      "rows": [
+        ["0", "[A] = [A]_0 - kt", "[A]_0 / (2k)", "[A] vs t (slope = -k)"],
+        ["1", "ln([A]_0/[A]) = kt", "0.693 / k (Constant!)", "ln[A] vs t (slope = -k)"],
+        ["2", "1/[A] - 1/[A]_0 = kt", "1 / (k [A]_0)", "1/[A] vs t (slope = +k)"]
+      ]
+    },
+    "traps": [
+      "NEVER add or subtract electrode potentials directly when finding a third half-cell E deg; ALWAYS convert to Delta G deg = -n F E deg!",
+      "For electrolysis of aqueous NaCl vs dilute H2SO4, check overpotential: Cl2 evolves over O2 at anode when concentrated!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "First Order Kinetics",
+        "question": "A first-order reaction is 75% complete in 40 minutes. How long does 99.9% completion take?",
+        "steps": [
+          "75% complete = 2 half-lives (25% left) => 2 t_1/2 = 40 min => t_1/2 = 20 min.",
+          "99.9% complete = 10 half-lives (0.1% ~= 1/1024 left) => t_99.9% = 10 x 20 = 200 minutes."
+        ],
+        "answer": "200 minutes",
+        "pitfall": "Use t_75% = 2 t_1/2, t_87.5% = 3 t_1/2, t_99% = 6.64 t_1/2, t_99.9% = 10 t_1/2 shortcuts!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_06",
+    "weightageNote": "Weightage: 7-9% (Highest-yield Inorganic chapter: p-Block Trimmed Trends, d-f Block + KMnO4/K2Cr2O7 & Coordination CFT).",
+    "syllabusAlert": "Syllabus Sync: Group 13-18 Compound preparation lists trimmed in JEE Main/NEET (kept in JEE Adv chem_adv3); ALL general trends + full d-f Block & Coordination 100% active.",
+    "sections": [
+      {
+        "heading": "p-Block General Anomalies & d-f Block Metallurgy Trends",
+        "summary": "Inert pair effect stabilizes LOWER oxidation states down heavy p-block groups (Tl^+, Pb^2+, Bi^3+ > Tl^3+, Pb^4+, Bi^5+).",
+        "keyPoints": [
+          "Boiling point Group 15 hydrides: BiH3 > SbH3 > NH3 > AsH3 > PH3; Group 16: H2O >> H2Te > H2Se > H2S.",
+          "Lanthanoid Contraction (poor 4f shielding) makes Zr & Hf (and Nb & Ta) nearly identical atomic radii.",
+          "KMnO4 oxidizes I^- to I2 (acidic) and IO3^- (neutral/faintly alkaline)! K2Cr2O7 flips orange Cr2O7^2- (acid) <-> yellow CrO4^2- (base)."
+        ]
+      },
+      {
+        "heading": "Coordination Compounds: Isomerism, VBT & Crystal Field Theory",
+        "summary": "Ligand field strength splits degenerate d-orbitals into t2g (lower) and eg (higher) in octahedral complexes.",
+        "keyPoints": [
+          "Spectrochemical Series: CO, CN^- > en > NH3 > NCS^- > H2O > OH^- > F^- > Cl^- > Br^- > I^-.",
+          "High-spin vs Low-spin (d^4 - d^7): Strong field causes pairing; Co^3+ behaves strong-field even with H2O & C2O4^2-!",
+          "Tetrahedral splitting Delta_t = (4/9) Delta_o (< Pairing energy P) => almost ALWAYS high spin! Spin-only magnetic moment mu = sqrt(n(n+2)) BM."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Octahedral CFSE", "formula": "CFSE = (-0.4 n_t2g + 0.6 n_eg) Delta_o + m P", "note": "d^3, d^8, d^9 have identical e- arrangement in both weak & strong fields"},
+      {"concept": "Spin-Only Magnetic Moment", "formula": "mu = sqrt( n (n + 2) ) BM", "note": "n = unpaired d electrons; n=4 -> sqrt(24) ~= 4.90 BM"},
+      {"concept": "Ni(CO)4 vs [Ni(CN)4]^2- vs [NiCl4]^2-", "formula": "sp3 (diamag) / dsp2 (diamag) / sp3 (paramag 2e-)", "note": "All 3 are classic Coordination VBT exam favorites!"}
+    ],
+    "comparison": {
+      "title": "Common Coordination Complexes Geometry & Magnetism",
+      "headers": ["Complex", "Ni Oxidation / d-count", "Hybridization & Shape", "Unpaired e- / Magnetic"],
+      "rows": [
+        ["[Ni(CN)4]^2-", "Ni^2+ (d8)", "dsp2 (Square Planar)", "0 (Diamagnetic)"],
+        ["[NiCl4]^2-", "Ni^2+ (d8)", "sp3 (Tetrahedral)", "2 (Paramagnetic, 2.83 BM)"],
+        ["Ni(CO)4", "Ni^0 (d10)", "sp3 (Tetrahedral)", "0 (Diamagnetic, synergic back-bond)"],
+        ["[Co(NH3)6]^3+", "Co^3+ (d6)", "d2sp3 (Inner Octahedral)", "0 (Diamagnetic)"]
+      ]
+    },
+    "traps": [
+      "AgCl/HgCl2/PbCl2/Cu2Cl2 covalent chlorides do NOT respond positively to Chromyl Chloride orange-red CrO2Cl2 fumes!",
+      "In metal carbonyls M-CO, M->C pi back-bonding STRENGTHENS M-C bond while WEAKENING C-O triple bond order!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Coordination Isomerism",
+        "question": "How many stereoisomers (geometrical + optical) exist for [Co(en)2 Cl2]^+?",
+        "steps": [
+          "Geometrical forms: cis-[Co(en)2 Cl2]^+ and trans-[Co(en)2 Cl2]^+.",
+          "trans isomer has horizontal symmetry plane => optically INACTIVE (1 isomer).",
+          "cis isomer lacks plane/centre of symmetry => exists as d, l enantiomeric pair (2 isomers).",
+          "Total stereoisomers = 1 + 2 = 3."
+        ],
+        "answer": "3 stereoisomers (2 optically active)",
+        "pitfall": "[Ma2b2c2] octahedral has 5 geometrical (6 stereoisomers total) — memorize common counts!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_07",
+    "weightageNote": "Weightage: 7-8% (Foundation of ALL Organic Chemistry: GOC, Acidity/Basicity, Isomerism & Hydrocarbons).",
+    "syllabusAlert": "Syllabus Sync: Inductive/Resonance/Hyperconjugation, Aromaticity, R/S & E/Z Chirality, Ozonolysis & Benzene EAS 100% active.",
+    "sections": [
+      {
+        "heading": "Electronic Effects, Aromaticity & Acid-Base Strength",
+        "summary": "Carbocations & free radicals stabilize via +I, +M, and hyperconjugation (alpha-H count); carbanions stabilize via -M and -I.",
+        "keyPoints": [
+          "Acidic order: RSO3H > RCOOH > H2CO3 > Phenol > H2O > ROH > HC#CH > NH3 > RCH=CH2 > RH.",
+          "Ortho effect makes o-substituted benzoic acids STRONGER than benzoic acid; SIR weakens aniline basicity (o-methylaniline weakest!).",
+          "Huckel Rule: Cyclic, planar, conjugated with (4n + 2) pi electrons = Aromatic (C5H5^-, C7H7^+, Benzene); 4n pi = Anti-aromatic (C4H4, unstable!)."
+        ]
+      },
+      {
+        "heading": "Isomerism & Hydrocarbon Reactions",
+        "summary": "Chiral molecules lack plane (POS) and centre (COS) of symmetry. Reductive ozonolysis cleaves C=C into C=O aldehydes/ketones.",
+        "keyPoints": [
+          "CIP Priority (R/S, E/Z): higher atomic number = higher priority. If lowest group #4 sits on horizontal wedge, flip R <-> S!",
+          "Hydroboration-Oxidation (BH3 / H2O2, OH^-): syn-addition, anti-Markovnikov alcohol without carbocation rearrangement.",
+          "Benzene EAS: -OH, -NH2, -OR, -R are ortho/para activating; -NO2, -CN, -CHO, -COOH are meta deactivating; Halogens (-Cl/-Br) are ortho/para YET deactivating (-I > +M)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Degree of Unsaturation (DBE)", "formula": "DBE = C + 1 - (H + X - N)/2", "note": "Each ring or pi bond adds +1 to DBE; triple bond = +2"},
+      {"concept": "Alkene Anti vs Syn Addition", "formula": "Br2/CCl4 (Anti) ; OsO4 / cold KMnO4 (Syn)", "note": "cis-alkene + anti = racemic (d+l); trans-alkene + anti = meso!"},
+      {"concept": "Terminal Alkyne Test", "formula": "R-C#C-H + AgNO3/NH4OH -> white ppt", "note": "Differentiates 1-alkyne from 2-alkyne cleanly"}
+    ],
+    "comparison": {
+      "title": "Reagent Selectivity on Unsymmetrical Alkenes",
+      "headers": ["Reagent", "Regioselectivity", "Stereochemistry", "Rearrangement?"],
+      "rows": [
+        ["HBr (aqueous / dark)", "Markovnikov", "Racemic mixture", "YES (via carbocation)"],
+        ["HBr + Peroxide (ROOR)", "Anti-Markovnikov", "Free radical mix", "NO (ONLY works for HBr!)"],
+        ["BH3.THF / H2O2, OH^-", "Anti-Markovnikov", "Strict Syn", "NO"],
+        ["Hg(OAc)2, H2O / NaBH4", "Markovnikov", "Anti", "NO"]
+      ]
+    },
+    "traps": [
+      "Kharasch Peroxide Effect works EXCLUSIVELY with HBr — NEVER with HCl or HI (thermodynamically unfavorable propagation steps)!",
+      "2-3-Dichlorobutane has two identical chiral centres -> 1 meso + 1 d,l pair = 3 stereoisomers (NOT 2^2 = 4!)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Ozonolysis",
+        "question": "Which symmetrical alkene produces exclusively acetone (CH3COCH3) on reductive ozonolysis (O3 / Zn-H2O)?",
+        "steps": [
+          "Join two carbonyl carbons of CH3-C(=O)-CH3 back with a C=C double bond removing both oxygens.",
+          "Yields (CH3)2C=C(CH3)2 -> 2,3-dimethylbut-2-ene."
+        ],
+        "answer": "2,3-dimethylbut-2-ene",
+        "pitfall": "Oxidative ozonolysis (O3 / H2O2) turns aldehydes further into -COOH acids while keeping ketones unchanged!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_08",
+    "weightageNote": "Weightage: 8-10% (Named Reactions Hub: Haloalkanes to Amines).",
+    "syllabusAlert": "Syllabus Sync: SN1/SN2/E1/E2, Lucas/Iodoform/Reimer-Tiemann, Aldol/Cannizzaro, HVZ, Hoffmann & Diazonium Salts 100% active.",
+    "sections": [
+      {
+        "heading": "Haloalkanes (SN1/SN2/E1/E2) & Phenols / Ethers",
+        "summary": "Substrate steric hindrance vs carbocation stability decides SN2 (1 deg, inversion, polar aprotic) vs SN1 (3 deg/allylic, racemic, polar protic).",
+        "keyPoints": [
+          "E2 elimination requires ANTI-PERIPLANAR H and leaving group, yielding Zaitsev more-substituted alkene (unless bulky t-BuOK -> Hofmann!).",
+          "Lucas Test (conc. HCl + anhy. ZnCl2): 3 deg alcohol gives immediate turbidity; 2 deg in 5 min; 1 deg no reaction at room T.",
+          "Phenol + CHCl3 + KOH -> Salicylaldehyde (Reimer-Tiemann); Phenol + CO2 + NaOH -> Salicylic acid (Kolbe). Anisole + HI -> Phenol + CH3I (NEVER iodobenzene!)."
+        ]
+      },
+      {
+        "heading": "Carbonyls, Carboxylic Acids & Amines",
+        "summary": "Nucleophilic addition reactivity drops as Aldehyde > Ketone because of steric & +I crowding; Amines basicity balances +I, solvation & sterics.",
+        "keyPoints": [
+          "Aldol Condensation requires alpha-H (dil. NaOH -> alpha,beta-unsaturated carbonyl); Cannizzaro requires ZERO alpha-H (HCHO, PhCHO, Me3CCHO -> alcohol + carboxylate).",
+          "Tollens / Fehling reduce ONLY aldehydes (NOTE: Benzaldehyde reduces Tollens ONLY, NOT Fehling!). Haloform (I2/NaOH) tests CH3CO- and CH3CH(OH)- groups.",
+          "Aqueous amine basicity: Methylamines 2 deg > 1 deg > 3 deg > NH3; Ethylamines 2 deg > 3 deg > 1 deg > NH3. Gabriel Phthalimide makes pure 1 deg aliphatic amines (NEVER Ar-NH2!)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "HVZ Reaction", "formula": "R-CH2-COOH + Br2/Red P -> R-CH(Br)-COOH", "note": "Requires alpha-H on carboxylic acid"},
+      {"concept": "Hoffmann Bromamide Step-Down", "formula": "R-CONH2 + Br2 + 4 KOH -> R-NH2 + K2CO3", "note": "Removes ONE carbonyl carbon cleanly; 100% retention of chiral centre"},
+      {"concept": "Sandmeyer Diazonium Switch", "formula": "Ar-N2+Cl- + CuCl/HCl -> Ar-Cl ; + H3PO2 -> Ar-H", "note": "Cu2Cl2, KI, HBF4(Balz-Schiemann Ar-F), CuCN"}
+    ],
+    "comparison": {
+      "title": "Diagnostic Functional Group Lab Tests",
+      "headers": ["Test / Reagent", "Positive Compound Class", "Visual Observation"],
+      "rows": [
+        ["Carbylamine (CHCl3 + alc. KOH)", "ONLY 1 deg Amines (Aliphatic + Aromatic)", "Foul-smelling Isocyanide (R-NC)"],
+        ["Hinsberg (PhSO2Cl)", "1 deg (soluble in KOH), 2 deg (insoluble), 3 deg (no rxn)", "Distinguishes 1, 2, 3 deg amines cleanly"],
+        ["Iodoform (I2 + NaOH)", "CH3-C=O or CH3-CH(OH)- (incl. Ethanol!)", "Yellow precipitate CHI3"],
+        ["2,4-DNP (Brady's)", "ALL Aldehydes & Ketones", "Orange-Red crystalline hydrazone"]
+      ]
+    },
+    "traps": [
+      "Methanol (CH3OH) does NOT give Iodoform; Ethanol (CH3CH2OH) IS the ONLY primary alcohol giving positive yellow CHI3!",
+      "Aniline does NOT undergo Friedel-Crafts alkylation/acylation because Lewis acid AlCl3 binds strongly to basic -NH2 forming salt!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Organic Named Cascade",
+        "question": "Identify final product: Benzamide + Br2/aq.KOH -> (A) -> + NaNO2/HCl (0-5 deg C) -> (B) -> + H3PO2/H2O -> (C).",
+        "steps": [
+          "Hoffmann Bromamide turns Benzamide (Ph-CONH2) into Aniline Ph-NH2 (A).",
+          "Diazotization at 0-5 deg C produces Benzene diazonium chloride Ph-N2^+ Cl^- (B).",
+          "Hypophosphorous acid H3PO2 reduces diazonium salt smoothly to Benzene (C)."
+        ],
+        "answer": "Benzene (C6H6)",
+        "pitfall": "Using EtOH instead of H3PO2 also reduces PhN2+ to Benzene (producing CH3CHO)."
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_09",
+    "weightageNote": "Weightage: 4-5% (Biomolecules + NTA Unit 20 Practical Salt & Functional Analysis).",
+    "syllabusAlert": "Syllabus Sync: Carbohydrates, Zwitterion Amino Acids, DNA Bases & Qualitative Group Cation/Anion Salt Analysis 100% active everywhere.",
+    "sections": [
+      {
+        "heading": "Biomolecules: Carbohydrates, Amino Acids & Nucleic Acids",
+        "summary": "Carbohydrates vary between reducing (hemiacetal/hemiketal free) and non-reducing (Sucrose locked C1-C2 glycosidic bond).",
+        "keyPoints": [
+          "Sucrose (C1 alpha-Glc + C2 beta-Fru) is non-reducing, shows NO mutarotation, and converts (+66.5 deg -> -39.9 deg) levo on inversion!",
+          "Maltose = alpha-D-Glc(1->4) (reducing); Lactose = beta-D-Gal(1->4)beta-D-Glc (reducing). Cellulose = beta-D-Glc; Starch = alpha-D-Glc.",
+          "Zwitterion amino acid Isoelectric point pI = (pKa1 + pKa2) / 2. RNA contains Uracil; DNA has Thymine (2-deoxyribose)."
+        ]
+      },
+      {
+        "heading": "Principles Related to Practical Chemistry (Qualitative Salt Analysis)",
+        "summary": "Group separation relies on selective precipitation using Common Ion Suppression of H2S / NH4OH.",
+        "keyPoints": [
+          "Group I (dil. HCl): Pb^2+, Ag^+, Hg2^2+. Group II (HCl + H2S, low [S^2-]): Cu^2+, Pb^2+, Hg^2+, Cd^2+, Bi^3+, As^3+.",
+          "Group III (NH4Cl + NH4OH): Al^3+ (white gelatinous), Fe^3+ (reddish brown), Cr^3+ (green). Group IV (NH4OH + H2S): Zn^2+ (white), Mn^2+ (buff), Co^2+/Ni^2+ (black).",
+          "Anion tests: Nitrate Brown Ring [Fe(H2O)5 NO]^2+; Lassaigne Nitrogen Prussian Blue Fe4[Fe(CN)6]3; Sulphur Purple [Fe(CN)5 NOS]^4-."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Lassaigne Nitrogen Test", "formula": "NaCN + FeSO4 + Fe^3+ -> Fe4[Fe(CN)6]3", "note": "Thiourea (N+S together) gives blood-red [Fe(SCN)]^2+ unless excess Na splits it!"},
+      {"concept": "Brown Ring Nitrate Test", "formula": "[Fe(H2O)6]^2+ + NO -> [Fe(H2O)5(NO)]^2+", "note": "Iron oxidation state in brown complex is +1!"},
+      {"concept": "Vitamin Deficiency Chart", "formula": "B1: Beri-Beri | C: Scurvy | B12: Pernicious Anaemia", "note": "Fat-soluble A, D, E, K stored in liver; B & C water-soluble"}
+    ],
+    "comparison": {
+      "title": "Qualitative Cation Group Reagents",
+      "headers": ["Cation Group", "Group Reagent", "Precipitated Form", "Representative Cations"],
+      "rows": [
+        ["Group I", "Dilute HCl", "Chlorides", "Pb^2+, Ag^+, Hg2^2+"],
+        ["Group II", "Dilute HCl + H2S", "Sulphides (Low Ksp)", "Cu^2+, Pb^2+, Bi^3+, Cd^2+, Hg^2+"],
+        ["Group III", "NH4Cl + NH4OH", "Hydroxides", "Fe^3+, Al^3+, Cr^3+"],
+        ["Group IV", "NH4OH + H2S", "Sulphides (High Ksp)", "Zn^2+, Mn^2+, Ni^2+, Co^2+"]
+      ]
+    },
+    "traps": [
+      "NH4Cl is added BEFORE NH4OH in Group III to suppress OH^- concentration via common ion NH4^+ so Mg(OH)2 / Group IV do NOT precipitate prematurely!",
+      "Invert sugar: Sucrose itself is dextrorotatory (+66.5 deg), yet equimolar mixture of Glucose (+52.5 deg) & Fructose (-92.4 deg) turns net optical rotation levorotatory!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Biomolecules / Salt Test",
+        "question": "Why does an acidic solution of Fructose still reduce Fehling's and Tollens' reagents even though it is a ketohexose?",
+        "steps": [
+          "In alkaline Tollens' / Fehling's medium, Fructose undergoes Lobry de Bruyn-van Ekenstein enediol tautomerization.",
+          "It isomerizes reversibly into D-Glucose and D-Mannose (aldehydes), giving bright positive silver mirror / brick-red Cu2O!"
+        ],
+        "answer": "Enediol tautomerization in basic medium yields aldoses",
+        "pitfall": "Ketones normally fail Tollens' — alpha-hydroxy ketones (fructose, benzoin) are crucial exceptions!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_adv1",
+    "weightageNote": "Weightage: 3-4% IIT JEE Advanced Exclusive Physical Chemistry (Real Gases & Solid State).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Excluded from JEE Mains & NEET 2024+, RETAINED in IIT JEE Advanced Official Syllabus!",
+    "sections": [
+      {
+        "heading": "Real Gases: Van der Waals & Compressibility Z",
+        "summary": "Deviations from PV = nRT arise from intermolecular attraction (a) and finite molecular co-volume (b = 4 x actual volume).",
+        "keyPoints": [
+          "(P + a n^2 / V^2)(V - n b) = n R T. At low P: Z = 1 - a/(VRT) < 1; at high P: Z = 1 + Pb/(RT) > 1.",
+          "Hydrogen & Helium show Z > 1 at ALL pressures at room T due to tiny 'a'!",
+          "Critical constants: V_c = 3b, P_c = a/(27b^2), T_c = 8a/(27Rb), Universal Z_c = P_c V_c / (R T_c) = 3/8 = 0.375. Boyle Temp T_B = a/(Rb)."
+        ]
+      },
+      {
+        "heading": "Solid State: Bravais Lattices, Voids & Ionic Crystals",
+        "summary": "Density rho = (Z * M) / (N_A * a^3). Void placement determines ionic stoichiometry and radius ratios.",
+        "keyPoints": [
+          "Cubic Packing: SC (Z=1, 52.4%, 2r=a); BCC (Z=2, 68%, 4r=sqrt(3)a); FCC/CCP (Z=4, 74%, 4r=sqrt(2)a, CN=12).",
+          "In CCP/FCC with N atoms: Octahedral voids = N (12 edge centres + 1 body centre); Tetrahedral voids = 2N (2 along each of 4 body diagonals at r = sqrt(3)a/4).",
+          "Defects: Schottky (equal cation-anion missing -> density DROPS, NaCl/CsCl); Frenkel (cation slips to interstitial -> density UNCHANGED, AgCl/ZnS)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Van der Waals Critical Ratio", "formula": "Z_c = 3 / 8 = 0.375 ; T_B = (27/8) T_c", "note": "Boyle Temp T_B is 3.375 times critical temperature T_c"},
+      {"concept": "Crystal Density Formula", "formula": "rho = (Z * M) / (N_A * a^3)", "note": "Keep a in cm for g/cm^3 (1 pm = 10^(-10) cm)"},
+      {"concept": "Ionic Radius Ratios", "formula": "0.155 (Triangular) | 0.225 (Tetra) | 0.414 (Octa) | 0.732 (Cubic)", "note": "CsCl = Cubic (8:8); NaCl = Octahedral (6:6); ZnS = Tetrahedral (4:4)"}
+    ],
+    "comparison": {
+      "title": "Cubic Unit Cell Parameters",
+      "headers": ["Lattice", "Atoms / Cell Z", "Edge-Radius Relation", "Packing Efficiency", "Coordination No."],
+      "rows": [
+        ["Simple Cubic (SC)", "1", "a = 2 r", "52.4%", "6"],
+        ["Body-Centred (BCC)", "2", "sqrt(3) a = 4 r", "68.0%", "8"],
+        ["Face-Centred (FCC/CCP)", "4", "sqrt(2) a = 4 r", "74.0%", "12"]
+      ]
+    },
+    "traps": [
+      "AgBr exhibits BOTH Schottky AND Frenkel defects simultaneously — an all-time IIT favorite!",
+      "Distance between two adjacent tetrahedral voids in FCC along a cell edge equals a / 2 (NOT sqrt(3)a / 2!)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT Solid State",
+        "question": "In a hypothetical ionic crystal A_x B_y, anions B form an FCC lattice while cations A occupy HALF of the tetrahedral voids. Find empirical formula.",
+        "steps": [
+          "FCC anions B per unit cell = 4.",
+          "Total tetrahedral voids = 2 x 4 = 8 => occupied by A = 8 / 2 = 4.",
+          "Ratio A : B = 4 : 4 = 1 : 1 => AB (Zinc Blende / ZnS type)."
+        ],
+        "answer": "AB",
+        "pitfall": "Heating NaCl in Na vapour creates F-centres (anionic vacancies trapped by unpaired electrons, giving yellow colour & paramagnetism!)."
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_adv2",
+    "weightageNote": "Weightage: 3% IIT Exclusive Physical Chemistry (Adsorption, Colloids & Concentration/Thermodynamic Cells).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Surface Chemistry & Advanced Electrochemistry Cells retained in IIT JEE Advanced Official Syllabus!",
+    "sections": [
+      {
+        "heading": "Surface Chemistry: Freundlich Isotherm & Colloids",
+        "summary": "Adsorption Delta H < 0, Delta S < 0 is spontaneous at low T where T Delta S is small; Physisorption (multilayer, low dH) differs sharply from Chemisorption (monolayer, high activation E_a).",
+        "keyPoints": [
+          "Freundlich Isotherm: x/m = k P^(1/n) (0 < 1/n <= 1); log(x/m) = log k + (1/n) log P.",
+          "Peptization turns fresh precipitate into stable colloid using a small amount of electrolyte sharing a common ion (e.g., Fe(OH)3 + FeCl3 -> positive sol).",
+          "Hardy-Schulze Rule: Coagulation power proportional to (valency of oppositely charged ion)^4. Positive sols (Fe2O3.xH2O, haemoglobin) vs Negative sols (As2S3, starch, gold, blood!)."
+        ]
+      },
+      {
+        "heading": "Concentration Cells & Cell Thermodynamics",
+        "summary": "Concentration cells have identical electrodes with different electrolyte activities (E deg_cell = 0 identically!).",
+        "keyPoints": [
+          "Cation cell Cu | Cu^2+(C1) || Cu^2+(C2) | Cu: spontaneous when C2 (cathode) > C1 (anode); E = (0.0591 / 2) log(C2 / C1).",
+          "Gibbs-Helmholtz Cell Entropy: Delta S = n F (dE / dT)_P; Delta H = -n F [E - T(dE/dT)_P].",
+          "Gold Number measures protective power of lyophilic colloids against NaCl coagulation (LOWER Gold Number = HIGHER protection: Gelatin 0.005 best!)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Freundlich Log Line", "formula": "log(x/m) = log k + (1/n) log P", "note": "At very high pressure 1/n -> 0 (saturation); low P 1/n -> 1"},
+      {"concept": "Cell Entropy & Enthalpy", "formula": "Delta S = n F (dE / dT)_P", "note": "Positive temperature coefficient (dE/dT > 0) means endothermic cell rxn when dH > 0"}
+    ],
+    "comparison": {
+      "title": "Physisorption vs Chemisorption",
+      "headers": ["Property", "Physisorption", "Chemisorption"],
+      "rows": [
+        ["Bond Nature", "Weak van der Waals", "Strong Chemical Bond"],
+        ["Specificity & Layers", "Non-specific; Multilayer", "Highly specific; Strictly Monolayer"],
+        ["Effect of Raising T", "Decreases monotonically", "Increases first (Ea), then decreases"]
+      ]
+    },
+    "traps": [
+      "Remember As2S3 sol is NEGATIVE (coagulated best by Al^3+ > Ba^2+ > Na^+), whereas Fe(OH)3 / Al(OH)3 metal hydroxide sols are POSITIVE (coagulated best by [Fe(CN)6]^4- > PO4^3- > SO4^2- > Cl^-)!",
+      "Lower Gold Number implies STRONGER protective colloid!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Concentration Cell",
+        "question": "Calculate EMF at 298 K of cell Pt(H2, 1 atm) | HCl (pH = 4) || HCl (pH = 2) | Pt(H2, 1 atm).",
+        "steps": [
+          "Anode [H+]_1 = 10^(-4) M; Cathode [H+]_2 = 10^(-2) M.",
+          "E_cell = (0.0591 / 1) log([H+]_2 / [H+]_1) = 0.0591 log(10^(-2)/10^(-4)) = 0.0591 x 2 = 0.1182 V."
+        ],
+        "answer": "0.1182 V",
+        "pitfall": "Ensure [H+] at cathode > [H+] at anode for positive EMF!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_adv3",
+    "weightageNote": "Weightage: 5-6% IIT Exclusive Inorganic Block (Hydrogen, s-Block, Boranes, Silicates & Ellingham Metallurgy).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Explicitly retained in IIT JEE Advanced Official Syllabus (trimmed from JEE Mains/NEET).",
+    "sections": [
+      {
+        "heading": "Hydrogen, s-Block, Boranes & Silicates",
+        "summary": "Electron-deficient boron hydrides and tetrahedral SiO4^4- silicate linkages exhibit hallmark 3c-2e banana and bridging oxygen patterns.",
+        "keyPoints": [
+          "B2H6 (Diborane): 4 terminal 2c-2e B-H bonds + 2 bridging 3c-2e B-H-B banana bonds. With NH3 at high T forms Borazine (B3N3H6, inorganic benzene).",
+          "Orthoboric acid H3BO3 is a WEAK MONOBASIC Lewis acid (accepts OH^- from H2O -> [B(OH)4]^- + H^+).",
+          "Silicate corner sharing: Ortho (0 shared, SiO4^4-), Pyro (1 shared, Si2O7^6-), Chain (2 shared, SiO3^2-), Sheet (3 shared, Si2O5^2-), Quartz 3D (4 shared, SiO2).",
+          "H2O2 Volume strength: M = Volume Strength / 11.2; N = Volume Strength / 5.6."
+        ]
+      },
+      {
+        "heading": "Metallurgy & Ellingham Diagrams",
+        "summary": "Reduction Delta G deg = Delta H deg - T Delta S deg proceeds whenever a lower line on the Ellingham plot reduces oxides lying above it.",
+        "keyPoints": [
+          "Ellingham C -> CO has NEGATIVE slope (Delta S > 0 because 2C + O2 -> 2CO increases gas moles) — slices down across metal oxide lines at high T!",
+          "Below 983 K, CO is better reducing agent for Fe2O3; above 983 K, Coke C reduces FeO directly.",
+          "Special extractions: Al via Hall-Heroult (Al2O3 + Cryolite Na3AlF6 to lower MP); Ag/Au via MacArthur cyanide leaching [Au(CN)2]^-, [Ag(CN)2]^- + Zn dust; Ni via Mond Ni(CO)4; Ti/Zr via van Arkel I2."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Silicate Charge Rule", "formula": "O-Si ratio from shared corners s", "note": "s=0 -> SiO4^4-; s=1 -> Si2O7^6-; s=4 -> neutral SiO2"},
+      {"concept": "H2O2 Strength", "formula": "Volume = 11.2 x Molarity = 5.6 x Normality", "note": "10 V H2O2 ~= 3% w/v (30.3 g/L)"},
+      {"concept": "Solvay Process", "formula": "NaCl + NH3 + H2O + CO2 -> NaHCO3 (ppt)", "note": "Fails for K2CO3 because KHCO3 is too soluble!"}
+    ],
+    "comparison": {
+      "title": "Metal Extraction & Refining Quick Map",
+      "headers": ["Metal", "Ore", "Process / Reagent"],
+      "rows": [
+        ["Copper (Cu)", "CuFeS2", "Froth Flotation + Bessemer Auto-reduction -> Blister Cu"],
+        ["Aluminium (Al)", "Al2O3.2H2O", "Baeyer Leaching (NaOH) + Hall-Heroult (Cryolite)"],
+        ["Gold / Silver", "Native / Ag2S", "MacArthur Cyanide (NaCN + O2 -> [M(CN)2]^-), then Zn"],
+        ["Ni / Zr,Ti / Ge,Si", "Impure Metal", "Mond (CO) / Van Arkel (I2) / Zone Refining (Semiconductors)"]
+      ]
+    },
+    "traps": [
+      "Cryolite (Na3AlF6) + Fluorspar (CaF2) lower melting point (~1140 K) AND boost electrical conductivity of molten alumina!",
+      "Lithium & Magnesium share striking diagonal similarity (both form normal oxides Li2O/MgO and thermal-unstable carbonates decomposing to oxides + CO2)!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT Metallurgy / Borane",
+        "question": "In diborane (B2H6), count the maximum number of atoms lying simultaneously in a single plane and total 3c-2e bonds.",
+        "steps": [
+          "Two Boron atoms and four terminal Hydrogen atoms (6 atoms total) lie coplanar in the xy plane.",
+          "Two bridging Hydrogen atoms sit above and below this plane forming two 3c-2e banana bonds."
+        ],
+        "answer": "6 coplanar atoms; 2 three-centre-two-electron bonds",
+        "pitfall": "Diborane has ZERO B-B direct covalent bond; all 4 B-H terminal bonds are normal 2c-2e!"
+      }
+    ]
+  },
+  {
+    "moduleId": "chem_adv4",
+    "weightageNote": "Weightage: 3-4% IIT JEE Advanced Exclusive (Polymers, Multi-Step Synthesis Cascades & Quantitative Organic).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Synthetic/Biodegradable Polymers & Dumas/Kjeldahl/Carius Analytical Organic retained in IIT JEE Advanced!",
+    "sections": [
+      {
+        "heading": "Synthetic, Elastomer & Biodegradable Polymers",
+        "summary": "Addition polymers retain every monomer atom (PVC, Teflon, Buna-S, Neoprene); condensation polymers eliminate H2O/NH3/HCl forming amide/ester linkages.",
+        "keyPoints": [
+          "Nylon-6,6 (Hexamethylenediamine + Adipic acid); Nylon-6 (Caprolactam ring-opening).",
+          "Terylene / Dacron (Ethylene glycol + Terephthalic acid); Glyptal (Ethylene glycol + Phthalic acid).",
+          "Bakelite = Phenol + Formaldehyde (Novolac linear -> Bakelite cross-linked thermoset). Melamine + HCHO = unbreakable crockery.",
+          "Biodegradable polymers: PHBV (3-hydroxybutanoic acid + 3-hydroxypentanoic acid) and Nylon-2-nylon-6 (Glycine + Aminocaproic acid)."
+        ]
+      },
+      {
+        "heading": "Multi-Step Organic Roadmaps & Quantitative Estimation",
+        "summary": "Combine functional transformations cleanly while tracking stereochemical inversion, rearrangements & elemental percentage formulas.",
+        "keyPoints": [
+          "Kjeldahl Nitrogen % = (1.4 x N_acid x V_acid(mL)) / w(g). FAILS for nitro (-NO2), azo (-N=N-), and ring nitrogen (pyridine)!",
+          "Dumas Nitrogen % = (28 x V_N2(STP mL) / 22400) x (100 / w) (works universally for ALL organic nitrogen compounds!).",
+          "Carius Halogen % = (At.Wt(X) / Mol.Wt(AgX)) x (mass_AgX / w) x 100."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Kjeldahl % Nitrogen", "formula": "%N = (1.4 * N * V_mL) / w_sample", "note": "Check milliequivalents of H2SO4 consumed carefully (N = 2 x M)!"},
+      {"concept": "Vulcanized Rubber Crosslink", "formula": "Polyisoprene (cis-1,4) + 3-5% Sulphur", "note": "Creates disulphide S-S bridges improving elasticity"},
+      {"concept": "Polyacrylonitrile / Orlon", "formula": "n CH2=CH(CN) -> [-CH2-CH(CN)-]n", "note": "Synthetic wool fibre"}
+    ],
+    "comparison": {
+      "title": "Addition vs Condensation Polymer Pairs",
+      "headers": ["Polymer", "Monomer(s)", "Classification"],
+      "rows": [
+        ["Teflon (PTFE)", "CF2=CF2", "Addition (Non-stick)"],
+        ["Buna-S / Buna-N", "1,3-Butadiene + Styrene / Acrylonitrile", "Copolymer Synthetic Rubber"],
+        ["Nylon-6,6", "H2N-(CH2)6-NH2 + HOOC-(CH2)4-COOH", "Polyamide Condensation"],
+        ["Dacron (Terylene)", "HO-CH2-CH2-OH + Terephthalic Acid", "Polyester Condensation"]
+      ]
+    },
+    "traps": [
+      "Natural rubber is STRICTLY cis-1,4-polyisoprene; Gutta-percha is trans-1,4-polyisoprene!",
+      "Pyridine, Azobenzene & Nitrobenzene CANNOT be estimated by Kjeldahl method because N doesn't convert to (NH4)2SO4!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT Kjeldahl Numerical",
+        "question": "NH3 evolved from 0.7 g of an amide neutralizes 20 mL of 0.5 M H2SO4 completely. Find mass % of Nitrogen.",
+        "steps": [
+          "Normality of 0.5 M H2SO4 = 2 x 0.5 = 1.0 N => mEq = 1.0 x 20 = 20.",
+          "%N = (1.4 x 20) / 0.7 = 28 / 0.7 = 40%."
+        ],
+        "answer": "40%",
+        "pitfall": "Always convert H2SO4 Molarity to Normality (x 2) before plugging into 1.4*N*V/w!"
+      }
+    ]
+  }
+]

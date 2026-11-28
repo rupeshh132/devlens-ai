@@ -1,0 +1,565 @@
+[
+  {
+    "moduleId": "math_01",
+    "weightageNote": "Weightage: 6-8% (Relations, Equivalence Counts, Domain-Range, Periodic Functions & Inverse Trig Telescoping Sums).",
+    "syllabusAlert": "Syllabus Sync: Zero deletions in NTA/IIT. Equivalence classes, bijective functional checks & arcsin(sin x) branches are heavily tested.",
+    "sections": [
+      {
+        "heading": "Relations, Functions & Equivalence Counting",
+        "summary": "On set A of size n, total relations = 2^(n^2), reflexive = 2^(n^2 - n), symmetric = 2^(n(n+1)/2), equivalence relations = Bell number B_n.",
+        "keyPoints": [
+          "Function checks: Vertical line cuts at most once; One-One (Injective): Horizontal line cuts at most once, or f'(x) >= 0 / <= 0 strictly.",
+          "Onto (Surjective) from m elements to n elements: Sum_{k=0}^n (-1)^k C(n,k) (n-k)^m. For A(n)->A(n), injective <=> bijective!",
+          "Periodicity: sin^n(x), cos^n(x) have period pi (n even), 2*pi (n odd); |sin x| + |cos x| has period pi/2; {x} (fractional part) has period 1; constant functions have NO fundamental period."
+        ]
+      },
+      {
+        "heading": "Inverse Trigonometric Functions & Principal Branches",
+        "summary": "Restrict trigonometric domains cleanly so inverses stay single-valued and continuous.",
+        "keyPoints": [
+          "Principal ranges: sin^(-1), tan^(-1), cosec^(-1) in [-pi/2, pi/2]; cos^(-1), cot^(-1), sec^(-1) in [0, pi].",
+          "Always enforce complementary pairs: sin^(-1)x + cos^(-1)x = pi/2 (|x| <= 1); tan^(-1)x + cot^(-1)x = pi/2 (all real x).",
+          "Sum addition trap: tan^(-1)x + tan^(-1)y = tan^(-1)((x+y)/(1-xy)) ONLY when xy < 1; add +pi if x>0, y>0, xy > 1!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Principal Branch Identity", "formula": "sin^(-1)(sin x) = x [-pi/2, pi/2] ; pi - x [pi/2, 3pi/2]", "note": "Period = 2*pi sawtooth wave peaking at +pi/2 and -pi/2"},
+      {"concept": "Inverse Trig Product Sum", "formula": "tan^(-1)x + tan^(-1)y = pi + tan^(-1)((x+y)/(1-xy))", "note": "Applies whenever x > 0, y > 0 and x*y > 1"},
+      {"concept": "Functional Equation Signatures", "formula": "f(x+y)=f(x)+f(y)=>kx | f(xy)=f(x)f(y)=>x^n | f(x+y)=f(x)f(y)=>a^x", "note": "Standard continuous polynomial/power function signatures"}
+    ],
+    "comparison": {
+      "title": "Relation & Function Count Formulas (|A| = n)",
+      "headers": ["Category", "Total Count on Set |A| = n", "Example (n = 3)"],
+      "rows": [
+        ["Reflexive Relations", "2^(n^2 - n)", "2^6 = 64"],
+        ["Symmetric Relations", "2^(n(n+1)/2)", "2^6 = 64"],
+        ["Equivalence Relations (Bell B_n)", "B_1=1, B_2=2, B_3=5, B_4=15", "5 equivalence relations"],
+        ["Bijective Functions A -> A", "n!", "3! = 6"]
+      ]
+    },
+    "traps": [
+      "Forgetting +pi correction in tan^(-1)(2) + tan^(-1)(3) gives acute value instead of 3*pi/4!",
+      "If f(x) + f(1/x) = f(x)f(1/x) for polynomial f, then f(x) = 1 +/- x^n."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Inverse Trig Telescoping",
+        "question": "Evaluate Sum_{r=1}^{10} tan^(-1)(1 / (1 + r + r^2)).",
+        "steps": [
+          "Rewrite denominator: 1 + r(r+1), numerator: (r + 1) - r.",
+          "Term T_r = tan^(-1)(r + 1) - tan^(-1)(r).",
+          "Telescopes cleanly: S = tan^(-1)(11) - tan^(-1)(1) = tan^(-1)((11 - 1)/(1 + 11)) = tan^(-1)(5/6)."
+        ],
+        "answer": "tan^(-1)(5/6)",
+        "pitfall": "Always rewrite numerator as (b - a) matching denominator 1 + a*b!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_02",
+    "weightageNote": "Weightage: 6-8% (Quadratic Location of Roots, Newton Sums, Complex Modulus-Argument & Cube Roots omega).",
+    "syllabusAlert": "Syllabus Sync: Quadratic + Complex Numbers 100% core (Note: De Moivre Geometry & Rotation deep problems also tested in JEE Adv math_adv2).",
+    "sections": [
+      {
+        "heading": "Quadratic Location of Roots & Common Roots",
+        "summary": "Graphical sign checks on parabola f(x) = a x^2 + b x + c classify exact root positions relative to threshold k.",
+        "keyPoints": [
+          "Both roots > k (for a > 0): (1) Discriminant D >= 0, (2) Vertex -b/(2a) > k, (3) a * f(k) > 0.",
+          "Exact one root between k1 and k2: f(k1) * f(k2) < 0 (guarantees D > 0 automatically!).",
+          "Newton Identities: For a alpha^n + b alpha^(n-1) + c alpha^(n-2) = 0, S_n = alpha^n + beta^n satisfies a S_n + b S_(n-1) + c S_(n-2) = 0!"
+        ]
+      },
+      {
+        "heading": "Complex Numbers: Modulus, Conjugate & Argand Geometry",
+        "summary": "Triangle inequality ||z1| - |z2|| <= |z1 +/- z2| <= |z1| + |z2| controls complex optimization problems.",
+        "keyPoints": [
+          "|z|^2 = z * z_bar. Argument principal value arg(z) in (-pi, pi].",
+          "Argand Loci: |z - z1| = |z - z2| -> Perpendicular bisector line; |z - z1| / |z - z2| = k (k != 1) -> Apollonius circle; |z - z1| + |z - z2| = 2a -> Ellipse (2a > |z1 - z2|).",
+          "Cube roots of unity: 1 + omega + omega^2 = 0, omega^3 = 1; x^2 + x + 1 = 0 has roots omega, omega^2."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Newton Root Power Recurrence", "formula": "a S_n + b S_(n-1) + c S_(n-2) = 0", "note": "Instant solver for alpha^10 + beta^10 ratios without computing roots!"},
+      {"concept": "De Moivre Theorem", "formula": "(cos theta + i sin theta)^n = cos(n theta) + i sin(n theta)", "note": "e^(i pi) + 1 = 0; i^i = e^(-pi/2)"},
+      {"concept": "One Common Root Condition", "formula": "(c1 a2 - c2 a1)^2 = (b1 c2 - b2 c1)(a1 b2 - a2 b1)", "note": "Use cross-multiplication or subtract equations to eliminate x^2 directly!"}
+    ],
+    "comparison": {
+      "title": "Argand Plane Standard Geometric Loci",
+      "headers": ["Complex Equation", "Geometric Curve", "Key Property"],
+      "rows": [
+        ["|z - z0| = r", "Circle", "Centre z0, radius r"],
+        ["|z - z1| = |z - z2|", "Straight Line", "Perpendicular bisector of segment z1-z2"],
+        ["|z - z1| = k |z - z2| (k != 1)", "Circle (Apollonius)", "Diameter endpoints divide z1-z2 internally & externally in k:1"],
+        ["arg((z - z1)/(z - z2)) = pi/2", "Semicircle (open)", "Diameter joining z1 and z2 on one side only"]
+      ]
+    },
+    "traps": [
+      "Square root product rule sqrt(a)*sqrt(b) = sqrt(ab) FAILS when BOTH a < 0 and b < 0 (sqrt(-4)*sqrt(-9) = 2i * 3i = -6, NOT +6)!",
+      "Argument identities like arg(z1*z2) = arg(z1) + arg(z2) hold modulo 2*pi, NOT strictly inside principal (-pi, pi]!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Quadratic Location",
+        "question": "Find all real values of k so both roots of x^2 - 2kx + k^2 + k - 5 = 0 are strictly less than 5.",
+        "steps": [
+          "(1) D >= 0: 4k^2 - 4(k^2 + k - 5) >= 0 => 5 - k >= 0 => k <= 5.",
+          "(2) Vertex -b/(2a) = k < 5.",
+          "(3) f(5) > 0: 25 - 10k + k^2 + k - 5 = k^2 - 9k + 20 = (k - 4)(k - 5) > 0 => k < 4 or k > 5.",
+          "Intersection of (1), (2), (3): k < 4."
+        ],
+        "answer": "k in (-infinity, 4)",
+        "pitfall": "Omitting f(5) > 0 allows one root to sneak past 5 while keeping vertex < 5!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_03",
+    "weightageNote": "Weightage: 7-9% (Highest-accuracy Algebra scoring unit: Adjoint Identities, Matrix Algebra & Cramer Linear Systems).",
+    "syllabusAlert": "Syllabus Sync: Determinants, Adjoint/Inverse, Symmetric/Skew-Symmetric & Consistency of Systems 100% retained.",
+    "sections": [
+      {
+        "heading": "Matrices, Special Types & Adjoint Identities",
+        "summary": "Every square matrix A splits uniquely into Symmetric (A + A^T)/2 plus Skew-Symmetric (A - A^T)/2.",
+        "keyPoints": [
+          "Skew-symmetric odd order matrix MUST have det(A) = 0; main diagonal entries are ALL zero.",
+          "Adjoint golden laws (for n x n non-singular A, |A| != 0): A (adj A) = |A| I; |adj A| = |A|^(n-1); adj(adj A) = |A|^(n-2) A; |adj(adj A)| = |A|^((n-1)^2).",
+          "(AB)^(-1) = B^(-1) A^(-1); (AB)^T = B^T A^T (sock-and-shoe reversal!). Orthogonal matrix A^T A = I => |A| = +/- 1."
+        ]
+      },
+      {
+        "heading": "Determinants & Consistency of Linear Systems AX = B",
+        "summary": "Cramer's determinants Delta, Delta_1, Delta_2, Delta_3 classify unique, infinite, and zero solutions cleanly.",
+        "keyPoints": [
+          "Non-homogeneous AX = B: Delta != 0 => Unique solution (Consistent). Delta = 0 and any Delta_i != 0 => No solution (Inconsistent).",
+          "Delta = 0 and ALL Delta_i = 0 => Infinitely many (or parallel planes exception — check rank / elimination of variables directly!).",
+          "Homogeneous AX = 0: always consistent (trivial 0,0,0). Non-trivial solution exists iff Delta = 0."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Determinant Scaling", "formula": "|k A| = k^n |A| (for n x n matrix)", "note": "k factors out from EACH of the n rows individually"},
+      {"concept": "Adjoint Determinant Chain", "formula": "|adj(A)| = |A|^(n-1) ; |adj(adj A)| = |A|^((n-1)^2)", "note": "For 3x3 matrix: |adj A| = |A|^2 and |adj(adj A)| = |A|^4"},
+      {"concept": "Matrix Inverse via Adjoint", "formula": "A^(-1) = adj(A) / |A|", "note": "|A^(-1)| = 1 / |A| ; (k A)^(-1) = (1/k) A^(-1)"}
+    ],
+    "comparison": {
+      "title": "Special Matrices Signatures",
+      "headers": ["Matrix Type", "Defining Equation", "Determinant / Trace Property"],
+      "rows": [
+        ["Idempotent", "A^2 = A", "|A| = 0 or 1; Eigenvalues in {0, 1}"],
+        ["Involutory", "A^2 = I", "A^(-1) = A; |A| = +/- 1"],
+        ["Nilpotent (index k)", "A^k = 0", "|A| = 0; Trace(A) = 0 always!"],
+        ["Orthogonal", "A A^T = I", "|A| = +/- 1; columns mutually orthonormal"]
+      ]
+    },
+    "traps": [
+      "Delta = 0 with Delta_x = Delta_y = Delta_z = 0 CAN STILL be inconsistent if two equations represent parallel planes (e.g. x+y+z=1 and x+y+z=2)! Always verify rank directly!",
+      "|A + B| != |A| + |B| in general! Never split determinants additively row-wide without identical rows."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Adjoint Algebra",
+        "question": "If A is a 3x3 matrix with det(A) = 2, evaluate det(3 adj(A)).",
+        "steps": [
+          "Here n = 3 and scalar k = 3 inside 3x3 determinant: det(3 adj A) = 3^3 * det(adj A).",
+          "det(adj A) = det(A)^(3 - 1) = 2^2 = 4.",
+          "Product = 27 x 4 = 108."
+        ],
+        "answer": "108",
+        "pitfall": "Multiplying by 3 instead of 3^3 = 27 gives wrong answer 12!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_04",
+    "weightageNote": "Weightage: 7-9% (P&C Multinomial/Derangements, Binomial General Term/Remainder & Sequences AM-GM-HM / Telescoping).",
+    "syllabusAlert": "Syllabus Sync: Mathematical Induction removed from JEE; ALL of P&C, Binomial Theorem, AP/GP/AGP & Inequalities 100% active.",
+    "sections": [
+      {
+        "heading": "Permutations, Combinations, Beggar Method & Derangements",
+        "summary": "Distinguish identical vs distinct distribution cleanly: identical-to-distinct uses stars-and-bars C(n+r-1, r-1).",
+        "keyPoints": [
+          "Non-negative integral solutions to x1 + x2 + ... + xr = n: C(n + r - 1, r - 1). Positive solutions (>= 1 each): C(n - 1, r - 1).",
+          "Circular arrangements: (n - 1)! for distinct direction; (n - 1)!/2 for reversible garlands/necklaces.",
+          "Derangements D_n: D_1=0, D_2=1, D_3=2, D_4=9, D_5=44. Formula D_n = n! [1 - 1/1! + 1/2! - ... + (-1)^n / n!]."
+        ]
+      },
+      {
+        "heading": "Binomial Theorem & Sequences / Series Bounds",
+        "summary": "General term T_(r+1) = C(n,r) a^(n-r) b^r solves independent terms, remainder tricks & coefficient identities.",
+        "keyPoints": [
+          "Sum of binomial coeffs = 2^n; Sum of even/odd = 2^(n-1); Sum C(n,r)^2 = C(2n, n).",
+          "Arithmetic-Geometric-Harmonic inequality for positive numbers: AM >= GM >= HM (equality holds ONLY when all numbers are equal!).",
+          "Method of differences (Telescoping): split V_r = f(r) - f(r+1) so intermediate terms cancel out cleanly."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Binomial Linear Index Sums", "formula": "Sum r C(n,r) = n 2^(n-1) ; Sum C(n,r)/(r+1) = (2^(n+1)-1)/(n+1)", "note": "Derived cleanly by differentiating or integrating (1+x)^n"},
+      {"concept": "Multinomial Expansion Count", "formula": "Distinct terms in (x1 + x2 + ... + xk)^n = C(n + k - 1, k - 1)", "note": "Equal to non-negative integer solutions"},
+      {"concept": "Special Series Sums", "formula": "Sum n = n(n+1)/2 ; Sum n^2 = n(n+1)(2n+1)/6 ; Sum n^3 = [n(n+1)/2]^2", "note": "Use Sigma algebra for compound polynomial terms"}
+    ],
+    "comparison": {
+      "title": "Distribution Models Quick Selector",
+      "headers": ["Objects", "Boxes", "Empty Allowed?", "Formula"],
+      "rows": [
+        ["n Distinct", "r Distinct", "Yes", "r^n"],
+        ["n Distinct", "r Distinct", "No (Onto)", "Sum (-1)^k C(r,k) (r-k)^n"],
+        ["n Identical", "r Distinct", "Yes (Beggar)", "C(n + r - 1, r - 1)"],
+        ["n Identical", "r Distinct", "No (>= 1 each)", "C(n - 1, r - 1)"]
+      ]
+    },
+    "traps": [
+      "Divisibility remainder problems like 7^103 mod 25 MUST land between 0 and 24 — if binomial yields -7, add 25 to get +18!",
+      "AM >= GM applies STRICTLY to POSITIVE real quantities — check positivity before bounding trigonometric or algebraic minima!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Binomial Remainder",
+        "question": "Find the remainder when 7^103 is divided by 25.",
+        "steps": [
+          "Rewrite 7^103 = 7 * 7^102 = 7 * (49)^51 = 7 * (50 - 1)^51.",
+          "Expanding (50 - 1)^51 = 25 K + (-1)^51 = 25 K - 1.",
+          "Multiply by 7: 7(25K - 1) = 25(7K) - 7 = 25(7K - 1) + 18 => Remainder = 18."
+        ],
+        "answer": "18",
+        "pitfall": "Returning negative remainder -7 instead of positive residue +18!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_05",
+    "weightageNote": "Weightage: 8-10% (Highest Calculus Weightage: Limits, Continuity/Differentiability & AOD Monotonicity/Maxima).",
+    "syllabusAlert": "Syllabus Sync: Limits (1^infinity, L'Hopital, Series), Continuity corners, LMVT/Rolle & Tangents/Normals/Extrema 100% retained (Rolle/LMVT emphasized strongly in JEE!).",
+    "sections": [
+      {
+        "heading": "Limits, Series Expansions & Indeterminate Forms",
+        "summary": "Maclaurin series replace complicated 0/0 limits cleanly in seconds when L'Hopital gets messy.",
+        "keyPoints": [
+          "Key expansions (x -> 0): sin x ~= x - x^3/6; cos x ~= 1 - x^2/2 + x^4/24; tan x ~= x + x^3/3; e^x ~= 1 + x + x^2/2!; ln(1+x) ~= x - x^2/2.",
+          "1^infinity exponential form: lim [f(x)]^g(x) -> exp( lim (f(x) - 1) * g(x) ).",
+          "Sandwich (Squeeze) theorem handles fractional-part floor bounds like lim [x]/x or x * sin(1/x)."
+        ]
+      },
+      {
+        "heading": "Continuity, Differentiability & Application of Derivatives (AOD)",
+        "summary": "Continuous functions may still fail differentiability at sharp modulus corners, vertical tangents, or oscillating boundary cusps.",
+        "keyPoints": [
+          "Piecewise min/max branches: check continuity AND match left/right slopes at every intersection point.",
+          "Rolle's Theorem: f continuous [a,b], diff (a,b), f(a)=f(b) => f'(c)=0. Mean Value (LMVT): f'(c) = (f(b) - f(a)) / (b - a).",
+          "Maxima/Minima: check f'(x) = 0 critical points AND non-differentiable corner points AND interval boundary endpoints!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "1^Infinity Shortcut", "formula": "lim f(x)^g(x) = e^(lim [f(x) - 1] g(x))", "note": "Check f(x) -> 1 AND g(x) -> infinity BEFORE using!"},
+      {"concept": "Normal Subtangent Lengths", "formula": "Subtangent = |y / y'| ; Subnormal = |y y'|", "note": "Useful for curve geometry tangent length problems"},
+      {"concept": "Concavity & Inflection", "formula": "f''(x) > 0 concave UP ; f''(x) changes sign = Inflection", "note": "f''(c) = 0 alone isn't sufficient for inflection if sign doesn't flip!"}
+    ],
+    "comparison": {
+      "title": "Differentiability Behaviour of Product f(x) * g(x)",
+      "headers": ["f(x) at x = a", "g(x) at x = a", "Product f(x)*g(x) Differentiable?"],
+      "rows": [
+        ["Diff & f(a) = 0", "Continuous, NOT diff (e.g. |x|)", "YES! (f(0)=0 kills corner: x|x| is diff at 0!)"],
+        ["Diff & f(a) != 0", "Continuous, NOT diff", "NO (always inherits non-differentiability!)"],
+        ["Diff & f(a) = 0, f'(a)=0", "Discontinuous bounded (e.g. sin(1/x))", "YES (x^2 sin(1/x) is differentiable at 0!)"]
+      ]
+    },
+    "traps": [
+      "NEVER apply L'Hopital's rule blindly without checking 0/0 or infinity/infinity form FIRST!",
+      "At local extrema, don't discard points where f'(x) DNE (like |x - 2| at x = 2 — it's STILL a strict global minimum!)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "1^Infinity Limit",
+        "question": "Evaluate lim_{x->0} ( (1 + tan x) / (1 + sin x) )^(1 / x^3).",
+        "steps": [
+          "Form is 1^infinity. Compute exponent = lim [((1 + tan x)/(1 + sin x) - 1) / x^3].",
+          "tan x - sin x = sin x (1 - cos x)/cos x ~= (x)(x^2/2) = x^3 / 2.",
+          "Limit = lim (x^3 / 2) / x^3 = 1/2 => Answer = e^(1/2) = sqrt(e)."
+        ],
+        "answer": "sqrt(e)",
+        "pitfall": "Remember tan x - sin x ~= x^3 / 2 memorization saves 2 minutes of L'Hopital!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_06",
+    "weightageNote": "Weightage: 8-10% (Definite Integrals King/Queen/Leibniz, Area Under Curves & Linear Differential Equations).",
+    "syllabusAlert": "Syllabus Sync: Complete Integral Calculus & ODEs (Variable Separable, Homogeneous, Linear dy/dx + Py = Q, Bernoulli) 100% retained.",
+    "sections": [
+      {
+        "heading": "Indefinite & Definite Integration (King, Queen & Leibniz)",
+        "summary": "Most competitive definite integrals skip messy antiderivatives entirely using symmetry substitutions and parameter differentiation.",
+        "keyPoints": [
+          "Euler Special Indefinite Form: Integral e^x [f(x) + f'(x)] dx = e^x f(x) + C.",
+          "King Property: Integral_a^b f(x) dx = Integral_a^b f(a + b - x) dx (add original + flipped integral to cancel messy numerators!).",
+          "Newton-Leibniz Derivative: d/dx Integral_{g(x)}^{h(x)} f(t) dt = f(h(x)) h'(x) - f(g(x)) g'(x)."
+        ]
+      },
+      {
+        "heading": "Area Under Curves & Differential Equations",
+        "summary": "Split absolute area across zeros cleanly; solve first-order linear ODEs using Integrating Factor IF = e^(Integral P dx).",
+        "keyPoints": [
+          "Area between y^2 = 4ax and x^2 = 4by equals (16 a b) / 3 directly!",
+          "Area bounded by y^2 = 4ax and chord y = mx equals (8 a^2) / (3 m^3).",
+          "Linear DE: y * (IF) = Integral [ Q * (IF) ] dx + C. Check both dy/dx and dx/dy forms!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Walli's Beta Integral (0 to pi/2)", "formula": "Integral sin^m(x) cos^n(x) dx = [(m-1)(m-3)...(n-1)(n-3)...]/[(m+n)(m+n-2)...] * K", "note": "K = pi/2 if BOTH m & n are even, else K = 1"},
+      {"concept": "Riemann Sum as Integral", "formula": "lim_{n->inf} (1/n) Sum_{r=1}^{kn} f(r/n) = Integral_0^k f(x) dx", "note": "Replace r/n -> x, 1/n -> dx, lower/upper -> r/n limits"},
+      {"concept": "Symmetric Parity Integral", "formula": "Integral_{-a}^a f(x) dx = 0 (odd) ; 2 Integral_0^a f(x) dx (even)", "note": "Check f(-x) vs f(x) immediately on symmetric limits [-a, a]!"}
+    ],
+    "comparison": {
+      "title": "First-Order Differential Equation Solution Forms",
+      "headers": ["ODE Type", "Standard Form", "Solution Strategy"],
+      "rows": [
+        ["Variable Separable", "dy/dx = f(x) g(y)", "Integrate dy/g(y) = f(x) dx directly"],
+        ["Homogeneous", "dy/dx = f(y/x)", "Substitute y = v x => dy/dx = v + x dv/dx"],
+        ["Linear in y", "dy/dx + P(x) y = Q(x)", "IF = e^(Int P dx); y*IF = Int(Q*IF dx) + C"],
+        ["Bernoulli", "dy/dx + P(x)y = Q(x)y^n", "Divide by y^n & set u = y^(1-n) -> linear!"]
+      ]
+    },
+    "traps": [
+      "Check Order vs Degree: Degree is DEFINED strictly after clearing fractional powers/radicals from ALL derivatives; undefined if derivative sits inside sin(y') or e^(y')!",
+      "Always include integration constant +C IMMEDIATELY after integrating, before applying initial condition!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Leibniz + Integral",
+        "question": "Find f(pi/4) if Integral_0^x f(t) dt = x^2 + Integral_x^1 t^2 f(t) dt.",
+        "steps": [
+          "Differentiate both sides w.r.t. x via Leibniz: f(x) = 2x - x^2 f(x).",
+          "Solve f(x) (1 + x^2) = 2x => f(x) = 2x / (1 + x^2)."
+        ],
+        "answer": "f(x) = 2x / (1 + x^2)",
+        "pitfall": "Note the NEGATIVE sign on the lower variable limit x in Integral_x^1!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_07",
+    "weightageNote": "Weightage: 8-10% (Coordinate Geometry: Lines, Radical Axis Circles, Parabola Focal Chords & Conic Tangents/Normals).",
+    "syllabusAlert": "Syllabus Sync: Tangent condition c^2 = a^2 m^2 + b^2 & Focal/Director Circle properties are core (note: Tangent/Normal equations trimmed slightly in Board NCERT, heavily tested via chord/locus in JEE!).",
+    "sections": [
+      {
+        "heading": "Straight Lines, Centres of Triangle & Circles",
+        "summary": "Concurrence, image/foot formulas and circle power/orthogonal intersections handle 2D locus speed problems cleanly.",
+        "keyPoints": [
+          "Euler Line: Orthocentre (H), Centroid (G), Circumcentre (O) are strictly collinear with HG : GO = 2 : 1.",
+          "Orthogonal Circles x^2+y^2+2g1x+2f1y+c1=0 & 2g2x+2f2y+c2=0 intersect at 90 deg iff 2 g1 g2 + 2 f1 f2 = c1 + c2.",
+          "Radical axis of two circles S1 - S2 = 0 is strictly perpendicular to line of centres; Chord of Contact T = 0."
+        ]
+      },
+      {
+        "heading": "Conic Sections: Parabola, Ellipse & Hyperbola",
+        "summary": "Unified conic properties link tangent T = 0, focal chords, and director circles seamlessly across all conics.",
+        "keyPoints": [
+          "Parabola y^2 = 4ax: Parametric point (at^2, 2at); Focal chord ends satisfy t1 * t2 = -1; tangents at focal chord intersect at 90 deg right ON directrix x = -a; Circle on focal chord as diameter touches directrix!",
+          "Ellipse x^2/a^2 + y^2/b^2 = 1 (a > b): b^2 = a^2 (1 - e^2); Sum of focal distances PF1 + PF2 = 2a; Director circle x^2 + y^2 = a^2 + b^2.",
+          "Hyperbola x^2/a^2 - y^2/b^2 = 1: b^2 = a^2 (e^2 - 1); |PF1 - PF2| = 2a; Rectangular hyperbola xy = c^2 has eccentricity e = sqrt(2)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Point-to-Line Mirror Image", "formula": "(x - x1)/a = (y - y1)/b = -2(ax1 + by1 + c)/(a^2 + b^2)", "note": "Replace -2 with -1 for Foot of Perpendicular"},
+      {"concept": "Tangent Conditions (y = mx + c)", "formula": "Para: c=a/m | Ell: c^2=a^2m^2+b^2 | Hyp: c^2=a^2m^2-b^2", "note": "Instant common-tangent solver across two conics!"},
+      {"concept": "Area Triangle via Vertices", "formula": "(1/2) | x1(y2-y3) + x2(y3-y1) + x3(y1-y2) |", "note": "Equal to 0 for collinearity"}
+    ],
+    "comparison": {
+      "title": "Conic Sections Master Comparison",
+      "headers": ["Conic", "Eccentricity e", "Latus Rectum", "Director Circle"],
+      "rows": [
+        ["Parabola (y^2 = 4ax)", "e = 1", "4a", "Directrix line (x = -a)"],
+        ["Ellipse (a > b)", "0 < e < 1", "2 b^2 / a", "x^2 + y^2 = a^2 + b^2"],
+        ["Hyperbola", "e > 1", "2 b^2 / a", "x^2 + y^2 = a^2 - b^2 (real iff a > b)"]
+      ]
+    },
+    "traps": [
+      "For vertical ellipse x^2/a^2 + y^2/b^2 = 1 with b > a, eccentricity becomes sqrt(1 - a^2/b^2) and foci sit at (0, +/- b e)!",
+      "Two circles have 4 common tangents if d > r1 + r2; 3 if d = r1 + r2; 2 if |r1 - r2| < d < r1 + r2; 1 if d = |r1 - r2|; 0 if one strictly inside!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Common Tangent Conics",
+        "question": "Find slope m of common tangents to parabola y^2 = 8x and circle x^2 + y^2 = 2.",
+        "steps": [
+          "Here parabola has 4a = 8 => a = 2, tangent y = mx + 2/m.",
+          "Distance from circle centre (0,0) to tangent mx - y + 2/m = 0 equals radius sqrt(2):",
+          "|2/m| / sqrt(m^2 + 1) = sqrt(2) => 4 / m^2 = 2(m^2 + 1) => m^4 + m^2 - 2 = 0 => m^2 = 1 => m = +/- 1."
+        ],
+        "answer": "y = x + 2 and y = -x - 2",
+        "pitfall": "Discard negative root m^2 = -2 since tangent slopes m are real!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_08",
+    "weightageNote": "Weightage: 9-11% (Vectors, 3D Skew Lines, Trig Equations, Statistics Variance & Bayes Probability).",
+    "syllabusAlert": "Syllabus Sync: NTA JEE Mains removed 3D Planes & Vector/Scalar Triple Products (RETAINED in JEE Adv math_adv1!). 3D Lines, Dot/Cross, Mean/Variance & Bayes Theorem 100% active everywhere.",
+    "sections": [
+      {
+        "heading": "Vectors & 3D Geometry (Lines Focus)",
+        "summary": "Dot product a.b = |a||b|cos(theta) measures projection; cross product |a x b| = |a||b|sin(theta) measures parallelogram area.",
+        "keyPoints": [
+          "Lagrange identity: |a x b|^2 + (a . b)^2 = |a|^2 |b|^2.",
+          "Shortest distance between skew lines r = a1 + lam b1 and r = a2 + mu b2: d = |(a2 - a1) . (b1 x b2)| / |b1 x b2|.",
+          "Parallel lines (b1 = b2 = b): d = |(a2 - a1) x b| / |b| (NOTE: Do NOT divide by zero |b x b|!)."
+        ]
+      },
+      {
+        "heading": "Trigonometry, Statistics & Bayes Probability",
+        "summary": "Shift-scaling invariance of variance + Bayes conditional tree partitions handle nearly all Data & Probability questions rapidly.",
+        "keyPoints": [
+          "Variance sigma^2 = (Sum x_i^2)/n - (x_bar)^2. Adding constant c to every observation leaves Variance & SD UNCHANGED; multiplying by k multiplies SD by |k| and Variance by k^2!",
+          "Combined mean & combined variance rules handle dual-batch dataset merges cleanly.",
+          "Bayes Theorem: P(E_i | A) = [P(E_i) P(A | E_i)] / Sum_k [P(E_k) P(A | E_k)]."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Projection & Foot of Perp", "formula": "Proj of a on b = (a . b) / |b|", "note": "Take general parametric point on line and dot-zero with direction b"},
+      {"concept": "Variance Shift-Scale Law", "formula": "Var(k X + c) = k^2 Var(X)", "note": "Additive shift c drops completely from variance & standard deviation"},
+      {"concept": "Trig Solutions", "formula": "sin x = sin a -> n*pi + (-1)^n a | cos x = cos a -> 2n*pi +/- a", "note": "Always check denominator != 0 & domain exclusions before finalizing count!"}
+    ],
+    "comparison": {
+      "title": "Probability Independence vs Mutual Exclusivity",
+      "headers": ["Property", "Mutually Exclusive (Disjoint)", "Independent Events"],
+      "rows": [
+        ["Condition", "P(A intersect B) = 0", "P(A intersect B) = P(A) * P(B)"],
+        ["Union P(A U B)", "P(A) + P(B)", "P(A) + P(B) - P(A)P(B) = 1 - P(A')P(B')"],
+        ["Can both hold for non-zero events?", "NO! Non-zero independent events ALWAYS overlap", "A' and B' are ALSO independent!"]
+      ]
+    },
+    "traps": [
+      "Check if skew-line direction vectors b1 and b2 are parallel BEFORE plugging into (b1 x b2) — parallel lines give 0/0!",
+      "In Trigonometric equation counts, exclude x values making tan x, sec x, or denominators undefined!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Variance Shortcut",
+        "question": "Mean and variance of 5 observations are 10 and 4. If every observation is multiplied by 2 and increased by 3, find new mean and new variance.",
+        "steps": [
+          "New mean = 2(10) + 3 = 23.",
+          "New variance = 2^2 * 4 = 16 (additive +3 has zero effect on spread!)."
+        ],
+        "answer": "New Mean = 23, New Variance = 16",
+        "pitfall": "Never multiply variance by k = 2 instead of k^2 = 4!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_adv1",
+    "weightageNote": "Weightage: 5-7% IIT JEE Advanced Exclusive 3D & Vector Algebra (Triple Products & Planes).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Cut from JEE Mains 2024+, RETAINED in IIT JEE Advanced Official Syllabus!",
+    "sections": [
+      {
+        "heading": "Scalar Triple Product [a b c] & Vector Triple Product",
+        "summary": "Box product [a b c] = a . (b x c) gives signed parallelepiped volume; tetrahedron volume = (1/6) |[a b c]|.",
+        "keyPoints": [
+          "[a b c] = 0 iff a, b, c are COPLANAR. Cyclic shift preserves sign; swapping two flips sign.",
+          "Reciprocal triad identity: [a x b, b x c, c x a] = [a b c]^2 ; [a+b, b+c, c+a] = 2 [a b c].",
+          "Vector Triple Product: a x (b x c) = (a . c) b - (a . b) c (coplanar with b and c!); Jacobi identity: a x (b x c) + b x (c x a) + c x (a x b) = 0."
+        ]
+      },
+      {
+        "heading": "Family of 3D Planes, Line-Plane Angles & Mirrors",
+        "summary": "General plane a x + b y + c z + d = 0 has normal n = (a, b, c). Angle between line (b) and plane (n) uses SIN(theta) = |b . n| / (|b||n|).",
+        "keyPoints": [
+          "Family of planes containing intersection of P1 = 0 & P2 = 0: P1 + lambda P2 = 0.",
+          "Foot / Image of (x1, y1, z1) in plane: (x - x1)/a = (y - y1)/b = (z - z1)/c = -k (ax1 + by1 + cz1 + d)/(a^2 + b^2 + c^2) [k=1 Foot, k=2 Image].",
+          "Coplanarity of two lines: (a2 - a1) . (b1 x b2) = 0 (zero shortest distance!)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Four-Vector Dot Identity", "formula": "(a x b) . (c x d) = (a.c)(b.d) - (a.d)(b.c)", "note": "Quick 2x2 determinant expansion"},
+      {"concept": "Distance Between Parallel Planes", "formula": "d = |d1 - d2| / sqrt(a^2 + b^2 + c^2)", "note": "Ensure identical coefficients (a, b, c) BEFORE subtracting d1 - d2!"},
+      {"concept": "Tetrahedron Volume", "formula": "V = (1/6) |[a b c]|", "note": "Three coterminous edge vectors a, b, c"}
+    ],
+    "comparison": {
+      "title": "Line vs Plane Angle Formulas",
+      "headers": ["Pair", "Formula", "Perpendicularity", "Parallelism"],
+      "rows": [
+        ["Two Lines (b1, b2)", "cos theta = |b1.b2|/(|b1||b2|)", "b1 . b2 = 0", "b1 = lambda b2"],
+        ["Two Planes (n1, n2)", "cos theta = |n1.n2|/(|n1||n2|)", "n1 . n2 = 0", "n1 = lambda n2"],
+        ["Line (b) & Plane (n)", "SIN theta = |b.n|/(|b||n|)", "b = lambda n", "b . n = 0"]
+      ]
+    },
+    "traps": [
+      "Line-Plane angle uses SIN(theta) = |b.n|/(|b||n|), whereas Line-Line and Plane-Plane use COS(theta)!",
+      "Do not forget cross-product non-associativity: (a x b) x c != a x (b x c)!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT 3D Plane Ray Distance",
+        "question": "Find distance of P(1, -2, 3) from plane x - y + z = 5 measured PARALLEL to line x/2 = y/3 = z/-6.",
+        "steps": [
+          "Any point along ray through P parallel to (2, 3, -6) is (1 + 2t, -2 + 3t, 3 - 6t).",
+          "Plug into plane: (1 + 2t) - (-2 + 3t) + (3 - 6t) = 5 => 6 - 7t = 5 => t = 1/7.",
+          "Distance = |t| * sqrt(2^2 + 3^2 + (-6)^2) = (1/7) * 7 = 1 unit."
+        ],
+        "answer": "1 unit",
+        "pitfall": "Do not confuse oblique ray distance with shortest perpendicular distance!"
+      }
+    ]
+  },
+  {
+    "moduleId": "math_adv2",
+    "weightageNote": "Weightage: 4-6% IIT JEE Advanced Exclusive (Complex Rotation Coni Theorem, nth Roots & Cayley-Hamilton Matrices).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Geometric Argand Rotation, nth Roots Identities & Characteristic Polynomial Matrix Reduction.",
+    "sections": [
+      {
+        "heading": "Argand Rotation Theorem (Coni Method) & nth Roots of Unity",
+        "summary": "Rotating vector z0 -> z1 counter-clockwise by angle theta around pivot z0 maps cleanly to (z2 - z0)/(z1 - z0) = (r2/r1) e^(i theta).",
+        "keyPoints": [
+          "Equilateral triangle condition: z1^2 + z2^2 + z3^2 = z1 z2 + z2 z3 + z3 z1 = 3 z_centroid^2.",
+          "nth Roots of Unity (1, alpha_1, ..., alpha_(n-1) solving z^n = 1): Sum = 0; Product = (-1)^(n-1).",
+          "Polynomial factorization trick: (z^n - 1)/(z - 1) = Product_{k=1}^{n-1} (z - alpha_k) => setting z=1 gives Product(1 - alpha_k) = n!"
+        ]
+      },
+      {
+        "heading": "Cayley-Hamilton Theorem & High Matrix Powers",
+        "summary": "Every n x n square matrix satisfies its own characteristic polynomial equation p(lambda) = det(A - lambda I) = 0.",
+        "keyPoints": [
+          "For 2x2 matrix A: A^2 - tr(A) A + det(A) I = 0! Directly expresses A^3, A^4, A^(-1) linearly in {A, I}.",
+          "For 3x3 matrix A: A^3 - tr(A) A^2 + [Sum minor_ii] A - det(A) I = 0.",
+          "Matrix trace identity: Sum of eigenvalues = tr(A); Product of eigenvalues = det(A)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "2x2 Cayley-Hamilton", "formula": "A^2 - tr(A) A + det(A) I = 0", "note": "A^(-1) = [tr(A) I - A] / det(A) instantaneously!"},
+      {"concept": "nth Roots Product", "formula": "Product_{k=1}^{n-1} (1 - alpha_k) = n", "note": "Equivalently Product_{k=1}^{n-1} sin(k pi / n) = n / 2^(n-1)"},
+      {"concept": "Rotation by +90 deg", "formula": "(z2 - z0) = i * (z1 - z0) * (r2 / r1)", "note": "Positive angle i = e^(i pi/2) rotates anti-clockwise"}
+    ],
+    "comparison": {
+      "title": "Complex Triangle & Rotation Geometry",
+      "headers": ["Polygon / Criterion", "Complex Equation"],
+      "rows": [
+        ["Equilateral Triangle", "z1^2 + z2^2 + z3^2 = z1z2 + z2z3 + z3z1"],
+        ["Collinear z1, z2, z3", "(z3 - z1)/(z2 - z1) is purely REAL"],
+        ["Perpendicular Rays z0z1 & z0z2", "(z2 - z0)/(z1 - z0) is purely IMAGINARY"]
+      ]
+    },
+    "traps": [
+      "Always draw the Argand orientation carefully so you know whether theta rotates +counter-clockwise (+i theta) or -clockwise (-i theta)!",
+      "In Cayley-Hamilton for 2x2 A^2 - (a+d)A + (ad-bc)I = 0, NEVER forget the identity matrix I on the constant term!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT Cayley-Hamilton",
+        "question": "For a 2x2 real matrix A with tr(A) = 5 and det(A) = 6, evaluate tr(A^2 - 5A + 6I) + tr(6 A^(-1)).",
+        "steps": [
+          "By Cayley-Hamilton: A^2 - tr(A)A + det(A)I = A^2 - 5A + 6I = 0 identically!",
+          "Therefore 6 A^(-1) = 5 I - A => tr(6 A^(-1)) = tr(5 I) - tr(A) = 10 - 5 = 5."
+        ],
+        "answer": "5",
+        "pitfall": "tr(I_2) = 2 (dimension n), NOT 1!"
+      }
+    ]
+  }
+]

@@ -1,0 +1,750 @@
+[
+  {
+    "moduleId": "bot_01",
+    "weightageNote": "Weightage: 7-9% in NEET UG (~6-7 direct NCERT line-based MCQs across Living World, Biological Classification & Plant Kingdom).",
+    "syllabusAlert": "Syllabus Sync: Taxonomic Aids (Botanical Gardens, Museums, Keys) trimmed from NCERT; Nomenclature, Five Kingdoms, Monera/Protista/Fungi, Viruses/Viroids/Lichens & Algae-to-Gymnosperms 100% active!",
+    "sections": [
+      {
+        "heading": "Living World & Binomial Nomenclature (ICBN / ICZN)",
+        "summary": "Carolus Linnaeus introduced binomial nomenclature (Genus capitalized + specific epithet lowercase, italicized/underlined separately).",
+        "keyPoints": [
+          "Taxonomic hierarchy ascending: Species -> Genus -> Family -> Order -> Class -> Phylum/Division -> Kingdom.",
+          "As we move higher toward Kingdom, number of common shared characters DECREASES.",
+          "Mango = Mangifera indica; Wheat = Triticum aestivum (Poaceae); Housefly = Musca domestica (Muscidae); Man = Homo sapiens."
+        ]
+      },
+      {
+        "heading": "Whittaker Five Kingdoms & Non-Cellular Agents",
+        "summary": "Criteria: Cell structure, Body organization, Mode of nutrition, Reproduction & Phylogenetic relationships.",
+        "keyPoints": [
+          "Monera: Archaebacteria (branched ether lipids survive extreme habitats: Methanogens in marshy/rumen gut, Halophiles, Thermoacidophiles); Mycoplasma lacks cell wall & survives without O2!",
+          "Protista: Chrysophytes (Diatoms -> indestructible siliceous soap-box cell walls -> diatomaceous earth), Dinoflagellates (Gonyaulax red tide), Euglenoids (pellicle protein layer), Slime Moulds, Protozoans.",
+          "Fungi: Phycomycetes (aseptate coenocytic: Rhizopus, Albugo), Ascomycetes (sac fungi, Neurospora genetic workhorse, Penicillium), Basidiomycetes (clamp connections, Agaricus, Puccinia), Deuteromycetes (imperfect fungi, sexual stage absent: Alternaria, Trichoderma).",
+          "Viruses (obligate parasites, TMV ssRNA, Bacteriophage dsDNA); Viroids (T.O. Diener 1971 -> free low-MW infectious RNA WITHOUT protein coat -> Potato spindle tuber!); Prions (folded infectious protein -> BSE/CJD)."
+        ]
+      },
+      {
+        "heading": "Plant Kingdom: Algae, Bryophytes, Pteridophytes & Gymnosperms",
+        "summary": "Life-cycle alternation shifts from haploid-dominant (Algae & Bryophytes) to sporophyte-dominant (Pteridophytes, Gymnosperms, Angiosperms).",
+        "keyPoints": [
+          "Chlorophyceae (Chl a,b; Starch; 2-8 equal apical flagella), Phaeophyceae (Chl a,c + Fucoxanthin; Mannitol/Laminarin; Algin; 2 unequal lateral), Rhodophyceae (Chl a,d + Phycoerythrin; Floridean starch; Agar/Carrageen; NO flagella!).",
+          "Bryophytes (amphibians of plant kingdom): dominant gametophyte; Sphagnum peat moss. Pteridophytes: first vascular terrestrial plants; Selaginella & Salvinia show HETEROSPORY (precursor to seed habit!).",
+          "Gymnosperms (naked seeds): Cycas (unbranched stem, coralloid roots with N2-fixing Anabaena) vs Pinus (branched, mycorrhizal roots, winged pollen)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Algal Food & Pigments", "formula": "Green: Starch (a,b) | Brown: Mannitol/Laminarin (a,c,Fucoxanthin) | Red: Floridean (a,d,Phycoerythrin)", "note": "Rhodophyceae (Polysiphonia/Porphyra/Gracilaria) completely lack motile flagellated gametes!"},
+      {"concept": "Fungal Reproduction Spores", "formula": "Ascospores (endogenous, 8) vs Basidiospores (exogenous, 4)", "note": "Deuteromycetes lack known sexual spores — moved once sexual stage found"}
+    ],
+    "comparison": {
+      "title": "Algae Classes NCERT Comparative Chart",
+      "headers": ["Class", "Major Pigments", "Stored Food", "Cell Wall", "Flagella"],
+      "rows": [
+        ["Chlorophyceae", "Chl a, b", "Starch (Pyrenoids)", "Cellulose", "2-8, Equal, Apical"],
+        ["Phaeophyceae", "Chl a, c, Fucoxanthin", "Mannitol, Laminarin", "Cellulose + Algin", "2, Unequal, Lateral"],
+        ["Rhodophyceae", "Chl a, d, Phycoerythrin", "Floridean Starch", "Cellulose, Pectin, Polysulphate esters", "ABSENT"]
+      ]
+    },
+    "traps": [
+      "Bacteriophages usually carry dsDNA whereas plant viruses like TMV carry ssRNA — NEVER swap these!",
+      "Bryophyte sporophyte is NOT free-living; it stays attached to and nourished by the dominant photosynthetic gametophyte! In Pteridophytes, both gametophyte (prothallus) & sporophyte are independent!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET Plant Kingdom PYQ",
+        "question": "Which pair of pteridophytes exhibits heterospory (producing both microspores and megaspores), acting as evolutionary precursor to seed habit?",
+        "steps": [
+          "Recall NCERT Class XI Ch 3 Pteridophytes: most pteridophytes (Dryopteris, Pteris, Equisetum) are homosporous.",
+          "ONLY genera like Selaginella and Salvinia are heterosporous."
+        ],
+        "answer": "Selaginella and Salvinia",
+        "pitfall": "Polysiphonia, Laminaria & Chara are algae; Sphagnum & Funaria are bryophytes."
+      }
+    ]
+  },
+  {
+    "moduleId": "bot_02",
+    "weightageNote": "Weightage: 7-9% in NEET UG (VERY HIGH ALERT: NMC added 4 new families Malvaceae, Cruciferae, Compositae & Gramineae!).",
+    "syllabusAlert": "Syllabus Sync: Solanaceae/Liliaceae replaced/augmented by NMC UGMEB explicit Plant Families: Malvaceae, Cruciferae (Brassicaceae), Leguminosae (Fabaceae), Compositae (Asteraceae) & Gramineae (Poaceae)!",
+    "sections": [
+      {
+        "heading": "Morphology: Phyllotaxy, Aestivation, Placentation & Fruit",
+        "summary": "Diagnostic floral terms classify angiosperms rapidly for NEET statement questions.",
+        "keyPoints": [
+          "Aestivation: Valvate (Calotropis), Twisted (China rose, Lady's finger, Cotton), Imbricate (Cassia, Gulmohar), Vexillary/Papilionaceous (Pea, Bean — 1 standard + 2 wings + 2 fused keel).",
+          "Placentation: Marginal (Pea), Axile (China rose, Tomato, Lemon), Parietal (Mustard, Argemone — false septum replum!), Free Central (Dianthus, Primrose), Basal (Sunflower, Marigold).",
+          "Ovary Position: Hypogynous Superior (Mustard, China rose, Brinjal); Perigynous Half-Inferior (Plum, Rose, Peach); Epigynous Inferior (Guava, Cucumber, Ray florets of Sunflower)."
+        ]
+      },
+      {
+        "heading": "NMC Updated Plant Families Key Diagnostics",
+        "summary": "Master floral symmetry, stamens, and fruit types across the 5 official NMC families.",
+        "keyPoints": [
+          "Malvaceae (China rose, Cotton, Bhindi): Epicalyx present, Monoadelphous stamens (stamina tube around style), Reniform monothecous anthers, Twisted corolla, Axile placentation.",
+          "Brassicaceae / Cruciferae (Mustard, Radish): Cruciform 4 petals, Tetradynamous stamens (2 short outer + 4 long inner = A_(2+4)), Parietal placentation with false septum (replum), Siliqua fruit.",
+          "Fabaceae / Leguminosae (Pea, Gram): Zygomorphic, Vexillary aestivation, Diadelphous stamens A_(9)+1, Marginal placentation, Legume pod.",
+          "Asteraceae / Compositae (Sunflower, Marigold): Capitulum (Head) inflorescence, Syngenesious anthers (fused anthers, free filaments), Pappus hairy calyx, Basal single ovule, Cypsela fruit.",
+          "Poaceae / Gramineae (Wheat, Maize, Rice): Spikelet inflorescence, Perianth reduced to Lodicules, Versatile anthers, Feathery stigma, Basal placentation, Caryopsis fruit!"
+        ]
+      },
+      {
+        "heading": "Plant Anatomy: Vascular Bundles & Secondary Tissue Maps",
+        "summary": "Compare Dicot vs Monocot internal histology carefully.",
+        "keyPoints": [
+          "Endarch protoxylem = Stems; Exarch protoxylem = Roots. Radial bundles = Roots; Conjoint = Stems & Leaves.",
+          "Dicot Stem: Hypodermis collenchymatous, ring vascular bundles (conjoint, collateral, OPEN with cambium), well-developed pith. Monocot Stem: Hypodermis sclerenchymatous, scattered CLOSED vascular bundles surrounded by bundle sheath + water-containing cavities.",
+          "Dicot Root: Tetrarch (2-4 xylem patches), pith small/absent. Monocot Root: Polyarch (>6 xylem), large pith! Isobilateral monocot leaf carries Bulliform cells (curl leaves to minimize transpiration!)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Cruciferae Floral Formula", "formula": "% / (+) K_(2+2) C_4 A_(2+4) G_(2) superior", "note": "Tetradynamous stamens (4 long + 2 short) + Replum septum!"},
+      {"concept": "Fabaceae Floral Formula", "formula": "% (+) K_(5) C_(1+2+(2)) A_((9)+1) G_1 superior", "note": "Vexillary corolla + Diadelphous 9+1 stamens!"},
+      {"concept": "Poaceae Key Identifier", "formula": "Lodicules (perianth) + Caryopsis + Versatile Anther", "note": "Wheat/Rice/Maize scutellum = single shield-shaped cotyledon"}
+    ],
+    "comparison": {
+      "title": "NMC Five Angiosperm Families Cheat Matrix",
+      "headers": ["Family", "Androecium Feature", "Placentation", "Fruit Type", "Example"],
+      "rows": [
+        ["Malvaceae", "Monoadelphous, Monothecous", "Axile", "Capsule / Schizocarp", "China rose, Cotton"],
+        ["Brassicaceae", "Tetradynamous (2 + 4)", "Parietal (Replum)", "Siliqua", "Mustard, Cabbage"],
+        ["Fabaceae", "Diadelphous (9) + 1", "Marginal", "Legume", "Pea, Soyabean"],
+        ["Asteraceae", "Syngenesious anthers", "Basal", "Cypsela", "Sunflower, Marigold"],
+        ["Poaceae", "Versatile anthers, feathery stigma", "Basal", "Caryopsis", "Wheat, Rice, Maize"]
+      ]
+    },
+    "traps": [
+      "Caryopsis fruit has pericarp completely fused with seed coat — unique diagnostic hallmark of Poaceae (Gramineae)!",
+      "Parietal ovary starts 1-chambered but turns 2-chambered due to false septum (Replum) specifically in Mustard/Brassicaceae!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NMC Plant Families NEET",
+        "question": "A flower exhibits epicalyx, monoadelphous stamens forming a stamina column, twisted aestivation, and axile placentation. Identify its family.",
+        "steps": [
+          "Epicalyx + monoadelphous stamina tube + kidney-shaped monothecous anthers are unique diagnostics of Malvaceae (Hibiscus / Cotton)."
+        ],
+        "answer": "Malvaceae",
+        "pitfall": "Diadelphous (9)+1 belongs to Fabaceae; Syngenesious belongs to Asteraceae!"
+      }
+    ]
+  },
+  {
+    "moduleId": "bot_03",
+    "weightageNote": "Weightage: 7-8% in NEET UG (~6 questions across Cell Organelles & Cell Cycle DNA/Chromosome numericals!).",
+    "syllabusAlert": "Syllabus Sync: Prokaryotic Mesosomes, Endomembrane System, Mitochondria/Plastids, Mitosis & Prophase-I 5 Substages 100% active.",
+    "sections": [
+      {
+        "heading": "Cell: Prokaryotes, Biomembranes & Endomembrane Organelles",
+        "summary": "Singer & Nicolson Fluid Mosaic Model (1972) describes quasi-fluid phospholipid bilayer allowing lateral protein diffusion.",
+        "keyPoints": [
+          "Endomembrane System (coordinated functions): ER + Golgi apparatus + Lysosomes + Vacuoles (Mitochondria, Chloroplasts & Peroxisomes are EXCLUDED!).",
+          "Rough ER (ribosomes) -> protein synthesis; Smooth ER -> lipid/steroid hormone synthesis; Golgi cis (forming/convex) -> trans (maturing/concave) packages glycoproteins & glycolipids.",
+          "Mitochondria & Chloroplasts are semi-autonomous with 70S ribosomes + circular dsDNA. Centrioles = 9+0 microtubule triplets; Cilia/Flagella = 9+2 axoneme."
+        ]
+      },
+      {
+        "heading": "Cell Cycle & Meiosis I Prophase-I Substages",
+        "summary": "Track Chromosome number (N vs 2N) separately from DNA content (2C vs 4C) carefully across every checkpoint!",
+        "keyPoints": [
+          "S-phase (Synthesis): DNA DOUBLES (2C -> 4C) and centrioles duplicate in cytoplasm, YET chromosome number (2N) remains UNCHANGED!",
+          "Metaphase: best stage to study chromosome morphology (chromosomes aligned on equatorial plate). Anaphase: centromere splits -> chromatids move to opposite poles.",
+          "Prophase-I Order (L-Z-P-D-D): Leptotene (compaction) -> Zygotene (Synapsis / Synaptonemal complex -> Bivalents) -> Pachytene (Crossing over via RECOMBINASE!) -> Diplotene (Chiasmata X-shapes, oocyte arrest months/years!) -> Diakinesis (Terminalisation of chiasmata)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Chromosome vs DNA Tracking", "formula": "G1: (2N, 2C) -> S/G2: (2N, 4C) -> Meiosis-I: (N, 2C) -> Meiosis-II: (N, C)", "note": "Centromeres split ONLY in Mitotic Anaphase & Meiosis II Anaphase-II (NEVER Anaphase-I!)"},
+      {"concept": "Bivalent & Chromatid Count", "formula": "1 Bivalent = 1 Homologous Pair = 2 Chromosomes = 4 Chromatids", "note": "Human 2n=46 forms 23 bivalents (92 chromatids) in Pachytene!"}
+    ],
+    "comparison": {
+      "title": "Meiosis I Prophase-I Substages Mnemonic (L-Z-P-D-D)",
+      "headers": ["Substage", "Key Molecular Event", "Visible Diagnostic"],
+      "rows": [
+        ["Leptotene", "Chromatin condensation begins", "Bouquet stage"],
+        ["Zygotene", "Homologous pairing (Synapsis)", "Synaptonemal complex & Bivalent/Tetrad"],
+        ["Pachytene", "Crossing over by Recombinase", "Recombination nodules between non-sister chromatids"],
+        ["Diplotene", "Synaptonemal complex dissolves", "X-shaped Chiasmata visible"],
+        ["Diakinesis", "Terminalisation of chiasmata", "Nuclear envelope & nucleolus disappear"]
+      ]
+    },
+    "traps": [
+      "Crossing over happens between NON-SISTER chromatids of homologous chromosomes in PACHYTENE (NOT sister chromatids!).",
+      "Mitosis/G2 keeps chromosome count 2N identical to G1 even though DNA quantity doubles to 4C!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET DNA/Chromosome Count",
+        "question": "If a diploid pollen mother cell has 2n = 24 chromosomes and 20 pg DNA at G1 phase, find chromosome number and DNA after S-phase and after Meiosis-I.",
+        "steps": [
+          "After S-phase (G2): Chromosomes STAY 24 (2n), DNA DOUBLES to 40 pg.",
+          "After Meiosis-I (telophase-I): Homologous chromosomes segregate -> n = 12 chromosomes, DNA = 20 pg per daughter nucleus."
+        ],
+        "answer": "G2: 24 ch, 40 pg | Post Meiosis-I: 12 ch, 20 pg",
+        "pitfall": "DNA drops from 40 -> 20 -> 10 pg across Meiosis I and II!"
+      }
+    ]
+  },
+  {
+    "moduleId": "bot_04",
+    "weightageNote": "Weightage: 7-8% in NEET UG (Photosynthesis C3 vs C4, Cellular Respiration ATP Balance Sheet & Plant Growth Regulators).",
+    "syllabusAlert": "Syllabus Sync: Transport in Plants & Mineral Nutrition DELETED by NMC! Focus 100% on Photosynthesis, Respiration & PGRs (Auxin, GA, Cytokinin, Ethylene, ABA).",
+    "sections": [
+      {
+        "heading": "Photosynthesis: Light Reaction, C3 Calvin & C4 Hatch-Slack",
+        "summary": "Light reactions on thylakoid membranes split water (Mn^2+, Cl^-) on PS-II lumen side and generate ATP + NADPH driving stroma CO2 fixation.",
+        "keyPoints": [
+          "PS-II (P680) drives non-cyclic Z-scheme (ATP + NADPH + O2); PS-I (P700) alone drives cyclic photophosphorylation (ONLY ATP, NO NADPH/O2).",
+          "C3 Calvin Cycle (all plants, RuBisCO): fixing 1 CO2 needs 3 ATP + 2 NADPH; 1 Glucose (6 CO2) costs 18 ATP + 12 NADPH. Photorespiration (C2) wastes 25% fixed C in Chloroplast-Peroxisome-Mitochondria!",
+          "C4 Kranz Anatomy (Maize, Sugarcane, Sorghum): Mesophyll uses PEPcase (ZERO oxygenase waste!) -> 4C OAA -> Malate -> Bundle Sheath RuBisCO -> costs 30 ATP + 12 NADPH per glucose (5 ATP/CO2) with zero photorespiration!"
+        ]
+      },
+      {
+        "heading": "Cellular Respiration: Glycolysis, Krebs & ETS",
+        "summary": "Glucose oxidizes cleanly across Cytosol (EMP Glycolysis) and Mitochondrial Matrix (Krebs Cycle) + Inner Membrane (ETS Complex I-V).",
+        "keyPoints": [
+          "Glycolysis (Universal in anaerobes & aerobes, Cytoplasm): Glucose -> 2 Pyruvate + 2 net ATP + 2 NADH (10 steps; Hexokinase & PFK pacemaker steps!).",
+          "Link + Krebs Cycle (Matrix): Per glucose (2 Acetyl-CoA): 2 GTP (ATP) + 6 NADH + 2 FADH2 + 4 CO2 (plus 2 NADH from Link = total 38 or 36 net ATP aerobic vs only 2 ATP fermentation!).",
+          "Respiratory Quotient RQ: Carbohydrates = 1.0; Fats (Tripalmitin) = 0.7; Proteins = 0.9; Succulents (CAM) = 0; Anaerobic = infinity."
+        ]
+      },
+      {
+        "heading": "Plant Growth Regulators (PGRs)",
+        "summary": "Growth promoters (Auxin, GA, Cytokinin) vs Inhibitors/Stress (ABA, Ethylene).",
+        "keyPoints": [
+          "Auxin (IAA/IBA/2,4-D): Apical dominance, rooting in stem cuttings, 2,4-D kills dicot weeds selectively leaving monocot lawns.",
+          "Gibberellins (GA3): Bolting in rosette cabbage/beet, increases sugarcane stem length (+20 tonnes/acre), malting in brewing.",
+          "Cytokinin (Kinetin/Zeatin): Overcomes apical dominance, delays leaf senescence (Richmond-Lang effect).",
+          "Ethylene (Gaseous): Triple response, fruit ripening, femaleness in cucumber, thinning cotton/cherry. ABA: Stomatal closure stress hormone, seed dormancy (antagonist to GA)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "C3 vs C4 Glucose Cost", "formula": "C3: 18 ATP + 12 NADPH | C4: 30 ATP + 12 NADPH", "note": "C4 pays 2 extra ATP per CO2 to pump/regenerate PEP and avoid photorespiration"},
+      {"concept": "Respiratory Quotient (RQ)", "formula": "RQ = Volume CO2 evolved / Volume O2 consumed", "note": "Carbs = 1.0, Tripalmitin fat = 0.7, Organic acids > 1 (Oxalic = 4.0)"}
+    ],
+    "comparison": {
+      "title": "C3 vs C4 Plants Summary Matrix",
+      "headers": ["Feature", "C3 Plants (Wheat, Rice)", "C4 Plants (Maize, Sugarcane)"],
+      "rows": [
+        ["Primary CO2 Acceptor", "5C RuBP (RuBisCO enzyme)", "3C PEP (PEPcase in Mesophyll)"],
+        ["First Stable Product", "3C 3-PGA", "4C Oxaloacetic Acid (OAA)"],
+        ["Kranz Anatomy & Photorespiration", "Absent / High Photorespiration", "Present / Negligible Photorespiration"],
+        ["Temperature Optimum", "20-25 deg C", "30-40 deg C"]
+      ]
+    },
+    "traps": [
+      "O2 evolution during photosynthesis occurs strictly on the INNER LUMEN side of thylakoid membrane via PS-II Mn-protein complex, NEVER PS-I!",
+      "Complex IV of mitochondrial ETS is Cytochrome c Oxidase containing TWO copper centres (Cu_A, Cu_B) + Cytochromes a & a3 — favorite NEET trap!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET Photosynthesis Calculation",
+        "question": "How many turns of the Calvin cycle and total ATP + NADPH molecules are consumed to synthesize ONE molecule of Sucrose (12 carbons)?",
+        "steps": [
+          "1 Glucose (6C) needs 6 Calvin turns = 18 ATP + 12 NADPH.",
+          "Sucrose is a disaccharide of 12 carbons (12 CO2 fixed) -> requires 12 Calvin turns.",
+          "Total = 36 ATP + 24 NADPH."
+        ],
+        "answer": "12 turns; 36 ATP + 24 NADPH",
+        "pitfall": "Always verify whether question asks per CO2 (3 ATP, 2 NADPH), per Glucose (18, 12), or per Sucrose (36, 24)!"
+      }
+    ]
+  },
+  {
+    "moduleId": "bot_05",
+    "weightageNote": "Weightage: 5-6% in NEET UG (Pollen/Embryo Sac Ploidy, Double Fertilisation & Apomixis).",
+    "syllabusAlert": "Syllabus Sync: Ch 1 (Reproduction in Organisms) DELETED by NMC! Focus 100% on Sexual Reproduction in Flowering Plants.",
+    "sections": [
+      {
+        "heading": "Microsporogenesis, Megasporogenesis & Embryo Sac (7-Celled, 8-Nucleate)",
+        "summary": "Anther wall layers (Epidermis -> Endothecium -> Middle layers -> Tapetum [polyploid, dense cytoplasm nourishing pollen!]).",
+        "keyPoints": [
+          "Sporopollenin forms resistant exine EXCEPT at germ pores. 60% angiosperms shed pollen at 2-celled stage (vegetative + generative); 40% at 3-celled stage.",
+          "Monosporic Polygonum embryo sac: 1 functional megaspore undergoes 3 sequential free-nuclear mitoses -> 7 cells, 8 nuclei (3 antipodals + 2 synergids with filiform apparatus + 1 egg + 1 large central cell with 2 polar nuclei!)."
+        ]
+      },
+      {
+        "heading": "Pollination, Outbreeding Devices, Double Fertilisation & Seed",
+        "summary": "Outbreeding devices (Dichogamy, Herkogamy, Self-Incompatibility, Dioecy) prevent selfing inbreeding depression.",
+        "keyPoints": [
+          "Double Fertilisation (unique to Angiosperms): Syngamy (Egg n + Male n -> Zygote 2n) + Triple Fusion (2 Polar Nuclei n+n + Male n -> Primary Endosperm Nucleus PEN 3n).",
+          "Albuminous/Endospermic seeds (Wheat, Maize, Castor, Coconut) vs Exalbuminous/Non-endospermic (Pea, Groundnut, Beans).",
+          "Apomixis mimics sexual reproduction WITHOUT fertilisation (Asteraceae, grasses); Polyembryony (Citrus, Mango)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Meiosis Count for N Grains/Seeds", "formula": "Meiosis for N pollen = N/4 ; N eggs = N ; N seeds = N + N/4 = 5N/4", "note": "100 wheat grains require 100 + 25 = 125 meiotic divisions!"},
+      {"concept": "Inter-Ploidy Endosperm Rule", "formula": "Endosperm = 2 x Female Gamete (n_F) + 1 x Male Gamete (n_M)", "note": "4n female x 2n male -> female polar = 2n+2n=4n, male=1n => 5n endosperm!"}
+    ],
+    "comparison": {
+      "title": "Seed & Fruit Special Structures",
+      "headers": ["Structure", "Ploidy", "Origin / Example"],
+      "rows": [
+        ["Perisperm", "2n (Diploid)", "Persistent nucellus (Black pepper, Beet)"],
+        ["Endosperm (Angiosperms)", "3n (Triploid)", "Triple fusion (PEN); Coconut water (free-nuclear) & white kernel (cellular)"],
+        ["Coleoptile / Coleorhiza", "2n (Diploid)", "Monocot grass shoot / root sheaths"],
+        ["False Fruits", "2n", "Thalamus forms fleshy part (Apple, Strawberry, Cashew)"]
+      ]
+    },
+    "traps": [
+      "Castor has albuminous (endospermic) dicot seed, while Orchid is non-endospermic monocot — NEVER treat dicot = non-endospermic as 100% rule!",
+      "Papaya is DIOECIOUS (prevents BOTH autogamy AND geitonogamy); Castor/Maize are MONOECIOUS (prevent autogamy but NOT geitonogamy!)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET Inter-Ploidy Cross",
+        "question": "If a tetraploid (4n) female flowering plant is crossed with a diploid (2n) male plant, determine ploidy of Zygote and Endosperm.",
+        "steps": [
+          "Female gamete (egg & each polar nucleus) = 4n / 2 = 2n.",
+          "Male gamete = 2n / 2 = n.",
+          "Zygote = 2n + n = 3n; Endosperm = (2n + 2n) + n = 5n."
+        ],
+        "answer": "Zygote = 3n, Endosperm = 5n",
+        "pitfall": "Never assume endosperm is ALWAYS 3n — compute (2 x egg ploidy + sperm ploidy)!"
+      }
+    ]
+  },
+  {
+    "moduleId": "bot_06",
+    "weightageNote": "Weightage: 10-12% in NEET UG (Single BIGGEST NEET Biology Weightage Unit: Mendelian Genetics, Molecular Inheritance & Lac Operon!).",
+    "syllabusAlert": "Syllabus Sync: Zero deletions — Mendelian & Non-Mendelian Crosses, Linkage, Pedigree, Chromosomal Disorders, DNA Replication, Transcription, Genetic Code, Lac Operon & DNA Fingerprinting 100% active!",
+    "sections": [
+      {
+        "heading": "Mendelian Genetics, Linkage Maps & Chromosomal Disorders",
+        "summary": "Exceptions to Mendel: Incomplete Dominance (Snapdragon 1:2:1), Co-dominance (ABO blood I^A I^B), Pleiotropy (PKU single gene -> multiple defects), Polygenic (Skin colour, Kernel).",
+        "keyPoints": [
+          "Drosophila linkage (T.H. Morgan): tight yellow-white (1.3% recombination) vs loose white-miniature wing (37.2%); 1% recombination = 1 map unit (cM).",
+          "Sex Determination: XX-XY (Human, Drosophila male heterogametic), XX-XO (Grasshopper), ZZ-ZW (Birds female heterogametic!), Haplodiploidy (Honeybee).",
+          "Mendelian Disorders: Haemophilia, Colour blindness (X-linked recessive criscross!), Sickle-cell anaemia (autosomal recessive GAG -> GUG, Glu -> Val at 6th beta-globin), Phenylketonuria, Thalassemia. Chromosomal: Down (Trisomy 21), Klinefelter (47 XXY), Turner (45 X0)."
+        ]
+      },
+      {
+        "heading": "Molecular Basis: DNA Replication, Transcription & Lac Operon",
+        "summary": "Central Dogma (Crick): DNA --(Replication)--> DNA --(Transcription)--> mRNA --(Translation)--> Protein.",
+        "keyPoints": [
+          "Chargaff Law (dsDNA ONLY): [A] = [T], [G] = [C]; %G = %C => %A + %T = 100 - (%G + %C). Length = Base pairs x 0.34 nm (~2.2 m in human 6.6 x 10^9 bp).",
+          "Semi-conservative Replication (Meselson & Stahl 15N): DNA polymerase ALWAYS adds dNTPs 5' -> 3' (Leading continuous; Lagging discontinuous Okazaki fragments joined by DNA Ligase).",
+          "Transcription uses RNA Pol I (rRNA 28S/18S/5.8S), II (hnRNA -> mRNA), III (tRNA, 5S rRNA, snRNA). Splicing removes INTRONS keeping EXONS! Capping (mGppp 5'), Tailing (poly-A 3').",
+          "Genetic Code: 64 codons (61 sense + 3 stop UAA/UAG/UGA); AUG = Start + Methionine; Universal & Degenerate. Lac Operon (Jacob-Monod): z(beta-gal), y(permease), a(transacetylase) — NEGATIVE regulation by repressor unless ALLOLACTOSE inducer binds!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Polyhybrid Gamete Count", "formula": "Gametes = 2^n | Phenotypes = 2^n | Genotypes = 3^n", "note": "n = number of heterozygous loci (AaBbCc has n=3 -> 8 gametes)"},
+      {"concept": "Pedigree Quick Test", "formula": "Skipped gen = Recessive | Father->Daughter 100% = X-Linked Dom | Mother->All Sons = X-Linked Rec", "note": "Unaffected parents having affected daughter -> MUST be Autosomal Recessive!"}
+    ],
+    "comparison": {
+      "title": "Human Chromosomal Disorders Matrix",
+      "headers": ["Disorder", "Karyotype", "Key Clinical Symptoms"],
+      "rows": [
+        ["Down's Syndrome", "47 (Trisomy 21)", "Short stature, furrowed tongue, palm crease, congenital heart delay"],
+        ["Klinefelter's Syndrome", "47, XXY", "Tall sterile male, Gynaecomastia (feminine breast development)"],
+        ["Turner's Syndrome", "45, X0 (Monosomy)", "Sterile female, rudimentary ovaries, lack secondary sexual characters"]
+      ]
+    },
+    "traps": [
+      "Remember in Lac Operon, the actual physiological inducer binding the lac repressor is ALLOLACTOSE (or lactose); glucose drops cAMP turning off high transcription!",
+      "DNA-dependent RNA polymerase transcribes ONLY one template strand (3' -> 5') creating mRNA identical to CODING strand (5' -> 3') EXCEPT U replaces T!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET Chargaff Calculation",
+        "question": "If a double-stranded DNA molecule contains 18% Cytosine, find the percentage of Adenine.",
+        "steps": [
+          "By Chargaff's equivalence: [G] = [C] = 18% => G + C = 36%.",
+          "Remaining A + T = 100% - 36% = 64%.",
+          "Since [A] = [T]: %A = 64% / 2 = 32%."
+        ],
+        "answer": "32%",
+        "pitfall": "Chargaff base pairing applies ONLY to double-stranded DNA (fails for ssDNA or ssRNA phages like Phi X 174!)."
+      }
+    ]
+  },
+  {
+    "moduleId": "bot_07",
+    "weightageNote": "Weightage: 7-8% in NEET UG (Population Growth Logistic Curve, Ecological Pyramids & Biodiversity Hotspots).",
+    "syllabusAlert": "Syllabus Sync: Environmental Issues (Air/Water Pollution/Eutrophication) DELETED by NMC! Focus 100% on Organisms & Populations, Ecosystem & Biodiversity Conservation.",
+    "sections": [
+      {
+        "heading": "Organisms & Populations: Curves & Interactions",
+        "summary": "Logistic Verhulst-Pearl growth includes environmental resistance carrying capacity K.",
+        "keyPoints": [
+          "Exponential growth dN/dt = rN (J-shaped); Logistic growth dN/dt = rN (K - N)/K (Sigmoid S-shaped; max growth rate at N = K/2).",
+          "Population Interactions: Mutualism (+/+ Fig-Wasp, Lichen, Mycorrhiza, Orchid-Ophrys sexual deceit!); Commensalism (+/0 Barnacles on Whale, Orchid epiphyte on Mango, Cattle Egret); Parasitism (+/- Cuscuta, Liver fluke); Amensalism (-/0 Penicillium-Bacteria)."
+        ]
+      },
+      {
+        "heading": "Ecosystem Energy & Biodiversity Conservation",
+        "summary": "Energy flow is strictly UNIDIRECTIONAL following Lindeman's 10% Law (only ~1-5% PAR captured by plants!).",
+        "keyPoints": [
+          "NPP = GPP - R (available biomass to herbivores). Decomposition steps: Fragmentation -> Leaching -> Catabolism -> Humification -> Mineralization.",
+          "Pyramids: Energy is ALWAYS UPRIGHT; Sea Biomass pyramid is INVERTED (phytoplankton < zooplankton/fishes); Tree Number pyramid is inverted/spindle.",
+          "Species-Area Relationship (Alexander von Humboldt): log S = log C + Z log A (typical Z = 0.1-0.2; entire continents Z = 0.6-1.2!). In-situ (National Parks, 34 Hotspots [3 in India: Western Ghats-Sri Lanka, Indo-Burma, Himalaya]) vs Ex-situ (Seed banks, Cryopreservation -196 deg C)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Net Primary Productivity", "formula": "NPP = GPP - R", "note": "Oceans cover 70% surface yet yield only 55 billion tons / 170 total NPP"},
+      {"concept": "Species-Area Equation", "formula": "S = C A^Z  =>  log S = log C + Z log A", "note": "Frugivorous birds/mammals in tropical forests have Z ~= 1.15"}
+    ],
+    "comparison": {
+      "title": "Population Interactions Sign Matrix",
+      "headers": ["Interaction", "Species A", "Species B", "Classic NCERT Example"],
+      "rows": [
+        ["Mutualism", "+", "+", "Mycorrhiza (Fungi + Roots), Lichen, Fig-Wasp"],
+        ["Competition", "-", "-", "Abingdon tortoise vs Goats (Gause exclusion)"],
+        ["Commensalism", "+", "0", "Clownfish & Sea Anemone, Barnacles & Whale"],
+        ["Amensalism", "-", "0", "Penicillium secreting penicillin vs bacteria"]
+      ]
+    },
+    "traps": [
+      "Parasites (brood parasitism: Cuckoo/Koel laying eggs in Crow's nest) count as Parasitism (+/-), NOT Commensalism!",
+      "Rivet Popper Hypothesis (Paul Ehrlich): Airplane = Ecosystem, Rivets = Species, Wing rivets = Keystones!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET 10% Law",
+        "question": "If producers synthesize 20,000 J of GPP? No, if 20,000 J energy is trapped by producers (NPP), how much energy reaches a Tertiary Consumer (4th trophic level)?",
+        "steps": [
+          "T1 (Producer) = 20,000 J -> T2 (Primary Consumer, 10%) = 2,000 J.",
+          "T3 (Secondary Consumer) = 200 J -> T4 (Tertiary Consumer) = 20 J."
+        ],
+        "answer": "20 J",
+        "pitfall": "Also remember: plants capture ONLY 2-10% of PAR (not 100% of incident sunlight — PAR itself is <50% of solar radiation!)."
+      }
+    ]
+  },
+  {
+    "moduleId": "zoo_01",
+    "weightageNote": "Weightage: 6-8% in NEET UG (VERY HIGH ALERT: NMC RETAINED BOTH Frog Rana tigrina AND Cockroach Periplaneta americana!).",
+    "syllabusAlert": "Syllabus Sync: Earthworm excluded from NEET UG; Cockroach & Frog Morphology/Anatomy + Phyla Animal Kingdom 100% active!",
+    "sections": [
+      {
+        "heading": "Animal Kingdom: Phyla Coelom, Symmetry & Key Diagnostics",
+        "summary": "Distinguish Diploblastic vs Triploblastic, Acoelomate vs Pseudocoelomate (Aschelminthes ONLY!) vs Eucoelomate cleanly.",
+        "keyPoints": [
+          "Porifera: Water CANAL system (Ostia -> Spongocoel -> Osculum) lined by Choanocytes (collar cells); Coelenterata (Cnidaria): Cnidoblasts, Hypostome, Metagenesis in Obelia (Polyp -> Medusa).",
+          "Ctenophora: Exclusively marine, 8 external ciliated comb plates, Bioluminescence (Pleurobrachia). Platyhelminthes: Flame cells (osmoregulation).",
+          "Annelida: Metameric segmentation, Nephridia; Arthropoda: Largest phylum, Chitinous exoskeleton, Malpighian tubules; Mollusca: Mantle + Radula rasping organ; Echinodermata: Water VASCULAR system (tube feet)!",
+          "Cyclostomata: jawless sucking mouth, 6-15 gill pairs (Petromyzon); Chondrichthyes (cartilaginous, placoid scales, NO operculum, NO air bladder -> must swim continuously!) vs Osteichthyes (operculum + swim bladder!)."
+        ]
+      },
+      {
+        "heading": "Cockroach (Periplaneta) & Frog (Rana tigrina) Anatomy",
+        "summary": "Both organisms appear directly in NMC syllabus Section Zoology — expect diagram/system-function MCQs!",
+        "keyPoints": [
+          "Cockroach: Chitinous sclerites joined by arthrodial membrane; 10-chambered tubular heart + open blood (haemocoel); Digestive tract Foregut (crop + proventriculus/gizzard with 6 chitinous teeth!) -> Midgut (6-8 hepatic caecae) -> Hindgut (100-150 yellow Malpighian tubules at midgut-hindgut junction!); Mosaic vision (2000 ommatidia).",
+          "Frog (Rana tigrina): Poikilothermic aestivation/hibernation; Moist vascular skin (cutaneous respiration in water/hibernation) + buccal + lungs; 3-chambered heart (2 atria + 1 ventricle) + Sinus venosus + Conus arteriosus!",
+          "Frog Sexual Dimorphism: Male ONLY possesses VOCAL SACS + COPULATORY PAD on first digit of forelimb; Vasa efferentia (10-12) enter Bidder's canal inside kidneys (ureter acts as urinogenital duct in MALE, separate in female!)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Canal vs Vascular Trap", "formula": "Water Canal = Porifera | Water Vascular = Echinodermata", "note": "Do NOT confuse these two classic NEET look-alike terms!"},
+      {"concept": "Frog Heart & Renal Portal", "formula": "3-Chambered + Nucleated RBCs + Hepatic & Renal Portal Systems", "note": "RBCs in Frog are OVAL, BICONVEX, NUCLEATED (unlike mammalian enucleated!)"}
+    ],
+    "comparison": {
+      "title": "Cockroach vs Frog Organ Systems Quick Comparison",
+      "headers": ["System", "Cockroach (Periplaneta)", "Frog (Rana tigrina)"],
+      "rows": [
+        ["Respiration", "Tracheal network via 10 pairs Spiracles", "Cutaneous, Buccopharyngeal & Pulmonary"],
+        ["Excretion", "Uricotelic (Malpighian tubules, fat body)", "Ureotelic (Mesonephric kidneys)"],
+        ["Heart / Blood", "13-chambered? (13 pairs alary? Wait: 13 chambers dorsal!) / White haemolymph", "3-chambered + Nucleated Hb RBCs"],
+        ["Cranial Nerves / Vision", "Mosaic vision (2000 ommatidia)", "10 pairs cranial nerves; nictitating membrane"]
+      ]
+    },
+    "traps": [
+      "Remember Cockroach has 6-8 hepatic caecae at FOREGUT-MIDGUT junction and 100-150 Malpighian tubules at MIDGUT-HINDGUT junction!",
+      "In Male Frog ONLY, ureters act as URINOGENITAL DUCTS; in female frogs, ureters and oviducts open SEPARATELY into the cloaca!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NMC Retained Frog Question",
+        "question": "Which anatomical features exclusively distinguish a Male Frog (Rana tigrina) from a Female Frog?",
+        "steps": [
+          "Recall NCERT Structural Organisation in Animals (Frog section):",
+          "Male frogs uniquely exhibit sound-producing VOCAL SACS and a COPULATORY PAD on the first digit of the forelimbs."
+        ],
+        "answer": "Sound-producing vocal sacs + Copulatory pad on 1st forelimb digit",
+        "pitfall": "Copulatory pad sits on the FORELIMB first digit, NOT hindlimb!"
+      }
+    ]
+  },
+  {
+    "moduleId": "zoo_02",
+    "weightageNote": "Weightage: 4-5% in NEET UG (Biomolecules, Zwitterions, Secondary Metabolites & Competitive Enzyme Inhibition).",
+    "syllabusAlert": "Syllabus Sync: Amino acids, Nucleotides, Secondary Metabolites Table 9.3, Protein Structure & Enzyme Michaelis Kinetics 100% active.",
+    "sections": [
+      {
+        "heading": "Biomolecules: Proteins, Lipids & Secondary Metabolites",
+        "summary": "Acid-insoluble pool contains macromolecules (>1000 Da: Proteins, Nucleic Acids, Polysaccharides) PLUS Lipids (<800 Da membrane vesicles!).",
+        "keyPoints": [
+          "Amino acids: Acidic (Glutamic, Aspartic), Basic (Lysine, Arginine), Neutral (Valine), Aromatic (Tyrosine, Tryptophan, Phenylalanine); Cysteine contains Sulphur; Glycine has NO chiral carbon.",
+          "Protein structures: Primary (peptide sequence), Secondary (alpha-helix, beta-pleated H-bonds), Tertiary (disulphide/hydrophobic 3D fold — mandatory for biological enzyme activity!), Quaternary (Haemoglobin 2 alpha + 2 beta).",
+          "Secondary Metabolites: Alkaloids (Morphine, Codeine), Terpenoids (Monoterpenes), Toxins (Abrin, Ricin), Lectins (Concanavalin A), Drugs (Vinblastin, Curcumin)."
+        ]
+      },
+      {
+        "heading": "Enzyme Kinetics & Competitive Inhibition",
+        "summary": "Enzymes lower Activation Energy barrier WITHOUT altering Delta G equilibrium.",
+        "keyPoints": [
+          "Michaelis constant K_m = [Substrate] at which reaction reaches V_max / 2 (lower K_m = higher enzyme affinity!).",
+          "Competitive Inhibition (e.g. Malonate inhibiting Succinate Dehydrogenase): Inhibitor mimics substrate & binds active site -> V_max stays UNCHANGED (overcome by flooding substrate!), apparent K_m INCREASES!",
+          "Ribozyme = catalytic RNA enzyme (non-protein!). Prosthetic group (Haem covalently/tightly bound) vs Coenzyme (NAD/NADP from Niacin vitamin)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Competitive Inhibition Effect", "formula": "V_max = Unchanged  |  Apparent K_m = Increases", "note": "Classic NCERT graph: curve shifts right yet approaches identical V_max plateau!"},
+      {"concept": "Most Abundant Proteins", "formula": "Animal World: Collagen | Whole Biosphere: RuBisCO", "note": "Frequently tested 1-liner from NCERT Table"}
+    ],
+    "comparison": {
+      "title": "NCERT Biomolecule Polymers & Bonds",
+      "headers": ["Macromolecule", "Monomer Unit", "Linking Covalent Bond"],
+      "rows": [
+        ["Polypeptide / Protein", "Amino acids", "Peptide Bond (-CO-NH-)"],
+        ["Polysaccharide (Starch/Cellulose)", "Monosaccharides (Glucose)", "Glycosidic Bond"],
+        ["DNA / RNA Nucleic Acid", "Nucleotides", "3'-5' Phosphodiester Bond"]
+      ]
+    },
+    "traps": [
+      "Lipids are STRICTLY NOT macromolecules (<800 Da molecular weight), yet they appear in the acid-insoluble fraction because cell membranes shatter into water-insoluble vesicles!",
+      "Inulin is a polymer of FRUCTOSE (unlike Insulin which is a peptide hormone!); Chitin = polymer of N-acetylglucosamine (NAG)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET Enzyme Inhibition",
+        "question": "Malonate closely resembles succinate structurally and inhibits succinate dehydrogenase. How do K_m and V_max behave if excess succinate is added?",
+        "steps": [
+          "Competitive inhibition keeps V_max unchanged because excess succinate outcompetes malonate.",
+          "Higher substrate concentration is needed to achieve V_max/2, so K_m increases."
+        ],
+        "answer": "K_m increases, V_max remains unchanged",
+        "pitfall": "In non-competitive inhibition, V_max drops while K_m stays unchanged."
+      }
+    ]
+  },
+  {
+    "moduleId": "zoo_03",
+    "weightageNote": "Weightage: 5-6% in NEET UG (Spirometry Lung Volumes, Haemoglobin Dissociation Curve, ABO/Rh, ECG & Cardiac Cycle).",
+    "syllabusAlert": "Syllabus Sync: Digestion & Absorption DELETED by NMC! Focus 100% on Breathing & Exchange of Gases + Body Fluids & Circulation.",
+    "sections": [
+      {
+        "heading": "Breathing, Lung Capacities & Oxygen Dissociation Curve",
+        "summary": "Inspiration is active (diaphragm flattens + external intercostals lift ribs, lowering intrapulmonary pressure below atmospheric); normal expiration is passive.",
+        "keyPoints": [
+          "Lung Volumes (mL): TV = 500, IRV = 2500-3000, ERV = 1000-1100, RV = 1100-1200 (cannot be measured directly by simple spirometer!).",
+          "Capacities: IC = TV+IRV; EC = TV+ERV; FRC = ERV+RV; VC = ERV+TV+IRV; TLC = VC+RV.",
+          "Sigmoid O2-Hb Curve: Right shift (Bohr Effect -> O2 dissociation favored in tissues!) caused by LOW pO2, HIGH pCO2, HIGH H+ (low pH), HIGH Temp! CO2 moves 70% as HCO3^- (chloride shift), 20-25% carbaminohaemoglobin, 7% dissolved."
+        ]
+      },
+      {
+        "heading": "Blood Clotting, Cardiac Cycle & ECG Waves",
+        "summary": "Human heart (myogenic, SA node pacemaker ~70-75/min) completes one Cardiac Cycle in 0.8 s (Stroke Volume ~70 mL -> Cardiac Output ~5 L/min).",
+        "keyPoints": [
+          "Sounds: Lub (1st, ventricular systole start -> AV tricuspid/bicuspid closure); Dub (2nd, ventricular diastole start -> semilunar valves closure).",
+          "ECG P-QRS-T: P wave = Atrial depolarization (systole follows); QRS complex = Ventricular depolarization (counts heart rate!); T wave = Ventricular repolarization.",
+          "Blood Clotting: Prothrombin --(Thrombokinase, Ca^2+)--> Thrombin; Fibrinogen -> insoluble Fibrin meshwork."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Vital Capacity", "formula": "VC = IRV + TV + ERV = TLC - RV", "note": "Simple spirometer CANNOT measure Residual Volume RV, FRC, or TLC!"},
+      {"concept": "Cardiac Output", "formula": "CO = Stroke Volume x Heart Rate (~70 mL x 72/min = 5040 mL)", "note": "Athletes boost CO cleanly by raising stroke volume"}
+    ],
+    "comparison": {
+      "title": "Partial Pressures (mm Hg) Across Respiratory Pathway",
+      "headers": ["Gas", "Atmospheric Air", "Alveoli", "Deoxygenated Blood", "Oxygenated Blood", "Tissues"],
+      "rows": [
+        ["pO2 (mm Hg)", "159", "104", "40", "95", "40"],
+        ["pCO2 (mm Hg)", "0.3", "40", "45", "40", "45"]
+      ]
+    },
+    "traps": [
+      "Erythroblastosis foetalis occurs when Rh-NEGATIVE mother carries Rh-POSITIVE foetus in her SECOND pregnancy (prevented by anti-Rh antibodies RhoGAM immediately after 1st delivery)!",
+      "Right shift of O2-Hb curve means LOWER affinity (UNLOADING at tissues); Fetal Hb curve lies to the LEFT of adult Hb!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET Spirometry Capacity",
+        "question": "Calculate Functional Residual Capacity (FRC) and Vital Capacity (VC) if TV = 500 mL, IRV = 2800 mL, ERV = 1000 mL, RV = 1200 mL.",
+        "steps": [
+          "FRC = ERV + RV = 1000 + 1200 = 2200 mL.",
+          "VC = IRV + TV + ERV = 2800 + 500 + 1000 = 4300 mL."
+        ],
+        "answer": "FRC = 2200 mL, VC = 4300 mL",
+        "pitfall": "Expiratory Capacity (EC = TV + ERV = 1500 mL) != Functional Residual Capacity (FRC = ERV + RV)!"
+      }
+    ]
+  },
+  {
+    "moduleId": "zoo_04",
+    "weightageNote": "Weightage: 7-9% in NEET UG (Nephron Counter-Current, Sarcomere Actin-Myosin, Action Potential & Endocrine Hormones).",
+    "syllabusAlert": "Syllabus Sync: Reflex arc & Sense Organs (Eye/Ear) removed/trimmed cleanly from revised NCERT — Excretion, Muscle Contraction, Nerve Impulse, Brain & Complete Endocrine Hormones 100% core!",
+    "sections": [
+      {
+        "heading": "Excretion (Counter-Current & RAAS) + Locomotion (Sarcomere)",
+        "summary": "Juxtamedullary nephrons + vasa recta build a 300 -> 1200 mOsmol/L medullary osmolarity gradient via NaCl & Urea counter-current exchange.",
+        "keyPoints": [
+          "PCT reabsorbs 70-80% electrolytes/water + 100% glucose/amino acids (cuboidal brush-border epithelium); DCT conditional reabsorption regulated by Aldosterone & ADH.",
+          "RAAS: Low GFR -> JG cells release Renin -> Angiotensinogen -> Ang I -> Ang II (vasoconstrictor + stimulates Adrenal Cortex Aldosterone!). ANF from heart atria acts OPPOSITE as vasodilator check!",
+          "Sarcomere (Z-line to Z-line): During contraction, H-zone & I-band SHORTEN/disappear while A-band stays CONSTANT length! Ca^2+ binds Troponin TpC exposing myosin-binding sites on actin; ATP hydrolysis resets myosin head."
+        ]
+      },
+      {
+        "heading": "Neural Conduction & Endocrine Disorders",
+        "summary": "Resting neuron maintains -70 mV via 3 Na^+ out / 2 K^+ in ATPase pump; action potential depolarizes via rapid Na^+ influx.",
+        "keyPoints": [
+          "Repolarization restores negative interior via voltage-gated K^+ efflux. Chemical synapse transfers signal across cleft via Ca^2+-triggered Acetylcholine vesicle fusion.",
+          "Anterior Pituitary (GH, PRL, TSH, ACTH, LH, FSH) vs Posterior Pituitary stores Hypothalamic Oxytocin & Vasopressin (ADH).",
+          "Hormone Mechanisms: Peptide/Protein (Insulin, FSH, Glucagon) bind membrane receptors generating 2nd messengers (cAMP, IP3, Ca^2+); Steroid/Thyroid (Cortisol, Testosterone, T4) cross membrane & bind intracellular nuclear receptors altering DNA transcription!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Nephron Filtration Rate", "formula": "GFR = 125 mL / min = 180 Litres / day", "note": "99% filtrate reabsorbed -> ~1.5 L urine excreted daily"},
+      {"concept": "Human Rib & Vertebra Count", "formula": "12 Pairs Ribs: 1-7 True | 8-10 False (vertebrochondral) | 11-12 Floating", "note": "Axial = 80 bones + Appendicular = 126 = 206 total!"}
+    ],
+    "comparison": {
+      "title": "Critical Endocrine Disorders & Causes",
+      "headers": ["Disorder", "Hormone Defect", "Mechanism"],
+      "rows": [
+        ["Diabetes Insipidus", "ADH (Vasopressin) deficiency", "Inability of kidneys to conserve water -> dilute polyuria (NO glucose in urine!)"],
+        ["Diabetes Mellitus", "Insulin deficiency / resistance", "Hyperglycemia, glycosuria, ketone bodies"],
+        ["Exophthalmic Goitre (Graves)", "Hyperthyroidism (Excess T3/T4)", "Enlarged thyroid, protruding eyeballs, elevated BMR"],
+        ["Addison's Disease", "Adrenal Cortex underproduction", "Low cortisol/aldosterone -> fatigue, hypoglycemia, altered carbs"]
+      ]
+    },
+    "traps": [
+      "A-band length NEVER shortens during skeletal muscle contraction — ONLY I-band and H-zone shorten as thin filaments slide inward!",
+      "ANF (Atrial Natriuretic Factor) is the ONLY major vasodilating peptide checking/opposing RAAS blood pressure rise!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET Hormone Receptor",
+        "question": "Which group of hormones acts directly on nuclear genome transcription via intracellular receptors WITHOUT generating cAMP second messengers?",
+        "steps": [
+          "Lipid-soluble steroid hormones (Cortisol, Testosterone, Estradiol, Progesterone) and iodothyronines (T3/T4) diffuse through lipid bilayer.",
+          "Water-soluble peptide hormones (FSH, Insulin, Epinephrine) remain outside and require cAMP/IP3/Ca^2+."
+        ],
+        "answer": "Steroid hormones (Cortisol, Estrogen, Testosterone) & Thyroid hormones (T3/T4)",
+        "pitfall": "Remember Epinephrine (catecholamine) and Insulin/FSH are membrane-bound, NOT nuclear!"
+      }
+    ]
+  },
+  {
+    "moduleId": "zoo_05",
+    "weightageNote": "Weightage: 7-9% in NEET UG (Gametogenesis, Menstrual Hormone Peaks, Contraceptives/ART & Hardy-Weinberg Evolution).",
+    "syllabusAlert": "Syllabus Sync: Human Reproduction, Reproductive Health & Evolution 100% active without deletions.",
+    "sections": [
+      {
+        "heading": "Gametogenesis, Menstrual Cycle & Contraceptives (ART)",
+        "summary": "Sertoli cells nourish sperms & secrete Inhibin/ABP; Leydig cells secrete Androgens (Testosterone) under LH.",
+        "keyPoints": [
+          "Spermatogenesis: 1 primary spermatocyte (2n) -> 2 secondary (n) -> 4 spermatids (n) -> 4 sperms. Oogenesis: 1 primary oocyte (2n, arrested Dictyate/Diplotene!) -> 1 functional ovum + polar bodies.",
+          "Menstrual Day 14 OVULATION triggered strictly by sharp mid-cycle LH SURGE! Luteal phase (~14 days fixed): Corpus Luteum secretes Progesterone maintaining endometrium.",
+          "IUDs: Non-medicated (Lippes loop), Cu-releasing (CuT, Cu7, Multiload 375 -> suppress sperm motility!), Hormone-releasing (Progestasert, LNG-20 -> hostile cervix). ART: ZIFT (<= 8 blastomeres -> fallopian tube), IUT (> 8 -> uterus), GIFT (in-vivo)."
+        ]
+      },
+      {
+        "heading": "Evolution: Homology, Adaptive Radiation & Hardy-Weinberg",
+        "summary": "Homologous = divergent evolution (same ancestor/structure: Forelimbs of whale/bat/cheetah/human; Bougainvillea thorn & Cucurbita tendril); Analogous = convergent (Wings butterfly & bird; Potato stem & Sweet potato root!).",
+        "keyPoints": [
+          "Stanley Miller (1953) spark chamber: CH4 + H2 + NH3 (2:1:2) + water vapour at 800 deg C yielded amino acids (Alanine, Glycine, Aspartic acid).",
+          "Darwin's Finches & Australian Marsupials show Adaptive Radiation (convergent marsupial wolf vs placental wolf!).",
+          "Hardy-Weinberg Equilibrium: p + q = 1 and p^2 + 2pq + q^2 = 1. Five factors disturb equilibrium: Gene migration/flow, Genetic drift (Founder effect!), Mutation, Recombination, Natural Selection (Stabilizing, Directional, Disruptive)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Hardy-Weinberg Genotype Frequencies", "formula": "p^2 (AA) + 2pq (Aa) + q^2 (aa) = 1", "note": "Always find q = sqrt(q^2 recessive phenotype frequency) FIRST!"},
+      {"concept": "Human Brain Capacities", "formula": "Homo habilis (650-800cc) -> H. erectus (900cc) -> Neanderthal (1400cc)", "note": "Homo habilis = first toolmaker; Neanderthal buried dead & used hides"}
+    ],
+    "comparison": {
+      "title": "Gametogenesis & ART Reference",
+      "headers": ["Procedure / Stage", "Cell / Embryo Transferred", "Destination"],
+      "rows": [
+        ["ZIFT", "Zygote or up to 8-blastomere embryo", "Fallopian Tube"],
+        ["IUT", "Embryo with MORE than 8 blastomeres", "Uterus"],
+        ["GIFT", "Ovum from donor into recipient unable to produce ovum", "Fallopian Tube (in-vivo fertilisation!)"],
+        ["ICSI", "Single sperm directly injected", "Cytoplasm of Ovum in vitro"]
+      ]
+    },
+    "traps": [
+      "Secondary oocyte finishes Meiosis-II ONLY at the exact moment of sperm entry before syngamy!",
+      "Sweet potato (root modification) vs Potato (stem tuber) are ANALOGOUS (convergent evolution); Bougainvillea thorns vs Cucurbita tendrils are HOMOLOGOUS!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Hardy-Weinberg Calculation",
+        "question": "In a randomly mating population of 1,000 individuals, 90 individuals express an autosomal recessive trait (aa). Find the count of heterozygous carriers (Aa).",
+        "steps": [
+          "q^2 = 90 / 1000 = 0.09 => q = sqrt(0.09) = 0.3.",
+          "p = 1 - q = 0.7.",
+          "Carrier frequency 2pq = 2 x 0.7 x 0.3 = 0.42 => count = 0.42 x 1000 = 420 carriers."
+        ],
+        "answer": "420 heterozygous carriers",
+        "pitfall": "Do NOT skip taking sqrt(q^2)!"
+      }
+    ]
+  },
+  {
+    "moduleId": "zoo_06",
+    "weightageNote": "Weightage: 9-11% in NEET UG (Human Diseases, Microbes & High-Yield Biotechnology pBR322 / PCR / Bt Cotton / RNAi!).",
+    "syllabusAlert": "Syllabus Sync: Strategies for Food Enhancement (Animal Husbandry/Plant Breeding) DELETED by NMC! Human Health, Microbes & Both Biotechnology Chapters 100% active!",
+    "sections": [
+      {
+        "heading": "Human Health, Immunity & Industrial Microbes",
+        "summary": "Innate barriers (Skin, Acid/Lysozyme, NK cells, Interferons) vs Acquired B/T-lymphocyte specificity.",
+        "keyPoints": [
+          "Antibodies (H2L2): IgG (crosses placenta!), IgA (colostrum mucosal immunity), IgE (allergy histamine/mast cells!), IgM (pentamer first responder).",
+          "Active Immunity (host makes antibodies, slow, memory: vaccines) vs Passive (ready-made: Colostrum IgA, ATS tetanus serum). ELISA detects HIV; Widal confirms Typhoid (Salmonella typhi).",
+          "Microbes: Monascus purpureus -> Statins (blood cholesterol competitive inhibitor!); Trichoderma polysporum -> Cyclosporin A (immunosuppressant!); Aspergillus niger -> Citric acid; BOD measures organic sewage pollution (higher BOD = higher pollution!)."
+        ]
+      },
+      {
+        "heading": "Biotechnology: pBR322, PCR & Transgenic Applications",
+        "summary": "Type-II Restriction Endonucleases (EcoRI cuts G|AATTC leaving sticky ends) cut DNA at specific palindromic 6-bp sequences.",
+        "keyPoints": [
+          "Gel Electrophoresis separates negatively charged DNA toward ANODE (+), smaller fragments run farther -> Ethidium bromide + UV light visualizes bright orange bands!",
+          "pBR322: Selectable markers amp^R (PstI, PvuI) and tet^R (BamHI, SalI); ori controls copy number; rop codes replication proteins. Insertional inactivation of lacZ turns X-gal colonies WHITE (recombinants) vs BLUE (non-recombinants)!",
+          "PCR Steps (Taq polymerase from Thermus aquaticus): Denaturation (94 deg C) -> Annealing (~55 deg C) -> Extension (72 deg C); 2^n copies after n cycles!",
+          "Applications: Bt Cotton cry1Ac & cry2Ab control cotton bollworms (alkaline insect midgut activates protoxin!); RNAi Meloidegyne incognitia silencing via Agrobacterium; Eli Lilly Humulin linked A & B chains excluding C-peptide; 1990 ADA deficiency gene therapy."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "PCR Amplification", "formula": "DNA Copies = 2^n (after n thermal cycles)", "note": "30 cycles amplify a single DNA stretch ~1 billion times!"},
+      {"concept": "Bt Toxin Specificity", "formula": "cryIAc / cryIIAb -> Cotton Bollworm | cryIAb -> Corn Borer", "note": "Protoxin crystals stay harmless in Bacillus due to acidic/neutral host pH"}
+    ],
+    "comparison": {
+      "title": "Industrial Microbes & Bioactive Products",
+      "headers": ["Bioactive Molecule", "Microorganism Source", "Medical / Industrial Use"],
+      "rows": [
+        ["Streptokinase", "Streptococcus", "Clot buster for myocardial infarction patients"],
+        ["Cyclosporin A", "Trichoderma polysporum (Fungus)", "Immunosuppressant in organ transplant patients"],
+        ["Statins", "Monascus purpureus (Yeast)", "Blood cholesterol lowering (competitive HMG-CoA check)"],
+        ["Citric Acid / Butyric Acid", "Aspergillus niger / Clostridium", "Organic acid industrial fermentation"]
+      ]
+    },
+    "traps": [
+      "Human pro-insulin contains A, B AND C-peptide; MATURE insulin lacks C-peptide completely!",
+      "In pBR322, inserting foreign DNA at BamHI destroys Tetracycline resistance (tet^R) while leaving Ampicillin resistance (amp^R) intact!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET pBR322 Selection",
+        "question": "Foreign DNA is ligated into the BamHI site of plasmid vector pBR322 and transformed into E. coli. How do transformant recombinants behave on Ampicillin vs Tetracycline plates?",
+        "steps": [
+          "BamHI resides strictly inside the tet^R gene, disrupting Tetracycline resistance (insertional inactivation).",
+          "amp^R remains untouched -> Recombinants GROW on Ampicillin medium but DIE on Tetracycline medium!"
+        ],
+        "answer": "Grow on Ampicillin, fail on Tetracycline",
+        "pitfall": "Non-recombinant plasmids retain BOTH resistances; non-transformants die on both!"
+      }
+    ]
+  }
+]

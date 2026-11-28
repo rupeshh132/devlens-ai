@@ -1,0 +1,1096 @@
+[
+  {
+    "moduleId": "phy_01",
+    "weightageNote": "Weightage: 4-8% (1-2 guaranteed questions in JEE Mains / NEET UG). Unit 20 Experimental Skills is a top scoring zone.",
+    "syllabusAlert": "Syllabus Sync: Zero deletions. Vernier Callipers, Screw Gauge, Meter Bridge, Resonance Tube & Error Propagation are retained across all tracks.",
+    "sections": [
+      {
+        "heading": "SI Base Units, Dimensional Homogeneity & Application Limits",
+        "summary": "Physical quantities follow dimensional homogeneity: every additive or subtractive term in an equation must carry identical [M^a L^b T^c A^d K^e mol^f cd^g] exponents.",
+        "keyPoints": [
+          "Seven SI base quantities: Mass [M], Length [L], Time [T], Current [I or A], Temperature [K], Amount [mol], Luminous Intensity [cd].",
+          "Dimensionless arguments: arguments of sin(x), cos(x), e^x, ln(x), and ratios like strain, refractive index, relative permittivity are strictly [M^0 L^0 T^0].",
+          "Energy Density u = (1/2) eps_0 E^2 = B^2 / (2 mu_0) = Pressure = Stress = Young's Modulus = [M L^(-1) T^(-2)].",
+          "Time constant benchmarks: RC = L/R = sqrt(LC) = [T]; Stefan constant sigma = [M T^(-3) K^(-4)]; Universal constant R = [M L^2 T^(-2) K^(-1) mol^(-1)]."
+        ]
+      },
+      {
+        "heading": "Significant Figures, Rounding & Limiting Error Propagation",
+        "summary": "Significant digits convey measurement precision. Always combine absolute errors linearly during addition/subtraction and fractional errors during multiplication/powers.",
+        "keyPoints": [
+          "Exact numbers (2, pi) carry infinite significant digits. Trailing zeros AFTER decimal point ARE significant (4.200 has 4 SF); trailing zeros without decimal (4200) carry only 2 SF.",
+          "Sum/Difference (Z = A +/- B): Maximum absolute error dZ = dA + dB (NEVER subtract absolute errors even when Z = A - B).",
+          "Product/Quotient/Power (Z = A^p * B^q / C^r): Maximum fractional error dZ/Z = |p|(dA/A) + |q|(dB/B) + |r|(dC/C).",
+          "Round final answer to LEAST decimal places (in +/-) or LEAST significant figures (in x or /)."
+        ]
+      },
+      {
+        "heading": "Unit 20 Experimental Instruments: Vernier Callipers & Screw Gauge",
+        "summary": "Least Count (LC) determines smallest reliably readable scale fraction. Corrected reading always subtracts zero error with its algebraic sign.",
+        "keyPoints": [
+          "Vernier Callipers: LC = 1 MSD - 1 VSD. If n VSD coincide with (n - 1) MSD, then LC = (1 MSD) / n. Observed = MSR + (VSR x LC).",
+          "Screw Gauge / Micrometer: Pitch = Linear advancement per full rotation. LC = Pitch / Circular Scale Divisions (N). Typical: Pitch 0.5 mm, N = 50 -> LC = 0.01 mm.",
+          "Zero Error Rule: Positive zero error (vernier 0 sits right of main 0, or circular 0 lies below reference line) -> subtract (+e). Negative zero error -> subtract (-|e|), effectively adding |e|."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Maximum Power Error", "formula": "dZ/Z = p(dA/A) + q(dB/B) + r(dC/C)", "note": "Applies to Z = k A^p B^q C^(-r); multiply by 100 for % error"},
+      {"concept": "Vernier Least Count", "formula": "LC = 1 MSD - 1 VSD = MSD / n", "note": "When n VSD = (n-1) MSD; True = MSR + VSR*LC - ZeroError"},
+      {"concept": "Screw Gauge Least Count", "formula": "LC = Pitch / N_CSD", "note": "Backlash error avoided by rotating screw in one direction only"},
+      {"concept": "Resonance Tube Sound Speed", "formula": "v = 2 * f * (L2 - L1)", "note": "End correction e = (L2 - 3*L1)/2 cancels automatically in L2 - L1"}
+    ],
+    "comparison": {
+      "title": "Experimental Error & Sign Convention Matrix",
+      "headers": ["Instrument / Setup", "Formula / Calibration", "Zero Error Sign", "Primary Exam Trap"],
+      "rows": [
+        ["Vernier Callipers", "LC = 1 MSD - 1 VSD", "+e if 0 of VS is right of 0 of MS", "Assuming negative zero error directly equals -k*LC instead of -(n - k)*LC"],
+        ["Screw Gauge", "LC = Pitch / CSD", "+e if CS zero sits BELOW datum line", "Forgetting to convert mm to cm before plugging into volume/area"],
+        ["Meter Bridge", "X / R = l / (100 - l)", "Add end corrections alpha, beta", "Maximum accuracy occurs ONLY near null point l ~= 50 cm"],
+        ["Simple Pendulum g", "g = 4 pi^2 L / T^2", "Delta g/g = dL/L + 2 dT/T", "Timing 20 oscillations divides dT/T by 20 vs timing 1 oscillation"]
+      ]
+    },
+    "traps": [
+      "In Z = A - B, errors ALWAYS ADD (dZ = dA + dB). Never write dA - dB!",
+      "For negative Vernier zero error when 7th VSD coincides (10 VSD = 9 MSD): Zero Error = -(10 - 7) x LC = -3 x LC, NOT -7 x LC!",
+      "Standard EMF or Planck h vs Angular Momentum: h has [M L^2 T^(-1)] same as angular momentum L, while Torque has [M L^2 T^(-2)] same as Energy."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "JEE Mains / NEET Unit 20",
+        "question": "In a Screw Gauge, 4 full rotations advance the spindle by 2 mm. The circular scale has 50 divisions. While measuring a wire, MSR = 3 mm, CSR = 32, and zero error = -0.04 mm. Find true diameter.",
+        "steps": [
+          "Pitch = 2 mm / 4 = 0.5 mm.",
+          "Least Count (LC) = 0.5 mm / 50 = 0.01 mm.",
+          "Observed Reading = 3 mm + 32 x 0.01 mm = 3.32 mm.",
+          "True Reading = Observed - Zero Error = 3.32 - (-0.04) = 3.36 mm."
+        ],
+        "answer": "3.36 mm",
+        "pitfall": "Subtracting +0.04 instead of (-0.04) gives 3.28 mm (classic distractor option)."
+      },
+      {
+        "tag": "Dimensional Analysis",
+        "question": "Given force F = a * t^(-1) + b * t^2, where t is time. Find dimensions of a / b.",
+        "steps": [
+          "By homogeneity: [a * t^(-1)] = [F] => [a] = [M L T^(-2)] * [T] = [M L T^(-1)].",
+          "[b * t^2] = [F] => [b] = [M L T^(-2)] / [T^2] = [M L T^(-4)].",
+          "Ratio [a / b] = [M L T^(-1)] / [M L T^(-4)] = [T^3]."
+        ],
+        "answer": "[M^0 L^0 T^3]",
+        "pitfall": "Writing F * t^(-1) instead of multiplying by t when isolating a."
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_02",
+    "weightageNote": "Weightage: 4-6% (1-2 questions across 1D calculus motion, horizontal/inclined projectiles & river-boat problems).",
+    "syllabusAlert": "Syllabus Sync: Scalar/vector differentiation, parabolic trajectories, inclined projection & relative velocity fully retained.",
+    "sections": [
+      {
+        "heading": "Calculus Kinematics: Variable Acceleration & Motion Graphs",
+        "summary": "Instantaneous velocity v = dx/dt and acceleration a = dv/dt = v (dv/dx) handle any non-uniform acceleration problem.",
+        "keyPoints": [
+          "Slope of x-t gives instantaneous velocity; slope of v-t gives acceleration; area under v-t curve gives DISPLACEMENT (algebraic sum) while sum of |area| gives DISTANCE.",
+          "Area under a-x graph equals (v^2 - u^2)/2 because integral(a dx) = integral(v dv).",
+          "In uniformly accelerated motion starting from rest, distances travelled in equal consecutive time intervals follow Galileo's odd ratio 1 : 3 : 5 : 7..."
+        ]
+      },
+      {
+        "heading": "2D Projectile Motion & Inclined Plane Projection",
+        "summary": "Resolve velocity and gravity independently along perpendicular axes. Along horizontal, a_x = 0 so v_x = u cos(theta) stays constant throughout.",
+        "keyPoints": [
+          "Trajectory equation: y = x tan(theta) - (g x^2) / (2 u^2 cos^2(theta)) = x tan(theta) * (1 - x / R).",
+          "Horizontal Range R = u^2 sin(2*theta) / g is identical for complementary launch angles theta and (90 deg - theta); H_1 / H_2 = tan^2(theta).",
+          "Upward inclined plane (incline angle beta, launch alpha to horizontal): resolve perpendicular (g cos beta) and parallel (-g sin beta) to incline. T = 2u sin(alpha - beta) / (g cos beta)."
+        ]
+      },
+      {
+        "heading": "Relative Motion: River-Boat & Rain-Umbrella Vectors",
+        "summary": "Relative velocity v_AB = v_A - v_B converts moving-frame scenarios into single-observer geometry.",
+        "keyPoints": [
+          "Minimum time to cross river of width d: steer STRICTLY perpendicular to bank -> t_min = d / v_b (drift = v_r * t_min).",
+          "Shortest path (zero drift) requires v_b > v_r: steer upstream at sin(theta) = v_r / v_b from normal -> resultant speed = sqrt(v_b^2 - v_r^2).",
+          "Closest approach of two particles: compute relative velocity v_rel, then drop perpendicular d_min = |r_rel x v_rel| / |v_rel|."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Stopping & Displacement in nth sec", "formula": "s_n = u + (a/2)(2n - 1) ; d_stop = u^2 / (2a)", "note": "Valid ONLY for constant acceleration with zero direction reversal check"},
+      {"concept": "Projectile Max Range (Incline)", "formula": "R_max(up) = u^2 / [g(1 + sin beta)]", "note": "Occurs at alpha = pi/4 + beta/2; for flat beta = 0 -> u^2 / g"},
+      {"concept": "Shortest River Crossing Time", "formula": "t_min = d / v_b", "note": "Independent of river stream velocity v_r"},
+      {"concept": "Average Velocity (Equal Distances)", "formula": "v_avg = 2*v1*v2 / (v1 + v2)", "note": "Harmonic mean for equal distances; arithmetic mean (v1+v2)/2 for equal times"}
+    ],
+    "comparison": {
+      "title": "River Crossing & Motion Graph Reference",
+      "headers": ["Case", "Condition", "Steering Angle (from normal)", "Crossing Time"],
+      "rows": [
+        ["Minimum Time Crossing", "Any v_b, v_r", "0 deg (straight across bank)", "d / v_b"],
+        ["Zero Drift (Shortest Path)", "v_b > v_r", "Upstream sin(theta) = v_r / v_b", "d / sqrt(v_b^2 - v_r^2)"],
+        ["Minimum Drift (Slow Boat)", "v_b < v_r", "Upstream sin(theta) = v_b / v_r", "d / (v_b cos theta)"]
+      ]
+    },
+    "traps": [
+      "Distance >= |Displacement| always. Check if velocity v(t) changes sign inside [t1, t2] before calling displacement equal to distance!",
+      "At highest point of projectile, velocity is u cos(theta) horizontally (NOT zero) and speed radius of curvature R_c = u^2 cos^2(theta) / g.",
+      "Do not plug angle theta measured from VERTICAL into standard u^2 sin(2*theta)/g blindly without checking complement!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "JEE Mains Calculus",
+        "question": "A particle moves along x-axis with v = alpha * sqrt(x). Find acceleration as a function of time starting from rest at x = 0.",
+        "steps": [
+          "dx/dt = alpha * x^(1/2) => integral x^(-1/2) dx = integral alpha dt.",
+          "2 sqrt(x) = alpha * t => x = (alpha^2 * t^2) / 4.",
+          "Differentiating twice: v = dx/dt = (alpha^2 * t)/2 and a = dv/dt = alpha^2 / 2 (constant!)."
+        ],
+        "answer": "Constant acceleration a = alpha^2 / 2",
+        "pitfall": "Evaluating v dv/dx gives (alpha*sqrt(x)) * (alpha/(2*sqrt(x))) = alpha^2 / 2 instantly in 1 line!"
+      },
+      {
+        "tag": "Projectile Range",
+        "question": "A projectile has horizontal range R = 4 * sqrt(3) * H_max. Find launch angle theta.",
+        "steps": [
+          "Standard identity: R / H = 4 / tan(theta).",
+          "Given R / H = 4 * sqrt(3) => 4 / tan(theta) = 4 * sqrt(3) => tan(theta) = 1 / sqrt(3).",
+          "Hence theta = 30 deg."
+        ],
+        "answer": "30 degrees",
+        "pitfall": "Remember R = 4 H cot(theta); at 45 deg, R = 4H."
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_03",
+    "weightageNote": "Weightage: 4-6% (Pulleys, wedges, friction equilibrium & circular banking).",
+    "syllabusAlert": "Syllabus Sync: Complete Newton's Laws, Pseudo Force, Static/Kinetic Friction & Circular Dynamics retained.",
+    "sections": [
+      {
+        "heading": "Constraint Relations, Pulley-Block FBDs & Pseudo Force",
+        "summary": "Virtual work theorem Sum(T . a) = 0 solves any complex movable-pulley acceleration constraint immediately without differentiating rope lengths manually.",
+        "keyPoints": [
+          "Draw isolated Free Body Diagrams (FBDs) including Weight, Normal N, Tension T, Spring kx, and Friction f.",
+          "Pseudo Force F_p = -m * a_frame must be applied OPPOSITE to frame acceleration whenever solving inside an accelerating elevator, trolley, or wedge.",
+          "Ideal spring cannot change tension instantaneously when a connected string is cut, whereas massless inextensible string tension adjusts immediately."
+        ]
+      },
+      {
+        "heading": "Static vs Kinetic Friction & Two-Block Systems",
+        "summary": "Static friction is self-adjusting (0 <= f_s <= mu_s N) whereas kinetic friction assumes a constant value f_k = mu_k N opposing relative slip.",
+        "keyPoints": [
+          "Angle of Repose theta_r = arctan(mu_s): inclination at which block just starts sliding down.",
+          "Minimum pulling force to slide block on rough flat surface equals mu * m * g / sqrt(1 + mu^2) applied upward at angle theta = arctan(mu).",
+          "Two-block stack trick: assume both move together with common acceleration a_c; check if required f <= mu_s N_top; if exceeded, blocks slip separately."
+        ]
+      },
+      {
+        "heading": "Circular Dynamics & Conical Pendulum",
+        "summary": "Centripetal force m v^2 / r = m omega^2 r points radially INWARD and performs zero work in circular motion.",
+        "keyPoints": [
+          "Safe turn on rough flat road: v_max = sqrt(mu g r). Ideal frictionless banked road: tan(theta) = v^2 / (r g).",
+          "Combined banked + rough road maximum speed: v_max = sqrt( r g (sin theta + mu cos theta) / (cos theta - mu sin theta) ).",
+          "Conical pendulum period: T = 2 * pi * sqrt( (L cos theta) / g )."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Virtual Work Constraint", "formula": "Sum (T_i . a_i) = 0", "note": "Instantaneous constraint for interconnected movable pulleys"},
+      {"concept": "Banked Road Optimum Speed", "formula": "v = sqrt(r g tan theta)", "note": "Zero lateral tire friction needed at this exact speed"},
+      {"concept": "Wedge Acceleration Smooth", "formula": "tan theta = a_wedge / g", "note": "Horizontal wedge acceleration a = g tan theta keeps block at rest on wedge"}
+    ],
+    "comparison": {
+      "title": "Spring-Cut vs String-Cut Instantaneous Dynamics",
+      "headers": ["Element Cut", "Other Spring Force Immediately", "Inextensible String Tension Immediately"],
+      "rows": [
+        ["Ideal Spring Cut", "Drops to 0", "Recalculate via remaining FBD"],
+        ["String Holding Spring Cut", "Spring force kx STAYS unchanged at t = 0+", "Cut string T -> 0 immediately; jump acceleration a = kx/m"]
+      ]
+    },
+    "traps": [
+      "Static friction is NOT fixed at mu_s N; it only equals the driving force until slipping begins!",
+      "At high speed on banked road with friction, check whether v > sqrt(rg tan theta) (friction points DOWN incline) or v < sqrt(rg tan theta) (friction points UP incline)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Two-Block Friction",
+        "question": "A 2 kg block sits on a 4 kg lower block (smooth floor). Friction between blocks has mu = 0.4. Find maximum horizontal force F on lower 4 kg block so both move together (g = 10 m/s^2).",
+        "steps": [
+          "Max friction driving top 2 kg block = f_max = 0.4 x 2 x 10 = 8 N.",
+          "Max acceleration top block can sustain = 8 / 2 = 4 m/s^2.",
+          "Apply F = (M + m) a_max = (4 + 2) x 4 = 24 N."
+        ],
+        "answer": "24 N",
+        "pitfall": "Applying F directly to top block gives a different F_max = (m+M) * (f_max / M) = 6 x (8/4) = 12 N!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_04",
+    "weightageNote": "Weightage: 5-7% (Work-Energy Theorem, Vertical Circles, Potential Wells & 1D/2D Collisions).",
+    "syllabusAlert": "Syllabus Sync: All WEP, Centre of Mass & Restitution Collision concepts retained.",
+    "sections": [
+      {
+        "heading": "Work-Energy Theorem & Conservative Force Potential Wells",
+        "summary": "W_total = W_conservative + W_non-conservative + W_ext = Delta K holds universally in inertial AND non-inertial frames (including work by pseudo force).",
+        "keyPoints": [
+          "Conservative force: F = -dU/dx (in 3D: F = -grad U). Mechanical energy K + U stays conserved ONLY when non-conservative & external forces do zero work.",
+          "Equilibrium occurs where dU/dx = 0: Stable (d^2U/dx^2 > 0, potential minimum), Unstable (d^2U/dx^2 < 0, max), Neutral (d^2U/dx^2 = 0)."
+        ]
+      },
+      {
+        "heading": "Vertical Circular Motion (Looping the Loop)",
+        "summary": "Minimum critical speeds prevent string slackening at top of vertical circle.",
+        "keyPoints": [
+          "Mass on string of length L: min speed at bottom = sqrt(5 g L) -> top speed = sqrt(g L), T_top = 0, T_bottom = 6 m g.",
+          "T_bottom - T_top = 6 m g identically for ANY looping speed above critical threshold.",
+          "Mass on massless rigid rod or inside double track: min bottom speed drops to sqrt(4 g L) because rod supports zero speed at top!"
+        ]
+      },
+      {
+        "heading": "Centre of Mass & Newton Restitution Collisions",
+        "summary": "With zero external net impulse, total linear momentum P and COM velocity remain invariant through any collision or explosion.",
+        "keyPoints": [
+          "Coefficient of restitution e = (v2 - v1)_sep / (u1 - u2)_app along Line of Impact. Elastic e = 1, Perfectly Inelastic e = 0.",
+          "1D elastic collision between equal masses swaps velocities identically.",
+          "Perfectly inelastic head-on loss of KE: Delta K = (1/2) * [m1 m2 / (m1 + m2)] * (u1 - u2)^2 * (1 - e^2)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Work-Energy Theorem", "formula": "W_net = K_f - K_i", "note": "Holds for constant, variable, friction & spring forces universally"},
+      {"concept": "Vertical Circle Speeds", "formula": "v_bottom >= sqrt(5gL) [string]; sqrt(4gL) [rod]", "note": "If sqrt(2gL) < v_bottom < sqrt(5gL), string slackens above horizontal"},
+      {"concept": "Elastic Oblique Equal Mass", "formula": "theta_1 + theta_2 = 90 deg", "note": "Two equal smooth spheres separate perpendicularly after oblique e=1 impact"}
+    ],
+    "comparison": {
+      "title": "Collision Classification & Energy Retention",
+      "headers": ["Type", "Restitution e", "Momentum Conserved?", "Kinetic Energy After Impact"],
+      "rows": [
+        ["Elastic Collision", "e = 1", "Yes (along all axes if smooth)", "K_f = K_i (100% conserved)"],
+        ["Inelastic", "0 < e < 1", "Yes", "Loss proportional to (1 - e^2)"],
+        ["Perfectly Inelastic", "e = 0", "Yes", "Bodies stick together; max allowed KE loss"]
+      ]
+    },
+    "traps": [
+      "Work by static friction CAN be non-zero in ground frame (e.g. block accelerating on moving truck), though total static-friction work across both surfaces together cancels to zero!",
+      "For bouncing ball from height h_0 with restitution e: rebound height h_n = e^(2n) * h_0, total distance = h_0 * (1 + e^2)/(1 - e^2)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Collision Restitution",
+        "question": "A ball drops from 16 m onto a horizontal floor and rebounds to 9 m. Compute coefficient of restitution e and height after 2nd bounce.",
+        "steps": [
+          "Speed before impact = sqrt(2gh1), after impact = sqrt(2gh2).",
+          "e = sqrt(h2 / h1) = sqrt(9 / 16) = 3/4 = 0.75.",
+          "Height after 2nd bounce = h1 * e^4 = 16 x (9/16)^2 = 81/16 = 5.0625 m."
+        ],
+        "answer": "e = 0.75, h2 = 5.06 m",
+        "pitfall": "Using h2/h1 instead of sqrt(h2/h1) gives wrong e = 9/16."
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_05",
+    "weightageNote": "Weightage: 6-8% (Highest-yield Mechanics chapter across JEE Mains, JEE Advanced & NEET).",
+    "syllabusAlert": "Syllabus Sync: Parallel/Perpendicular Axes Theorems, Torque, Pure Rolling & Angular Momentum Conservation fully retained.",
+    "sections": [
+      {
+        "heading": "Moment of Inertia (MOI) & Axis Theorems",
+        "summary": "Rotational analogue of mass depends directly on mass distribution relative to rotation axis: I = Sum m_i r_i^2.",
+        "keyPoints": [
+          "Parallel Axis Theorem (any 3D body): I = I_cm + M d^2 (I_cm MUST pass through Centre of Mass!).",
+          "Perpendicular Axis Theorem (PLANAR laminae ONLY): I_z = I_x + I_y where x, y lie in lamina plane and z is normal.",
+          "Standard I_cm (k^2/R^2): Ring = MR^2 (1), Disc/Solid Cylinder = MR^2/2 (1/2), Hollow Sphere = 2/3 MR^2 (2/3), Solid Sphere = 2/5 MR^2 (2/5), Rod(centre) = ML^2/12."
+        ]
+      },
+      {
+        "heading": "Pure Rolling & Rolling Down an Inclined Plane",
+        "summary": "Zero slip at bottom contact enforces v_cm = omega R and a_cm = alpha R, making bottom point the Instantaneous Centre of Rotation (ICOR).",
+        "keyPoints": [
+          "Rolling acceleration down incline angle theta: a = g sin(theta) / (1 + I_cm / (M R^2)). Solid sphere always wins race against disc, hollow sphere, and ring!",
+          "Minimum static friction for pure rolling down incline: mu_min = tan(theta) / (1 + M R^2 / I_cm).",
+          "Total Rolling KE = (1/2) m v_cm^2 [1 + k^2/R^2] = translational KE + rotational KE."
+        ]
+      },
+      {
+        "heading": "Angular Momentum Conservation & Frictional Impulse",
+        "summary": "When net external torque about point O vanishes (tau_O = 0), angular momentum L_O = I_cm omega + r_cm x (m v_cm) stays conserved.",
+        "keyPoints": [
+          "Toppling condition of cube (side a) on rough ramp: block topples BEFORE sliding if tan(theta) > 1 when mu > 1.",
+          "Point mass hitting pivoted rod or free rod: conserve L about hinge (eliminates hinge impulse!) or about line of impact."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Rolling Down Incline", "formula": "a = g sin(theta) / (1 + k^2/R^2)", "note": "Sphere (5/7 g sin theta) > Disc (2/3) > Hollow Sphere (3/5) > Ring (1/2)"},
+      {"concept": "Angular Momentum General", "formula": "L_O = I_cm * omega + M (r_cm x v_cm)", "note": "Orbital + spin term both required for moving bodies"},
+      {"concept": "Minimum Rolling Friction", "formula": "mu_min = tan(theta) / (1 + R^2/k^2)", "note": "For ring = (tan theta)/2; solid sphere = (2/7) tan theta"}
+    ],
+    "comparison": {
+      "title": "Rolling Rigid Body Parameters (Radius R, Mass M)",
+      "headers": ["Body", "I_cm / (MR^2)", "Trans KE / Total KE", "Incline Acceleration"],
+      "rows": [
+        ["Thin Ring / Hollow Cylinder", "1", "1/2 (50%)", "(1/2) g sin theta"],
+        ["Uniform Disc / Solid Cylinder", "1/2", "2/3 (66.7%)", "(2/3) g sin theta"],
+        ["Hollow Spherical Shell", "2/3", "3/5 (60%)", "(3/5) g sin theta"],
+        ["Solid Uniform Sphere", "2/5", "5/7 (71.4%)", "(5/7) g sin theta"]
+      ]
+    },
+    "traps": [
+      "Perpendicular Axis Theorem I_z = I_x + I_y CANNOT be used for 3D solid spheres or solid cylinders!",
+      "In Parallel Axis Theorem I = I_cm + Md^2, I_cm MUST pass through the Centre of Mass — never jump between two non-COM axes directly!",
+      "During pure rolling on flat ground at constant speed, static friction is ZERO!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT / JEE Rolling",
+        "question": "A solid sphere of mass 5 kg rolls without slipping at 10 m/s. Find its total kinetic energy and rotational fraction.",
+        "steps": [
+          "k^2/R^2 = 2/5 for solid sphere.",
+          "K_total = (1/2) M v^2 (1 + 2/5) = 0.5 x 5 x 100 x (7/5) = 350 J.",
+          "Rotational fraction = (2/5) / (7/5) = 2/7."
+        ],
+        "answer": "350 J; rotational fraction = 2/7",
+        "pitfall": "Calculating only (1/2)Mv^2 = 250 J forgets the 100 J rotational KE!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_06",
+    "weightageNote": "Weightage: 3-4% (High ROI! Direct formula parallels with Electrostatics).",
+    "syllabusAlert": "Syllabus Sync: Shell theorem, variation of g, escape/orbital speed & Kepler's 3 laws fully retained.",
+    "sections": [
+      {
+        "heading": "Gravitational Field, Potential & Gauss Shell Analogues",
+        "summary": "Gravitational field is conservative (E = -dV/dr). Uniform solid sphere inside field increases linearly with r, whereas hollow shell inside field is strictly zero.",
+        "keyPoints": [
+          "Hollow spherical shell: E_in = 0, V_in = -GM/R (constant); outside E = GM/r^2, V = -GM/r.",
+          "Solid uniform sphere: E_in = GMr / R^3; V_in = -GM(3R^2 - r^2) / (2 R^3). At centre, V_centre = 1.5 x V_surface = -3GM/(2R).",
+          "Uniform circular ring on axis (x): E = GMx / (R^2 + x^2)^(3/2), maximum at x = R/sqrt(2)."
+        ]
+      },
+      {
+        "heading": "Variation of g, Escape Velocity & Satellite Mechanics",
+        "summary": "Gravity decreases with both altitude h and depth d below Earth surface, peaking right on the surface.",
+        "keyPoints": [
+          "Height h: g' = g / (1 + h/R)^2 ~= g(1 - 2h/R) for h << R. Depth d: g' = g(1 - d/R) exact for uniform sphere.",
+          "Escape velocity v_e = sqrt(2GM/R) = sqrt(2gR) ~= 11.2 km/s (independent of projectile mass & launch angle!).",
+          "Circular satellite orbit: v_o = sqrt(GM/r) = v_e / sqrt(2) (at surface), KE = +GMm/(2r), PE = -GMm/r, Total E = -GMm/(2r) = -KE.",
+          "Kepler 2nd Law (dA/dt = L/(2m) = constant) = Angular Momentum Conservation; 3rd Law: T^2 proportional to a^3."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Satellite Energy Split", "formula": "E = -K = U / 2 = -G M m / (2 r)", "note": "Binding energy BE = |E| = +GMm/(2r)"},
+      {"concept": "Tunnel Through Earth SHM", "formula": "T = 2 pi sqrt(R / g) ~= 84.6 mins", "note": "Identical to near-surface orbiting satellite time period!"},
+      {"concept": "Binary Star System Period", "formula": "T = 2 pi sqrt(d^3 / [G(m1 + m2)])", "note": "Reduced mass mu orbits common COM separated by distance d"}
+    ],
+    "comparison": {
+      "title": "Gravitational Field & Potential Profiles",
+      "headers": ["Geometry", "Inside Field E(r < R)", "Inside Potential V(r < R)", "Outside Behavior (r >= R)"],
+      "rows": [
+        ["Spherical Shell", "0 everywhere", "-GM / R (constant)", "Point mass at centre (-GM/r)"],
+        ["Solid Sphere", "GM r / R^3 (linear)", "-GM(3R^2 - r^2)/(2R^3)", "Point mass at centre (-GM/r)"]
+      ]
+    },
+    "traps": [
+      "Using approximate g(1 - 2h/R) when h = R/2 or h = R fails badly! Always use exact g/(1 + h/R)^2 unless h << R.",
+      "Geostationary satellite has fixed T = 24 hours (~36,000 km altitude), equatorial plane, West-to-East sense."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "NEET / JEE Mains",
+        "question": "At what height h above Earth's surface (radius R) does acceleration due to gravity drop to g/4?",
+        "steps": [
+          "g' = g / (1 + h/R)^2 = g / 4.",
+          "Taking square roots: 1 + h/R = 2 => h = R."
+        ],
+        "answer": "h = R",
+        "pitfall": "Using binomial (1 - 2h/R) = 1/4 wrongly predicts h = 3R/8!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_07",
+    "weightageNote": "Weightage: 4-5% (Elasticity Thermal Stress, Hydrostatics, Bernoulli Efflux & Surface Tension Excess Pressure).",
+    "syllabusAlert": "Syllabus Sync: Stress-Strain, Pascal/Archimedes, Bernoulli, Stokes Viscosity & Capillarity all retained.",
+    "sections": [
+      {
+        "heading": "Elasticity, Elastic Energy Density & Thermal Stress",
+        "summary": "Young's modulus Y = stress/strain measures stiffness of solids; clamped rods develop thermal stress sigma = Y * alpha * Delta T when temperature changes.",
+        "keyPoints": [
+          "Elongation under force F: dL = FL / (AY). Under own weight W: dL = WL / (2AY) (half as much!).",
+          "Elastic potential energy density u = (1/2) stress x strain = sigma^2 / (2Y) = (1/2) Y (strain)^2."
+        ]
+      },
+      {
+        "heading": "Fluid Mechanics: Buoyancy, Continuity & Bernoulli",
+        "summary": "Incompressible steady streamline flow conserves A*v = constant and energy P + (1/2) rho v^2 + rho g h = constant.",
+        "keyPoints": [
+          "Torricelli efflux speed from hole depth h: v = sqrt(2gh); range on ground R = 2 sqrt(h(H - h)), maximized at h = H/2 giving R_max = H.",
+          "In accelerating container (a horizontally), free fluid surface tilts at tan(theta) = a / g perpendicular to g_eff."
+        ]
+      },
+      {
+        "heading": "Viscosity (Stokes' Law) & Surface Tension / Capillarity",
+        "summary": "Surface tension S minimizes liquid area (W = S * Delta A); viscous drag opposes motion through fluids.",
+        "keyPoints": [
+          "Stokes drag F = 6 pi eta r v; terminal speed v_T = 2 r^2 (rho_s - rho_l) g / (9 eta) proportional to r^2.",
+          "Excess pressure: Liquid drop = 2S/R; Soap bubble in air = 4S/R (two interfaces!). Coalescing N drops -> U_final / U_initial = N^(-1/3).",
+          "Capillary ascent (Jurin's Law): h = 2 S cos(theta) / (r rho g); inadequate length tube never overflows — meniscus radius flattens instead!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Thermal Stress", "formula": "sigma = Y * alpha * Delta T", "note": "Independent of rod length L; F = Y A alpha Delta T"},
+      {"concept": "Terminal Velocity", "formula": "v_T = 2 r^2 (rho - sigma) g / (9 eta)", "note": "8 identical rain drops coalescing multiply terminal speed by 4!"},
+      {"concept": "Capillary Rise", "formula": "h = (2 S cos theta) / (r rho g)", "note": "h * r = constant for tube of insufficient height"}
+    ],
+    "comparison": {
+      "title": "Excess Pressure & Surface Energy Reference",
+      "headers": ["Interface Configuration", "Excess Pressure Delta P", "Surface Energy Work W"],
+      "rows": [
+        ["Air Bubble Inside Water / Liquid Drop", "2 S / R", "S * (4 pi R^2)"],
+        ["Soap Bubble in Air", "4 S / R (two surfaces)", "2 * S * (4 pi R^2) = 8 pi R^2 S"],
+        ["Soap Film on Wire Frame", "0 (flat)", "2 * S * Delta A"]
+      ]
+    },
+    "traps": [
+      "Always multiply area change by 2 for soap films and soap bubbles in air!",
+      "If capillary tube is tilted at angle alpha to vertical, vertical height h stays constant while slanted water column length increases to h / cos(alpha)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Surface Tension",
+        "question": "Work done to blow a soap bubble of radius R is W. Additional work needed to double its radius from R to 2R is:",
+        "steps": [
+          "Initial energy W = 2 x S x 4 pi R^2 = 8 pi R^2 S.",
+          "At radius 2R, total energy = 8 pi (2R)^2 S = 4 W.",
+          "Additional work required = 4W - W = 3W."
+        ],
+        "answer": "3 W",
+        "pitfall": "Returning 4W gives total work from zero radius, forgetting initial W already done."
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_08",
+    "weightageNote": "Weightage: 6-8% (High-yield block across JEE Mains, NEET & IIT Adv).",
+    "syllabusAlert": "Syllabus Sync: NTA JEE Mains dropped Carnot Engine/Heat Pump, which REMAIN in JEE Advanced [ADV ONLY] (phy_adv2). Conduction, Stefan/Wien Radiation, KTG & 1st Law are core everywhere.",
+    "sections": [
+      {
+        "heading": "Thermal Expansion, Conduction & Radiation Laws",
+        "summary": "Linear beta = 2*alpha, volumetric gamma = 3*alpha; heat conduction obeys thermal Ohm's law R_th = L / (k A).",
+        "keyPoints": [
+          "Conduction steady state rate: dQ/dt = k A Delta T / L = Delta T / R_th. Series rods add R_th; parallel add 1/R_th.",
+          "Wien's Displacement Law: lambda_max * T = b ~= 2.898 x 10^(-3) m.K (blue star hotter than red star).",
+          "Stefan-Boltzmann Law: Radiated power P = e sigma A T^4; net rate in surroundings T_0 is e sigma A (T^4 - T_0^4)."
+        ]
+      },
+      {
+        "heading": "Kinetic Theory of Gases (KTG) & Equipartition",
+        "summary": "Ideal gas molecules carry (f/2) k_B T average kinetic energy per degree of freedom f.",
+        "keyPoints": [
+          "f = 3 (monoatomic), 5 (diatomic/linear rigid at room T), 6 (non-linear polyatomic). C_v = f R / 2, C_p = C_v + R, gamma = 1 + 2/f.",
+          "Speed hierarchy: v_rms = sqrt(3RT/M) > v_avg = sqrt(8RT / (pi M)) > v_mp = sqrt(2RT/M) => ratio sqrt(3) : sqrt(8/pi) : sqrt(2).",
+          "Gas Mixture: n_mix C_v_mix = n1 C_v1 + n2 C_v2."
+        ]
+      },
+      {
+        "heading": "First Law of Thermodynamics & Molar Heat Capacities",
+        "summary": "dQ = dU + dW holds universally with dU = n C_v dT depending ONLY on temperature for ideal gases.",
+        "keyPoints": [
+          "Sign convention (Physics): +dQ absorbed by gas, +dW = P dV expansion work BY gas, +dU rise in T.",
+          "Isothermal (T=const): dU=0, Q=W = nRT ln(V2/V1); Adiabatic (Q=0): P V^gamma = const, W = nR(T1 - T2)/(gamma - 1).",
+          "Polytropic P V^x = const: Molar heat capacity C = C_v + R / (1 - x). Slope of adiabatic on P-V is gamma times steeper than isothermal!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Internal Energy & Mayer", "formula": "dU = n C_v dT ; C_p - C_v = R", "note": "Always valid for ALL ideal gas processes (even irreversible!)"},
+      {"concept": "Polytropic Heat Capacity", "formula": "C = R / (gamma - 1) + R / (1 - x)", "note": "For P V^x = const; negative C implies T drops while Q enters"},
+      {"concept": "Cooling Rate Ratio (Radiation)", "formula": "-dT/dt = [e sigma A / (m c)] (T^4 - T0^4)", "note": "Solid vs hollow sphere same mass -> hollow cools slower? Same area -> equal P, same mass -> equal dT/dt; equal R -> hollow cools faster!"}
+    ],
+    "comparison": {
+      "title": "Four Core Thermodynamic Processes Comparison",
+      "headers": ["Process", "Invariant", "Work W", "dU", "Heat Q"],
+      "rows": [
+        ["Isobaric", "Pressure P", "P(V2 - V1) = nR dT", "n C_v dT", "n C_p dT"],
+        ["Isochoric", "Volume V", "0", "n C_v dT", "n C_v dT"],
+        ["Isothermal", "Temperature T", "nRT ln(V2/V1)", "0", "Equal to W"],
+        ["Adiabatic", "Entropy (Q=0)", "nR(T1 - T2)/(gamma - 1)", "-W", "0"]
+      ]
+    },
+    "traps": [
+      "Always insert Kelvin T into PV=nRT, Stefan T^4, Wien lambda*T, and RMS speeds — NEVER Celsius!",
+      "In a cyclic process, total dU_cycle = 0, so Q_net = W_net = enclosed PV loop area (CW loop = positive net work!)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Mixture & First Law",
+        "question": "1 mole monoatomic (He) and 1 mole diatomic (N2) ideal gas mix at T. Compute effective gamma_mix.",
+        "steps": [
+          "C_v1 = 3R/2 (He), C_v2 = 5R/2 (N2).",
+          "C_v_mix = (1*1.5R + 1*2.5R) / 2 = 2R.",
+          "C_p_mix = C_v_mix + R = 3R => gamma_mix = 3R / 2R = 1.5."
+        ],
+        "answer": "gamma_mix = 1.5",
+        "pitfall": "Never average gamma1 and gamma2 linearly! Always average n * C_v."
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_09",
+    "weightageNote": "Weightage: 4-5% (SHM Phase/Springs, Progressive Waves, Standing Strings & Organ Pipes).",
+    "syllabusAlert": "Syllabus Sync: Doppler Effect removed from NTA JEE Mains (retained in JEE Adv [ADV ONLY] phy_adv2). SHM, Superposition, Beats & Resonance Pipes core across all exams.",
+    "sections": [
+      {
+        "heading": "Simple Harmonic Motion (SHM) & Spring Systems",
+        "summary": "Restoring acceleration a = -omega^2 x drives sinusoidal motion x = A sin(omega t + phi).",
+        "keyPoints": [
+          "Velocity v = omega sqrt(A^2 - x^2); v_max = omega A at mean x=0; a_max = omega^2 A at extremes x=+/-A.",
+          "Total Energy E = (1/2) m omega^2 A^2; KE = PE identically when x = +/- A / sqrt(2).",
+          "Spring constants: Parallel k_eq = k1 + k2; Series 1/k_eq = 1/k1 + 1/k2; Reduced mass mu = m1*m2/(m1+m2) for two-body spring oscillation."
+        ]
+      },
+      {
+        "heading": "Mechanical Waves, Standing Waves & Beats",
+        "summary": "Transverse wave speed on string v = sqrt(T/mu). Superposition of identical counter-propagating waves forms stationary nodes/antinodes.",
+        "keyPoints": [
+          "Adjacent node-to-node or antinode-to-antinode spacing = lambda / 2; node-to-antinode = lambda / 4.",
+          "Open Organ Pipe (antinodes both ends): ALL harmonics present, f_n = n v / (2 L) (n = 1, 2, 3...).",
+          "Closed Organ Pipe (one closed node, one open antinode): ONLY ODD harmonics present, f_n = (2n - 1) v / (4 L).",
+          "Beat frequency f_beat = |f1 - f2|. Filing tuning fork slightly INCREASES frequency; loading with wax DECREASES frequency."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Spring & Pendulum Period", "formula": "T_spring = 2 pi sqrt(m/k) ; T_pendulum = 2 pi sqrt(L/g_eff)", "note": "In freely falling lift g_eff = 0 => pendulum never oscillates (T -> infinity)"},
+      {"concept": "Two-Block Spring Period", "formula": "T = 2 pi sqrt(mu / k), mu = m1*m2/(m1+m2)", "note": "Both blocks oscillate in opposite phase"},
+      {"concept": "Open vs Closed Pipe", "formula": "f_open(1) = v/(2L) ; f_closed(1) = v/(4L)", "note": "Fundamental open frequency = 2 x closed frequency of equal length L"}
+    ],
+    "comparison": {
+      "title": "Organ Pipes & Resonance Matrix",
+      "headers": ["Pipe Type", "Boundary at Ends", "Fundamental lambda", "Allowed Harmonics"],
+      "rows": [
+        ["Open Both Ends", "Antinode - Antinode", "2 L", "All (1, 2, 3, 4...)"],
+        ["Closed One End", "Node - Antinode", "4 L", "Odd ONLY (1, 3, 5, 7...)"],
+        ["Stretched String", "Node - Node", "2 L", "All (1, 2, 3, 4...)"]
+      ]
+    },
+    "traps": [
+      "Remember a displacement NODE in a sound wave is simultaneously a PRESSURE ANTINODE!",
+      "If amplitude is A, phase angle from mean to A/2 takes T/12, whereas from A/2 to A takes T/6 (twice as long because it slows down!)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Beats & Tuning Fork",
+        "question": "A tuning fork A gives 4 beats/s with a 256 Hz fork B. On filing fork A slightly, beat frequency rises to 6 beats/s. Find original frequency of A.",
+        "steps": [
+          "Initial f_A = 256 +/- 4 = 260 Hz or 252 Hz.",
+          "Filing reduces mass and INCREASES frequency of A.",
+          "Since beat gap widened from 4 to 6, A must already be above 256 (rising 260 -> 262 gives 6 beats; rising 252 -> 254 would drop beats to 2)."
+        ],
+        "answer": "260 Hz",
+        "pitfall": "Filing INCREASES f; waxing DECREASES f."
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_10",
+    "weightageNote": "Weightage: 7-9% (Highest-weightage Class 12 block: Gauss Law, Dipole, Conductors & RC Capacitors).",
+    "syllabusAlert": "Syllabus Sync: Coulomb, Electric Field/Potential, Dipole, Gauss Law & Dielectrics/RC Capacitors fully retained.",
+    "sections": [
+      {
+        "heading": "Electric Field, Dipoles & Gauss's Law Flux Symmetry",
+        "summary": "Gauss Law Flux Phi = q_enclosed / eps_0 counts strictly charges inside the closed Gaussian surface, though E on surface includes all charges.",
+        "keyPoints": [
+          "Dipole field: Axial E = 2kp/r^3 (parallel to p); Equatorial E = kp/r^3 (anti-parallel to p). Torque tau = p x E, Energy U = -p . E.",
+          "Gaussian cube symmetry: charge q at centre -> q/(6 eps_0) per face; at face centre -> q/(2 eps_0) through cube; at corner -> q/(8 eps_0) through cube.",
+          "Conducting spheres: charge stays strictly on outer surfaces; field inside bulk conductor = 0; surface force pressure = sigma^2 / (2 eps_0)."
+        ]
+      },
+      {
+        "heading": "Potential, Earthing & Capacitors with Dielectrics / RC Loops",
+        "summary": "Parallel plate capacitance C = K eps_0 A / d stores electrostatic energy U = (1/2) C V^2 = Q^2 / (2C).",
+        "keyPoints": [
+          "Battery DISCONNECTED while inserting dielectric K: Q stays constant -> E/K, V/K, C->KC, U->U/K.",
+          "Battery CONNECTED while inserting dielectric K: V stays constant -> E unchanged, Q->KQ, C->KC, U->KU (battery supplies work!).",
+          "Partial slab thickness t (dielectric K): C = eps_0 A / (d - t + t/K). RC charging time constant tau = R_eq * C."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Self Energy of Sphere", "formula": "U_hollow = kQ^2 / (2R) ; U_solid = 3 kQ^2 / (5R)", "note": "Work needed to assemble charge from infinity"},
+      {"concept": "RC Charging Curve", "formula": "q(t) = C V (1 - e^(-t / R_eq C))", "note": "At t=0 uncharged capacitor = short wire; at t=infinity = open switch"},
+      {"concept": "Common Potential Sharing", "formula": "V_common = (C1 V1 + C2 V2) / (C1 + C2)", "note": "Heat loss dH = 1/2 [C1 C2 / (C1 + C2)] (V1 - V2)^2"}
+    ],
+    "comparison": {
+      "title": "Dielectric Slab Insertion Comparison",
+      "headers": ["Parameter", "Battery Disconnected (Q Fixed)", "Battery Connected (V Fixed)"],
+      "rows": [
+        ["Capacitance C", "Increases (K * C_0)", "Increases (K * C_0)"],
+        ["Charge Q", "Constant (Q_0)", "Increases (K * Q_0)"],
+        ["Potential V & Field E", "Drops (V_0 / K, E_0 / K)", "Unchanged (V_0, E_0)"],
+        ["Stored Energy U", "Drops (U_0 / K)", "Increases (K * U_0)"]
+      ]
+    },
+    "traps": [
+      "Connecting charged capacitor C to identical uncharged C dissipates EXACTLY 50% of initial energy as spark heat!",
+      "Always find R_eq across capacitor terminals AFTER shorting all ideal DC batteries to calculate time constant tau = R_eq C!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Dielectric Capacitor",
+        "question": "A dielectric slab (K = 4) fills half the gap thickness (t = d/2) inside an isolated parallel plate capacitor C_0 = 12 uF. Find new capacitance.",
+        "steps": [
+          "Effective air gap d_eff = (d - d/2) + (d/2)/4 = d/2 + d/8 = 5d/8.",
+          "C_new = (8/5) C_0 = 1.6 x 12 = 19.2 uF."
+        ],
+        "answer": "19.2 uF",
+        "pitfall": "Treating half-thickness slab in series vs half-area slab in parallel: gap split = SERIES, plate-area split = PARALLEL!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_11",
+    "weightageNote": "Weightage: 5-7% (Ohm's Law, KCL/KVL, Symmetry Circuits, Meter Bridge & Galvanometer Shunts).",
+    "syllabusAlert": "Syllabus Sync: Potentiometer & Colour Coding excluded in NTA JEE Mains (retained in JEE Adv phy_adv3). Meter Bridge, Wheatstone, Ammeter/Voltmeter conversions core everywhere.",
+    "sections": [
+      {
+        "heading": "Drift Velocity, Resistance & Symmetric Networks",
+        "summary": "Current I = n e A v_d with resistivity rho depending solely on material & temperature (independent of wire shape).",
+        "keyPoints": [
+          "Stretching/drawing wire conserving volume: R proportional to L^2 proportional to 1/A^2 proportional to 1/r^4.",
+          "Power rating: Bulbs rated P at fixed V have R = V^2 / P -> in SERIES, lowest-wattage bulb glows brightest (I^2 R); in PARALLEL, highest-wattage glows brightest (V^2/R).",
+          "Use Folding/Mirror Symmetry to identify equipotential nodes and simplify cube/ladder resistor grids."
+        ]
+      },
+      {
+        "heading": "Wheatstone Bridge, Meter Bridge & Meter Conversions",
+        "summary": "Balanced bridge (R1/R2 = R3/R4) passes zero current through galvanometer.",
+        "keyPoints": [
+          "Meter Bridge null point l: X / R = l / (100 - l) (shift happens toward higher resistance end).",
+          "Ammeter Conversion: connect TINY shunt S = I_g G / (I - I_g) in PARALLEL. Ideal ammeter R = 0.",
+          "Voltmeter Conversion: connect LARGE multiplier R_s = (V / I_g) - G in SERIES. Ideal voltmeter R = infinity."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Equivalent Cell Parallel", "formula": "E_eq = (E1/r1 + E2/r2) / (1/r1 + 1/r2)", "note": "Check polarity signs strictly when terminals oppose"},
+      {"concept": "Maximum Power Transfer", "formula": "P_max = E^2 / (4 r) when R_load = r", "note": "Efficiency at max power transfer is strictly 50%"},
+      {"concept": "Shunt & Multiplier", "formula": "S = I_g G / (I - I_g) ; R_v = V/I_g - G", "note": "Parallel shunt increases range; series multiplier reads higher V"}
+    ],
+    "comparison": {
+      "title": "Electrical Measuring Instruments Summary",
+      "headers": ["Instrument", "Connection in Circuit", "Series/Parallel Modification", "Ideal Resistance"],
+      "rows": [
+        ["Ammeter", "Series", "Low Shunt S in Parallel with G", "0 Ohm"],
+        ["Voltmeter", "Parallel", "High R_v in Series with G", "Infinity"],
+        ["Meter Bridge", "Null Deflection", "1-metre Constantan/Manganin wire", "Null point best near 50 cm"]
+      ]
+    },
+    "traps": [
+      "10% stretch in wire length makes L' = 1.1 L -> R' = (1.1)^2 R = 1.21 R (21% increase, NOT 10%!). Never use 2*dL/L approximation for >5% changes.",
+      "Reversing one battery terminal reverses its E_i/r_i sign inside the parallel EMF numerator!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Shunt Conversion",
+        "question": "A galvanometer of resistance 50 Ohm gives full-scale deflection for 10 mA. How do you convert it to read up to 5 A?",
+        "steps": [
+          "Required shunt S in parallel = (I_g G) / (I - I_g).",
+          "S = (0.01 x 50) / (5 - 0.01) = 0.5 / 4.99 ~= 0.1002 Ohm in parallel."
+        ],
+        "answer": "Connect 0.10 Ohm shunt in parallel",
+        "pitfall": "Connecting 0.1 Ohm in series destroys deflection and reads wrong current."
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_12",
+    "weightageNote": "Weightage: 5-6% (Biot-Savart Law, Ampere Law, Lorentz Force & Magnetic Materials).",
+    "syllabusAlert": "Syllabus Sync: Cyclotron & Earth's Magnetism elements dropped from NTA JEE Mains; Biot-Savart, Solenoid, Helical Motion, Moving-Coil Galvanometer & Dia/Para/Ferro properties retained.",
+    "sections": [
+      {
+        "heading": "Biot-Savart Law & Ampere's Circuital Law",
+        "summary": "Magnetic field dB = (mu_0 I / 4 pi) (dl x r) / r^3 circulates perpendicular to both wire segment and displacement vector.",
+        "keyPoints": [
+          "Finite wire at perpendicular distance d spanning angles theta_1, theta_2: B = (mu_0 I / 4 pi d)(sin theta_1 + sin theta_2).",
+          "Circular arc subtending angle alpha at centre: B = (mu_0 I alpha) / (4 pi R). Solenoid interior: B = mu_0 n I (end = mu_0 n I / 2).",
+          "Solid cylinder carrying uniform current density J: B_inside = (mu_0 J r) / 2 proportional to r; outside proportional to 1/r."
+        ]
+      },
+      {
+        "heading": "Lorentz Force, Helical Paths & Magnetic Materials",
+        "summary": "Magnetic force F = q(v x B) is always perpendicular to velocity -> does ZERO work and preserves particle speed!",
+        "keyPoints": [
+          "Helical trajectory: radius R = (m v sin theta) / (q B); Time period T = (2 pi m) / (q B) (independent of speed!); Pitch p = (v cos theta) * T.",
+          "Parallel currents attract; anti-parallel currents repel with force/length = (mu_0 I1 I2) / (2 pi d).",
+          "Dia (chi < 0, weakly repelled), Para (chi > 0 ~ 1/T Curie Law), Ferro (chi >> 1, domains, Curie temperature T_c -> paramagnetic above T_c)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Cyclotron / Circular Radius", "formula": "r = m v / (q B) = sqrt(2 m K) / (q B) = p / (q B)", "note": "Equal momentum implies equal radius for same charge q"},
+      {"concept": "Magnetic Dipole Torque & PE", "formula": "tau = M x B ; U = -M . B", "note": "Current loop dipole M = N I A"},
+      {"concept": "Current Sensitivity & Voltage Sensitivity", "formula": "I_s = NAB / k ; V_s = NAB / (k R)", "note": "Doubling turns N doubles I_s but keeps V_s unchanged because R also doubles"}
+    ],
+    "comparison": {
+      "title": "Dia, Para & Ferromagnetic Materials",
+      "headers": ["Property", "Diamagnetic", "Paramagnetic", "Ferromagnetic"],
+      "rows": [
+        ["Susceptibility chi", "-1 <= chi < 0 (small negative)", "Small positive (+)", "Very large positive (>> 100)"],
+        ["Temperature Dependence", "Independent of T", "chi proportional to 1/T (Curie)", "Follows Curie-Weiss above T_c"],
+        ["Examples", "Bi, Cu, Water, Superconductors", "O2, Al, Na, CuCl2", "Fe, Co, Ni, Alnico"]
+      ]
+    },
+    "traps": [
+      "Speed & KE NEVER change inside a pure magnetic field (though momentum direction turns)!",
+      "Proton (m, q) vs Alpha (4m, 2q) with equal KE -> r = sqrt(2mK)/(qB) -> r_alpha / r_proton = sqrt(4)/2 = 1 : 1 EQUAL radii!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Lorentz Ratio Trap",
+        "question": "A proton, deuteron (2m, q) and alpha particle (4m, 2q) enter uniform B perpendicularly with EQUAL kinetic energy. Find ratio of circular radii r_p : r_d : r_alpha.",
+        "steps": [
+          "Radius r = sqrt(2 m K) / (q B) => r proportional to sqrt(m) / q.",
+          "r_p ~ sqrt(1)/1 = 1; r_d ~ sqrt(2)/1 = sqrt(2); r_alpha ~ sqrt(4)/2 = 1.",
+          "Ratio = 1 : sqrt(2) : 1."
+        ],
+        "answer": "1 : sqrt(2) : 1",
+        "pitfall": "Equal KE vs Equal Speed vs Equal Accelerating Potential V give three completely different ratios!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_13",
+    "weightageNote": "Weightage: 6-8% (Faraday/Lenz Law, Motional EMF, LR Growth, AC LCR Resonance & EM Wave Spectrum).",
+    "syllabusAlert": "Syllabus Sync: Quality factor, LC oscillations, Eddy currents conceptual trimming vs Resonance/Transformers/EM Waves fully active.",
+    "sections": [
+      {
+        "heading": "Faraday's Law, Lenz's Law & Motional EMF",
+        "summary": "Induced EMF e = -dPhi/dt opposes the change in magnetic flux causing it (energy conservation).",
+        "keyPoints": [
+          "Induced charge flowing through loop R: q_induced = |Delta Phi| / R (completely independent of how fast flux changed!).",
+          "Motional EMF across moving rod: e = (v x B) . L. Rotating rod (length L, omega) about one end: e = (1/2) B omega L^2.",
+          "Inductor energy U = (1/2) L I^2; LR growth I(t) = (E/R)(1 - e^(-t / tau)) with tau = L / R."
+        ]
+      },
+      {
+        "heading": "Alternating Current (Series LCR) & EM Waves",
+        "summary": "RMS current I_rms = I_0 / sqrt(2) produces identical heating to steady DC; average over full cycle is 0, half-cycle = 2 I_0 / pi.",
+        "keyPoints": [
+          "Series LCR Impedance Z = sqrt(R^2 + (X_L - X_C)^2); Phase angle tan(phi) = (X_L - X_C) / R.",
+          "Resonance occurs at omega_0 = 1 / sqrt(LC) -> X_L = X_C, Z_min = R, Power Factor cos(phi) = 1 (purely resistive!).",
+          "EM Waves: E perpendicular B perpendicular c; E_0 / B_0 = c = 1 / sqrt(mu_0 eps_0); energy split 50% Electric + 50% Magnetic. Wavelength order: Radio > Micro > IR > Vis > UV > X-ray > Gamma."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "AC Average Power", "formula": "P_avg = V_rms I_rms cos(phi) = I_rms^2 R", "note": "Pure L or pure C draws strictly zero average wattless power (phi = 90 deg)"},
+      {"concept": "Transformer Ratio", "formula": "V_s / V_p = N_s / N_p = I_p / I_s (ideal)", "note": "Works ONLY with AC (never steady DC!)"},
+      {"concept": "Displacement Current", "formula": "I_d = eps_0 (dPhi_E / dt)", "note": "Equals conduction current in charging capacitor wires"}
+    ],
+    "comparison": {
+      "title": "AC Element Phasor Behavior",
+      "headers": ["Element", "Reactance / Impedance", "Phase Relationship", "Power Factor cos(phi)"],
+      "rows": [
+        ["Pure Resistor R", "R (Freq Independent)", "V in phase with I", "1"],
+        ["Pure Inductor L", "X_L = omega L", "V LEADS I by 90 deg", "0 (Wattless)"],
+        ["Pure Capacitor C", "X_C = 1 / (omega C)", "I LEADS V by 90 deg", "0 (Wattless)"],
+        ["Resonant Series LCR", "Z_min = R", "V in phase with I", "1"]
+      ]
+    },
+    "traps": [
+      "Remember RMS = Peak / sqrt(2) applies ONLY to sinusoidal/cosinusoidal waves; if I = I_1 + I_2 sin(omega t), then I_rms = sqrt(I_1^2 + I_2^2 / 2)!",
+      "At series LCR resonance, V_L and V_C can individually EXCEED source V_applied while cancelling each other 180 deg out of phase!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Motional Rotating Rod",
+        "question": "A 2 m metal rod rotates at 50 rad/s about one end inside perpendicular B = 0.4 T. Find EMF between midpoint and outer end.",
+        "steps": [
+          "EMF between r1 and r2 = (1/2) B omega (r2^2 - r1^2).",
+          "With r1 = 1 m, r2 = 2 m: e = 0.5 x 0.4 x 50 x (4 - 1) = 10 x 3 = 30 V."
+        ],
+        "answer": "30 V",
+        "pitfall": "Using full (1/2) B omega L^2 = 40 V ignores the inner 1 m segment contribution!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_14",
+    "weightageNote": "Weightage: 7-9% (Mirrors, Refraction, Prisms, Optical Instruments, YDSE & Polarization).",
+    "syllabusAlert": "Syllabus Sync: Ray & Wave Optics (YDSE, Single-Slit Diffraction, Brewster Polarization) fully active across JEE/NEET.",
+    "sections": [
+      {
+        "heading": "Mirrors, Snell's Law, TIR & Prisms",
+        "summary": "Cartesian sign convention measures ALL distances from pole/optical centre along incident light direction as positive.",
+        "keyPoints": [
+          "Mirror: 1/v + 1/u = 1/f; m = -v/u = f/(f - u). Lens: 1/v - 1/u = 1/f; m = v/u.",
+          "Lens Maker Formula: 1/f = (mu_rel - 1)(1/R1 - 1/R2). Immersing glass lens (mu = 1.5) in denser CS2 (mu = 1.65) REVERSES converging/diverging nature!",
+          "Prism deviation delta = i + e - A; at minimum deviation i = e and r1 = r2 = A/2 => mu = sin((A + delta_m)/2) / sin(A/2). Thin prism delta = (mu - 1)A."
+        ]
+      },
+      {
+        "heading": "Wave Optics: YDSE, Diffraction & Polarization",
+        "summary": "Coherent waves produce bright fringes when path difference Delta x = n lambda and dark fringes when (2n - 1) lambda / 2.",
+        "keyPoints": [
+          "YDSE fringe width beta = lambda D / d. Placing transparent slab (t, mu) shifts fringe pattern by (mu - 1)t * (beta / lambda) toward that slit.",
+          "Intensity ratio: I_max / I_min = (sqrt(I1) + sqrt(I2))^2 / (sqrt(I1) - sqrt(I2))^2. For equal I_0: I = 4 I_0 cos^2(phi/2).",
+          "Single-slit diffraction MINIMA at a sin(theta) = n lambda; Central maximum angular width = 2 lambda / a. Brewster Law: tan(theta_B) = mu (reflected & refracted rays are 90 deg apart!)."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Silvered Lens Power", "formula": "P_eq = 2 P_lens + P_mirror", "note": "Acts as a mirror with f_eq = -1 / P_eq"},
+      {"concept": "Malus Polarization Law", "formula": "I = I_0 cos^2(theta)", "note": "Unpolarized light passing first polarizer drops to I_0 / 2 BEFORE Malus cosine factor applies"},
+      {"concept": "Compound Microscope Mag", "formula": "M ~= -(L / f_o)(1 + D / f_e)", "note": "Normal adjustment relaxed eye drops the '1 +' factor"}
+    ],
+    "comparison": {
+      "title": "YDSE Interference vs Single-Slit Diffraction",
+      "headers": ["Feature", "YDSE Two-Slit Interference", "Single-Slit Diffraction"],
+      "rows": [
+        ["Dark Fringe Condition", "d sin theta = (2n - 1) lambda/2", "a sin theta = n lambda (n = 1,2...)"],
+        ["Bright Maxima Width", "All fringes equal width beta = lambda D/d", "Central max = 2 * secondary max width"],
+        ["Maxima Intensity", "All bright fringes EQUAL intensity", "Decreases sharply away from centre"]
+      ]
+    },
+    "traps": [
+      "Unpolarized light of intensity I_0 passing through TWO polarizers at angle 60 deg emerges as (I_0 / 2) cos^2(60 deg) = I_0 / 8 (do NOT forget the initial 1/2!).",
+      "CRITICAL ANGLE sin(i_c) = mu_rarer / mu_denser; TIR happens ONLY when ray travels from DENSER to RARER medium at i > i_c."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Lens Immersed in Liquid",
+        "question": "A thin convex glass lens (mu_g = 1.5) has focal length +20 cm in air. Find its focal length when submerged in water (mu_w = 4/3).",
+        "steps": [
+          "In air: 1/20 = (1.5 - 1) K = 0.5 K => K = 1/10.",
+          "In water: 1/f_w = (1.5 / (4/3) - 1) K = (9/8 - 1) K = (1/8) * (1/10) = 1/80.",
+          "Hence f_w = +80 cm (quadrupled!)."
+        ],
+        "answer": "+80 cm",
+        "pitfall": "Remember convex lens focal length in water (~1.33) becomes ~4x its air focal length!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_15",
+    "weightageNote": "Weightage: 10-12% (Easiest & highest ROI block across JEE & NEET: Modern Physics + Semiconductor Logic Gates!).",
+    "syllabusAlert": "Syllabus Sync: Radioactivity alpha/beta/gamma law conceptual basics vs Nuclear Binding/Q-Value/Photoelectric/Bohr & Zener/Logic Gates active.",
+    "sections": [
+      {
+        "heading": "Photoelectric Effect & Matter Waves (de Broglie)",
+        "summary": "Photon energy E = hc / lambda ~= 12400 eV.A / lambda(A) transfers in all-or-nothing single electron collisions.",
+        "keyPoints": [
+          "Einstein Photoelectric Equation: K_max = e V_s = h nu - Phi = hc/lambda - hc/lambda_0.",
+          "Stopping potential V_s & K_max depend STRICTLY on frequency and work function (independent of light intensity); saturation photocurrent depends on intensity.",
+          "de Broglie wavelength lambda = h/p = h / sqrt(2mK). For electron accelerated through V volts: lambda(A) = 12.27 / sqrt(V)."
+        ]
+      },
+      {
+        "heading": "Bohr Atom, Nuclear Binding Energy & Logic Gates",
+        "summary": "Hydrogen quantized orbits scale as r_n proportional to n^2/Z and energy E_n = -13.6 Z^2 / n^2 eV.",
+        "keyPoints": [
+          "Spectral transitions n2 -> n1 emit max (n2 - n1)(n2 - n1 + 1)/2 distinct lines; Lyman (UV -> n=1), Balmer (Visible -> n=2), Paschen (IR -> n=3).",
+          "Nuclear density ~= 2.3 x 10^17 kg/m^3 is CONSTANT for ALL nuclei (R = R_0 A^(1/3)). Reaction Q-value = BE_products - BE_reactants = Delta m x 931.5 MeV.",
+          "Semiconductors: Zener diode operates in REVERSE breakdown as voltage regulator; Logic Gates: NAND & NOR are universal gates! De Morgan: (A+B)' = A'.B' and (A.B)' = A' + B'."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Photoelectric Cutoff", "formula": "e V_s = 12400 / lambda(A) - Phi(eV)", "note": "Use hc ~= 1240 eV.nm or 12400 eV.A for fast calculations"},
+      {"concept": "Bohr Energy & Radius", "formula": "r_n = 0.529 n^2/Z (A) ; E_n = -13.6 Z^2/n^2 eV", "note": "KE = |E_n| = -U_n / 2 identically"},
+      {"concept": "Radioactive Activity", "formula": "N = N_0 (1/2)^(t / T_1/2) ; T_1/2 = 0.693 / lambda", "note": "Parallel decay: lambda_eff = lambda1 + lambda2"}
+    ],
+    "comparison": {
+      "title": "Boolean Logic Gates Truth Summary",
+      "headers": ["Gate", "Boolean Expression", "High Output (Y = 1) Condition"],
+      "rows": [
+        ["AND", "Y = A . B", "ONLY when BOTH A=1 and B=1"],
+        ["OR", "Y = A + B", "Whenever AT LEAST ONE input is 1"],
+        ["NAND", "Y = (A . B)'", "0 ONLY when both inputs 1; 1 otherwise"],
+        ["NOR", "Y = (A + B)'", "1 ONLY when BOTH A=0 and B=0"]
+      ]
+    },
+    "traps": [
+      "Increasing intensity NEVER ejects photoelectrons if incident frequency nu < threshold nu_0!",
+      "A p-n junction depletion barrier widens under REVERSE bias and narrows under FORWARD bias; Zener breakdown regulates voltage strictly in REVERSE bias."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "Photoelectric Numerical",
+        "question": "Light of wavelength 310 nm strikes a metal of work function 2.0 eV (hc = 1240 eV.nm). Find stopping potential V_s.",
+        "steps": [
+          "Photon energy E = 1240 / 310 = 4.0 eV.",
+          "e V_s = E - Phi = 4.0 - 2.0 = 2.0 eV => V_s = 2.0 V."
+        ],
+        "answer": "2.0 V",
+        "pitfall": "Remember stopping potential V_s in Volts numerically equals K_max in eV!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_adv1",
+    "weightageNote": "Weightage: 4-6% Exclusive IIT JEE Advanced Paper 1/2 Mechanics differentiator (ICOR, Angular Impulse & Rocket Thrust).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Instantaneous Centre of Rotation (ICOR), Accelerating Plank Rolling & Variable-Mass Tsiolkovsky Systems.",
+    "sections": [
+      {
+        "heading": "Instantaneous Centre of Rotation (ICOR) & Plank Rolling",
+        "summary": "For planar rigid body motion, the unique point with zero instantaneous velocity acts as pure rotation pivot: v_P = omega x r_(P/ICOR).",
+        "keyPoints": [
+          "Wheel pure rolling at v_cm = omega R: ICOR sits at bottommost ground contact point; top moves at 2 v_cm, side points move at sqrt(2) v_cm.",
+          "Pure rolling on accelerating plank (a_0): constraint enforces a_cm - alpha R = a_0.",
+          "Sliding-to-rolling transition: kinetic friction accelerates/decelerates v_cm and changes omega until v_cm = omega R; conserve angular momentum L_ground about stationary ground line throughout!"
+        ]
+      },
+      {
+        "heading": "Variable Mass & Rocket Propulsion",
+        "summary": "General Newton equation for open mass-changing system: M(dv/dt) = F_ext + v_rel (dm/dt), where v_rel = v_exhaust - v_rocket.",
+        "keyPoints": [
+          "Rocket thrust force F_thrust = |v_rel| (-dm/dt) acts opposite to exhaust ejection.",
+          "Gravity-free velocity equation: v = v_0 + v_rel * ln(M_0 / M). Under uniform g: v = v_0 - g t + v_rel * ln(M_0 / M).",
+          "Hovering minimum burn rate: (-dm/dt)_min = M g / v_rel."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Tsiolkovsky Rocket Speed", "formula": "v(t) = v_0 - g t + u_rel ln(M_0 / M(t))", "note": "u_rel is constant exhaust speed relative to rocket"},
+      {"concept": "Angular Impulse Relation", "formula": "Integral(tau_O dt) = L_f - L_i = I Delta omega", "note": "Conserve L about contact line to bypass unknown friction impulse"},
+      {"concept": "Plank Pure Rolling Max Accel", "formula": "a_0(max) = mu g (1 + M R^2 / I_cm)", "note": "Solid sphere: (7/2) mu g; solid cylinder: 3 mu g"}
+    ],
+    "comparison": {
+      "title": "Rolling Transition Conservation Summary",
+      "headers": ["Scenario", "Conserved Linear Momentum?", "Conserved Angular Momentum About Ground?", "KE Conserved?"],
+      "rows": [
+        ["Ball spun & dropped on rough floor", "No (kinetic friction acts)", "YES (friction line passes through ground pivot!)", "No (friction dissipates heat)"],
+        ["Elastic rod-particle impact on smooth table", "YES", "YES about any fixed table point", "YES (e = 1)"]
+      ]
+    },
+    "traps": [
+      "Angular momentum about a point P fixed on an ACCELERATING plank is NOT conserved without including pseudo torque -M (r_cm x a_plank)!",
+      "At bottom contact of pure rolling wheel on flat ground, velocity = 0, BUT acceleration = omega^2 R UPWARD (not zero!)."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT MSQ / Numerical",
+        "question": "A uniform solid sphere (M, R) without initial spin is pushed with COM velocity v_0 along rough horizontal floor. Find final pure-rolling velocity v_f.",
+        "steps": [
+          "Friction passes right through ground line => zero torque about ground contact point P!",
+          "L_i = M v_0 R + 0 = L_f = M v_f R + (2/5) M R^2 (v_f / R) = (7/5) M v_f R.",
+          "Equating: v_f = (5/7) v_0."
+        ],
+        "answer": "v_f = (5/7) v_0",
+        "pitfall": "Trying F = ma + torque equations wastes 4 minutes; ground angular momentum solves it in 10 seconds!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_adv2",
+    "weightageNote": "Weightage: 3-5% IIT Exclusive Thermal & Acoustic Module (Carnot Efficiency, Entropy & Doppler Effect).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Explicitly removed from JEE Mains 2024+, RETAINED in IIT JEE Advanced Official Syllabus!",
+    "sections": [
+      {
+        "heading": "Carnot Engine, Refrigerator & Clausius Entropy",
+        "summary": "No heat engine operating between two temperatures T_H and T_C can exceed reversible Carnot efficiency eta = 1 - T_C / T_H.",
+        "keyPoints": [
+          "Carnot Cycle: Isothermal expansion (T_H) -> Adiabatic expansion -> Isothermal compression (T_C) -> Adiabatic compression.",
+          "Refrigerator / Heat Pump: COP_fridge = Q_C / W = T_C / (T_H - T_C); COP_pump = Q_H / W = 1 + COP_fridge = T_H / (T_H - T_C).",
+          "Ideal gas Entropy change: Delta S = n C_v ln(T2/T1) + n R ln(V2/V1). For any cyclic process Delta S_system = 0; for irreversible process Delta S_universe > 0."
+        ]
+      },
+      {
+        "heading": "Doppler Effect in Sound & Moving Reflectors",
+        "summary": "Observed frequency shifts when source and/or listener move relative to the air medium.",
+        "keyPoints": [
+          "General formula: f' = f_0 * (v + v_m +/- v_L) / (v + v_m -/+ v_S), where numerator uses + for observer approaching source, denominator uses - for source approaching observer.",
+          "Moving reflector wall (speed u toward stationary source): treat wall first as moving listener, then re-emitting as moving source -> f'' = f_0 * (v + u) / (v - u).",
+          "Transverse Doppler (radial v_cos = 0) yields zero classical shift!"
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Carnot Efficiency", "formula": "eta = 1 - T_C/T_H = W_net / Q_H", "note": "Lowering T_C by dT raises eta MORE than raising T_H by equal dT"},
+      {"concept": "Mixing Entropy (Identical Liquids)", "formula": "Delta S = m c ln[ ((T1+T2)/2)^2 / (T1*T2) ] > 0", "note": "Always positive because AM > GM"},
+      {"concept": "Doppler Moving Wall Beats", "formula": "f_beat = | f_0 (v + u)/(v - u) - f_0 |", "note": "For car approaching cliff at u with horn f_0"}
+    ],
+    "comparison": {
+      "title": "Doppler Sign Rules Reference",
+      "headers": ["Motion Scenario", "Observer Factor (Numerator)", "Source Factor (Denominator)"],
+      "rows": [
+        ["Approaching Each Other", "(v + v_L)", "(v - v_S)  [Higher Pitch]"],
+        ["Receding From Each Other", "(v - v_L)", "(v + v_S)  [Lower Pitch]"]
+      ]
+    },
+    "traps": [
+      "Wind speed w simply shifts effective sound speed v -> v + w (along sound propagation direction from source to observer)!",
+      "Always take component of v_S and v_L ALONG the line joining instantaneous source-to-observer positions."
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT Moving Wall Doppler",
+        "question": "A car approaches a cliff at 20 m/s sounding a 620 Hz horn (v_sound = 330 m/s). Find beat frequency heard by driver between direct sound and echo.",
+        "steps": [
+          "Echo frequency received back by car = f_0 (v + u)/(v - u) = 620 x (350 / 310) = 700 Hz.",
+          "Direct horn heard by driver traveling WITH source = 620 Hz.",
+          "Beat frequency = 700 - 620 = 80 Hz."
+        ],
+        "answer": "80 Hz",
+        "pitfall": "Applying shift only once (350/330 or 330/310) halves the true Doppler shift!"
+      }
+    ]
+  },
+  {
+    "moduleId": "phy_adv3",
+    "weightageNote": "Weightage: 4-5% IIT Exclusive Electromagnetism & Interference Extensions (Cavity Superposition, Potentiometer & Thin Film).",
+    "syllabusAlert": "IIT ADV_ONLY Module: Uniform Cavity Fields, Dielectric Pulling Force, Potentiometer Null Balance & Thin-Film Interference Phase Reversal.",
+    "sections": [
+      {
+        "heading": "Uniform Cavity Superposition (Electrostatic & Magnetic)",
+        "summary": "Treating a cavity inside uniform rho or current density J as superposition of full positive cylinder/sphere + equal negative cavity distribution yields exact closed-form uniform fields.",
+        "keyPoints": [
+          "Uniform charge sphere (rho) with spherical cavity (vector OC = d): inside cavity E = (rho * d) / (3 eps_0), completely uniform in magnitude and direction!",
+          "Uniform current cylinder (J) with cylindrical hole (offset d): inside hole B = (mu_0 / 2) (J x d), uniform perpendicular to J and d.",
+          "Dielectric slab partially pulled into capacitor (fixed V): inward pulling force F = (1/2) (dC/dx) V^2 = eps_0 b (K - 1) V^2 / (2 d)."
+        ]
+      },
+      {
+        "heading": "Potentiometer Sensitivity & Thin-Film Interference",
+        "summary": "Potentiometer acts as an ideal infinite-resistance voltmeter at null point, drawing zero test-cell current.",
+        "keyPoints": [
+          "Potential gradient k = V_wire / L. Internal resistance r = R * (l1 - l2) / l2.",
+          "Lowering gradient k (longer wire or higher series R) improves sensitivity and precision.",
+          "Thin film (thickness t, mu) in air: reflection from air->film undergoes pi phase shift while film->air has 0 shift => constructive interference at 2 mu t cos(r) = (2n - 1) lambda / 2."
+        ]
+      }
+    ],
+    "formulas": [
+      {"concept": "Spherical Cavity Field", "formula": "E_cavity = (rho * d) / (3 eps_0)", "note": "Strictly constant everywhere inside cavity regardless of cavity radius!"},
+      {"concept": "Potentiometer Internal r", "formula": "r = R (l1 - l2) / l2", "note": "l1 = open-circuit null length; l2 = shunted by R"},
+      {"concept": "Soap Film Bright Reflection", "formula": "2 mu t = (n - 1/2) lambda", "note": "Minimum thickness t_min = lambda / (4 mu)"}
+    ],
+    "comparison": {
+      "title": "Thin-Film Interference Phase Rules",
+      "headers": ["Refractive Order (n1 / n2 / n3)", "Net Reflection Phase Jump", "Bright Condition (Normal Incidence)"],
+      "rows": [
+        ["Air (1) / Film (1.5) / Air (1)", "pi (One inversion)", "2 mu t = (2n - 1) lambda / 2"],
+        ["Air (1) / Oil (1.3) / Glass (1.5)", "2 pi = 0 (Both invert!)", "2 mu t = n lambda"]
+      ]
+    },
+    "traps": [
+      "Always check BOTH top AND bottom refractive index transitions before deciding whether thin-film bright reflection uses (n - 1/2) lambda or n lambda!",
+      "At potentiometer null balance, series resistance placed inside the SECONDARY cell branch causes ZERO shift in null length because I_branch = 0!"
+    ],
+    "solvedExamples": [
+      {
+        "tag": "IIT Cavity Numerical",
+        "question": "Solid insulating sphere (rho = 3 eps_0 C/m^3) has spherical cavity centered at d = 2 m from sphere centre. Find electric field inside cavity.",
+        "steps": [
+          "Superpose +rho full sphere and -rho cavity sphere: E_cavity = rho * d / (3 eps_0).",
+          "Substitute rho = 3 eps_0 and d = 2 => E = (3 eps_0 x 2) / (3 eps_0) = 2 N/C."
+        ],
+        "answer": "2 N/C",
+        "pitfall": "Radius R of the main sphere and radius a of the cavity do NOT appear in the uniform cavity field!"
+      }
+    ]
+  }
+]
