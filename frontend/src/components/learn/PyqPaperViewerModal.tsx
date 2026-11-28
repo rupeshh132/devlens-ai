@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   X, Printer, CheckCircle2, AlertTriangle, Lightbulb, 
   HelpCircle, ChevronDown, ChevronUp, Award, Clock, Bookmark,
@@ -159,6 +160,18 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
     }
   }, [paper]);
 
+  // Isolate print DOM whenever PYQ viewer modal is open
+  useEffect(() => {
+    if (isOpen && paper) {
+      document.body.classList.add('preplens-modal-open');
+    } else {
+      document.body.classList.remove('preplens-modal-open');
+    }
+    return () => {
+      document.body.classList.remove('preplens-modal-open');
+    };
+  }, [isOpen, paper]);
+
   if (!isOpen || !paper) return null;
 
   const isQuestionSaved = (q: PyqQuestion) => {
@@ -238,14 +251,14 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
     window.print();
   };
 
-  return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center ${isFullscreen ? 'p-0' : 'p-2 sm:p-4'} bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200 print:static print:p-0 print:block print:bg-white`}>
+  return createPortal(
+    <div className={`preplens-print-root fixed inset-0 z-50 flex items-center justify-center ${isFullscreen ? 'p-0' : 'p-2 sm:p-4'} bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200 print:static print:p-0 print:block print:bg-white`}>
       {/* Print-specific style overrides */}
       <style>{`
         @media print {
           @page {
-            margin: 12mm 14mm;
-            size: auto;
+            margin: 10mm 12mm;
+            size: A4 portrait;
           }
           body {
             background: #ffffff !important;
@@ -265,11 +278,11 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
         <img 
           src="/images/preplens_round_logo.png" 
           alt="PrepLens Watermark" 
-          className="w-[500px] h-[500px] object-contain opacity-25 select-none"
+          className="w-[380px] h-[380px] object-contain opacity-[0.11] select-none"
         />
       </div>
 
-      <div className={`bg-slate-900 w-full ${isFullscreen ? 'h-screen w-screen max-w-none rounded-none border-none' : 'max-w-[96vw] xl:max-w-7xl h-[95vh] rounded-2xl shadow-2xl border border-slate-800'} flex flex-col overflow-hidden transition-all duration-200 print:static print:max-h-none print:w-full print:border-none print:shadow-none print:overflow-visible print:bg-white relative z-10`}>
+      <div className={`bg-slate-900 w-full ${isFullscreen ? 'h-screen w-screen max-w-none rounded-none border-none' : 'max-w-[96vw] xl:max-w-7xl h-[95vh] rounded-2xl shadow-2xl border border-slate-800'} flex flex-col overflow-hidden transition-all duration-200 print:static print:block print:max-w-none print:h-auto print:max-h-none print:w-full print:rounded-none print:border-none print:shadow-none print:overflow-visible print:bg-white relative z-10`}>
         
         {/* 1. UNIFIED PRO APPLICATION BAR (Compact 56px height) */}
         <header className="h-14 bg-slate-900 text-white px-3 sm:px-4 flex items-center justify-between gap-3 border-b border-slate-800 shrink-0 select-none print:hidden">
@@ -501,7 +514,26 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
           </div>
         ) : (
           /* SCROLLABLE QUESTIONS / OFFICIAL SHEET CONTENT */
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-slate-50 print:bg-white relative">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 bg-slate-50 print:flex-none print:block print:overflow-visible print:bg-white print:p-0 relative">
+
+            {/* Printable Branded Navy Banner for Interactive Solutions Mode */}
+            {viewMode === 'INTERACTIVE' && (
+              <div className="hidden print:flex items-center justify-between px-4 py-3 mb-4 rounded-xl bg-[#0F2454] text-white">
+                <div className="flex items-center gap-3">
+                  <img src="/images/preplens_round_logo.png" alt="PrepLens Logo" className="w-11 h-11 object-contain" />
+                  <div>
+                    <div className="text-base font-black tracking-tight text-white">{paper.title}</div>
+                    <div className="text-[11px] text-blue-100 font-semibold">
+                      {authority.boardName} • {paper.subject} • {paper.totalMarks} Marks • {formatDurationLabel(paper.durationMins)}
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right text-[10px] text-blue-100 font-mono">
+                  <div className="font-bold text-white">PREPLENS AI</div>
+                  <div>{questionsList.length} Qs Solved Key</div>
+                </div>
+              </div>
+            )}
             
             {/* Subtle Screen Background Watermark for Brand Protection */}
             <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center opacity-[0.035] print:hidden">
@@ -624,7 +656,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
                   return (
                     <div
                       key={q.id}
-                      className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden transition-all hover:border-slate-300"
+                      className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden transition-all hover:border-slate-300 pyq-print-card print:shadow-none print:border-slate-300"
                     >
                       {/* Question Header Bar */}
                       <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200/80 flex flex-wrap items-center justify-between gap-2">
@@ -783,14 +815,17 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
 
         {/* Modal Footer (Only shown in interactive mode) */}
         {viewMode === 'INTERACTIVE' && (
-          <div className="bg-white border-t border-slate-200 px-6 py-3 flex items-center justify-between text-xs text-slate-500 shrink-0">
+          <div className="bg-white border-t border-slate-200 px-6 py-3 flex items-center justify-between text-xs text-slate-500 shrink-0 print:border-slate-300 print:px-0 print:pt-2 print:mt-4">
             <div className="flex items-center gap-2">
-              <HelpCircle className="w-4 h-4 text-blue-500" />
+              <HelpCircle className="w-4 h-4 text-blue-500 print:hidden" />
               <span>{authority.footerNote}</span>
             </div>
+            <span className="hidden print:inline text-[10px] font-mono text-slate-400">
+              PrepLens - Achieve Your Dreams
+            </span>
             <button
               onClick={onClose}
-              className="px-4 py-1.5 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 transition-colors"
+              className="px-4 py-1.5 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 transition-colors print:hidden"
             >
               Close Paper
             </button>
@@ -798,6 +833,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
         )}
 
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

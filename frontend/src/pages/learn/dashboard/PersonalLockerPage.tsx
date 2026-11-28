@@ -204,10 +204,34 @@ export function PersonalLockerPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 font-sans">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 font-sans print:max-w-none print:p-0 print:space-y-4">
+
+      {/* Printable Watermark & Official Revision Binder Banner */}
+      <div className="hidden print:flex fixed inset-0 pointer-events-none z-0 items-center justify-center">
+        <img
+          src="/images/preplens_round_logo.png"
+          alt="PrepLens Watermark"
+          className="w-[380px] h-[380px] object-contain opacity-[0.11] select-none"
+        />
+      </div>
+      <div className="hidden print:flex items-center justify-between px-4 py-3 mb-4 rounded-xl bg-[#0F2454] text-white">
+        <div className="flex items-center gap-3">
+          <img src="/images/preplens_round_logo.png" alt="PrepLens Logo" className="w-11 h-11 object-contain" />
+          <div>
+            <h1 className="text-lg font-black tracking-tight text-white">PrepLens Personal Exam Revision Binder</h1>
+            <p className="text-[11px] text-blue-100 font-semibold">
+              {items.length} Saved Cards ({countFormulas} Formulas • {countQuestions} Questions • {countNotes} Notes)
+            </p>
+          </div>
+        </div>
+        <div className="text-right text-[10px] text-blue-100 font-mono">
+          <div className="font-bold text-white">PREPLENS AI</div>
+          <div>Achieve Your Dreams</div>
+        </div>
+      </div>
       
       {/* 1. Hero Header */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-950 via-slate-900 to-blue-950 text-white p-6 sm:p-10 shadow-xl border border-indigo-900/60 print:bg-white print:text-black print:p-0 print:border-none">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-950 via-slate-900 to-blue-950 text-white p-6 sm:p-10 shadow-xl border border-indigo-900/60 print:hidden">
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
         
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">

@@ -566,32 +566,49 @@ public class LearnPdfService {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
         try {
-            Document document = new Document(PageSize.A4, 46, 46, 46, 52);
+            Document document = new Document(PageSize.A4, 42, 42, 40, 52);
             PdfWriter writer = PdfWriter.getInstance(document, out);
 
-            String watermarkText = user.getEmail() + " | " + (user.getPhone() != null ? user.getPhone() : "PREPLENS");
+            String watermarkText = "PrepLens - Achieve Your Dreams | " + user.getEmail();
             writer.setPageEvent(new BrandedWatermarkEvent(logoBytes, watermarkText, mockTest.getSubject()));
 
             document.open();
 
-            Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16, NAVY_PRIMARY);
-            Paragraph title = new Paragraph(formatMathText(mockTest.getTitle()), titleFont);
-            title.setAlignment(Element.ALIGN_CENTER);
-            document.add(title);
-            document.add(new Paragraph(" "));
+            Font heroTitleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 15, Color.WHITE);
+            Font heroSubFont = FontFactory.getFont(FontFactory.HELVETICA, 9.2f, new Color(219, 234, 254));
+            Font questionFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10.2f, TEXT_DARK);
+            Font metaFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8.8f, ACCENT_BLUE);
+            Font optionFont = FontFactory.getFont(FontFactory.HELVETICA, 9.5f, TEXT_MUTED);
 
-            Font questionFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 11, TEXT_DARK);
-            Font optionFont = FontFactory.getFont(FontFactory.HELVETICA, 10, TEXT_MUTED);
+            addHeroBanner(document, logoBytes, formatMathText(mockTest.getTitle()),
+                    "Subject: " + formatMathText(mockTest.getSubject() != null ? mockTest.getSubject() : "Full Syllabus")
+                            + "  |  Total Questions: " + testQuestions.size()
+                            + "  |  Prepared for " + formatMathText(user.getEmail()),
+                    heroTitleFont, heroSubFont);
+            document.add(new Paragraph(" "));
 
             int qNum = 1;
             for (LearnTestQuestion tq : testQuestions) {
                 LearnQuestion q = questionMap.get(tq.getQuestionId());
                 if (q != null) {
-                    Paragraph qP = new Paragraph("Q" + qNum + ". " + formatMathText(q.getQuestionText()), questionFont);
+                    ensureSpace(writer, document, 85f);
+                    String qTypeTag = q.getQuestionType() != null ? q.getQuestionType() : "MCQ";
+                    String marksTag = tq.getMarks() != null ? ("+" + tq.getMarks() + "M") : "";
+                    Paragraph metaP = new Paragraph(
+                            "Question " + qNum + "  [" + formatMathText(qTypeTag)
+                                    + (marksTag.isEmpty() ? "" : " | " + marksTag) + "]",
+                            metaFont);
+                    metaP.setSpacingBefore(6);
+                    document.add(metaP);
+
+                    Paragraph qP = new Paragraph(formatMathText(q.getQuestionText()), questionFont);
+                    qP.setLeading(13.5f);
+                    qP.setSpacingAfter(3);
                     document.add(qP);
 
                     for (String optLine : parseOptionsList(q.getOptionsJson())) {
                         Paragraph op = new Paragraph("    " + formatMathText(optLine), optionFont);
+                        op.setLeading(12.5f);
                         document.add(op);
                     }
                     document.add(new Paragraph(" "));

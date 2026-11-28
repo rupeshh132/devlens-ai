@@ -369,11 +369,15 @@ export function PyqHubPage() {
       setPaywallOpen(true);
       return;
     }
+    if ((!paper.questions || paper.questions.length === 0) && paper.pdfUrl) {
+      window.open(paper.pdfUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
     setActivePaper(paper);
     setIsViewerOpen(true);
     setTimeout(() => {
       window.print();
-    }, 400);
+    }, 500);
   };
 
   return (

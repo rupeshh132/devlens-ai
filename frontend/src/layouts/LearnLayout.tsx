@@ -163,7 +163,7 @@ export function LearnLayout() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
       {/* Top Navbar */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs print:hidden">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-3">
             {/* 1. Left: Brand Logo (Ekdum left side) */}
@@ -293,7 +293,7 @@ export function LearnLayout() {
 
       {/* Optional WhatsApp Opt-in Banner for Existing Users */}
       {showPhoneBanner && isAuthenticated && (
-        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white text-xs sm:text-sm px-4 py-2 shadow-sm flex flex-wrap items-center justify-between gap-3 z-20">
+        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white text-xs sm:text-sm px-4 py-2 shadow-sm flex flex-wrap items-center justify-between gap-3 z-20 print:hidden">
           <div className="flex items-center gap-2">
             <span className="text-base">📲</span>
             <span className="font-medium">Get study roadmap updates & test reminders on WhatsApp:</span>
@@ -329,13 +329,15 @@ export function LearnLayout() {
       )}
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 print:max-w-none print:p-0">
         <Outlet />
       </main>
-      <FocusTimerWidget />
+      <div className="print:hidden">
+        <FocusTimerWidget />
+      </div>
       
       {/* Simple Footer */}
-      <footer className="bg-white border-t border-slate-200 mt-auto">
+      <footer className="bg-white border-t border-slate-200 mt-auto print:hidden">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-slate-500">
             &copy; {new Date().getFullYear()} PrepLens Learn. All rights reserved.

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   X, Copy, Check, Printer, Sparkles, 
   Search, BookOpen, Layers, GraduationCap
@@ -58,14 +59,20 @@ export function FormulaCheatSheetModal({
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  // Sync state whenever modal opens or props change
+  // Sync state whenever modal opens or props change & isolate print DOM
   useEffect(() => {
     if (isOpen) {
       const cls = resolveClass(examGoal);
       setSelectedClass(cls);
       setSelectedSubject(resolveSubject(activeSubjectId, cls));
       setSearchQuery('');
+      document.body.classList.add('preplens-modal-open');
+    } else {
+      document.body.classList.remove('preplens-modal-open');
     }
+    return () => {
+      document.body.classList.remove('preplens-modal-open');
+    };
   }, [isOpen, examGoal, activeSubjectId]);
 
   // When class changes, ensure selectedSubject is valid for the new class
@@ -107,23 +114,25 @@ export function FormulaCheatSheetModal({
     window.print();
   };
 
-  const classBadges: Record<string, { label: string; badge: string; color: string }> = {
-    'jee': { label: 'JEE Main & Adv', badge: '11+12 Complete PCM Competitive Sheet', color: 'bg-indigo-600 text-white' },
-    'neet': { label: 'NEET UG', badge: 'NMC Synced PCB Competitive Sheet', color: 'bg-emerald-600 text-white' },
-    '12': { label: 'Class 12', badge: 'Board & Competitive Exams (JEE/NEET/CUET)', color: 'bg-rose-500 text-white' },
-    '11': { label: 'Class 11', badge: 'Core Concepts & Competitive Foundation', color: 'bg-indigo-600 text-white' },
-    '10': { label: 'Class 10', badge: 'CBSE Board Examination Booster', color: 'bg-amber-400 text-slate-950' },
-    '9': { label: 'Class 9', badge: 'NCERT High School Foundation', color: 'bg-emerald-500 text-white' },
+  const classBadges: Record<string, { label: string; badge: string; color: string; syllabusTag: string }> = {
+    'jee': { label: 'JEE Main & Adv', badge: '11+12 Complete PCM Competitive Sheet', color: 'bg-indigo-600 text-white', syllabusTag: 'Official NTA / IIT JEE Revision Guide' },
+    'neet': { label: 'NEET UG', badge: 'NMC Synced PCB Competitive Sheet', color: 'bg-emerald-600 text-white', syllabusTag: 'Official NMC 79-Chapter Revision Guide' },
+    '12': { label: 'Class 12', badge: 'Board & Competitive Exams (JEE/NEET/CUET)', color: 'bg-rose-500 text-white', syllabusTag: 'Official NCERT & CBSE Revision Guide' },
+    '11': { label: 'Class 11', badge: 'Core Concepts & Competitive Foundation', color: 'bg-indigo-600 text-white', syllabusTag: 'Official NCERT & CBSE Revision Guide' },
+    '10': { label: 'Class 10', badge: 'CBSE Board Examination Booster', color: 'bg-amber-400 text-slate-950', syllabusTag: 'Official NCERT & CBSE Revision Guide' },
+    '9': { label: 'Class 9', badge: 'NCERT High School Foundation', color: 'bg-emerald-500 text-white', syllabusTag: 'Official NCERT & CBSE Revision Guide' },
   };
+  const trackLabel = classBadges[selectedClass]?.label || `Class ${selectedClass}`;
+  const syllabusTag = classBadges[selectedClass]?.syllabusTag || 'Official Academic Revision Guide';
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200 print:static print:p-0 print:block">
+  return createPortal(
+    <div className="preplens-print-root fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200 print:static print:p-0 print:block">
       {/* Print-specific style overrides */}
       <style>{`
         @media print {
           @page {
-            margin: 12mm 14mm;
-            size: auto;
+            margin: 10mm 12mm;
+            size: A4 portrait;
           }
           body {
             background: #ffffff !important;
@@ -148,32 +157,32 @@ export function FormulaCheatSheetModal({
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-5xl max-h-[92vh] bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden z-10 animate-in zoom-in-95 duration-200 print:static print:max-h-none print:w-full print:shadow-none print:border-none print:overflow-visible">
+      <div className="relative w-full max-w-5xl max-h-[92vh] bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden z-10 animate-in zoom-in-95 duration-200 print:static print:block print:max-w-none print:max-h-none print:h-auto print:w-full print:rounded-none print:shadow-none print:border-none print:overflow-visible">
         
         {/* Printable Centered PrepLens Watermark */}
         <div className="hidden print:flex fixed inset-0 pointer-events-none z-0 items-center justify-center">
           <img 
             src="/images/preplens_round_logo.png" 
             alt="PrepLens Watermark" 
-            className="w-[500px] h-[500px] object-contain opacity-25 select-none"
+            className="w-[380px] h-[380px] object-contain opacity-[0.11] select-none"
           />
         </div>
 
         {/* Printable Official Header (Visible on print only) */}
-        <div className="hidden print:flex items-center justify-between pb-4 mb-4 border-b-2 border-slate-800 z-10">
+        <div className="hidden print:flex items-center justify-between px-4 py-3 mb-4 rounded-xl bg-[#0F2454] text-white z-10">
           <div className="flex items-center gap-3">
-            <img src="/images/preplens_round_logo.png" alt="PrepLens Logo" className="w-12 h-12 object-contain" />
+            <img src="/images/preplens_round_logo.png" alt="PrepLens Logo" className="w-11 h-11 object-contain" />
             <div>
-              <h1 className="text-xl font-black tracking-tight text-slate-900">PrepLens Smart Formula & Laws Cheat Sheet</h1>
-              <p className="text-xs text-slate-600 font-semibold">
-                Class {selectedClass} • {selectedSubject === 'ALL' ? 'All Subjects' : availableSubjects.find(s => s.id === selectedSubject)?.name} • Official NCERT & CBSE Revision Guide
+              <h1 className="text-lg font-black tracking-tight text-white">PrepLens {trackLabel} — Formula & Laws Cheat Sheet</h1>
+              <p className="text-[11px] text-blue-100 font-semibold">
+                {selectedSubject === 'ALL' ? 'All Subjects' : availableSubjects.find(s => s.id === selectedSubject)?.name} • {syllabusTag}
               </p>
             </div>
           </div>
-          <div className="text-right text-[10px] text-slate-500 font-mono">
-            <span className="font-bold text-slate-800">PREPLENS AI</span>
+          <div className="text-right text-[10px] text-blue-100 font-mono">
+            <span className="font-bold text-white">PREPLENS AI</span>
             <br />
-            <span>Verified Academic Sheet</span>
+            <span>{filteredFormulas.length} Verified Formulas</span>
           </div>
         </div>
 
@@ -290,7 +299,7 @@ export function FormulaCheatSheetModal({
         </div>
 
         {/* Formulas Grid Feed */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 print:overflow-visible print:p-0 print:space-y-3 z-10">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 print:flex-none print:block print:overflow-visible print:p-0 print:space-y-3 z-10">
           {filteredFormulas.length === 0 ? (
             <div className="py-20 text-center text-slate-400">
               <BookOpen className="w-12 h-12 mx-auto mb-2 opacity-30" />
@@ -298,11 +307,11 @@ export function FormulaCheatSheetModal({
               <p className="text-xs text-slate-500 mt-1">Try searching for keywords like "momentum", "mole", "integrals", or switch subject.</p>
             </div>
           ) : (
-            <div className="grid gap-4 md:grid-cols-2 print:grid-cols-1 print:gap-3">
+            <div className="grid gap-4 md:grid-cols-2 print:grid-cols-2 print:gap-2.5">
               {filteredFormulas.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white rounded-2xl border border-slate-200 p-4 hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group formula-print-card"
+                  className="bg-white rounded-2xl border border-slate-200 p-4 hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group formula-print-card print:p-2.5 print:rounded-xl"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
@@ -354,13 +363,13 @@ export function FormulaCheatSheetModal({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500 print:bg-transparent print:border-slate-300 print:pt-3 print:mt-4 z-10">
+        <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500 print:bg-transparent print:border-slate-300 print:pt-2 print:mt-3 z-10">
           <div className="flex items-center gap-1.5 font-medium">
             <Layers className="w-4 h-4 text-indigo-600 print:hidden" />
-            <span>Showing <strong>{filteredFormulas.length}</strong> high-yield formulas for Class {selectedClass}</span>
+            <span>Showing <strong>{filteredFormulas.length}</strong> high-yield formulas for {trackLabel}</span>
           </div>
-          <div className="hidden print:block text-[10px] text-slate-400 font-mono">
-            PrepLens Official Academic Cheat Sheet • Verified against NCERT & CBSE Syllabi
+          <div className="hidden print:block text-[10px] text-slate-500 font-mono">
+            PrepLens - Achieve Your Dreams • {syllabusTag}
           </div>
           <button
             onClick={onClose}
@@ -371,6 +380,7 @@ export function FormulaCheatSheetModal({
         </div>
 
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
