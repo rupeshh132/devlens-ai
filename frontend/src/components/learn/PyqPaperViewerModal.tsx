@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 export interface PyqQuestion {
   id: string;
   qNum: number;
+  subject?: string;
   section: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
   marks: number;
   topic: string;
@@ -28,7 +29,7 @@ export interface PyqPaper {
   subject: string;
   year: number;
   targetClass?: 'Class 9' | 'Class 10' | 'Class 11' | 'Class 12' | 'JEE Mains' | 'JEE Advanced' | 'NEET UG' | 'All';
-  paperType: 'BOARD_EXAM' | 'CBSE_SAMPLE' | 'PRE_BOARD' | 'JEE_SHIFT' | 'JEE_ADV_PAPER' | 'NEET_PAPER';
+  paperType: 'BOARD_EXAM' | 'CBSE_SAMPLE' | 'PRE_BOARD' | 'JEE_SHIFT' | 'JEE_ADV_PAPER' | 'NEET_PAPER' | 'COMPETITIVE_SAMPLE';
   paperCode: string;
   totalMarks: number;
   durationMins: number;
@@ -41,6 +42,96 @@ export interface PyqPaper {
   solutionPdfUrl?: string;
 }
 
+function formatDurationLabel(mins: number): string {
+  if (!mins || mins <= 0) return '3 Hrs';
+  if (mins < 60) return `${mins} Mins`;
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return m === 0 ? `${h} ${h === 1 ? 'Hr' : 'Hrs'}` : `${h}h ${m}m`;
+}
+
+function getExamAuthorityInfo(paper: PyqPaper) {
+  const cls = paper.targetClass || '';
+  if (cls === 'JEE Mains' || paper.paperType === 'JEE_SHIFT') {
+    return {
+      boardName: 'National Testing Agency (NTA) — JEE Main Format',
+      pdfTabLabel: 'Printable NTA Sheet',
+      answerHeading: 'Official NTA Key & Stepwise Solution:',
+      footerNote: 'Synchronized with NTA JEE Main Rationalized CBT Format (+4 / -1)',
+      sectionNames: {
+        A: 'Sec A (SCQ)',
+        B: 'Sec B (Numerical)',
+        C: 'Sec C',
+        D: 'Sec D',
+        E: 'Sec E',
+        F: 'Sec F'
+      } as Record<string, string>
+    };
+  }
+  if (cls === 'NEET UG' || paper.paperType === 'NEET_PAPER') {
+    return {
+      boardName: 'National Medical Commission (NMC / NTA) — NEET UG Format',
+      pdfTabLabel: 'Printable OMR Sheet',
+      answerHeading: 'Official NEET Answer Key & NCERT Reference:',
+      footerNote: 'Synchronized with NMC 79-Chapter NEET UG Official Format (+4 / -1)',
+      sectionNames: {
+        A: 'Sec A (Single Choice)',
+        B: 'Sec B (Statement / AR)',
+        C: 'Sec C',
+        D: 'Sec D',
+        E: 'Sec E',
+        F: 'Sec F'
+      } as Record<string, string>
+    };
+  }
+  if (cls === 'JEE Advanced' || paper.paperType === 'JEE_ADV_PAPER') {
+    return {
+      boardName: 'IIT Joint Admission Board (JAB) — JEE Advanced Format',
+      pdfTabLabel: 'Printable IIT Paper',
+      answerHeading: 'Official IIT Key, Partial Rubric & Derivation:',
+      footerNote: 'Synchronized with IIT JEE Advanced Paper 1 & 2 Partial/Non-Neg Marking',
+      sectionNames: {
+        A: 'Sec A (SCQ +3/-1)',
+        B: 'Sec B (MSQ +4/-2)',
+        C: 'Sec C (Numerical +4/0)',
+        D: 'Sec D (Para / Matrix)',
+        E: 'Sec E',
+        F: 'Sec F'
+      } as Record<string, string>
+    };
+  }
+  if (paper.paperType === 'COMPETITIVE_SAMPLE') {
+    return {
+      boardName: 'PrepLens Official Pattern Sample Paper',
+      pdfTabLabel: 'Printable Sheet',
+      answerHeading: 'Official Solution & Marking Key:',
+      footerNote: 'Full Official Exam Pattern Sample Paper with Complete Solutions',
+      sectionNames: {
+        A: 'Sec A',
+        B: 'Sec B',
+        C: 'Sec C',
+        D: 'Sec D',
+        E: 'Sec E',
+        F: 'Sec F'
+      } as Record<string, string>
+    };
+  }
+  return {
+    boardName: 'Central Board of Secondary Education',
+    pdfTabLabel: 'Original CBSE PDF',
+    answerHeading: 'Official CBSE Model Answer:',
+    footerNote: 'Based on official CBSE Examination Guidelines & Evaluation Schemes',
+    sectionNames: {
+      A: 'Sec A',
+      B: 'Sec B',
+      C: 'Sec C',
+      D: 'Sec D',
+      E: 'Sec E',
+      F: 'Sec F'
+    } as Record<string, string>
+  };
+}
+
 interface PyqPaperViewerModalProps {
   paper: PyqPaper | null;
   isOpen: boolean;
@@ -50,6 +141,7 @@ interface PyqPaperViewerModalProps {
 export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper, isOpen, onClose }) => {
   const [viewMode, setViewMode] = useState<'INTERACTIVE' | 'OFFICIAL_PDF'>('INTERACTIVE');
   const [activeSection, setActiveSection] = useState<'ALL' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F'>('ALL');
+  const [activeSubjectFilter, setActiveSubjectFilter] = useState<string>('ALL');
   const [expandedSolutions, setExpandedSolutions] = useState<Record<string, boolean>>({});
   const [bookmarkedMap, setBookmarkedMap] = useState<Record<string, boolean>>({});
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -57,6 +149,8 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
   // If paper has no structured questions, default to Official PDF tab
   React.useEffect(() => {
     if (paper) {
+      setActiveSection('ALL');
+      setActiveSubjectFilter('ALL');
       if (!paper.questions || paper.questions.length === 0) {
         setViewMode('OFFICIAL_PDF');
       } else {
@@ -127,9 +221,18 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
   };
 
   const questionsList = paper.questions || [];
-  const filteredQuestions = activeSection === 'ALL'
-    ? questionsList
-    : questionsList.filter(q => q.section === activeSection);
+  const availableSections = (['A', 'B', 'C', 'D', 'E', 'F'] as const).filter(sec =>
+    questionsList.some(q => q.section === sec)
+  );
+  const availableSubjects = Array.from(
+    new Set(questionsList.map(q => q.subject).filter((s): s is string => Boolean(s)))
+  );
+  const filteredQuestions = questionsList.filter(q => {
+    if (activeSubjectFilter !== 'ALL' && q.subject !== activeSubjectFilter) return false;
+    if (activeSection !== 'ALL' && q.section !== activeSection) return false;
+    return true;
+  });
+  const authority = getExamAuthorityInfo(paper);
 
   const handlePrint = () => {
     window.print();
@@ -228,8 +331,8 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
               }`}
             >
               <FileText className="w-3.5 h-3.5 text-blue-300" />
-              <span className="hidden sm:inline">Original CBSE PDF</span>
-              <span className="sm:hidden">Official PDF</span>
+              <span className="hidden sm:inline">{authority.pdfTabLabel}</span>
+              <span className="sm:hidden">Official Sheet</span>
             </button>
           </div>
 
@@ -294,25 +397,71 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
           </div>
         </header>
 
-        {/* 2. INTERACTIVE SUB-HEADER (Sections & Stats - only in Questions mode) */}
+        {/* 2. INTERACTIVE SUB-HEADER (Subjects, Sections & Stats - only in Questions mode) */}
         {viewMode === 'INTERACTIVE' && (
           <div className="bg-slate-900/95 border-b border-slate-800 px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs shrink-0 select-none print:hidden">
-            {/* Section Pills */}
-            <div className="flex items-center gap-1">
-              <span className="text-slate-400 font-medium mr-1 text-[11px] hidden sm:inline">Sections:</span>
-              {(['ALL', 'A', 'B', 'C', 'D', 'E', ...(questionsList.some(q => q.section === 'F') ? ['F' as const] : [])] as const).map(sec => (
+            {/* Subject & Section Pills */}
+            <div className="flex flex-wrap items-center gap-2">
+              {availableSubjects.length > 1 && (
+                <div className="flex items-center gap-1 pr-2 border-r border-slate-800">
+                  <button
+                    onClick={() => setActiveSubjectFilter('ALL')}
+                    className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+                      activeSubjectFilter === 'ALL'
+                        ? 'bg-emerald-600 text-white shadow-sm'
+                        : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700/50'
+                    }`}
+                  >
+                    All ({questionsList.length})
+                  </button>
+                  {availableSubjects.map(sub => {
+                    const cnt = questionsList.filter(q => q.subject === sub).length;
+                    return (
+                      <button
+                        key={sub}
+                        onClick={() => setActiveSubjectFilter(sub)}
+                        className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+                          activeSubjectFilter === sub
+                            ? 'bg-emerald-600 text-white shadow-sm'
+                            : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700/50'
+                        }`}
+                      >
+                        {sub} ({cnt})
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              <div className="flex items-center gap-1 flex-wrap">
+                <span className="text-slate-400 font-medium mr-1 text-[11px] hidden sm:inline">Sections:</span>
                 <button
-                  key={sec}
-                  onClick={() => setActiveSection(sec)}
+                  onClick={() => setActiveSection('ALL')}
                   className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
-                    activeSection === sec
+                    activeSection === 'ALL'
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/50'
                   }`}
                 >
-                  {sec === 'ALL' ? 'All Questions' : `Sec ${sec}`}
+                  All ({questionsList.filter(q => activeSubjectFilter === 'ALL' || q.subject === activeSubjectFilter).length})
                 </button>
-              ))}
+                {availableSections.map(sec => {
+                  const secCnt = questionsList.filter(q => (activeSubjectFilter === 'ALL' || q.subject === activeSubjectFilter) && q.section === sec).length;
+                  return (
+                    <button
+                      key={sec}
+                      onClick={() => setActiveSection(sec)}
+                      className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+                        activeSection === sec
+                          ? 'bg-blue-600 text-white shadow-sm'
+                          : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/50'
+                      }`}
+                    >
+                      {authority.sectionNames[sec] || `Sec ${sec}`} ({secCnt})
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Quick Stats & Expand/Collapse */}
@@ -320,7 +469,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
               <div className="hidden sm:flex items-center gap-3 text-[11px] font-medium border-r border-slate-800 pr-3">
                 <span className="flex items-center gap-1 text-slate-300">
                   <Clock className="w-3.5 h-3.5 text-amber-400" />
-                  {Math.floor(paper.durationMins / 60)}h Allowed
+                  {formatDurationLabel(paper.durationMins)} Allowed
                 </span>
                 <span className="flex items-center gap-1 text-slate-300">
                   <Award className="w-3.5 h-3.5 text-blue-400" />
@@ -376,7 +525,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
                   </div>
 
                   <div className="pt-2">
-                    <div className="text-sm font-bold tracking-widest uppercase text-slate-600">Central Board of Secondary Education</div>
+                    <div className="text-sm font-bold tracking-widest uppercase text-slate-600">{authority.boardName}</div>
                     <h1 className="text-2xl sm:text-3xl font-black uppercase text-slate-950 tracking-tight mt-1">
                       {paper.title}
                     </h1>
@@ -385,7 +534,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
                       <span>•</span>
                       <span>MAX MARKS: {paper.totalMarks}</span>
                       <span>•</span>
-                      <span>TIME: {Math.floor(paper.durationMins / 60)} HOURS</span>
+                      <span>TIME: {formatDurationLabel(paper.durationMins).toUpperCase()}</span>
                     </div>
                   </div>
                 </div>
@@ -440,7 +589,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
                 <div className="bg-amber-50/80 border border-amber-200/80 rounded-xl p-4 text-xs sm:text-sm text-amber-900 space-y-1.5">
                   <div className="font-bold flex items-center gap-2 text-amber-950">
                     <Lightbulb className="w-4 h-4 text-amber-600" />
-                    Official CBSE Exam Instructions:
+                    Official Examination Instructions & Marking Format:
                   </div>
                   <ul className="list-disc list-inside space-y-1 text-slate-700 ml-1">
                     {paper.generalInstructions.map((inst, i) => (
@@ -454,17 +603,19 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
               {filteredQuestions.length === 0 ? (
                 <div className="text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-3 font-sans">
                   <FileText className="w-12 h-12 text-slate-300 mx-auto" />
-                  <h3 className="text-base font-bold text-slate-800">Original CBSE Official Paper</h3>
+                  <h3 className="text-base font-bold text-slate-800">{paper.pdfUrl ? 'Official PDF Question Paper' : 'No Questions Match Selected Filter'}</h3>
                   <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
-                    This paper was uploaded as an official CBSE Question Paper PDF.
+                    {paper.pdfUrl ? 'This paper was uploaded as an official Question Paper PDF.' : 'Try selecting All Subjects or All Sections above.'}
                   </p>
-                  <button
-                    onClick={() => setViewMode('OFFICIAL_PDF')}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-xs"
-                  >
-                    <FileText className="w-4 h-4" />
-                    Switch to Official PDF Mode
-                  </button>
+                  {paper.pdfUrl && (
+                    <button
+                      onClick={() => setViewMode('OFFICIAL_PDF')}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-xs"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Switch to Official PDF Mode
+                    </button>
+                  )}
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -534,18 +685,27 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
                         {/* MCQ Options (if Section A) */}
                         {q.options && q.options.length > 0 && (
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                            {q.options.map((opt, optIdx) => (
-                              <div
-                                key={optIdx}
-                                className={`p-2.5 rounded-lg border text-xs sm:text-sm font-medium transition-colors ${
-                                  isExpanded && q.correctOption && opt.startsWith(q.correctOption)
-                                    ? 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold'
-                                    : 'bg-slate-50 border-slate-200 text-slate-700'
-                                }`}
-                              >
-                                {opt}
-                              </div>
-                            ))}
+                            {q.options.map((opt, optIdx) => {
+                              const isCorrectOpt = Boolean(
+                                isExpanded && q.correctOption && (
+                                  opt === q.correctOption ||
+                                  opt.startsWith(`${q.correctOption})`) ||
+                                  opt.startsWith(`${q.correctOption}.`)
+                                )
+                              );
+                              return (
+                                <div
+                                  key={optIdx}
+                                  className={`p-2.5 rounded-lg border text-xs sm:text-sm font-medium transition-colors ${
+                                    isCorrectOpt
+                                      ? 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold'
+                                      : 'bg-slate-50 border-slate-200 text-slate-700'
+                                  }`}
+                                >
+                                  {opt}
+                                </div>
+                              );
+                            })}
                           </div>
                         )}
 
@@ -557,7 +717,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
                             <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4">
                               <div className="flex items-center gap-2 text-emerald-900 font-bold text-xs sm:text-sm mb-2">
                                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                                Official CBSE Model Answer:
+                                {authority.answerHeading}
                               </div>
                               <p className="text-xs sm:text-sm text-slate-800 whitespace-pre-line leading-relaxed font-normal">
                                 {q.modelAnswer}
@@ -626,7 +786,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
           <div className="bg-white border-t border-slate-200 px-6 py-3 flex items-center justify-between text-xs text-slate-500 shrink-0">
             <div className="flex items-center gap-2">
               <HelpCircle className="w-4 h-4 text-blue-500" />
-              <span>Based on official CBSE Examination Guidelines & Evaluation Schemes</span>
+              <span>{authority.footerNote}</span>
             </div>
             <button
               onClick={onClose}

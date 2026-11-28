@@ -13,6 +13,34 @@ import { getSubjectsForClass } from '../../../data/curriculumData';
 import { normalizeTargetClass } from '../../../lib/dailyQuestionService';
 import { learnApi } from '../../../lib/learn-api';
 
+function formatPaperDuration(mins: number): string {
+  if (!mins || mins <= 0) return '3 Hrs';
+  if (mins < 60) return `${mins} Mins`;
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return m === 0 ? `${h} ${h === 1 ? 'Hr' : 'Hrs'}` : `${h}h ${m}m`;
+}
+
+function getPaperPatternBullet(paper: PyqPaper): string {
+  if (paper.targetClass === 'JEE Mains' || paper.paperType === 'JEE_SHIFT') {
+    return paper.totalQuestions >= 75
+      ? 'PCM 75 Qs: 60 Sec A (SCQ) + 15 Sec B (Numerical)'
+      : 'Sec A (20 SCQ) + Sec B (5 Compulsory Numericals)';
+  }
+  if (paper.targetClass === 'NEET UG' || paper.paperType === 'NEET_PAPER') {
+    return paper.totalQuestions >= 180
+      ? 'Full 180 Qs: Phy, Chem, Bot & Zoo (+4 / -1)'
+      : '45 Compulsory MCQs: Statements, Match & AR';
+  }
+  if (paper.targetClass === 'JEE Advanced' || paper.paperType === 'JEE_ADV_PAPER') {
+    return 'IIT Format: SCQ, MSQ Partial (+4/-2), Num & Matrix';
+  }
+  if (paper.paperType === 'COMPETITIVE_SAMPLE') {
+    return 'Full Official Pattern Sample Paper with Solutions';
+  }
+  return 'Sections A (MCQ) to E (Case Studies)';
+}
+
 export function PyqHubPage() {
   const [searchParams] = useSearchParams();
   const targetPaperId = searchParams.get('paperId');
@@ -85,7 +113,7 @@ export function PyqHubPage() {
           durationMins: p.durationMins || 180,
           difficulty: p.difficulty || 'MODERATE',
           isFree: p.free !== false,
-          totalQuestions: p.totalQuestions || (p.pdfUrl ? 1 : 0),
+          totalQuestions: p.totalQuestions || 0,
           generalInstructions: p.generalInstructions
             ? (typeof p.generalInstructions === 'string' ? JSON.parse(p.generalInstructions) : p.generalInstructions)
             : [],
@@ -230,12 +258,16 @@ export function PyqHubPage() {
   const filteredPapers = useMemo(() => {
     const effectiveClass = enrolledClass || selectedClass;
     return allPapers.filter(paper => {
-      // 1. Class Filter - Locked strictly if student is enrolled (e.g. Class 9 for Anmol)
+      // 1. Class Filter - Strictly keep each competitive track clean with its own official papers
       if (effectiveClass !== 'ALL') {
         const paperClass = paper.targetClass || 'Class 10';
         const isCompetitiveGoal = effectiveClass === 'JEE Mains' || effectiveClass === 'JEE Advanced' || effectiveClass === 'NEET UG';
         if (isCompetitiveGoal) {
-          if (paperClass !== effectiveClass && paperClass !== 'Class 12' && paperClass !== 'Class 11') return false;
+          if (selectedType === 'BOARD_EXAM') {
+            if (paperClass !== 'Class 12' && paperClass !== 'Class 11') return false;
+          } else if (paperClass !== effectiveClass) {
+            return false;
+          }
         } else if (paperClass !== effectiveClass) {
           return false;
         }
@@ -382,15 +414,25 @@ export function PyqHubPage() {
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
             <div className="bg-white/5 border border-white/10 rounded-xl p-3">
-              <div className="text-xl sm:text-2xl font-black text-amber-400">100%</div>
-              <div className="text-xs text-slate-300 font-medium">CBSE Step Marking</div>
+              <div className="text-xl sm:text-2xl font-black text-amber-400">
+                {enrolledClass === 'JEE Mains' ? '75 Qs' : enrolledClass === 'NEET UG' ? '180 Qs' : enrolledClass === 'JEE Advanced' ? '54 Qs' : '100%'}
+              </div>
+              <div className="text-xs text-slate-300 font-medium">
+                {enrolledClass === 'JEE Mains' ? 'Real NTA Shift Pattern' : enrolledClass === 'NEET UG' ? 'Full NMC PCB Pattern' : enrolledClass === 'JEE Advanced' ? 'Real IIT Paper 1 & 2' : 'CBSE Step Marking'}
+              </div>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-xl p-3">
-              <div className="text-xl sm:text-2xl font-black text-blue-400">5+ Years</div>
-              <div className="text-xs text-slate-300 font-medium">Board Exam Archive</div>
+              <div className="text-xl sm:text-2xl font-black text-blue-400">2021–2026</div>
+              <div className="text-xs text-slate-300 font-medium">
+                {enrolledClass === 'JEE Mains' || enrolledClass === 'NEET UG' || enrolledClass === 'JEE Advanced'
+                  ? 'PYQs + Official Samples'
+                  : 'Board Exam Archive'}
+              </div>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-xl p-3">
-              <div className="text-xl sm:text-2xl font-black text-emerald-400">80/80</div>
+              <div className="text-xl sm:text-2xl font-black text-emerald-400">
+                {enrolledClass === 'JEE Mains' ? '300 M' : enrolledClass === 'NEET UG' ? '720 M' : enrolledClass === 'JEE Advanced' ? '180 M' : '80/80'}
+              </div>
               <div className="text-xs text-slate-300 font-medium">Full Standard Format</div>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-xl p-3">
@@ -491,7 +533,7 @@ export function PyqHubPage() {
               <Filter className="w-3.5 h-3.5" /> Year:
             </span>
             {((enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG')
-              ? (['ALL', '2025', '2024', '2023', '2022', '2021'] as const)
+              ? (['ALL', '2026', '2025', '2024', '2023', '2022', '2021'] as const)
               : (['ALL', '2024', '2023', '2022'] as const)
             ).map(yr => (
               <button
@@ -537,9 +579,12 @@ export function PyqHubPage() {
             {((enrolledClass === 'JEE Mains' || enrolledClass === 'JEE Advanced' || enrolledClass === 'NEET UG')
               ? [
                   { id: 'ALL', label: 'All Papers' },
-                  { id: 'JEE_ADV_PAPER', label: 'IIT Paper 1 & 2' },
-                  { id: 'JEE_SHIFT', label: 'Shift Archives' },
-                  { id: 'NEET_PAPER', label: 'NEET Papers' },
+                  { id: 'COMPETITIVE_SAMPLE', label: 'Official Sample Papers' },
+                  ...(enrolledClass === 'JEE Advanced'
+                    ? [{ id: 'JEE_ADV_PAPER', label: 'IIT Paper 1 & 2' }]
+                    : enrolledClass === 'NEET UG'
+                    ? [{ id: 'NEET_PAPER', label: 'NEET Papers' }]
+                    : [{ id: 'JEE_SHIFT', label: 'Shift Archives' }]),
                   { id: 'BOARD_EXAM', label: 'NCERT / Ref' },
                 ]
               : [
@@ -575,14 +620,16 @@ export function PyqHubPage() {
             Available Question Papers ({filteredPapers.length})
           </h2>
           <span className="text-xs text-slate-500 font-medium">
-            Showing all verified CBSE question papers
+            {enrolledClass === 'JEE Mains' || enrolledClass === 'NEET UG' || enrolledClass === 'JEE Advanced'
+              ? `Showing verified ${enrolledClass} papers & official pattern samples`
+              : 'Showing all verified CBSE question papers'}
           </span>
         </div>
 
         {loadingPapers ? (
           <div className="flex flex-col items-center justify-center py-20 bg-white rounded-2xl border border-slate-200 gap-3">
             <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
-            <p className="text-xs font-semibold text-slate-500">Loading verified CBSE question papers...</p>
+            <p className="text-xs font-semibold text-slate-500">Loading verified question papers...</p>
           </div>
         ) : filteredPapers.length === 0 ? (
           <div className="bg-white rounded-2xl p-12 text-center border border-slate-200 space-y-3">
@@ -682,7 +729,7 @@ export function PyqHubPage() {
                       </div>
                       <div>
                         <div className="text-[10px] uppercase font-bold text-slate-400">Duration</div>
-                        <div className="text-xs font-black text-slate-800">{Math.floor(paper.durationMins / 60)} Hrs</div>
+                        <div className="text-xs font-black text-slate-800">{formatPaperDuration(paper.durationMins)}</div>
                       </div>
                       <div>
                         <div className="text-[10px] uppercase font-bold text-slate-400">Questions</div>
@@ -704,7 +751,7 @@ export function PyqHubPage() {
                       </li>
                       <li className="flex items-center gap-1.5">
                         <CheckCircle2 className="w-3.5 h-3.5 text-purple-500 shrink-0" />
-                        Sections A (MCQ) to E (Case Studies)
+                        {getPaperPatternBullet(paper)}
                       </li>
                     </ul>
 
@@ -768,13 +815,17 @@ export function PyqHubPage() {
         <div className="space-y-2 max-w-2xl">
           <div className="inline-flex items-center gap-1.5 text-xs font-extrabold text-amber-900 uppercase tracking-wider">
             <Flame className="w-4 h-4 text-orange-600" />
-            CBSE 80/20 Board Strategy
+            {enrolledClass === 'JEE Mains' || enrolledClass === 'NEET UG' || enrolledClass === 'JEE Advanced'
+              ? `${enrolledClass} High-Yield PYQ Strategy`
+              : 'CBSE 80/20 Board Strategy'}
           </div>
           <h3 className="text-xl sm:text-2xl font-black text-amber-950">
-            Why solving last 5 years' papers is worth 25+ extra marks:
+            Why solving last 5 years' full papers boosts rank & score:
           </h3>
           <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-            Over <strong>75% of CBSE Board questions</strong> repeat standard problem archetypes with just different numerical values. When you master the step-by-step marking scheme, you guarantee full marks in formulas, derivations, and SI units even if calculation gets tricky.
+            {enrolledClass === 'JEE Mains' || enrolledClass === 'NEET UG' || enrolledClass === 'JEE Advanced'
+              ? `Practicing full-length official ${enrolledClass} papers builds stamina, exposes exact negative-marking traps, and locks in core archetypes that repeat across shifts.`
+              : 'Over 75% of CBSE Board questions repeat standard problem archetypes with just different numerical values. Mastering official marking schemes protects every half-mark.'}
           </p>
         </div>
 
@@ -786,7 +837,9 @@ export function PyqHubPage() {
           className="shrink-0 px-6 py-3 rounded-2xl bg-slate-900 text-white text-xs sm:text-sm font-black hover:bg-slate-800 transition-all shadow-md shadow-slate-900/10 flex items-center gap-2"
         >
           <BookOpen className="w-4 h-4 text-amber-400" />
-          Solve Model Paper 2024 Now
+          {enrolledClass === 'JEE Mains' || enrolledClass === 'NEET UG' || enrolledClass === 'JEE Advanced'
+            ? `Solve Full ${enrolledClass} Paper Now`
+            : 'Solve Model Paper Now'}
         </button>
       </div>
 
