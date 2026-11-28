@@ -82,10 +82,12 @@ function isCompetitiveClassLevel(classLevel?: string, title?: string): boolean {
 const TestTimer = React.memo(({ 
   initialTime, 
   storageKey, 
+  paused = false,
   onTimeUp 
 }: { 
   initialTime: number; 
   storageKey?: string; 
+  paused?: boolean;
   onTimeUp: () => void 
 }) => {
   const [timeLeft, setTimeLeft] = useState(() => {
@@ -107,6 +109,7 @@ const TestTimer = React.memo(({
   }, [onTimeUp]);
 
   useEffect(() => {
+    if (paused) return;
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
@@ -125,7 +128,7 @@ const TestTimer = React.memo(({
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, [storageKey]);
+  }, [storageKey, paused]);
 
   const formatTime = (seconds: number) => {
     const h = Math.floor(seconds / 3600);
@@ -158,6 +161,7 @@ const QuestionPalette = React.memo(({
   visitedIds,
   markedIds,
   currentIdx, 
+  isReviewMode = false,
   setCurrentIdx 
 }: { 
   questions: Question[]; 
@@ -165,6 +169,7 @@ const QuestionPalette = React.memo(({
   visitedIds: Set<string>;
   markedIds: Set<string>;
   currentIdx: number; 
+  isReviewMode?: boolean;
   setCurrentIdx: React.Dispatch<React.SetStateAction<number>>; 
 }) => {
   const counts = useMemo(() => {
@@ -198,9 +203,15 @@ const QuestionPalette = React.memo(({
           const isVisited = visitedIds.has(q.questionId);
           const isCurrent = currentIdx === idx;
           
-          let btnClass = "relative h-9 w-full rounded-lg flex items-center justify-center font-bold text-xs border-2 transition-all ";
-          if (isCurrent) {
-            btnClass += "border-indigo-600 bg-indigo-50 text-indigo-700 ring-2 ring-indigo-200";
+          let btnClass = "relative h-9 w-full rounded-lg flex items-center justify-center font-bold text-xs border-2 transition-all cursor-pointer ";
+          if (isReviewMode && q.isCorrect !== undefined) {
+            if (q.isCorrect) {
+              btnClass += "border-emerald-500 bg-emerald-500 text-white shadow-xs";
+            } else if (q.userAnswer) {
+              btnClass += "border-rose-500 bg-rose-500 text-white shadow-xs";
+            } else {
+              btnClass += "border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100";
+            }
           } else if (isAnswered && isMarked) {
             btnClass += "border-purple-600 bg-purple-600 text-white shadow-xs";
           } else if (isMarked) {
@@ -211,6 +222,10 @@ const QuestionPalette = React.memo(({
             btnClass += "border-rose-300 bg-rose-50 text-rose-700";
           } else {
             btnClass += "border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100";
+          }
+
+          if (isCurrent) {
+            btnClass += " ring-2 ring-indigo-600 ring-offset-1 border-indigo-700";
           }
 
           return (
@@ -535,6 +550,7 @@ export function ActiveTestPage() {
     } catch (err: any) {
       console.error('Failed to submit test', err);
       toast.error(err.response?.data?.message || 'Failed to submit test.');
+    } finally {
       setIsSubmitting(false);
     }
   }, [attemptId, answers, testId, isSubmitting, testDetails, questions]);
@@ -728,31 +744,54 @@ export function ActiveTestPage() {
               <TestTimer 
                 initialTime={initialSeconds} 
                 storageKey={`preplens_test_timer_${testId}`} 
+                paused={!!scorecard}
                 onTimeUp={handleSubmit} 
               />
               
-              <button 
-                disabled={isSubmitting}
-                onClick={handleSubmit}
-                className="px-4 sm:px-5 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Submitting...</span>
-                  </>
-                ) : (
-                  <span>Submit Exam</span>
-                )}
-              </button>
+              {scorecard ? (
+                <button
+                  type="button"
+                  onClick={() => setIsScorecardOpen(true)}
+                  className="px-4 sm:px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer"
+                >
+                  <Trophy className="w-4 h-4" />
+                  <span>View Scorecard</span>
+                </button>
+              ) : (
+                <button 
+                  disabled={isSubmitting}
+                  onClick={handleSubmit}
+                  className="px-4 sm:px-5 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Submitting...</span>
+                    </>
+                  ) : (
+                    <span>Submit Exam</span>
+                  )}
+                </button>
+              )}
             </>
           ) : (
-            <button
-              onClick={() => navigate('/learn/tests')}
-              className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-colors cursor-pointer"
-            >
-              Exit to Tests
-            </button>
+            <div className="flex items-center gap-2">
+              {scorecard && (
+                <button
+                  type="button"
+                  onClick={() => setIsScorecardOpen(true)}
+                  className="px-3.5 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold text-xs rounded-xl transition-colors cursor-pointer"
+                >
+                  Scorecard
+                </button>
+              )}
+              <button
+                onClick={() => navigate('/learn/tests')}
+                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-colors cursor-pointer"
+              >
+                Exit to Tests
+              </button>
+            </div>
           )}
         </div>
       </header>
@@ -1177,31 +1216,37 @@ export function ActiveTestPage() {
           visitedIds={visitedIds}
           markedIds={markedIds}
           currentIdx={currentIdx}
+          isReviewMode={isReviewMode}
           setCurrentIdx={setCurrentIdx}
         />
       </div>
 
       {/* Modern Interactive Scorecard Modal */}
-      {isScorecardOpen && scorecard && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-lg w-full p-6 md:p-8 space-y-6 text-center animate-in fade-in zoom-in-95 duration-200">
-            <div className="w-20 h-20 bg-emerald-50 text-emerald-600 border-2 border-emerald-200 rounded-full flex items-center justify-center mx-auto shadow-sm">
-              <Trophy className="w-10 h-10" />
-            </div>
-
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+      {isScorecardOpen && scorecard && (() => {
+        const attemptedCount = scorecard.correctAnswers + scorecard.wrongAnswers;
+        const skippedCount = Math.max(0, activeQuestions.length - attemptedCount);
+        const accuracyPct = attemptedCount > 0
+          ? Math.round((scorecard.correctAnswers / attemptedCount) * 100)
+          : 0;
+        return (
+        <div className="fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-5 sm:p-6 space-y-3.5 text-center animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-12 h-12 bg-emerald-50 text-emerald-600 border-2 border-emerald-200 rounded-full flex items-center justify-center shadow-xs">
+                <Trophy className="w-6 h-6" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                 Assessment Completed
               </span>
-              <h2 className="text-2xl font-extrabold text-slate-900 mt-3">Your Scorecard</h2>
-              <p className="text-slate-500 text-sm mt-1">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">Your Scorecard</h2>
+              <p className="text-slate-500 text-xs sm:text-sm line-clamp-1">
                 {testDetails?.title || 'CBSE Real Format Examination'}
               </p>
             </div>
 
-            <div className="bg-slate-50 rounded-2xl border border-slate-200/80 p-5">
-              <div className="text-3xl font-black text-indigo-600">
-                {scorecard.score} <span className="text-lg font-medium text-slate-400">/ {scorecard.totalMarks} Marks</span>
+            <div className="bg-slate-50 rounded-2xl border border-slate-200/80 p-3.5">
+              <div className="text-2xl sm:text-3xl font-black text-indigo-600">
+                {scorecard.score} <span className="text-base sm:text-lg font-medium text-slate-400">/ {scorecard.totalMarks} Marks</span>
               </div>
               {isCompetitive && (() => {
                 const pred = predictCompetitiveOutcome(
@@ -1210,46 +1255,47 @@ export function ActiveTestPage() {
                   scorecard.totalMarks
                 );
                 return (
-                  <div className="mt-3 pt-3 border-t border-slate-200/80 flex flex-wrap items-center justify-center gap-2 text-xs">
-                    <span className="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 font-extrabold border border-indigo-200">
+                  <div className="mt-2.5 pt-2.5 border-t border-slate-200/80 flex flex-wrap items-center justify-center gap-2 text-xs">
+                    <span className="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 font-extrabold border border-indigo-200">
                       Est. {pred.predictedPercentile}
                     </span>
-                    <span className="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-extrabold border border-amber-200">
+                    <span className="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-extrabold border border-amber-200">
                       {pred.predictedRankBand}
                     </span>
-                    <p className="w-full text-[11px] font-semibold text-slate-600 mt-0.5">{pred.targetZone}</p>
+                    <p className="w-full text-[11px] font-semibold text-slate-600">{pred.targetZone}</p>
                   </div>
                 );
               })()}
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
-              <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3 text-center">
-                <div className="text-emerald-700 font-extrabold text-xl">{scorecard.correctAnswers}</div>
-                <div className="text-emerald-600 text-xs font-bold mt-0.5">{isCompetitive ? 'Correct' : 'Correct (MCQ)'}</div>
+            <div className="grid grid-cols-4 gap-2">
+              <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-2.5 text-center">
+                <div className="text-emerald-700 font-extrabold text-lg">{scorecard.correctAnswers}</div>
+                <div className="text-emerald-600 text-[11px] font-bold">Correct</div>
               </div>
 
-              <div className="bg-rose-50/70 border border-rose-200 rounded-xl p-3 text-center">
-                <div className="text-rose-700 font-extrabold text-xl">{scorecard.wrongAnswers}</div>
-                <div className="text-rose-600 text-xs font-bold mt-0.5">Incorrect</div>
+              <div className="bg-rose-50/70 border border-rose-200 rounded-xl p-2.5 text-center">
+                <div className="text-rose-700 font-extrabold text-lg">{scorecard.wrongAnswers}</div>
+                <div className="text-rose-600 text-[11px] font-bold">Incorrect</div>
               </div>
 
-              <div className="bg-indigo-50/70 border border-indigo-200 rounded-xl p-3 text-center">
-                <div className="text-indigo-700 font-extrabold text-xl">
-                  {scorecard.correctAnswers + scorecard.wrongAnswers > 0
-                    ? Math.round((scorecard.correctAnswers / (scorecard.correctAnswers + scorecard.wrongAnswers)) * 100)
-                    : 100}%
-                </div>
-                <div className="text-indigo-600 text-xs font-bold mt-0.5">Accuracy</div>
+              <div className="bg-slate-100 border border-slate-200 rounded-xl p-2.5 text-center">
+                <div className="text-slate-700 font-extrabold text-lg">{skippedCount}</div>
+                <div className="text-slate-500 text-[11px] font-bold">Skipped</div>
+              </div>
+
+              <div className="bg-indigo-50/70 border border-indigo-200 rounded-xl p-2.5 text-center">
+                <div className="text-indigo-700 font-extrabold text-lg">{accuracyPct}%</div>
+                <div className="text-indigo-600 text-[11px] font-bold">Accuracy</div>
               </div>
             </div>
 
             {scorecard.subjectStats && scorecard.subjectStats.length > 1 && (
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 text-left space-y-2">
-                <p className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500">Subject-Wise Split</p>
-                <div className="space-y-1.5">
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3 text-left space-y-1.5">
+                <p className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Subject-Wise Split</p>
+                <div className="space-y-1">
                   {scorecard.subjectStats.map((st) => (
-                    <div key={st.subject} className="flex items-center justify-between text-xs bg-white px-3 py-2 rounded-xl border border-slate-100">
+                    <div key={st.subject} className="flex items-center justify-between text-xs bg-white px-3 py-1.5 rounded-xl border border-slate-100">
                       <span className="font-bold text-slate-800">{st.subject}</span>
                       <div className="flex items-center gap-3 text-[11px]">
                         <span className="text-emerald-600 font-bold">+{st.correct}✓</span>
@@ -1262,7 +1308,7 @@ export function ActiveTestPage() {
               </div>
             )}
 
-            <div className="space-y-3 pt-2">
+            <div className="space-y-2 pt-1">
               {scorecard.wrongAnswers > 0 && (
                 <button
                   type="button"
@@ -1282,22 +1328,22 @@ export function ActiveTestPage() {
               )}
               <button
                 onClick={enterReviewMode}
-                className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2"
+                className="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>Review Model Answers & Marking Scheme</span>
               </button>
 
-              <div className="flex gap-3">
+              <div className="flex gap-2.5">
                 <button
                   onClick={() => navigate('/learn/tests')}
-                  className="flex-1 py-2.5 px-4 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-colors shadow-sm"
+                  className="flex-1 py-2 px-4 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-colors shadow-sm cursor-pointer"
                 >
                   Back to Tests
                 </button>
                 <button
                   onClick={() => navigate('/learn/syllabus')}
-                  className="flex-1 py-2.5 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold text-xs rounded-xl transition-colors"
+                  className="flex-1 py-2 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold text-xs rounded-xl transition-colors cursor-pointer"
                 >
                   Study Roadmap
                 </button>
@@ -1305,7 +1351,8 @@ export function ActiveTestPage() {
             </div>
           </div>
         </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
