@@ -580,6 +580,20 @@ export function ActiveTestPage() {
     }
   };
 
+  const activeQuestions = isReviewMode && reviewQuestions.length > 0 ? reviewQuestions : questions;
+  const currentQ = activeQuestions[currentIdx];
+
+  useEffect(() => {
+    if (currentQ?.questionId) {
+      setVisitedIds(prev => {
+        if (prev.has(currentQ.questionId)) return prev;
+        const next = new Set(prev);
+        next.add(currentQ.questionId);
+        return next;
+      });
+    }
+  }, [currentQ?.questionId]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 text-slate-600">
@@ -669,20 +683,6 @@ export function ActiveTestPage() {
       </div>
     );
   }
-
-  const activeQuestions = isReviewMode && reviewQuestions.length > 0 ? reviewQuestions : questions;
-  const currentQ = activeQuestions[currentIdx];
-
-  useEffect(() => {
-    if (currentQ?.questionId) {
-      setVisitedIds(prev => {
-        if (prev.has(currentQ.questionId)) return prev;
-        const next = new Set(prev);
-        next.add(currentQ.questionId);
-        return next;
-      });
-    }
-  }, [currentQ?.questionId]);
 
   const initialSeconds = (testDetails?.durationMins || 180) * 60;
   const hasOptions = currentQ?.options && Object.keys(currentQ.options).length > 0;
