@@ -200,10 +200,17 @@ class LearnProfileServiceTest {
         @SuppressWarnings("unchecked")
         List<Map<String, Object>> mistakes = (List<Map<String, Object>>) summary.get("recentMistakes");
         assertEquals(1, mistakes.size());
+
+        // Recent history includes maxMarks and calculated percentage matching summary
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> history = (List<Map<String, Object>>) summary.get("recentHistory");
+        assertEquals(2, history.size());
+        assertEquals(300, ((Number) history.get(0).get("maxMarks")).intValue());
+        assertEquals(-0.3, ((Number) history.get(0).get("percentage")).doubleValue(), 0.05);
     }
 
     @Test
-    void updateProfileDetailsUpdatesNameAndClearsStaleStudyPlanOnGoalChange() {
+    void updateProfileDetailsUpdatesNameWithoutChangingEnrolledGoal() {
         UUID userId = UUID.randomUUID();
         LearnUser user = new LearnUser();
         user.setId(userId);
@@ -222,11 +229,11 @@ class LearnProfileServiceTest {
         lenient().when(leaderboardService.getMyRankForMonth(eq(userId), anyInt(), anyInt()))
                 .thenReturn(Map.of());
 
-        LearnProfileResponse updated = learnProfileService.updateProfileDetails(userId, "Aarav Verma", "NEET UG");
+        LearnProfileResponse updated = learnProfileService.updateProfileDetails(userId, "Aarav Verma");
 
         assertEquals("Aarav Verma", updated.getFullName());
-        assertEquals("NEET UG", updated.getExamGoal());
-        assertNull(user.getCurrentStudyPlanJson());
+        assertEquals("JEE Mains", updated.getExamGoal());
+        assertEquals("{\"weeks\":[]}", user.getCurrentStudyPlanJson());
         verify(userRepository).save(user);
     }
 }

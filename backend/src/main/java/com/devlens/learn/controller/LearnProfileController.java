@@ -53,8 +53,7 @@ public class LearnProfileController {
             @AuthenticationPrincipal LearnUserPrincipal principal,
             @RequestBody java.util.Map<String, String> body) {
         String fullName = body != null ? body.get("fullName") : null;
-        String examGoal = body != null ? body.get("examGoal") : null;
-        return ResponseEntity.ok(profileService.updateProfileDetails(principal.getId(), fullName, examGoal));
+        return ResponseEntity.ok(profileService.updateProfileDetails(principal.getId(), fullName));
     }
 
     @PreAuthorize("hasRole('LEARN_USER')")

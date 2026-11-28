@@ -421,18 +421,11 @@ public class LearnProfileService {
         });
     }
 
-    public LearnProfileResponse updateProfileDetails(UUID userId, String fullName, String examGoal) {
+    public LearnProfileResponse updateProfileDetails(UUID userId, String fullName) {
         LearnUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new com.devlens.api.exception.ResourceNotFoundException("User not found"));
         if (fullName != null && !fullName.trim().isEmpty()) {
             user.setFullName(fullName.trim());
-        }
-        if (examGoal != null && !examGoal.trim().isEmpty()) {
-            String trimmedGoal = examGoal.trim();
-            if (!trimmedGoal.equalsIgnoreCase(user.getExamGoal())) {
-                user.setExamGoal(trimmedGoal);
-                user.setCurrentStudyPlanJson(null);
-            }
         }
         userRepository.save(user);
         return getProfile(userId);
@@ -511,6 +504,8 @@ public class LearnProfileService {
                 h.put("title", test != null ? test.getTitle() : "Mock Test");
                 h.put("score", rawScore);
                 h.put("totalMarks", totalMarks);
+                h.put("maxMarks", totalMarks);
+                h.put("percentage", Math.round(pct * 10.0) / 10.0);
                 h.put("correctAnswers", att.getCorrectAnswers() != null ? att.getCorrectAnswers() : 0);
                 h.put("wrongAnswers", att.getWrongAnswers() != null ? att.getWrongAnswers() : 0);
                 h.put("submittedAt", att.getSubmittedAt());

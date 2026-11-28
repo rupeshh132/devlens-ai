@@ -35,8 +35,6 @@ interface UserProfile {
 }
 
 
-const EXAM_GOALS = ['Class 9', 'Class 10', 'Class 11', 'Class 12', 'JEE Mains', 'JEE Advanced', 'NEET UG'];
-
 // --- Advanced Analytics Widget ---
 function AdvancedAnalyticsWidget({ isPremium, testsTaken, examGoal }: { isPremium: boolean; testsTaken: number; examGoal?: string }) {
   const [heatmap, setHeatmap] = useState<any[]>([]);
@@ -389,12 +387,17 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
                   </button>
                 </div>
                 <div className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                  {history.slice(0, 5).map((h: any, idx: number) => (
+                  {history.slice(0, 5).map((h: any, idx: number) => {
+                    const maxMarks = h.maxMarks ?? h.totalMarks ?? 0;
+                    const pct = typeof h.percentage === 'number'
+                      ? h.percentage
+                      : (maxMarks > 0 ? (Number(h.score ?? 0) / maxMarks) * 100 : 0);
+                    return (
                     <div key={h.attemptId || h.testId || idx} className="flex items-center justify-between gap-3 px-4 py-3 text-xs hover:bg-white transition-colors">
                       <div className="min-w-0">
                         <p className="font-bold text-slate-900 truncate">{h.testTitle || h.title || 'Mock Assessment'}</p>
                         <p className="text-[11px] text-slate-500 font-medium mt-0.5">
-                          Score: {h.score ?? 0}/{h.maxMarks ?? 0} ({typeof h.percentage === 'number' ? h.percentage.toFixed(1) : (h.percentage ?? 0)}%)
+                          Score: {h.score ?? 0}/{maxMarks} ({pct.toFixed(1)}%)
                           {h.submittedAt ? ` • ${new Date(h.submittedAt).toLocaleDateString()}` : ''}
                         </p>
                       </div>
@@ -408,7 +411,7 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
                         </button>
                       )}
                     </div>
-                  ))}
+                  );})}
                 </div>
               </div>
             )}
@@ -468,7 +471,6 @@ export function StudentProfilePage() {
   const [isSavingPhone, setIsSavingPhone] = useState(false);
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [nameInput, setNameInput] = useState('');
-  const [examGoalInput, setExamGoalInput] = useState('');
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const navigate = useNavigate();
 
@@ -481,31 +483,26 @@ export function StudentProfilePage() {
     setIsSavingProfile(true);
     try {
       const res = await learnApi.put('/profile', {
-        fullName: trimmedName,
-        examGoal: examGoalInput || profile?.examGoal || 'JEE Mains'
+        fullName: trimmedName
       });
       invalidateLearnProfileCache();
       const updated = res.data;
       setProfile(prev => updated ? { ...(prev || {}), ...updated } : prev);
       try {
         localStorage.setItem('learn_user_name', updated?.fullName || trimmedName);
-        if (updated?.examGoal || examGoalInput) {
-          localStorage.setItem('learn_exam_goal', updated?.examGoal || examGoalInput);
-        }
         const rawUser = localStorage.getItem('preplens_user');
         if (rawUser) {
           const parsed = JSON.parse(rawUser);
           localStorage.setItem('preplens_user', JSON.stringify({
             ...parsed,
-            fullName: updated?.fullName || trimmedName,
-            examGoal: updated?.examGoal || examGoalInput
+            fullName: updated?.fullName || trimmedName
           }));
         }
       } catch {}
       setIsEditingProfile(false);
-      toast.success('Profile details updated!');
+      toast.success('Profile name updated!');
     } catch (err: any) {
-      toast.error(err.response?.data?.message || 'Failed to update profile details');
+      toast.error(err.response?.data?.message || 'Failed to update profile name');
     } finally {
       setIsSavingProfile(false);
     }
@@ -545,7 +542,6 @@ export function StudentProfilePage() {
           setNameInput(data.fullName);
         }
         if (data.examGoal) {
-          setExamGoalInput(data.examGoal);
           localStorage.setItem('learn_exam_goal', data.examGoal);
         }
       }
@@ -700,21 +696,50 @@ export function StudentProfilePage() {
                   return raw.slice(0, 2).toUpperCase() || <User className="w-10 h-10" />;
                 })()}
               </div>
-              <div className="flex items-center gap-1.5 justify-center">
-                <h2 className="text-xl font-extrabold text-slate-900">{profile?.fullName}</h2>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setNameInput(profile?.fullName || '');
-                    setExamGoalInput(profile?.examGoal || 'JEE Mains');
-                    setIsEditingProfile(v => !v);
-                  }}
-                  className="p-1 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
-                  title="Edit name or exam track"
-                >
-                  <Pencil className="w-3.5 h-3.5" />
-                </button>
-              </div>
+              {isEditingProfile ? (
+                <div className="w-full mt-1 flex items-center gap-1.5 bg-indigo-50/70 p-2 rounded-xl border border-indigo-200/80">
+                  <input
+                    type="text"
+                    maxLength={60}
+                    value={nameInput}
+                    onChange={e => setNameInput(e.target.value)}
+                    placeholder="Your full name"
+                    className="flex-1 min-w-0 text-sm bg-white border border-slate-200 px-2.5 py-1 rounded-lg outline-none focus:border-indigo-500 font-medium"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleSaveProfileDetails}
+                    disabled={isSavingProfile}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white p-1.5 rounded-lg disabled:opacity-50"
+                    title="Save Name"
+                  >
+                    {isSavingProfile ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setIsEditingProfile(false); setNameInput(profile?.fullName || ''); }}
+                    className="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg"
+                    title="Cancel"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex items-center gap-1.5 justify-center">
+                  <h2 className="text-xl font-extrabold text-slate-900">{profile?.fullName}</h2>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setNameInput(profile?.fullName || '');
+                      setIsEditingProfile(true);
+                    }}
+                    className="p-1 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                    title="Edit name"
+                  >
+                    <Pencil className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              )}
               
               <div className="flex items-center gap-2 mt-2 flex-wrap justify-center">
                 <span className={`px-3 py-1 text-xs font-extrabold rounded-full ${
@@ -789,70 +814,9 @@ export function StudentProfilePage() {
                 )}
               </div>
 
-              <div className="text-sm">
-                {isEditingProfile ? (
-                  <div className="space-y-2.5 bg-indigo-50/70 p-3 rounded-xl border border-indigo-200/80">
-                    <div>
-                      <label className="text-[11px] font-bold uppercase text-indigo-800 block mb-1">Full Name</label>
-                      <input
-                        type="text"
-                        maxLength={60}
-                        value={nameInput}
-                        onChange={e => setNameInput(e.target.value)}
-                        placeholder="Your full name"
-                        className="w-full text-sm bg-white border border-slate-200 px-2.5 py-1.5 rounded-lg outline-none focus:border-indigo-500 font-medium"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[11px] font-bold uppercase text-indigo-800 block mb-1">Target Exam Track</label>
-                      <select
-                        value={examGoalInput}
-                        onChange={e => setExamGoalInput(e.target.value)}
-                        className="w-full text-sm bg-white border border-slate-200 px-2.5 py-1.5 rounded-lg outline-none focus:border-indigo-500 font-medium"
-                      >
-                        {EXAM_GOALS.map(goal => (
-                          <option key={goal} value={goal}>{goal}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="flex items-center justify-end gap-1.5 pt-1">
-                      <button
-                        type="button"
-                        onClick={() => setIsEditingProfile(false)}
-                        className="px-2.5 py-1 text-xs font-semibold text-slate-600 hover:bg-white rounded-lg transition-colors"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleSaveProfileDetails}
-                        disabled={isSavingProfile}
-                        className="px-3 py-1 text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg disabled:opacity-50 inline-flex items-center gap-1"
-                      >
-                        {isSavingProfile ? <Loader2 className="w-3 h-3 animate-spin" /> : <Check className="w-3 h-3" />}
-                        Save Changes
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <Target className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" />
-                      <span className="text-slate-700 font-medium">{profile?.examGoal} Aspirant</span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setNameInput(profile?.fullName || '');
-                        setExamGoalInput(profile?.examGoal || 'JEE Mains');
-                        setIsEditingProfile(true);
-                      }}
-                      className="text-xs text-indigo-600 hover:text-indigo-800 font-semibold px-2 py-1 hover:bg-indigo-50 rounded-lg transition-colors"
-                    >
-                      Switch
-                    </button>
-                  </div>
-                )}
+              <div className="flex items-center text-sm">
+                <Target className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" />
+                <span className="text-slate-700 font-medium">{profile?.examGoal} Aspirant</span>
               </div>
               <div className="flex items-center text-sm">
                 <Calendar className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" />
