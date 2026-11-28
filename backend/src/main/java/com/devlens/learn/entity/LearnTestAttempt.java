@@ -43,6 +43,10 @@ public class LearnTestAttempt {
     @Column(name = "subject_stats_json", columnDefinition = "JSONB")
     private String subjectStatsJson; // Subject-wise accuracy, marks, and negative loss stats
 
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.JSON)
+    @Column(name = "question_times_json", columnDefinition = "JSONB")
+    private String questionTimesJson; // Maps question UUID -> seconds spent during attempt
+
     private String status = "IN_PROGRESS"; // IN_PROGRESS, COMPLETED, EVALUATING
 
     @Column(name = "correct_answers")

@@ -316,7 +316,7 @@ export function TestsPage() {
           <button
             type="button"
             onClick={() => loadTests(true)}
-            className="inline-flex items-center gap-1.5 self-start sm:self-auto px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 shadow-xs transition-colors"
+            className="inline-flex items-center gap-1.5 self-start sm:self-auto shrink-0 whitespace-nowrap px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 shadow-xs transition-colors"
             title="Refresh mock tests"
           >
             <RefreshCw className="w-3.5 h-3.5 text-slate-500" />
@@ -373,9 +373,9 @@ export function TestsPage() {
 
       {/* Filter and Search Bar */}
       <div className="flex flex-col gap-3">
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+        <div className="flex flex-col gap-3">
           {/* Search */}
-          <div className="relative flex-1 max-w-md">
+          <div className="relative w-full sm:max-w-md">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
@@ -387,9 +387,9 @@ export function TestsPage() {
           </div>
 
           {/* Test Type Select */}
-          <div className="flex items-center gap-2">
-            <Filter className="w-4 h-4 text-slate-400 hidden sm:block shrink-0" />
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+          <div className="flex items-start sm:items-center gap-2 min-w-0">
+            <Filter className="w-4 h-4 text-slate-400 hidden sm:block shrink-0 mt-1.5 sm:mt-0" />
+            <div className="flex items-center gap-1.5 flex-wrap">
               {testTypeOptions.map(type => (
                 <button
                   key={type.id}

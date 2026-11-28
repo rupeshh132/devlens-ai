@@ -617,16 +617,26 @@ public class LearnProfileService {
             subjectBreakdown.add(sMap);
         }
 
-        // Extract deduplicated top recent mistakes for Auto-Healing Mistake Notebook
+        // Extract deduplicated top recent mistakes + cross-attempt speed & negative bleed autopsy
         List<Map<String, Object>> recentMistakes = new ArrayList<>();
         Set<String> seenMistakeIds = new HashSet<>();
         Map<String, Integer> weakChapters = new LinkedHashMap<>();
+        java.math.BigDecimal totalNegativeLost = java.math.BigDecimal.ZERO;
+        java.math.BigDecimal whatIfFastRecoverable = java.math.BigDecimal.ZERO;
+        int fastWrongCount = 0;
+        int slowWrongCount = 0;
         int scannedAttempts = 0;
         for (LearnTestAttempt att : completed) {
             if (scannedAttempts >= 5 || recentMistakes.size() >= 12) break;
             if (att.getAnswersJson() == null || att.getAnswersJson().isBlank()) continue;
             scannedAttempts++;
             com.devlens.learn.entity.LearnMockTest mockTest = testMap.get(att.getMockTestId());
+            Map<String, Integer> qTimes = Collections.emptyMap();
+            if (att.getQuestionTimesJson() != null && !att.getQuestionTimesJson().isBlank()) {
+                try {
+                    qTimes = objectMapper.readValue(att.getQuestionTimesJson(), new TypeReference<Map<String, Integer>>() {});
+                } catch (Exception ignored) {}
+            }
             try {
                 Map<String, String> ansMap = objectMapper.readValue(att.getAnswersJson(), new TypeReference<Map<String, String>>() {});
                 if (ansMap.isEmpty()) continue;
@@ -641,6 +651,16 @@ public class LearnProfileService {
                     if (uAns == null || uAns.isBlank()) continue;
                     MockTestService.QuestionEvaluation ev = MockTestService.evaluateQuestionStatic(mockTest, null, q, uAns);
                     if (ev.evaluatable && !ev.correct) {
+                        java.math.BigDecimal negLost = ev.deltaScore.signum() < 0 ? ev.deltaScore.abs() : java.math.BigDecimal.ZERO;
+                        totalNegativeLost = totalNegativeLost.add(negLost);
+                        int secs = qTimes.getOrDefault(qIdStr, 0);
+                        if (secs > 0 && secs < 25) {
+                            fastWrongCount++;
+                            whatIfFastRecoverable = whatIfFastRecoverable.add(negLost);
+                        } else if (secs >= 120) {
+                            slowWrongCount++;
+                        }
+
                         String ch = q.getChapter() != null && !q.getChapter().isBlank() ? q.getChapter() : (q.getSubject() != null ? q.getSubject() : "General");
                         weakChapters.put(ch, weakChapters.getOrDefault(ch, 0) + 1);
                         if (recentMistakes.size() < 12 && seenMistakeIds.add(qIdStr)) {
@@ -653,6 +673,7 @@ public class LearnProfileService {
                             m.put("userAnswer", uAns);
                             m.put("correctAnswer", q.getCorrectAnswer());
                             m.put("explanation", q.getExplanation());
+                            m.put("timeSpentSeconds", secs);
                             if (q.getOptionsJson() != null && !q.getOptionsJson().isBlank()) {
                                 try {
                                     m.put("options", objectMapper.readValue(q.getOptionsJson(), new TypeReference<Map<String, String>>() {}));
@@ -673,6 +694,12 @@ public class LearnProfileService {
         );
         Map<String, Object> bestPrediction = CompetitiveAnalyticsCalculator.predictOutcome(examGoal, bestRaw, bestMax);
 
+        Map<String, Object> timeAutopsy = new LinkedHashMap<>();
+        timeAutopsy.put("totalNegativeMarksLost", totalNegativeLost.stripTrailingZeros());
+        timeAutopsy.put("fastWrongCount", fastWrongCount);
+        timeAutopsy.put("slowWrongCount", slowWrongCount);
+        timeAutopsy.put("whatIfRecoverableMarks", whatIfFastRecoverable.stripTrailingZeros());
+
         Map<String, Object> resp = new LinkedHashMap<>();
         resp.put("examGoal", examGoal);
         resp.put("completedTests", completed.size());
@@ -683,6 +710,7 @@ public class LearnProfileService {
         resp.put("recentMistakes", recentMistakes);
         resp.put("weakChapters", weakChapters);
         resp.put("recentHistory", recentHistory);
+        resp.put("timeAutopsy", timeAutopsy);
         return resp;
     }
 }

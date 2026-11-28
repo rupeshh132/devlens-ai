@@ -151,6 +151,7 @@ class LearnProfileServiceTest {
         wrongQ.setQuestionText("A ring, disc and solid sphere roll down an incline...");
 
         String answersJson = objectMapper.writeValueAsString(Map.of(q1Id.toString(), "B"));
+        String timingsJson = objectMapper.writeValueAsString(Map.of(q1Id.toString(), 12));
 
         LearnTestAttempt jeeAttempt1 = new LearnTestAttempt();
         jeeAttempt1.setId(UUID.randomUUID());
@@ -160,6 +161,7 @@ class LearnProfileServiceTest {
         jeeAttempt1.setScore(new BigDecimal("-1"));
         jeeAttempt1.setSubmittedAt(LocalDateTime.now());
         jeeAttempt1.setAnswersJson(answersJson);
+        jeeAttempt1.setQuestionTimesJson(timingsJson);
 
         LearnTestAttempt jeeAttempt2 = new LearnTestAttempt();
         jeeAttempt2.setId(UUID.randomUUID());
@@ -208,6 +210,13 @@ class LearnProfileServiceTest {
         assertEquals(2, history.size());
         assertEquals(300, ((Number) history.get(0).get("maxMarks")).intValue());
         assertEquals(-0.3, ((Number) history.get(0).get("percentage")).doubleValue(), 0.05);
+
+        // Time Autopsy tracks fast wrong guesses (<25s) & recoverable negative marks
+        @SuppressWarnings("unchecked")
+        Map<String, Object> autopsy = (Map<String, Object>) summary.get("timeAutopsy");
+        assertNotNull(autopsy);
+        assertEquals(1, ((Number) autopsy.get("fastWrongCount")).intValue());
+        assertEquals(1, ((Number) autopsy.get("whatIfRecoverableMarks")).intValue());
     }
 
     @Test

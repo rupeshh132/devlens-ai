@@ -377,6 +377,38 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
               </div>
             )}
 
+            {summary?.timeAutopsy && (Number(summary.timeAutopsy.totalNegativeMarksLost || 0) > 0 || Number(summary.timeAutopsy.fastWrongCount || 0) > 0) && (
+              <div className="p-4 rounded-2xl bg-gradient-to-r from-indigo-50/80 via-slate-50 to-rose-50/70 border border-indigo-200/80 space-y-2.5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-indigo-900">
+                      What-If Score Simulator & Time-Trap Autopsy
+                    </h4>
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      Skipping impulsive guesses (&lt;25s) directly recovers negative marks without extra study.
+                    </p>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-200">
+                    Recoverable: +{summary.timeAutopsy.whatIfRecoverableMarks ?? 0} Marks
+                  </span>
+                </div>
+                <div className="grid grid-cols-3 gap-2.5 text-center">
+                  <div className="p-2.5 rounded-xl bg-white border border-rose-200">
+                    <div className="text-sm font-black text-rose-700">-{summary.timeAutopsy.totalNegativeMarksLost ?? 0}</div>
+                    <div className="text-[11px] text-slate-500 font-semibold">Negative Bleed</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-white border border-amber-200">
+                    <div className="text-sm font-black text-amber-700">{summary.timeAutopsy.fastWrongCount ?? 0}</div>
+                    <div className="text-[11px] text-slate-500 font-semibold">Rushed Wrong (&lt;25s)</div>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-white border border-slate-200">
+                    <div className="text-sm font-black text-slate-800">{summary.timeAutopsy.slowWrongCount ?? 0}</div>
+                    <div className="text-[11px] text-slate-500 font-semibold">Time Traps (≥2m)</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {history.length > 0 && (
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between">

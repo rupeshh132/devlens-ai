@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Clock, Trophy, ArrowLeft, ArrowRight, BookOpen, Loader2, CheckCircle2, XCircle, FileText, Sparkles, ChevronDown, ChevronUp, Lock, AlertTriangle, Bookmark, Eraser, Delete, CheckSquare, Square } from 'lucide-react';
+import { Clock, Trophy, ArrowLeft, ArrowRight, BookOpen, Loader2, CheckCircle2, XCircle, FileText, Sparkles, ChevronDown, ChevronUp, Lock, AlertTriangle, Bookmark, Eraser, Delete, CheckSquare, Square, Gauge } from 'lucide-react';
 import { toast } from 'sonner';
 import { learnApi } from '../../../lib/learn-api';
 import { PaywallModal } from '../../../components/learn/PaywallModal';
 import { MistakeRedemptionModal, type RedemptionQuestionItem } from '../../../components/learn/MistakeRedemptionModal';
 import { startRedemptionDrillWithQuota } from '../../../lib/lockerStorage';
 import { predictCompetitiveOutcome, saveMistakeToLocker } from '../../../lib/rankPredictor';
+import { computeMockAutopsy, formatShortDuration, getSubjectBudgetMinutes } from '../../../lib/testAutopsy';
 
 interface Question {
   questionId: string;
@@ -31,6 +32,7 @@ interface Question {
   isCorrect?: boolean;
   isPartial?: boolean;
   earnedMarks?: number;
+  timeSpentSeconds?: number;
 }
 
 interface TestDetails {
@@ -374,6 +376,11 @@ export function ActiveTestPage() {
   const [drillPaywallOpen, setDrillPaywallOpen] = useState(false);
   const [startingWrongRetest, setStartingWrongRetest] = useState(false);
 
+  // Per-Question Active Timing & Section Pacing Coach
+  const questionTimesRef = useRef<Record<string, number>>({});
+  const [currentQuestionSeconds, setCurrentQuestionSeconds] = useState(0);
+  const [showPacingCoach, setShowPacingCoach] = useState(true);
+
   const loadTest = useCallback(async (force = false) => {
     if (!testId) return;
     if (!force && initializedTestIdRef.current === testId) return;
@@ -515,7 +522,10 @@ export function ActiveTestPage() {
     setIsSubmitting(true);
     try {
       if (attemptId) {
-        await learnApi.post(`/tests/attempt/${attemptId}/submit`, answers);
+        await learnApi.post(`/tests/attempt/${attemptId}/submit`, {
+          answers,
+          questionTimes: questionTimesRef.current,
+        });
       }
       if (testId && typeof window !== 'undefined') {
         sessionStorage.removeItem(`preplens_test_timer_${testId}`);
@@ -527,6 +537,12 @@ export function ActiveTestPage() {
         await new Promise(r => setTimeout(r, 800));
         const res = await learnApi.get(`/tests/attempt/${attemptId}`);
         resultData = res.data;
+        try {
+          const revRes = await learnApi.get(`/tests/attempt/${attemptId}/review`);
+          if (revRes.data?.questions && Array.isArray(revRes.data.questions)) {
+            setReviewQuestions(revRes.data.questions);
+          }
+        } catch {}
       } catch (e) {}
 
       const totalMarks = testDetails?.totalMarks || questions.reduce((sum, q) => sum + (q.marks || 1), 0);
@@ -660,8 +676,20 @@ export function ActiveTestPage() {
         next.add(currentQ.questionId);
         return next;
       });
+      setCurrentQuestionSeconds(questionTimesRef.current[currentQ.questionId] || 0);
     }
   }, [currentQ?.questionId]);
+
+  useEffect(() => {
+    if (loading || loadError || scorecard || isReviewMode || isSubmitting || !currentQ?.questionId) return;
+    const activeQId = currentQ.questionId;
+    const timer = window.setInterval(() => {
+      const next = (questionTimesRef.current[activeQId] || 0) + 1;
+      questionTimesRef.current[activeQId] = next;
+      setCurrentQuestionSeconds(next);
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [loading, loadError, scorecard, isReviewMode, isSubmitting, currentQ?.questionId]);
 
   if (loading) {
     return (
@@ -793,6 +821,19 @@ export function ActiveTestPage() {
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {!isReviewMode ? (
             <>
+              <button
+                type="button"
+                onClick={() => setShowPacingCoach(v => !v)}
+                className={`hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
+                  showPacingCoach
+                    ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
+                    : 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100'
+                }`}
+                title="Toggle Section Pacing Coach & Time-Trap Alerts"
+              >
+                <Gauge className="w-3.5 h-3.5" />
+                <span>Pacing</span>
+              </button>
               <TestTimer 
                 initialTime={initialSeconds} 
                 storageKey={`preplens_test_timer_${testId}`} 
@@ -934,6 +975,45 @@ export function ActiveTestPage() {
               </h2>
             </div>
             <div className="flex items-center gap-1.5 flex-wrap shrink-0">
+              {!isReviewMode && showPacingCoach && currentQ && (
+                <span className={`px-2.5 py-1 rounded-full text-xs font-extrabold border whitespace-nowrap inline-flex items-center gap-1 ${
+                  currentQuestionSeconds >= 150
+                    ? 'bg-rose-50 border-rose-300 text-rose-700 animate-pulse'
+                    : currentQuestionSeconds >= 90
+                    ? 'bg-amber-50 border-amber-300 text-amber-800'
+                    : 'bg-slate-100 border-slate-200 text-slate-700'
+                }`}>
+                  <Clock className="w-3 h-3" />
+                  {formatShortDuration(currentQuestionSeconds)}
+                  {currentQuestionSeconds >= 150
+                    ? ' • Time Trap!'
+                    : currentQuestionSeconds >= 90
+                    ? ' • Mark & Next?'
+                    : ''}
+                </span>
+              )}
+              {!isReviewMode && showPacingCoach && subjectTabs.length > 1 && (() => {
+                const spentSecs = questions
+                  .filter(q => (q.subject || 'General') === activeSubjectName)
+                  .reduce((sum, q) => sum + (questionTimesRef.current[q.questionId] || 0), 0);
+                const budgetMins = getSubjectBudgetMinutes(testDetails?.classLevel || testDetails?.title || '', activeSubjectName);
+                const spentMins = Math.floor(spentSecs / 60);
+                return (
+                  <span className={`hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold border whitespace-nowrap ${
+                    spentMins >= budgetMins
+                      ? 'bg-rose-50 border-rose-200 text-rose-700'
+                      : 'bg-indigo-50 border-indigo-200 text-indigo-700'
+                  }`}>
+                    {activeSubjectName}: {spentMins}m / {budgetMins}m target
+                  </span>
+                );
+              })()}
+              {isReviewMode && currentQ && ((currentQ.timeSpentSeconds ?? questionTimesRef.current[currentQ.questionId] ?? 0) > 0) && (
+                <span className="bg-slate-100 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap inline-flex items-center gap-1">
+                  <Clock className="w-3 h-3 text-slate-500" />
+                  {formatShortDuration(currentQ.timeSpentSeconds ?? questionTimesRef.current[currentQ.questionId] ?? 0)} spent
+                </span>
+              )}
               {isReviewMode && currentQ?.isCorrect === false && (
                 <button
                   type="button"
@@ -1359,6 +1439,50 @@ export function ActiveTestPage() {
                 </div>
               </div>
             )}
+
+            {reviewQuestions.length > 0 && (() => {
+              const autopsy = computeMockAutopsy(
+                reviewQuestions,
+                scorecard.score,
+                testDetails?.negativeMarking ?? 0,
+                questionTimesRef.current
+              );
+              if (autopsy.totalNegativeLost <= 0 && autopsy.fastWrongCount === 0 && autopsy.slowWrongCount === 0 && autopsy.slowCorrectCount === 0) {
+                return null;
+              }
+              return (
+                <div className="bg-gradient-to-r from-indigo-50/80 via-slate-50 to-amber-50/70 border border-indigo-200/80 rounded-2xl p-3.5 text-left space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-indigo-800">
+                      What-If Score Simulator &amp; Time Autopsy
+                    </span>
+                    {autopsy.fastWrongRecoverable > 0 ? (
+                      <span className="text-[11px] font-black text-emerald-700 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-full">
+                        Skip &lt;25s Guesses: {scorecard.score} → {autopsy.whatIfSkipFastWrongScore} (+{autopsy.fastWrongRecoverable})
+                      </span>
+                    ) : autopsy.totalNegativeLost > 0 ? (
+                      <span className="text-[11px] font-black text-amber-800 bg-amber-100 border border-amber-200 px-2 py-0.5 rounded-full">
+                        Zero-Neg Ceiling: {autopsy.whatIfZeroNegativeScore}
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 text-center">
+                    <div className="bg-white rounded-xl border border-rose-200/80 p-2">
+                      <div className="text-sm font-black text-rose-700">-{autopsy.totalNegativeLost}</div>
+                      <div className="text-[10px] text-slate-500 font-semibold">Negatives Lost</div>
+                    </div>
+                    <div className="bg-white rounded-xl border border-amber-200/80 p-2">
+                      <div className="text-sm font-black text-amber-700">{autopsy.fastWrongCount}</div>
+                      <div className="text-[10px] text-slate-500 font-semibold">Rushed (&lt;25s)</div>
+                    </div>
+                    <div className="bg-white rounded-xl border border-slate-200 p-2">
+                      <div className="text-sm font-black text-slate-800">{autopsy.slowWrongCount + autopsy.slowCorrectCount}</div>
+                      <div className="text-[10px] text-slate-500 font-semibold">Slow (≥2m)</div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
 
             <div className="space-y-2 pt-1">
               {scorecard.wrongAnswers > 0 && (

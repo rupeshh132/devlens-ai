@@ -309,6 +309,11 @@ public class MockTestService {
 
     @Transactional
     public LearnTestAttempt submitTest(UUID attemptId, Map<String, String> answers) {
+        return submitTest(attemptId, answers, Collections.emptyMap());
+    }
+
+    @Transactional
+    public LearnTestAttempt submitTest(UUID attemptId, Map<String, String> answers, Map<String, Integer> questionTimes) {
         LearnTestAttempt attempt = attemptRepository.findById(attemptId)
                 .orElseThrow(() -> new RuntimeException("Attempt not found"));
 
@@ -333,15 +338,24 @@ public class MockTestService {
         attempt.setStatus("EVALUATING");
         attempt.setSubmittedAt(now);
         try {
-            attempt.setAnswersJson(objectMapper.writeValueAsString(answers));
+            attempt.setAnswersJson(objectMapper.writeValueAsString(answers != null ? answers : Collections.emptyMap()));
+            if (questionTimes != null && !questionTimes.isEmpty()) {
+                Map<String, Integer> sanitizedTimes = new LinkedHashMap<>();
+                for (Map.Entry<String, Integer> entry : questionTimes.entrySet()) {
+                    if (entry.getKey() != null && entry.getValue() != null) {
+                        sanitizedTimes.put(entry.getKey(), Math.max(0, Math.min(14_400, entry.getValue())));
+                    }
+                }
+                attempt.setQuestionTimesJson(objectMapper.writeValueAsString(sanitizedTimes));
+            }
         } catch (JsonProcessingException e) {
-            log.error("Failed to serialize answers", e);
+            log.error("Failed to serialize answers or question timings", e);
         }
         LearnTestAttempt savedAttempt = attemptRepository.save(attempt);
 
         // 2. Push to background in-memory queue (Spring Async ThreadPool)
         // This offloads the heavy DB query and calculations, freeing up Tomcat threads
-        evaluateTestAsync(savedAttempt.getId(), savedAttempt.getMockTestId(), answers);
+        evaluateTestAsync(savedAttempt.getId(), savedAttempt.getMockTestId(), answers != null ? answers : Collections.emptyMap());
 
         return savedAttempt;
     }
@@ -521,12 +535,20 @@ public class MockTestService {
             } catch (Exception ignored) {}
         }
 
+        Map<String, Integer> questionTimes = new HashMap<>();
+        if (attempt.getQuestionTimesJson() != null && !attempt.getQuestionTimesJson().isBlank()) {
+            try {
+                questionTimes = objectMapper.readValue(attempt.getQuestionTimesJson(), new TypeReference<Map<String, Integer>>() {});
+            } catch (Exception ignored) {}
+        }
+
         List<Map<String, Object>> questionsReview = new ArrayList<>();
         for (LearnTestQuestion tq : testQuestions) {
             LearnQuestion q = questionMap.get(tq.getQuestionId());
             if (q != null) {
                 Map<String, Object> qMap = new HashMap<>();
                 qMap.put("questionId", q.getId());
+                qMap.put("timeSpentSeconds", questionTimes.getOrDefault(q.getId().toString(), 0));
                 qMap.put("text", q.getQuestionText());
                 qMap.put("section", tq.getSectionName());
                 qMap.put("subject", resolveEffectiveSubject(tq, q));
@@ -568,6 +590,7 @@ public class MockTestService {
         result.put("attempt", attempt);
         result.put("mockTest", test);
         result.put("questions", questionsReview);
+        result.put("questionTimes", questionTimes);
         return result;
     }
 

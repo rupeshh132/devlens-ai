@@ -56,10 +56,34 @@ public class MockTestController {
 
     @PreAuthorize("hasRole('LEARN_USER')")
     @PostMapping("/attempt/{attemptId}/submit")
+    @SuppressWarnings("unchecked")
     public ResponseEntity<?> submitTest(
             @PathVariable UUID attemptId,
-            @RequestBody Map<String, String> answers) {
-        return ResponseEntity.accepted().body(mockTestService.submitTest(attemptId, answers));
+            @RequestBody Map<String, Object> body) {
+        Map<String, String> answers = new java.util.HashMap<>();
+        Map<String, Integer> questionTimes = new java.util.HashMap<>();
+
+        if (body != null && body.containsKey("answers") && body.get("answers") instanceof Map<?, ?> ansRaw) {
+            for (Map.Entry<?, ?> e : ansRaw.entrySet()) {
+                if (e.getKey() != null && e.getValue() != null) {
+                    answers.put(String.valueOf(e.getKey()), String.valueOf(e.getValue()));
+                }
+            }
+            if (body.get("questionTimes") instanceof Map<?, ?> qtRaw) {
+                for (Map.Entry<?, ?> e : qtRaw.entrySet()) {
+                    if (e.getKey() != null && e.getValue() instanceof Number n) {
+                        questionTimes.put(String.valueOf(e.getKey()), Math.max(0, n.intValue()));
+                    }
+                }
+            }
+        } else if (body != null) {
+            for (Map.Entry<String, Object> e : body.entrySet()) {
+                if (e.getKey() != null && e.getValue() != null) {
+                    answers.put(e.getKey(), String.valueOf(e.getValue()));
+                }
+            }
+        }
+        return ResponseEntity.accepted().body(mockTestService.submitTest(attemptId, answers, questionTimes));
     }
 
     @PreAuthorize("hasRole('LEARN_USER')")
