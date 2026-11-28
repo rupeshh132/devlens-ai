@@ -52,14 +52,23 @@ public class CompetitiveNotesRegistry {
     }
 
     @Data
+    public static class DerivationOrGraph {
+        private String title;
+        private String expressionOrCurve;
+        private String keyTakeaway;
+    }
+
+    @Data
     public static class ChapterNotesModule {
         private String moduleId;
         private String weightageNote;
         private String syllabusAlert;
         private List<ConceptSection> sections = new ArrayList<>();
+        private List<DerivationOrGraph> derivationsAndGraphs = new ArrayList<>();
         private List<FormulaRow> formulas = new ArrayList<>();
         private ComparisonTable comparison;
         private List<String> traps = new ArrayList<>();
+        private List<String> revisionChecklist = new ArrayList<>();
         private List<SolvedExample> solvedExamples = new ArrayList<>();
     }
 

@@ -91,56 +91,51 @@ class LearnPdfServiceTest {
         assertTrue(notesRegistry.findForChapter(UUID.fromString("65d29b56-3013-1009-0000-000000000001"), "3D & Vectors", "Mathematics").isPresent());
         assertTrue(notesRegistry.findForChapter(UUID.fromString("65d29b56-3013-1010-0000-000000000001"), "Probability", "Mathematics").isPresent());
 
-        // Verify full count across all 4 domains = 18 + 13 + 10 + 13 = 54 modules
+        // Verify full count across all 4 domains = 18 + 13 + 10 + 13 = 54 modules AND verify zero-gap exhaustive depth!
+        List<UUID> allModuleSamples = new java.util.ArrayList<>();
+        for (int i = 1; i <= 15; i++) allModuleSamples.add(UUID.fromString(String.format("65d29b56-1011-10%02d-0000-000000000001", i)));
+        for (int i = 16; i <= 18; i++) allModuleSamples.add(UUID.fromString(String.format("65d29b56-3011-10%02d-0000-000000000001", i)));
+        for (int i = 1; i <= 9; i++) allModuleSamples.add(UUID.fromString(String.format("65d29b56-1012-10%02d-0000-000000000001", i)));
+        for (int i = 10; i <= 13; i++) allModuleSamples.add(UUID.fromString(String.format("65d29b56-3012-10%02d-0000-000000000001", i)));
+        for (int i = 1; i <= 8; i++) allModuleSamples.add(UUID.fromString(String.format("65d29b56-1013-10%02d-0000-000000000001", i)));
+        for (int i = 9; i <= 10; i++) allModuleSamples.add(UUID.fromString(String.format("65d29b56-3013-10%02d-0000-000000000001", i)));
+        for (int i = 1; i <= 7; i++) allModuleSamples.add(UUID.fromString(String.format("65d29b56-2011-10%02d-0000-000000000001", i)));
+        for (int i = 1; i <= 6; i++) allModuleSamples.add(UUID.fromString(String.format("65d29b56-2012-10%02d-0000-000000000001", i)));
+
         int found = 0;
-        for (int i = 1; i <= 15; i++) {
-            UUID id = UUID.fromString(String.format("65d29b56-1011-10%02d-0000-000000000001", i));
-            if (notesRegistry.findForChapter(id, "", "Physics").isPresent()) found++;
-        }
-        for (int i = 16; i <= 18; i++) {
-            UUID id = UUID.fromString(String.format("65d29b56-3011-10%02d-0000-000000000001", i));
-            if (notesRegistry.findForChapter(id, "", "Physics").isPresent()) found++;
-        }
-        for (int i = 1; i <= 9; i++) {
-            UUID id = UUID.fromString(String.format("65d29b56-1012-10%02d-0000-000000000001", i));
-            if (notesRegistry.findForChapter(id, "", "Chemistry").isPresent()) found++;
-        }
-        for (int i = 10; i <= 13; i++) {
-            UUID id = UUID.fromString(String.format("65d29b56-3012-10%02d-0000-000000000001", i));
-            if (notesRegistry.findForChapter(id, "", "Chemistry").isPresent()) found++;
-        }
-        for (int i = 1; i <= 8; i++) {
-            UUID id = UUID.fromString(String.format("65d29b56-1013-10%02d-0000-000000000001", i));
-            if (notesRegistry.findForChapter(id, "", "Mathematics").isPresent()) found++;
-        }
-        for (int i = 9; i <= 10; i++) {
-            UUID id = UUID.fromString(String.format("65d29b56-3013-10%02d-0000-000000000001", i));
-            if (notesRegistry.findForChapter(id, "", "Mathematics").isPresent()) found++;
-        }
-        for (int i = 1; i <= 7; i++) {
-            UUID id = UUID.fromString(String.format("65d29b56-2011-10%02d-0000-000000000001", i));
-            if (notesRegistry.findForChapter(id, "", "Botany").isPresent()) found++;
-        }
-        for (int i = 1; i <= 6; i++) {
-            UUID id = UUID.fromString(String.format("65d29b56-2012-10%02d-0000-000000000001", i));
-            if (notesRegistry.findForChapter(id, "", "Zoology").isPresent()) found++;
+        for (UUID id : allModuleSamples) {
+            var modOpt = notesRegistry.findForChapter(id, "", "");
+            assertTrue(modOpt.isPresent(), "Missing module for " + id);
+            var mod = modOpt.get();
+            assertTrue(mod.getSections().size() >= 5, mod.getModuleId() + " sections < 5");
+            assertTrue(mod.getDerivationsAndGraphs().size() >= 3, mod.getModuleId() + " derivationsAndGraphs < 3");
+            assertTrue(mod.getFormulas().size() >= 9, mod.getModuleId() + " formulas < 9");
+            assertNotNull(mod.getComparison(), mod.getModuleId() + " missing comparison");
+            assertTrue(mod.getComparison().getRows().size() >= 5, mod.getModuleId() + " comparison rows < 5");
+            assertTrue(mod.getTraps().size() >= 5, mod.getModuleId() + " traps < 5");
+            assertTrue(mod.getRevisionChecklist().size() >= 6, mod.getModuleId() + " revisionChecklist < 6");
+            assertTrue(mod.getSolvedExamples().size() >= 4, mod.getModuleId() + " solvedExamples < 4");
+            found++;
         }
         assertEquals(54, found);
     }
 
     @Test
     void formatMathTextTransliteratesUnicodeWithoutDrops() {
-        String raw = "The dimensions of (1/2) ε₀ E² [M L⁻¹ T⁻²] → ∆x ≥ h/(4π) × 10⁻³⁴";
+        String raw = "The dimensions of ½ ε₀ E² [M L⁻¹ T⁻²] → ∆x ≥ h/(4π) × 10⁻³⁴ ; A ∪ B ≠ ∅";
         String safe = LearnPdfService.formatMathText(raw);
         assertFalse(safe.contains("ε"));
         assertFalse(safe.contains("₀"));
         assertFalse(safe.contains("⁻¹"));
         assertFalse(safe.contains("→"));
+        assertFalse(safe.contains("½"));
+        assertTrue(safe.contains("1/2"));
         assertTrue(safe.contains("eps_0"));
         assertTrue(safe.contains("E^2"));
         assertTrue(safe.contains("L^(-1)"));
         assertTrue(safe.contains("->"));
         assertTrue(safe.contains("pi"));
+        assertTrue(safe.contains("U"));
     }
 
     @Test
@@ -200,7 +195,7 @@ class LearnPdfServiceTest {
 
         try (PdfReader reader = new PdfReader(pdfBytes)) {
             int pages = reader.getNumberOfPages();
-            assertTrue(pages >= 3, "Expected multi-page master notes (>= 3 pages), got " + pages);
+            assertTrue(pages >= 5, "Expected exhaustive multi-page master notes (>= 5 pages), got " + pages);
 
             PdfTextExtractor extractor = new PdfTextExtractor(reader);
             StringBuilder allText = new StringBuilder();
@@ -212,6 +207,9 @@ class LearnPdfServiceTest {
             }
             String fullText = allText.toString();
             assertTrue(fullText.contains("Master Notes"));
+            assertTrue(fullText.contains("Key Derivations, Graph Trends & Conceptual Proofs"));
+            assertTrue(fullText.contains("Zero-Gap Rapid Revision & Recall Checklist"));
+            assertTrue(fullText.contains("(A) Energy density"), "List-formatted MCQ options should render cleanly");
             assertTrue(fullText.contains("eps_0"), "Unicode epsilon should be cleanly transliterated");
             assertTrue(fullText.contains("L^(-1)"), "Unicode negative superscript should be cleanly transliterated");
         }
