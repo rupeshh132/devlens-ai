@@ -167,27 +167,31 @@ public class LearnProfileService {
         response.setSubscribedUntil(user.getSubscribedUntil());
         response.setJoinedDate(user.getCreatedAt());
 
-        // Stats calculation
-        response.setTotalTestsTaken(attempts.size());
-        
-        if (!attempts.isEmpty()) {
-            double totalAcc = 0;
-            int validAttempts = 0;
-            for (LearnTestAttempt att : attempts) {
-                if ("COMPLETED".equals(att.getStatus())) {
-                    int correct = att.getCorrectAnswers() != null ? att.getCorrectAnswers() : 0;
-                    int wrong = att.getWrongAnswers() != null ? att.getWrongAnswers() : 0;
-                    int total = correct + wrong;
-                    if (total > 0) {
-                        totalAcc += ((double) correct / total) * 100;
-                        validAttempts++;
-                    }
-                }
+        // Unified completed stats calculation: ONLY completed attempts count as Tests Taken
+        List<LearnTestAttempt> completedAttempts = attempts.stream()
+                .filter(a -> "COMPLETED".equalsIgnoreCase(a.getStatus()))
+                .collect(Collectors.toList());
+        response.setTotalTestsTaken(completedAttempts.size());
+
+        long totalCorrectAll = 0;
+        long totalAttemptedAll = 0;
+        long examTestSeconds = 0;
+        for (LearnTestAttempt att : completedAttempts) {
+            int correct = att.getCorrectAnswers() != null ? att.getCorrectAnswers() : 0;
+            int wrong = att.getWrongAnswers() != null ? att.getWrongAnswers() : 0;
+            totalCorrectAll += correct;
+            totalAttemptedAll += (correct + wrong);
+
+            if (att.getTimeTakenSeconds() != null && att.getTimeTakenSeconds() > 0) {
+                examTestSeconds += att.getTimeTakenSeconds();
+            } else if (att.getStartedAt() != null && att.getSubmittedAt() != null && !att.getSubmittedAt().isBefore(att.getStartedAt())) {
+                long secs = java.time.Duration.between(att.getStartedAt(), att.getSubmittedAt()).getSeconds();
+                examTestSeconds += Math.min(secs, 4 * 3600L);
             }
-            response.setAverageAccuracy(validAttempts > 0 ? (totalAcc / validAttempts) : 0.0);
-        } else {
-            response.setAverageAccuracy(0.0);
         }
+        response.setAverageAccuracy(
+                totalAttemptedAll > 0 ? Math.round(((totalCorrectAll * 100.0) / totalAttemptedAll) * 10.0) / 10.0 : 0.0
+        );
         
         // Clean up any legacy PASSIVE sessions for this user so fake study time is cleared
         List<com.devlens.learn.entity.LearnStudySession> allSessions = studySessionRepository.findByUserId(userId);
@@ -212,11 +216,16 @@ public class LearnProfileService {
             }
         }
 
-        // Real-time study hours & minutes calculation strictly from active FOCUS_TIMER sessions
-        int studyMinutes = allSessions.stream()
+        // Real-time study minutes = Focus Timer sessions + completed Mock Test active minutes
+        int focusMinutes = allSessions.stream()
                 .filter(s -> "FOCUS_TIMER".equalsIgnoreCase(s.getSessionType()))
                 .mapToInt(s -> s.getDurationMinutes() != null ? s.getDurationMinutes() : 0)
                 .sum();
+        int testMinutes = (int) Math.round(examTestSeconds / 60.0);
+        if (testMinutes == 0 && examTestSeconds >= 20) {
+            testMinutes = 1;
+        }
+        int studyMinutes = focusMinutes + testMinutes;
         if (!Objects.equals(user.getStudyMinutes(), studyMinutes)) {
             user.setStudyMinutes(studyMinutes);
             userDirty = true;
@@ -412,21 +421,65 @@ public class LearnProfileService {
         });
     }
 
+    public LearnProfileResponse updateProfileDetails(UUID userId, String fullName, String examGoal) {
+        LearnUser user = userRepository.findById(userId)
+                .orElseThrow(() -> new com.devlens.api.exception.ResourceNotFoundException("User not found"));
+        if (fullName != null && !fullName.trim().isEmpty()) {
+            user.setFullName(fullName.trim());
+        }
+        if (examGoal != null && !examGoal.trim().isEmpty()) {
+            String trimmedGoal = examGoal.trim();
+            if (!trimmedGoal.equalsIgnoreCase(user.getExamGoal())) {
+                user.setExamGoal(trimmedGoal);
+                user.setCurrentStudyPlanJson(null);
+            }
+        }
+        userRepository.save(user);
+        return getProfile(userId);
+    }
+
+    static boolean matchesGoalTrack(String examGoal, com.devlens.learn.entity.LearnMockTest test) {
+        if (examGoal == null || examGoal.isBlank() || test == null) return true;
+        String g = examGoal.toLowerCase();
+        String tInfo = ((test.getClassLevel() != null ? test.getClassLevel() : "") + " "
+                + (test.getTitle() != null ? test.getTitle() : "")).toLowerCase();
+        if (g.contains("neet")) {
+            return tInfo.contains("neet");
+        }
+        if (g.contains("jee") && (g.contains("adv") || g.contains("iit"))) {
+            return tInfo.contains("adv") || tInfo.contains("iit");
+        }
+        if (g.contains("jee")) {
+            return tInfo.contains("jee") && !tInfo.contains("adv") && !tInfo.contains("iit");
+        }
+        String classNum = g.replaceAll("[^0-9]", "");
+        if (!classNum.isEmpty() && test.getClassLevel() != null) {
+            return test.getClassLevel().replaceAll("[^0-9]", "").equals(classNum);
+        }
+        return true;
+    }
+
     public Map<String, Object> getCompetitiveAnalyticsSummary(UUID userId) {
         LearnUser user = userRepository.findById(userId)
                 .orElseThrow(() -> new com.devlens.api.exception.ResourceNotFoundException("User not found"));
 
         String examGoal = user.getExamGoal() != null ? user.getExamGoal() : "JEE Mains";
-        List<LearnTestAttempt> completed = testAttemptRepository.findByUserIdOrderByStartedAtDesc(userId).stream()
+        List<LearnTestAttempt> allCompleted = testAttemptRepository.findByUserIdOrderByStartedAtDesc(userId).stream()
                 .filter(a -> "COMPLETED".equalsIgnoreCase(a.getStatus()))
                 .collect(Collectors.toList());
 
         Map<UUID, com.devlens.learn.entity.LearnMockTest> testMap = Collections.emptyMap();
-        if (!completed.isEmpty()) {
-            Set<UUID> testIds = completed.stream().map(LearnTestAttempt::getMockTestId).collect(Collectors.toSet());
+        if (!allCompleted.isEmpty()) {
+            Set<UUID> testIds = allCompleted.stream().map(LearnTestAttempt::getMockTestId).collect(Collectors.toSet());
             testMap = mockTestRepository.findAllById(testIds).stream()
                     .collect(Collectors.toMap(com.devlens.learn.entity.LearnMockTest::getId, t -> t));
         }
+
+        // Scope competitive analytics cleanly to the active examGoal track
+        final Map<UUID, com.devlens.learn.entity.LearnMockTest> lookup = testMap;
+        List<LearnTestAttempt> completed = allCompleted.stream()
+                .filter(a -> matchesGoalTrack(examGoal, lookup.get(a.getMockTestId())))
+                .collect(Collectors.toList());
 
         // Aggregate subject stats (correct, wrong, partial, total, netScore, maxMarks)
         Map<String, java.math.BigDecimal[]> subjectAgg = new LinkedHashMap<>();
@@ -509,14 +562,16 @@ public class LearnProfileService {
             subjectBreakdown.add(sMap);
         }
 
-        // Extract top recent mistakes for Auto-Healing Mistake Notebook
+        // Extract deduplicated top recent mistakes for Auto-Healing Mistake Notebook
         List<Map<String, Object>> recentMistakes = new ArrayList<>();
+        Set<String> seenMistakeIds = new HashSet<>();
         Map<String, Integer> weakChapters = new LinkedHashMap<>();
         int scannedAttempts = 0;
         for (LearnTestAttempt att : completed) {
             if (scannedAttempts >= 5 || recentMistakes.size() >= 12) break;
             if (att.getAnswersJson() == null || att.getAnswersJson().isBlank()) continue;
             scannedAttempts++;
+            com.devlens.learn.entity.LearnMockTest mockTest = testMap.get(att.getMockTestId());
             try {
                 Map<String, String> ansMap = objectMapper.readValue(att.getAnswersJson(), new TypeReference<Map<String, String>>() {});
                 if (ansMap.isEmpty()) continue;
@@ -526,15 +581,16 @@ public class LearnProfileService {
                 }
                 if (qIds.isEmpty()) continue;
                 for (LearnQuestion q : questionRepository.findAllById(qIds)) {
-                    String uAns = ansMap.get(q.getId().toString());
+                    String qIdStr = q.getId().toString();
+                    String uAns = ansMap.get(qIdStr);
                     if (uAns == null || uAns.isBlank()) continue;
-                    MockTestService.QuestionEvaluation ev = MockTestService.evaluateQuestionStatic(null, null, q, uAns);
+                    MockTestService.QuestionEvaluation ev = MockTestService.evaluateQuestionStatic(mockTest, null, q, uAns);
                     if (ev.evaluatable && !ev.correct) {
                         String ch = q.getChapter() != null && !q.getChapter().isBlank() ? q.getChapter() : (q.getSubject() != null ? q.getSubject() : "General");
                         weakChapters.put(ch, weakChapters.getOrDefault(ch, 0) + 1);
-                        if (recentMistakes.size() < 12) {
+                        if (recentMistakes.size() < 12 && seenMistakeIds.add(qIdStr)) {
                             Map<String, Object> m = new LinkedHashMap<>();
-                            m.put("questionId", q.getId().toString());
+                            m.put("questionId", qIdStr);
                             m.put("subject", q.getSubject() != null ? q.getSubject() : "General");
                             m.put("chapter", ch);
                             m.put("questionText", q.getQuestionText());

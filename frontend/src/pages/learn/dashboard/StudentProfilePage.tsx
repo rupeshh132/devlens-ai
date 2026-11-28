@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, Mail, Phone, Target, CreditCard, Calendar, Clock, Award, CheckCircle, Loader2, Zap, ArrowRight, ShieldCheck, Trophy, BrainCircuit, X, Check, RefreshCw, AlertTriangle } from 'lucide-react';
+import { User, Mail, Phone, Target, CreditCard, Calendar, Clock, Award, CheckCircle, Loader2, Zap, ArrowRight, ShieldCheck, Trophy, BrainCircuit, X, Check, RefreshCw, AlertTriangle, Pencil, History, ExternalLink } from 'lucide-react';
 import { learnApi, fetchLearnProfileCached, invalidateLearnProfileCache, readCachedLearnProfileSnapshot } from '../../../lib/learn-api';
-import { syncPendingDailyChallengeWithBackend } from '../../../lib/lockerStorage';
+import { syncPendingDailyChallengeWithBackend, isItemSaved } from '../../../lib/lockerStorage';
 import { saveMistakeToLocker } from '../../../lib/rankPredictor';
 import { toast } from 'sonner';
 
@@ -35,8 +35,10 @@ interface UserProfile {
 }
 
 
+const EXAM_GOALS = ['Class 9', 'Class 10', 'Class 11', 'Class 12', 'JEE Mains', 'JEE Advanced', 'NEET UG'];
+
 // --- Advanced Analytics Widget ---
-function AdvancedAnalyticsWidget({ isPremium, testsTaken }: { isPremium: boolean, testsTaken: number }) {
+function AdvancedAnalyticsWidget({ isPremium, testsTaken, examGoal }: { isPremium: boolean; testsTaken: number; examGoal?: string }) {
   const [heatmap, setHeatmap] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [generatingTopic, setGeneratingTopic] = useState<string | null>(null);
@@ -132,12 +134,28 @@ function AdvancedAnalyticsWidget({ isPremium, testsTaken }: { isPremium: boolean
           </div>
         ) : (
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${!isPremium ? 'opacity-30 pointer-events-none filter blur-[2px]' : ''}`}>
-            {(isPremium ? heatmap : [
-              {topic: "Algebra", accuracy: 85, status: "STRONG", color: "#10b981", totalQuestions: 20, correctQuestions: 17},
-              {topic: "Trigonometry", accuracy: 30, status: "CRITICAL", color: "#e11d48", totalQuestions: 10, correctQuestions: 3},
-              {topic: "Calculus", accuracy: 55, status: "WEAK", color: "#f43f5e", totalQuestions: 12, correctQuestions: 6},
-              {topic: "Probability", accuracy: 75, status: "GOOD", color: "#3b82f6", totalQuestions: 8, correctQuestions: 6}
-            ]).map((item, idx) => (
+            {(isPremium ? heatmap : (
+              /neet|bio/i.test(examGoal || '')
+                ? [
+                    { topic: "Human Physiology", accuracy: 86, status: "STRONG", color: "#10b981", totalQuestions: 22, correctQuestions: 19 },
+                    { topic: "Genetics & Evolution", accuracy: 35, status: "CRITICAL", color: "#e11d48", totalQuestions: 14, correctQuestions: 5 },
+                    { topic: "Organic Mechanisms", accuracy: 52, status: "WEAK", color: "#f43f5e", totalQuestions: 15, correctQuestions: 8 },
+                    { topic: "Electrostatics", accuracy: 74, status: "GOOD", color: "#3b82f6", totalQuestions: 12, correctQuestions: 9 }
+                  ]
+                : /jee/i.test(examGoal || '')
+                ? [
+                    { topic: "Electrostatics & Gauss Law", accuracy: 85, status: "STRONG", color: "#10b981", totalQuestions: 20, correctQuestions: 17 },
+                    { topic: "Rotational Motion", accuracy: 30, status: "CRITICAL", color: "#e11d48", totalQuestions: 10, correctQuestions: 3 },
+                    { topic: "Definite Integration", accuracy: 55, status: "WEAK", color: "#f43f5e", totalQuestions: 12, correctQuestions: 6 },
+                    { topic: "Chemical Bonding", accuracy: 75, status: "GOOD", color: "#3b82f6", totalQuestions: 12, correctQuestions: 9 }
+                  ]
+                : [
+                    { topic: "Algebra & Quadratics", accuracy: 85, status: "STRONG", color: "#10b981", totalQuestions: 20, correctQuestions: 17 },
+                    { topic: "Trigonometry", accuracy: 30, status: "CRITICAL", color: "#e11d48", totalQuestions: 10, correctQuestions: 3 },
+                    { topic: "Light & Optics", accuracy: 55, status: "WEAK", color: "#f43f5e", totalQuestions: 12, correctQuestions: 6 },
+                    { topic: "Chemical Reactions", accuracy: 75, status: "GOOD", color: "#3b82f6", totalQuestions: 8, correctQuestions: 6 }
+                  ]
+            )).map((item, idx) => (
               <div key={idx} className="border border-slate-200 rounded-2xl p-4 flex flex-col justify-between bg-slate-50/60 hover:bg-slate-50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex flex-col">
@@ -241,6 +259,14 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
   const bestPred = summary?.bestPrediction;
   const subjects: any[] = summary?.subjectBreakdown || [];
   const mistakes: any[] = summary?.recentMistakes || [];
+  const history: any[] = summary?.recentHistory || [];
+
+  const getMistakeTitle = (m: any) => {
+    const rawText = (m.questionText || m.text || '').trim();
+    return `[Mistake] ${(m.subject || 'General')} — ${rawText.slice(0, 68)}${rawText.length > 68 ? '...' : ''}`;
+  };
+
+  const allMistakesSynced = mistakes.length > 0 && (mistakesSaved || mistakes.every(m => isItemSaved(getMistakeTitle(m))));
 
   const handleSaveAllMistakes = () => {
     mistakes.forEach(m => saveMistakeToLocker(m, `${examGoal} Auto-Heal`));
@@ -255,7 +281,7 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
           <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/25 text-indigo-200 border border-indigo-400/30 mb-1.5">
             {examGoal} Analytics Engine
           </span>
-          <h3 className="text-lg font-extrabold tracking-tight">Rank Predictor, Subject Split & Mistake Auto-Heal</h3>
+          <h3 className="text-lg font-extrabold tracking-tight text-white">Rank Predictor, Subject Split & Mistake Auto-Heal</h3>
         </div>
         {summary?.completedTests > 0 && pred && (
           <div className="flex items-center gap-2 shrink-0">
@@ -299,16 +325,24 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
                   <div className="text-lg font-black text-slate-900 mt-1">{pred.predictedRankBand}</div>
                   <div className="text-xs text-slate-600 mt-0.5">{pred.targetZone}</div>
                 </div>
-                {bestPred && (
+                {bestPred && summary.completedTests > 1 ? (
                   <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80">
                     <div className="text-[11px] font-bold uppercase text-emerald-700">Peak Performance Potential</div>
                     <div className="text-lg font-black text-slate-900 mt-1">{bestPred.predictedPercentile} ({bestPred.scaledScore}/{bestPred.officialMaxMarks})</div>
                     <div className="text-xs text-slate-600 mt-0.5">{bestPred.predictedRankBand}</div>
                   </div>
+                ) : (
+                  <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80">
+                    <div className="text-[11px] font-bold uppercase text-emerald-700">Latest Scaled Score</div>
+                    <div className="text-lg font-black text-slate-900 mt-1">{pred.scaledScore} / {pred.officialMaxMarks}</div>
+                    <div className="text-xs text-slate-600 mt-0.5">{pred.predictedPercentile} • Single attempt baseline</div>
+                  </div>
                 )}
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
                   <div className="text-[11px] font-bold uppercase text-slate-500">Mocks Evaluated</div>
-                  <div className="text-lg font-black text-slate-900 mt-1">{summary.completedTests} Papers ({summary.averagePercentage}%)</div>
+                  <div className="text-lg font-black text-slate-900 mt-1">
+                    {summary.completedTests} {summary.completedTests === 1 ? 'Paper' : 'Papers'} ({summary.averagePercentage}%)
+                  </div>
                   <div className="text-xs text-slate-600 mt-0.5">Consistent timed practice boosts accuracy</div>
                 </div>
               </div>
@@ -326,14 +360,53 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
                       </div>
                       <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-indigo-600 rounded-full"
-                          style={{ width: `${Math.min(100, Math.max(4, st.accuracy || 0))}%` }}
+                          className="h-full bg-indigo-600 rounded-full transition-all"
+                          style={{ width: `${Math.min(100, Math.max(0, st.accuracy || 0))}%` }}
                         />
                       </div>
                       <div className="flex items-center justify-between text-[11px] text-slate-600 font-semibold">
                         <span>Accuracy: {st.accuracy}%</span>
                         <span>+{st.correct}✓ / {st.wrong}✗</span>
                       </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {history.length > 0 && (
+              <div className="space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                    <History className="w-3.5 h-3.5 text-indigo-600" /> Recent Attempt History
+                  </h4>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/learn/tests')}
+                    className="text-xs font-bold text-indigo-600 hover:text-indigo-800"
+                  >
+                    All Tests →
+                  </button>
+                </div>
+                <div className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-slate-50/50 overflow-hidden">
+                  {history.slice(0, 5).map((h: any, idx: number) => (
+                    <div key={h.attemptId || h.testId || idx} className="flex items-center justify-between gap-3 px-4 py-3 text-xs hover:bg-white transition-colors">
+                      <div className="min-w-0">
+                        <p className="font-bold text-slate-900 truncate">{h.testTitle || h.title || 'Mock Assessment'}</p>
+                        <p className="text-[11px] text-slate-500 font-medium mt-0.5">
+                          Score: {h.score ?? 0}/{h.maxMarks ?? 0} ({typeof h.percentage === 'number' ? h.percentage.toFixed(1) : (h.percentage ?? 0)}%)
+                          {h.submittedAt ? ` • ${new Date(h.submittedAt).toLocaleDateString()}` : ''}
+                        </p>
+                      </div>
+                      {h.testId && (
+                        <button
+                          type="button"
+                          onClick={() => navigate(`/learn/test/${h.testId}`)}
+                          className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-indigo-600 hover:bg-indigo-50 font-bold transition-colors"
+                        >
+                          Review <ExternalLink className="w-3 h-3" />
+                        </button>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -350,11 +423,11 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
-                      disabled={mistakesSaved}
+                      disabled={allMistakesSynced}
                       onClick={handleSaveAllMistakes}
                       className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 disabled:bg-emerald-600 text-white text-xs font-bold transition-colors cursor-pointer"
                     >
-                      {mistakesSaved ? 'Synced to Locker ✓' : 'Save All to Mistake Notebook'}
+                      {allMistakesSynced ? 'Synced to Locker ✓' : 'Save All to Mistake Notebook'}
                     </button>
                     <button
                       type="button"
@@ -393,7 +466,50 @@ export function StudentProfilePage() {
   const [isEditingPhone, setIsEditingPhone] = useState(false);
   const [phoneInput, setPhoneInput] = useState('');
   const [isSavingPhone, setIsSavingPhone] = useState(false);
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
+  const [nameInput, setNameInput] = useState('');
+  const [examGoalInput, setExamGoalInput] = useState('');
+  const [isSavingProfile, setIsSavingProfile] = useState(false);
   const navigate = useNavigate();
+
+  const handleSaveProfileDetails = async () => {
+    const trimmedName = nameInput.trim();
+    if (!trimmedName || trimmedName.length < 2) {
+      toast.error('Please enter your name (at least 2 characters)');
+      return;
+    }
+    setIsSavingProfile(true);
+    try {
+      const res = await learnApi.put('/profile', {
+        fullName: trimmedName,
+        examGoal: examGoalInput || profile?.examGoal || 'JEE Mains'
+      });
+      invalidateLearnProfileCache();
+      const updated = res.data;
+      setProfile(prev => updated ? { ...(prev || {}), ...updated } : prev);
+      try {
+        localStorage.setItem('learn_user_name', updated?.fullName || trimmedName);
+        if (updated?.examGoal || examGoalInput) {
+          localStorage.setItem('learn_exam_goal', updated?.examGoal || examGoalInput);
+        }
+        const rawUser = localStorage.getItem('preplens_user');
+        if (rawUser) {
+          const parsed = JSON.parse(rawUser);
+          localStorage.setItem('preplens_user', JSON.stringify({
+            ...parsed,
+            fullName: updated?.fullName || trimmedName,
+            examGoal: updated?.examGoal || examGoalInput
+          }));
+        }
+      } catch {}
+      setIsEditingProfile(false);
+      toast.success('Profile details updated!');
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || 'Failed to update profile details');
+    } finally {
+      setIsSavingProfile(false);
+    }
+  };
 
   const handleSavePhone = async () => {
     const clean = phoneInput.replace(/\D/g, '').slice(0, 10);
@@ -425,7 +541,11 @@ export function StudentProfilePage() {
         if (data.phone) {
           setPhoneInput(data.phone);
         }
+        if (data.fullName) {
+          setNameInput(data.fullName);
+        }
         if (data.examGoal) {
+          setExamGoalInput(data.examGoal);
           localStorage.setItem('learn_exam_goal', data.examGoal);
         }
       }
@@ -453,7 +573,7 @@ export function StudentProfilePage() {
 
         const userName = savedUser?.fullName || savedUser?.name || localStorage.getItem('learn_user_name') || 'Student';
         const userEmail = savedUser?.email || localStorage.getItem('learn_user_email') || '';
-        const userGoal = localStorage.getItem('learn_exam_goal') || 'Class 9';
+        const userGoal = localStorage.getItem('learn_exam_goal') || 'JEE Mains';
 
         return {
           fullName: userName,
@@ -572,10 +692,29 @@ export function StudentProfilePage() {
         <div className="lg:col-span-1 space-y-6">
           <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
             <div className="flex flex-col items-center">
-              <div className="w-24 h-24 bg-indigo-50 border-2 border-indigo-200/80 rounded-full flex items-center justify-center mb-4 shadow-sm">
-                <User className="w-12 h-12 text-indigo-600" />
+              <div className="w-24 h-24 bg-gradient-to-br from-indigo-600 to-violet-700 border-2 border-indigo-200/80 rounded-full flex items-center justify-center mb-4 shadow-md text-white text-2xl font-black tracking-tight select-none">
+                {(() => {
+                  const raw = (profile?.fullName || 'S').trim();
+                  const parts = raw.split(/\s+/).filter(Boolean);
+                  if (parts.length >= 2) return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+                  return raw.slice(0, 2).toUpperCase() || <User className="w-10 h-10" />;
+                })()}
               </div>
-              <h2 className="text-xl font-extrabold text-slate-900">{profile?.fullName}</h2>
+              <div className="flex items-center gap-1.5 justify-center">
+                <h2 className="text-xl font-extrabold text-slate-900">{profile?.fullName}</h2>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setNameInput(profile?.fullName || '');
+                    setExamGoalInput(profile?.examGoal || 'JEE Mains');
+                    setIsEditingProfile(v => !v);
+                  }}
+                  className="p-1 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                  title="Edit name or exam track"
+                >
+                  <Pencil className="w-3.5 h-3.5" />
+                </button>
+              </div>
               
               <div className="flex items-center gap-2 mt-2 flex-wrap justify-center">
                 <span className={`px-3 py-1 text-xs font-extrabold rounded-full ${
@@ -650,9 +789,70 @@ export function StudentProfilePage() {
                 )}
               </div>
 
-              <div className="flex items-center text-sm">
-                <Target className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" />
-                <span className="text-slate-700 font-medium">{profile?.examGoal} Aspirant</span>
+              <div className="text-sm">
+                {isEditingProfile ? (
+                  <div className="space-y-2.5 bg-indigo-50/70 p-3 rounded-xl border border-indigo-200/80">
+                    <div>
+                      <label className="text-[11px] font-bold uppercase text-indigo-800 block mb-1">Full Name</label>
+                      <input
+                        type="text"
+                        maxLength={60}
+                        value={nameInput}
+                        onChange={e => setNameInput(e.target.value)}
+                        placeholder="Your full name"
+                        className="w-full text-sm bg-white border border-slate-200 px-2.5 py-1.5 rounded-lg outline-none focus:border-indigo-500 font-medium"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[11px] font-bold uppercase text-indigo-800 block mb-1">Target Exam Track</label>
+                      <select
+                        value={examGoalInput}
+                        onChange={e => setExamGoalInput(e.target.value)}
+                        className="w-full text-sm bg-white border border-slate-200 px-2.5 py-1.5 rounded-lg outline-none focus:border-indigo-500 font-medium"
+                      >
+                        {EXAM_GOALS.map(goal => (
+                          <option key={goal} value={goal}>{goal}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="flex items-center justify-end gap-1.5 pt-1">
+                      <button
+                        type="button"
+                        onClick={() => setIsEditingProfile(false)}
+                        className="px-2.5 py-1 text-xs font-semibold text-slate-600 hover:bg-white rounded-lg transition-colors"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleSaveProfileDetails}
+                        disabled={isSavingProfile}
+                        className="px-3 py-1 text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg disabled:opacity-50 inline-flex items-center gap-1"
+                      >
+                        {isSavingProfile ? <Loader2 className="w-3 h-3 animate-spin" /> : <Check className="w-3 h-3" />}
+                        Save Changes
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Target className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" />
+                      <span className="text-slate-700 font-medium">{profile?.examGoal} Aspirant</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setNameInput(profile?.fullName || '');
+                        setExamGoalInput(profile?.examGoal || 'JEE Mains');
+                        setIsEditingProfile(true);
+                      }}
+                      className="text-xs text-indigo-600 hover:text-indigo-800 font-semibold px-2 py-1 hover:bg-indigo-50 rounded-lg transition-colors"
+                    >
+                      Switch
+                    </button>
+                  </div>
+                )}
               </div>
               <div className="flex items-center text-sm">
                 <Calendar className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" />
@@ -685,7 +885,7 @@ export function StudentProfilePage() {
                 <ShieldCheck className={`w-5 h-5 shrink-0 ${isPlanExpired ? 'text-rose-300' : 'text-emerald-300'}`} />
               </div>
 
-              <h3 className="font-extrabold text-xl mb-1 flex items-center">
+              <h3 className="font-extrabold text-xl mb-1 flex items-center text-white">
                 <Award className="w-5 h-5 mr-2 text-amber-300" />
                 Current Plan
               </h3>
@@ -762,7 +962,7 @@ export function StudentProfilePage() {
                 </div>
                 <div className="flex items-center justify-center gap-1.5">
                   <p className="text-2xl font-extrabold text-slate-900">
-                    {!isPremium ? 'Unranked' : (profile?.globalRank ?? 'Unranked')}
+                    {profile?.globalRank ?? 'Unranked'}
                   </p>
                   {isPremium && profile?.globalRank && profile.globalRank !== 'Unranked' && (
                     <span className="px-1.5 py-0.5 rounded text-[10px] font-black bg-amber-500/20 text-amber-700 border border-amber-400/40">
@@ -772,18 +972,14 @@ export function StudentProfilePage() {
                 </div>
               </div>
               <div>
-                <p className="text-xs text-slate-500 font-semibold mt-0.5">All-India Rank</p>
-                {!isPremium ? (
-                  <span className="inline-block mt-1 text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/70">
-                    Pro Exclusive
-                  </span>
-                ) : profile?.globalRank === 'Unranked' ? (
+                <p className="text-xs text-slate-500 font-semibold mt-0.5">Leaderboard Rank</p>
+                {!profile?.globalRank || profile.globalRank === 'Unranked' ? (
                   <span className="inline-block mt-1 text-[10px] font-medium text-slate-400">
-                    Take 1 test to qualify
+                    Earn XP to qualify
                   </span>
                 ) : (
                   <span className="inline-block mt-1 text-[10px] font-bold text-emerald-600">
-                    Verified AIR
+                    Monthly XP Standing
                   </span>
                 )}
               </div>
@@ -792,7 +988,7 @@ export function StudentProfilePage() {
 
           <CompetitiveAnalyticsCard examGoal={profile?.examGoal || ''} testsTaken={profile?.totalTestsTaken || 0} />
 
-          <AdvancedAnalyticsWidget isPremium={isPremium} testsTaken={profile?.totalTestsTaken || 0} />
+          <AdvancedAnalyticsWidget isPremium={isPremium} testsTaken={profile?.totalTestsTaken || 0} examGoal={profile?.examGoal || ''} />
 
             {/* Payment & Transaction History Table */}
           <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden">
@@ -811,7 +1007,7 @@ export function StudentProfilePage() {
                 onClick={() => navigate('/learn/pricing')}
                 className="text-xs font-bold text-indigo-600 hover:text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-200/80 transition-colors"
               >
-                + New Transaction
+                Upgrade / View Plans
               </button>
             </div>
             

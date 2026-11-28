@@ -48,6 +48,16 @@ public class LearnProfileController {
     }
 
     @PreAuthorize("hasRole('LEARN_USER')")
+    @PutMapping
+    public ResponseEntity<LearnProfileResponse> updateProfile(
+            @AuthenticationPrincipal LearnUserPrincipal principal,
+            @RequestBody java.util.Map<String, String> body) {
+        String fullName = body != null ? body.get("fullName") : null;
+        String examGoal = body != null ? body.get("examGoal") : null;
+        return ResponseEntity.ok(profileService.updateProfileDetails(principal.getId(), fullName, examGoal));
+    }
+
+    @PreAuthorize("hasRole('LEARN_USER')")
     @GetMapping("/study-plan")
     public ResponseEntity<?> getStudyPlan(@AuthenticationPrincipal LearnUserPrincipal principal) {
         String planJson = profileService.getStudyPlan(principal.getId());

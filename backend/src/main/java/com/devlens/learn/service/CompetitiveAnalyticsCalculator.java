@@ -21,7 +21,8 @@ public final class CompetitiveAnalyticsCalculator {
         double pct = Math.max(-25.0, Math.min(100.0, (score / max) * 100.0));
 
         if (goal.contains("neet")) {
-            double scaled = Math.max(0.0, Math.min(720.0, (pct / 100.0) * 720.0));
+            double scaled = Math.max(-180.0, Math.min(720.0, (pct / 100.0) * 720.0));
+            double positiveScaled = Math.max(0.0, scaled);
             String percentile;
             String rankBand;
             String zone;
@@ -46,10 +47,12 @@ public final class CompetitiveAnalyticsCalculator {
                 rankBand = "AIR 1.35L - 4.0L";
                 zone = "Qualifying Cutoff Cleared - NCERT Boost Needed";
             } else {
-                double estPct = Math.max(10.0, Math.min(81.9, (scaled / 420.0) * 81.5));
+                double estPct = scaled <= 0 ? 1.0 : Math.max(5.0, Math.min(81.9, (positiveScaled / 420.0) * 81.5));
                 percentile = String.format("%.1f %%ile", estPct);
                 rankBand = "AIR > 4.0 Lakh";
-                zone = "Focus on NCERT Line Recall & Zero Negatives";
+                zone = scaled < 0
+                        ? "Negative Net Score - Eliminate Guesses & Focus NCERT"
+                        : "Focus on NCERT Line Recall & Zero Negatives";
             }
             result.put("examTrack", "NEET UG");
             result.put("scaledScore", Math.round(scaled));
@@ -61,7 +64,7 @@ public final class CompetitiveAnalyticsCalculator {
         }
 
         if (goal.contains("jee") && (goal.contains("adv") || goal.contains("iit"))) {
-            double scaled = Math.max(0.0, Math.min(396.0, (pct / 100.0) * 396.0));
+            double scaled = Math.max(-99.0, Math.min(396.0, (pct / 100.0) * 396.0));
             String percentile;
             String rankBand;
             String zone;
@@ -96,7 +99,8 @@ public final class CompetitiveAnalyticsCalculator {
         }
 
         if (goal.contains("jee")) {
-            double scaled = Math.max(0.0, Math.min(300.0, (pct / 100.0) * 300.0));
+            double scaled = Math.max(-75.0, Math.min(300.0, (pct / 100.0) * 300.0));
+            double positiveScaled = Math.max(0.0, scaled);
             String percentile;
             String rankBand;
             String zone;
@@ -121,10 +125,12 @@ public final class CompetitiveAnalyticsCalculator {
                 rankBand = "AIR 52,000 - 1,20,000";
                 zone = "General JEE Adv Cutoff Zone (~93%ile)";
             } else {
-                double estPct = Math.max(10.0, Math.min(91.9, (scaled / 115.0) * 91.5));
+                double estPct = scaled <= 0 ? 1.0 : Math.max(5.0, Math.min(91.9, (positiveScaled / 115.0) * 91.5));
                 percentile = String.format("%.2f %%ile", estPct);
                 rankBand = "AIR > 1.2 Lakh";
-                zone = "Push Physics + Chem Easy Qs to Cross 120/300";
+                zone = scaled < 0
+                        ? "Negative Net Score - Skip Guessing (-1 Penalty)"
+                        : "Push Physics + Chem Easy Qs to Cross 120/300";
             }
             result.put("examTrack", "JEE Mains");
             result.put("scaledScore", Math.round(scaled));
