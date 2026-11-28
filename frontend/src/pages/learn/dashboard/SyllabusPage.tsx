@@ -7,7 +7,8 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { learnApi } from '../../../lib/learn-api';
+import { learnApi, fetchLearnProfileCached } from '../../../lib/learn-api';
+import { hasAuthToken } from '../../../lib/lockerStorage';
 import { usePremium } from '../../../hooks/usePremium';
 import { PaywallModal } from '../../../components/learn/PaywallModal';
 import { FormulaCheatSheetModal } from '../../../components/learn/FormulaCheatSheetModal';
@@ -64,7 +65,7 @@ export function SyllabusPage() {
     }
   });
 
-  const toggleTopicCompletion = (topicId: string, topicTitle: string, isLocked: boolean = false, e?: React.MouseEvent) => {
+  const toggleTopicCompletion = async (topicId: string, topicTitle: string, isLocked: boolean = false, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
 
     if (isLocked) {
@@ -74,6 +75,7 @@ export function SyllabusPage() {
     }
 
     const isCompleted = completedTopics.includes(topicId);
+    const nextCompleted = !isCompleted;
     const updated = isCompleted
       ? completedTopics.filter(id => id !== topicId)
       : [...completedTopics, topicId];
@@ -81,9 +83,30 @@ export function SyllabusPage() {
     setCompletedTopics(updated);
     localStorage.setItem(getCompletedTopicsStorageKey(), JSON.stringify(updated));
 
-    if (!isCompleted) {
+    if (hasAuthToken()) {
+      try {
+        const res = await learnApi.put('/profile/topic-progress', { topicId, completed: nextCompleted });
+        if (Array.isArray(res.data?.completedTopicIds)) {
+          setCompletedTopics(res.data.completedTopicIds);
+          localStorage.setItem(getCompletedTopicsStorageKey(), JSON.stringify(res.data.completedTopicIds));
+        }
+      } catch (err) {
+        console.warn('Cloud topic progress sync failed, rolling back local toggle:', err);
+        setCompletedTopics(curr => {
+          const rolledBack = isCompleted
+            ? Array.from(new Set([...curr, topicId]))
+            : curr.filter(id => id !== topicId);
+          localStorage.setItem(getCompletedTopicsStorageKey(), JSON.stringify(rolledBack));
+          return rolledBack;
+        });
+        toast.error('Unable to save progress to server. Please check your connection and try again.');
+        return;
+      }
+    }
+
+    if (nextCompleted) {
       toast.success(`Completed: "${topicTitle}"`, {
-        description: 'Marked as completed in your syllabus checklist.',
+        description: 'Synced across your account syllabus checklist.',
         style: { background: '#10b981', color: 'white', border: 'none' }
       });
     } else {
@@ -132,14 +155,15 @@ export function SyllabusPage() {
   const [userName, setUserName] = useState<string>(() => localStorage.getItem('learn_user_name') || 'Student');
   const [loading, setLoading] = useState(false);
 
-  // 1. Fetch user profile
+  // 1. Fetch user profile & cloud-synced syllabus topic completion
   useEffect(() => {
+    let active = true;
     const fetchUserData = async () => {
       try {
-        const profileRes = await learnApi.get('/profile');
-        if (profileRes.data) {
-          const goal = profileRes.data.examGoal || 'Class 11';
-          const name = profileRes.data.fullName || 'Student';
+        const profile = await fetchLearnProfileCached();
+        if (profile && active) {
+          const goal = profile.examGoal || 'JEE Mains';
+          const name = profile.fullName || 'Student';
           setExamGoal(goal);
           setUserName(name);
           localStorage.setItem('learn_exam_goal', goal);
@@ -148,8 +172,38 @@ export function SyllabusPage() {
       } catch (err) {
         console.error('Failed to fetch profile for syllabus', err);
       }
+
+      if (hasAuthToken()) {
+        try {
+          const res = await learnApi.get('/profile/topic-progress');
+          const serverIds: string[] = Array.isArray(res.data?.completedTopicIds) ? res.data.completedTopicIds : [];
+          let localIds: string[] = [];
+          try {
+            const raw = localStorage.getItem(getCompletedTopicsStorageKey());
+            if (raw) localIds = JSON.parse(raw);
+          } catch {}
+          const serverSet = new Set(serverIds);
+          const unSyncedLocal = localIds.filter(id => typeof id === 'string' && id.trim() && !serverSet.has(id));
+
+          let finalIds = serverIds;
+          if (unSyncedLocal.length > 0) {
+            const syncRes = await learnApi.put('/profile/topic-progress', { bulkSyncIds: unSyncedLocal });
+            if (Array.isArray(syncRes.data?.completedTopicIds)) {
+              finalIds = syncRes.data.completedTopicIds;
+            }
+          }
+
+          if (active) {
+            setCompletedTopics(finalIds);
+            localStorage.setItem(getCompletedTopicsStorageKey(), JSON.stringify(finalIds));
+          }
+        } catch (err) {
+          console.warn('Cloud topic progress load failed, keeping local checklist:', err);
+        }
+      }
     };
     fetchUserData();
+    return () => { active = false; };
   }, []);
 
   useEffect(() => {

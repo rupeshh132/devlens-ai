@@ -32,6 +32,7 @@ class LearnProfileServiceTest {
     @Mock private LeaderboardService leaderboardService;
     @Mock private LearnStudySessionRepository studySessionRepository;
     @Mock private LearnXpLogRepository xpLogRepository;
+    @Mock private LearnUserTopicProgressRepository topicProgressRepository;
     @Spy  private ObjectMapper objectMapper = new ObjectMapper();
 
     @InjectMocks
@@ -235,5 +236,51 @@ class LearnProfileServiceTest {
         assertEquals("JEE Mains", updated.getExamGoal());
         assertEquals("{\"weeks\":[]}", user.getCurrentStudyPlanJson());
         verify(userRepository).save(user);
+    }
+
+    @Test
+    void topicProgressSyncsLegacyIdsTogglesAndDeletesCleanly() {
+        UUID userId = UUID.randomUUID();
+        LearnUser user = new LearnUser();
+        user.setId(userId);
+        user.setExamGoal("JEE Mains");
+
+        LearnUserTopicProgress existing = new LearnUserTopicProgress();
+        existing.setId(UUID.randomUUID());
+        existing.setUserId(userId);
+        existing.setTopicId("phy-kin-1");
+        existing.setExamGoal("JEE Mains");
+
+        List<LearnUserTopicProgress> store = new ArrayList<>(List.of(existing));
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+        when(topicProgressRepository.findByUserId(userId)).thenAnswer(inv -> new ArrayList<>(store));
+        when(topicProgressRepository.findByUserIdAndTopicId(eq(userId), anyString())).thenAnswer(inv -> {
+            String tId = inv.getArgument(1);
+            return store.stream().filter(p -> tId.equals(p.getTopicId())).findFirst();
+        });
+        when(topicProgressRepository.save(any(LearnUserTopicProgress.class))).thenAnswer(inv -> {
+            LearnUserTopicProgress saved = inv.getArgument(0);
+            store.add(saved);
+            return saved;
+        });
+        doAnswer(inv -> {
+            LearnUserTopicProgress del = inv.getArgument(0);
+            store.remove(del);
+            return null;
+        }).when(topicProgressRepository).delete(any(LearnUserTopicProgress.class));
+
+        // 1. Bulk merge deduplicates existing 'phy-kin-1' and adds 'chem-atom-2'
+        List<String> afterMerge = learnProfileService.updateTopicProgress(
+                userId, null, true, List.of("phy-kin-1", "chem-atom-2", "  "));
+        assertEquals(List.of("phy-kin-1", "chem-atom-2"), afterMerge);
+
+        // 2. Toggle 'phy-kin-1' off deletes it cleanly
+        List<String> afterUncheck = learnProfileService.updateTopicProgress(userId, "phy-kin-1", false, null);
+        assertEquals(List.of("chem-atom-2"), afterUncheck);
+
+        // 3. Re-add 'math-calc-1'
+        List<String> afterCheck = learnProfileService.updateTopicProgress(userId, "math-calc-1", true, null);
+        assertEquals(List.of("chem-atom-2", "math-calc-1"), afterCheck);
     }
 }

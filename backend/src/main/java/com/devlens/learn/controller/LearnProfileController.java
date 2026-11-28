@@ -91,4 +91,31 @@ public class LearnProfileController {
         profileService.recordPaywallHit(principal.getId());
         return ResponseEntity.ok().build();
     }
+
+    @PreAuthorize("hasRole('LEARN_USER')")
+    @GetMapping("/topic-progress")
+    public ResponseEntity<?> getTopicProgress(@AuthenticationPrincipal LearnUserPrincipal principal) {
+        return ResponseEntity.ok(java.util.Map.of("completedTopicIds", profileService.getCompletedTopicIds(principal.getId())));
+    }
+
+    @PreAuthorize("hasRole('LEARN_USER')")
+    @PutMapping("/topic-progress")
+    @SuppressWarnings("unchecked")
+    public ResponseEntity<?> updateTopicProgress(
+            @AuthenticationPrincipal LearnUserPrincipal principal,
+            @RequestBody java.util.Map<String, Object> body) {
+        String topicId = body != null && body.get("topicId") instanceof String s ? s : null;
+        boolean completed = body == null || body.get("completed") == null || Boolean.TRUE.equals(body.get("completed"));
+        java.util.List<String> bulkSyncIds = null;
+        if (body != null && body.get("bulkSyncIds") instanceof java.util.List<?> rawList) {
+            bulkSyncIds = rawList.stream()
+                    .filter(String.class::isInstance)
+                    .map(String.class::cast)
+                    .toList();
+        }
+        return ResponseEntity.ok(java.util.Map.of(
+                "completedTopicIds",
+                profileService.updateTopicProgress(principal.getId(), topicId, completed, bulkSyncIds)
+        ));
+    }
 }

@@ -14,8 +14,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.devlens.learn.entity.LearnQuestion;
 import com.devlens.learn.entity.LearnTopic;
+import com.devlens.learn.entity.LearnUserTopicProgress;
 import com.devlens.learn.repository.LearnQuestionRepository;
 import com.devlens.learn.repository.LearnTopicRepository;
+import com.devlens.learn.repository.LearnUserTopicProgressRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,6 +37,7 @@ public class LearnProfileService {
     private final LeaderboardService leaderboardService;
     private final com.devlens.learn.repository.LearnStudySessionRepository studySessionRepository;
     private final com.devlens.learn.repository.LearnXpLogRepository xpLogRepository;
+    private final LearnUserTopicProgressRepository topicProgressRepository;
     private final ObjectMapper objectMapper;
 
     public List<Map<String, Object>> getWeaknessHeatmap(UUID userId) {
@@ -429,6 +433,62 @@ public class LearnProfileService {
         }
         userRepository.save(user);
         return getProfile(userId);
+    }
+
+    public List<String> getCompletedTopicIds(UUID userId) {
+        return topicProgressRepository.findByUserId(userId).stream()
+                .map(LearnUserTopicProgress::getTopicId)
+                .filter(id -> id != null && !id.isBlank())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<String> updateTopicProgress(UUID userId, String topicId, boolean completed, List<String> bulkSyncIds) {
+        LearnUser user = userRepository.findById(userId)
+                .orElseThrow(() -> new com.devlens.api.exception.ResourceNotFoundException("User not found"));
+        String examGoal = user.getExamGoal();
+
+        if (bulkSyncIds != null && !bulkSyncIds.isEmpty()) {
+            Set<String> existing = topicProgressRepository.findByUserId(userId).stream()
+                    .map(LearnUserTopicProgress::getTopicId)
+                    .collect(Collectors.toSet());
+            int limit = 0;
+            for (String raw : bulkSyncIds) {
+                if (limit >= 500) break;
+                if (raw == null) continue;
+                String clean = raw.trim();
+                if (clean.isEmpty() || clean.length() > 160 || existing.contains(clean)) continue;
+                LearnUserTopicProgress progress = new LearnUserTopicProgress();
+                progress.setUserId(userId);
+                progress.setTopicId(clean);
+                progress.setExamGoal(examGoal);
+                topicProgressRepository.save(progress);
+                existing.add(clean);
+                limit++;
+            }
+        }
+
+        if (topicId != null && !topicId.isBlank()) {
+            String cleanTopicId = topicId.trim();
+            if (cleanTopicId.length() <= 160) {
+                Optional<LearnUserTopicProgress> existingOpt =
+                        topicProgressRepository.findByUserIdAndTopicId(userId, cleanTopicId);
+                if (completed) {
+                    if (existingOpt.isEmpty()) {
+                        LearnUserTopicProgress progress = new LearnUserTopicProgress();
+                        progress.setUserId(userId);
+                        progress.setTopicId(cleanTopicId);
+                        progress.setExamGoal(examGoal);
+                        topicProgressRepository.save(progress);
+                    }
+                } else {
+                    existingOpt.ifPresent(topicProgressRepository::delete);
+                }
+            }
+        }
+
+        return getCompletedTopicIds(userId);
     }
 
     static boolean matchesGoalTrack(String examGoal, com.devlens.learn.entity.LearnMockTest test) {

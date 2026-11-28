@@ -16,13 +16,15 @@ export interface FormulaCheatSheetModalProps {
   onClose: () => void;
   examGoal?: string;
   activeSubjectId?: string;
+  initialSearchQuery?: string;
 }
 
 export function FormulaCheatSheetModal({ 
   isOpen, 
   onClose, 
   examGoal, 
-  activeSubjectId 
+  activeSubjectId,
+  initialSearchQuery
 }: FormulaCheatSheetModalProps) {
   // Helper to determine initial class/track from goal string
   const resolveClass = (goal?: string): '9' | '10' | '11' | '12' | 'jee' | 'neet' => {
@@ -65,7 +67,7 @@ export function FormulaCheatSheetModal({
       const cls = resolveClass(examGoal);
       setSelectedClass(cls);
       setSelectedSubject(resolveSubject(activeSubjectId, cls));
-      setSearchQuery('');
+      setSearchQuery(initialSearchQuery || '');
       document.body.classList.add('preplens-modal-open');
     } else {
       document.body.classList.remove('preplens-modal-open');
@@ -73,7 +75,7 @@ export function FormulaCheatSheetModal({
     return () => {
       document.body.classList.remove('preplens-modal-open');
     };
-  }, [isOpen, examGoal, activeSubjectId]);
+  }, [isOpen, examGoal, activeSubjectId, initialSearchQuery]);
 
   // When class changes, ensure selectedSubject is valid for the new class
   const handleClassChange = (newClass: '9' | '10' | '11' | '12' | 'jee' | 'neet') => {
@@ -194,7 +196,7 @@ export function FormulaCheatSheetModal({
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <h2 className="text-xl sm:text-2xl font-black tracking-tight">Smart Formula & Laws Cheat Sheet</h2>
+                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">Smart Formula & Laws Cheat Sheet</h2>
                 <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${classBadges[selectedClass]?.color || 'bg-amber-400 text-slate-900'}`}>
                   {classBadges[selectedClass]?.label} • {classBadges[selectedClass]?.badge}
                 </span>
@@ -205,10 +207,10 @@ export function FormulaCheatSheetModal({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 self-end sm:self-center">
+          <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-colors cursor-pointer whitespace-nowrap shrink-0"
               title="Print cheat sheet or Save as PDF"
             >
               <Printer className="h-4 w-4" />

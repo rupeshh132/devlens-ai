@@ -1,12 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { BookOpen, Map, Trophy, Zap, LogOut, Crown, X, FileText, Bookmark, Flame, Menu } from 'lucide-react';
+import { BookOpen, Map, Trophy, Zap, LogOut, Crown, X, FileText, Bookmark, Flame, Menu, Search } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { FocusTimerWidget } from '../components/learn/FocusTimerWidget';
 import { learnApi, fetchLearnProfileCached, invalidateLearnProfileCache } from '../lib/learn-api';
 import { getStreakData, subscribeToStreakUpdates, resetStreakStateForLogout, syncPendingDailyChallengeWithBackend } from '../lib/lockerStorage';
 import { StreakCalendarModal } from '../components/learn/StreakCalendarModal';
 import { normalizeTargetClass } from '../lib/dailyQuestionService';
+
+const GlobalSearchModal = lazy(() =>
+  import('../components/learn/GlobalSearchModal').then(m => ({ default: m.GlobalSearchModal }))
+);
+const FormulaCheatSheetModal = lazy(() =>
+  import('../components/learn/FormulaCheatSheetModal').then(m => ({ default: m.FormulaCheatSheetModal }))
+);
 
 export function LearnLayout() {
   const location = useLocation();
@@ -19,6 +26,20 @@ export function LearnLayout() {
   const [streak, setStreak] = useState(() => getStreakData().streak);
   const [streakCalendarOpen, setStreakCalendarOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [examGoal, setExamGoal] = useState<string>(() => localStorage.getItem('learn_exam_goal') || 'JEE Mains');
+  const [formulaJumpState, setFormulaJumpState] = useState<{ open: boolean; subjectId?: string; query?: string }>({ open: false });
+
+  useEffect(() => {
+    const handleGlobalSearchKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchModalOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleGlobalSearchKey);
+    return () => window.removeEventListener('keydown', handleGlobalSearchKey);
+  }, []);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -81,11 +102,9 @@ export function LearnLayout() {
         }
         if (data?.examGoal) {
           const rawName = (localStorage.getItem('learn_user_name') || data?.fullName || '').toLowerCase();
-          if (rawName.includes('anmol')) {
-            localStorage.setItem('learn_exam_goal', 'Class 9');
-          } else {
-            localStorage.setItem('learn_exam_goal', data.examGoal);
-          }
+          const resolvedGoal = rawName.includes('anmol') ? 'Class 9' : data.examGoal;
+          localStorage.setItem('learn_exam_goal', resolvedGoal);
+          setExamGoal(resolvedGoal);
         }
         if (!data?.phone && !dismissed) {
           setShowPhoneBanner(true);
@@ -161,37 +180,37 @@ export function LearnLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans overflow-x-hidden">
       {/* Top Navbar */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs print:hidden">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 gap-3">
-            {/* 1. Left: Brand Logo (Ekdum left side) */}
+        <div className="w-full px-3 sm:px-5 lg:px-6 max-w-full">
+          <div className="flex items-center justify-between h-16 gap-2">
+            {/* 1. Left: Brand Logo */}
             <div className="flex items-center shrink-0">
-              <Link to="/learn" className="flex items-center gap-2.5 group">
-                <div className="w-9 h-9 rounded-full overflow-hidden shadow-xs border border-slate-200 ring-2 ring-blue-500/15 group-hover:scale-105 transition-transform bg-white shrink-0">
+              <Link to="/learn" className="flex items-center gap-2 group">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden shadow-xs border border-slate-200 ring-2 ring-blue-500/15 group-hover:scale-105 transition-transform bg-white shrink-0">
                   <img src="/preplens-logo.jpg" alt="PrepLens Learn Logo" className="w-full h-full object-cover rounded-full" />
                 </div>
-                <span className="text-xl font-bold text-slate-900 tracking-tight">
+                <span className="text-lg xl:text-xl font-bold text-slate-900 tracking-tight whitespace-nowrap">
                   PrepLens <span className="text-blue-600">Learn</span>
                 </span>
               </Link>
             </div>
 
-            {/* 2. Middle: Navigation Links (Clean spacing, never overlapping) */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2 mx-auto">
+            {/* 2. Middle: Navigation Links (Fits cleanly at 1280px without horizontal overflow) */}
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 mx-auto min-w-0">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
                   className={cn(
-                    "inline-flex items-center px-3 py-1.5 text-xs xl:text-sm font-semibold rounded-lg transition-all whitespace-nowrap",
+                    "inline-flex items-center px-2 xl:px-2.5 py-1.5 text-xs font-semibold rounded-lg transition-all whitespace-nowrap",
                     location.pathname === item.href
                       ? "bg-blue-50 text-blue-700 font-bold shadow-xs border border-blue-200/60"
                       : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                   )}
                 >
-                  <item.icon className={cn("h-4 w-4 mr-1.5 shrink-0", 
+                  <item.icon className={cn("h-3.5 w-3.5 mr-1 shrink-0", 
                     location.pathname === item.href ? "text-blue-600" : "text-slate-400"
                   )} />
                   {item.name}
@@ -199,8 +218,20 @@ export function LearnLayout() {
               ))}
             </nav>
 
-            {/* 3. Right: Action Badges & Student Profile (Ekdum right side) */}
-            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* 3. Right: Action Badges & Student Profile */}
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => setSearchModalOpen(true)}
+                className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 text-slate-600 px-2.5 py-1.5 rounded-full text-xs font-semibold transition-colors whitespace-nowrap cursor-pointer"
+                title="Quick Search (Ctrl+K)"
+                aria-label="Open Quick Search"
+              >
+                <Search className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                <span className="hidden 2xl:inline">Search</span>
+                <kbd className="hidden 2xl:inline-block text-[10px] font-bold bg-white border border-slate-300 text-slate-500 px-1.5 rounded">Ctrl K</kbd>
+              </button>
+
               {!isPro && (
                 <Link 
                   to="/learn/pricing" 
@@ -356,6 +387,32 @@ export function LearnLayout() {
             navigate('/learn/plan');
           }}
         />
+      )}
+
+      {/* Global Command Search (Ctrl+K) */}
+      {searchModalOpen && (
+        <Suspense fallback={null}>
+          <GlobalSearchModal
+            isOpen={searchModalOpen}
+            onClose={() => setSearchModalOpen(false)}
+            examGoal={examGoal}
+            isPro={isPro}
+            onOpenFormula={(subjectId, q) => setFormulaJumpState({ open: true, subjectId, query: q })}
+          />
+        </Suspense>
+      )}
+
+      {/* Global Formula Sheet Triggered from Search */}
+      {formulaJumpState.open && (
+        <Suspense fallback={null}>
+          <FormulaCheatSheetModal
+            isOpen={formulaJumpState.open}
+            onClose={() => setFormulaJumpState({ open: false })}
+            examGoal={examGoal}
+            activeSubjectId={formulaJumpState.subjectId}
+            initialSearchQuery={formulaJumpState.query}
+          />
+        </Suspense>
       )}
     </div>
   );
