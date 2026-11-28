@@ -3,9 +3,18 @@ import { createPortal } from 'react-dom';
 import { 
   X, Printer, CheckCircle2, AlertTriangle, Lightbulb, 
   HelpCircle, ChevronDown, ChevronUp, Award, Clock, Bookmark,
-  Download, Sparkles, FileText, Maximize2, Minimize2, ExternalLink
+  Download, Sparkles, FileText, Maximize2, Minimize2, ExternalLink,
+  Play, RotateCcw, Trophy
 } from 'lucide-react';
 import { saveLockerItem, isItemSaved, removeLockerItemByTitle } from '../../lib/lockerStorage';
+import { saveMistakeToLocker } from '../../lib/rankPredictor';
+import {
+  getPyqQuestionMode,
+  getPyqNegativePenalty,
+  matchesPyqOption,
+  gradePyqPaper,
+  type PyqPaperGradeSummary,
+} from '../../lib/pyqPractice';
 import { toast } from 'sonner';
 
 export interface PyqQuestion {
@@ -140,18 +149,40 @@ interface PyqPaperViewerModalProps {
 }
 
 export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper, isOpen, onClose }) => {
-  const [viewMode, setViewMode] = useState<'INTERACTIVE' | 'OFFICIAL_PDF'>('INTERACTIVE');
+  const [viewMode, setViewMode] = useState<'INTERACTIVE' | 'SOLVE' | 'OFFICIAL_PDF'>('INTERACTIVE');
   const [activeSection, setActiveSection] = useState<'ALL' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F'>('ALL');
   const [activeSubjectFilter, setActiveSubjectFilter] = useState<string>('ALL');
   const [expandedSolutions, setExpandedSolutions] = useState<Record<string, boolean>>({});
   const [bookmarkedMap, setBookmarkedMap] = useState<Record<string, boolean>>({});
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  // Interactive Timed Solve Mode state
+  const [solveAnswers, setSolveAnswers] = useState<Record<string, string>>({});
+  const [subjectiveGrades, setSubjectiveGrades] = useState<Record<string, 'RIGHT' | 'WRONG' | undefined>>({});
+  const [revealedSubjective, setRevealedSubjective] = useState<Record<string, boolean>>({});
+  const [solveSecondsLeft, setSolveSecondsLeft] = useState<number>(180 * 60);
+  const [solveSubmitted, setSolveSubmitted] = useState<boolean>(false);
+  const [solveSummary, setSolveSummary] = useState<PyqPaperGradeSummary | null>(null);
+  const [mistakesSynced, setMistakesSynced] = useState<boolean>(false);
+
+  const resetSolveSession = (durationMins: number) => {
+    setSolveAnswers({});
+    setSubjectiveGrades({});
+    setRevealedSubjective({});
+    setExpandedSolutions({});
+    setSolveSecondsLeft((durationMins > 0 ? durationMins : 180) * 60);
+    setSolveSubmitted(false);
+    setSolveSummary(null);
+    setMistakesSynced(false);
+  };
+
   // If paper has no structured questions, default to Official PDF tab
   React.useEffect(() => {
     if (paper) {
       setActiveSection('ALL');
       setActiveSubjectFilter('ALL');
+      setExpandedSolutions({});
+      resetSolveSession(paper.durationMins || 180);
       if (!paper.questions || paper.questions.length === 0) {
         setViewMode('OFFICIAL_PDF');
       } else {
@@ -159,6 +190,21 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
       }
     }
   }, [paper]);
+
+  // Countdown tick ONLY while actively solving
+  useEffect(() => {
+    if (!isOpen || !paper || viewMode !== 'SOLVE' || solveSubmitted) return;
+    const timer = window.setInterval(() => {
+      setSolveSecondsLeft(prev => {
+        if (prev <= 1) {
+          window.clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [isOpen, paper, viewMode, solveSubmitted]);
 
   // Isolate print DOM whenever PYQ viewer modal is open
   useEffect(() => {
@@ -247,6 +293,55 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
   });
   const authority = getExamAuthorityInfo(paper);
 
+  const handleSubmitSolve = () => {
+    const graded = gradePyqPaper(paper, solveAnswers, subjectiveGrades);
+    setSolveSummary(graded);
+    setSolveSubmitted(true);
+    const expandedAfterSubmit: Record<string, boolean> = {};
+    questionsList.forEach(q => {
+      if (graded.gradesById[q.id]?.wrong) {
+        expandedAfterSubmit[q.id] = true;
+      }
+    });
+    setExpandedSolutions(expandedAfterSubmit);
+    toast.success(`Paper Graded: ${graded.netScore}/${graded.maxMarks} Marks (${graded.accuracy}% Accuracy)`);
+  };
+
+  const handleSaveSolveMistakes = () => {
+    if (!solveSummary || solveSummary.wrongQuestions.length === 0) return;
+    solveSummary.wrongQuestions.forEach(({ question, userAnswer }) => {
+      saveMistakeToLocker(
+        {
+          questionId: question.id,
+          subject: question.subject || paper.subject,
+          chapter: question.topic,
+          questionText: question.questionText,
+          userAnswer,
+          correctAnswer: question.correctOption || question.modelAnswer.slice(0, 120),
+          modelAnswer: question.modelAnswer,
+          explanation: question.examinerTip || question.commonPitfall,
+        },
+        paper.title
+      );
+    });
+    setMistakesSynced(true);
+    toast.success(`Saved ${solveSummary.wrongQuestions.length} mistake${solveSummary.wrongQuestions.length === 1 ? '' : 's'} to Revision Locker!`);
+  };
+
+  const formatClock = (secs: number) => {
+    const h = Math.floor(secs / 3600);
+    const m = Math.floor((secs % 3600) / 60);
+    const s = secs % 60;
+    if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+
+  const totalDurationSecs = (paper.durationMins > 0 ? paper.durationMins : 180) * 60;
+  const solveAttemptedCount = questionsList.filter(q => {
+    const m = getPyqQuestionMode(paper, q);
+    return m === 'SUBJECTIVE' ? Boolean(subjectiveGrades[q.id]) : Boolean((solveAnswers[q.id] || '').trim());
+  }).length;
+
   const handlePrint = () => {
     window.print();
   };
@@ -323,21 +418,35 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
           <div className="flex items-center bg-slate-950/80 p-1 rounded-xl border border-slate-800 shrink-0">
             <button
               onClick={() => setViewMode('INTERACTIVE')}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
                 viewMode === 'INTERACTIVE'
                   ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/30'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span className="hidden sm:inline">Questions & Solutions</span>
-              <span className="sm:hidden">Solutions</span>
+              <span className="hidden sm:inline">Solutions</span>
+              <span className="sm:hidden">Keys</span>
               <span className="text-[10px] opacity-75 font-mono">({paper.questions?.length || 0})</span>
             </button>
 
+            {questionsList.length > 0 && (
+              <button
+                onClick={() => setViewMode('SOLVE')}
+                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
+                  viewMode === 'SOLVE'
+                    ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-500/30'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <Play className="w-3 h-3 fill-current" />
+                <span>Practice Mode</span>
+              </button>
+            )}
+
             <button
               onClick={() => setViewMode('OFFICIAL_PDF')}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold transition-all whitespace-nowrap ${
                 viewMode === 'OFFICIAL_PDF'
                   ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/30'
                   : 'text-slate-400 hover:text-slate-200'
@@ -345,7 +454,7 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
             >
               <FileText className="w-3.5 h-3.5 text-blue-300" />
               <span className="hidden sm:inline">{authority.pdfTabLabel}</span>
-              <span className="sm:hidden">Official Sheet</span>
+              <span className="sm:hidden">Sheet</span>
             </button>
           </div>
 
@@ -410,8 +519,8 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
           </div>
         </header>
 
-        {/* 2. INTERACTIVE SUB-HEADER (Subjects, Sections & Stats - only in Questions mode) */}
-        {viewMode === 'INTERACTIVE' && (
+        {/* 2. INTERACTIVE SUB-HEADER (Subjects, Sections & Stats - shown in Solutions & Timed Practice modes) */}
+        {(viewMode === 'INTERACTIVE' || viewMode === 'SOLVE') && (
           <div className="bg-slate-900/95 border-b border-slate-800 px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-xs shrink-0 select-none print:hidden">
             {/* Subject & Section Pills */}
             <div className="flex flex-wrap items-center gap-2">
@@ -477,28 +586,61 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
               </div>
             </div>
 
-            {/* Quick Stats & Expand/Collapse */}
-            <div className="flex items-center gap-4 text-slate-400">
-              <div className="hidden sm:flex items-center gap-3 text-[11px] font-medium border-r border-slate-800 pr-3">
-                <span className="flex items-center gap-1 text-slate-300">
-                  <Clock className="w-3.5 h-3.5 text-amber-400" />
-                  {formatDurationLabel(paper.durationMins)} Allowed
+            {/* Quick Stats / Practice Controls */}
+            {viewMode === 'SOLVE' ? (
+              <div className="flex items-center gap-2.5 text-slate-200 flex-wrap">
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-mono font-bold border ${
+                  solveSecondsLeft < 300 && !solveSubmitted
+                    ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse'
+                    : 'bg-slate-800 text-amber-300 border-slate-700'
+                }`}>
+                  <Clock className="w-3.5 h-3.5" />
+                  {formatClock(solveSecondsLeft)}
                 </span>
-                <span className="flex items-center gap-1 text-slate-300">
-                  <Award className="w-3.5 h-3.5 text-blue-400" />
-                  {paper.totalMarks} Marks
+                <span className="px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 font-bold">
+                  {solveAttemptedCount}/{questionsList.length} Attempted
                 </span>
+                {!solveSubmitted ? (
+                  <button
+                    type="button"
+                    onClick={handleSubmitSolve}
+                    className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-sm transition-colors cursor-pointer"
+                  >
+                    Submit & Score
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => resetSolveSession(paper.durationMins || 180)}
+                    className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" /> Retake Paper
+                  </button>
+                )}
               </div>
-              <div className="flex items-center gap-2">
-                <button onClick={expandAll} className="text-blue-400 hover:text-blue-300 font-medium hover:underline">
-                  Expand All
-                </button>
-                <span className="text-slate-600">|</span>
-                <button onClick={collapseAll} className="text-slate-400 hover:text-slate-200 font-medium hover:underline">
-                  Collapse
-                </button>
+            ) : (
+              <div className="flex items-center gap-4 text-slate-400">
+                <div className="hidden sm:flex items-center gap-3 text-[11px] font-medium border-r border-slate-800 pr-3">
+                  <span className="flex items-center gap-1 text-slate-300">
+                    <Clock className="w-3.5 h-3.5 text-amber-400" />
+                    {formatDurationLabel(paper.durationMins)} Allowed
+                  </span>
+                  <span className="flex items-center gap-1 text-slate-300">
+                    <Award className="w-3.5 h-3.5 text-blue-400" />
+                    {paper.totalMarks} Marks
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button onClick={expandAll} className="text-blue-400 hover:text-blue-300 font-medium hover:underline">
+                    Expand All
+                  </button>
+                  <span className="text-slate-600">|</span>
+                  <button onClick={collapseAll} className="text-slate-400 hover:text-slate-200 font-medium hover:underline">
+                    Collapse
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         )}
 
@@ -614,8 +756,72 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
 
               </div>
             ) : (
-            /* INTERACTIVE STEP-BY-STEP MARKING VIEW (Current mode) */
+            /* INTERACTIVE STEP-BY-STEP MARKING VIEW / PRACTICE SOLVE MODE */
             <>
+              {/* Post-Submit Scorecard Summary Banner (SOLVE mode) */}
+              {viewMode === 'SOLVE' && solveSubmitted && solveSummary && (
+                <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-5 sm:p-6 text-white shadow-lg border border-indigo-900/60 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center shrink-0">
+                        <Trophy className="w-6 h-6 text-emerald-300" />
+                      </div>
+                      <div>
+                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-300">
+                          Timed Practice Scorecard
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-black text-white">
+                          Score: {solveSummary.netScore} / {solveSummary.maxMarks} Marks ({solveSummary.accuracy}% Accuracy)
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-2">
+                      {solveSummary.wrongQuestions.length > 0 && (
+                        <button
+                          type="button"
+                          disabled={mistakesSynced}
+                          onClick={handleSaveSolveMistakes}
+                          className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:bg-emerald-600 text-slate-950 disabled:text-white text-xs font-extrabold transition-colors cursor-pointer"
+                        >
+                          {mistakesSynced
+                            ? `Saved ${solveSummary.wrongQuestions.length} Mistakes to Locker ✓`
+                            : `Auto-Save ${solveSummary.wrongQuestions.length} Wrong Qs to Locker`}
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => resetSolveSession(paper.durationMins || 180)}
+                        className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 cursor-pointer"
+                      >
+                        Retake Paper
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                    <div className="bg-white/5 border border-white/10 rounded-xl p-3">
+                      <div className="text-lg font-black text-emerald-400">{solveSummary.correctCount}</div>
+                      <div className="text-[11px] text-slate-300 font-semibold">Correct Answers</div>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-xl p-3">
+                      <div className="text-lg font-black text-rose-400">{solveSummary.wrongCount}</div>
+                      <div className="text-[11px] text-slate-300 font-semibold">Incorrect Answers</div>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-xl p-3">
+                      <div className="text-lg font-black text-slate-300">{solveSummary.skippedCount}</div>
+                      <div className="text-[11px] text-slate-300 font-semibold">Skipped</div>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-xl p-3">
+                      <div className="text-lg font-black text-amber-300 font-mono">
+                        {formatClock(Math.max(0, totalDurationSecs - solveSecondsLeft))}
+                      </div>
+                      <div className="text-[11px] text-slate-300 font-semibold">Time Spent</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* General Instructions Card */}
               {(paper.generalInstructions || []).length > 0 && (
                 <div className="bg-amber-50/80 border border-amber-200/80 rounded-xl p-4 text-xs sm:text-sm text-amber-900 space-y-1.5">
@@ -652,11 +858,24 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
               ) : (
                 <div className="space-y-4">
                 {filteredQuestions.map((q) => {
-                  const isExpanded = !!expandedSolutions[q.id];
+                  const isSolveMode = viewMode === 'SOLVE';
+                  const canShowSolution = !isSolveMode || solveSubmitted;
+                  const isExpanded = canShowSolution && !!expandedSolutions[q.id];
+                  const qMode = getPyqQuestionMode(paper, q);
+                  const negPenalty = getPyqNegativePenalty(paper, q);
+                  const userVal = solveAnswers[q.id] || '';
+                  const qGrade = isSolveMode && solveSubmitted ? solveSummary?.gradesById[q.id] : undefined;
+
                   return (
                     <div
                       key={q.id}
-                      className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden transition-all hover:border-slate-300 pyq-print-card print:shadow-none print:border-slate-300"
+                      className={`bg-white rounded-xl border shadow-sm overflow-hidden transition-all pyq-print-card print:shadow-none print:border-slate-300 ${
+                        qGrade?.correct
+                          ? 'border-emerald-300 ring-1 ring-emerald-200/70'
+                          : qGrade?.wrong
+                          ? 'border-rose-300 ring-1 ring-rose-200/70'
+                          : 'border-slate-200 hover:border-slate-300'
+                      }`}
                     >
                       {/* Question Header Bar */}
                       <div className="bg-slate-50/90 px-4 py-3 border-b border-slate-200/80 flex flex-wrap items-center justify-between gap-2">
@@ -673,27 +892,39 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
                         </div>
 
                         <div className="flex items-center gap-2">
-                          <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
-                            {q.marks} {q.marks === 1 ? 'Mark' : 'Marks'}
-                          </span>
-                          <button
-                            onClick={() => toggleSolution(q.id)}
-                            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                              isExpanded
-                                ? 'bg-blue-600 text-white shadow-xs'
-                                : 'bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200'
-                            }`}
-                          >
-                            {isExpanded ? (
-                              <>
-                                Hide Solution <ChevronUp className="w-3.5 h-3.5" />
-                              </>
-                            ) : (
-                              <>
-                                Marking Scheme <ChevronDown className="w-3.5 h-3.5" />
-                              </>
-                            )}
-                          </button>
+                          {qGrade && qGrade.attempted ? (
+                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold border ${
+                              qGrade.correct
+                                ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                                : 'bg-rose-100 text-rose-800 border-rose-300'
+                            }`}>
+                              {qGrade.deltaMarks > 0 ? `+${qGrade.deltaMarks}` : qGrade.deltaMarks} Marks
+                            </span>
+                          ) : (
+                            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                              +{q.marks} {negPenalty > 0 ? `/ -${negPenalty}` : q.marks === 1 ? 'Mark' : 'Marks'}
+                            </span>
+                          )}
+                          {canShowSolution && (
+                            <button
+                              onClick={() => toggleSolution(q.id)}
+                              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                                isExpanded
+                                  ? 'bg-blue-600 text-white shadow-xs'
+                                  : 'bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200'
+                              }`}
+                            >
+                              {isExpanded ? (
+                                <>
+                                  Hide Solution <ChevronUp className="w-3.5 h-3.5" />
+                                </>
+                              ) : (
+                                <>
+                                  Marking Scheme <ChevronDown className="w-3.5 h-3.5" />
+                                </>
+                              )}
+                            </button>
+                          )}
                           <button
                             onClick={() => handleBookmarkQuestion(q)}
                             className={`p-1.5 rounded-lg border transition-all ${
@@ -714,30 +945,153 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
                           {q.questionText}
                         </p>
 
-                        {/* MCQ Options (if Section A) */}
+                        {/* MCQ / MSQ Options */}
                         {q.options && q.options.length > 0 && (
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                            {q.options.map((opt, optIdx) => {
-                              const isCorrectOpt = Boolean(
-                                isExpanded && q.correctOption && (
-                                  opt === q.correctOption ||
-                                  opt.startsWith(`${q.correctOption})`) ||
-                                  opt.startsWith(`${q.correctOption}.`)
-                                )
-                              );
-                              return (
-                                <div
-                                  key={optIdx}
-                                  className={`p-2.5 rounded-lg border text-xs sm:text-sm font-medium transition-colors ${
-                                    isCorrectOpt
-                                      ? 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold'
-                                      : 'bg-slate-50 border-slate-200 text-slate-700'
+                          <div className="space-y-2 pt-1">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              {q.options.map((opt, optIdx) => {
+                                const selectedList = qMode === 'MSQ' ? userVal.split('||').filter(Boolean) : [];
+                                const isSelected = qMode === 'MSQ' ? selectedList.includes(opt) : userVal === opt;
+                                const isKeyOption = Boolean(
+                                  canShowSolution && (isExpanded || (isSolveMode && solveSubmitted)) &&
+                                  matchesPyqOption(opt, optIdx, q.correctOption)
+                                );
+                                const isSelectedWrong = Boolean(
+                                  isSolveMode && solveSubmitted && isSelected && !matchesPyqOption(opt, optIdx, q.correctOption)
+                                );
+
+                                if (isSolveMode) {
+                                  return (
+                                    <button
+                                      key={optIdx}
+                                      type="button"
+                                      disabled={solveSubmitted}
+                                      onClick={() => {
+                                        if (solveSubmitted) return;
+                                        if (qMode === 'MSQ') {
+                                          const exists = selectedList.includes(opt);
+                                          const next = exists ? selectedList.filter(x => x !== opt) : [...selectedList, opt];
+                                          setSolveAnswers(prev => ({ ...prev, [q.id]: next.join('||') }));
+                                        } else {
+                                          setSolveAnswers(prev => ({ ...prev, [q.id]: prev[q.id] === opt ? '' : opt }));
+                                        }
+                                      }}
+                                      className={`p-3 rounded-xl border text-left text-xs sm:text-sm font-medium transition-all flex items-center justify-between gap-2 ${
+                                        solveSubmitted
+                                          ? isKeyOption
+                                            ? 'bg-emerald-50 border-emerald-500 text-emerald-950 font-bold'
+                                            : isSelectedWrong
+                                            ? 'bg-rose-50 border-rose-400 text-rose-900 font-bold'
+                                            : 'bg-slate-50 border-slate-200 text-slate-600'
+                                          : isSelected
+                                          ? 'bg-indigo-50 border-indigo-600 text-indigo-950 font-bold ring-1 ring-indigo-500/30 cursor-pointer'
+                                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-indigo-300 hover:bg-white cursor-pointer'
+                                      }`}
+                                    >
+                                      <span>{opt}</span>
+                                      {isSolveMode && solveSubmitted && isKeyOption && (
+                                        <span className="text-[10px] font-black uppercase text-emerald-700 shrink-0">Key ✓</span>
+                                      )}
+                                      {isSolveMode && solveSubmitted && isSelectedWrong && (
+                                        <span className="text-[10px] font-black uppercase text-rose-700 shrink-0">Yours ✗</span>
+                                      )}
+                                    </button>
+                                  );
+                                }
+
+                                return (
+                                  <div
+                                    key={optIdx}
+                                    className={`p-2.5 rounded-lg border text-xs sm:text-sm font-medium transition-colors ${
+                                      isKeyOption
+                                        ? 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold'
+                                        : 'bg-slate-50 border-slate-200 text-slate-700'
+                                    }`}
+                                  >
+                                    {opt}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                            {isSolveMode && !solveSubmitted && userVal && (
+                              <button
+                                type="button"
+                                onClick={() => setSolveAnswers(prev => ({ ...prev, [q.id]: '' }))}
+                                className="text-[11px] font-bold text-slate-400 hover:text-slate-700"
+                              >
+                                Clear response
+                              </button>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Numerical Input (SOLVE mode without options) */}
+                        {isSolveMode && qMode === 'NUMERICAL' && (
+                          <div className="pt-1 flex flex-wrap items-center gap-3">
+                            <input
+                              type="text"
+                              disabled={solveSubmitted}
+                              value={userVal}
+                              onChange={e => setSolveAnswers(prev => ({ ...prev, [q.id]: e.target.value }))}
+                              placeholder="Enter numerical value..."
+                              className={`px-3.5 py-2 rounded-xl border text-sm font-mono font-bold outline-none w-56 ${
+                                solveSubmitted
+                                  ? qGrade?.correct
+                                    ? 'bg-emerald-50 border-emerald-400 text-emerald-900'
+                                    : 'bg-rose-50 border-rose-400 text-rose-900'
+                                  : 'bg-slate-50 border-slate-300 focus:border-indigo-500 text-slate-900'
+                              }`}
+                            />
+                            {solveSubmitted && (
+                              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg">
+                                Official Key: {q.correctOption}
+                              </span>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Subjective Self-Check (CBSE Section B-E in SOLVE mode) */}
+                        {isSolveMode && qMode === 'SUBJECTIVE' && (
+                          <div className="pt-2 flex flex-wrap items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => setRevealedSubjective(prev => ({ ...prev, [q.id]: !prev[q.id] }))}
+                              className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+                            >
+                              {revealedSubjective[q.id] ? 'Hide Rubric' : 'Reveal Marking Rubric to Self-Grade'}
+                            </button>
+                            {revealedSubjective[q.id] && !solveSubmitted && (
+                              <>
+                                <button
+                                  type="button"
+                                  onClick={() => setSubjectiveGrades(prev => ({ ...prev, [q.id]: 'RIGHT' }))}
+                                  className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
+                                    subjectiveGrades[q.id] === 'RIGHT'
+                                      ? 'bg-emerald-600 text-white border-emerald-600'
+                                      : 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100'
                                   }`}
                                 >
-                                  {opt}
-                                </div>
-                              );
-                            })}
+                                  Got Full Marks (+{q.marks})
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setSubjectiveGrades(prev => ({ ...prev, [q.id]: 'WRONG' }))}
+                                  className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer ${
+                                    subjectiveGrades[q.id] === 'WRONG'
+                                      ? 'bg-rose-600 text-white border-rose-600'
+                                      : 'bg-rose-50 text-rose-800 border-rose-200 hover:bg-rose-100'
+                                  }`}
+                                >
+                                  Missed Key Steps (0)
+                                </button>
+                              </>
+                            )}
+                            {revealedSubjective[q.id] && !solveSubmitted && (
+                              <div className="w-full mt-2 p-3 rounded-xl bg-blue-50/70 border border-blue-200 text-xs text-slate-800 space-y-1">
+                                <div className="font-bold text-blue-900">Marking Scheme Preview:</div>
+                                <div className="whitespace-pre-line">{q.modelAnswer}</div>
+                              </div>
+                            )}
                           </div>
                         )}
 
@@ -813,8 +1167,8 @@ export const PyqPaperViewerModal: React.FC<PyqPaperViewerModalProps> = ({ paper,
         </div>
         )}
 
-        {/* Modal Footer (Only shown in interactive mode) */}
-        {viewMode === 'INTERACTIVE' && (
+        {/* Modal Footer (Shown in Solutions & Timed Practice modes) */}
+        {(viewMode === 'INTERACTIVE' || viewMode === 'SOLVE') && (
           <div className="bg-white border-t border-slate-200 px-6 py-3 flex items-center justify-between text-xs text-slate-500 shrink-0 print:border-slate-300 print:px-0 print:pt-2 print:mt-4">
             <div className="flex items-center gap-2">
               <HelpCircle className="w-4 h-4 text-blue-500 print:hidden" />

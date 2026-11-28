@@ -3,7 +3,7 @@ import {
   Bookmark, Search, Printer, Trash2, Edit3, 
   Check, Flame, Copy, CheckCheck, BookOpen, Plus,
   ExternalLink, X, Lightbulb, AlertTriangle, 
-  Maximize2, ChevronRight, Award
+  Maximize2, ChevronRight, Award, Layers
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -14,6 +14,7 @@ import {
   getStreakData, subscribeToStreakUpdates, fetchCloudLockerItems, hasAuthToken 
 } from '../../../lib/lockerStorage';
 import type { LockerItem } from '../../../lib/lockerStorage';
+import { LockerFlashcardModal } from '../../../components/learn/LockerFlashcardModal';
 
 export function PersonalLockerPage() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export function PersonalLockerPage() {
   
   // Modals & Editing states
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isFlashcardOpen, setIsFlashcardOpen] = useState(false);
   const [viewModalItem, setViewModalItem] = useState<LockerItem | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingText, setEditingText] = useState<string>('');
@@ -283,22 +285,32 @@ export function PersonalLockerPage() {
                 type="button"
                 onClick={() => window.dispatchEvent(new CustomEvent('preplens_open_streak_modal'))}
                 title="Click to view Activity Streak Calendar"
-                className="bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 hover:border-amber-400/40 rounded-xl p-3 col-span-2 sm:col-span-1 text-left transition-all cursor-pointer group"
+                className="bg-white/5 hover:bg-white/10 active:scale-95 border border-white/10 hover:border-amber-400/40 rounded-xl p-3 col-span-2 sm:col-span-1 text-left transition-all cursor-pointer group flex flex-col justify-between"
               >
-                <div className="text-xl sm:text-2xl font-black text-orange-400 flex items-center justify-between">
-                  <span className="flex items-center gap-1">
-                    <Flame className="w-5 h-5 fill-orange-400 group-hover:scale-110 transition-transform" /> {streakData.streak}d
+                <div className="text-xl sm:text-2xl font-black text-orange-400 flex items-center justify-between gap-1.5 flex-wrap">
+                  <span className="flex items-center gap-1 whitespace-nowrap">
+                    <Flame className="w-5 h-5 fill-orange-400 group-hover:scale-110 transition-transform shrink-0" />
+                    <span>{streakData.streak}d</span>
                   </span>
-                  <span className="text-[10px] text-amber-300 bg-amber-400/15 px-1.5 py-0.5 rounded border border-amber-400/30 font-bold">
-                    Calendar
+                  <span className="text-[10px] text-amber-300 bg-amber-400/15 px-1.5 py-0.5 rounded border border-amber-400/30 font-bold shrink-0">
+                    📅
                   </span>
                 </div>
-                <div className="text-[11px] text-slate-300 font-medium mt-0.5">Daily Streak 📅</div>
+                <div className="text-[11px] text-slate-300 font-medium mt-0.5 whitespace-nowrap">Daily Streak</div>
               </button>
             </div>
           </div>
 
           <div className="flex flex-col gap-2.5 shrink-0 print:hidden">
+            <button
+              type="button"
+              onClick={() => setIsFlashcardOpen(true)}
+              disabled={filteredItems.length === 0}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 disabled:opacity-50 text-slate-950 font-black text-xs sm:text-sm transition-all shadow-lg active:scale-95 cursor-pointer"
+            >
+              <Layers className="w-4 h-4" />
+              Flip Flashcards ({filteredItems.length})
+            </button>
             <button
               onClick={() => setIsAddModalOpen(true)}
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-blue-500/30 active:scale-95 cursor-pointer"
@@ -907,6 +919,19 @@ export function PersonalLockerPage() {
           </div>
         </div>
       )}
+
+      {/* 6. Active Recall Flashcard Modal */}
+      <LockerFlashcardModal
+        isOpen={isFlashcardOpen}
+        onClose={() => setIsFlashcardOpen(false)}
+        items={filteredItems}
+        deckTitle={
+          activeTab === 'ALL'
+            ? `Active Recall Deck (${filteredItems.length} Cards)`
+            : `Active Recall: ${activeTab} (${filteredItems.length})`
+        }
+        onCardsUpdated={() => setItems(getLockerItems())}
+      />
 
     </div>
   );
