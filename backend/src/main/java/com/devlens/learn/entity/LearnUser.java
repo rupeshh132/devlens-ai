@@ -19,6 +19,12 @@ public class LearnUser {
     @Column(name = "last_doubt_date")
     private java.time.LocalDate lastDoubtDate;
 
+    @Column(name = "daily_free_drills_used")
+    private Integer dailyFreeDrillsUsed = 0;
+
+    @Column(name = "last_drill_date")
+    private java.time.LocalDate lastDrillDate;
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;

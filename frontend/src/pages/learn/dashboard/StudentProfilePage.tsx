@@ -2,8 +2,10 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Mail, Phone, Target, CreditCard, Calendar, Clock, Award, CheckCircle, Loader2, Zap, ArrowRight, ShieldCheck, Trophy, BrainCircuit, X, Check, RefreshCw, AlertTriangle, Pencil, History, ExternalLink } from 'lucide-react';
 import { learnApi, fetchLearnProfileCached, invalidateLearnProfileCache, readCachedLearnProfileSnapshot } from '../../../lib/learn-api';
-import { syncPendingDailyChallengeWithBackend, isItemSaved } from '../../../lib/lockerStorage';
+import { syncPendingDailyChallengeWithBackend, isItemSaved, startRedemptionDrillWithQuota } from '../../../lib/lockerStorage';
 import { saveMistakeToLocker } from '../../../lib/rankPredictor';
+import { MistakeRedemptionModal, type RedemptionQuestionItem } from '../../../components/learn/MistakeRedemptionModal';
+import { PaywallModal } from '../../../components/learn/PaywallModal';
 import { toast } from 'sonner';
 
 interface Transaction {
@@ -233,6 +235,9 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
   const [summary, setSummary] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [mistakesSaved, setMistakesSaved] = useState(false);
+  const [redemptionOpen, setRedemptionOpen] = useState(false);
+  const [paywallOpen, setPaywallOpen] = useState(false);
+  const [startingDrill, setStartingDrill] = useState(false);
 
   const isCompetitive = /jee|neet/i.test(examGoal || '');
 
@@ -423,7 +428,27 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
                     <h4 className="text-sm font-extrabold text-amber-950">Mistake Auto-Heal Queue ({mistakes.length} Recent Errors)</h4>
                     <p className="text-xs text-amber-800">Sync recent wrong answers into your Mistake Notebook and clear weak chapters.</p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <button
+                      type="button"
+                      disabled={startingDrill}
+                      onClick={async () => {
+                        setStartingDrill(true);
+                        try {
+                          const qRes = await startRedemptionDrillWithQuota();
+                          if (!qRes.allowed) {
+                            setPaywallOpen(true);
+                            return;
+                          }
+                          setRedemptionOpen(true);
+                        } finally {
+                          setStartingDrill(false);
+                        }
+                      }}
+                      className="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 disabled:opacity-60 text-white text-xs font-bold transition-colors cursor-pointer"
+                    >
+                      Redeem Errors ({mistakes.length})
+                    </button>
                     <button
                       type="button"
                       disabled={allMistakesSynced}
@@ -453,6 +478,32 @@ function CompetitiveAnalyticsCard({ examGoal, testsTaken }: { examGoal: string; 
                   ))}
                 </div>
               </div>
+            )}
+            {mistakes.length > 0 && (
+              <>
+              <MistakeRedemptionModal
+                isOpen={redemptionOpen}
+                onClose={() => setRedemptionOpen(false)}
+                title={`${examGoal} Auto-Heal Redemption Drill`}
+                questions={mistakes.map((m: any, idx: number): RedemptionQuestionItem => ({
+                  id: m.questionId || `m-${idx}`,
+                  subject: m.subject,
+                  chapter: m.chapter,
+                  questionText: m.questionText,
+                  questionType: m.questionType,
+                  options: m.options,
+                  correctAnswer: m.correctAnswer,
+                  explanation: m.explanation,
+                }))}
+                onUpgradeRequested={() => setPaywallOpen(true)}
+              />
+              <PaywallModal
+                isOpen={paywallOpen}
+                onClose={() => setPaywallOpen(false)}
+                featureName="Unlimited Mistake Redemption Drills"
+                featureDescription="Free students get 1 Redemption Drill per day. Upgrade to Pro for unlimited wrong-question drills & adaptive practice!"
+              />
+              </>
             )}
           </>
         )}

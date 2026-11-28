@@ -83,6 +83,47 @@ public class LearnLockerController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/due-reviews")
+    public ResponseEntity<?> getDueReviews(Authentication authentication) {
+        UUID userId = resolveUserId(authentication);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Unauthorized"));
+        }
+        return ResponseEntity.ok(lockerService.getDueReviewSummary(userId));
+    }
+
+    @PostMapping("/redemption/start")
+    public ResponseEntity<?> startRedemptionDrill(Authentication authentication) {
+        UUID userId = resolveUserId(authentication);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Unauthorized"));
+        }
+        try {
+            return ResponseEntity.ok(lockerService.startRedemptionDrill(userId));
+        } catch (IllegalStateException ex) {
+            if ("FREE_DRILL_LIMIT_REACHED".equals(ex.getMessage())) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of(
+                        "code", "FREE_DRILL_LIMIT_REACHED",
+                        "error", "Daily free Redemption Drill limit (1/day) reached. Upgrade to Pro for unlimited drills!"
+                ));
+            }
+            throw ex;
+        }
+    }
+
+    @PostMapping("/{id}/review")
+    public ResponseEntity<?> recordReviewOutcome(
+            Authentication authentication,
+            @PathVariable UUID id,
+            @RequestBody Map<String, Object> body) {
+        UUID userId = resolveUserId(authentication);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Unauthorized"));
+        }
+        boolean remembered = body != null && Boolean.TRUE.equals(body.get("remembered"));
+        return ResponseEntity.ok(lockerService.recordReviewOutcome(userId, id, remembered));
+    }
+
     private UUID resolveUserId(Authentication authentication) {
         if (authentication == null || !authentication.isAuthenticated()) {
             return null;

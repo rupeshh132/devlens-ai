@@ -648,10 +648,16 @@ public class LearnProfileService {
                             m.put("questionId", qIdStr);
                             m.put("subject", q.getSubject() != null ? q.getSubject() : "General");
                             m.put("chapter", ch);
+                            m.put("questionType", q.getQuestionType() != null ? q.getQuestionType() : "MCQ");
                             m.put("questionText", q.getQuestionText());
                             m.put("userAnswer", uAns);
                             m.put("correctAnswer", q.getCorrectAnswer());
                             m.put("explanation", q.getExplanation());
+                            if (q.getOptionsJson() != null && !q.getOptionsJson().isBlank()) {
+                                try {
+                                    m.put("options", objectMapper.readValue(q.getOptionsJson(), new TypeReference<Map<String, String>>() {}));
+                                } catch (Exception ignored) {}
+                            }
                             recentMistakes.add(m);
                         }
                     }

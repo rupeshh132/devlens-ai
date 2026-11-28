@@ -45,6 +45,18 @@ public class LearnUserLockerItem {
     @Column(name = "meta_json", columnDefinition = "jsonb")
     private String metaJson = "{}";
 
+    @Column(name = "review_stage", nullable = false)
+    private Integer reviewStage = 0; // 0=New, 1=Day1, 2=Day3, 3=Day7, 4=Healed/Mastered
+
+    @Column(name = "consecutive_correct", nullable = false)
+    private Integer consecutiveCorrect = 0;
+
+    @Column(name = "next_review_at")
+    private LocalDateTime nextReviewAt;
+
+    @Column(name = "last_reviewed_at")
+    private LocalDateTime lastReviewedAt;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;

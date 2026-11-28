@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { Crown, X, Trophy, Zap, BookOpen, Users, Shield } from 'lucide-react';
 import { learnApi } from '../../lib/learn-api';
+import { hasAuthToken } from '../../lib/lockerStorage';
 
 interface PaywallModalProps {
   isOpen: boolean;
@@ -22,35 +24,36 @@ export function PaywallModal({ isOpen, onClose, featureName, featureDescription 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && hasAuthToken()) {
       learnApi.post('/profile/paywall-hit').catch(() => {});
     }
   }, [isOpen]);
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+  return createPortal(
+    <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm"
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full mx-4 overflow-hidden">
+      <div className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden z-10">
         {/* Header gradient */}
-        <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-6 pt-8 pb-12 text-white text-center">
+        <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-6 pt-8 pb-12 text-white text-center relative">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+            className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
+            aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
           <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-3 backdrop-blur-sm border border-white/30">
             <Crown className="w-7 h-7 text-yellow-300" />
           </div>
-          <h2 className="text-xl font-extrabold mb-1">Premium Feature</h2>
+          <h2 className="text-xl font-extrabold mb-1 text-white">Premium Feature</h2>
           <p className="text-blue-100 text-sm font-semibold">{featureName}</p>
         </div>
 
@@ -85,6 +88,7 @@ export function PaywallModal({ isOpen, onClose, featureName, featureDescription 
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

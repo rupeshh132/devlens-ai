@@ -24,4 +24,8 @@ public class LockerItemResponse {
     private String personalNote;
     private Map<String, Object> meta;
     private LocalDateTime savedAt;
+    private Integer reviewStage;
+    private Integer consecutiveCorrect;
+    private LocalDateTime nextReviewAt;
+    private LocalDateTime lastReviewedAt;
 }

@@ -3,7 +3,7 @@ import {
   Bookmark, Search, Printer, Trash2, Edit3, 
   Check, Flame, Copy, CheckCheck, BookOpen, Plus,
   ExternalLink, X, Lightbulb, AlertTriangle, 
-  Maximize2, ChevronRight, Award, Layers
+  Maximize2, ChevronRight, Award, Layers, ShieldCheck
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -11,10 +11,13 @@ import remarkGfm from 'remark-gfm';
 import { toast } from 'sonner';
 import { 
   getLockerItems, saveLockerItem, removeLockerItem, updatePersonalNote, 
-  getStreakData, subscribeToStreakUpdates, fetchCloudLockerItems, hasAuthToken 
+  getStreakData, subscribeToStreakUpdates, fetchCloudLockerItems, hasAuthToken,
+  startRedemptionDrillWithQuota
 } from '../../../lib/lockerStorage';
 import type { LockerItem } from '../../../lib/lockerStorage';
 import { LockerFlashcardModal } from '../../../components/learn/LockerFlashcardModal';
+import { MistakeRedemptionModal, type RedemptionQuestionItem } from '../../../components/learn/MistakeRedemptionModal';
+import { PaywallModal } from '../../../components/learn/PaywallModal';
 
 export function PersonalLockerPage() {
   const navigate = useNavigate();
@@ -37,6 +40,9 @@ export function PersonalLockerPage() {
   // Modals & Editing states
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isFlashcardOpen, setIsFlashcardOpen] = useState(false);
+  const [isRedemptionOpen, setIsRedemptionOpen] = useState(false);
+  const [paywallOpen, setPaywallOpen] = useState(false);
+  const [startingRedemption, setStartingRedemption] = useState(false);
   const [viewModalItem, setViewModalItem] = useState<LockerItem | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingText, setEditingText] = useState<string>('');
@@ -91,6 +97,70 @@ export function PersonalLockerPage() {
   const countQuestions = items.filter(i => i.type === 'QUESTION').length;
   const countFormulas = items.filter(i => i.type === 'FORMULA').length;
   const countMistakes = items.filter(i => i.meta?.mistake === true || i.tags.some(t => t.toLowerCase().includes('mistake'))).length;
+
+  const dueMistakeItems = useMemo(() => {
+    const now = Date.now();
+    return items.filter(i => {
+      const isMistakeOrQ = i.meta?.mistake === true || i.tags.some(t => t.toLowerCase().includes('mistake'));
+      if (!isMistakeOrQ) return false;
+      const stage = typeof i.reviewStage === 'number' ? i.reviewStage : 0;
+      if (stage >= 4) return false;
+      if (!i.nextReviewAt) return true;
+      return new Date(i.nextReviewAt).getTime() <= now;
+    });
+  }, [items]);
+
+  const healedMistakeCount = useMemo(() => {
+    return items.filter(i => typeof i.reviewStage === 'number' && i.reviewStage >= 4).length;
+  }, [items]);
+
+  const redemptionQuestions = useMemo<RedemptionQuestionItem[]>(() => {
+    return dueMistakeItems.map(item => {
+      const raw = (item.content || '').trim();
+      const markers = ['\n\n**Your Wrong Answer:**', '\n\n**Correct Answer:**', '\n\n**Model Answer:**', '\n\n**Model Solution:**'];
+      let cut = raw.length;
+      for (const m of markers) {
+        const pos = raw.indexOf(m);
+        if (pos !== -1 && pos < cut) cut = pos;
+      }
+      const qText = raw.slice(0, cut).replace(/^\*\*Question:\*\*\s*/i, '').trim() || item.title;
+      const corrMatch = raw.match(/\*\*Correct Answer:\*\*\s*`([^`]+)`/i);
+      const isCloudUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-/i.test(item.id);
+      return {
+        id: item.id,
+        lockerItemId: isCloudUuid ? item.id : undefined,
+        title: item.title,
+        subject: item.meta?.subject,
+        chapter: item.meta?.chapter,
+        questionText: qText,
+        questionType: item.meta?.questionType,
+        options: item.meta?.options,
+        correctAnswer: item.meta?.correctAnswer || corrMatch?.[1],
+        modelAnswer: raw,
+        explanation: item.meta?.examinerTip,
+        reviewStage: item.reviewStage ?? 0,
+        consecutiveCorrect: item.consecutiveCorrect ?? 0,
+      };
+    });
+  }, [dueMistakeItems]);
+
+  const handleLaunchRedemption = async () => {
+    if (dueMistakeItems.length === 0) {
+      toast.info('No due mistakes right now! Save wrong answers from Mock Tests or PYQs first.');
+      return;
+    }
+    setStartingRedemption(true);
+    try {
+      const res = await startRedemptionDrillWithQuota();
+      if (!res.allowed) {
+        setPaywallOpen(true);
+        return;
+      }
+      setIsRedemptionOpen(true);
+    } finally {
+      setStartingRedemption(false);
+    }
+  };
 
   const filteredItems = useMemo(() => {
     return items.filter(item => {
@@ -304,6 +374,15 @@ export function PersonalLockerPage() {
           <div className="flex flex-col gap-2.5 shrink-0 print:hidden">
             <button
               type="button"
+              onClick={handleLaunchRedemption}
+              disabled={startingRedemption}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-400 hover:to-amber-400 disabled:opacity-60 text-white font-black text-xs sm:text-sm transition-all shadow-lg active:scale-95 cursor-pointer"
+            >
+              <Flame className="w-4 h-4 fill-white" />
+              Redeem Mistakes ({dueMistakeItems.length} Due{healedMistakeCount > 0 ? ` • ${healedMistakeCount} Healed` : ''})
+            </button>
+            <button
+              type="button"
               onClick={() => setIsFlashcardOpen(true)}
               disabled={filteredItems.length === 0}
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 disabled:opacity-50 text-slate-950 font-black text-xs sm:text-sm transition-all shadow-lg active:scale-95 cursor-pointer"
@@ -479,6 +558,16 @@ export function PersonalLockerPage() {
                             {t}
                           </span>
                         ))}
+
+                        {typeof item.reviewStage === 'number' && item.reviewStage >= 4 ? (
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-200 inline-flex items-center gap-1">
+                            <ShieldCheck className="w-3 h-3" /> HEALED ✓
+                          </span>
+                        ) : typeof item.reviewStage === 'number' && item.reviewStage > 0 ? (
+                          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                            Stage {item.reviewStage} ({item.consecutiveCorrect || 0}/2)
+                          </span>
+                        ) : null}
                       </div>
 
                       {/* Card Action Buttons */}
@@ -931,6 +1020,28 @@ export function PersonalLockerPage() {
             : `Active Recall: ${activeTab} (${filteredItems.length})`
         }
         onCardsUpdated={() => setItems(getLockerItems())}
+      />
+
+      {/* 7. Mistake Redemption Spaced-Repetition Drill */}
+      <MistakeRedemptionModal
+        isOpen={isRedemptionOpen}
+        onClose={() => setIsRedemptionOpen(false)}
+        title="Mistake Redemption Drill (Spaced Repetition)"
+        questions={redemptionQuestions}
+        onProgressUpdated={() => {
+          setItems(getLockerItems());
+          if (hasAuthToken()) {
+            fetchCloudLockerItems().then(synced => setItems(synced)).catch(() => {});
+          }
+        }}
+        onUpgradeRequested={() => setPaywallOpen(true)}
+      />
+
+      <PaywallModal
+        isOpen={paywallOpen}
+        onClose={() => setPaywallOpen(false)}
+        featureName="Unlimited Mistake Redemption Drills"
+        featureDescription="Free students get 1 Mistake Redemption Drill per day. Upgrade to Pro for unlimited spaced-repetition quizzes & wrong-only test retakes!"
       />
 
     </div>

@@ -166,6 +166,8 @@ export interface MistakeQuestionInput {
   chapter?: string;
   questionText?: string;
   text?: string;
+  questionType?: string;
+  options?: Record<string, string> | string[];
   userAnswer?: string;
   correctAnswer?: string;
   modelAnswer?: string;
@@ -195,6 +197,9 @@ export function saveMistakeToLocker(q: MistakeQuestionInput, sourceTitle?: strin
       chapter: q.chapter,
       mistake: true,
       questionId: q.questionId,
+      questionType: q.questionType || 'MCQ',
+      options: q.options,
+      correctAnswer: q.correctAnswer,
       examTitle: sourceTitle,
     },
   });

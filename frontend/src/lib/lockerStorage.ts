@@ -10,6 +10,44 @@ export interface LockerItem {
   savedAt: string;
   personalNote?: string;
   meta?: Record<string, any>;
+  reviewStage?: number;
+  consecutiveCorrect?: number;
+  nextReviewAt?: string | null;
+  lastReviewedAt?: string | null;
+}
+
+export function checkCanStartLocalDrill(): boolean {
+  try {
+    const today = getTodayDateString();
+    const raw = localStorage.getItem('preplens_local_drill_date');
+    return raw !== today;
+  } catch {
+    return true;
+  }
+}
+
+export function markLocalDrillStarted(): void {
+  try {
+    localStorage.setItem('preplens_local_drill_date', getTodayDateString());
+  } catch {}
+}
+
+export async function startRedemptionDrillWithQuota(): Promise<{ allowed: boolean; reason?: 'LIMIT_REACHED' }> {
+  if (hasAuthToken()) {
+    try {
+      await learnApi.post('/locker/redemption/start');
+      return { allowed: true };
+    } catch (err: any) {
+      if (err?.response?.status === 403 && err?.response?.data?.code === 'FREE_DRILL_LIMIT_REACHED') {
+        return { allowed: false, reason: 'LIMIT_REACHED' };
+      }
+    }
+  }
+  if (!checkCanStartLocalDrill()) {
+    return { allowed: false, reason: 'LIMIT_REACHED' };
+  }
+  markLocalDrillStarted();
+  return { allowed: true };
 }
 
 export const LOCKER_STORAGE_KEY = 'preplens_personal_locker';
@@ -309,7 +347,11 @@ export async function fetchCloudLockerItems(): Promise<LockerItem[]> {
         tags: d.tags || [],
         personalNote: d.personalNote || undefined,
         meta: d.meta || {},
-        savedAt: d.savedAt || new Date().toISOString()
+        savedAt: d.savedAt || new Date().toISOString(),
+        reviewStage: typeof d.reviewStage === 'number' ? d.reviewStage : 0,
+        consecutiveCorrect: typeof d.consecutiveCorrect === 'number' ? d.consecutiveCorrect : 0,
+        nextReviewAt: d.nextReviewAt ?? null,
+        lastReviewedAt: d.lastReviewedAt ?? null,
       }));
 
       // Detect any local custom items not yet synced to cloud
@@ -340,7 +382,11 @@ export async function fetchCloudLockerItems(): Promise<LockerItem[]> {
               tags: d.tags || [],
               personalNote: d.personalNote || undefined,
               meta: d.meta || {},
-              savedAt: d.savedAt || new Date().toISOString()
+              savedAt: d.savedAt || new Date().toISOString(),
+              reviewStage: typeof d.reviewStage === 'number' ? d.reviewStage : 0,
+              consecutiveCorrect: typeof d.consecutiveCorrect === 'number' ? d.consecutiveCorrect : 0,
+              nextReviewAt: d.nextReviewAt ?? null,
+              lastReviewedAt: d.lastReviewedAt ?? null,
             }));
             localStorage.setItem(getLockerStorageKey(), JSON.stringify(syncedItems));
             return syncedItems;

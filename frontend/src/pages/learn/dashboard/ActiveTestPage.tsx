@@ -4,6 +4,8 @@ import { Clock, Trophy, ArrowLeft, ArrowRight, BookOpen, Loader2, CheckCircle2, 
 import { toast } from 'sonner';
 import { learnApi } from '../../../lib/learn-api';
 import { PaywallModal } from '../../../components/learn/PaywallModal';
+import { MistakeRedemptionModal, type RedemptionQuestionItem } from '../../../components/learn/MistakeRedemptionModal';
+import { startRedemptionDrillWithQuota } from '../../../lib/lockerStorage';
 import { predictCompetitiveOutcome, saveMistakeToLocker } from '../../../lib/rankPredictor';
 
 interface Question {
@@ -367,6 +369,10 @@ export function ActiveTestPage() {
   const [showMarkingScheme, setShowMarkingScheme] = useState(true);
   const [syncingMistakes, setSyncingMistakes] = useState(false);
   const [mistakesSynced, setMistakesSynced] = useState(false);
+  const [wrongRetestOpen, setWrongRetestOpen] = useState(false);
+  const [wrongRetestItems, setWrongRetestItems] = useState<RedemptionQuestionItem[]>([]);
+  const [drillPaywallOpen, setDrillPaywallOpen] = useState(false);
+  const [startingWrongRetest, setStartingWrongRetest] = useState(false);
 
   const loadTest = useCallback(async (force = false) => {
     if (!testId) return;
@@ -594,6 +600,52 @@ export function ActiveTestPage() {
       toast.error('Could not sync mistakes right now.');
     } finally {
       setSyncingMistakes(false);
+    }
+  };
+
+  const handleLaunchWrongRetest = async () => {
+    if (!attemptId || startingWrongRetest) return;
+    setStartingWrongRetest(true);
+    try {
+      const qRes = await startRedemptionDrillWithQuota();
+      if (!qRes.allowed) {
+        setDrillPaywallOpen(true);
+        return;
+      }
+
+      let rqs = reviewQuestions;
+      if (rqs.length === 0) {
+        const res = await learnApi.get(`/tests/attempt/${attemptId}/review`);
+        if (res.data?.questions && Array.isArray(res.data.questions)) {
+          rqs = res.data.questions;
+          setReviewQuestions(rqs);
+        }
+      }
+
+      const wrongs = rqs
+        .filter(q => q.isCorrect === false)
+        .map((q): RedemptionQuestionItem => ({
+          id: q.questionId,
+          subject: q.subject,
+          chapter: q.chapter,
+          questionText: q.text,
+          questionType: q.questionType,
+          options: q.options,
+          correctAnswer: q.correctAnswer,
+          modelAnswer: q.modelAnswer,
+          explanation: q.explanation,
+        }));
+
+      if (wrongs.length === 0) {
+        toast.info('Zero wrong answers to retest in this attempt!');
+        return;
+      }
+      setWrongRetestItems(wrongs);
+      setWrongRetestOpen(true);
+    } catch {
+      toast.error('Unable to prepare Wrong-Only Retest right now.');
+    } finally {
+      setStartingWrongRetest(false);
     }
   };
 
@@ -1310,6 +1362,20 @@ export function ActiveTestPage() {
 
             <div className="space-y-2 pt-1">
               {scorecard.wrongAnswers > 0 && (
+                <>
+                <button
+                  type="button"
+                  disabled={startingWrongRetest}
+                  onClick={handleLaunchWrongRetest}
+                  className="w-full py-2.5 px-4 bg-rose-600 hover:bg-rose-700 disabled:opacity-60 text-white font-bold text-xs rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <AlertTriangle className="w-4 h-4" />
+                  <span>
+                    {startingWrongRetest
+                      ? 'Preparing Wrong-Only Retest...'
+                      : `Retest Wrong Questions Only (${scorecard.wrongAnswers})`}
+                  </span>
+                </button>
                 <button
                   type="button"
                   disabled={syncingMistakes || mistakesSynced}
@@ -1325,6 +1391,7 @@ export function ActiveTestPage() {
                       : `Auto-Save ${scorecard.wrongAnswers} Mistake${scorecard.wrongAnswers === 1 ? '' : 's'} to Revision Locker`}
                   </span>
                 </button>
+                </>
               )}
               <button
                 onClick={enterReviewMode}
@@ -1353,6 +1420,21 @@ export function ActiveTestPage() {
         </div>
         );
       })()}
+
+      <MistakeRedemptionModal
+        isOpen={wrongRetestOpen}
+        onClose={() => setWrongRetestOpen(false)}
+        title={`Wrong-Only Retest: ${testDetails?.title || 'Mock Assessment'}`}
+        questions={wrongRetestItems}
+        onUpgradeRequested={() => setDrillPaywallOpen(true)}
+      />
+
+      <PaywallModal
+        isOpen={drillPaywallOpen}
+        onClose={() => setDrillPaywallOpen(false)}
+        featureName="Unlimited Wrong-Only Retests"
+        featureDescription="Free students get 1 Redemption / Wrong-Only Retest per day. Upgrade to Pro for unlimited error drills!"
+      />
     </div>
   );
 }
