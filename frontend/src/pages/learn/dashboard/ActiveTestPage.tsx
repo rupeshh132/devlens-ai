@@ -183,22 +183,22 @@ const QuestionPalette = React.memo(({
   }, [questions, answers, visitedIds, markedIds]);
 
   return (
-    <div className="w-80 bg-white rounded-3xl shadow-xs border border-slate-200 p-6 flex flex-col shrink-0">
-      <div className="flex items-center justify-between mb-4">
+    <div className="w-full lg:w-72 xl:w-80 bg-white rounded-2xl shadow-xs border border-slate-200 p-4 flex flex-col shrink-0 lg:min-h-0">
+      <div className="flex items-center justify-between mb-3 shrink-0">
         <h3 className="font-bold text-slate-800 text-xs uppercase tracking-wider">Question Palette</h3>
-        <span className="text-xs font-semibold text-slate-500">
-          {counts.answered + counts.answeredMarked}/{questions.length} answered
+        <span className="text-xs font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md">
+          {counts.answered + counts.answeredMarked}/{questions.length} done
         </span>
       </div>
 
-      <div className="grid grid-cols-5 gap-2 max-h-[360px] overflow-y-auto pr-1">
+      <div className="grid grid-cols-6 sm:grid-cols-8 lg:grid-cols-5 gap-1.5 max-h-60 lg:max-h-none lg:flex-1 lg:min-h-0 overflow-y-auto pr-1 content-start">
         {questions.map((q, idx) => {
           const isAnswered = !!answers[q.questionId] && answers[q.questionId].trim().length > 0;
           const isMarked = markedIds.has(q.questionId);
           const isVisited = visitedIds.has(q.questionId);
           const isCurrent = currentIdx === idx;
           
-          let btnClass = "relative w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs border-2 transition-all ";
+          let btnClass = "relative h-9 w-full rounded-lg flex items-center justify-center font-bold text-xs border-2 transition-all ";
           if (isCurrent) {
             btnClass += "border-indigo-600 bg-indigo-50 text-indigo-700 ring-2 ring-indigo-200";
           } else if (isAnswered && isMarked) {
@@ -222,25 +222,25 @@ const QuestionPalette = React.memo(({
             >
               {idx + 1}
               {isAnswered && isMarked && (
-                <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400 border-2 border-white" />
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-white" />
               )}
             </button>
           );
         })}
       </div>
       
-      <div className="mt-auto grid grid-cols-2 gap-2 pt-5 border-t border-slate-100">
+      <div className="mt-3 grid grid-cols-2 gap-1.5 pt-3 border-t border-slate-100 shrink-0">
         <div className="flex items-center text-[11px] font-semibold text-slate-600">
-          <div className="w-3 h-3 rounded bg-emerald-500 mr-2 shrink-0" /> Answered ({counts.answered})
+          <div className="w-3 h-3 rounded bg-emerald-500 mr-1.5 shrink-0" /> Answered ({counts.answered})
         </div>
         <div className="flex items-center text-[11px] font-semibold text-slate-600">
-          <div className="w-3 h-3 rounded bg-rose-100 border border-rose-300 mr-2 shrink-0" /> Not Answered ({counts.notAnswered})
+          <div className="w-3 h-3 rounded bg-rose-100 border border-rose-300 mr-1.5 shrink-0" /> Not Answered ({counts.notAnswered})
         </div>
         <div className="flex items-center text-[11px] font-semibold text-slate-600">
-          <div className="w-3 h-3 rounded bg-purple-500 mr-2 shrink-0" /> Marked ({counts.marked + counts.answeredMarked})
+          <div className="w-3 h-3 rounded bg-purple-500 mr-1.5 shrink-0" /> Marked ({counts.marked + counts.answeredMarked})
         </div>
         <div className="flex items-center text-[11px] font-semibold text-slate-600">
-          <div className="w-3 h-3 rounded bg-slate-200 mr-2 shrink-0" /> Not Visited ({counts.notVisited})
+          <div className="w-3 h-3 rounded bg-slate-200 mr-1.5 shrink-0" /> Not Visited ({counts.notVisited})
         </div>
       </div>
     </div>
@@ -474,13 +474,14 @@ export function ActiveTestPage() {
     return Array.from(map.values());
   }, [questions, answers]);
 
-  // Sections breakdown
+  // Sections breakdown (scoped with subject for multi-subject competitive exams)
   const sections = useMemo(() => {
-    const map = new Map<string, { name: string; count: number; firstIndex: number }>();
+    const map = new Map<string, { name: string; subject: string; count: number; firstIndex: number }>();
     questions.forEach((q, idx) => {
       const sec = q.section || 'General';
+      const sub = q.subject || 'General';
       if (!map.has(sec)) {
-        map.set(sec, { name: sec, count: 1, firstIndex: idx });
+        map.set(sec, { name: sec, subject: sub, count: 1, firstIndex: idx });
       } else {
         map.get(sec)!.count++;
       }
@@ -691,22 +692,27 @@ export function ActiveTestPage() {
   const isMsqQ = isMsqQuestionType(currentQ?.questionType);
   const effectiveNeg = currentQ?.negativeMarks ?? testDetails?.negativeMarking ?? 0;
 
+  const activeSubjectName = currentQ?.subject || 'General';
+  const visibleSections = subjectTabs.length > 1
+    ? sections.filter(s => s.subject === activeSubjectName)
+    : sections;
+
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900">
+    <div className="min-h-screen lg:h-screen lg:overflow-hidden bg-slate-50 flex flex-col font-sans text-slate-900 overflow-x-hidden">
       {/* Test Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-20 px-6 py-4 flex justify-between items-center shadow-xs">
-        <div>
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-20 px-4 lg:px-6 py-2.5 flex justify-between items-center gap-3 shadow-xs shrink-0">
+        <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <h1 className="text-base md:text-lg font-extrabold text-slate-900 line-clamp-1">
+            <h1 className="text-sm sm:text-base md:text-lg font-extrabold text-slate-900 truncate">
               {testDetails?.title || `Mock Test #${testId?.slice(0, 8)}`}
             </h1>
             {isReviewMode && (
-              <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-0.5 rounded-full border border-purple-200">
+              <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-0.5 rounded-full border border-purple-200 shrink-0">
                 Review Mode
               </span>
             )}
           </div>
-          <p className="text-xs text-slate-500 font-medium">
+          <p className="text-[11px] sm:text-xs text-slate-500 font-medium truncate">
             {isCompetitive ? (testDetails?.classLevel || 'Competitive') : `CBSE ${testDetails?.classLevel || 'Board'}`}{' '}
             {testDetails?.testType === 'CHAPTER_WISE'
               ? 'Chapter-Wise Mastery Mock'
@@ -716,7 +722,7 @@ export function ActiveTestPage() {
           </p>
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {!isReviewMode ? (
             <>
               <TestTimer 
@@ -728,7 +734,7 @@ export function ActiveTestPage() {
               <button 
                 disabled={isSubmitting}
                 onClick={handleSubmit}
-                className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2"
+                className="px-4 sm:px-5 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer"
               >
                 {isSubmitting ? (
                   <>
@@ -743,7 +749,7 @@ export function ActiveTestPage() {
           ) : (
             <button
               onClick={() => navigate('/learn/tests')}
-              className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-colors"
+              className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-colors cursor-pointer"
             >
               Exit to Tests
             </button>
@@ -752,23 +758,23 @@ export function ActiveTestPage() {
       </header>
 
       {/* Main Content */}
-      <div className="flex-1 flex max-w-7xl w-full mx-auto p-4 md:p-6 gap-6">
+      <div className="flex-1 min-h-0 flex flex-col lg:flex-row max-w-[1440px] w-full mx-auto p-3 lg:p-4 gap-3 lg:gap-4 overflow-x-hidden">
         
         {/* Question Panel */}
-        <div className="flex-1 bg-white rounded-3xl shadow-xs border border-slate-200 p-6 md:p-8 flex flex-col">
+        <div className="flex-1 min-w-0 bg-white rounded-2xl shadow-xs border border-slate-200 p-4 sm:p-5 flex flex-col lg:min-h-0">
           
           {/* Subject Switcher Tabs (When multi-subject exam like JEE PCM or NEET PCB) */}
           {subjectTabs.length > 1 && (
-            <div className="flex items-center gap-2 pb-3 mb-3 border-b border-slate-100 overflow-x-auto no-scrollbar">
-              <span className="text-[11px] font-extrabold text-indigo-500 uppercase tracking-wider shrink-0">Subjects:</span>
+            <div className="flex flex-wrap items-center gap-1.5 pb-2.5 mb-2.5 border-b border-slate-100 shrink-0">
+              <span className="text-[11px] font-extrabold text-indigo-500 uppercase tracking-wider shrink-0 mr-1">Subjects:</span>
               {subjectTabs.map(sub => {
-                const isSubActive = (currentQ?.subject || 'General') === sub.name;
+                const isSubActive = activeSubjectName === sub.name;
                 return (
                   <button
                     key={sub.name}
                     type="button"
                     onClick={() => setCurrentIdx(sub.firstIndex)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                    className={`px-3 py-1 rounded-lg text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
                       isSubActive
                         ? 'bg-indigo-600 text-white shadow-xs'
                         : 'bg-indigo-50/70 hover:bg-indigo-100 text-indigo-800 border border-indigo-200/60'
@@ -786,17 +792,17 @@ export function ActiveTestPage() {
             </div>
           )}
 
-          {/* Section Navigation Pills */}
-          {sections.length > 1 && (
-            <div className="flex items-center gap-2 pb-4 mb-4 border-b border-slate-100 overflow-x-auto no-scrollbar">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider shrink-0">Sections:</span>
-              {sections.map(sec => {
+          {/* Section Navigation Pills (Scoped cleanly to current subject) */}
+          {visibleSections.length > 1 && (
+            <div className="flex flex-wrap items-center gap-1.5 pb-2.5 mb-2.5 border-b border-slate-100 shrink-0">
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider shrink-0 mr-1">Sections:</span>
+              {visibleSections.map(sec => {
                 const isSecActive = (currentQ?.section || 'General') === sec.name;
                 return (
                   <button
                     key={sec.name}
                     onClick={() => setCurrentIdx(sec.firstIndex)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-colors ${
+                    className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap transition-colors cursor-pointer ${
                       isSecActive
                         ? 'bg-slate-900 text-white shadow-xs'
                         : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
@@ -810,19 +816,19 @@ export function ActiveTestPage() {
           )}
 
           {/* Question Metadata Header */}
-          <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100 gap-2 flex-wrap">
-            <div>
+          <div className="flex justify-between items-center mb-3 pb-3 border-b border-slate-100 gap-2 flex-wrap shrink-0">
+            <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-200 px-2.5 py-0.5 rounded-lg">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-600 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-md">
                   {currentQ?.section || 'Section A'}
                 </span>
                 {currentQ?.questionType && (
-                  <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-lg">
+                  <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">
                     {isMsqQ ? 'MSQ (Multiple Correct)' : isNumericalQ ? 'Numerical Value' : currentQ.questionType}
                   </span>
                 )}
                 {currentQ?.syllabusTag === 'ADV_ONLY' && (
-                  <span className="text-[11px] font-black uppercase px-2 py-0.5 rounded-lg bg-purple-100 text-purple-800 border border-purple-200">
+                  <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-md bg-purple-100 text-purple-800 border border-purple-200">
                     IIT Adv Exclusive
                   </span>
                 )}
@@ -832,11 +838,11 @@ export function ActiveTestPage() {
                   </span>
                 )}
               </div>
-              <h2 className="text-base font-extrabold text-slate-900 mt-2">
+              <h2 className="text-sm sm:text-base font-extrabold text-slate-900 mt-1">
                 Question {currentIdx + 1} of {activeQuestions.length}
               </h2>
             </div>
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-1.5 flex-wrap shrink-0">
               {isReviewMode && currentQ?.isCorrect === false && (
                 <button
                   type="button"
@@ -844,26 +850,29 @@ export function ActiveTestPage() {
                     saveMistakeToLocker(currentQ, testDetails?.title);
                     toast.success('Saved to Mistake Notebook in Revision Locker!');
                   }}
-                  className="bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 px-3 py-1 rounded-full text-xs font-extrabold flex items-center gap-1 cursor-pointer transition-colors"
+                  className="bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 px-2.5 py-1 rounded-full text-xs font-extrabold flex items-center gap-1 cursor-pointer transition-colors"
                 >
                   <Bookmark className="w-3 h-3" /> Save Mistake
                 </button>
               )}
-              <span className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-xs font-extrabold">
+              <span className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-2.5 py-1 rounded-full text-xs font-extrabold whitespace-nowrap">
                 +{currentQ?.marks || 1} {currentQ?.marks === 1 ? 'Mark' : 'Marks'}
               </span>
               {effectiveNeg > 0 && (
-                <span className="bg-rose-50 border border-rose-200 text-rose-700 px-2.5 py-1 rounded-full text-xs font-extrabold">
+                <span className="bg-rose-50 border border-rose-200 text-rose-700 px-2.5 py-1 rounded-full text-xs font-extrabold whitespace-nowrap">
                   -{effectiveNeg} Wrong
                 </span>
               )}
             </div>
           </div>
 
+          {/* Scrollable Question Body */}
+          <div className="lg:flex-1 lg:min-h-0 lg:overflow-y-auto pr-1 space-y-4">
+
           {/* Case Study Passage Box (If Present) */}
           {currentQ?.casePassage && (
-            <div className="mb-6 p-5 rounded-2xl bg-amber-50/70 border border-amber-200 text-slate-800 text-sm leading-relaxed">
-              <div className="flex items-center gap-2 font-bold text-amber-900 mb-2">
+            <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-slate-800 text-sm leading-relaxed">
+              <div className="flex items-center gap-2 font-bold text-amber-900 mb-1.5">
                 <FileText className="w-4 h-4 text-amber-700" />
                 <span>Case Passage / Contextual Study</span>
               </div>
@@ -872,7 +881,7 @@ export function ActiveTestPage() {
           )}
           
           {/* Question Text */}
-          <div className="prose prose-lg max-w-none text-slate-900 font-semibold mb-6 leading-relaxed">
+          <div className="text-base sm:text-lg text-slate-900 font-semibold leading-relaxed">
             {currentQ?.text}
           </div>
 
@@ -880,7 +889,7 @@ export function ActiveTestPage() {
           {!isReviewMode ? (
             hasOptions && isMsqQ ? (
               // Multiple-Correct Checkboxes (JEE Advanced MSQ)
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 <div className="px-3.5 py-2 rounded-xl bg-purple-50 border border-purple-200 text-xs font-semibold text-purple-900 flex items-center justify-between gap-2">
                   <span>One or More Than One Option Correct (Select all applicable options)</span>
                   <span className="font-bold text-purple-700">Partial Marking Enabled</span>
@@ -895,7 +904,7 @@ export function ActiveTestPage() {
                     <label
                       key={key}
                       onClick={() => handleToggleMsqOption(currentQ.questionId, key.toUpperCase())}
-                      className={`flex items-center p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                      className={`flex items-center p-3 rounded-xl border-2 cursor-pointer transition-all ${
                         isChecked
                           ? 'border-purple-600 bg-purple-50/70 shadow-xs'
                           : 'border-slate-200 hover:border-slate-300 bg-white'
@@ -906,19 +915,19 @@ export function ActiveTestPage() {
                       ) : (
                         <Square className="w-5 h-5 text-slate-400 shrink-0" />
                       )}
-                      <span className="ml-3 text-base font-bold text-purple-700 w-7">{key}.</span>
-                      <span className="text-slate-800 text-sm md:text-base font-medium">{val}</span>
+                      <span className="ml-3 text-sm sm:text-base font-bold text-purple-700 w-6 shrink-0">{key}.</span>
+                      <span className="text-slate-800 text-sm sm:text-base font-medium">{val}</span>
                     </label>
                   );
                 })}
               </div>
             ) : hasOptions ? (
               // Single-Choice Multiple Choice Options
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {Object.entries(currentQ.options).map(([key, val]) => (
                   <label 
                     key={key} 
-                    className={`flex items-center p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                    className={`flex items-center p-3 rounded-xl border-2 cursor-pointer transition-all ${
                       answers[currentQ.questionId] === key 
                         ? 'border-indigo-600 bg-indigo-50/70 shadow-xs' 
                         : 'border-slate-200 hover:border-slate-300 bg-white'
@@ -930,10 +939,10 @@ export function ActiveTestPage() {
                       value={key}
                       checked={answers[currentQ.questionId] === key}
                       onChange={() => handleSelectOption(currentQ.questionId, key)}
-                      className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500"
+                      className="w-4 h-4 text-indigo-600 border-slate-300 focus:ring-indigo-500 shrink-0"
                     />
-                    <span className="ml-3 text-base font-bold text-indigo-700 w-7">{key}.</span>
-                    <span className="text-slate-800 text-sm md:text-base font-medium">{val}</span>
+                    <span className="ml-3 text-sm sm:text-base font-bold text-indigo-700 w-6 shrink-0">{key}.</span>
+                    <span className="text-slate-800 text-sm sm:text-base font-medium">{val}</span>
                   </label>
                 ))}
               </div>
@@ -1106,9 +1115,10 @@ export function ActiveTestPage() {
               </div>
             </div>
           )}
+          </div>
 
-          {/* Navigation Controls */}
-          <div className="mt-auto pt-8 flex flex-wrap justify-between items-center gap-3 border-t border-slate-100">
+          {/* Navigation Controls (Always anchored visibly at bottom of Question Panel) */}
+          <div className="mt-3 pt-3 flex flex-wrap justify-between items-center gap-2 border-t border-slate-100 shrink-0">
             <div className="flex items-center gap-2">
               <button
                 disabled={currentIdx === 0}
